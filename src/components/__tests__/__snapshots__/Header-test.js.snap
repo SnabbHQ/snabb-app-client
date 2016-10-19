@@ -1,0 +1,94 @@
+exports[`Header should be display empty text when not fetching 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "justifyContent": "center",
+        "marginTop": 20
+      }
+    }>
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hitSlop={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function bound touchableHandleResponderGrant]}
+      onResponderMove={[Function bound touchableHandleResponderMove]}
+      onResponderRelease={[Function bound touchableHandleResponderRelease]}
+      onResponderTerminate={[Function bound touchableHandleResponderTerminate]}
+      onResponderTerminationRequest={[Function bound touchableHandleResponderTerminationRequest]}
+      onStartShouldSetResponder={[Function bound touchableHandleStartShouldSetResponder]}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent"
+          },
+          undefined
+        ]
+      }
+      testID={undefined}>
+      <Image
+        source={1}
+        style={
+          Object {
+            "height": 100,
+            "width": 100
+          }
+        } />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Header should be display spinner when fetching 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "justifyContent": "center",
+        "marginTop": 20
+      }
+    }>
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hitSlop={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function bound touchableHandleResponderGrant]}
+      onResponderMove={[Function bound touchableHandleResponderMove]}
+      onResponderRelease={[Function bound touchableHandleResponderRelease]}
+      onResponderTerminate={[Function bound touchableHandleResponderTerminate]}
+      onResponderTerminationRequest={[Function bound touchableHandleResponderTerminationRequest]}
+      onStartShouldSetResponder={[Function bound touchableHandleStartShouldSetResponder]}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent"
+          },
+          undefined
+        ]
+      }
+      testID={undefined}>
+      <Image
+        source={1}
+        style={
+          Object {
+            "height": 100,
+            "width": 100
+          }
+        } />
+    </View>
+    <ActivityIndicator
+      animating={true}
+      size="large" />
+  </View>
+</View>
+`;
