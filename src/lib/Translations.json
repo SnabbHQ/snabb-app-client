@@ -13,6 +13,10 @@
       "see_console": "see console",
       "update_state": "Update State"
     },
+    "LoginRegisterView": {
+      "sign_in": "Sign In",
+      "new_account": "New Account"
+    },
     "Subview": {
       "subview": "Subview",
       "back": "Back"

@@ -3,41 +3,16 @@
  *  This is the main app screen
  *
  */
-'use strict'
-/*
- * ## Imports
- *
- * Imports from redux
- */
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+'use strict';
 
-/**
- * The actions we need
- */
-import * as authActions from '../reducers/auth/authActions'
-import * as globalActions from '../reducers/global/globalActions'
-
-/**
- * Router
- */
-import {Actions} from 'react-native-router-flux'
-
-/**
- * The Header will display a Image and support Hot Loading
- */
-import Header from '../components/Header'
-
-/**
- * The components needed from React
- */
-import React, {Component} from 'react'
-import
-{
-  StyleSheet,
-  View
-}
-from 'react-native'
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as authActions from "../reducers/auth/authActions";
+import * as globalActions from "../reducers/global/globalActions";
+import {Actions} from "react-native-router-flux";
+import React, {Component} from "react";
+import {StyleSheet, View} from "react-native";
+import Translations from "../lib/Translations";
 
 /**
  * The platform neutral button
@@ -49,7 +24,7 @@ const Button = require('apsl-react-native-button')
  *  One could explicitly enumerate only those which SplashScreenView.js will depend on.
  *
  */
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     auth: {
       form: {
@@ -66,55 +41,41 @@ function mapStateToProps (state) {
 /*
  * Bind all the actions
  */
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...authActions, ...globalActions }, dispatch)
+    actions: bindActionCreators({...authActions, ...globalActions}, dispatch)
   }
 }
-
-var styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    flex: 1
-  },
-  summary: {
-    fontFamily: 'BodoniSvtyTwoITCTT-Book',
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
-  button: {
-    backgroundColor: '#FF3366',
-    borderColor: '#FF3366',
-    marginLeft: 10,
-    marginRight: 10
-  }
-});
 
 /**
  * ### Translations
  */
 var I18n = require('react-native-i18n')
-import Translations from '../lib/Translations'
 I18n.translations = Translations
 
 /**
  * ## App class
  */
-class Main extends Component {
+class LoginRegisterView extends Component {
 
-  handlePress () {
+  handlePress() {
     Actions.Subview({
       title: 'Subview'
       // you can add additional props to be passed to Subview here...
     })
   }
 
-  render () {
+  render() {
     return (
       <View style={styles.container}>
-        <View>
-          <Button style={styles.button} onPress={this.handlePress.bind(this)}>
-           {I18n.t('Main.navigate')}
+        <View style={{flex: 10}}/>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <Button style={styles.buttonRegister} textStyle={{color: '#F9F9F9'}} onPress={this.handlePress.bind(this)}>
+            {I18n.t('LoginRegisterView.new_account')}
+
+          </Button>
+          <Button style={styles.buttonLogin} textStyle={{color: '#00D5D5'}} onPress={this.handlePress.bind(this)}>
+            {I18n.t('LoginRegisterView.sign_in')}
           </Button>
         </View>
       </View>
@@ -122,7 +83,32 @@ class Main extends Component {
   }
 }
 
+var styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    flex: 1,
+    backgroundColor: '#009595'
+  },
+  summary: {
+    fontFamily: 'BodoniSvtyTwoITCTT-Book',
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
+  buttonLogin: {
+    backgroundColor: '#F9F9F9',
+    marginLeft: 10,
+    marginRight: 10,
+    flex: 1
+  },
+  buttonRegister: {
+    backgroundColor: '#00D5D5',
+    marginLeft: 10,
+    marginRight: 10,
+    flex: 1
+  }
+});
+
 /**
  * Connect the properties
  */
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRegisterView)
