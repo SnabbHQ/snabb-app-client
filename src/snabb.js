@@ -191,12 +191,10 @@ export default function native(platform) {
                      type='replace'/>
 
               <Scene key='LoginView'
-                     component={LoginView}
-                     type='replace'/>
+                     component={LoginView}/>
 
               <Scene key='RegisterView'
-                     component={RegisterView}
-                     type='replace'/>
+                     component={RegisterView}/>
 
               <Scene key='ForgotPassword'
                      component={ForgotPassword}

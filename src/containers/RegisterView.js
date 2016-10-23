@@ -3,29 +3,20 @@
  *
  * Allow user to register
  */
-'use strict'
-/**
- * ## Imports
- *
- * Redux
- */
+'use strict';
+
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-
-/**
- * The actions we need
- */
 import * as authActions from '../reducers/auth/authActions'
-
-/**
- *   LoginRender
- */
 import LoginRender from '../components/LoginRender'
-
-/**
- * The necessary React
- */
-import React from 'react'
+import React, {Component} from 'react'
+import NavBar, {NavButton} from 'react-native-nav'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import {Actions} from 'react-native-router-flux'
+import
+{
+  View,
+} from 'react-native'
 
 const {
   LOGIN,
@@ -59,11 +50,15 @@ function buttonPressHandler(signup, username, email, password) {
  */
 var I18n = require('react-native-i18n')
 import Translations from '../lib/Translations'
-I18n.translations = Translations
+I18n.translations = Translations;
 
-let RegisterView = React.createClass({
+class RegisterView extends Component {
 
-  render () {
+  backButtonPress() {
+    Actions.pop();
+  }
+
+  render() {
     let loginButtonText = I18n.t('Register.register')
     let onButtonPress = buttonPressHandler.bind(null,
       this.props.actions.signup,
@@ -72,18 +67,27 @@ let RegisterView = React.createClass({
       this.props.auth.form.fields.password)
 
     return (
-      <LoginRender
-        formType={REGISTER}
-        loginButtonText={loginButtonText}
-        onButtonPress={onButtonPress}
-        displayPasswordCheckbox
-        leftMessageType={FORGOT_PASSWORD}
-        rightMessageType={LOGIN}
-        auth={this.props.auth}
-        global={this.props.global}
-      />
+      <View>
+        <NavBar>
+          <NavButton onPress={this.backButtonPress.bind(this)}>
+            <Icon name="arrow-back" size={30} color="#444444"/>
+          </NavButton>
+        </NavBar>
 
+        <LoginRender
+          formType={REGISTER}
+          loginButtonText={loginButtonText}
+          onButtonPress={onButtonPress}
+          displayPasswordCheckbox
+          leftMessageType={FORGOT_PASSWORD}
+          rightMessageType={LOGIN}
+          auth={this.props.auth}
+          global={this.props.global}
+        />
+      </View>
     )
   }
-})
+}
+;
+
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterView)
