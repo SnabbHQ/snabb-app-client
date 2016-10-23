@@ -1,34 +1,34 @@
-Snowflake ![snowflake](https://cloud.githubusercontent.com/assets/1282364/11599365/1a1c39d2-9a8c-11e5-8819-bc1e48b30525.png)
-==================================
+Snabb ![snabb](https://cloud.githubusercontent.com/assets/1282364/11599365/1a1c39d2-9a8c-11e5-8819-bc1e48b30525.png)
+====================================================================================================================
 A React-Native starter mobile app, or maybe just an example, or maybe a boilerplate (you decide) for iOS and Android with a single code base. - [Demo](#screens)
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-[![Join the chat at https://gitter.im/bartonhammond/snowflake](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bartonhammond/snowflake?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/bartonhammond/snabb](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bartonhammond/snabb?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![ios](https://img.shields.io/badge/IOS--blue.svg) [![Build Status](https://www.bitrise.io/app/348ae0a97c5e147a.svg?token=RmDwzjeIGuo7i9MeazE1fg)](https://www.bitrise.io/app/348ae0a97c5e147a)
 ![andriod](https://img.shields.io/badge/Android--blue.svg) [![Build Status](https://www.bitrise.io/app/1e0425744dcc7ce3.svg?token=uvZDZvo89BLXvjrArJJreQ)](https://www.bitrise.io/app/1e0425744dcc7ce3)
-[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/bartonhammond/snowflake/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/bartonhammond/snabb/blob/master/LICENSE)
 
 ## Installation
 
 * [Install React-Native](https://facebook.github.io/react-native/docs/getting-started.html#content)
 
-#### Install Snowflake
-* Clone snowflake: `git clone https://github.com/bartonhammond/snowflake.git`
+#### Install snabb
+* Clone snabb: `git clone https://github.com/bartonhammond/snabb.git`
 
 * install dependencies
 
 ```
-cd snowflake
+cd snabb
 
 npm install
 ```
 
-#### Use the local or remote Snowflake Hapi Server
-To make things easy for you, the `config.example.js` has been initialized to use the remote **Snowflake Hapi Server** which is running on **Redhat OpenShift**.
+#### Use the local or remote snabb Hapi Server
+To make things easy for you, the `config.example.js` has been initialized to use the remote **snabb Hapi Server** which is running on **Redhat OpenShift**.
 
-This **Snowflake Hapi Server** is Open Source.  It can run either locally or on **RedHat OpenShift**.  For your convince a server is running at: [https://snowflakeserver-bartonhammond.rhcloud.com](https://snowflakeserver-bartonhammond.rhcloud.com/)
+This **snabb Hapi Server** is Open Source.  It can run either locally or on **RedHat OpenShift**.  For your convince a server is running at: [https://snabbserver-bartonhammond.rhcloud.com](https://snabbserver-bartonhammond.rhcloud.com/)
 
-Please refer to [https://github.com/bartonhammond/snowflake-hapi-openshift](https://github.com/bartonhammond/snowflake-hapi-openshift) for more information about the code and instructions for installation and setup of the server.
+Please refer to [https://github.com/bartonhammond/snabb-hapi-openshift](https://github.com/bartonhammond/snabb-hapi-openshift) for more information about the code and instructions for installation and setup of the server.
 
 #### Copy `config.example.js` and setup the remote or local option
 
@@ -42,10 +42,10 @@ Please refer to [https://github.com/bartonhammond/snowflake-hapi-openshift](http
     hapiRemote: true
   },
 ```
-* To run Hapi locally, follow the instructions at [https://github.com/bartonhammond/snowflake-hapi-openshift](https://github.com/bartonhammond/snowflake-hapi-openshift).  You will have to install **MongoDB** and **Redis**.
-* **Note**: The default is to run remotely on the **RedHat OpenShift Snowflake Server** so there is nothing more to do if you want to use it! In that case, just use the `config.js` as is.
-* If you want to install and run  the **Snowflake Hapi Server** locally, then update the ```src/lib/config.js``` file as shown below.  
-* **Note**: use the ip from the `ifconfig` command for the `local`. This ip matches the **Snowflake Hapi Server** setup. 
+* To run Hapi locally, follow the instructions at [https://github.com/bartonhammond/snabb-hapi-openshift](https://github.com/bartonhammond/snabb-hapi-openshift).  You will have to install **MongoDB** and **Redis**.
+* **Note**: The default is to run remotely on the **RedHat OpenShift snabb Server** so there is nothing more to do if you want to use it! In that case, just use the `config.js` as is.
+* If you want to install and run  the **snabb Hapi Server** locally, then update the ```src/lib/config.js``` file as shown below.  
+* **Note**: use the ip from the `ifconfig` command for the `local`. This ip matches the **snabb Hapi Server** setup. 
 *  An example of the `url` is shown below assuming the `ifconfig` shows the local ip to be `192.168.0.5`
 * **Note**: You don't have to provide the `local.url` value if you are using the `remote`
 
@@ -55,7 +55,7 @@ Please refer to [https://github.com/bartonhammond/snowflake-hapi-openshift](http
       url: 'http://192.168.0.5:5000'
     },
     remote: {
-      url: 'https://snowflakeserver-bartonhammond.rhcloud.com/'
+      url: 'https://snabbserver-bartonhammond.rhcloud.com/'
     }
   }
 
@@ -89,25 +89,25 @@ The icons used throughout the app are from [React Native Vector Icons](https://g
 
 Using [Redux](https://github.com/reactjs/react-redux) and [Immutable](https://facebook.github.io/immutable-js/), the state of the application is **testable** with [Jest](https://facebook.github.io/jest/), which includes [Snapshot tests](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html) currently with 85 tests and ~90% coverage!!!  
 
-To ease the pain of Redux Action definitions, Snowflake uses [Key Mirror](https://github.com/STRML/keyMirror).
+To ease the pain of Redux Action definitions, snabb uses [Key Mirror](https://github.com/STRML/keyMirror).
 
 Using the [Validate.JS](https://validatejs.org/) Library, all **user input is validated**.  Appropriate messages are displayed to the user guiding them in the input requirements.
 
 Once a user is logged in, their **Session State is stored** in [AsyncStorage](https://github.com/jasonmerino/react-native-simple-store) so that subsequent usage does not require logging in again.
 
-Snowflake supports **multiple languages** using [I18n](https://github.com/AlexanderZaytsev/react-native-i18n) with English, French and Spanish.
+snabb supports **multiple languages** using [I18n](https://github.com/AlexanderZaytsev/react-native-i18n) with English, French and Spanish.
 
-Snowflake supports **Hot Reloading** of its state.  
+snabb supports **Hot Reloading** of its state.  
 
-Snowflake uses CI with [Bitrise.io]( https://www.bitrise.io) and has **extensive docs and 45+ min of video** demonstating implementation.
+snabb uses CI with [Bitrise.io]( https://www.bitrise.io) and has **extensive docs and 45+ min of video** demonstating implementation.
 
-Snowflake has a **choice of servers**, either 
+snabb has a **choice of servers**, either 
 
 * The original **Parse.com**
 or 
 * **Hapi Server** that runs on **RedHat Openshift** and **locally**.
 
-    See [https://github.com/bartonhammond/snowflake-hapi-openshift](https://github.com/bartonhammond/snowflake-hapi-openshift) for more information about the OpenShift Hapi server.  The setup instructions below describe how to select the server you desire.  
+    See [https://github.com/bartonhammond/snabb-hapi-openshift](https://github.com/bartonhammond/snabb-hapi-openshift) for more information about the OpenShift Hapi server.  The setup instructions below describe how to select the server you desire.  
 
 ---------------
 # Content
@@ -120,7 +120,7 @@ or
 - [Redux State Management](#redux-state-management)
 - [Hot Reloading](#hot-reloading)
 - [FAQ](#faq)
-- [Source documentation](http://bartonhammond.github.io/snowflake/snowflake.js.html)
+- [Source documentation](http://bartonhammond.github.io/snabb/snabb.js.html)
 
 ----------
 
@@ -153,10 +153,10 @@ or
 ----------
 ## Quotes
 
-Some quotes from users of **Snowflake**
+Some quotes from users of **snabb**
 
 **Pepperoni App Kit** (see [Credits](https://github.com/futurice/pepperoni-app-kit#credits) )
->This project was initially motivated by Snowflake....you should check it out to see if it's a good fit for your app.
+>This project was initially motivated by snabb....you should check it out to see if it's a good fit for your app.
 
 **Viktor**
 >Just saw the tweets, still watching the vids. It's awesome!! It's really really high quality, I'm truly amazed
@@ -165,7 +165,7 @@ Some quotes from users of **Snowflake**
 >project is awesome, thank you for providing it!
 
 **Eric**:
-> I've been going through snowflake and love what you have done!
+> I've been going through snabb and love what you have done!
 
 **Nikos**:
 > wow new videos, nice 
@@ -174,7 +174,7 @@ Some quotes from users of **Snowflake**
 >thanks for the thorough videos!
 
 **Patrick**
-> just wanna snowflake is awesome
+> just wanna snabb is awesome
 
 **Justin**
 >Congrats - the project is super helpful
@@ -219,10 +219,10 @@ One of the needs of any application is server side processing.  With the ability
 
 Using Parse.com as the backend **reduces the angst** of setting up a server, managing the database, providing security and backups, etc.  Their free tier is more then ample to achieve a POC.
 
-While Parse.com was nice to use in starting the Snowflake app, once I needed to write server side code, I chose to look elsewhere.  Why?  Because, for one, I can't debug the "Cloud Code" locally or remotely.  Another, Parse has it's own flavors for HTTP Request and Promises.  It just made it difficult to write server side code and work w/ Parse.  
+While Parse.com was nice to use in starting the snabb app, once I needed to write server side code, I chose to look elsewhere.  Why?  Because, for one, I can't debug the "Cloud Code" locally or remotely.  Another, Parse has it's own flavors for HTTP Request and Promises.  It just made it difficult to write server side code and work w/ Parse.  
 
 ### [OpenShift](https://www.openshift.com/)
-I chose OpenShift because I could get a reasonable performing application for free.  The Snowflake server ([https://github.com/bartonhammond/snowflake-hapi-openshift](https://github.com/bartonhammond/snowflake-hapi-openshift) uses 3 gears with MongoDB and Redis.  
+I chose OpenShift because I could get a reasonable performing application for free.  The snabb server ([https://github.com/bartonhammond/snabb-hapi-openshift](https://github.com/bartonhammond/snabb-hapi-openshift) uses 3 gears with MongoDB and Redis.  
 
 ###[TComb](https://github.com/gcanti/tcomb-form-native)
 *A structured model based approach to declarative forms*
@@ -268,7 +268,7 @@ target="_blank">
 alt="Introduction" width="240" height="180" border="10"
 /></a>
 
-* Snowflake is a *starter app* so all tutorials are basic in nature
+* snabb is a *starter app* so all tutorials are basic in nature
 * There are a bizzilion ways of doing any of this - I'm showing one
 * There's a number of CI sites, I chose Bitrise.io 
 * There's a general understanding of why to us a CI
@@ -565,10 +565,10 @@ If you'd like to read an excellent tutorial on Redux I can't recommend this one 
 --------------------
 
 ## Hot Reloading
-This video shows Snowflake exporting and importing state from Redux.  It demonstrates, with the iOS Simulator, the process of copying the state for import at a later time.  After the demo, I walk through the code to clarify how I achieved this.  It's assumed you have some familiarity with Redux.  Hopefully it helps you gain a better understanding of what Redux provides you!
+This video shows snabb exporting and importing state from Redux.  It demonstrates, with the iOS Simulator, the process of copying the state for import at a later time.  After the demo, I walk through the code to clarify how I achieved this.  It's assumed you have some familiarity with Redux.  Hopefully it helps you gain a better understanding of what Redux provides you!
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=b4eqQUA3O6o" target="_blank"><img src="http://img.youtube.com/vi/b4eqQUA3O6o/0.jpg" 
-alt="Snowflake Hot Loading" width="240" height="180" border="10" /></a>
+alt="snabb Hot Loading" width="240" height="180" border="10" /></a>
 
 
 

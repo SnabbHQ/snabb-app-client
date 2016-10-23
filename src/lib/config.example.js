@@ -9,7 +9,7 @@ module.exports = {
       url: 'http://192.168.0.13:5000'
     },
     remote: {
-      url: 'https://snowflakeserver-bartonhammond.rhcloud.com/'
+      url: 'https://snabbserver-bartonhammond.rhcloud.com/'
     }
   }
 }

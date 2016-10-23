@@ -1,7 +1,7 @@
 'use strict'
 /**
- *  # snowflake
- *  Snowflake ![snowflake](https://cloud.githubusercontent.com/assets/1282364/11599365/1a1c39d2-9a8c-11e5-8819-bc1e48b30525.png)
+ *  # snabb
+ *  snabb ![snabb](https://cloud.githubusercontent.com/assets/1282364/11599365/1a1c39d2-9a8c-11e5-8819-bc1e48b30525.png)
  */
 
 /**
@@ -93,7 +93,7 @@ import {setStore} from './reducers/global/globalActions'
 
 /**
  * ## States
- * Snowflake explicitly defines initial state
+ * snabb explicitly defines initial state
  *
  */
 import AuthInitialState from './reducers/auth/authInitialState'
@@ -111,7 +111,7 @@ var VERSION = pack.version;
 /**
  *
  * ## Initial state
- * Create instances for the keys of each structure in snowflake
+ * Create instances for the keys of each structure in snabb
  * @returns {Object} object with 4 keys
  */
 function getInitialState() {
@@ -156,11 +156,11 @@ class TabIcon extends React.Component {
  */
 
 export default function native(platform) {
-  let Snowflake = React.createClass({
+  let snabb = React.createClass({
     render () {
       const store = configureStore(getInitialState())
 
-      // configureStore will combine reducers from snowflake and main application
+      // configureStore will combine reducers from snabb and main application
       // it will then create the store based on aggregate state from all reducers
       store.dispatch(setPlatform(platform))
       store.dispatch(setVersion(VERSION))
@@ -211,14 +211,14 @@ export default function native(platform) {
                      default='Home'>
 
                 <Scene key='Logout'
-                       title={I18n.t('Snowflake.logout')}
+                       title={I18n.t('snabb.logout')}
                        icon={TabIcon}
                        iconName={"sign-out"}
                        hideNavBar
                        component={Logout}/>
 
                 <Scene key='Main'
-                       title={I18n.t('Snowflake.main')}
+                       title={I18n.t('snabb.main')}
                        iconName={"home"}
                        icon={TabIcon}
                        hideNavBar
@@ -226,7 +226,7 @@ export default function native(platform) {
                        initial/>
 
                 <Scene key='Profile'
-                       title={I18n.t('Snowflake.profile')}
+                       title={I18n.t('snabb.profile')}
                        icon={TabIcon}
                        iconName={"gear"}
                        hideNavBar
@@ -242,5 +242,5 @@ export default function native(platform) {
   /**
    * registerComponent to the AppRegistery and off we go....
    */
-  AppRegistry.registerComponent('snowflake', () => Snowflake)
+  AppRegistry.registerComponent('snabb', () => snabb)
 }

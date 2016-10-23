@@ -147,7 +147,7 @@ var Header = React.createClass({
           <TouchableHighlight onPress={this._onPressMark}>
 
             <Image style={styles.mark}
-              source={require('../images/Snowflake.png')}
+              source={require('../images/snabb.png')}
             />
           </TouchableHighlight>
             {this.props.isFetching

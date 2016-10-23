@@ -3,16 +3,16 @@ appEnvVars = {
     none: 'none are needed for android...'
   },  
   ios: {
-    BITRISE_PROJECT_PATH: 'ios/snowflake.xcodeproj or what ever yours is named',
-    BITRISE_SCHEME: 'snowflake or whatever your scheme is named'
+    BITRISE_PROJECT_PATH: 'ios/snabb.xcodeproj or what ever yours is named',
+    BITRISE_SCHEME: 'snabb or whatever your scheme is named'
   }
 },
 secretEnvVars = {
   android: {
-    SNOWFLAKE_RELEASE_STORE_FILE: 'file name',
-    SNOWFLAKE_RELEASE_KEY_ALIAS: 'alias name',
-    SNOWFLAKE_RELEASE_STORE_PASSWORD: 'some password',
-    SNOWFLAKE_RELEASE_KEY_PASSWORD: 'some password - not necessarily the same as store',
+    snabb_RELEASE_STORE_FILE: 'file name',
+    snabb_RELEASE_KEY_ALIAS: 'alias name',
+    snabb_RELEASE_STORE_PASSWORD: 'some password',
+    snabb_RELEASE_KEY_PASSWORD: 'some password - not necessarily the same as store',
     PARSE_APP_ID: 'Parse.com App ID',
     PARSE_REST_API_KEY: 'Parse.com Rest API'
   },

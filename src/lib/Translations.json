@@ -16,7 +16,7 @@
       "subview": "Subview",
       "back": "Back"
     },
-    "Snowflake": {
+    "snabb": {
       "logout": "Log out",
       "main": "Main",
       "profile":"Profile"
@@ -72,7 +72,7 @@
       "subview": "Sous-vue",
       "back": "Arrière"
     },
-    "Snowflake": {
+    "snabb": {
       "logout": "Se déconnecter",
       "main": "Principal",
       "profile":"Profil"
@@ -128,7 +128,7 @@
       "subview": "Subview",
       "back": "Espalda"
     },
-    "Snowflake": {
+    "snabb": {
       "logout": "Cerrar sesión",
       "main": "Principal",
       "profile":"Perfil"

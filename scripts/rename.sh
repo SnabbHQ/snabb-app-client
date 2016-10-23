@@ -7,16 +7,16 @@ appRoot=`dirname $0`/..
 
 [ -z "${newAppName}" ] && echo 'Missing required parameter newAppName' && exit 1
 
-grep -rI 'snowflake' --exclude='rename.sh' $appRoot/* | tr ':' ' ' | awk '{print $1}' | uniq | xargs -I{} sed -i.bak "s/snowflake/${newAppName}/g" {}
-grep -rI 'snowflake' --exclude='rename.sh' $appRoot/* | tr ':' ' ' | awk '{print $1}' | uniq | xargs -I{} sed -i.bak "s/snowflake/${newLowerCaseName}/g" {}
+grep -rI 'snabb' --exclude='rename.sh' $appRoot/* | tr ':' ' ' | awk '{print $1}' | uniq | xargs -I{} sed -i.bak "s/snabb/${newAppName}/g" {}
+grep -rI 'snabb' --exclude='rename.sh' $appRoot/* | tr ':' ' ' | awk '{print $1}' | uniq | xargs -I{} sed -i.bak "s/snabb/${newLowerCaseName}/g" {}
 find . -name '*.bak' -exec rm {} \;
 
-for fileToMove in `find $appRoot/ios -depth -name '*snowflake*'`; do
-  mv $fileToMove `echo $fileToMove | sed "s/\(.*\)snowflake/\1$newAppName/g"`
+for fileToMove in `find $appRoot/ios -depth -name '*snabb*'`; do
+  mv $fileToMove `echo $fileToMove | sed "s/\(.*\)snabb/\1$newAppName/g"`
 done
 
-for fileToMove in `find $appRoot/android -depth -name '*snowflake*'`; do
-  mv $fileToMove `echo $fileToMove | sed "s/\(.*\)snowflake/\1$newLowerCaseName/g"`
+for fileToMove in `find $appRoot/android -depth -name '*snabb*'`; do
+  mv $fileToMove `echo $fileToMove | sed "s/\(.*\)snabb/\1$newLowerCaseName/g"`
 done
 
 YELLOW='\033[1;33m'
