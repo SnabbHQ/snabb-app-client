@@ -33,6 +33,10 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		83CB0DAC888843F2AD6221CC /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CC28823B50A4E9EBA68016B /* Foundation.ttf */; };
 		B65E7ACF9E8E4CB395A84872 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10010D58D66C4C7987A78006 /* libRNVectorIcons.a */; };
+		C6143F321DBD6795007103AA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6143F2E1DBD6795007103AA /* Fabric.framework */; };
+		C6143F331DBD6795007103AA /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6143F2F1DBD6795007103AA /* DigitsKit.framework */; };
+		C6143F341DBD6795007103AA /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C6143F301DBD6795007103AA /* DigitsKitResources.bundle */; };
+		C6143F351DBD6795007103AA /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6143F311DBD6795007103AA /* TwitterCore.framework */; };
 		D760CA904B854635A18F4A56 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7DF56CC491D48C5B76A89E6 /* Ionicons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +179,10 @@
 		82C74D82EE8F47CEB6EA281C /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9F8BFF77D4524F448A3482C4 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		C6143F2E1DBD6795007103AA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		C6143F2F1DBD6795007103AA /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
+		C6143F301DBD6795007103AA /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
+		C6143F311DBD6795007103AA /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		D7DF56CC491D48C5B76A89E6 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		E8FB7D755BDD478A96EEEAAF /* RNI18n.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/RNI18n.xcodeproj"; sourceTree = "<group>"; };
 		F1322AC77C46403CB5D6F353 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
@@ -202,10 +210,13 @@
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
+				C6143F321DBD6795007103AA /* Fabric.framework in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
+				C6143F331DBD6795007103AA /* DigitsKit.framework in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				69C576D689E240DEB0789BC8 /* libRNI18n.a in Frameworks */,
+				C6143F351DBD6795007103AA /* TwitterCore.framework in Frameworks */,
 				B65E7ACF9E8E4CB395A84872 /* libRNVectorIcons.a in Frameworks */,
 				1A11C41517924DCD9A2DC8A5 /* libAirMaps.a in Frameworks */,
 			);
@@ -313,6 +324,10 @@
 		1B028B8FCBD9451B87521A0F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C6143F2E1DBD6795007103AA /* Fabric.framework */,
+				C6143F2F1DBD6795007103AA /* DigitsKit.framework */,
+				C6143F301DBD6795007103AA /* DigitsKitResources.bundle */,
+				C6143F311DBD6795007103AA /* TwitterCore.framework */,
 				7ED984D34C16434EA8C4C768 /* Entypo.ttf */,
 				F3684ED0774C476A9927C2E0 /* EvilIcons.ttf */,
 				F1322AC77C46403CB5D6F353 /* FontAwesome.ttf */,
@@ -437,6 +452,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				C6143F1C1DBD65F9007103AA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -653,6 +669,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C6143F341DBD6795007103AA /* DigitsKitResources.bundle in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				23C4801D639B4D54B38E69B5 /* Entypo.ttf in Resources */,
 				26C60313DC6E4ACBB8A3E012 /* EvilIcons.ttf in Resources */,
@@ -681,6 +698,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
+		};
+		C6143F1C1DBD65F9007103AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 97f6165bb908bddc0a87cf3844290c06fbcbfa2d 696a564d8c76e6ed1fe9aab17b3c9e6194d4843b3c7b0ebde0b060e1ba80eec1";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -777,6 +807,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = QKZ28F5XES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -804,6 +838,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QKZ28F5XES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

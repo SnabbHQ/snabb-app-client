@@ -8,6 +8,8 @@
  */
 
 #import "AppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <DigitsKit/DigitsKit.h>
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
@@ -16,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [Fabric with:@[[Digits class]]];
+
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
