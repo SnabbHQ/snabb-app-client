@@ -1,6 +1,7 @@
 module.exports = {
   Actions: {
-    Login: function () {},
+    LoginView: function () {},
+    RegisterView: function () {},
     Tabbar: function () {},
     InitialLoginForm: function () {},
     Home: function () {}

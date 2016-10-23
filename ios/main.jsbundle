@@ -58532,7 +58532,7 @@ throw error;}};
 
 module.exports=invariant;
 });
-__d('snabb/src/containers/App.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _redux=require('redux/lib/index.js');var _native=require('react-redux/native.js');var _immutable=require('immutable/dist/immutable.js');var _Login=require('snabb/src/containers/Login.js');var _Login2=babelHelpers.interopRequireDefault(_Login);var _Tabbar=require('snabb/src/components/Tabbar.js');var _Tabbar2=babelHelpers.interopRequireDefault(_Tabbar);var _authActions=require('snabb/src/reducers/auth/authActions.js');var
+__d('snabb/src/containers/App.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _redux=require('redux/lib/index.js');var _native=require('react-redux/native.js');var _immutable=require('immutable/dist/immutable.js');var _Login=require('snabb/src/containers/LoginView.js');var _Login2=babelHelpers.interopRequireDefault(_Login);var _Tabbar=require('snabb/src/components/Tabbar.js');var _Tabbar2=babelHelpers.interopRequireDefault(_Tabbar);var _authActions=require('snabb/src/reducers/auth/authActions.js');var
 
 
 
@@ -58668,7 +58668,7 @@ component);}});exports.default=
 
 (0,_native.connect)(mapStateToProps,mapDispatchToProps)(App);
 });
-__d('snabb/src/containers/Login.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _redux=require('redux/lib/index.js');var _native=require('react-redux/native.js');var _authActions=require('snabb/src/reducers/auth/authActions.js');var
+__d('snabb/src/containers/LoginView.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _redux=require('redux/lib/index.js');var _native=require('react-redux/native.js');var _authActions=require('snabb/src/reducers/auth/authActions.js');var
 
 
 
@@ -67107,7 +67107,7 @@ return React.createElement(RNTypefaceTextView,this.props);}});
 
 module.exports=TypefaceTextView;
 });
-__d('snabb/src/components/Tabbar.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _reactNativeTabNavigator=require('react-native-tab-navigator/TabNavigator.js');var _reactNativeTabNavigator2=babelHelpers.interopRequireDefault(_reactNativeTabNavigator);var _FontAwesome=require('FontAwesome');var _FontAwesome2=babelHelpers.interopRequireDefault(_FontAwesome);var _Login=require('snabb/src/containers/Login.js');var _Login2=babelHelpers.interopRequireDefault(_Login);var _Profile=require('snabb/src/containers/Profile.js');var _Profile2=babelHelpers.interopRequireDefault(_Profile);
+__d('snabb/src/components/Tabbar.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _reactNativeTabNavigator=require('react-native-tab-navigator/TabNavigator.js');var _reactNativeTabNavigator2=babelHelpers.interopRequireDefault(_reactNativeTabNavigator);var _FontAwesome=require('FontAwesome');var _FontAwesome2=babelHelpers.interopRequireDefault(_FontAwesome);var _Login=require('snabb/src/containers/LoginView.js');var _Login2=babelHelpers.interopRequireDefault(_Login);var _Profile=require('snabb/src/containers/Profile.js');var _Profile2=babelHelpers.interopRequireDefault(_Profile);
 
 
 

@@ -9,8 +9,8 @@
  *
  * Redux
  */
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
 /**
  * The actions we need
@@ -31,26 +31,26 @@ const {
   LOGIN,
   REGISTER,
   FORGOT_PASSWORD
-} = require('../lib/constants').default
+} = require('../lib/constants').default;
 
 /**
  * ## Redux boilerplate
  */
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     auth: state.auth,
     global: state.global
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(authActions, dispatch)
   }
 }
 
-function buttonPressHandler (signup, username, email, password) {
+function buttonPressHandler(signup, username, email, password) {
   signup(username, email, password)
 }
 
@@ -61,15 +61,15 @@ var I18n = require('react-native-i18n')
 import Translations from '../lib/Translations'
 I18n.translations = Translations
 
-let Register = React.createClass({
+let RegisterView = React.createClass({
 
   render () {
     let loginButtonText = I18n.t('Register.register')
     let onButtonPress = buttonPressHandler.bind(null,
-                                                this.props.actions.signup,
-                                                this.props.auth.form.fields.username,
-                                                this.props.auth.form.fields.email,
-                                                this.props.auth.form.fields.password)
+      this.props.actions.signup,
+      this.props.auth.form.fields.username,
+      this.props.auth.form.fields.email,
+      this.props.auth.form.fields.password)
 
     return (
       <LoginRender
@@ -86,4 +86,4 @@ let Register = React.createClass({
     )
   }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterView)

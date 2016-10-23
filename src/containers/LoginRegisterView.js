@@ -14,6 +14,7 @@ import React, {Component} from "react";
 import {StyleSheet, View} from "react-native";
 import Translations from "../lib/Translations";
 
+
 /**
  * The platform neutral button
  */
@@ -58,11 +59,12 @@ I18n.translations = Translations
  */
 class LoginRegisterView extends Component {
 
-  handlePress() {
-    Actions.Subview({
-      title: 'Subview'
-      // you can add additional props to be passed to Subview here...
-    })
+  handleLoginPress() {
+    Actions.LoginView();
+  }
+
+  handleRegisterPress() {
+    Actions.RegisterView();
   }
 
   render() {
@@ -70,11 +72,13 @@ class LoginRegisterView extends Component {
       <View style={styles.container}>
         <View style={{flex: 10}}/>
         <View style={{flex: 1, flexDirection: 'row'}}>
-          <Button style={styles.buttonRegister} textStyle={{color: '#F9F9F9'}} onPress={this.handlePress.bind(this)}>
+          <Button style={styles.buttonRegister} textStyle={{color: '#F9F9F9'}}
+                  onPress={this.handleRegisterPress.bind(this)}>
             {I18n.t('LoginRegisterView.new_account')}
 
           </Button>
-          <Button style={styles.buttonLogin} textStyle={{color: '#00D5D5'}} onPress={this.handlePress.bind(this)}>
+          <Button style={styles.buttonLogin} textStyle={{color: '#00D5D5'}}
+                  onPress={this.handleLoginPress.bind(this)}>
             {I18n.t('LoginRegisterView.sign_in')}
           </Button>
         </View>

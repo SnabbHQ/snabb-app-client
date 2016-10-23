@@ -54,7 +54,7 @@ function mapStateToProps (state) {
   return {
     deviceVersion: state.device.version
   }
-};
+}
 
 /*
  * Bind all the actions in deviceActions
@@ -91,14 +91,15 @@ I18n.translations = Translations
 let Subview = React.createClass({
 
   render () {
+    
     var titleConfig = {
       title: I18n.t('Subview.subview')
-    }
+    };
 
     var leftButtonConfig = {
       title: I18n.t('Subview.back'),
       handler: Actions.pop
-    }
+    };
 
     return (
       <View>
@@ -112,7 +113,7 @@ let Subview = React.createClass({
       </View>
     )
   }
-})
+});
 
 /**
  * Connect the properties

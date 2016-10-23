@@ -67,12 +67,11 @@ I18n.translations = Translations
  */
 import App from './containers/App'
 import SplashScreenView from './containers/LoginRegisterView'
-import Login from './containers/Login'
+import LoginView from './containers/LoginView'
 import Logout from './containers/Logout'
-import Register from './containers/Register'
+import RegisterView from './containers/RegisterView'
 import ForgotPassword from './containers/ForgotPassword'
 import Profile from './containers/Profile'
-import Main from './containers/LoginRegisterView'
 import Home from './containers/Home'
 import Subview from './containers/Subview'
 import DeliveryAddress from './containers/DeliveryAddress'
@@ -188,15 +187,15 @@ export default function native(platform) {
                      type='replace'/>
 
               <Scene key='InitialLoginForm'
-                     component={Register}
+                     component={RegisterView}
                      type='replace'/>
 
-              <Scene key='Login'
-                     component={Login}
+              <Scene key='LoginView'
+                     component={LoginView}
                      type='replace'/>
 
-              <Scene key='Register'
-                     component={Register}
+              <Scene key='RegisterView'
+                     component={RegisterView}
                      type='replace'/>
 
               <Scene key='ForgotPassword'
@@ -221,14 +220,6 @@ export default function native(platform) {
                        iconName={"sign-out"}
                        hideNavBar
                        component={Logout}/>
-
-                <Scene key='Main'
-                       title={I18n.t('snabb.main')}
-                       iconName={"home"}
-                       icon={TabIcon}
-                       hideNavBar
-                       component={Main}
-                       initial/>
 
                 <Scene key='Profile'
                        title={I18n.t('snabb.profile')}
