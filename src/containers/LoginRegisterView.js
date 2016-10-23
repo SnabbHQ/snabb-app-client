@@ -96,14 +96,16 @@ var styles = StyleSheet.create({
   },
   buttonLogin: {
     backgroundColor: '#F9F9F9',
-    marginLeft: 10,
+    borderColor: '#F9F9F9',
+    marginLeft: 5,
     marginRight: 10,
     flex: 1
   },
   buttonRegister: {
     backgroundColor: '#00D5D5',
+    borderColor: '#00D5D5',
     marginLeft: 10,
-    marginRight: 10,
+    marginRight: 5,
     flex: 1
   }
 });
