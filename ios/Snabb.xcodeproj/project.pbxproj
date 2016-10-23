@@ -34,6 +34,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		83CB0DAC888843F2AD6221CC /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CC28823B50A4E9EBA68016B /* Foundation.ttf */; };
 		B65E7ACF9E8E4CB395A84872 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10010D58D66C4C7987A78006 /* libRNVectorIcons.a */; };
+		C6143FBE1DBD7167007103AA /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = C6143FBD1DBD7167007103AA /* main.jsbundle */; };
 		D760CA904B854635A18F4A56 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7DF56CC491D48C5B76A89E6 /* Ionicons.ttf */; };
 		FFB10E22EDCD59C50BAAF4F5 /* Pods_snabb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B714B3464D7471B8EE57881F /* Pods_snabb.framework */; };
 /* End PBXBuildFile section */
@@ -147,7 +148,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* .. */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = ..; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -181,6 +181,7 @@
 		92D10C86467ECE6916095BD0 /* Pods-snabb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snabb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-snabb/Pods-snabb.debug.xcconfig"; sourceTree = "<group>"; };
 		9F8BFF77D4524F448A3482C4 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		B714B3464D7471B8EE57881F /* Pods_snabb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snabb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6143FBD1DBD7167007103AA /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = SOURCE_ROOT; };
 		CFA04A1ADB9BB478DE6DD869 /* Pods-snabb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snabb.release.xcconfig"; path = "Pods/Target Support Files/Pods-snabb/Pods-snabb.release.xcconfig"; sourceTree = "<group>"; };
 		D7DF56CC491D48C5B76A89E6 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		DA567DDF8F257B01D9F9ABAB /* Pods_snabbTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snabbTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,7 +312,7 @@
 		13B07FAE1A68108700A75B9A /* Snabb */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* .. */,
+				C6143FBD1DBD7167007103AA /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -698,6 +699,7 @@
 				83CB0DAC888843F2AD6221CC /* Foundation.ttf in Resources */,
 				D760CA904B854635A18F4A56 /* Ionicons.ttf in Resources */,
 				4D5A8358ED4648DCA9EF03C5 /* MaterialIcons.ttf in Resources */,
+				C6143FBE1DBD7167007103AA /* main.jsbundle in Resources */,
 				411721BC829B4B05875F77D2 /* Octicons.ttf in Resources */,
 				5E6E72CC525B4B5982FB76DE /* Zocial.ttf in Resources */,
 			);
