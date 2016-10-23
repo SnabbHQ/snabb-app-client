@@ -66,13 +66,13 @@ I18n.translations = Translations
  *
  */
 import App from './containers/App'
-import SplashScreenView from './containers/SplashScreenView'
+import SplashScreenView from './containers/LoginRegisterView'
 import Login from './containers/Login'
 import Logout from './containers/Logout'
 import Register from './containers/Register'
 import ForgotPassword from './containers/ForgotPassword'
 import Profile from './containers/Profile'
-import Main from './containers/SplashScreenView'
+import Main from './containers/LoginRegisterView'
 import Home from './containers/Home'
 import Subview from './containers/Subview'
 import DeliveryAddress from './containers/DeliveryAddress'
