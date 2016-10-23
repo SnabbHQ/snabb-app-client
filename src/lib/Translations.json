@@ -5,7 +5,8 @@
       "version": "Version"
     },
     "General": {
-      "back": "Back"
+      "back": "Back",
+      "loading": "Loading..."
     },
     "Header": {
       "current_state": "Current State",

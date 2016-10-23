@@ -39,8 +39,7 @@ import
 
 /**
  *  Instead of including all app states via ...state
- *  One could explicitly enumerate only those which Main.js will depend on.
- *
+ *  One could explicitly enumerate only those which SplashScreenView.js will depend on.
  */
 function mapStateToProps(state) {
   return {

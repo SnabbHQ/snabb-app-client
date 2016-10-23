@@ -46,7 +46,7 @@ const Button = require('apsl-react-native-button')
 
 /**
  *  Instead of including all app states via ...state
- *  One could explicitly enumerate only those which Main.js will depend on.
+ *  One could explicitly enumerate only those which SplashScreenView.js will depend on.
  *
  */
 function mapStateToProps (state) {
@@ -113,12 +113,6 @@ class Main extends Component {
     return (
       <View style={styles.container}>
         <View>
-          <Header isFetching={this.props.auth.form.isFetching}
-            showState={this.props.global.showState}
-            currentState={this.props.global.currentState}
-            onGetState={this.props.actions.getState}
-            onSetState={this.props.actions.setState} />
-
           <Button style={styles.button} onPress={this.handlePress.bind(this)}>
            {I18n.t('Main.navigate')}
           </Button>
@@ -126,7 +120,7 @@ class Main extends Component {
       </View>
     )
   }
-};
+}
 
 /**
  * Connect the properties

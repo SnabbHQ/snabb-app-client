@@ -47,7 +47,7 @@ import * as deviceActions from '../reducers/device/deviceActions'
 
 /**
  *  Instead of including all app states via ...state
- *  You probably want to explicitly enumerate only those which Main.js will depend on.
+ *  You probably want to explicitly enumerate only those which SplashScreenView.js will depend on.
  *
  */
 function mapStateToProps (state) {

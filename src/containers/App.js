@@ -1,19 +1,7 @@
- /**
- * # app.js
- *  Display startup screen and
- *  getSessionTokenAtStartup which will navigate upon completion
- *
- *
- *
- */
 'use strict'
-/*
- * ## Imports
- *
- * Imports from redux
- */
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
 /**
  * Project actions
@@ -25,7 +13,7 @@ import * as globalActions from '../reducers/global/globalActions'
 /**
  * Router
  */
-import { Actions } from 'react-native-router-flux'
+import {Actions} from 'react-native-router-flux'
 
 /**
  * The components we need from ReactNative
@@ -33,21 +21,16 @@ import { Actions } from 'react-native-router-flux'
 import React from 'react'
 import
 {
-    StyleSheet,
-    View,
-    Text
+  StyleSheet,
+  View,
+  Text
 }
-from 'react-native'
-
-/**
- * The Header will display a Image and support Hot Loading
- */
-import Header from '../components/Header'
+  from 'react-native'
 
 /**
  *  Save that state
  */
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     deviceVersion: state.device.version,
     auth: {
@@ -60,18 +43,65 @@ function mapStateToProps (state) {
       showState: state.global.showState
     }
   }
-};
+}
 
 /**
  * Bind all the actions from authActions, deviceActions and globalActions
  */
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...authActions, ...deviceActions, ...globalActions }, dispatch)
+    actions: bindActionCreators({...authActions, ...deviceActions, ...globalActions}, dispatch)
   }
 }
 
-var styles = StyleSheet.create({
+/**
+ * ## App class
+ */
+var reactMixin = require('react-mixin');
+import TimerMixin from 'react-timer-mixin'
+
+/**
+ * ### Translations
+ */
+var I18n = require('react-native-i18n');
+import Translations from '../lib/Translations'
+I18n.translations = Translations;
+
+let App = React.createClass({
+  /**
+   * See if there's a sessionToken from a previous login
+   *
+   */
+  componentDidMount () {
+    // Use a timer so App screen is displayed
+    this.setTimeout(
+      () => {
+
+        // var sessionToken = this.props.actions.getSessionToken();
+        // sessionToken.then({
+        //   Actions.
+        // });
+
+        Actions.SplashScreenView();
+        // Actions.Home({
+        //   title: 'Subview'
+        //   // you can add additional props to be passed to Subview here...
+        // })
+      },
+      200
+    )
+  },
+
+  render() {
+    return (
+      <View>
+        <Text style={styles.summary}>{I18n.t('App.loading')}</Text>
+      </View>
+    )
+  }
+});
+
+const styles = StyleSheet.create({
   container: {
     borderTopWidth: 2,
     borderBottomWidth: 2,
@@ -83,54 +113,8 @@ var styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold'
   }
-})
+});
 
-/**
- * ## App class
- */
-var reactMixin = require('react-mixin')
-import TimerMixin from 'react-timer-mixin'
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-import Translations from '../lib/Translations'
-I18n.translations = Translations
-
-let App = React.createClass({
-    /**
-     * See if there's a sessionToken from a previous login
-     *
-     */
-  componentDidMount () {
-        // Use a timer so App screen is displayed
-    this.setTimeout(
-            () => {
-              //this.props.actions.getSessionToken()
-                Actions.Home({
-                  title: 'Subview'
-                  // you can add additional props to be passed to Subview here...
-                })
-            },
-            200
-        )
-  },
-
-  render () {
-    return (
-      <View style={styles.container}>
-        <Header isFetching={this.props.auth.form.isFetching}
-          showState={this.props.global.showState}
-          currentState={this.props.global.currentState}
-          onGetState={this.props.actions.getState}
-          onSetState={this.props.actions.setState} />
-
-        <Text style={styles.summary}>snabb {I18n.t('App.version')}:{this.props.deviceVersion}</Text>
-
-      </View>
-    )
-  }
-})
 // Since we're using ES6 classes, have to define the TimerMixin
 reactMixin(App.prototype, TimerMixin)
 /**

@@ -66,12 +66,13 @@ I18n.translations = Translations
  *
  */
 import App from './containers/App'
+import SplashScreenView from './containers/SplashScreenView'
 import Login from './containers/Login'
 import Logout from './containers/Logout'
 import Register from './containers/Register'
 import ForgotPassword from './containers/ForgotPassword'
 import Profile from './containers/Profile'
-import Main from './containers/Main'
+import Main from './containers/SplashScreenView'
 import Home from './containers/Home'
 import Subview from './containers/Subview'
 import DeliveryAddress from './containers/DeliveryAddress'
@@ -177,6 +178,10 @@ export default function native(platform) {
                      component={App}
                      type='replace'
                      initial/>
+
+              <Scene key='SplashScreenView'
+                     component={SplashScreenView}
+                     type='replace'/>
 
               <Scene key='Home'
                      component={Home}
