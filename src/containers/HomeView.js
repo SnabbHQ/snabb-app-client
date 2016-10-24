@@ -90,11 +90,9 @@ class HomeView extends Component {
         negotiatePan={true}
         style={styles.drawer}>
         <View style={styles.container}>
-          <View style={{flex: 3}}>
+          <View style={{flex: 1}}>
             <DisplayLatLng/>
-            <View style={{marginTop: 25, marginLeft: 20}}>
-              <UserProfileImage onPress={() => this.openControlPanel()}/>
-            </View>
+            <UserProfileImage style={{marginTop: 25, marginLeft: 20}} onPress={() => this.openControlPanel()}/>
           </View>
           <View style={styles.content}>
             <View style={styles.addressContainer}>
@@ -125,20 +123,6 @@ class HomeView extends Component {
 }
 
 const styles = StyleSheet.create({
-  navBar: {
-    // NavBar styles here (all view styles are valid)
-
-    // default shared styles:
-    borderTopWidth: 0,
-    borderBottomColor: 'rgba(0, 0, 0, 0.1)',
-    borderBottomWidth: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-
-    // default iOS styles:
-    backgroundColor: '#f5f5f5'
-  },
   container: {
     flexDirection: 'column',
     backgroundColor: '#FFFFFF',
@@ -150,7 +134,6 @@ const styles = StyleSheet.create({
     shadowRadius: 3
   },
   content: {
-    flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'center'

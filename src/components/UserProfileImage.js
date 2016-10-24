@@ -1,17 +1,15 @@
-import {Image, StyleSheet, TouchableOpacity} from "react-native";
+import {Image, View, StyleSheet, TouchableOpacity} from "react-native";
 import React from 'react';
 
 
 class UserProfileImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress}>
-        <Image style={styles.profileImage}/>
-      </TouchableOpacity>
+      <View style={this.props.style}>
+        <TouchableOpacity onPress={this.props.onPress}>
+          <Image style={styles.profileImage}/>
+        </TouchableOpacity>
+      </View>
     )
   }
 }
