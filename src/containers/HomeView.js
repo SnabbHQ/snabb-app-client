@@ -74,7 +74,7 @@ I18n.translations = Translations;
 /**
  * ## App class
  */
-class Home extends Component {
+class HomeView extends Component {
 
   openControlPanel = () => {
     this._drawer.open()
@@ -119,7 +119,7 @@ class Home extends Component {
           </View>
           <View style={styles.content}>
             <View style={ styles.addressContainer }>
-              <Text style={{ marginTop: 15, textAlign: 'center', fontWeight:'bold' }}>Get a quote in seconds</Text>
+              <Text style={{ marginTop: 15, textAlign: 'center', fontWeight:'bold' }}>Get a quote in seconds default</Text>
               <View style={{flex: 1, marginTop: 15, paddingLeft: 10, paddingRight: 10}}>
                 <TouchableWithoutFeedback onPress={this.handlePickUpPress.bind(this)}>
                   <View style={{flex: 1, flexDirection:'row' }}>
@@ -172,4 +172,4 @@ const styles = StyleSheet.create({
 /**
  * Connect the properties
  */
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView)

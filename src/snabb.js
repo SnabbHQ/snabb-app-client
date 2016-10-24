@@ -72,7 +72,7 @@ import Logout from './containers/Logout'
 import RegisterView from './containers/RegisterView'
 import ForgotPassword from './containers/ForgotPassword'
 import Profile from './containers/Profile'
-import Home from './containers/Home'
+import HomeView from './containers/HomeView'
 import Subview from './containers/Subview'
 import DeliveryAddress from './containers/DeliveryAddress'
 
@@ -183,7 +183,7 @@ export default function native(platform) {
                      type='replace'/>
 
               <Scene key='Home'
-                     component={Home}
+                     component={HomeView}
                      type='replace'/>
 
               <Scene key='InitialLoginForm'
