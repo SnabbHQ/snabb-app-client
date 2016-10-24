@@ -92,7 +92,7 @@ class HomeView extends Component {
         <View style={styles.container}>
           <View style={{flex: 1}}>
             <DisplayLatLng/>
-            <UserProfileImage style={{marginTop: 25, marginLeft: 20}} onPress={() => this.openControlPanel()}/>
+            <UserProfileImage style={{marginTop: 25, marginLeft: 15}} onPress={() => this.openControlPanel()}/>
           </View>
           <View style={styles.content}>
             <View style={styles.addressContainer}>

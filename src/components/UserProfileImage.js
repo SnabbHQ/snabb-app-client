@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
     borderColor: '#FFFFFF',
     borderWidth: 2,
-    height: 50,
-    borderRadius: 25,
-    width: 50
+    height: 40,
+    borderRadius: 20,
+    width: 40
   }
 });
 
