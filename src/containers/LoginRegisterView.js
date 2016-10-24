@@ -11,7 +11,7 @@ import * as authActions from "../reducers/auth/authActions";
 import * as globalActions from "../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
-import {StyleSheet, View, Text} from "react-native";
+import {Dimensions, StyleSheet, View, Text} from "react-native";
 import Swiper from 'react-native-swiper';
 
 import Translations from "../lib/Translations";
@@ -73,7 +73,7 @@ class LoginRegisterView extends Component {
     return (
       <View style={styles.container}>
         <View style={{flex: 10}}>
-          <Swiper height={600} style={styles.wrapper}
+          <Swiper height={Dimensions.get('window').height - 50} style={styles.wrapper}
                   showsButtons={false}
                   dot={<View style={{backgroundColor: '#BABABA', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
                   activeDot={<View style={{backgroundColor: '#00D5D5', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}>
