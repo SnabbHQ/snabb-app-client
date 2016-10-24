@@ -11,9 +11,9 @@ import * as authActions from "../reducers/auth/authActions";
 import * as globalActions from "../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
-import {Dimensions, StyleSheet, View, Text} from "react-native";
+import {Dimensions, StyleSheet, Image, View, Text} from "react-native";
 import Swiper from 'react-native-swiper';
-
+import FitImage from '../components/FitImage';
 import Translations from "../lib/Translations";
 
 
@@ -53,49 +53,64 @@ function mapDispatchToProps(dispatch) {
 /**
  * ### Translations
  */
-var I18n = require('react-native-i18n')
-I18n.translations = Translations
+var I18n = require('react-native-i18n');
+I18n.translations = Translations;
+
 
 /**
  * ## App class
  */
 class LoginRegisterView extends Component {
 
-  handleLoginPress() {
+  static handleLoginPress() {
     Actions.LoginView();
   }
 
-  handleRegisterPress() {
+  static handleRegisterPress() {
     Actions.RegisterView();
   }
 
+  // TODO - Add mocked images for now. Also the FitImage does not seem to calculate really good the dimensions to fix
+  // the image in the parent container. 
   render() {
     return (
       <View style={styles.container}>
         <View style={{flex: 10}}>
-          <Swiper height={Dimensions.get('window').height - 50} style={styles.wrapper}
+          <Swiper height={Dimensions.get('window').height - 150}
+                  width={Dimensions.get('window').width - 70}
+                  style={styles.wrapper}
                   showsButtons={false}
+                  paginationStyle={{bottom: -70}}
                   dot={<View style={{backgroundColor: '#BABABA', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
                   activeDot={<View style={{backgroundColor: '#00D5D5', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}>
             <View style={styles.slide1}>
-              <Text style={styles.text}>Hello Swiper</Text>
+              <FitImage style={styles.image}
+                        source={require('../images/walkthrough/request_pickup.png')}
+                        originalWidth={640}
+                        originalHeight={1136}/>
             </View>
             <View style={styles.slide2}>
-              <Text style={styles.text}>Beautiful</Text>
+              <FitImage style={styles.image}
+                        source={require('../images/walkthrough/transport_selection.png')}
+                        originalWidth={640}
+                        originalHeight={1136}/>
             </View>
             <View style={styles.slide3}>
-              <Text style={styles.text}>And simple</Text>
+              <FitImage style={styles.image}
+                        source={require('../images/walkthrough/request_pickup.png')}
+                        originalWidth={640}
+                        originalHeight={1136}/>
             </View>
           </Swiper>
         </View>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <Button style={styles.buttonRegister} textStyle={{color: '#F9F9F9'}}
-                  onPress={this.handleRegisterPress.bind(this)}>
+                  onPress={LoginRegisterView.handleRegisterPress.bind(this)}>
             {I18n.t('LoginRegisterView.new_account')}
 
           </Button>
           <Button style={styles.buttonLogin} textStyle={{color: '#00D5D5'}}
-                  onPress={this.handleLoginPress.bind(this)}>
+                  onPress={LoginRegisterView.handleLoginPress.bind(this)}>
             {I18n.t('LoginRegisterView.sign_in')}
           </Button>
         </View>
@@ -108,7 +123,9 @@ var styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     flex: 1,
-    backgroundColor: '#009595'
+    backgroundColor: '#009595',
+    alignItems:'center',
+    justifyContent:'center'
   },
   summary: {
     fontFamily: 'BodoniSvtyTwoITCTT-Book',
@@ -130,6 +147,7 @@ var styles = StyleSheet.create({
     flex: 1
   },
   wrapper: {
+    marginTop: 40
   },
   slide1: {
     flex: 1,
@@ -145,6 +163,9 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  image: {
+    flex: 1
   },
   text: {
     color: '#fff',
