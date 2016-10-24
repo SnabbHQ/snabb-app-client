@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import * as authActions from "../reducers/auth/authActions";
 import * as globalActions from "../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
-import Drawer from "react-native-drawer";
+import {Drawer} from "native-base";
 import LefNavigationPanel from "../components/LeftNavigationPanel";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import DisplayLatLng from "../components/HomeMapView";
@@ -83,12 +83,22 @@ class HomeView extends Component {
         // onOpen={()=>Actions.refresh({key:state.key, open: true})}
         // onClose={()=>Actions.refresh({key:state.key, open: false})}
         type="overlay"
+        tweenDuration={150}
         content={<LefNavigationPanel />}
         tapToClose={true}
+        acceptPan={false}
         openDrawerOffset={0.2}
         panCloseMask={0.2}
         negotiatePan={true}
-        style={styles.drawer}>
+        style={styles.drawer}
+        tweenHandler={(ratio) => {
+          return {
+            drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
+            main: {
+              opacity: (2 - ratio) / 2
+            }
+          };
+        }}>
         <View style={styles.container}>
           <View style={{flex: 1}}>
             <DisplayLatLng/>
@@ -117,7 +127,6 @@ class HomeView extends Component {
           </View>
         </View>
       </Drawer>
-
     )
   }
 }
@@ -129,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   drawer: {
-    shadowColor: '#000000',
+    shadowColor: '#000',
     shadowOpacity: 0.8,
     shadowRadius: 3
   },

@@ -120,7 +120,11 @@ const deviceWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   sidebar: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F9F9F9',
+    shadowColor: '#000',
+    shadowOffset: { width: 1 },
+    shadowRadius: 4,
+    shadowOpacity: 0.4
   },
   drawerCover: {
     alignSelf: 'stretch',
@@ -128,7 +132,7 @@ const styles = StyleSheet.create({
     height: deviceHeight / 3.5,
     width: null,
     position: 'relative',
-    marginBottom: 10,
+    marginBottom: 10
   },
   drawerImage: {
     position: 'absolute',
@@ -138,12 +142,12 @@ const styles = StyleSheet.create({
     top: (Platform.OS === 'android') ? deviceHeight / 13 : deviceHeight / 12,
     width: 210,
     height: 75,
-    resizeMode: 'cover',
+    resizeMode: 'cover'
   },
   listItemContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   iconContainer: {
     width: 37,
@@ -151,35 +155,18 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     marginRight: 12,
     paddingLeft: 11,
-    paddingTop: (Platform.OS === 'android') ? 7 : 5,
+    paddingTop: (Platform.OS === 'android') ? 7 : 5
   },
   sidebarIcon: {
     fontSize: 21,
     color: '#B2B2BA',
     lineHeight: 25,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   text: {
     fontWeight: '500',
-    fontSize: 16,
-  },
-  // sidebar: {
-  //   flex: 1,
-  //   backgroundColor: '#fff',
-  //   shadowColor: '#000',
-  //   shadowOffset: { width: 30 },
-  //   shadowRadius: 60,
-  //   shadowOpacity: 0.3,
-  // },
-
-  // sidebar: {
-  //   flex: 1,
-  //   backgroundColor: '#fff',
-  //   shadowColor: '#000',
-  //   shadowOffset: { width: 1 },
-  //   shadowRadius: 4,
-  //   shadowOpacity: 0.4,
-  // },
+    fontSize: 16
+  }
 });
 
 
