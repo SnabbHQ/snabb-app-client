@@ -1,13 +1,10 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'snabb' do
+target 'Snabb' do
   use_frameworks!
-  pod 'Fabric'
-  pod 'Digits'
 
-
-  target 'snabbTests' do
+  target 'SnabbTests' do
     inherit! :search_paths
     # Pods for testing
   end
