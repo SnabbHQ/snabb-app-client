@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {Image, StyleSheet, Platform, Dimensions} from "react-native";
-
-import {Content, Text, List, ListItem, Icon, View} from 'native-base';
-
-import UserProfileImage from '../components/UserProfileImage';
+import {Content, Text, List, ListItem, Icon, View} from "native-base";
+import {Actions} from "react-native-router-flux";
+import UserProfileImage from "../components/UserProfileImage";
 
 var sidebarTheme = {
 
@@ -27,6 +26,11 @@ var sidebarTheme = {
 };
 
 class LeftNavigationPanel extends Component {
+
+  navigateTo(route) {
+    Actions.Home();
+  }
+
   render() {
     return (
       <Content
@@ -39,26 +43,26 @@ class LeftNavigationPanel extends Component {
             </View>
             <View style={{ flex: 1 }}>
               <Text
-                style={{ fontSize: 16, fontWeight: 'bold', marginTop: 15, marginLeft: 15, marginRight: 10, marginBottom: 5, color: '#09091A' }}>Javier
+                style={{ fontSize: 16, fontWeight: 'bold', marginTop: 15, marginRight: 5, marginBottom: 5, color: '#09091A' }}>Javier
                 Tarazaga Gomez
               </Text>
-              <Text style={{ marginLeft: 15, marginRight: 10, color: '#969696' }}>View Profile</Text>
+              <Text style={{ marginRight: 10, color: '#969696' }}>View Profile</Text>
             </View>
           </View>
         </View>
 
         <List>
-          <ListItem button iconLeft onPress={() => this.navigateTo('anatomy')}>
+          <ListItem button iconLeft onPress={() => Actions.Home() }>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#0209D8', paddingLeft: 14 }]}>
+              <View style={[styles.iconContainer, { paddingLeft: 14 }]}>
                 <Icon name="ios-phone-portrait-outline" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>Home</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => this.navigateTo('badge')}>
+          <ListItem button iconLeft onPress={() => Actions.RegisterView() }>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#4DCAE0' }]}>
+              <View style={[styles.iconContainer]}>
                 <Icon name="ios-notifications-outline" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>Current Deliveries</Text>
@@ -66,7 +70,7 @@ class LeftNavigationPanel extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('button')}>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#5cb85c', paddingLeft: 10 }]}>
+              <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
                 <Icon name="md-radio-button-off" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>History</Text>
@@ -74,7 +78,7 @@ class LeftNavigationPanel extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('card')}>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#877CA6' }]}>
+              <View style={[styles.iconContainer]}>
                 <Icon name="ios-keypad" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>Payments</Text>
@@ -82,7 +86,7 @@ class LeftNavigationPanel extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('checkbox')}>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#EB6B23', paddingLeft: 10 }]}>
+              <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
                 <Icon name="ios-checkmark-circle-outline" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>Free Deliveries</Text>
@@ -90,7 +94,7 @@ class LeftNavigationPanel extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('deckswiper')}>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#3591FA', paddingLeft: 10 }]}>
+              <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
                 <Icon name="ios-swap" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>Help</Text>
@@ -98,7 +102,7 @@ class LeftNavigationPanel extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('form')}>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { backgroundColor: '#F5BF35' }]}>
+              <View style={[styles.iconContainer]}>
                 <Icon name="ios-call" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>Settings</Text>
@@ -151,7 +155,7 @@ const styles = StyleSheet.create({
   },
   sidebarIcon: {
     fontSize: 21,
-    color: '#fff',
+    color: '#B2B2BA',
     lineHeight: 25,
     backgroundColor: 'transparent',
   },
