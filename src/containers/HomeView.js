@@ -1,40 +1,22 @@
 /**
- * # Main.js
- *  This is the main app screen
+ *  HomeView.js
+ *  Main application view. This view should be displayed right after the user has successfully logged in the platform.
  */
 'use strict';
 
-// Redux
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-
-// The actions we need
-import * as authActions from '../reducers/auth/authActions'
-import * as globalActions from '../reducers/global/globalActions'
-
-// Routing
-import {Actions} from 'react-native-router-flux'
-
-// UI
-import Drawer from 'react-native-drawer'
-import LefNavigationPanel from '../components/LeftNavigationPanel'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import NavBar, {NavButton} from 'react-native-nav'
-
-// Maps
-import DisplayLatLng from '../components/HomeMapView'
-
-
-// The components needed from React
-import React, {Component} from 'react'
-import
-{
-  StyleSheet,
-  View,
-  Text,
-  TouchableWithoutFeedback
-}
-  from 'react-native'
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as authActions from "../reducers/auth/authActions";
+import * as globalActions from "../reducers/global/globalActions";
+import {Actions} from "react-native-router-flux";
+import Drawer from "react-native-drawer";
+import LefNavigationPanel from "../components/LeftNavigationPanel";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import DisplayLatLng from "../components/HomeMapView";
+import React, {Component} from "react";
+import {StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native";
+import Translations from "../lib/Translations";
+import UserProfileImage from '../components/UserProfileImage';
 
 
 /**
@@ -68,7 +50,6 @@ function mapDispatchToProps(dispatch) {
  * ### Translations
  */
 var I18n = require('react-native-i18n')
-import Translations from '../lib/Translations'
 I18n.translations = Translations;
 
 /**
@@ -111,15 +92,14 @@ class HomeView extends Component {
         <View style={styles.container}>
           <View style={{flex: 3}}>
             <DisplayLatLng/>
-            <NavBar>
-              <NavButton onPress={this.openControlPanel.bind(this)}>
-                <Icon name="menu" size={30} color="#444444"/>
-              </NavButton>
-            </NavBar>
+            <View style={{marginTop: 25, marginLeft: 20}}>
+              <UserProfileImage onPress={() => this.openControlPanel()}/>
+            </View>
           </View>
           <View style={styles.content}>
-            <View style={ styles.addressContainer }>
-              <Text style={{ marginTop: 15, textAlign: 'center', fontWeight:'bold' }}>Get a quote in seconds default</Text>
+            <View style={styles.addressContainer}>
+              <Text style={{ marginTop: 15, textAlign: 'center', fontWeight:'bold' }}>Get a quote in seconds
+                default</Text>
               <View style={{flex: 1, marginTop: 15, paddingLeft: 10, paddingRight: 10}}>
                 <TouchableWithoutFeedback onPress={this.handlePickUpPress.bind(this)}>
                   <View style={{flex: 1, flexDirection:'row' }}>
@@ -145,6 +125,20 @@ class HomeView extends Component {
 }
 
 const styles = StyleSheet.create({
+  navBar: {
+    // NavBar styles here (all view styles are valid)
+
+    // default shared styles:
+    borderTopWidth: 0,
+    borderBottomColor: 'rgba(0, 0, 0, 0.1)',
+    borderBottomWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    // default iOS styles:
+    backgroundColor: '#f5f5f5'
+  },
   container: {
     flexDirection: 'column',
     backgroundColor: '#FFFFFF',
