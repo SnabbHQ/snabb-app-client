@@ -74,7 +74,7 @@ class LocationSearchbox extends React.Component {
     };
 
     return (
-      <View style={[style, this.props.style]}>
+      <TouchableOpacity style={[style, this.props.style]} onPress={this.props.onPress}>
         <View style={searchboxStyle}>
           <View style={searchboxInnerStyle}>
             <Image source={{uri: iconURL}}
@@ -85,7 +85,7 @@ class LocationSearchbox extends React.Component {
             </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

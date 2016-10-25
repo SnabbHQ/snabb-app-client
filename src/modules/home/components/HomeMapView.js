@@ -2,12 +2,13 @@
 
 import React from "react";
 import {StyleSheet, View, Text, Dimensions, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
-import {Button, Grid, Row, Col} from 'native-base';
+import {Actions} from "react-native-router-flux";
+import {Button, Grid, Row} from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
 import MapView from "react-native-maps";
-import LocationPin from './LocationPin'
+import LocationPin from "./LocationPin";
+import LocationSearchbox from "./../components/LocationSearchbox";
 // import Icon from "react-native-vector-icons/MaterialIcons";
-import LocationSearchbox from './../components/LocationSearchbox';
 
 const {width, height} = Dimensions.get('window');
 
@@ -69,16 +70,9 @@ class DisplayLatLng extends React.Component {
     );
   }
 
-  handlePickUpPress() {
+  handlePickupLocationPress() {
     Actions.SetLocationScene({
-      title: 'Pick-Up'
-      // you can add additional props to be passed to view here...
-    })
-  }
-
-  handleDropOffPress() {
-    Actions.SetLocationScene({
-      title: 'Drop-Off'
+      title: 'Pickup location'
       // you can add additional props to be passed to view here...
     })
   }
@@ -116,11 +110,12 @@ class DisplayLatLng extends React.Component {
                   labelText={"MY LOCATION"}
                   defaultText={"Choose Your Location"}
                   labelColor={"rgba(113,187,28,1)"}
-                  textColor={"rgba(0,0,0,1)"}/>
+                  textColor={"rgba(0,0,0,1)"}
+                  onPress={() => this.handlePickupLocationPress()}/>
               </Row>
               <Row>
                 <TouchableOpacity style={styles.setPickupLocation}>
-                  <Text style={styles.setPickupLocationText}>Request Pickup</Text>
+                  <Text style={styles.setPickupLocationText}>Set Pickup</Text>
                 </TouchableOpacity>
               </Row>
             </Grid>
