@@ -1,32 +1,34 @@
 import React from "react";
 import {StyleSheet, Image, Text, View, Dimensions, TouchableOpacity} from "react-native";
+import Geocoder from 'react-native-geocoder';
+
+Geocoder.fallbackToGoogle('AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw');
 
 class LocationSearchbox extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {}
   }
+
   componentWillReceiveProps(newProps) {
     if (newProps.latlng && newProps.latlng !== this.props.latlng) {
-      let url = "https://maps.googleapis.com/maps/api/geocode/json?" +
-        "latlng=" + newProps.latlng + "&key=" + "AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw" +
-        "&result_type=street_address";
-      let promise = fetch(url)
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          let results = data.results
-          if (results.length > 0) {
-            this.setState({
-              address: results[0].formatted_address.replace('Valencia,', '').replace('Spain', '')
-            })
-          }
-          return results;
+
+      // Position Geocoding
+      var NY = {
+        lat: 40.7809261,
+        lng: -73.9637594
+      };
+
+      Geocoder.geocodePosition(NY)
+        .then(res => {
+          this.setState({
+            address: res[0].streetName + "," + res.streetNumber
+          });
         });
     }
   }
+
   render() {
     let style = {
       flex: 1,
@@ -80,7 +82,7 @@ class LocationSearchbox extends React.Component {
         <View style={searchboxStyle}>
           <View style={searchboxInnerStyle}>
             <Image source={{uri: iconURL}}
-                   style={iconStyle} />
+                   style={iconStyle}/>
             <View style={searchboxTextContainerStyle}>
               {this.props.showLabel && <Text style={labelStyle}>{this.props.labelText}</Text>}
               <Text style={textStyle}>{this.state.address || this.props.defaultText}</Text>
