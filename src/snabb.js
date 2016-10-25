@@ -28,6 +28,7 @@ import DeviceInitialState from "./reducers/device/deviceInitialState";
 import GlobalInitialState from "./reducers/global/globalInitialState";
 import ProfileInitialState from "./modules/user/reducers/profile/profileInitialState";
 import pack from "../package";
+import HelpView from "./modules/help/HelpView";
 
 
 /**
@@ -145,6 +146,9 @@ export default function native(platform) {
               <Scene key='LogoutScene'
                      title={I18n.t('snabb.logout')}
                      component={Logout}/>
+
+              <Scene key='HelpScene'
+                     component={HelpView}/>
 
               <Scene key='SettingsScene'
                      component={SettingsView}/>

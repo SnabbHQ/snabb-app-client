@@ -65,7 +65,7 @@ class LeftNavigationPanel extends Component {
               <Text style={styles.text}>{I18n.t("Navigation.free_deliveries")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => this.navigateTo('deckswiper')}>
+          <ListItem button iconLeft onPress={() => Actions.HelpScene()}>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
                 <Icon name="ios-swap" style={styles.sidebarIcon}/>

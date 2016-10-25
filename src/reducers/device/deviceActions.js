@@ -6,7 +6,7 @@
  * What version is the app?
  *
  */
-'use strict'
+'use strict';
 
 /**
  * ## Imports

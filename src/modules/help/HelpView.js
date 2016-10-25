@@ -1,4 +1,3 @@
-import {connect} from "react-redux";
 import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
 import {StyleSheet, Text} from "react-native";
@@ -6,22 +5,14 @@ import {View, Content} from "native-base";
 import DefaultNavBar from '../../components/DefaultNavBar'
 import I18n from "../../lib/I18n";
 
-/**
- * ## Redux boilerplate
- */
-function mapStateToProps (state) {
-  return {
-    deviceVersion: state.device.version
-  }
-}
+class HelpView extends React.Component {
 
-class SettingsView extends React.Component {
   render() {
     return (
       <View>
-        <DefaultNavBar title={I18n.t('Navigation.settings')}/>
+        <DefaultNavBar title={I18n.t('Navigation.help')}/>
         <Content>
-          <Text style={styles.summary}>{I18n.t('Navigation.settings')} {I18n.t('App.version')}: {this.props.deviceVersion}</Text>
+          <Text style={styles.summary}>{I18n.t('Navigation.help')}</Text>
         </Content>
       </View>
     )
@@ -30,12 +21,11 @@ class SettingsView extends React.Component {
 
 var styles = StyleSheet.create({
   summary: {
-    flex: 1,
     fontFamily: 'BodoniSvtyTwoITCTT-Book',
-    fontSize: 18,
+    fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center'
   }
 });
 
-export default connect(mapStateToProps)(SettingsView)
+export default HelpView;
