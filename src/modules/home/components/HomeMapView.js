@@ -57,7 +57,7 @@ class DisplayLatLng extends React.Component {
       (position) => {
         this.map.animateToRegion({
           region: {
-            latitude: position.coords.latitude,
+            latitude: position.coords.latitude + LATITUDE_OFFSET,
             longitude: position.coords.longitude,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA
@@ -91,7 +91,7 @@ class DisplayLatLng extends React.Component {
           style={styles.map}
           showsUserLocation={true}
           region={this.state.region}
-          onRegionChange={region => this.onRegionChange(region)}/>
+          onRegionChangeComplete={region => this.onRegionChange(region)}/>
 
         <LocationPin
           text={"SET LOCATION"}
@@ -99,15 +99,14 @@ class DisplayLatLng extends React.Component {
           textColor={"#FFF"}
           top={-100}/>
 
-        <View style={{...StyleSheet.absoluteFillObject, justifyContent: 'flex-end', alignItems: 'flex-end'}}
-              pointerEvents={'box-none'}>
+        <View style={styles.content} pointerEvents={'box-none'}>
           <View>
             <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
               <Icon name='location-arrow' style={styles.locationIcon}/>
             </Button>
           </View>
 
-          <View style={{flexDirection: 'row', backgroundColor: '#F7F7F7', height: 130}}>
+          <View style={styles.locationPanel}>
             <Grid>
               <Row>
                 <LocationSearchbox
@@ -120,9 +119,8 @@ class DisplayLatLng extends React.Component {
                   textColor={"rgba(0,0,0,1)"}/>
               </Row>
               <Row>
-                <TouchableOpacity
-                  style={{backgroundColor: '#00D5D5', flex: 1, marginLeft: 10, marginRight: 10, marginBottom: 10, marginTop: 5, alignItems:"center", justifyContent: 'center'}}>
-                  <Text style={{color: '#FFFFFF', fontWeight: 'bold', fontSize: 18}}>Request Pickup</Text>
+                <TouchableOpacity style={styles.setPickupLocation}>
+                  <Text style={styles.setPickupLocationText}>Request Pickup</Text>
                 </TouchableOpacity>
               </Row>
             </Grid>
@@ -133,13 +131,6 @@ class DisplayLatLng extends React.Component {
   }
 }
 
-// <View style={[styles.bubble, styles.latlng]}>
-//   <Text style={{ textAlign: 'center' }}>
-//     {this.state.region.latitude.toPrecision(7)},
-//     {this.state.region.longitude.toPrecision(7)}
-//   </Text>
-// </View>
-
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
@@ -148,6 +139,11 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject
+  },
+  content: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
   },
   centerOnUserButton: {
     marginRight: 15,
@@ -160,15 +156,30 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#007AFF'
   },
-  bubble: {
-    backgroundColor: 'rgba(255,255,255,0.7)',
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    borderRadius: 20
+  locationPanel: {
+    flexDirection: 'row',
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    backgroundColor: '#F7F7F7',
+    shadowRadius: 2,
+    shadowOpacity: 0.2,
+    shadowColor: '#000',
+    height: 130
   },
-  latlng: {
-    width: 200,
-    alignItems: 'stretch'
+  setPickupLocation: {
+    backgroundColor: '#00D5D5',
+    flex: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 10,
+    marginTop: 5,
+    alignItems: "center",
+    justifyContent: 'center'
+  },
+  setPickupLocationText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    fontSize: 18
   }
 });
 
