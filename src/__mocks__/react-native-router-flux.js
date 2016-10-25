@@ -4,6 +4,7 @@ module.exports = {
     RegisterView: function () {},
     Tabbar: function () {},
     InitialLoginForm: function () {},
+    Profile: function() {},
     Home: function () {}
   }
 };

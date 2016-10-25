@@ -1,29 +1,8 @@
 import React, {Component} from "react";
-import {Image, StyleSheet, Platform, Dimensions} from "react-native";
+import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native";
 import {Content, Text, List, ListItem, Icon, View} from "native-base";
 import {Actions} from "react-native-router-flux";
 import UserProfileImage from "../../user/components/UserProfileImage";
-
-var sidebarTheme = {
-
-  // Line Height
-  btnLineHeight: 19,
-  lineHeightH1: 32,
-  lineHeightH2: 27,
-  lineHeightH3: 22,
-  iconLineHeight: (Platform.OS === 'ios') ? 37 : 30,
-  lineHeight: (Platform.OS === 'ios') ? 20 : 24,
-
-
-  // List
-  listBorderColor: '#fff',
-  listDividerBg: '#ddd',
-  listItemHeight: 45,
-  listItemPadding: 10,
-  listNoteColor: '#808080',
-  listNoteSize: 13,
-
-};
 
 class LeftNavigationPanel extends Component {
 
@@ -31,23 +10,26 @@ class LeftNavigationPanel extends Component {
     Actions.Home();
   }
 
+  navigateToProfile() {
+    Actions.Profile();
+  }
+
   render() {
     return (
       <Content
         theme={sidebarTheme}
         style={styles.sidebar}>
-        <View style={{ marginTop: 10, height: 80 }}>
-          <View style={{flex: 2, flexDirection: 'row', marginTop: 25, marginLeft: 15}}>
-            <UserProfileImage/>
-            <View style={{ flex: 1, marginRight: 5, marginLeft: 10}}>
-              <Text
-                style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 5, color: '#09091A' }}>Javier
-                Tarazaga Gomez
-              </Text>
-              <Text style={{ marginRight: 10, color: '#969696' }}>View Profile</Text>
-            </View>
+        <TouchableOpacity onPress={this.navigateToProfile()}
+                          style={styles.sidebarHeader}>
+          <UserProfileImage/>
+          <View style={{ flex: 1, marginRight: 5, marginLeft: 10}}>
+            <Text
+              style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 5, color: '#09091A' }}>Javier
+              Tarazaga Gomez
+            </Text>
+            <Text style={{ marginRight: 10, color: '#969696' }}>View Profile</Text>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <List>
           <ListItem button iconLeft onPress={() => Actions.Home() }>
@@ -112,35 +94,42 @@ class LeftNavigationPanel extends Component {
   }
 }
 
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').width;
+var sidebarTheme = {
+
+  // Line Height
+  btnLineHeight: 19,
+  lineHeightH1: 32,
+  lineHeightH2: 27,
+  lineHeightH3: 22,
+  iconLineHeight: (Platform.OS === 'ios') ? 37 : 30,
+  lineHeight: (Platform.OS === 'ios') ? 20 : 24,
+
+
+  // List
+  listBorderColor: '#fff',
+  listDividerBg: '#ddd',
+  listItemHeight: 45,
+  listItemPadding: 10,
+  listNoteColor: '#808080',
+  listNoteSize: 13,
+
+};
 
 const styles = StyleSheet.create({
   sidebar: {
     flex: 1,
     backgroundColor: '#F9F9F9',
     shadowColor: '#000',
-    shadowOffset: { width: 1 },
+    shadowOffset: {width: 1},
     shadowRadius: 4,
     shadowOpacity: 0.4
   },
-  drawerCover: {
-    alignSelf: 'stretch',
-    // resizeMode: 'cover',
-    height: deviceHeight / 3.5,
-    width: null,
-    position: 'relative',
+  sidebarHeader: {
+    flex: 2,
+    flexDirection: 'row',
+    marginTop: 35,
+    marginLeft: 15,
     marginBottom: 10
-  },
-  drawerImage: {
-    position: 'absolute',
-    // left: (Platform.OS === 'android') ? 30 : 40,
-    left: (Platform.OS === 'android') ? deviceWidth / 10 : deviceWidth / 9,
-    // top: (Platform.OS === 'android') ? 45 : 55,
-    top: (Platform.OS === 'android') ? deviceHeight / 13 : deviceHeight / 12,
-    width: 210,
-    height: 75,
-    resizeMode: 'cover'
   },
   listItemContainer: {
     flexDirection: 'row',
