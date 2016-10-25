@@ -1,10 +1,6 @@
 import React from "react";
 import {StyleSheet, Text, View, Dimensions, TouchableOpacity} from "react-native";
 
-var backgroundColor;
-var top;
-var left;
-
 class LocationPin extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +10,7 @@ class LocationPin extends React.Component {
   render() {
     let backgroundColor = this.props.pinColor || "rgba(0,154,255,1)"
     let screenStyle = {
-      height: 20,
+      height: 0,
       width: 0,
       top: 0,
       left: 0,
@@ -34,8 +30,8 @@ class LocationPin extends React.Component {
     let style = {
       borderRadius: 21,
       backgroundColor: backgroundColor,
-      left: left,
-      top: top,
+      left: this.props.left || 0,
+      top: this.props.top || 0,
       height: 41
     };
 
@@ -52,19 +48,19 @@ class LocationPin extends React.Component {
       width: 3,
       height: 20,
       backgroundColor: backgroundColor,
-      top: top,
-      left: left
+      left: this.props.left || 0,
+      top: this.props.top || 0,
     };
 
     return (
-      <View pointerEvents={'box-none'}>
-        <View style={innerStyle}>
+      <View style={screenStyle} pointerEvents={'box-none'}>
+        <View style={innerStyle} pointerEvents={'box-none'}>
           <TouchableOpacity style={style}
                             onPress={this.props.onPress}
                             activeOpacity={75 / 100}>
             <Text style={textStyle}>{this.props.text || ""}</Text>
           </TouchableOpacity>
-          <View style={nubStyle}></View>
+          <View style={nubStyle}/>
         </View>
       </View>
     )

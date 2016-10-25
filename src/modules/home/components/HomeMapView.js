@@ -14,7 +14,7 @@ const LATITUDE = 39.4699; // Valencia as default
 const LONGITUDE = 0.3763;
 const LATITUDE_DELTA = 0.01;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-const LATITUDE_OFFSET = -0.002;
+const LATITUDE_OFFSET = -0.0015;
 
 class DisplayLatLng extends React.Component {
 
@@ -77,6 +77,12 @@ class DisplayLatLng extends React.Component {
           region={this.state.region}
           onRegionChange={region => this.onRegionChange(region)}/>
 
+        <LocationPin
+          text={"SET LOCATION"}
+          pinColor={"#000"}
+          textColor={"#FFF"}
+          top={-100}/>
+
         <View>
           <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
             <Icon name='location-arrow' style={styles.locationIcon}/>
@@ -86,14 +92,6 @@ class DisplayLatLng extends React.Component {
     );
   }
 }
-
-// <LocationPin
-//   text={"SET LOCATION"}
-//   pinColor={"#000"}
-//   textColor={"#FFF"}
-//   top={0}
-//   left={0}
-// />
 
 // <View style={[styles.bubble, styles.latlng]}>
 //   <Text style={{ textAlign: 'center' }}>
