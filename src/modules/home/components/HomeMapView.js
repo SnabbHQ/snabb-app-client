@@ -2,6 +2,8 @@
 
 import React from "react";
 import {StyleSheet, View, Text, Dimensions, TouchableOpacity} from "react-native";
+import {Button} from 'native-base';
+import Icon from "react-native-vector-icons/FontAwesome";
 import MapView from "react-native-maps";
 
 const {width, height} = Dimensions.get('window');
@@ -24,20 +26,7 @@ class DisplayLatLng extends React.Component {
   };
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({
-          region: {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA
-          }
-        });
-      },
-      (error) => alert(error.message),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    );
+    this.centerOnUser();
 
     this.watchID = navigator.geolocation.watchPosition((position) => {
       const newRegion = {
@@ -59,6 +48,23 @@ class DisplayLatLng extends React.Component {
     this.setState({region});
   }
 
+  centerOnUser() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.map.animateToRegion({
+          region: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA
+          }
+        });
+      },
+      (error) => alert(error.message),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -69,25 +75,42 @@ class DisplayLatLng extends React.Component {
           region={this.state.region}
           onRegionChange={region => this.onRegionChange(region)}
         />
-        <View style={[styles.bubble, styles.latlng]}>
-          <Text style={{ textAlign: 'center' }}>
-            {this.state.region.latitude.toPrecision(7)},
-            {this.state.region.longitude.toPrecision(7)}
-          </Text>
+        <View>
+          <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
+            <Icon name='location-arrow' style={styles.locationIcon}/>
+          </Button>
         </View>
       </View>
     );
   }
 }
 
+// <View style={[styles.bubble, styles.latlng]}>
+//   <Text style={{ textAlign: 'center' }}>
+//     {this.state.region.latitude.toPrecision(7)},
+//     {this.state.region.longitude.toPrecision(7)}
+//   </Text>
+// </View>
+
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'flex-end'
   },
   map: {
     ...StyleSheet.absoluteFillObject
+  },
+  centerOnUserButton: {
+    marginRight: 15,
+    marginBottom: 15,
+    height: 36,
+    width: 36,
+    backgroundColor: '#F7F7F7'
+  },
+  locationIcon: {
+    fontSize: 20,
+    color: '#007AFF'
   },
   bubble: {
     backgroundColor: 'rgba(255,255,255,0.7)',
