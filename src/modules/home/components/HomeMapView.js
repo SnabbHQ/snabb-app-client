@@ -5,6 +5,7 @@ import {StyleSheet, View, Text, Dimensions, TouchableOpacity} from "react-native
 import {Button} from 'native-base';
 import Icon from "react-native-vector-icons/FontAwesome";
 import MapView from "react-native-maps";
+import LocationPin from './LocationPin'
 
 const {width, height} = Dimensions.get('window');
 
@@ -13,6 +14,7 @@ const LATITUDE = 39.4699; // Valencia as default
 const LONGITUDE = 0.3763;
 const LATITUDE_DELTA = 0.01;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+const LATITUDE_OFFSET = -0.002;
 
 class DisplayLatLng extends React.Component {
 
@@ -30,7 +32,7 @@ class DisplayLatLng extends React.Component {
 
     this.watchID = navigator.geolocation.watchPosition((position) => {
       const newRegion = {
-        latitude: position.coords.latitude,
+        latitude: position.coords.latitude + LATITUDE_OFFSET, //Little margin here to adjust the user pos marker a bit higher
         longitude: position.coords.longitude,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA
@@ -74,6 +76,7 @@ class DisplayLatLng extends React.Component {
           showsUserLocation={true}
           region={this.state.region}
           onRegionChange={region => this.onRegionChange(region)}/>
+
         <View>
           <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
             <Icon name='location-arrow' style={styles.locationIcon}/>
@@ -83,6 +86,14 @@ class DisplayLatLng extends React.Component {
     );
   }
 }
+
+// <LocationPin
+//   text={"SET LOCATION"}
+//   pinColor={"#000"}
+//   textColor={"#FFF"}
+//   top={0}
+//   left={0}
+// />
 
 // <View style={[styles.bubble, styles.latlng]}>
 //   <Text style={{ textAlign: 'center' }}>
@@ -102,7 +113,7 @@ const styles = StyleSheet.create({
   },
   centerOnUserButton: {
     marginRight: 15,
-    marginBottom: 15,
+    marginBottom: 170 + 15, // TODO - 170 corresponds to the height of the panel
     height: 36,
     width: 36,
     backgroundColor: '#F7F7F7'
@@ -120,7 +131,7 @@ const styles = StyleSheet.create({
   latlng: {
     width: 200,
     alignItems: 'stretch'
-  },
+  }
 });
 
 module.exports = DisplayLatLng;

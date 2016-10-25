@@ -12,7 +12,7 @@ import {Actions} from "react-native-router-flux";
 import {Drawer} from "native-base";
 import LefNavigationPanel from "./components/SidePanel";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import DisplayLatLng from "./components/HomeMapView";
+import HomeMapView from "./components/HomeMapView";
 import React, {Component} from "react";
 import {StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native";
 import Translations from "../../lib/Translations";
@@ -100,29 +100,25 @@ class HomeView extends Component {
           };
         }}>
         <View style={styles.container}>
-          <View style={{flex: 1}}>
-            <DisplayLatLng/>
-            <UserProfileImage style={{marginTop: 25, marginLeft: 15}} onPress={() => this.openControlPanel()}/>
-          </View>
-          <View style={styles.content}>
-            <View style={styles.addressContainer}>
-              <Text style={{ marginTop: 15, textAlign: 'center', fontWeight:'bold' }}>Get a quote in seconds
-                default</Text>
-              <View style={{flex: 1, marginTop: 15, paddingLeft: 10, paddingRight: 10}}>
-                <TouchableWithoutFeedback onPress={this.handlePickUpPress.bind(this)}>
-                  <View style={{flex: 1, flexDirection:'row' }}>
-                    <Icon name="archive" size={35} color="#444444"/>
-                    <Text style={{ marginTop: 10, marginLeft: 10, color: '#AAAAAA' }}>Enter pick-up address</Text>
-                  </View>
-                </TouchableWithoutFeedback>
-                <View style={{ height: 1, backgroundColor: '#EEEEEE', marginLeft: 50, marginRight: 50 }}/>
-                <TouchableWithoutFeedback onPress={this.handleDropOffPress.bind(this)}>
-                  <View style={{flex: 1, flexDirection:'row' }}>
-                    <Icon name="flag" size={35} color="#444444"/>
-                    <Text style={{ marginTop: 10, marginLeft: 10, color: '#AAAAAA' }}>Enter drop-off address</Text>
-                  </View>
-                </TouchableWithoutFeedback>
-              </View>
+          <HomeMapView/>
+          <UserProfileImage style={styles.userProfile} onPress={() => this.openControlPanel()}/>
+          <View style={styles.addressContainer}>
+            <Text style={{ marginTop: 15, textAlign: 'center', fontWeight:'bold' }}>Get a quote in seconds
+              default</Text>
+            <View style={{flex: 1, marginTop: 15, paddingLeft: 10, paddingRight: 10}}>
+              <TouchableWithoutFeedback onPress={this.handlePickUpPress.bind(this)}>
+                <View style={{flex: 1, flexDirection:'row' }}>
+                  <Icon name="archive" size={35} color="#444444"/>
+                  <Text style={{ marginTop: 10, marginLeft: 10, color: '#AAAAAA' }}>Enter pick-up address</Text>
+                </View>
+              </TouchableWithoutFeedback>
+              <View style={{ height: 1, backgroundColor: '#EEEEEE', marginLeft: 50, marginRight: 50 }}/>
+              <TouchableWithoutFeedback onPress={this.handleDropOffPress.bind(this)}>
+                <View style={{flex: 1, flexDirection:'row' }}>
+                  <Icon name="flag" size={35} color="#444444"/>
+                  <Text style={{ marginTop: 10, marginLeft: 10, color: '#AAAAAA' }}>Enter drop-off address</Text>
+                </View>
+              </TouchableWithoutFeedback>
             </View>
           </View>
         </View>
@@ -133,19 +129,19 @@ class HomeView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    backgroundColor: '#FFFFFF',
-    flex: 1
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
   },
   drawer: {
     shadowColor: '#000',
     shadowOpacity: 0.8,
     shadowRadius: 3
   },
-  content: {
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'center'
+  userProfile: {
+    position: 'absolute',
+    left: 15,
+    top: 25
   },
   addressContainer: {
     alignSelf: 'stretch',
