@@ -6,11 +6,10 @@ import {connect} from "react-redux";
 import * as authActions from "./reducers/auth/authActions";
 import LoginRender from "./components/LoginRender";
 import React, {Component} from "react";
-import NavBar, {NavButton} from "react-native-nav";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import DefaultNavBar from "../../components/DefaultNavBar";
 import {Actions} from "react-native-router-flux";
 import {View} from "react-native";
-import Translations from "../../lib/Translations";
+import I18n from "../../lib/I18n";
 
 const {
   LOGIN,
@@ -39,18 +38,7 @@ function buttonPressHandler(signup, username, email, password) {
   signup(username, email, password)
 }
 
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-I18n.translations = Translations;
-
 class RegisterView extends Component {
-
-  backButtonPress() {
-    Actions.pop();
-  }
-
   render() {
     let loginButtonText = I18n.t('Register.register')
     let onButtonPress = buttonPressHandler.bind(null,
@@ -61,11 +49,7 @@ class RegisterView extends Component {
 
     return (
       <View>
-        <NavBar>
-          <NavButton onPress={this.backButtonPress.bind(this)}>
-            <Icon name="arrow-back" size={30} color="#444444"/>
-          </NavButton>
-        </NavBar>
+        <DefaultNavBar title={I18n.t('Register.register')}/>
 
         <LoginRender
           formType={REGISTER}
@@ -81,6 +65,6 @@ class RegisterView extends Component {
     )
   }
 }
-;
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterView)

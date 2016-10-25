@@ -10,24 +10,26 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Content} from 'native-base';
 import * as profileActions from "./reducers/profile/profileActions";
 import * as globalActions from "../../reducers/global/globalActions";
+import DefaultNavBar from "../../components/DefaultNavBar";
 import ErrorAlert from "../../components/ErrorAlert";
 import FormButton from "../../components/FormButton";
 import Header from "../../components/Header";
 import ItemCheckbox from "../../components/ItemCheckbox";
+import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
 import {StyleSheet, View} from "react-native";
 import t from "tcomb-form-native";
-import Translations from "../../lib/Translations";
+import I18n from "../../lib/I18n";
 
 let Form = t.form.Form;
 
 /**
-* ## Redux boilerplate
-*/
-
-function mapStateToProps (state) {
+ * ## Redux boilerplate
+ */
+function mapStateToProps(state) {
   return {
     profile: state.profile,
     global: {
@@ -38,24 +40,21 @@ function mapStateToProps (state) {
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...profileActions, ...globalActions }, dispatch)
+    actions: bindActionCreators({...profileActions, ...globalActions}, dispatch)
   }
 }
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-I18n.translations = Translations
 
 class ProfileView extends Component {
+
   /**
    * ## Profile class
    * Set the initial state and prepare the errorAlert
    */
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
+
     this.errorAlert = new ErrorAlert()
     this.state = {
       formValues: {
@@ -64,6 +63,7 @@ class ProfileView extends Component {
       }
     }
   }
+
   /**
    * ### onChange
    *
@@ -71,7 +71,7 @@ class ProfileView extends Component {
    * be validated.
    *
    */
-  onChange (value) {
+  onChange(value) {
     if (value.username !== '') {
       this.props.actions.onProfileFormFieldChange('username', value.username)
     }
@@ -80,13 +80,14 @@ class ProfileView extends Component {
     }
     this.setState({value})
   }
+
   /**
    * ### componentWillReceiveProps
    *
    * Since the Forms are looking at the state for the values of the
    * fields, when we we need to set them
    */
-  componentWillReceiveProps (props) {
+  componentWillReceiveProps(props) {
     this.setState({
       formValues: {
         username: props.profile.form.fields.username,
@@ -94,6 +95,7 @@ class ProfileView extends Component {
       }
     })
   }
+
   /**
    * ### componentDidMount
    *
@@ -101,7 +103,7 @@ class ProfileView extends Component {
    * immediately being in a "logged in" state, we need to just set the
    * form fields.  Otherwise, we need to go fetch the fields
    */
-  componentDidMount () {
+  componentDidMount() {
     if (this.props.profile.form.fields.username === '' && this.props.profile.form.fields.email === '') {
       this.props.actions.getProfile(this.props.global.currentUser)
     } else {
@@ -118,15 +120,16 @@ class ProfileView extends Component {
    * ### render
    * display the form wrapped with the header and button
    */
-  render () {
-    this.errorAlert.checkError(this.props.profile.form.error)
+  render() {
+    this.errorAlert.checkError(this.props.profile.form.error);
 
-    let self = this
+    let self = this;
 
     let ProfileForm = t.struct({
       username: t.String,
       email: t.String
-    })
+    });
+
     /**
      * Set up the field definitions.  If we're fetching, the fields
      * are disabled.
@@ -149,7 +152,7 @@ class ProfileView extends Component {
           error: this.props.profile.form.fields.emailErrorMsg
         }
       }
-    }
+    };
 
     /**
      * When the button is pressed, send the users info including the
@@ -163,23 +166,23 @@ class ProfileView extends Component {
         this.props.profile.form.fields.username,
         this.props.profile.form.fields.email,
         this.props.global.currentUser)
-    }
+    };
+
     /**
      * Wrap the form with the header and button.  The header props are
      * mostly for support of Hot reloading. See the docs for Header
      * for more info.
      */
-    let verfiedText = I18n.t('Profile.verified') +
-                       ' (' +
-                       I18n.t('Profile.display') +
-                       ')'
+    let verfiedText = I18n.t('Profile.verified') + ' (' + I18n.t('Profile.display') + ')';
+
     return (
-      <View style={styles.container}>
+      <Content>
+        <DefaultNavBar title={I18n.t('Navigation.profile')}/>
         <Header isFetching={this.props.profile.form.isFetching}
-          showState={this.props.global.showState}
-          currentState={this.props.global.currentState}
-          onGetState={this.props.actions.getState}
-          onSetState={this.props.actions.setState}
+                showState={this.props.global.showState}
+                currentState={this.props.global.currentState}
+                onGetState={this.props.actions.getState}
+                onSetState={this.props.actions.setState}
         />
         <View style={styles.inputs}>
           <Form
@@ -187,19 +190,18 @@ class ProfileView extends Component {
             type={ProfileForm}
             options={options}
             value={this.state.formValues}
-            onChange={this.onChange.bind(self)}
-          />
+            onChange={this.onChange.bind(self)}/>
           <ItemCheckbox text={verfiedText}
-            disabled
-            checked={this.props.profile.form.fields.emailVerified} />
+                        disabled
+                        checked={this.props.profile.form.fields.emailVerified}/>
         </View>
 
         <FormButton
           isDisabled={!this.props.profile.form.isValid || this.props.profile.form.isFetching}
           onPress={onButtonPress.bind(self)}
-          buttonText={profileButtonText} />
+          buttonText={profileButtonText}/>
 
-      </View>
+      </Content>
     )
   }
 }

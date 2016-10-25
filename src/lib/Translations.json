@@ -8,6 +8,16 @@
       "back": "Back",
       "loading": "Loading..."
     },
+    "Navigation": {
+      "profile": "Profile",
+      "home": "Home",
+      "current_deliveries": "Current Deliveries",
+      "history": "History",
+      "payments": "Payments",
+      "free_deliveries": "Free Deliveries",
+      "help": "Help",
+      "settings": "Settings"
+    },
     "Header": {
       "current_state": "Current State",
       "see_console": "see console",
@@ -20,11 +30,6 @@
     "Subview": {
       "subview": "Subview",
       "back": "Back"
-    },
-    "snabb": {
-      "logout": "Log out",
-      "main": "Main",
-      "profile":"Profile"
     },
     "Main": {
       "navigate": "Navigate to Subview"
@@ -80,7 +85,7 @@
     "snabb": {
       "logout": "Se déconnecter",
       "main": "Principal",
-      "profile":"Profil"
+      "profile": "Profil"
     },
     "Main": {
       "navigate": "Accédez à sous-vue"
@@ -108,10 +113,10 @@
       "reset_password": "Réinitialiser le mot de passe"
     },
     "Login": {
-      "login": "S'identifier"
+      "login": "Sign Up"
     },
     "Register": {
-      "register": "Registre"
+      "register": "Register"
     },
     "FieldValidation": {
       "valid_user_name": "6-12 de longueur avec des lettres ou des chiffres",
@@ -136,7 +141,7 @@
     "snabb": {
       "logout": "Cerrar sesión",
       "main": "Principal",
-      "profile":"Perfil"
+      "profile": "Perfil"
     },
     "Main": {
       "navigate": "Navegue hasta subview"
@@ -145,7 +150,7 @@
       "username": "Nombre de usuario",
       "email": "Correo electrónico",
       "update": "Actualización del perfil",
-     "verified": "Correo electrónico verificado",
+      "verified": "Correo electrónico verificado",
       "display": "solo mostrar"
     },
     "LoginForm": {
@@ -176,5 +181,4 @@
       "valid_password_again": "Las contraseñas deben coincidir"
     }
   }
-
 }

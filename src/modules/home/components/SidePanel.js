@@ -3,16 +3,9 @@ import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-n
 import {Content, Text, List, ListItem, Icon, View} from "native-base";
 import {Actions} from "react-native-router-flux";
 import UserProfileImage from "../../user/components/UserProfileImage";
+import I18n from "../../../lib/I18n";
 
 class LeftNavigationPanel extends Component {
-
-  navigateTo(route) {
-    Actions.HomeScene();
-  }
-
-  navigateToProfile() {
-    Actions.ProfileScene();
-  }
 
   render() {
     return (
@@ -37,7 +30,7 @@ class LeftNavigationPanel extends Component {
               <View style={[styles.iconContainer, { paddingLeft: 14 }]}>
                 <Icon name="ios-phone-portrait-outline" style={styles.sidebarIcon}/>
               </View>
-              <Text style={styles.text}>Home</Text>
+              <Text style={styles.text}>{I18n.t("Navigation.home")}</Text>
             </View>
           </ListItem>
           <ListItem button iconLeft onPress={() => Actions.RegisterScene() }>
@@ -45,7 +38,7 @@ class LeftNavigationPanel extends Component {
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-notifications-outline" style={styles.sidebarIcon}/>
               </View>
-              <Text style={styles.text}>Current Deliveries</Text>
+              <Text style={styles.text}>{I18n.t("Navigation.current_deliveries")}</Text>
             </View>
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('button')}>
@@ -53,7 +46,7 @@ class LeftNavigationPanel extends Component {
               <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
                 <Icon name="md-radio-button-off" style={styles.sidebarIcon}/>
               </View>
-              <Text style={styles.text}>History</Text>
+              <Text style={styles.text}>{I18n.t("Navigation.history")}</Text>
             </View>
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('card')}>
@@ -61,7 +54,7 @@ class LeftNavigationPanel extends Component {
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-keypad" style={styles.sidebarIcon}/>
               </View>
-              <Text style={styles.text}>Payments</Text>
+              <Text style={styles.text}>{I18n.t("Navigation.payments")}</Text>
             </View>
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('checkbox')}>
@@ -69,7 +62,7 @@ class LeftNavigationPanel extends Component {
               <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
                 <Icon name="ios-checkmark-circle-outline" style={styles.sidebarIcon}/>
               </View>
-              <Text style={styles.text}>Free Deliveries</Text>
+              <Text style={styles.text}>{I18n.t("Navigation.free_deliveries")}</Text>
             </View>
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('deckswiper')}>
@@ -77,7 +70,7 @@ class LeftNavigationPanel extends Component {
               <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
                 <Icon name="ios-swap" style={styles.sidebarIcon}/>
               </View>
-              <Text style={styles.text}>Help</Text>
+              <Text style={styles.text}>{I18n.t("Navigation.help")}</Text>
             </View>
           </ListItem>
           <ListItem button iconLeft onPress={() => this.navigateTo('form')}>
@@ -85,7 +78,7 @@ class LeftNavigationPanel extends Component {
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-call" style={styles.sidebarIcon}/>
               </View>
-              <Text style={styles.text}>Settings</Text>
+              <Text style={styles.text}>{I18n.t("Navigation.settings")}</Text>
             </View>
           </ListItem>
         </List>

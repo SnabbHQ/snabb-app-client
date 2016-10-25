@@ -9,7 +9,7 @@ import React, {Component} from "react";
 import {Dimensions, StyleSheet, Image, View, Text} from "react-native";
 import Swiper from "react-native-swiper";
 import FitImage from "../../components/FitImage";
-import Translations from "../../lib/Translations";
+import I18n from "../../lib/I18n";
 
 
 const Button = require('apsl-react-native-button')
@@ -41,13 +41,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({...authActions, ...globalActions}, dispatch)
   }
 }
-
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n');
-I18n.translations = Translations;
-
 
 /**
  * ## App class

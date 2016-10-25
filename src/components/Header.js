@@ -178,6 +178,6 @@ var Header = React.createClass({
       </View>
     )
   }
-})
+});
 
-module.exports = Header
+module.exports = Header;
