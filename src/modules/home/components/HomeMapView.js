@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import {
   StyleSheet,
@@ -7,9 +9,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import MapView, { MAP_TYPES } from 'react-native-maps';
+import MapView, {MAP_TYPES} from 'react-native-maps';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
 const LATITUDE = 37.78825;
@@ -18,21 +20,50 @@ const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class DisplayLatLng extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      region: {
-        latitude: LATITUDE,
-        longitude: LONGITUDE,
+  state = {
+    region: {
+      latitude: LATITUDE,
+      longitude: LONGITUDE,
+      latitudeDelta: LATITUDE_DELTA,
+      longitudeDelta: LONGITUDE_DELTA
+    }
+  };
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          region: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA
+          }
+        });
+      },
+      (error) => alert(error.message),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
+
+    this.watchID = navigator.geolocation.watchPosition((position) => {
+      const newRegion = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA
-      }
-    };
+      };
+
+      this.onRegionChange(newRegion);
+    });
+  }
+
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
   }
 
   onRegionChange(region) {
-    this.setState({ region });
+    this.setState({region});
   }
 
   render() {
@@ -41,7 +72,8 @@ class DisplayLatLng extends React.Component {
         <MapView
           ref={ref => { this.map = ref; }}
           style={styles.map}
-          initialRegion={this.state.region}
+          showsUserLocation={true}
+          region={this.state.region}
           onRegionChange={region => this.onRegionChange(region)}
         />
         <View style={[styles.bubble, styles.latlng]}>
