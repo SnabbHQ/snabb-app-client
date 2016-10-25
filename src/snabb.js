@@ -18,6 +18,7 @@ import ForgotPassword from "./modules/user/ForgotPasswordView";
 import ProfileView from "./modules/user/ProfileView";
 import HomeView from "./modules/home/HomeView";
 import Subview from "./modules/delivery/Subview";
+import SettingsView from "./modules/settings/SettingsView";
 import DeliveryAddress from "./modules/delivery/DeliveryAddress";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {setPlatform, setVersion} from "./reducers/device/deviceActions";
@@ -144,6 +145,9 @@ export default function native(platform) {
               <Scene key='LogoutScene'
                      title={I18n.t('snabb.logout')}
                      component={Logout}/>
+
+              <Scene key='SettingsScene'
+                     component={SettingsView}/>
 
             </Scene>
           </Router>

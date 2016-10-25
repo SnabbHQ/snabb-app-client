@@ -73,7 +73,7 @@ class LeftNavigationPanel extends Component {
               <Text style={styles.text}>{I18n.t("Navigation.help")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => this.navigateTo('form')}>
+          <ListItem button iconLeft onPress={() => Actions.SettingsScene()}>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-call" style={styles.sidebarIcon}/>
