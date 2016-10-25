@@ -6,8 +6,8 @@ import {Actions} from "react-native-router-flux";
 import NavigationBar from "react-native-navbar";
 import React from "react";
 import {StyleSheet, View, Text} from "react-native";
-import * as deviceActions from "../reducers/device/deviceActions";
-import Translations from "../lib/Translations";
+import * as deviceActions from "../../reducers/device/deviceActions";
+import Translations from "../../lib/Translations";
 
 
 /**

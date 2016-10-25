@@ -10,10 +10,10 @@
  *
  * our 4 reducers
  */
-import auth from './auth/authReducer'
+import auth from '../modules/user/reducers/auth/authReducer'
 import device from './device/deviceReducer'
 import global from './global/globalReducer'
-import profile from './profile/profileReducer'
+import profile from '../modules/user/reducers/profile/profileReducer'
 
 import { combineReducers } from 'redux'
 

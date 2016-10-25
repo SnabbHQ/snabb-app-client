@@ -10,16 +10,16 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as profileActions from "../reducers/profile/profileActions";
-import * as globalActions from "../reducers/global/globalActions";
-import ErrorAlert from "../components/ErrorAlert";
-import FormButton from "../components/FormButton";
-import Header from "../components/Header";
-import ItemCheckbox from "../components/ItemCheckbox";
+import * as profileActions from "./reducers/profile/profileActions";
+import * as globalActions from "../../reducers/global/globalActions";
+import ErrorAlert from "../../components/ErrorAlert";
+import FormButton from "../../components/FormButton";
+import Header from "../../components/Header";
+import ItemCheckbox from "../../components/ItemCheckbox";
 import React, {Component} from "react";
 import {StyleSheet, View} from "react-native";
 import t from "tcomb-form-native";
-import Translations from "../lib/Translations";
+import Translations from "../../lib/Translations";
 
 let Form = t.form.Form;
 

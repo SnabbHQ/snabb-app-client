@@ -8,8 +8,8 @@ import NavBar, {NavButton} from "react-native-nav";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import React, {Component} from "react";
 import {StyleSheet, View, Text, TextInput} from "react-native";
-import * as deviceActions from "../reducers/device/deviceActions";
-import Translations from "../lib/Translations";
+import * as deviceActions from "../../reducers/device/deviceActions";
+import Translations from "../../lib/Translations";
 
 /**
  *  Instead of including all app states via ...state

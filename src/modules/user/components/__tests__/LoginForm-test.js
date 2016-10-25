@@ -33,7 +33,7 @@ const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('../../lib/constants').default
+} = require('../../../../lib/constants').default
 /**
  * ## Test
  */

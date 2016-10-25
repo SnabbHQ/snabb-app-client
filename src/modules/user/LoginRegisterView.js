@@ -2,14 +2,14 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as authActions from "../reducers/auth/authActions";
-import * as globalActions from "../reducers/global/globalActions";
+import * as authActions from "./reducers/auth/authActions";
+import * as globalActions from "../../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
 import {Dimensions, StyleSheet, Image, View, Text} from "react-native";
 import Swiper from "react-native-swiper";
-import FitImage from "../components/FitImage";
-import Translations from "../lib/Translations";
+import FitImage from "../../components/FitImage";
+import Translations from "../../lib/Translations";
 
 
 const Button = require('apsl-react-native-button')
@@ -80,19 +80,19 @@ class LoginRegisterView extends Component {
                   activeDot={<View style={{backgroundColor: '#00D5D5', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}>
             <View style={styles.slide1}>
               <FitImage style={styles.image}
-                        source={require('../images/walkthrough/request_pickup.png')}
+                        source={require('../../images/walkthrough/request_pickup.png')}
                         originalWidth={640}
                         originalHeight={1136}/>
             </View>
             <View style={styles.slide2}>
               <FitImage style={styles.image}
-                        source={require('../images/walkthrough/transport_selection.png')}
+                        source={require('../../images/walkthrough/transport_selection.png')}
                         originalWidth={640}
                         originalHeight={1136}/>
             </View>
             <View style={styles.slide3}>
               <FitImage style={styles.image}
-                        source={require('../images/walkthrough/request_pickup.png')}
+                        source={require('../../images/walkthrough/request_pickup.png')}
                         originalWidth={640}
                         originalHeight={1136}/>
             </View>

@@ -1,28 +1,22 @@
-/**
- * Register.js
- *
- * Allow user to register
- */
+
 'use strict';
 
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import * as authActions from '../reducers/auth/authActions'
-import LoginRender from '../components/LoginRender'
-import React, {Component} from 'react'
-import NavBar, {NavButton} from 'react-native-nav'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import {Actions} from 'react-native-router-flux'
-import
-{
-  View,
-} from 'react-native'
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as authActions from "./reducers/auth/authActions";
+import LoginRender from "./components/LoginRender";
+import React, {Component} from "react";
+import NavBar, {NavButton} from "react-native-nav";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import {Actions} from "react-native-router-flux";
+import {View} from "react-native";
+import Translations from "../../lib/Translations";
 
 const {
   LOGIN,
   REGISTER,
   FORGOT_PASSWORD
-} = require('../lib/constants').default;
+} = require('../../lib/constants').default;
 
 /**
  * ## Redux boilerplate
@@ -49,7 +43,6 @@ function buttonPressHandler(signup, username, email, password) {
  * ### Translations
  */
 var I18n = require('react-native-i18n')
-import Translations from '../lib/Translations'
 I18n.translations = Translations;
 
 class RegisterView extends Component {

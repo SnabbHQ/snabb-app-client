@@ -17,7 +17,7 @@ import { connect } from 'react-redux'
  * The actions we need
  */
 import * as authActions from '../reducers/auth/authActions'
-import * as globalActions from '../reducers/global/globalActions'
+import * as globalActions from '../../../reducers/global/globalActions'
 
 /**
  * Router actions
@@ -27,24 +27,24 @@ import { Actions } from 'react-native-router-flux'
 /**
  * The Header will display a Image and support Hot Loading
  */
-import Header from '../components/Header'
+import Header from '../../../components/Header'
 /**
  * The ErrorAlert displays an alert for both ios & android
  */
-import ErrorAlert from '../components/ErrorAlert'
+import ErrorAlert from '../../../components/ErrorAlert'
 /**
  * The FormButton will change it's text between the 4 states as necessary
  */
-import FormButton from '../components/FormButton'
+import FormButton from '../../../components/FormButton'
 /**
  *  The LoginForm does the heavy lifting of displaying the fields for
  * textinput and displays the error messages
  */
-import LoginForm from '../components/LoginForm'
+import LoginForm from './LoginForm'
 /**
  * The itemCheckbox will toggle the display of the password fields
  */
-import ItemCheckbox from '../components/ItemCheckbox'
+import ItemCheckbox from '../../../components/ItemCheckbox'
 
 /**
  * The necessary React components
@@ -70,7 +70,7 @@ const {
   LOGIN,
   REGISTER,
   FORGOT_PASSWORD
-} = require('../lib/constants').default
+} = require('../../../lib/constants').default
 
 /**
  * ## Styles
@@ -107,7 +107,7 @@ function mapDispatchToProps (dispatch) {
  * ### Translations
  */
 var I18n = require('react-native-i18n')
-import Translations from '../lib/Translations'
+import Translations from '../../../lib/Translations'
 I18n.translations = Translations
 
 class LoginRender extends Component {

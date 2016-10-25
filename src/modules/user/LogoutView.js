@@ -2,13 +2,13 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as authActions from "../reducers/auth/authActions";
-import * as globalActions from "../reducers/global/globalActions";
-import Header from "../components/Header";
-import FormButton from "../components/FormButton";
+import * as authActions from "./reducers/auth/authActions";
+import * as globalActions from "../../reducers/global/globalActions";
+import Header from "../../components/Header";
+import FormButton from "../../components/FormButton";
 import React, {Component} from "react";
 import {StyleSheet, View} from "react-native";
-import Translations from "../lib/Translations";
+import Translations from "../../lib/Translations";
 
 
 var styles = StyleSheet.create({

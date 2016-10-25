@@ -67107,7 +67107,7 @@ return React.createElement(RNTypefaceTextView,this.props);}});
 
 module.exports=TypefaceTextView;
 });
-__d('snabb/src/components/Tabbar.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _reactNativeTabNavigator=require('react-native-tab-navigator/TabNavigator.js');var _reactNativeTabNavigator2=babelHelpers.interopRequireDefault(_reactNativeTabNavigator);var _FontAwesome=require('FontAwesome');var _FontAwesome2=babelHelpers.interopRequireDefault(_FontAwesome);var _Login=require('snabb/src/containers/LoginView.js');var _Login2=babelHelpers.interopRequireDefault(_Login);var _Profile=require('snabb/src/containers/Profile.js');var _Profile2=babelHelpers.interopRequireDefault(_Profile);
+__d('snabb/src/components/Tabbar.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _reactNativeTabNavigator=require('react-native-tab-navigator/TabNavigator.js');var _reactNativeTabNavigator2=babelHelpers.interopRequireDefault(_reactNativeTabNavigator);var _FontAwesome=require('FontAwesome');var _FontAwesome2=babelHelpers.interopRequireDefault(_FontAwesome);var _Login=require('snabb/src/containers/LoginView.js');var _Login2=babelHelpers.interopRequireDefault(_Login);var _Profile=require('snabb/src/containers/ProfileView.js');var _Profile2=babelHelpers.interopRequireDefault(_Profile);
 
 
 
@@ -67654,7 +67654,7 @@ var child=_reactNative2.default.Children.only(this.props.children);
 return _reactNative2.default.cloneElement(child,{
 style:[child.props.style,this.props.style]});}}]);return TabNavigatorItem;})(_reactNative2.default.Component);TabNavigatorItem.propTypes={renderIcon:_reactNative.PropTypes.func.isRequired,renderSelectedIcon:_reactNative.PropTypes.func,badgeText:_reactNative.PropTypes.oneOfType([_reactNative.PropTypes.string,_reactNative.PropTypes.number]),renderBadge:_reactNative.PropTypes.func,title:_reactNative.PropTypes.string,titleStyle:_reactNative.Text.propTypes.style,selectedTitleStyle:_reactNative.Text.propTypes.style,selected:_reactNative.PropTypes.bool,onPress:_reactNative.PropTypes.func};TabNavigatorItem.defaultProps={renderIcon:function renderIcon(){return _reactNative2.default.createElement(_reactNative.View,null);}};exports.default=TabNavigatorItem;
 });
-__d('snabb/src/containers/Profile.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _redux=require('redux/lib/index.js');var _native=require('react-redux/native.js');var _profileActions=require('snabb/src/reducers/profile/profileActions.js');var
+__d('snabb/src/containers/ProfileView.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _redux=require('redux/lib/index.js');var _native=require('react-redux/native.js');var _profileActions=require('snabb/src/reducers/profile/profileActions.js');var
 
 
 

@@ -19,14 +19,14 @@ const {
   PROFILE_UPDATE_FAILURE,
 
   ON_PROFILE_FORM_FIELD_CHANGE
-} = require('../../lib/constants').default
+} = require('../../../../lib/constants').default;
 
 /**
  * BackendFactory - base class for server implementation
  * AppAuthToken for localStorage sessionToken access
  */
-const BackendFactory = require('../../lib/BackendFactory').default
-const AppAuthToken = require('../../lib/AppAuthToken').default
+const BackendFactory = require('../../../../lib/BackendFactory').default;
+const AppAuthToken = require('../../../../lib/AppAuthToken').default;
 
 /**
  * ## retreiving profile actions
@@ -48,6 +48,7 @@ export function getProfileFailure (json) {
     payload: json
   }
 }
+
 /**
  * ## State actions
  * controls which form is displayed to the user
@@ -55,7 +56,7 @@ export function getProfileFailure (json) {
  */
 export function getProfile (sessionToken) {
   return dispatch => {
-    dispatch(getProfileRequest())
+    dispatch(getProfileRequest());
     // store or get a sessionToken
     return new AppAuthToken().getSessionToken(sessionToken)
       .then((token) => {
@@ -69,6 +70,7 @@ export function getProfile (sessionToken) {
       })
   }
 }
+
 /**
  * ## State actions
  * controls which form is displayed to the user
@@ -90,6 +92,7 @@ export function profileUpdateFailure (json) {
     payload: json
   }
 }
+
 /**
  * ## updateProfile
  * @param {string} userId -  objectId

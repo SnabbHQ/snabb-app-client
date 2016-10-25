@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as authActions from "../reducers/auth/authActions";
+import * as authActions from "./user/reducers/auth/authActions";
 import * as deviceActions from "../reducers/device/deviceActions";
 import * as globalActions from "../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
 });
 
 // Since we're using ES6 classes, have to define the TimerMixin
-reactMixin(App.prototype, TimerMixin)
+reactMixin(App.prototype, TimerMixin);
 /**
  * Connect the properties
  */

@@ -7,7 +7,7 @@
  * fails, setting it back to false.
  *
  */
-'use strict'
+'use strict';
 
 /**
  * ## Imports
@@ -44,18 +44,18 @@ const {
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILURE
 
-} = require('../../lib/constants').default
+} = require('../../../../lib/constants').default;
 
 /**
  * Project requirements
  */
-const BackendFactory = require('../../lib/BackendFactory').default
+const BackendFactory = require('../../../../lib/BackendFactory').default;
 
-import {Actions} from 'react-native-router-flux'
+import {Actions} from "react-native-router-flux";
 
-const AppAuthToken = require('../../lib/AppAuthToken').default
+const AppAuthToken = require('../../../../lib/AppAuthToken').default;
 
-const _ = require('underscore')
+const _ = require('underscore');
 
 /**
  * ## State actions

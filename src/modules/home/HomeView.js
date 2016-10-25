@@ -6,17 +6,17 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as authActions from "../reducers/auth/authActions";
-import * as globalActions from "../reducers/global/globalActions";
+import * as authActions from "../user/reducers/auth/authActions";
+import * as globalActions from "../../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import {Drawer} from "native-base";
-import LefNavigationPanel from "../components/LeftNavigationPanel";
+import LefNavigationPanel from "./SidePanel";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import DisplayLatLng from "../components/HomeMapView";
+import DisplayLatLng from "./HomeMapView";
 import React, {Component} from "react";
 import {StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native";
-import Translations from "../lib/Translations";
-import UserProfileImage from '../components/UserProfileImage';
+import Translations from "../../lib/Translations";
+import UserProfileImage from '../user/components/UserProfileImage';
 
 
 /**

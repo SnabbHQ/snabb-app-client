@@ -11,7 +11,7 @@
  * formValidation for setting the form's valid flag
  */
 const InitialState = require('./authInitialState').default
-const fieldValidation = require('../../lib/fieldValidation').default
+const fieldValidation = require('../../../../lib/fieldValidation').default
 const formValidation = require('./authFormValidation').default
 
 /**
@@ -48,16 +48,16 @@ const {
   RESET_PASSWORD_FAILURE,
 
   SET_STATE
-} = require('../../lib/constants').default
+} = require('../../../../lib/constants').default;
 
-const initialState = new InitialState()
+const initialState = new InitialState();
 /**
  * ## authReducer function
  * @param {Object} state - initialState
  * @param {Object} action - type and payload
  */
 export default function authReducer (state = initialState, action) {
-  if (!(state instanceof InitialState)) return initialState.mergeDeep(state)
+  if (!(state instanceof InitialState)) return initialState.mergeDeep(state);
 
   switch (action.type) {
     /**

@@ -6,16 +6,16 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as authActions from "../reducers/auth/authActions";
-import LoginRender from "../components/LoginRender";
+import * as authActions from "./reducers/auth/authActions";
+import LoginRender from "./components/LoginRender";
 import React from "react";
-import Translations from "../lib/Translations";
+import Translations from "../../lib/Translations";
 
 const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('../lib/constants').default;
+} = require('../../lib/constants').default;
 
 
 function mapStateToProps (state) {

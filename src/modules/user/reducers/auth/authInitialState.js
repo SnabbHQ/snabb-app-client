@@ -8,14 +8,12 @@
  * By using Immutable, it's enforced.  Just saying....
  *
  */
-'use strict'
-/**
- * ## Import
- */
-const {Record} = require('immutable')
+'use strict';
+
+const {Record} = require('immutable');
 const {
   REGISTER
-} = require('../../lib/constants').default
+} = require('../../../../lib/constants').default;
 
 /**
  * ## Form
