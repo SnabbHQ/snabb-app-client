@@ -6,6 +6,11 @@ Geocoder.fallbackToGoogle('AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw');
 
 class LocationSearchbox extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
   componentWillReceiveProps(newProps) {
     if (newProps.latlng && newProps.latlng !== this.props.latlng) {
       Geocoder.geocodePosition(newProps.latlng)
