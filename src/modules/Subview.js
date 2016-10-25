@@ -1,50 +1,18 @@
-/**
- * # Subview.js
- *
- *  This is called from main to demonstrate the back button
- *
- */
-'use strict'
-/*
- * ## Imports
- *
- * Imports from redux
- */
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+'use strict';
 
-/**
- * Router
- */
-import {Actions} from 'react-native-router-flux'
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {Actions} from "react-native-router-flux";
+import NavigationBar from "react-native-navbar";
+import React from "react";
+import {StyleSheet, View, Text} from "react-native";
+import * as deviceActions from "../reducers/device/deviceActions";
+import Translations from "../lib/Translations";
 
-/**
- * Navigation Bar
- */
-import NavigationBar from 'react-native-navbar'
-
-/**
- * The necessary components from React
- */
-import React from 'react'
-import
-{
-  StyleSheet,
-  View,
-  Text
-}
-from 'react-native'
-
-/**
- * Use device options so we can reference the Version
- *
- */
-import * as deviceActions from '../reducers/device/deviceActions'
 
 /**
 * ## Redux boilerplate
 */
-
 /**
  *  Instead of including all app states via ...state
  *  You probably want to explicitly enumerate only those which LoginRegisterView.js will depend on.
@@ -77,13 +45,13 @@ var styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold'
   }
-})
+});
+
 /**
  * ### Translations
  */
-var I18n = require('react-native-i18n')
-import Translations from '../lib/Translations'
-I18n.translations = Translations
+var I18n = require('react-native-i18n');
+I18n.translations = Translations;
 
 /**
  * ## Subview class
@@ -91,7 +59,6 @@ I18n.translations = Translations
 let Subview = React.createClass({
 
   render () {
-    
     var titleConfig = {
       title: I18n.t('Subview.subview')
     };

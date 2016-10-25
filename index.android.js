@@ -2,5 +2,5 @@
 
 import snabb from './src/snabb'
 
-snabb('android')
+snabb('android');
 

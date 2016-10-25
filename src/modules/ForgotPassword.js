@@ -2,39 +2,21 @@
  * # ForgotPassword.js
  *
  */
-'use strict'
-/**
- * ## Imports
- *
- * Redux
- */
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+'use strict';
 
-/**
- * The actions we need
- */
-import * as authActions from '../reducers/auth/authActions'
-
-/**
- *   LoginRender
- */
-import LoginRender from '../components/LoginRender'
-
-/**
- * Need React
- */
-import React from 'react'
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as authActions from "../reducers/auth/authActions";
+import LoginRender from "../components/LoginRender";
+import React from "react";
+import Translations from "../lib/Translations";
 
 const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('../lib/constants').default
+} = require('../lib/constants').default;
 
-/**
-  * ## Redux boilerplate
-  */
 
 function mapStateToProps (state) {
   return {
@@ -52,20 +34,20 @@ function mapDispatchToProps (dispatch) {
 function buttonPressHandler (resetPassword, email) {
   resetPassword(email)
 }
+
 /**
  * ### Translations
  */
-var I18n = require('react-native-i18n')
-import Translations from '../lib/Translations'
-I18n.translations = Translations
+var I18n = require('react-native-i18n');
+I18n.translations = Translations;
 
 let ForgotPassword = React.createClass({
 
   render () {
-    let loginButtonText = I18n.t('ForgotPassword.reset_password')
+    let loginButtonText = I18n.t('ForgotPassword.reset_password');
     let onButtonPress = buttonPressHandler.bind(null,
                                                 this.props.actions.resetPassword,
-                                                this.props.auth.form.fields.email)
+                                                this.props.auth.form.fields.email);
 
     return (
       <LoginRender

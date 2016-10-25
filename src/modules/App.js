@@ -1,31 +1,15 @@
 'use strict'
 
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-
-/**
- * Project actions
- */
-import * as authActions from '../reducers/auth/authActions'
-import * as deviceActions from '../reducers/device/deviceActions'
-import * as globalActions from '../reducers/global/globalActions'
-
-/**
- * Router
- */
-import {Actions} from 'react-native-router-flux'
-
-/**
- * The components we need from ReactNative
- */
-import React from 'react'
-import
-{
-  StyleSheet,
-  View,
-  Text
-}
-  from 'react-native'
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as authActions from "../reducers/auth/authActions";
+import * as deviceActions from "../reducers/device/deviceActions";
+import * as globalActions from "../reducers/global/globalActions";
+import {Actions} from "react-native-router-flux";
+import React from "react";
+import {StyleSheet, View, Text} from "react-native";
+import TimerMixin from "react-timer-mixin";
+import Translations from "../lib/Translations";
 
 /**
  *  Save that state
@@ -58,13 +42,11 @@ function mapDispatchToProps(dispatch) {
  * ## App class
  */
 var reactMixin = require('react-mixin');
-import TimerMixin from 'react-timer-mixin'
 
 /**
  * ### Translations
  */
 var I18n = require('react-native-i18n');
-import Translations from '../lib/Translations'
 I18n.translations = Translations;
 
 let App = React.createClass({

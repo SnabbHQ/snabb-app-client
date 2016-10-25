@@ -1,46 +1,15 @@
-import NavigationBar from 'react-native-navbar'
-/*
- * # DeliveryAddress.js
- *
- *  This is called from main to demonstrate the back button
- *
- */
 'use strict';
-// Redux
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
 
-/**
- * Router
- */
-import {Actions} from 'react-native-router-flux'
-
-// UI
-import NavBar, {NavButton} from 'react-native-nav'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-
-/**
- * The necessary components from React
- */
-import React, {Component} from 'react'
-import
-{
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-}
-  from 'react-native'
-
-/**
- * Use device options so we can reference the Version
- *
- */
-import * as deviceActions from '../reducers/device/deviceActions'
-
-/**
- * ## Redux boilerplate
- */
+import NavigationBar from "react-native-navbar";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {Actions} from "react-native-router-flux";
+import NavBar, {NavButton} from "react-native-nav";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import React, {Component} from "react";
+import {StyleSheet, View, Text, TextInput} from "react-native";
+import * as deviceActions from "../reducers/device/deviceActions";
+import Translations from "../lib/Translations";
 
 /**
  *  Instead of including all app states via ...state
@@ -66,7 +35,6 @@ function mapDispatchToProps(dispatch) {
  * ### Translations
  */
 var I18n = require('react-native-i18n');
-import Translations from '../lib/Translations'
 
 I18n.translations = Translations;
 

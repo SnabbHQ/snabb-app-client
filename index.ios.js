@@ -2,4 +2,4 @@
 
 import snabb from './src/snabb'
 
-snabb('ios')
+snabb('ios');

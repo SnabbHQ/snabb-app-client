@@ -1,8 +1,3 @@
-/**
- * # Main.js
- *  This is the main app screen
- *
- */
 'use strict';
 
 import {bindActionCreators} from "redux";
@@ -12,14 +7,11 @@ import * as globalActions from "../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
 import {Dimensions, StyleSheet, Image, View, Text} from "react-native";
-import Swiper from 'react-native-swiper';
-import FitImage from '../components/FitImage';
+import Swiper from "react-native-swiper";
+import FitImage from "../components/FitImage";
 import Translations from "../lib/Translations";
 
 
-/**
- * The platform neutral button
- */
 const Button = require('apsl-react-native-button')
 
 /**
