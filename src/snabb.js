@@ -30,6 +30,8 @@ import ProfileInitialState from "./modules/user/reducers/profile/profileInitialS
 import pack from "../package";
 import HelpView from "./modules/help/HelpView";
 import PaymentsView from "./modules/payments/PaymentsView";
+import OngoingDeliveriesView from "./modules/ongoing/OngoingDeliveriesView";
+import HistoryView from "./modules/history/HistoryView";
 
 
 /**
@@ -148,6 +150,12 @@ export default function native(platform) {
                      title={I18n.t('snabb.logout')}
                      component={Logout}/>
 
+              <Scene key='OngoingDeliveriesScene'
+                     component={OngoingDeliveriesView}/>
+
+              <Scene key='HistoryScene'
+                     component={HistoryView}/>
+              
               <Scene key='PaymentsScene'
                      component={PaymentsView}/>
 

@@ -33,15 +33,15 @@ class LeftNavigationPanel extends Component {
               <Text style={styles.text}>{I18n.t("Navigation.home")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => Actions.RegisterScene() }>
+          <ListItem button iconLeft onPress={() => Actions.OngoingDeliveriesScene() }>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-notifications-outline" style={styles.sidebarIcon}/>
               </View>
-              <Text style={styles.text}>{I18n.t("Navigation.current_deliveries")}</Text>
+              <Text style={styles.text}>{I18n.t("Navigation.ongoing_deliveries")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => this.navigateTo('button')}>
+          <ListItem button iconLeft onPress={() => Actions.HistoryScene() }>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
                 <Icon name="md-radio-button-off" style={styles.sidebarIcon}/>

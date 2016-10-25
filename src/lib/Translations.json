@@ -11,7 +11,7 @@
     "Navigation": {
       "profile": "Profile",
       "home": "Home",
-      "current_deliveries": "Current Deliveries",
+      "ongoing_deliveries": "Ongoing Deliveries",
       "history": "History",
       "payments": "Payments",
       "free_deliveries": "Free Deliveries",
