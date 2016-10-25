@@ -111,7 +111,7 @@ class DisplayLatLng extends React.Component {
             <Grid>
               <Row>
                 <LocationSearchbox
-                  latlng={this.state.region.latitude + "," + this.state.region.longitude}
+                  latlng={{lat: this.state.region.latitude, lng: this.state.region.longitude}}
                   margin={10}
                   showLabel={true}
                   labelText={"MY LOCATION"}

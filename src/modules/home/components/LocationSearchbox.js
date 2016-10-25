@@ -5,34 +5,25 @@ import Geocoder from 'react-native-geocoder';
 Geocoder.fallbackToGoogle('AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw');
 
 class LocationSearchbox extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {}
-  }
 
   componentWillReceiveProps(newProps) {
     if (newProps.latlng && newProps.latlng !== this.props.latlng) {
-
-      // Position Geocoding
-      var NY = {
-        lat: 40.7809261,
-        lng: -73.9637594
-      };
-
-      Geocoder.geocodePosition(NY)
+      Geocoder.geocodePosition(newProps.latlng)
         .then(res => {
+          console.log(res[0]);
+
           this.setState({
-            address: res[0].streetName + "," + res.streetNumber
+            address: res[0].streetName + ", " + res[0].streetNumber
           });
-        });
+        })
+        .catch(err => console.log(err));
     }
   }
 
   render() {
     let style = {
       flex: 1,
-      margin: this.props.margin || 0,
+      margin: this.props.margin || 0
     };
 
     let searchboxStyle = {
@@ -40,28 +31,28 @@ class LocationSearchbox extends React.Component {
       borderWidth: 1,
       borderColor: "rgba(225,225,225,1)",
       borderRadius: 4,
-      height: 50,
+      height: 50
     };
 
     let searchboxInnerStyle = {
       flex: 1,
       flexDirection: 'row',
       alignItems: 'center',
-      padding: 10,
+      padding: 10
     };
 
     let searchboxTextContainerStyle = {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'center'
     };
 
     let iconURL = 'https://api.icons8.com/download/19343120d27c16dd3e9d21ad3aa637f94fd4d5fa/Android_L/PNG/256/Very_Basic/search-256.png'
-    let iconSize = 16
+    let iconSize = 16;
     let iconStyle = {
       width: iconSize,
       height: iconSize,
-      opacity: 32 / 100,
+      opacity: 32 / 100
     };
 
     let labelStyle = {
@@ -69,12 +60,12 @@ class LocationSearchbox extends React.Component {
       color: this.props.labelColor,
       marginTop: 2,
       marginBottom: 3,
-      fontWeight: "600",
+      fontWeight: "600"
     };
 
     let textStyle = {
       fontSize: 14,
-      color: this.props.textColor,
+      color: this.props.textColor
     };
 
     return (
