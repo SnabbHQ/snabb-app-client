@@ -29,6 +29,7 @@ import GlobalInitialState from "./reducers/global/globalInitialState";
 import ProfileInitialState from "./modules/user/reducers/profile/profileInitialState";
 import pack from "../package";
 import HelpView from "./modules/help/HelpView";
+import PaymentsView from "./modules/payments/PaymentsView";
 
 
 /**
@@ -146,6 +147,9 @@ export default function native(platform) {
               <Scene key='LogoutScene'
                      title={I18n.t('snabb.logout')}
                      component={Logout}/>
+
+              <Scene key='PaymentsScene'
+                     component={PaymentsView}/>
 
               <Scene key='HelpScene'
                      component={HelpView}/>

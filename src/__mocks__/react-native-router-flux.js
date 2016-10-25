@@ -8,6 +8,7 @@ module.exports = {
     ProfileScene: function() {},
     LogoutScene: function () {},
     DeliveryAddressScene: function () {},
+    PaymentsScene: function () {},
     HelpScene: function () {},
     SettingsScene: function () {}
   }

@@ -49,20 +49,12 @@ class LeftNavigationPanel extends Component {
               <Text style={styles.text}>{I18n.t("Navigation.history")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => this.navigateTo('card')}>
+          <ListItem button iconLeft onPress={() => Actions.PaymentsScene()}>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-keypad" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>{I18n.t("Navigation.payments")}</Text>
-            </View>
-          </ListItem>
-          <ListItem button iconLeft onPress={() => this.navigateTo('checkbox')}>
-            <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
-                <Icon name="ios-checkmark-circle-outline" style={styles.sidebarIcon}/>
-              </View>
-              <Text style={styles.text}>{I18n.t("Navigation.free_deliveries")}</Text>
             </View>
           </ListItem>
           <ListItem button iconLeft onPress={() => Actions.HelpScene()}>
