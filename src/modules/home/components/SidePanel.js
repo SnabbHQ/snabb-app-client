@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Image, StyleSheet, Platform, Dimensions} from "react-native";
 import {Content, Text, List, ListItem, Icon, View} from "native-base";
 import {Actions} from "react-native-router-flux";
-import UserProfileImage from "../user/components/UserProfileImage";
+import UserProfileImage from "../../user/components/UserProfileImage";
 
 var sidebarTheme = {
 
