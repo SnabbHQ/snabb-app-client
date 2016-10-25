@@ -17,9 +17,7 @@ import RegisterView from "./modules/user/RegisterView";
 import ForgotPassword from "./modules/user/ForgotPasswordView";
 import ProfileView from "./modules/user/ProfileView";
 import HomeView from "./modules/home/HomeView";
-import Subview from "./modules/delivery/Subview";
 import SettingsView from "./modules/settings/SettingsView";
-import DeliveryAddress from "./modules/delivery/DeliveryAddress";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {setPlatform, setVersion} from "./reducers/device/deviceActions";
 import {setStore} from "./reducers/global/globalActions";
@@ -32,6 +30,7 @@ import HelpView from "./modules/help/HelpView";
 import PaymentsView from "./modules/payments/PaymentsView";
 import OngoingDeliveriesView from "./modules/ongoing/OngoingDeliveriesView";
 import HistoryView from "./modules/history/HistoryView";
+import SetLocationView from "./modules/delivery/SetLocationView";
 
 
 /**
@@ -137,11 +136,8 @@ export default function native(platform) {
                      component={ForgotPassword}
                      type='replace'/>
 
-              <Scene key='SubviewScene'
-                     component={Subview}/>
-
-              <Scene key='DeliveryAddressScene'
-                     component={DeliveryAddress}/>
+              <Scene key='SetLocationScene'
+                     component={SetLocationView}/>
 
               <Scene key='ProfileScene'
                      component={ProfileView}/>

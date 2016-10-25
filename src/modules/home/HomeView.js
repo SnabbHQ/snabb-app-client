@@ -62,16 +62,16 @@ class HomeView extends Component {
   };
 
   handlePickUpPress() {
-    Actions.DeliveryAddress({
+    Actions.SetLocationScene({
       title: 'Pick-Up'
-      // you can add additional props to be passed to Subview here...
+      // you can add additional props to be passed to view here...
     })
   }
 
   handleDropOffPress() {
-    Actions.DeliveryAddress({
+    Actions.SetLocationScene({
       title: 'Drop-Off'
-      // you can add additional props to be passed to Subview here...
+      // you can add additional props to be passed to view here...
     })
   }
 

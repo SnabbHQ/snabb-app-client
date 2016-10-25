@@ -7,7 +7,7 @@ module.exports = {
     ForgotPasswordScene: function () {},
     ProfileScene: function() {},
     LogoutScene: function () {},
-    DeliveryAddressScene: function () {},
+    SetLocationScene: function () {},
     OngoingDeliveriesScene: function () {},
     HistoryScene: function () {},
     PaymentsScene: function () {},
