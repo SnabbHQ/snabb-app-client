@@ -73,8 +73,7 @@ class DisplayLatLng extends React.Component {
           style={styles.map}
           showsUserLocation={true}
           region={this.state.region}
-          onRegionChange={region => this.onRegionChange(region)}
-        />
+          onRegionChange={region => this.onRegionChange(region)}/>
         <View>
           <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
             <Icon name='location-arrow' style={styles.locationIcon}/>
