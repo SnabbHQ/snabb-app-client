@@ -1,11 +1,13 @@
 'use strict';
 
 import React from "react";
-import {StyleSheet, View, Text, Dimensions, TouchableOpacity} from "react-native";
-import {Button} from 'native-base';
+import {StyleSheet, View, Text, Dimensions, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
+import {Button, Grid, Row, Col} from 'native-base';
 import Icon from "react-native-vector-icons/FontAwesome";
 import MapView from "react-native-maps";
 import LocationPin from './LocationPin'
+// import Icon from "react-native-vector-icons/MaterialIcons";
+import LocationSearchbox from './../components/LocationSearchbox';
 
 const {width, height} = Dimensions.get('window');
 
@@ -67,6 +69,20 @@ class DisplayLatLng extends React.Component {
     );
   }
 
+  handlePickUpPress() {
+    Actions.SetLocationScene({
+      title: 'Pick-Up'
+      // you can add additional props to be passed to view here...
+    })
+  }
+
+  handleDropOffPress() {
+    Actions.SetLocationScene({
+      title: 'Drop-Off'
+      // you can add additional props to be passed to view here...
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -83,10 +99,34 @@ class DisplayLatLng extends React.Component {
           textColor={"#FFF"}
           top={-100}/>
 
-        <View>
-          <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
-            <Icon name='location-arrow' style={styles.locationIcon}/>
-          </Button>
+        <View style={{...StyleSheet.absoluteFillObject, justifyContent: 'flex-end', alignItems: 'flex-end'}}
+              pointerEvents={'box-none'}>
+          <View>
+            <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
+              <Icon name='location-arrow' style={styles.locationIcon}/>
+            </Button>
+          </View>
+
+          <View style={{flexDirection: 'row', backgroundColor: '#F7F7F7', height: 130}}>
+            <Grid>
+              <Row>
+                <LocationSearchbox
+                  latlng={0}
+                  margin={10}
+                  showLabel={true}
+                  labelText={"MY LOCATION"}
+                  defaultText={"Choose Your Location"}
+                  labelColor={"rgba(113,187,28,1)"}
+                  textColor={"rgba(0,0,0,1)"}/>
+              </Row>
+              <Row>
+                <TouchableOpacity
+                  style={{backgroundColor: '#00D5D5', flex: 1, marginLeft: 10, marginRight: 10, marginBottom: 10, marginTop: 5, alignItems:"center", justifyContent: 'center'}}>
+                  <Text style={{color: '#FFFFFF', fontWeight: 'bold', fontSize: 18}}>Request Pickup</Text>
+                </TouchableOpacity>
+              </Row>
+            </Grid>
+          </View>
         </View>
       </View>
     );
@@ -111,7 +151,7 @@ const styles = StyleSheet.create({
   },
   centerOnUserButton: {
     marginRight: 15,
-    marginBottom: 170 + 15, // TODO - 170 corresponds to the height of the panel
+    marginBottom: 15,
     height: 36,
     width: 36,
     backgroundColor: '#F7F7F7'

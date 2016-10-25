@@ -11,13 +11,12 @@ import * as globalActions from "../../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import {Drawer} from "native-base";
 import LefNavigationPanel from "./components/SidePanel";
-import Icon from "react-native-vector-icons/MaterialIcons";
+
 import HomeMapView from "./components/HomeMapView";
 import React, {Component} from "react";
 import {StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native";
 import Translations from "../../lib/Translations";
 import UserProfileImage from '../user/components/UserProfileImage';
-
 
 /**
  *  Instead of including all app states via ...state
@@ -61,20 +60,6 @@ class HomeView extends Component {
     this._drawer.open()
   };
 
-  handlePickUpPress() {
-    Actions.SetLocationScene({
-      title: 'Pick-Up'
-      // you can add additional props to be passed to view here...
-    })
-  }
-
-  handleDropOffPress() {
-    Actions.SetLocationScene({
-      title: 'Drop-Off'
-      // you can add additional props to be passed to view here...
-    })
-  }
-
   render() {
     return (
       <Drawer
@@ -102,25 +87,6 @@ class HomeView extends Component {
         <View style={styles.container}>
           <HomeMapView/>
           <UserProfileImage style={styles.userProfile} onPress={() => this.openControlPanel()}/>
-          <View style={styles.addressContainer}>
-            <Text style={{ marginTop: 15, textAlign: 'center', fontWeight:'bold' }}>Get a quote in seconds
-              default</Text>
-            <View style={{flex: 1, marginTop: 15, paddingLeft: 10, paddingRight: 10}}>
-              <TouchableWithoutFeedback onPress={this.handlePickUpPress.bind(this)}>
-                <View style={{flex: 1, flexDirection:'row' }}>
-                  <Icon name="archive" size={35} color="#444444"/>
-                  <Text style={{ marginTop: 10, marginLeft: 10, color: '#AAAAAA' }}>Enter pick-up address</Text>
-                </View>
-              </TouchableWithoutFeedback>
-              <View style={{ height: 1, backgroundColor: '#EEEEEE', marginLeft: 50, marginRight: 50 }}/>
-              <TouchableWithoutFeedback onPress={this.handleDropOffPress.bind(this)}>
-                <View style={{flex: 1, flexDirection:'row' }}>
-                  <Icon name="flag" size={35} color="#444444"/>
-                  <Text style={{ marginTop: 10, marginLeft: 10, color: '#AAAAAA' }}>Enter drop-off address</Text>
-                </View>
-              </TouchableWithoutFeedback>
-            </View>
-          </View>
         </View>
       </Drawer>
     )
