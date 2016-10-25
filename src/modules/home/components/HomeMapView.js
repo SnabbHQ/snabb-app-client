@@ -1,21 +1,14 @@
 'use strict';
 
-import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
-
-import MapView, {MAP_TYPES} from 'react-native-maps';
+import React from "react";
+import {StyleSheet, View, Text, Dimensions, TouchableOpacity} from "react-native";
+import MapView from "react-native-maps";
 
 const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 39.4699; // Valencia as default
+const LONGITUDE = 0.3763;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
