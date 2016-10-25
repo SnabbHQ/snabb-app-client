@@ -56,13 +56,13 @@ class LoginRegisterView extends Component {
 
   static handleLoginPress() {
     // TODO - Lets work on the Home page meanwhile we prepare the backend for Auth
-    Actions.Home();
+    Actions.HomeScene();
 
     //Actions.LoginView();
   }
 
   static handleRegisterPress() {
-    Actions.RegisterView();
+    Actions.RegisterScene();
   }
 
   // TODO - Add mocked images for now. Also the FitImage does not seem to calculate really good the dimensions to fix

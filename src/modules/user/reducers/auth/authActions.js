@@ -137,7 +137,7 @@ export function logout () {
         dispatch(loginState())
         dispatch(logoutSuccess())
         dispatch(deleteSessionToken())
-        Actions.InitialLoginForm()
+        Actions.InitialLoginFormScene()
       })
 
       .catch((error) => {
@@ -243,14 +243,14 @@ export function getSessionToken () {
           Actions.Tabbar()
         } else {
           dispatch(sessionTokenRequestFailure())
-          Actions.InitialLoginForm()
+          Actions.InitialLoginFormScene()
         }
       })
 
       .catch((error) => {
         dispatch(sessionTokenRequestFailure(error))
         dispatch(loginState())
-        Actions.InitialLoginForm()
+        Actions.InitialLoginFormScene()
       })
   }
 }

@@ -64,7 +64,7 @@ let App = React.createClass({
         //   Actions.
         // });
 
-        Actions.SplashScreenView();
+        Actions.LoginRegisterScene();
         // Actions.Home({
         //   title: 'Subview'
         //   // you can add additional props to be passed to Subview here...

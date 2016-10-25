@@ -24,23 +24,6 @@ import Translations from "../../lib/Translations";
 let Form = t.form.Form;
 
 /**
- * ## Styles
- */
-var styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    flex: 1,
-    backgroundColor: 'transparent'
-  },
-  inputs: {
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 10,
-    marginRight: 10
-  }
-})
-
-/**
 * ## Redux boilerplate
 */
 
@@ -66,7 +49,7 @@ function mapDispatchToProps (dispatch) {
 var I18n = require('react-native-i18n')
 I18n.translations = Translations
 
-class Profile extends Component {
+class ProfileView extends Component {
   /**
    * ## Profile class
    * Set the initial state and prepare the errorAlert
@@ -220,4 +203,22 @@ class Profile extends Component {
     )
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+
+/**
+ * ## Styles
+ */
+var styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    flex: 1,
+    backgroundColor: 'transparent'
+  },
+  inputs: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileView)

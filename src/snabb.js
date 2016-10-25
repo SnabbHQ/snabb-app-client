@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 /**
  *  # snabb
  *  snabb ![snabb](https://cloud.githubusercontent.com/assets/1282364/11599365/1a1c39d2-9a8c-11e5-8819-bc1e48b30525.png)
@@ -10,12 +10,12 @@ import {Provider} from "react-redux";
 import configureStore from "./lib/configureStore";
 import Translations from "./lib/Translations";
 import App from "./modules/App";
-import SplashScreenView from "./modules/user/LoginRegisterView";
+import LoginRegisterView from "./modules/user/LoginRegisterView";
 import LoginView from "./modules/user/LoginView";
 import Logout from "./modules/user/LogoutView";
 import RegisterView from "./modules/user/RegisterView";
 import ForgotPassword from "./modules/user/ForgotPasswordView";
-import Profile from "./modules/user/ProfileView";
+import ProfileView from "./modules/user/ProfileView";
 import HomeView from "./modules/home/HomeView";
 import Subview from "./modules/delivery/Subview";
 import DeliveryAddress from "./modules/delivery/DeliveryAddress";
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
  */
 class TabIcon extends React.Component {
   render() {
-    var color = this.props.selected ? '#FF3366' : '#FFB3B3'
+    var color = this.props.selected ? '#FF3366' : '#FFB3B3';
     return (
       <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', alignSelf: 'center'}}>
         <Icon style={{color: color}} name={this.props.iconName} size={30}/>
@@ -109,59 +109,42 @@ export default function native(platform) {
         <Provider store={store}>
           <Router sceneStyle={{ backgroundColor: 'white' }}>
             <Scene key='root' hideNavBar>
-              <Scene key='App'
+              <Scene key='AppScene'
                      component={App}
                      type='replace'
                      initial/>
 
-              <Scene key='SplashScreenView'
-                     component={SplashScreenView}
+              <Scene key='LoginRegisterScene'
+                     component={LoginRegisterView}
                      type='replace'/>
 
-              <Scene key='Home'
+              <Scene key='HomeScene'
                      component={HomeView}
                      type='replace'/>
 
-              <Scene key='InitialLoginForm'
-                     component={RegisterView}
-                     type='replace'/>
-
-              <Scene key='LoginView'
+              <Scene key='LoginScene'
                      component={LoginView}/>
 
-              <Scene key='RegisterView'
+              <Scene key='RegisterScene'
                      component={RegisterView}/>
 
-              <Scene key='ForgotPassword'
+              <Scene key='ForgotPasswordScene'
                      component={ForgotPassword}
                      type='replace'/>
 
-              <Scene key='Subview'
+              <Scene key='SubviewScene'
                      component={Subview}/>
 
-              <Scene key='DeliveryAddress'
+              <Scene key='DeliveryAddressScene'
                      component={DeliveryAddress}/>
 
-              <Scene key='Tabbar'
-                     tabs
-                     hideNavBar
-                     tabBarStyle={styles.tabBar}
-                     default='Home'>
+              <Scene key='ProfileScene'
+                     component={ProfileView}/>
 
-                <Scene key='Logout'
-                       title={I18n.t('snabb.logout')}
-                       icon={TabIcon}
-                       iconName={"sign-out"}
-                       hideNavBar
-                       component={Logout}/>
+              <Scene key='LogoutScene'
+                     title={I18n.t('snabb.logout')}
+                     component={Logout}/>
 
-                <Scene key='Profile'
-                       title={I18n.t('snabb.profile')}
-                       icon={TabIcon}
-                       iconName={"gear"}
-                       hideNavBar
-                       component={Profile}/>
-              </Scene>
             </Scene>
           </Router>
         </Provider>

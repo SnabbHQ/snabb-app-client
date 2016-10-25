@@ -7,11 +7,11 @@ import UserProfileImage from "../../user/components/UserProfileImage";
 class LeftNavigationPanel extends Component {
 
   navigateTo(route) {
-    Actions.Home();
+    Actions.HomeScene();
   }
 
   navigateToProfile() {
-    Actions.Profile();
+    Actions.ProfileScene();
   }
 
   render() {
@@ -19,7 +19,7 @@ class LeftNavigationPanel extends Component {
       <Content
         theme={sidebarTheme}
         style={styles.sidebar}>
-        <TouchableOpacity onPress={this.navigateToProfile()}
+        <TouchableOpacity onPress={() => Actions.ProfileScene()}
                           style={styles.sidebarHeader}>
           <UserProfileImage/>
           <View style={{ flex: 1, marginRight: 5, marginLeft: 10}}>
@@ -32,7 +32,7 @@ class LeftNavigationPanel extends Component {
         </TouchableOpacity>
 
         <List>
-          <ListItem button iconLeft onPress={() => Actions.Home() }>
+          <ListItem button iconLeft onPress={() => Actions.HomeScene() }>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer, { paddingLeft: 14 }]}>
                 <Icon name="ios-phone-portrait-outline" style={styles.sidebarIcon}/>
@@ -40,7 +40,7 @@ class LeftNavigationPanel extends Component {
               <Text style={styles.text}>Home</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => Actions.RegisterView() }>
+          <ListItem button iconLeft onPress={() => Actions.RegisterScene() }>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-notifications-outline" style={styles.sidebarIcon}/>

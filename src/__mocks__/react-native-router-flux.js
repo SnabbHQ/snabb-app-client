@@ -1,10 +1,12 @@
 module.exports = {
   Actions: {
-    LoginView: function () {},
-    RegisterView: function () {},
-    Tabbar: function () {},
-    InitialLoginForm: function () {},
-    Profile: function() {},
-    Home: function () {}
+    LoginRegisterScene: function () {},
+    HomeScene: function () {},
+    LoginScene: function () {},
+    RegisterScene: function () {},
+    ForgotPasswordScene: function () {},
+    ProfileScene: function() {},
+    LogoutScene: function () {},
+    DeliveryAddressScene: function () {}
   }
 };
