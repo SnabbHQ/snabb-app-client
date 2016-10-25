@@ -37,13 +37,11 @@ class LeftNavigationPanel extends Component {
         theme={sidebarTheme}
         style={styles.sidebar}>
         <View style={{ marginTop: 10, height: 80 }}>
-          <View style={{flex: 2, flexDirection: 'row'}}>
-            <View style={{ width: 80, alignItems:'center', justifyContent:'center'}}>
-              <UserProfileImage/>
-            </View>
-            <View style={{ flex: 1 }}>
+          <View style={{flex: 2, flexDirection: 'row', marginTop: 25, marginLeft: 15}}>
+            <UserProfileImage/>
+            <View style={{ flex: 1, marginRight: 5, marginLeft: 10}}>
               <Text
-                style={{ fontSize: 16, fontWeight: 'bold', marginTop: 15, marginRight: 5, marginBottom: 5, color: '#09091A' }}>Javier
+                style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 5, color: '#09091A' }}>Javier
                 Tarazaga Gomez
               </Text>
               <Text style={{ marginRight: 10, color: '#969696' }}>View Profile</Text>
