@@ -52,6 +52,9 @@ export default keyMirror({
 
   FORGOT_PASSWORD: null,
   LOGIN: null,
-  REGISTER: null
+  REGISTER: null,
+
+  SET_PICKUP_LOCATION: null,
+  SET_DELIVERY_LOCATION: null
 
 })

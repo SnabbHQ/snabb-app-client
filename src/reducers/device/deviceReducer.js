@@ -19,7 +19,7 @@ const {
   SET_VERSION
 } = require('../../lib/constants').default
 
-const initialState = new InitialState()
+const initialState = new InitialState();
 
 /**
  * ## deviceReducer function
@@ -36,7 +36,7 @@ export default function deviceReducer (state = initialState, action) {
      *
      */
     case SET_PLATFORM:
-      const platform = action.payload
+      const platform = action.payload;
       return state.set('platform', platform)
 
     /**
@@ -44,7 +44,7 @@ export default function deviceReducer (state = initialState, action) {
      *
      */
     case SET_VERSION:
-      const version = action.payload
+      const version = action.payload;
       return state.set('version', version)
   }
 

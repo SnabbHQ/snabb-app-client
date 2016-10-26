@@ -1,5 +1,5 @@
 /**
- * # deviceInitialState.js
+ * # locationInitialState.js
  *
  * This class is a Immutable object
  * Working *successfully* with Redux, requires
@@ -8,10 +8,8 @@
  * By using Immutable, it's enforced.  Just saying....
  *
  */
-'use strict'
-/**
- * ## Import immutable record
- */
+'use strict';
+
 import {Record} from 'immutable'
 
 /**
@@ -20,9 +18,8 @@ import {Record} from 'immutable'
  * The fields we're concerned with
  */
 var InitialState = Record({
-  isMobile: false,
-  platform: '',
-  version: null
+  pickup_location: {},
+  delivery_location: {}
 });
 
 export default InitialState
