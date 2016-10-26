@@ -40,6 +40,12 @@ function mapDispatchToProps(dispatch) {
 
 class HomeMapView extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {}
+  }
+
   componentDidMount() {
     this.centerOnUser();
   }

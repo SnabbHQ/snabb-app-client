@@ -27,23 +27,10 @@ export function getCurrentPosition() {
   }
 }
 
-export function currentPosition(position) {
-  return {
-    type: CURRENT_POSITION,
-    payload: position
-  }
-}
-
 /**
  * ## Set the pickup location
  */
 export function setPickupLocation(location) {
-  return dispatch => {
-    dispatch(setPickupLocationRequest(location))
-  }
-}
-
-export function setPickupLocationRequest(location) {
   return {
     type: SET_PICKUP_LOCATION,
     payload: location
@@ -53,11 +40,16 @@ export function setPickupLocationRequest(location) {
 /**
  * ## set the delivery location
  */
-export function setDeliveryLocation (location) {
-  return dispatch => {
-    dispatch({
-      type: SET_DELIVERY_LOCATION,
-      payload: location
-    })
+export function setDeliveryLocation(location) {
+  return {
+    type: SET_DELIVERY_LOCATION,
+    payload: location
+  }
+}
+
+export function currentPosition(position) {
+  return {
+    type: CURRENT_POSITION,
+    payload: position
   }
 }
