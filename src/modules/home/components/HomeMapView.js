@@ -19,7 +19,7 @@ import LocationSearchbox from "./../components/LocationSearchbox";
 function mapStateToProps(state) {
   return {
     global: {
-      pickupLocation: state.global.pickupLocation
+      pickupLocation: state.location.pickupLocation
     }
   }
 }

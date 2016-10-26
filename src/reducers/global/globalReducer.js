@@ -23,11 +23,6 @@ const {
   GET_STATE,
   SET_STATE,
   SET_STORE,
-
-  CURRENT_POSITION,
-  SET_PICKUP_LOCATION,
-  SET_DELIVERY_LOCATION
-
 } = require('../../lib/constants').default;
 
 import InitialState from './globalInitialState'
@@ -68,10 +63,6 @@ export default function globalReducer (state = initialState, action) {
      */
     case LOGOUT_SUCCESS:
       return state.set('currentUser', null);
-    
-    case CURRENT_POSITION:
-    case SET_PICKUP_LOCATION:
-      return state.set('pickupLocation', action.payload)
 
     /**
      * ### sets the payload into the store

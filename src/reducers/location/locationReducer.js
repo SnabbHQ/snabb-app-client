@@ -3,6 +3,7 @@
 import InitialState from './locationInitialState';
 
 const {
+  CURRENT_POSITION,
   SET_PICKUP_LOCATION,
   SET_DELIVERY_LOCATION
 } = require('../../lib/constants').default;
@@ -18,18 +19,10 @@ export default function locationReducer (state = initialState, action) {
   if (!(state instanceof InitialState)) return initialState.merge(state)
 
   switch (action.type) {
-    /**
-     * Set the pickup location in the state
-     */
+
+    case CURRENT_POSITION:
     case SET_PICKUP_LOCATION:
       return state.set('pickupLocation', action.payload)
-
-    /**
-     * Set the delivery location in the state
-     */
-    case SET_DELIVERY_LOCATION:
-      let deliveryLocation = action.payload;
-      return state.set('deliveryLocation', action.payload)
   }
 
   return state
