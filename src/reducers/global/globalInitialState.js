@@ -13,9 +13,7 @@
  * ## Import
  */
 import {Record} from 'immutable'
-
-const LATITUDE = 39.4699; // Valencia as default
-const LONGITUDE = 0.3763;
+import * as Defaults from '../location/locationConstants'
 
 /**
  * ## InitialState
@@ -32,8 +30,10 @@ const LONGITUDE = 0.3763;
  */
 var InitialState = Record({
   pickupLocation: {
-    latitude: LATITUDE,
-    longitude: LONGITUDE
+    latitude: Defaults.LATITUDE,
+    longitude: Defaults.LONGITUDE,
+    latitudeDelta: Defaults.LATITUDE_DELTA,
+    longitudeDelta: Defaults.LONGITUDE_DELTA
   },
   currentUser: null,
   showState: false,

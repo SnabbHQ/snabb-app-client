@@ -1,5 +1,7 @@
 'use strict';
 
+import * as Defaults from './locationConstants'
+
 /**
  * The actions supported
  */
@@ -8,6 +10,7 @@ const {
   SET_PICKUP_LOCATION,
   SET_DELIVERY_LOCATION
 } = require('../../lib/constants').default;
+
 
 /**
  * Gets the user's current position
@@ -18,7 +21,9 @@ export function getCurrentPosition() {
       (position) => {
         dispatch(currentPosition({
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+          longitude: position.coords.longitude,
+          latitudeDelta: Defaults.LATITUDE_DELTA,
+          longitudeDelta: Defaults.LONGITUDE_DELTA
         }))
       },
       (error) => console.log(error.message),

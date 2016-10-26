@@ -5,21 +5,13 @@ import {connect} from "react-redux";
 import * as locationActions from "../../../reducers/location/locationActions";
 import * as globalActions from "../../../reducers/global/globalActions";
 import React from "react";
-import {StyleSheet, View, Text, Dimensions, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
+import {StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
 import {Actions} from "react-native-router-flux";
 import {Button, Grid, Row} from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
 import MapView from "react-native-maps";
 import LocationPin from "./LocationPin";
 import LocationSearchbox from "./../components/LocationSearchbox";
-
-
-const {width, height} = Dimensions.get('window');
-
-const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.01;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-const LATITUDE_OFFSET = -0.0015;
 
 /**
  * ## Redux boilerplate
@@ -72,12 +64,7 @@ class HomeMapView extends React.Component {
           ref={ref => { this.map = ref; }}
           style={styles.map}
           showsUserLocation={true}
-          region={{
-            latitude: this.props.global.pickupLocation.latitude,
-            longitude: this.props.global.pickupLocation.longitude,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA
-          }}
+          region={this.props.global.pickupLocation}
           onRegionChangeComplete={region => this.onRegionChange(region)}/>
 
         <LocationPin

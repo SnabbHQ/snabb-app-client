@@ -11,6 +11,7 @@
 'use strict';
 
 import {Record} from 'immutable'
+import * as Defaults from './locationConstants'
 
 /**
  * ## InitialState
@@ -18,7 +19,12 @@ import {Record} from 'immutable'
  * The fields we're concerned with
  */
 var InitialState = Record({
-  pickupLocation: {},
+  pickupLocation: {
+    latitude: Defaults.LATITUDE,
+    longitude: Defaults.LONGITUDE,
+    latitudeDelta: Defaults.LATITUDE_DELTA,
+    longitudeDelta: Defaults.LONGITUDE_DELTA
+  },
   deliveryLocation: {}
 });
 
