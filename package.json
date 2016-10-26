@@ -33,7 +33,6 @@
     "docs": "./node_modules/docker/docker -w -i src/ -o ../snabb-pages "
   },
   "dependencies": {
-    "apsl-react-native-button": "3.0.0",
     "immutable": "3.8.1",
     "key-mirror": "1.0.1",
     "native-base": "^0.5.11",

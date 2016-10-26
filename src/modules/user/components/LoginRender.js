@@ -10,57 +10,21 @@
  *
  * Redux
  */
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-
-/**
- * The actions we need
- */
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import * as authActions from '../reducers/auth/authActions'
 import * as globalActions from '../../../reducers/global/globalActions'
 
-/**
- * Router actions
- */
-import { Actions } from 'react-native-router-flux'
-
-/**
- * The Header will display a Image and support Hot Loading
- */
+import {Actions} from 'react-native-router-flux'
 import Header from '../../../components/Header'
-/**
- * The ErrorAlert displays an alert for both ios & android
- */
 import ErrorAlert from '../../../components/ErrorAlert'
-/**
- * The FormButton will change it's text between the 4 states as necessary
- */
 import FormButton from '../../../components/FormButton'
-/**
- *  The LoginForm does the heavy lifting of displaying the fields for
- * textinput and displays the error messages
- */
 import LoginForm from './LoginForm'
-/**
- * The itemCheckbox will toggle the display of the password fields
- */
 import ItemCheckbox from '../../../components/ItemCheckbox'
-
-/**
- * The necessary React components
- */
 import React, {Component} from 'react'
-import
-{
-  StyleSheet,
-  ScrollView,
-  Text,
-  TouchableHighlight,
-  View
-}
-from 'react-native'
+import {StyleSheet, ScrollView, Text, TouchableHighlight, View} from 'react-native'
 
-import Dimensions from 'Dimensions'
+import Dimensions from 'Dimensions';
 var {height, width} = Dimensions.get('window') // Screen dimensions in current orientation
 
 /**
@@ -98,9 +62,9 @@ var styles = StyleSheet.create({
  * ## Redux boilerplate
  */
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ ...authActions, ...globalActions }, dispatch)
+    actions: bindActionCreators({...authActions, ...globalActions}, dispatch)
   }
 }
 /**
@@ -111,7 +75,7 @@ import Translations from '../../../lib/Translations'
 I18n.translations = Translations
 
 class LoginRender extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.errorAlert = new ErrorAlert()
     this.state = {
@@ -128,7 +92,7 @@ class LoginRender extends Component {
    * ### componentWillReceiveProps
    * As the properties are validated they will be set here.
    */
-  componentWillReceiveProps (nextprops) {
+  componentWillReceiveProps(nextprops) {
     this.setState({
       value: {
         username: nextprops.auth.form.fields.username,
@@ -148,7 +112,7 @@ class LoginRender extends Component {
    * meet the requirements.
    * *Note* that the fields are validated by the authReducer
    */
-  onChange (value) {
+  onChange(value) {
     if (value.username !== '') {
       this.props.actions.onAuthFormFieldChange('username', value.username)
     }
@@ -165,18 +129,19 @@ class LoginRender extends Component {
       {value}
     )
   }
+
   /**
-  *  Get the appropriate message for the current action
-  *  @param messageType FORGOT_PASSWORD, or LOGIN, or REGISTER
-  *  @param actions the action for the message type
-  */
-  getMessage (messageType, actions) {
+   *  Get the appropriate message for the current action
+   *  @param messageType FORGOT_PASSWORD, or LOGIN, or REGISTER
+   *  @param actions the action for the message type
+   */
+  getMessage(messageType, actions) {
     let forgotPassword =
       <TouchableHighlight
         onPress={() => {
           actions.forgotPasswordState()
           Actions.ForgotPassword()
-        }} >
+        }}>
         <Text>{I18n.t('LoginRender.forgot_password')}</Text>
       </TouchableHighlight>
 
@@ -185,7 +150,7 @@ class LoginRender extends Component {
         onPress={() => {
           actions.loginState()
           Actions.Login()
-        }} >
+        }}>
         <Text>{I18n.t('LoginRender.already_have_account')}</Text>
       </TouchableHighlight>
 
@@ -194,7 +159,7 @@ class LoginRender extends Component {
         onPress={() => {
           actions.registerState()
           Actions.Register()
-        }} >
+        }}>
         <Text>{I18n.t('LoginRender.register')}</Text>
       </TouchableHighlight>
 
@@ -212,7 +177,7 @@ class LoginRender extends Component {
    * ### render
    * Setup some default presentations and render
    */
-  render () {
+  render() {
     var formType = this.props.formType
     var loginButtonText = this.props.loginButtonText
     var onButtonPress = this.props.onButtonPress
@@ -243,7 +208,7 @@ class LoginRender extends Component {
           onUncheck={() => {
             this.props.actions.onAuthFormFieldChange('showPassword', false)
           }}
-      />
+        />
     }
 
     /**
@@ -259,24 +224,24 @@ class LoginRender extends Component {
         <ScrollView horizontal={false} width={width} height={height}>
           <View>
             <Header isFetching={this.props.auth.form.isFetching}
-              showState={this.props.global.showState}
-              currentState={this.props.global.currentState}
-              onGetState={this.props.actions.getState}
-              onSetState={this.props.actions.setState} />
+                    showState={this.props.global.showState}
+                    currentState={this.props.global.currentState}
+                    onGetState={this.props.actions.getState}
+                    onSetState={this.props.actions.setState}/>
 
             <View style={styles.inputs}>
               <LoginForm
                 formType={formType}
                 form={this.props.auth.form}
                 value={this.state.value}
-                onChange={self.onChange.bind(self)} />
-           {passwordCheckbox}
+                onChange={self.onChange.bind(self)}/>
+              {passwordCheckbox}
             </View>
 
             <FormButton
               isDisabled={!this.props.auth.form.isValid || this.props.auth.form.isFetching}
               onPress={onButtonPress}
-              buttonText={loginButtonText} />
+              buttonText={loginButtonText}/>
 
             <View >
               <View style={styles.forgotContainer}>

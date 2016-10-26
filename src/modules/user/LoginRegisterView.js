@@ -2,6 +2,7 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Button} from 'native-base';
 import * as authActions from "./reducers/auth/authActions";
 import * as globalActions from "../../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
@@ -10,9 +11,6 @@ import {Dimensions, StyleSheet, Image, View, Text} from "react-native";
 import Swiper from "react-native-swiper";
 import FitImage from "../../components/FitImage";
 import I18n from "../../lib/I18n";
-
-
-const Button = require('apsl-react-native-button')
 
 /**
  *  Instead of including all app states via ...state
