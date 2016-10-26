@@ -18,9 +18,7 @@ import LocationSearchbox from "./../components/LocationSearchbox";
  */
 function mapStateToProps(state) {
   return {
-    global: {
-      pickupLocation: state.location.pickupLocation
-    }
+    location: state.location
   }
 }
 
@@ -31,12 +29,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 class HomeMapView extends React.Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {}
-  }
 
   componentDidMount() {
     this.centerOnUser();
@@ -64,7 +56,7 @@ class HomeMapView extends React.Component {
           ref={ref => { this.map = ref; }}
           style={styles.map}
           showsUserLocation={true}
-          region={this.props.global.pickupLocation}
+          region={this.props.location.pickupLocation}
           onRegionChangeComplete={region => this.onRegionChange(region)}/>
 
         <LocationPin
@@ -84,7 +76,7 @@ class HomeMapView extends React.Component {
             <Grid>
               <Row>
                 <LocationSearchbox
-                  latlng={{lat: this.props.global.pickupLocation.latitude, lng: this.props.global.pickupLocation.longitude}}
+                  latlng={{lat: this.props.location.pickupLocation.latitude, lng: this.props.location.pickupLocation.longitude}}
                   margin={10}
                   showLabel={true}
                   labelText={"MY LOCATION"}
