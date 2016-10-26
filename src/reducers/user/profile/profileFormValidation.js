@@ -6,7 +6,7 @@
  * if all the fields on the form are without error,
  * the form is considered valid
  */
-'use strict'
+'use strict';
 
 /**
  * ## formValidation

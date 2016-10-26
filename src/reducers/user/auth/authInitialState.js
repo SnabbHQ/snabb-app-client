@@ -13,7 +13,7 @@
 const {Record} = require('immutable');
 const {
   REGISTER
-} = require('../../../../lib/constants').default;
+} = require('../../../lib/constants').default;
 
 /**
  * ## Form

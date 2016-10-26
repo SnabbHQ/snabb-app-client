@@ -6,7 +6,7 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as authActions from "../user/reducers/auth/authActions";
+import * as authActions from "../../reducers/user/auth/authActions";
 import * as globalActions from "../../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import {Drawer} from "native-base";

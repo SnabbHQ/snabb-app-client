@@ -6,7 +6,7 @@
 const {
   SET_PICKUP_LOCATION,
   SET_DELIVERY_LOCATION
-} = require('../../../../lib/constants').default;
+} = require('../../lib/constants').default;
 
 /**
  * ## Set the pickup location

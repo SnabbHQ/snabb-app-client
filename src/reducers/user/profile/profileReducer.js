@@ -11,7 +11,7 @@
  * fieldValidation for validating the fields
  * formValidation for setting the form's valid flag
  */
-const fieldValidation = require('../../../../lib/fieldValidation').default;
+const fieldValidation = require('../../../lib/fieldValidation').default;
 const formValidation = require('./profileFormValidation').default;
 
 /**
@@ -31,7 +31,7 @@ const {
   LOGOUT_SUCCESS,
 
   SET_STATE
-} = require('../../../../lib/constants').default;
+} = require('../../../lib/constants').default;
 
 /**
  * ## Initial State

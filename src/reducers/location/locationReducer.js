@@ -6,7 +6,7 @@ import InitialState from './locationInitialState';
 const {
   SET_PICKUP_LOCATION,
   SET_DELIVERY_LOCATION
-} = require('../../../../lib/constants').default;
+} = require('../../lib/constants').default;
 
 const initialState = new InitialState();
 

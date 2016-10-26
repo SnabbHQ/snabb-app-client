@@ -16,9 +16,9 @@
  * also mock the router (see src/__mocks__)
  *
  */
-jest.mock('../../../lib/AppAuthToken')
-jest.mock('../../../lib/BackendFactory')
-jest.mock('react-native-router-flux')
+jest.mock('../../../../lib/AppAuthToken');
+jest.mock('../../../../lib/BackendFactory');
+jest.mock('react-native-router-flux');
 /**
  * ## Store
  * The mockStore will validate the actions are performed
@@ -26,13 +26,13 @@ jest.mock('react-native-router-flux')
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
-const middlewares = [thunk] // add your middlewares like `redux-thunk`
-const mockStore = configureStore(middlewares)
+const middlewares = [thunk]; // add your middlewares like `redux-thunk`
+const mockStore = configureStore(middlewares);
 /**
  * ## Class under test
  *
  */
-const actions = require('../profileActions')
+const actions = require('../profileActions');
 
 /**
  * ## Actions to test
@@ -48,7 +48,7 @@ const {
 
   ON_PROFILE_FORM_FIELD_CHANGE
 
-} = require('../../../lib/constants').default
+} = require('../../../../lib/constants').default;
 
 /**
  * ## Tests

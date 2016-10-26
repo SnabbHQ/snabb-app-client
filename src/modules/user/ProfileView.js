@@ -11,7 +11,7 @@
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Content} from 'native-base';
-import * as profileActions from "./reducers/profile/profileActions";
+import * as profileActions from "../../reducers/user/profile/profileActions";
 import * as globalActions from "../../reducers/global/globalActions";
 import DefaultNavBar from "../../components/DefaultNavBar";
 import ErrorAlert from "../../components/ErrorAlert";

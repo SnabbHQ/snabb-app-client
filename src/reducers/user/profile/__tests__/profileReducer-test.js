@@ -24,7 +24,7 @@ const {
   PROFILE_UPDATE_REQUEST,
   PROFILE_UPDATE_SUCCESS,
   PROFILE_UPDATE_FAILURE
-} = require('../../../lib/constants').default
+} = require('../../../../lib/constants').default
 
 /**
  * ## Class under test

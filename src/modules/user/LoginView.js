@@ -2,7 +2,7 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as authActions from "./reducers/auth/authActions";
+import * as authActions from "../../reducers/user/auth/authActions";
 import LoginRender from "./components/LoginRender";
 import React, {Component} from "react";
 import {View} from "react-native";

@@ -19,14 +19,14 @@ const {
   PROFILE_UPDATE_FAILURE,
 
   ON_PROFILE_FORM_FIELD_CHANGE
-} = require('../../../../lib/constants').default;
+} = require('../../../lib/constants').default;
 
 /**
  * BackendFactory - base class for server implementation
  * AppAuthToken for localStorage sessionToken access
  */
-const BackendFactory = require('../../../../lib/BackendFactory').default;
-const AppAuthToken = require('../../../../lib/AppAuthToken').default;
+const BackendFactory = require('../../../lib/BackendFactory').default;
+const AppAuthToken = require('../../../lib/AppAuthToken').default;
 
 /**
  * ## retreiving profile actions

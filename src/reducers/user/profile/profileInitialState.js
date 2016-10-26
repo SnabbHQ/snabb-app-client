@@ -8,9 +8,9 @@
  * By using Immutable, it's enforced.  Just saying....
  *
  */
-'use strict'
+'use strict';
 
-const {Record} = require('immutable')
+const {Record} = require('immutable');
 
 /**
  * ## Form

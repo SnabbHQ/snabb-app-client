@@ -11,7 +11,7 @@
  * formValidation for setting the form's valid flag
  */
 const InitialState = require('./authInitialState').default
-const fieldValidation = require('../../../../lib/fieldValidation').default
+const fieldValidation = require('../../../lib/fieldValidation').default
 const formValidation = require('./authFormValidation').default
 
 /**
@@ -48,7 +48,7 @@ const {
   RESET_PASSWORD_FAILURE,
 
   SET_STATE
-} = require('../../../../lib/constants').default;
+} = require('../../../lib/constants').default;
 
 const initialState = new InitialState();
 /**

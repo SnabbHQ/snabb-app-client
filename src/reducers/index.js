@@ -4,16 +4,13 @@
  * This class combines all the reducers into one
  *
  */
-'use strict'
-/**
- * ## Imports
- *
- * our 4 reducers
- */
-import auth from '../modules/user/reducers/auth/authReducer'
+'use strict';
+
+import auth from './user/auth/authReducer'
 import device from './device/deviceReducer'
+import location from './location/locationReducer'
 import global from './global/globalReducer'
-import profile from '../modules/user/reducers/profile/profileReducer'
+import profile from './user/profile/profileReducer'
 
 import { combineReducers } from 'redux'
 
@@ -26,6 +23,7 @@ import { combineReducers } from 'redux'
 const rootReducer = combineReducers({
   auth,
   device,
+  location,
   global,
   profile
 });
