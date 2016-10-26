@@ -1,11 +1,11 @@
-import React, {Component} from "react";
+import React from "react";
 import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native";
 import {Content, Text, List, ListItem, Icon, View} from "native-base";
 import {Actions} from "react-native-router-flux";
 import UserProfileImage from "../../user/components/UserProfileImage";
 import I18n from "../../../lib/I18n";
 
-class LeftNavigationPanel extends Component {
+class SidePanel extends React.Component {
 
   render() {
     return (
@@ -15,19 +15,19 @@ class LeftNavigationPanel extends Component {
         <TouchableOpacity onPress={() => Actions.ProfileScene()}
                           style={styles.sidebarHeader}>
           <UserProfileImage/>
-          <View style={{ flex: 1, marginRight: 5, marginLeft: 10}}>
+          <View style={{flex: 1, marginRight: 5, marginLeft: 10}}>
             <Text
-              style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 5, color: '#09091A' }}>Javier
+              style={{fontSize: 16, fontWeight: 'bold', marginBottom: 5, color: '#09091A'}}>Javier
               Tarazaga Gomez
             </Text>
-            <Text style={{ marginRight: 10, color: '#969696' }}>View Profile</Text>
+            <Text style={{marginRight: 10, color: '#969696'}}>View Profile</Text>
           </View>
         </TouchableOpacity>
 
         <List>
           <ListItem button iconLeft onPress={() => Actions.HomeScene() }>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { paddingLeft: 14 }]}>
+              <View style={[styles.iconContainer, {paddingLeft: 14}]}>
                 <Icon name="ios-phone-portrait-outline" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>{I18n.t("Navigation.home")}</Text>
@@ -43,7 +43,7 @@ class LeftNavigationPanel extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => Actions.HistoryScene() }>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
+              <View style={[styles.iconContainer, {paddingLeft: 10}]}>
                 <Icon name="md-radio-button-off" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>{I18n.t("Navigation.history")}</Text>
@@ -59,7 +59,7 @@ class LeftNavigationPanel extends Component {
           </ListItem>
           <ListItem button iconLeft onPress={() => Actions.HelpScene()}>
             <View style={styles.listItemContainer}>
-              <View style={[styles.iconContainer, { paddingLeft: 10 }]}>
+              <View style={[styles.iconContainer, {paddingLeft: 10}]}>
                 <Icon name="ios-swap" style={styles.sidebarIcon}/>
               </View>
               <Text style={styles.text}>{I18n.t("Navigation.help")}</Text>
@@ -142,4 +142,4 @@ const styles = StyleSheet.create({
 });
 
 
-module.exports = LeftNavigationPanel;
+module.exports = SidePanel;
