@@ -16,9 +16,9 @@ class UserProfileImage extends React.Component {
 
 const styles = StyleSheet.create({
   profileImage: {
-    backgroundColor: '#000000',
+    backgroundColor: '#AAA',
     borderColor: '#FFFFFF',
-    borderWidth: 2,
+    borderWidth: 3,
     height: 40,
     borderRadius: 20,
     width: 40
