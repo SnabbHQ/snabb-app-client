@@ -64,11 +64,10 @@ let App = React.createClass({
         //   Actions.
         // });
 
-        Actions.LoginRegisterScene();
-        // Actions.Home({
-        //   title: 'Subview'
-        //   // you can add additional props to be passed to Subview here...
-        // })
+        // TODO - Lets work on the Home page meanwhile we prepare the backend for Auth
+        Actions.HomeScene();
+
+        //Actions.LoginRegisterScene();
       },
       200
     )

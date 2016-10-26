@@ -46,10 +46,7 @@ function mapDispatchToProps(dispatch) {
 class LoginRegisterView extends Component {
 
   static handleLoginPress() {
-    // TODO - Lets work on the Home page meanwhile we prepare the backend for Auth
-    Actions.HomeScene();
-
-    //Actions.LoginView();
+    Actions.LoginScene();
   }
 
   static handleRegisterPress() {
