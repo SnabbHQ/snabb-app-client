@@ -1,5 +1,9 @@
 'use strict';
 
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as locationActions from "../../../reducers/location/locationActions";
+import * as globalActions from "../../../reducers/global/globalActions";
 import React from "react";
 import {StyleSheet, View, Text, Dimensions, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
 import {Actions} from "react-native-router-flux";
@@ -8,66 +12,44 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import MapView from "react-native-maps";
 import LocationPin from "./LocationPin";
 import LocationSearchbox from "./../components/LocationSearchbox";
-// import Icon from "react-native-vector-icons/MaterialIcons";
+
 
 const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 39.4699; // Valencia as default
-const LONGITUDE = 0.3763;
 const LATITUDE_DELTA = 0.01;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const LATITUDE_OFFSET = -0.0015;
 
-class DisplayLatLng extends React.Component {
-
-  state = {
-    region: {
-      latitude: LATITUDE,
-      longitude: LONGITUDE,
-      latitudeDelta: LATITUDE_DELTA,
-      longitudeDelta: LONGITUDE_DELTA
+/**
+ * ## Redux boilerplate
+ */
+function mapStateToProps(state) {
+  return {
+    global: {
+      pickupLocation: state.global.pickupLocation
     }
-  };
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({...locationActions, ...globalActions}, dispatch)
+  }
+}
+
+class HomeMapView extends React.Component {
 
   componentDidMount() {
     this.centerOnUser();
-
-    this.watchID = navigator.geolocation.watchPosition((position) => {
-      const newRegion = {
-        latitude: position.coords.latitude + LATITUDE_OFFSET, //Little margin here to adjust the user pos marker a bit higher
-        longitude: position.coords.longitude,
-        latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA
-      };
-
-      this.onRegionChange(newRegion);
-    });
-  }
-
-  componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID);
-  }
-
-  onRegionChange(region) {
-    this.setState({region});
   }
 
   centerOnUser() {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.map.animateToRegion({
-          region: {
-            latitude: position.coords.latitude + LATITUDE_OFFSET,
-            longitude: position.coords.longitude,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA
-          }
-        });
-      },
-      (error) => alert(error.message),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    );
+    this.props.actions.getCurrentPosition()
+  }
+
+  onRegionChange(region) {
+    this.props.actions.setPickupLocation(region)
   }
 
   handlePickupLocationPress() {
@@ -84,14 +66,19 @@ class DisplayLatLng extends React.Component {
           ref={ref => { this.map = ref; }}
           style={styles.map}
           showsUserLocation={true}
-          region={this.state.region}
+          region={{
+            latitude: this.props.global.pickupLocation.latitude,
+            longitude: this.props.global.pickupLocation.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA
+          }}
           onRegionChangeComplete={region => this.onRegionChange(region)}/>
 
         <LocationPin
           text={"SET LOCATION"}
           pinColor={"#000"}
           textColor={"#FFF"}
-          top={-100}/>
+          top={0}/>
 
         <View style={styles.content} pointerEvents={'box-none'}>
           <View>
@@ -104,7 +91,7 @@ class DisplayLatLng extends React.Component {
             <Grid>
               <Row>
                 <LocationSearchbox
-                  latlng={{lat: this.state.region.latitude, lng: this.state.region.longitude}}
+                  latlng={{lat: this.props.global.pickupLocation.latitude, lng: this.props.global.pickupLocation.longitude}}
                   margin={10}
                   showLabel={true}
                   labelText={"MY LOCATION"}
@@ -178,4 +165,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = DisplayLatLng;
+export default connect(mapStateToProps, mapDispatchToProps)(HomeMapView)

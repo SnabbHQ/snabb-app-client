@@ -51,7 +51,6 @@ class LoginView extends Component {
   };
 
   render() {
-
     let loginButtonText = I18n.t('Login.login');
     let onButtonPress = buttonPressHandler.bind(null,
       this.props.actions.login,

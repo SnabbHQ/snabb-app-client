@@ -1,16 +1,24 @@
 'use strict';
 
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as locationActions from "../../reducers/location/locationActions";
+import * as globalActions from "../../reducers/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
 import {StyleSheet, Text} from "react-native";
 import {View, Content} from "native-base";
-import DefaultNavBar from '../../components/DefaultNavBar'
-import I18n from "../../lib/I18n";
-
-import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import DefaultNavBar from "../../components/DefaultNavBar";
+import {GooglePlacesAutocomplete} from "react-native-google-places-autocomplete";
 
 const homePlace = {description: 'Home', geometry: {location: {lat: 48.8152937, lng: 2.4597668}}};
 const workPlace = {description: 'Work', geometry: {location: {lat: 48.8496818, lng: 2.2940881}}};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({...locationActions, ...globalActions}, dispatch)
+  }
+}
 
 class SetLocationView extends Component {
 
@@ -18,6 +26,15 @@ class SetLocationView extends Component {
     // 'details' is provided when fetchDetails = true
     console.log(data);
     console.log(details);
+
+    var location = {
+      latitude: details.geometry.location.lat,
+      longitude: details.geometry.location.lng
+    }
+
+    this.props.actions.setPickupLocation(location)
+
+    Actions.pop()
   }
 
   render() {
@@ -77,5 +94,6 @@ var styles = StyleSheet.create({
   }
 });
 
-export default SetLocationView;
+export default connect(null, mapDispatchToProps)(SetLocationView)
+
 

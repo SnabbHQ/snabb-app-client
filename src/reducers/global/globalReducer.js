@@ -22,7 +22,11 @@ const {
 
   GET_STATE,
   SET_STATE,
-  SET_STORE
+  SET_STORE,
+
+  CURRENT_POSITION,
+  SET_PICKUP_LOCATION,
+  SET_DELIVERY_LOCATION
 
 } = require('../../lib/constants').default;
 
@@ -61,13 +65,13 @@ export default function globalReducer (state = initialState, action) {
 
     /**
      * ### Clear currentUser
-     *
-     *
-     *
-     *
      */
     case LOGOUT_SUCCESS:
       return state.set('currentUser', null);
+    
+    case CURRENT_POSITION:
+    case SET_PICKUP_LOCATION:
+      return state.set('pickupLocation', action.payload)
 
     /**
      * ### sets the payload into the store
@@ -96,6 +100,7 @@ export default function globalReducer (state = initialState, action) {
         newState['auth'] = _state.auth.toJS();
         newState['device'] = _state.device.toJS();
         newState['profile'] = _state.profile.toJS();
+        newState['location'] = _state.location.toJS();
 
       // Make sure global doesn't have the previous currentState
         // let _noCurrentState =  _state.global.set('currentState',null);
@@ -103,8 +108,7 @@ export default function globalReducer (state = initialState, action) {
 
         newState['global'] = _state.global.set('currentState', null).set('store', null).toJS();
 
-        return state.set('showState', action.payload)
-        .set('currentState', newState)
+        return state.set('showState', action.payload).set('currentState', newState)
       } else {
         return state.set('showState', action.payload)
       }
@@ -120,6 +124,7 @@ export default function globalReducer (state = initialState, action) {
       return state.set('currentUser', global.currentUser)
         .set('showState', false)
         .set('currentState', null)
+        .set('pickupLocation', global.pickupLocation)
 
   }
 

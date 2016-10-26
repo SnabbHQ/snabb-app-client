@@ -18,8 +18,8 @@ import {Record} from 'immutable'
  * The fields we're concerned with
  */
 var InitialState = Record({
-  pickup_location: {},
-  delivery_location: {}
+  pickupLocation: {},
+  deliveryLocation: {}
 });
 
 export default InitialState

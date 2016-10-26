@@ -54,6 +54,7 @@ export default keyMirror({
   LOGIN: null,
   REGISTER: null,
 
+  CURRENT_POSITION: null,
   SET_PICKUP_LOCATION: null,
   SET_DELIVERY_LOCATION: null
 

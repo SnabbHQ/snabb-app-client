@@ -2,7 +2,6 @@
 
 import InitialState from './locationInitialState';
 
-
 const {
   SET_PICKUP_LOCATION,
   SET_DELIVERY_LOCATION
@@ -23,15 +22,14 @@ export default function locationReducer (state = initialState, action) {
      * Set the pickup location in the state
      */
     case SET_PICKUP_LOCATION:
-      const platform = action.payload;
-      return state.set('pickup_location', platform)
+      return state.set('pickupLocation', action.payload)
 
     /**
      * Set the delivery location in the state
      */
     case SET_DELIVERY_LOCATION:
-      const version = action.payload;
-      return state.set('delivery_location', version)
+      let deliveryLocation = action.payload;
+      return state.set('deliveryLocation', action.payload)
   }
 
   return state
