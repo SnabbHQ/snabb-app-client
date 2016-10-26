@@ -86,12 +86,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 80,
     padding: 10
   },
   summary: {
     fontFamily: 'BodoniSvtyTwoITCTT-Book',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold'
   }
 });
