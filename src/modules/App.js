@@ -75,8 +75,8 @@ let App = React.createClass({
 
   render() {
     return (
-      <View>
-        <Text style={styles.summary}>{I18n.t('App.loading')}</Text>
+      <View style={styles.container}>
+        <Text style={styles.summary}>{I18n.t('General.loading')}</Text>
       </View>
     )
   }
@@ -84,8 +84,8 @@ let App = React.createClass({
 
 const styles = StyleSheet.create({
   container: {
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
+    flex: 1,
+    alignItems: 'center',
     marginTop: 80,
     padding: 10
   },
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
 
 // Since we're using ES6 classes, have to define the TimerMixin
 reactMixin(App.prototype, TimerMixin);
+
 /**
  * Connect the properties
  */
