@@ -38,7 +38,12 @@ export function getCurrentPosition() {
 export function setPickupLocation(location) {
   return {
     type: SET_PICKUP_LOCATION,
-    payload: location
+    payload: {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      latitudeDelta: Defaults.LATITUDE_DELTA,
+      longitudeDelta: Defaults.LONGITUDE_DELTA
+    }
   }
 }
 
@@ -48,7 +53,12 @@ export function setPickupLocation(location) {
 export function setDeliveryLocation(location) {
   return {
     type: SET_DELIVERY_LOCATION,
-    payload: location
+    payload: {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      latitudeDelta: Defaults.LATITUDE_DELTA,
+      longitudeDelta: Defaults.LONGITUDE_DELTA
+    }
   }
 }
 
