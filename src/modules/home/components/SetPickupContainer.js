@@ -7,7 +7,7 @@ import React from "react";
 import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native";
 import {Text, View} from "native-base";
 import {Grid, Row} from "native-base";
-import LocationSearchbox from "./../components/LocationSearchbox";
+import LocationBox from "./LocationBox";
 import I18n from "../../../lib/I18n";
 
 /**
@@ -32,7 +32,7 @@ class SetPickupContainer extends React.Component {
       <View style={styles.locationPanel}>
         <Grid>
           <Row>
-            <LocationSearchbox
+            <LocationBox
               latlng={{lat: this.props.location.pickupLocation.latitude, lng: this.props.location.pickupLocation.longitude}}
               margin={10}
               showLabel={true}
@@ -40,7 +40,7 @@ class SetPickupContainer extends React.Component {
               defaultText={"Choose Your Location"}
               labelColor={"rgba(113,187,28,1)"}
               textColor={"rgba(0,0,0,1)"}
-              onPress={() => this.handlePickupLocationPress()}/>
+              onPress={this.props.locationBoxPress}/>
           </Row>
           <Row>
             <TouchableOpacity style={styles.setPickupLocation}>

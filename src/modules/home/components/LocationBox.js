@@ -4,7 +4,7 @@ import Geocoder from 'react-native-geocoder';
 
 Geocoder.fallbackToGoogle('AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw');
 
-class LocationSearchbox extends React.Component {
+class LocationBox extends React.Component {
 
   constructor(props) {
     super(props);
@@ -89,4 +89,4 @@ class LocationSearchbox extends React.Component {
     )
   }
 }
-export default LocationSearchbox
+export default LocationBox

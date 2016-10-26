@@ -42,7 +42,7 @@ class HomeMapView extends React.Component {
     this.props.actions.setPickupLocation(region)
   }
 
-  handlePickupLocationPress() {
+  handleLocationBoxPress() {
     Actions.SetLocationScene({
       title: 'Pickup location'
       // you can add additional props to be passed to view here...
@@ -71,7 +71,7 @@ class HomeMapView extends React.Component {
               <Icon name='location-arrow' style={styles.locationIcon}/>
             </Button>
           </View>
-          <SetPickupContainer/>
+          <SetPickupContainer locationBoxPress={() => this.handleLocationBoxPress()} />
         </View>
       </View>
     );
