@@ -25,25 +25,36 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class SetPickupContainer extends React.Component {
+class RequestPickupContainer extends React.Component {
 
   render() {
     return (
-      <View style={styles.locationPanel}>
+      <View style={styles.requestPickupContainer}>
         <Grid>
           <Row>
             <LocationBox
               latlng={{lat: this.props.location.pickupLocation.latitude, lng: this.props.location.pickupLocation.longitude}}
               margin={10}
               showLabel={true}
-              labelText={"MY LOCATION"}
+              labelText={"Pickup Location"}
               defaultText={"Choose Your Location"}
               labelColor={"rgba(113,187,28,1)"}
               textColor={"rgba(0,0,0,1)"}
-              onPress={this.props.onLocationBoxPress}/>
+              onPress={this.props.locationBoxPress}/>
           </Row>
           <Row>
-            <TouchableOpacity style={styles.setPickupLocation} onPress={this.props.onSetPickupPress}>
+            <LocationBox
+              latlng={{lat: this.props.location.pickupLocation.latitude, lng: this.props.location.pickupLocation.longitude}}
+              margin={10}
+              showLabel={true}
+              labelText={"Delivery Location"}
+              defaultText={"Choose Your Location"}
+              labelColor={"rgba(113,187,28,1)"}
+              textColor={"rgba(0,0,0,1)"}
+              onPress={this.props.locationBoxPress}/>
+          </Row>
+          <Row>
+            <TouchableOpacity style={styles.setPickupLocation}>
               <Text style={styles.setPickupLocationText}>Set Pickup</Text>
             </TouchableOpacity>
           </Row>
@@ -54,7 +65,7 @@ class SetPickupContainer extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  locationPanel: {
+  requestPickupContainer: {
     flexDirection: 'row',
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
@@ -62,7 +73,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     shadowOpacity: 0.2,
     shadowColor: '#000',
-    height: 130
+    height: 200
   },
   setPickupLocation: {
     backgroundColor: '#00D5D5',
@@ -81,4 +92,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SetPickupContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RequestPickupContainer)

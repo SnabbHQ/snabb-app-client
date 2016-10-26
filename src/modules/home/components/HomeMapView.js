@@ -12,6 +12,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import MapView from "react-native-maps";
 import LocationPin from "./LocationPin";
 import SetPickupContainer from "./SetPickupContainer"
+import RequestPickupContainer from "./RequestPickupContainer"
 
 /**
  * ## Redux boilerplate
@@ -28,6 +29,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+let showPickup = true;
+
 class HomeMapView extends React.Component {
 
   componentDidMount() {
@@ -39,7 +42,9 @@ class HomeMapView extends React.Component {
   }
 
   onRegionChange(region) {
-    this.props.actions.setPickupLocation(region)
+    if (showPickup) {
+      this.props.actions.setPickupLocation(region)
+    }
   }
 
   handleLocationBoxPress() {
@@ -47,6 +52,38 @@ class HomeMapView extends React.Component {
       title: 'Pickup location'
       // you can add additional props to be passed to view here...
     })
+  }
+
+  handleSetPickupPress() {
+    showPickup = false
+    this.forceUpdate()
+  }
+
+  handleBackToSetPickupPress() {
+    showPickup = true
+    this.forceUpdate()
+  }
+
+  renderBackButton() {
+    if (!showPickup) {
+      return (
+        <Button style={styles.backToSetPickup} onPress={() => this.handleBackToSetPickupPress()}>
+          <Icon name='arrow-left' style={styles.locationIcon}/>
+        </Button>
+      )
+    } else {
+      return null
+    }
+  }
+
+  showWhat() {
+    if (showPickup) {
+      return <SetPickupContainer
+        onLocationBoxPress={() => this.handleLocationBoxPress()}
+        onSetPickupPress={() => this.handleSetPickupPress()}/>
+    } else {
+      return <RequestPickupContainer locationBoxPress={() => this.handleLocationBoxPress()} />
+    }
   }
 
   render() {
@@ -60,18 +97,19 @@ class HomeMapView extends React.Component {
           onRegionChangeComplete={region => this.onRegionChange(region)}/>
 
         <LocationPin
-          text={"SET LOCATION"}
+          text={""}
           pinColor={"#000"}
           textColor={"#FFF"}
           top={0}/>
 
         <View style={styles.content} pointerEvents={'box-none'}>
-          <View>
+          <View style={{flexDirection: 'row'}}>
+            {this.renderBackButton()}
             <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
               <Icon name='location-arrow' style={styles.locationIcon}/>
             </Button>
           </View>
-          <SetPickupContainer locationBoxPress={() => this.handleLocationBoxPress()} />
+          {this.showWhat()}
         </View>
       </View>
     );
@@ -91,6 +129,13 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
     alignItems: 'flex-end'
+  },
+  backToSetPickup: {
+    marginRight: 30,
+    marginBottom: 15,
+    height: 36,
+    width: 36,
+    backgroundColor: '#F7F7F7'
   },
   centerOnUserButton: {
     marginRight: 15,
