@@ -23,6 +23,10 @@ export default function locationReducer (state = initialState, action) {
     case CURRENT_POSITION:
     case SET_PICKUP_LOCATION:
       return state.set('pickupLocation', action.payload)
+
+
+    case SET_DELIVERY_LOCATION:
+      return state.set('deliveryLocation', action.payload)
   }
 
   return state
