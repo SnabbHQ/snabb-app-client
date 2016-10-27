@@ -56,8 +56,8 @@ class RequestPickupContainer extends React.Component {
           <Row>
             <LocationBox
               latlng={{
-                lat: this.props.location.pickupLocation.latitude,
-                lng: this.props.location.pickupLocation.longitude
+                lat: this.props.location.deliveryLocation.latitude,
+                lng: this.props.location.deliveryLocation.longitude
               }}
               margin={10}
               showLabel={true}

@@ -14,6 +14,12 @@ import LocationPin from "./LocationPin";
 import SetPickupContainer from "./SetPickupContainer"
 import RequestPickupContainer from "./RequestPickupContainer"
 
+
+const {
+  PICKUP_LOCATION,
+  DELIVERY_LOCATION
+} = require('../../../lib/constants').default
+
 /**
  * ## Redux boilerplate
  */
@@ -47,17 +53,17 @@ class HomeMapView extends React.Component {
     }
   }
 
-  handleLocationBoxPress() {
+  handlePickupLocationBoxPress() {
     Actions.SetLocationScene({
-      title: 'Pickup location'
-      // you can add additional props to be passed to view here...
+      title: 'Pickup location',
+      viewType: PICKUP_LOCATION
     })
   }
 
   handleDeliveryLocationBoxPress() {
     Actions.SetLocationScene({
-      title: 'Delivery location'
-      // you can add additional props to be passed to view here...
+      title: 'Delivery location',
+      viewType: DELIVERY_LOCATION
     })
   }
 
@@ -86,11 +92,11 @@ class HomeMapView extends React.Component {
   showWhat() {
     if (showPickup) {
       return <SetPickupContainer
-        onLocationBoxPress={() => this.handleLocationBoxPress()}
+        onLocationBoxPress={() => this.handlePickupLocationBoxPress()}
         onSetPickupPress={() => this.handleSetPickupPress()}/>
     } else {
       return <RequestPickupContainer
-        pickupLocationBoxPress={() => this.handleLocationBoxPress()}
+        pickupLocationBoxPress={() => this.handlePickupLocationBoxPress()}
         deliveryLocationBoxPress={() => this.handleDeliveryLocationBoxPress()} />
     }
   }

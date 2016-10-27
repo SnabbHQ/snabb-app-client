@@ -18,7 +18,7 @@ class LocationBox extends React.Component {
           console.log(res[0]);
 
           this.setState({
-            address: res[0].streetName + ", " + res[0].streetNumber
+            address: res[0].feature
           });
         })
         .catch(err => console.log(err));

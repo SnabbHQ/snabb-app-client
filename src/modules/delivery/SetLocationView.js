@@ -15,6 +15,11 @@ import {GooglePlacesAutocomplete} from "react-native-google-places-autocomplete"
 const homePlace = {description: 'Home', geometry: {location: {lat: 48.8152937, lng: 2.4597668}}};
 const workPlace = {description: 'Work', geometry: {location: {lat: 48.8496818, lng: 2.2940881}}};
 
+const {
+  PICKUP_LOCATION,
+  DELIVERY_LOCATION
+} = require('../../lib/constants').default
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({...locationActions, ...globalActions}, dispatch)
@@ -32,7 +37,14 @@ class SetLocationView extends Component {
       longitude: details.geometry.location.lng
     }
 
-    this.props.actions.setPickupLocation(location)
+    switch (this.props.viewType) {
+      case PICKUP_LOCATION:
+        this.props.actions.setPickupLocation(location)
+        break
+      case DELIVERY_LOCATION:
+        this.props.actions.setDeliveryLocation(location)
+        break
+    }
 
     Actions.pop()
   }
