@@ -54,6 +54,13 @@ class HomeMapView extends React.Component {
     })
   }
 
+  handleDeliveryLocationBoxPress() {
+    Actions.SetLocationScene({
+      title: 'Delivery location'
+      // you can add additional props to be passed to view here...
+    })
+  }
+
   handleSetPickupPress() {
     showPickup = false
     this.forceUpdate()
@@ -82,7 +89,9 @@ class HomeMapView extends React.Component {
         onLocationBoxPress={() => this.handleLocationBoxPress()}
         onSetPickupPress={() => this.handleSetPickupPress()}/>
     } else {
-      return <RequestPickupContainer locationBoxPress={() => this.handleLocationBoxPress()} />
+      return <RequestPickupContainer
+        pickupLocationBoxPress={() => this.handleLocationBoxPress()}
+        deliveryLocationBoxPress={() => this.handleDeliveryLocationBoxPress()} />
     }
   }
 

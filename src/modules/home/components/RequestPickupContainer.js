@@ -6,7 +6,8 @@ import * as locationActions from "../../../reducers/location/locationActions";
 import React from "react";
 import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native";
 import {Text, View} from "native-base";
-import {Grid, Row} from "native-base";
+import {Grid, Row, Col} from "native-base";
+import Icon from "react-native-vector-icons/FontAwesome";
 import LocationBox from "./LocationBox";
 import I18n from "../../../lib/I18n";
 
@@ -31,27 +32,40 @@ class RequestPickupContainer extends React.Component {
     return (
       <View style={styles.requestPickupContainer}>
         <Grid>
+          <Col style={{alignItems: 'center', justifyContent: 'center'}}>
+            <Row>
+              <Icon name='motorcycle' style={{fontSize: 50, color: '#007AFF'}}/>
+              <Text>Motorbike</Text>
+              <Text>10 Kg</Text>
+            </Row>
+          </Col>
           <Row>
             <LocationBox
-              latlng={{lat: this.props.location.pickupLocation.latitude, lng: this.props.location.pickupLocation.longitude}}
+              latlng={{
+                lat: this.props.location.pickupLocation.latitude,
+                lng: this.props.location.pickupLocation.longitude
+              }}
               margin={10}
               showLabel={true}
               labelText={"Pickup Location"}
               defaultText={"Choose Your Location"}
               labelColor={"rgba(113,187,28,1)"}
               textColor={"rgba(0,0,0,1)"}
-              onPress={this.props.locationBoxPress}/>
+              onPress={this.props.pickupLocationBoxPress}/>
           </Row>
           <Row>
             <LocationBox
-              latlng={{lat: this.props.location.pickupLocation.latitude, lng: this.props.location.pickupLocation.longitude}}
+              latlng={{
+                lat: this.props.location.pickupLocation.latitude,
+                lng: this.props.location.pickupLocation.longitude
+              }}
               margin={10}
               showLabel={true}
               labelText={"Delivery Location"}
               defaultText={"Choose Your Location"}
               labelColor={"rgba(113,187,28,1)"}
               textColor={"rgba(0,0,0,1)"}
-              onPress={this.props.locationBoxPress}/>
+              onPress={this.props.deliveryLocationBoxPress}/>
           </Row>
           <Row>
             <TouchableOpacity style={styles.setPickupLocation}>
@@ -73,7 +87,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     shadowOpacity: 0.2,
     shadowColor: '#000',
-    height: 200
+    height: 300
   },
   setPickupLocation: {
     backgroundColor: '#00D5D5',
