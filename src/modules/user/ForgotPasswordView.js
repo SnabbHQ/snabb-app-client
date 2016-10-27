@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import * as authActions from "../../reducers/user/auth/authActions";
 import LoginRender from "./components/LoginRender";
 import React from "react";
-import Translations from "../../lib/Translations";
+import I18n from '../../lib/I18n'
 
 const {
   REGISTER,
@@ -34,12 +34,6 @@ function mapDispatchToProps (dispatch) {
 function buttonPressHandler (resetPassword, email) {
   resetPassword(email)
 }
-
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n');
-I18n.translations = Translations;
 
 let ForgotPassword = React.createClass({
 

@@ -9,7 +9,8 @@ import {Actions} from "react-native-router-flux";
 import React from "react";
 import {StyleSheet, View, Text} from "react-native";
 import TimerMixin from "react-timer-mixin";
-import Translations from "../lib/Translations";
+import ReactMixin from 'react-mixin'
+import I18n from '../lib/I18n'
 
 /**
  *  Save that state
@@ -37,17 +38,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({...authActions, ...deviceActions, ...globalActions}, dispatch)
   }
 }
-
-/**
- * ## App class
- */
-var reactMixin = require('react-mixin');
-
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n');
-I18n.translations = Translations;
 
 let App = React.createClass({
   /**
@@ -98,7 +88,7 @@ const styles = StyleSheet.create({
 });
 
 // Since we're using ES6 classes, have to define the TimerMixin
-reactMixin(App.prototype, TimerMixin);
+ReactMixin(App.prototype, TimerMixin);
 
 /**
  * Connect the properties

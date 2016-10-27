@@ -8,15 +8,12 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as authActions from "../../reducers/user/auth/authActions";
 import * as globalActions from "../../reducers/global/globalActions";
-import {Actions} from "react-native-router-flux";
 import {Drawer} from "native-base";
 import LefNavigationPanel from "./components/SidePanel";
-
 import HomeMapView from "./components/HomeMapView";
 import React, {Component} from "react";
 import {StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native";
-import Translations from "../../lib/Translations";
-import UserProfileImage from '../user/components/UserProfileImage';
+import UserProfileImage from "../user/components/UserProfileImage";
 
 /**
  *  Instead of including all app states via ...state
@@ -44,12 +41,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({...authActions, ...globalActions}, dispatch)
   }
 }
-
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-I18n.translations = Translations;
 
 /**
  * ## App class

@@ -2,7 +2,7 @@
 
 import Translations from "../lib/Translations.json";
 
-var I18n = require('react-native-i18n');
-I18n.translations = Translations;
+var SnabbI18n = require('react-native-i18n');
+SnabbI18n.translations = Translations;
 
-module.exports = I18n;
+export default SnabbI18n

@@ -9,11 +9,8 @@
  *
  */
 'use strict'
-/**
- * ## Import
- */
+
 import {Record} from 'immutable'
-import * as Defaults from '../location/locationConstants'
 
 /**
  * ## InitialState
@@ -21,20 +18,15 @@ import * as Defaults from '../location/locationConstants'
  * * currentUser - object returned from server when validated
  * * showState - toggle for Header to display state
  * * currentState - object in Json format of the entire state
- * * store - the Redux store which is an object w/ 4 initial states
+ * * store - the Redux store which is an object w/ 5 initial states
  *   * device
  *   * auth
  *   * global
  *   * profile
+ *   * location
  *
  */
 var InitialState = Record({
-  pickupLocation: {
-    latitude: Defaults.LATITUDE,
-    longitude: Defaults.LONGITUDE,
-    latitudeDelta: Defaults.LATITUDE_DELTA,
-    longitudeDelta: Defaults.LONGITUDE_DELTA
-  },
   currentUser: null,
   showState: false,
   currentState: null,

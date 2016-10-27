@@ -25,22 +25,14 @@ import AuthInitialState from "./reducers/user/auth/authInitialState";
 import DeviceInitialState from "./reducers/device/deviceInitialState";
 import GlobalInitialState from "./reducers/global/globalInitialState";
 import ProfileInitialState from "./reducers/user/profile/profileInitialState";
+import LocationInitialState from "./reducers/location/locationInitialState";
 import pack from "../package";
 import HelpView from "./modules/help/HelpView";
 import PaymentsView from "./modules/payments/PaymentsView";
 import OngoingDeliveriesView from "./modules/ongoing/OngoingDeliveriesView";
 import HistoryView from "./modules/history/HistoryView";
 import SetLocationView from "./modules/delivery/SetLocationView";
-
-
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-
-// Support fall-backs so en-US & en-BR both use en
-I18n.fallbacks = true;
-I18n.translations = Translations;
+import I18n from './lib/I18n'
 
 /**
  *  The version of the app but not  displayed yet
@@ -51,37 +43,15 @@ var VERSION = pack.version;
  *
  * ## Initial state
  * Create instances for the keys of each structure in snabb
- * @returns {Object} object with 4 keys
+ * @returns {Object} object with 5 keys
  */
 function getInitialState() {
   return {
     auth: new AuthInitialState(),
     device: (new DeviceInitialState()).set('isMobile', true),
     global: (new GlobalInitialState()),
+    location: (new LocationInitialState()),
     profile: new ProfileInitialState()
-  }
-}
-
-const styles = StyleSheet.create({
-  tabBar: {
-    height: 70
-  }
-});
-
-/**
- * ## TabIcon
- *
- * Displays the icon for the tab w/ color dependent upon selection
- */
-class TabIcon extends React.Component {
-  render() {
-    var color = this.props.selected ? '#FF3366' : '#FFB3B3';
-    return (
-      <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', alignSelf: 'center'}}>
-        <Icon style={{color: color}} name={this.props.iconName} size={30}/>
-        <Text style={{color: color}}>{this.props.title}</Text>
-      </View>
-    )
   }
 }
 
