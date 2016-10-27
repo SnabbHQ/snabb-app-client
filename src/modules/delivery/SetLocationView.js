@@ -25,7 +25,6 @@ class SetLocationView extends Component {
 
   handlePlacePress(data, details) {
     // 'details' is provided when fetchDetails = true
-    console.log(data);
     console.log(details);
 
     var location = {
