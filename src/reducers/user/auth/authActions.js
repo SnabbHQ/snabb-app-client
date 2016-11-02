@@ -347,6 +347,7 @@ export function login (username, password) {
     dispatch(loginRequest())
     return BackendFactory().login({
       username: username,
+      email: 'devtest@gmail.com',
       password: password
     })
 
@@ -355,7 +356,7 @@ export function login (username, password) {
           .then(function () {
             dispatch(loginSuccess(json))
             // navigate to Tabbar
-            Actions.Tabbar()
+            Actions.HomeScene()
             dispatch(logoutState())
           })
       })

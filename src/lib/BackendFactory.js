@@ -9,7 +9,7 @@
 import CONFIG from './config'
 import Hapi from './Hapi'
 
-export default function BackendFactory (token = null) {
+export default function BackendFactory(token = null) {
   if (CONFIG.backend.hapiLocal || CONFIG.backend.hapiRemote) {
     return new Hapi(token)
   }

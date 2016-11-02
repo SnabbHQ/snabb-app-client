@@ -128,16 +128,19 @@ var LoginForm = React.createClass({
 
       /**
        * ### Login
-       * The login form has only 2 fields
+       * The login form has only 3 fields
        */
       case (LOGIN):
         loginForm = t.struct({
           username: t.String,
+          email: t.String,
           password: t.String
         })
         options.fields['username'] = username
         options.fields['username'].placeholder = I18n.t('LoginForm.username')
         options.fields['username'].autoCapitalize = 'none'
+        options.fields['email'] = email
+        options.fields['email'].autoCapitalize = 'none'
         options.fields['password'] = password
         options.fields['password'].placeholder = I18n.t('LoginForm.password')
         break

@@ -87,7 +87,7 @@ export default class Hapi extends Backend {
   async login (data) {
     return await this._fetch({
       method: 'POST',
-      url: '/account/login',
+      url: '/auth/login/',
       body: data
     })
       .then((res) => {
