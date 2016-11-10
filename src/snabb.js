@@ -94,7 +94,8 @@ export default function native(platform) {
 
               <Scene key='HomeScreen'
                      component={HomeView}
-                     type='replace'/>
+                     type='replace'
+                     initial/>
 
               <Scene key='LoginScreen'
                      component={LoginView}/>
