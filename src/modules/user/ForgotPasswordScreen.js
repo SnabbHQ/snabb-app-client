@@ -2,20 +2,20 @@
  * # ForgotPassword.js
  *
  */
-'use strict';
+'use strict'
 
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import * as authActions from "../../reducers/user/auth/authActions";
-import LoginRender from "./components/LoginRender";
-import React from "react";
+import React, {Component}  from "react"
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as authActions from "../../reducers/user/auth/authActions"
+import LoginRender from "./components/LoginRender"
 import I18n from '../../lib/I18n'
 
 const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('../../lib/constants').default;
+} = require('../../lib/constants').default
 
 
 function mapStateToProps (state) {
@@ -35,13 +35,13 @@ function buttonPressHandler (resetPassword, email) {
   resetPassword(email)
 }
 
-let ForgotPassword = React.createClass({
+class ForgotPasswordScreen extends Component {
 
   render () {
-    let loginButtonText = I18n.t('ForgotPassword.reset_password');
+    let loginButtonText = I18n.t('ForgotPasswordScreen.reset_password')
     let onButtonPress = buttonPressHandler.bind(null,
                                                 this.props.actions.resetPassword,
-                                                this.props.auth.form.fields.email);
+                                                this.props.auth.form.fields.email)
 
     return (
       <LoginRender
@@ -56,6 +56,6 @@ let ForgotPassword = React.createClass({
       />
     )
   }
-})
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword)
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordScreen)

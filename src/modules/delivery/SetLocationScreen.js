@@ -26,7 +26,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class SetLocationView extends Component {
+class SetLocationScreen extends Component {
 
   handlePlacePress(data, details) {
     // 'details' is provided when fetchDetails = true
@@ -103,6 +103,6 @@ var styles = StyleSheet.create({
   }
 });
 
-export default connect(null, mapDispatchToProps)(SetLocationView)
+export default connect(null, mapDispatchToProps)(SetLocationScreen)
 
 

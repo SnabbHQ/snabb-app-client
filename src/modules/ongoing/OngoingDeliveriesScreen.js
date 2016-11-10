@@ -5,7 +5,7 @@ import {View, Content} from "native-base";
 import DefaultNavBar from '../../components/DefaultNavBar'
 import I18n from "../../lib/I18n";
 
-class OngoingDeliveriesView extends React.Component {
+class OngoingDeliveriesScreen extends React.Component {
 
   render() {
     return (
@@ -28,4 +28,4 @@ var styles = StyleSheet.create({
   }
 });
 
-export default OngoingDeliveriesView;
+export default OngoingDeliveriesScreen;

@@ -44,7 +44,7 @@ function buttonPressHandler(login, username, password) {
 var I18n = require('react-native-i18n')
 I18n.translations = Translations
 
-class LoginView extends Component {
+class LoginScreen extends Component {
 
   backButtonPress() {
     Actions.pop();
@@ -81,4 +81,4 @@ class LoginView extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)

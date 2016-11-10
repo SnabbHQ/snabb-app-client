@@ -5,14 +5,14 @@ import {View, Content} from "native-base";
 import DefaultNavBar from '../../components/DefaultNavBar'
 import I18n from "../../lib/I18n";
 
-class HistoryView extends React.Component {
+class HelpScreen extends Component {
 
   render() {
     return (
       <View>
-        <DefaultNavBar title={I18n.t('Navigation.history')}/>
+        <DefaultNavBar title={I18n.t('Navigation.help')}/>
         <Content>
-          <Text style={styles.summary}>{I18n.t('Navigation.history')}</Text>
+          <Text style={styles.summary}>{I18n.t('Navigation.help')}</Text>
         </Content>
       </View>
     )
@@ -28,4 +28,4 @@ var styles = StyleSheet.create({
   }
 });
 
-export default HistoryView;
+export default HelpScreen;

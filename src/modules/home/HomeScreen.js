@@ -17,7 +17,7 @@ import UserProfileImage from "../user/components/UserProfileImage";
 
 /**
  *  Instead of including all app states via ...state
- *  One could explicitly enumerate only those which LoginRegisterView.js will depend on.
+ *  One could explicitly enumerate only those which LoginRegisterViewScreen.js will depend on.
  */
 function mapStateToProps(state) {
   return {
@@ -45,7 +45,7 @@ function mapDispatchToProps(dispatch) {
 /**
  * ## App class
  */
-class HomeView extends Component {
+class HomeScreen extends Component {
 
   openControlPanel = () => {
     this._drawer.open()
@@ -111,4 +111,4 @@ const styles = StyleSheet.create({
 /**
  * Connect the properties
  */
-export default connect(mapStateToProps, mapDispatchToProps)(HomeView)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

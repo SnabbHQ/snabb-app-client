@@ -46,7 +46,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class ProfileView extends Component {
+class ProfileScreen extends Component {
 
   /**
    * ## Profile class
@@ -223,4 +223,4 @@ var styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileView)
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen)

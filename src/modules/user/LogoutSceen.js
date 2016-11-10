@@ -42,7 +42,7 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-class Logout extends Component {
+class LogoutScreen extends Component {
 
   /**
    * ### render
@@ -73,4 +73,4 @@ class Logout extends Component {
       )
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Logout)
+export default connect(mapStateToProps, mapDispatchToProps)(LogoutScreen)

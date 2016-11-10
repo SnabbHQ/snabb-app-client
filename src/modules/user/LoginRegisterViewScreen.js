@@ -43,7 +43,7 @@ function mapDispatchToProps(dispatch) {
 /**
  * ## App class
  */
-class LoginRegisterView extends Component {
+class LoginRegisterScreen extends Component {
 
   static handleLoginPress() {
     Actions.LoginScene();
@@ -88,13 +88,13 @@ class LoginRegisterView extends Component {
         </View>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <Button style={styles.buttonRegister} textStyle={{color: '#F9F9F9'}}
-                  onPress={LoginRegisterView.handleRegisterPress.bind(this)}>
-            {I18n.t('LoginRegisterView.new_account')}
+                  onPress={LoginRegisterScreen.handleRegisterPress.bind(this)}>
+            {I18n.t('LoginRegisterScreen.new_account')}
 
           </Button>
           <Button style={styles.buttonLogin} textStyle={{color: '#00D5D5'}}
-                  onPress={LoginRegisterView.handleLoginPress.bind(this)}>
-            {I18n.t('LoginRegisterView.sign_in')}
+                  onPress={LoginRegisterScreen.handleLoginPress.bind(this)}>
+            {I18n.t('LoginRegisterScreen.sign_in')}
           </Button>
         </View>
       </View>
@@ -160,4 +160,4 @@ var styles = StyleSheet.create({
 /**
  * Connect the properties
  */
-export default connect(mapStateToProps, mapDispatchToProps)(LoginRegisterView)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRegisterScreen)
