@@ -45,21 +45,13 @@ let App = React.createClass({
    *
    */
   componentDidMount () {
+
     // Use a timer so App screen is displayed
     this.setTimeout(
       () => {
-
-        // var sessionToken = this.props.actions.getSessionToken();
-        // sessionToken.then({
-        //   Actions.
-        // });
-
-        // TODO - Lets work on the Home page meanwhile we prepare the backend for Auth
-        //Actions.LoginScreen();
-
-        Actions.LoginRegisterScreen();
+        this.props.actions.getSessionToken()
       },
-      200
+      500
     )
   },
 

@@ -137,7 +137,7 @@ export function logout () {
         dispatch(loginState())
         dispatch(logoutSuccess())
         dispatch(deleteSessionToken())
-        Actions.InitialLoginFormScene()
+        Actions.LoginRegisterScreen()
       })
 
       .catch((error) => {
@@ -240,17 +240,17 @@ export function getSessionToken () {
         if (token) {
           dispatch(sessionTokenRequestSuccess(token))
           dispatch(logoutState())
-          Actions.Tabbar()
+          Actions.HomeScreen()
         } else {
           dispatch(sessionTokenRequestFailure())
-          Actions.InitialLoginFormScene()
+          Actions.LoginRegisterScreen()
         }
       })
 
       .catch((error) => {
         dispatch(sessionTokenRequestFailure(error))
         dispatch(loginState())
-        Actions.InitialLoginFormScene()
+        Actions.LoginRegisterScreen()
       })
   }
 }
