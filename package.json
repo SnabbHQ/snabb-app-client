@@ -33,6 +33,7 @@
     "docs": "./node_modules/docker/docker -w -i src/ -o ../snabb-pages "
   },
   "dependencies": {
+    "snabb-api-client": "file:../snabb-api-client",
     "immutable": "3.8.1",
     "key-mirror": "1.0.1",
     "native-base": "^0.5.11",
