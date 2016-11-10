@@ -12,7 +12,7 @@ class SidePanel extends React.Component {
       <Content
         theme={sidebarTheme}
         style={styles.sidebar}>
-        <TouchableOpacity onPress={() => Actions.ProfileScene()}
+        <TouchableOpacity onPress={() => Actions.ProfileScreen()}
                           style={styles.sidebarHeader}>
           <UserProfileImage/>
           <View style={{flex: 1, marginRight: 5, marginLeft: 10}}>
@@ -25,7 +25,7 @@ class SidePanel extends React.Component {
         </TouchableOpacity>
 
         <List>
-          <ListItem button iconLeft onPress={() => Actions.HomeScene() }>
+          <ListItem button iconLeft onPress={() => Actions.HomeScreen() }>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer, {paddingLeft: 14}]}>
                 <Icon name="ios-phone-portrait-outline" style={styles.sidebarIcon}/>
@@ -33,7 +33,7 @@ class SidePanel extends React.Component {
               <Text style={styles.text}>{I18n.t("Navigation.home")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => Actions.OngoingDeliveriesScene() }>
+          <ListItem button iconLeft onPress={() => Actions.OngoingDeliveriesScreen() }>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-notifications-outline" style={styles.sidebarIcon}/>
@@ -41,7 +41,7 @@ class SidePanel extends React.Component {
               <Text style={styles.text}>{I18n.t("Navigation.ongoing_deliveries")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => Actions.HistoryScene() }>
+          <ListItem button iconLeft onPress={() => Actions.HistoryScreen() }>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer, {paddingLeft: 10}]}>
                 <Icon name="md-radio-button-off" style={styles.sidebarIcon}/>
@@ -49,7 +49,7 @@ class SidePanel extends React.Component {
               <Text style={styles.text}>{I18n.t("Navigation.history")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => Actions.PaymentsScene()}>
+          <ListItem button iconLeft onPress={() => Actions.PaymentScreen()}>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-keypad" style={styles.sidebarIcon}/>
@@ -57,7 +57,7 @@ class SidePanel extends React.Component {
               <Text style={styles.text}>{I18n.t("Navigation.payments")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => Actions.HelpScene()}>
+          <ListItem button iconLeft onPress={() => Actions.HelpScreen()}>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer, {paddingLeft: 10}]}>
                 <Icon name="ios-swap" style={styles.sidebarIcon}/>
@@ -65,7 +65,7 @@ class SidePanel extends React.Component {
               <Text style={styles.text}>{I18n.t("Navigation.help")}</Text>
             </View>
           </ListItem>
-          <ListItem button iconLeft onPress={() => Actions.SettingsScene()}>
+          <ListItem button iconLeft onPress={() => Actions.SettingsScreen()}>
             <View style={styles.listItemContainer}>
               <View style={[styles.iconContainer]}>
                 <Icon name="ios-call" style={styles.sidebarIcon}/>

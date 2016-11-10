@@ -55,9 +55,9 @@ let App = React.createClass({
         // });
 
         // TODO - Lets work on the Home page meanwhile we prepare the backend for Auth
-        Actions.LoginScene();
+        Actions.LoginScreen();
 
-        //Actions.LoginRegisterScene();
+        //Actions.LoginRegisterScreen();
       },
       200
     )

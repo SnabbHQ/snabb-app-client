@@ -356,7 +356,7 @@ export function login (username, password) {
           .then(function () {
             dispatch(loginSuccess(json))
             // navigate to Tabbar
-            Actions.HomeScene()
+            Actions.HomeScreen()
             dispatch(logoutState())
           })
       })

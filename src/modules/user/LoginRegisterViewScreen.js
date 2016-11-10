@@ -46,11 +46,11 @@ function mapDispatchToProps(dispatch) {
 class LoginRegisterScreen extends Component {
 
   static handleLoginPress() {
-    Actions.LoginScene();
+    Actions.LoginScreen();
   }
 
   static handleRegisterPress() {
-    Actions.RegisterScene();
+    Actions.RegisterScreen();
   }
 
   // TODO - Add mocked images for now. Also the FitImage does not seem to calculate really good the dimensions to fix

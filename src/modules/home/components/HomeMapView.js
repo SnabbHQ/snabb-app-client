@@ -54,14 +54,14 @@ class HomeMapView extends React.Component {
   }
 
   handlePickupLocationBoxPress() {
-    Actions.SetLocationScene({
+    Actions.SetLocationScreen({
       title: 'Pickup location',
       viewType: PICKUP_LOCATION
     })
   }
 
   handleDeliveryLocationBoxPress() {
-    Actions.SetLocationScene({
+    Actions.SetLocationScreen({
       title: 'Delivery location',
       viewType: DELIVERY_LOCATION
     })

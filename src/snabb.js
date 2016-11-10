@@ -88,47 +88,47 @@ export default function native(platform) {
                      type='replace'
                      initial/>
 
-              <Scene key='LoginRegisterScene'
+              <Scene key='LoginRegisterScreen'
                      component={LoginRegisterView}
                      type='replace'/>
 
-              <Scene key='HomeScene'
+              <Scene key='HomeScreen'
                      component={HomeView}
                      type='replace'/>
 
-              <Scene key='LoginScene'
+              <Scene key='LoginScreen'
                      component={LoginView}/>
 
-              <Scene key='RegisterScene'
+              <Scene key='RegisterScreen'
                      component={RegisterView}/>
 
-              <Scene key='ForgotPasswordScene'
+              <Scene key='ForgotPasswordScreen'
                      component={ForgotPassword}
                      type='replace'/>
 
-              <Scene key='SetLocationScene'
+              <Scene key='SetLocationScreen'
                      component={SetLocationView}/>
 
-              <Scene key='ProfileScene'
+              <Scene key='ProfileScreen'
                      component={ProfileView}/>
 
-              <Scene key='LogoutScene'
+              <Scene key='LogoutScreen'
                      title={I18n.t('snabb.logout')}
                      component={Logout}/>
 
-              <Scene key='OngoingDeliveriesScene'
+              <Scene key='OngoingDeliveriesScreen'
                      component={OngoingDeliveriesView}/>
 
-              <Scene key='HistoryScene'
+              <Scene key='HistoryScreen'
                      component={HistoryView}/>
               
-              <Scene key='PaymentsScene'
+              <Scene key='PaymentScreen'
                      component={PaymentsView}/>
 
-              <Scene key='HelpScene'
+              <Scene key='HelpScreen'
                      component={HelpView}/>
 
-              <Scene key='SettingsScene'
+              <Scene key='SettingsScreen'
                      component={SettingsView}/>
 
             </Scene>
