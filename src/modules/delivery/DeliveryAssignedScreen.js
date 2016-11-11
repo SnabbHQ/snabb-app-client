@@ -3,7 +3,7 @@
 import {Actions} from "react-native-router-flux";
 import {connect} from "react-redux"
 import React, {Component} from "react"
-import {StyleSheet, Image} from "react-native"
+import {StyleSheet, Image, Alert} from "react-native"
 import {View, Icon, Button, Text, List, ListItem} from "native-base"
 
 class DeliveryAssignedScreen extends Component {
@@ -27,7 +27,18 @@ class DeliveryAssignedScreen extends Component {
   }
 
   handleCancelPress() {
-
+    // Works on both iOS and Android
+    Alert.alert(
+      'Are you sure?',
+      'Are you sure you want to cancel your current delivery?',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => {
+          // @TODO - Cancel current delivery and go back to home screen
+          Actions.HomeScreen()
+        }},
+      ]
+    )
   }
 
   render() {
