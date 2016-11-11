@@ -4,7 +4,7 @@ import {connect} from "react-redux"
 import React, {Component} from "react"
 import {Actions} from "react-native-router-flux";
 import {StyleSheet, TextInput, Image} from "react-native"
-import {View, Text, Button, Content} from "native-base"
+import {View, Text, Button, InputGroup, Input} from "native-base"
 import StarRating from 'react-native-star-rating';
 import DefaultNavBar from "../../components/DefaultNavBar"
 
@@ -13,8 +13,8 @@ class DeliveryReviewScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      starCount: 3.5,
-      comment: 'Useless Multiline Placeholder',
+      starCount: 0,
+      comment: 'Leave here you comment',
     };
   }
 
@@ -53,10 +53,13 @@ class DeliveryReviewScreen extends Component {
               rating={this.state.starCount}
               selectedStar={(rating) => this.onStarRatingPress(rating)}
             />
+
             <TextInput
               style={{flex: 1, height: 40, borderColor: 'gray', borderWidth: 1}}
               onChangeText={(text) => this.onCommentTextChange(text)}
               value={this.state.comment}
+              multiline = {true}
+              numberOfLines = {4}
             />
             <Button style={styles.centerOnUserButton} onPress={() => this.onDonePress()}>Done</Button>
           </View>
