@@ -2,7 +2,8 @@
 
 import {connect} from "react-redux"
 import React, {Component} from "react"
-import {StyleSheet, TextInput} from "react-native"
+import {Actions} from "react-native-router-flux";
+import {StyleSheet, TextInput, Image} from "react-native"
 import {View, Text, Button, Content} from "native-base"
 import StarRating from 'react-native-star-rating';
 import DefaultNavBar from "../../components/DefaultNavBar"
@@ -29,17 +30,22 @@ class DeliveryReviewScreen extends Component {
     })
   }
 
-
-
   onDonePress() {
     alert(this.state.comment + ' and rating ' + this.state.starCount)
+    Actions.HomeScreen()
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <DefaultNavBar title={"History"}/>
         <View style={styles.content}>
           <View style={{flexDirection: 'column'}}>
+            <Image
+              style={{width: 100, height: 100}}
+              source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+            />
+            <Text>You paid 3 Euros</Text>
             <Text>Rate your Courier</Text>
             <StarRating
               disabled={false}
