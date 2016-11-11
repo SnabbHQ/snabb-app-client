@@ -3,36 +3,37 @@
  *  # snabb
  *  snabb ![snabb](https://cloud.githubusercontent.com/assets/1282364/11599365/1a1c39d2-9a8c-11e5-8819-bc1e48b30525.png)
  */
-import React from "react";
-import {AppRegistry, StyleSheet, View, Text} from "react-native";
-import {Router, Scene} from "react-native-router-flux";
-import {Provider} from "react-redux";
-import configureStore from "./lib/configureStore";
-import Translations from "./lib/Translations";
-import App from "./modules/App";
-import LoginRegisterView from "./modules/user/LoginRegisterViewScreen";
-import LoginView from "./modules/user/LoginScreen";
-import Logout from "./modules/user/LogoutSceen";
-import RegisterView from "./modules/user/RegisterScreen";
-import ForgotPassword from "./modules/user/ForgotPasswordScreen";
-import ProfileView from "./modules/user/ProfileScreen";
-import HomeView from "./modules/home/HomeScreen";
-import SettingsView from "./modules/settings/SettingsScreen";
-import Icon from "react-native-vector-icons/FontAwesome";
-import {setPlatform, setVersion} from "./reducers/device/deviceActions";
-import {setStore} from "./reducers/global/globalActions";
-import AuthInitialState from "./reducers/user/auth/authInitialState";
-import DeviceInitialState from "./reducers/device/deviceInitialState";
-import GlobalInitialState from "./reducers/global/globalInitialState";
-import ProfileInitialState from "./reducers/user/profile/profileInitialState";
-import LocationInitialState from "./reducers/location/locationInitialState";
-import pack from "../package";
-import HelpView from "./modules/help/HelpScreen";
-import PaymentsView from "./modules/payments/PaymentsScreen";
-import OngoingDeliveriesView from "./modules/ongoing/OngoingDeliveriesScreen";
-import HistoryView from "./modules/history/HistoryScreen";
-import SetLocationView from "./modules/delivery/SetLocationScreen";
-import I18n from './lib/I18n'
+import React from "react"
+import {AppRegistry, StyleSheet, View, Text} from "react-native"
+import {Router, Scene} from "react-native-router-flux"
+import {Provider} from "react-redux"
+import configureStore from "./lib/configureStore"
+import App from "./modules/App"
+import LoginRegisterView from "./modules/user/LoginRegisterViewScreen"
+import LoginView from "./modules/user/LoginScreen"
+import Logout from "./modules/user/LogoutSceen"
+import RegisterView from "./modules/user/RegisterScreen"
+import ForgotPassword from "./modules/user/ForgotPasswordScreen"
+import ProfileView from "./modules/user/ProfileScreen"
+import HomeView from "./modules/home/HomeScreen"
+import SettingsView from "./modules/settings/SettingsScreen"
+import {setPlatform, setVersion} from "./reducers/device/deviceActions"
+import {setStore} from "./reducers/global/globalActions"
+import AuthInitialState from "./reducers/user/auth/authInitialState"
+import DeviceInitialState from "./reducers/device/deviceInitialState"
+import GlobalInitialState from "./reducers/global/globalInitialState"
+import ProfileInitialState from "./reducers/user/profile/profileInitialState"
+import LocationInitialState from "./reducers/location/locationInitialState"
+import pack from "../package"
+import HelpView from "./modules/help/HelpScreen"
+import PaymentsView from "./modules/payments/PaymentsScreen"
+import OngoingDeliveriesView from "./modules/ongoing/OngoingDeliveriesScreen"
+import HistoryView from "./modules/history/HistoryScreen"
+import SetLocationView from "./modules/delivery/SetLocationScreen"
+import I18n from "./lib/I18n"
+import RequestingPickupScreen from "./modules/delivery/RequestingPickupScreen"
+import DeliveryAssignedScreen from "./modules/delivery/DeliveryAssignedScreen"
+import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen";
 
 /**
  *  The version of the app but not  displayed yet
@@ -130,6 +131,15 @@ export default function native(platform) {
 
               <Scene key='SettingsScreen'
                      component={SettingsView}/>
+
+              <Scene key='RequestingPickupScreen'
+                     component={RequestingPickupScreen}/>
+
+              <Scene key='DeliveryAssignedScreen'
+                     component={DeliveryAssignedScreen}/>
+
+              <Scene key='DeliveryReviewScreen'
+                     component={DeliveryReviewScreen}/>
 
             </Scene>
           </Router>

@@ -12,6 +12,9 @@ module.exports = {
     HistoryScreen: function () {},
     PaymentScreen: function () {},
     HelpScreen: function () {},
-    SettingsScreen: function () {}
+    SettingsScreen: function () {},
+    RequestingPickupScreen: function () {},
+    DeliveryAssignedScreen: function () {},
+    DeliveryReviewScreen: function () {}
   }
 };

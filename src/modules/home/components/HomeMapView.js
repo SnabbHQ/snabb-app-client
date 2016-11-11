@@ -72,6 +72,10 @@ class HomeMapView extends React.Component {
     this.forceUpdate()
   }
 
+  handleRequestPickupPress() {
+    Actions.RequestingPickupScreen()
+  }
+
   handleBackToSetPickupPress() {
     showPickup = true
     this.forceUpdate()
@@ -97,7 +101,8 @@ class HomeMapView extends React.Component {
     } else {
       return <RequestPickupContainer
         pickupLocationBoxPress={() => this.handlePickupLocationBoxPress()}
-        deliveryLocationBoxPress={() => this.handleDeliveryLocationBoxPress()} />
+        deliveryLocationBoxPress={() => this.handleDeliveryLocationBoxPress()}
+        handleRequestPickupPress={() => this.handleRequestPickupPress()}/>
     }
   }
 

@@ -11,7 +11,7 @@ import {View, Content} from "native-base";
 import DefaultNavBar from "../../components/DefaultNavBar";
 import {GooglePlacesAutocomplete} from "react-native-google-places-autocomplete";
 
-class DeliveryDoneView extends Component {
+class DeliveryDoneScreen extends Component {
 
   handlePlacePress(data, details) {
     // 'details' is provided when fetchDetails = true
@@ -88,6 +88,6 @@ var styles = StyleSheet.create({
   }
 });
 
-export default connect(null, null)(DeliveryDoneView)
+export default connect(null, null)(DeliveryDoneScreen)
 
 
