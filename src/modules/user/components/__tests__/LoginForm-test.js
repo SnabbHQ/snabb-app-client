@@ -60,7 +60,6 @@ describe('LoginForm', () => {
       let form = {
         isFetching: false,
         fields: {
-          usernameHasError: false,
           emailHasError: false,
           passwordHasError: false,
           passwordAgainHasError: false,
@@ -69,7 +68,6 @@ describe('LoginForm', () => {
       }
 
       let value = {
-        username: '',
         email: '',
         password: '',
         passwordAgain: ''
@@ -92,7 +90,6 @@ describe('LoginForm', () => {
       let form = {
         isFetching: false,
         fields: {
-          usernameHasError: true,
           emailHasError: true,
           passwordHasError: true,
           passwordAgainHasError: true,
@@ -101,7 +98,6 @@ describe('LoginForm', () => {
       }
 
       let value = {
-        username: 'username',
         email: 'email',
         password: 'password',
         passwordAgain: 'passwordagain'
@@ -124,7 +120,6 @@ describe('LoginForm', () => {
       let form = {
         isFetching: true,
         fields: {
-          usernameHasError: true,
           emailHasError: true,
           passwordHasError: true,
           passwordAgainHasError: true,
@@ -133,7 +128,6 @@ describe('LoginForm', () => {
       }
 
       let value = {
-        username: 'username',
         email: 'email',
         password: 'password',
         passwordAgain: 'passwordagain'
@@ -156,7 +150,6 @@ describe('LoginForm', () => {
       let form = {
         isFetching: false,
         fields: {
-          usernameHasError: false,
           emailHasError: false,
           passwordHasError: false,
           passwordAgainHasError: false,
@@ -165,7 +158,6 @@ describe('LoginForm', () => {
       }
 
       let value = {
-        username: 'username',
         email: 'email',
         password: 'password',
         passwordAgain: 'passwordagain'
@@ -194,14 +186,12 @@ describe('LoginForm', () => {
       let form = {
         isFetching: false,
         fields: {
-          usernameHasError: false,
           passwordHasError: false,
           showPassword: false
         }
       }
 
       let value = {
-        username: '',
         password: ''
       }
 
@@ -222,13 +212,11 @@ describe('LoginForm', () => {
       let form = {
         isFetching: false,
         fields: {
-          usernameHasError: true,
           passwordHasError: true
         }
       }
 
       let value = {
-        username: 'username',
         password: 'password'
       }
 
@@ -249,14 +237,12 @@ describe('LoginForm', () => {
       let form = {
         isFetching: true,
         fields: {
-          usernameHasError: true,
           passwordHasError: true,
           showPassword: false
         }
       }
 
       let value = {
-        username: 'username',
         password: 'password'
       }
 
@@ -277,14 +263,12 @@ describe('LoginForm', () => {
       let form = {
         isFetching: false,
         fields: {
-          usernameHasError: false,
           passwordHasError: false,
           showPassword: true
         }
       }
 
       let value = {
-        username: 'username',
         password: 'password'
       }
 
@@ -368,7 +352,6 @@ describe('LoginForm', () => {
       }
 
       let value = {
-        username: 'username',
         password: 'password'
       }
 

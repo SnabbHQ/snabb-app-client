@@ -2,7 +2,7 @@
  * # Profile.js
  *
  * This component provides an interface for a logged in user to change
- * their username and email.
+ * their email.
  * It too is a container so there is boilerplate from Redux similar to
  * ```App``` and ```Login```
  */
@@ -58,7 +58,6 @@ class ProfileScreen extends Component {
     this.errorAlert = new ErrorAlert()
     this.state = {
       formValues: {
-        username: '',
         email: ''
       }
     }
@@ -72,9 +71,6 @@ class ProfileScreen extends Component {
    *
    */
   onChange(value) {
-    if (value.username !== '') {
-      this.props.actions.onProfileFormFieldChange('username', value.username)
-    }
     if (value.email !== '') {
       this.props.actions.onProfileFormFieldChange('email', value.email)
     }
@@ -90,7 +86,6 @@ class ProfileScreen extends Component {
   componentWillReceiveProps(props) {
     this.setState({
       formValues: {
-        username: props.profile.form.fields.username,
         email: props.profile.form.fields.email
       }
     })
@@ -104,12 +99,11 @@ class ProfileScreen extends Component {
    * form fields.  Otherwise, we need to go fetch the fields
    */
   componentDidMount() {
-    if (this.props.profile.form.fields.username === '' && this.props.profile.form.fields.email === '') {
+    if (this.props.profile.form.fields.email === '') {
       this.props.actions.getProfile(this.props.global.currentUser)
     } else {
       this.setState({
         formValues: {
-          username: this.props.profile.form.fields.username,
           email: this.props.profile.form.fields.email
         }
       })
@@ -126,7 +120,6 @@ class ProfileScreen extends Component {
     let self = this;
 
     let ProfileForm = t.struct({
-      username: t.String,
       email: t.String
     });
 
@@ -137,13 +130,6 @@ class ProfileScreen extends Component {
     let options = {
       auto: 'placeholders',
       fields: {
-        username: {
-          label: I18n.t('Profile.username'),
-          maxLength: 12,
-          editable: !this.props.profile.form.isFetching,
-          hasError: this.props.profile.form.fields.usernameHasError,
-          error: this.props.profile.form.fields.usernameErrorMsg
-        },
         email: {
           label: I18n.t('Profile.email'),
           keyboardType: 'email-address',

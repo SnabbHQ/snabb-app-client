@@ -65,14 +65,6 @@ var LoginForm = React.createClass({
       }
     }
 
-    let username = {
-      label: I18n.t('LoginForm.username'),
-      maxLength: 12,
-      editable: !this.props.form.isFetching,
-      hasError: this.props.form.fields.usernameHasError,
-      error: this.props.form.fields.usernameErrorMsg
-    }
-
     let email = {
       label: I18n.t('LoginForm.email'),
       keyboardType: 'email-address',
@@ -109,14 +101,10 @@ var LoginForm = React.createClass({
        */
       case (REGISTER):
         loginForm = t.struct({
-          username: t.String,
           email: t.String,
           password: t.String,
           passwordAgain: t.String
         })
-        options.fields['username'] = username
-        options.fields['username'].placeholder = I18n.t('LoginForm.username')
-        options.fields['username'].autoCapitalize = 'none'
         options.fields['email'] = email
         options.fields['email'].placeholder = I18n.t('LoginForm.email')
         options.fields['email'].autoCapitalize = 'none'
@@ -132,13 +120,9 @@ var LoginForm = React.createClass({
        */
       case (LOGIN):
         loginForm = t.struct({
-          username: t.String,
           email: t.String,
           password: t.String
         })
-        options.fields['username'] = username
-        options.fields['username'].placeholder = I18n.t('LoginForm.username')
-        options.fields['username'].autoCapitalize = 'none'
         options.fields['email'] = email
         options.fields['email'].autoCapitalize = 'none'
         options.fields['password'] = password

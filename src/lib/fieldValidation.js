@@ -1,7 +1,7 @@
 /**
  * # fieldValidation.js
  *
- * Define the validation rules for various fields such as email, username,
+ * Define the validation rules for various fields such as email,
  * and passwords.  If the rules are not passed, the appropriate
  * message is displayed to the user
  *
@@ -33,19 +33,6 @@ const emailConstraints = {
   }
 }
 
-/**
-* ## username validation rule
-* read the message.. ;)
-*/
-const usernamePattern = /^[a-zA-Z0-9]{6,12}$/
-const usernameConstraints = {
-  username: {
-    format: {
-      pattern: usernamePattern,
-      flags: 'i'
-    }
-  }
-}
 
 /**
 * ## password validation rule
@@ -77,23 +64,6 @@ export default function fieldValidation (state, action) {
   const {field, value} = action.payload
 
   switch (field) {
-    /**
-     * ### username validation
-     * set the form field error
-     */
-    case ('username'):
-      let validUsername = _.isUndefined(validate({username: value},
-                                                usernameConstraints))
-      if (validUsername) {
-        return state.setIn(['form', 'fields', 'usernameHasError'],
-                         false)
-        .setIn(['form', 'fields', 'usernameErrorMsg'], '')
-      } else {
-        return state.setIn(['form', 'fields', 'usernameHasError'], true)
-        .setIn(['form', 'fields', 'usernameErrorMsg'],
-               I18n.t('FieldValidation.valid_user_name'))
-      }
-
     /**
      * ### email validation
      * set the form field error

@@ -152,14 +152,13 @@ describe('authReducer', () => {
       }
       let init = authReducer(initialState, action)
       let withFields =
-            init.setIn(['form', 'fields', 'username'], 'dummy')
+            init.setIn(['form', 'fields'], 'dummy')
             .setIn(['form', 'fields', 'email'], 'notvalid')
             .setIn(['form', 'fields', 'password'], 'foo')
             .setIn(['form', 'fields', 'passwordAgain'], 'foo')
       let next = authReducer(withFields, action)
       expect(next.form.state).toBe(LOGOUT)
       expect(next.form.isValid).toBe(true)
-      expect(next.form.fields.username).toBe('')
       expect(next.form.fields.email).toBe('')
       expect(next.form.fields.password).toBe('')
       expect(next.form.fields.passwordAgain).toBe('')
@@ -300,7 +299,6 @@ describe('authReducer', () => {
 
       let next = authReducer(passwordState, action)
       expect(next.form.state).toBe(LOGIN)
-      expect(next.form.fields.usernameHasError).toBe(false)
       expect(next.form.fields.passwordHasError).toBe(false)
       expect(next.form.isValid).toBe(true)
     })
@@ -331,7 +329,6 @@ describe('authReducer', () => {
 
       let next = authReducer(passwordState, action)
       expect(next.form.state).toBe(LOGIN)
-      expect(next.form.fields.usernameHasError).toBe(true)
       expect(next.form.fields.passwordHasError).toBe(true)
       expect(next.form.isValid).toBe(false)
     })
@@ -407,7 +404,6 @@ describe('authReducer', () => {
 
       let next = authReducer(passwordAgainState, action)
       expect(next.form.state).toBe(REGISTER)
-      expect(next.form.fields.usernameHasError).toBe(false)
       expect(next.form.fields.emailHasError).toBe(false)
       expect(next.form.fields.passwordHasError).toBe(false)
       expect(next.form.fields.passwordAgainHasError).toBe(false)
@@ -451,7 +447,6 @@ describe('authReducer', () => {
 
       let next = authReducer(passwordAgainState, action)
       expect(next.form.state).toBe(REGISTER)
-      expect(next.form.fields.usernameHasError).toBe(true)
       expect(next.form.fields.emailHasError).toBe(true)
       expect(next.form.fields.passwordHasError).toBe(true)
       expect(next.form.fields.passwordAgainHasError).toBe(true)

@@ -34,8 +34,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-function buttonPressHandler(login, username, password) {
-  login(username, password)
+function buttonPressHandler(login, email, password) {
+  login(email, password)
 }
 
 /**
@@ -54,7 +54,7 @@ class LoginScreen extends Component {
     let loginButtonText = I18n.t('Login.login');
     let onButtonPress = buttonPressHandler.bind(null,
       this.props.actions.login,
-      this.props.auth.form.fields.username,
+      this.props.auth.form.fields.email,
       this.props.auth.form.fields.password
     );
 

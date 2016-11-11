@@ -25,8 +25,8 @@ const {
  * BackendFactory - base class for server implementation
  * AppAuthToken for localStorage sessionToken access
  */
-const BackendFactory = require('../../../lib/BackendFactory').default;
-const AppAuthToken = require('../../../lib/AppAuthToken').default;
+const BackendFactory = require('../../../lib/__mocks__/BackendFactory').default;
+const AppAuthToken = require('../../../lib/__mocks__/AppAuthToken').default;
 
 /**
  * ## retreiving profile actions
@@ -96,7 +96,6 @@ export function profileUpdateFailure (json) {
 /**
  * ## updateProfile
  * @param {string} userId -  objectId
- * @param {string} username - the users name
  * @param {string] email - user's email
  * @param {Object} sessionToken - the sessionToken
  *
@@ -107,14 +106,13 @@ export function profileUpdateFailure (json) {
  * the data as now persisted on the serverx
  *
  */
-export function updateProfile (userId, username, email, sessionToken) {
+export function updateProfile (userId, email, sessionToken) {
   return dispatch => {
     dispatch(profileUpdateRequest())
     return new AppAuthToken().getSessionToken(sessionToken)
       .then((token) => {
         return BackendFactory(token).updateProfile(userId,
           {
-            username: username,
             email: email
           }
         )

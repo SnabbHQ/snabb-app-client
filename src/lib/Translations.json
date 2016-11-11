@@ -35,14 +35,12 @@
       "navigate": "Navigate to Subview"
     },
     "Profile": {
-      "username": "User name",
       "email": "Email",
       "update": "Update Profile",
       "verified": "Email verified",
       "display": "display only"
     },
     "LoginForm": {
-      "username": "User name",
       "email": "Email",
       "password": "Password",
       "password_again": "Password again"
@@ -91,14 +89,12 @@
       "navigate": "Navegue hasta subview"
     },
     "Profile": {
-      "username": "Nombre de usuario",
       "email": "Correo electrónico",
       "update": "Actualización del perfil",
       "verified": "Correo electrónico verificado",
       "display": "solo mostrar"
     },
     "LoginForm": {
-      "username": "Nombre de usuario",
       "email": "Email",
       "password": "Contraseña",
       "password_again": "Contraseña de nuevo"

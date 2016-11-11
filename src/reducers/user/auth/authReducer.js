@@ -82,7 +82,6 @@ export default function authReducer (state = initialState, action) {
       return formValidation(
       state.setIn(['form', 'state'], action.type)
         .setIn(['form', 'error'], null)
-        .setIn(['form', 'fields', 'username'], '')
         .setIn(['form', 'fields', 'email'], '')
         .setIn(['form', 'fields', 'password'], '')
         .setIn(['form', 'fields', 'passwordAgain'], '')
@@ -157,8 +156,6 @@ export default function authReducer (state = initialState, action) {
           .setIn(['form', 'error'], form.error)
           .setIn(['form', 'isValid'], form.isValid)
           .setIn(['form', 'isFetching'], form.isFetching)
-          .setIn(['form', 'fields', 'username'], form.fields.username)
-          .setIn(['form', 'fields', 'usernameHasError'], form.fields.usernameHasError)
           .setIn(['form', 'fields', 'email'], form.fields.email)
           .setIn(['form', 'fields', 'emailHasError'], form.fields.emailHasError)
           .setIn(['form', 'fields', 'password'], form.fields.password)

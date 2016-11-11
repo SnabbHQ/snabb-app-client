@@ -23,6 +23,7 @@ import LoginForm from './LoginForm'
 import ItemCheckbox from '../../../components/ItemCheckbox'
 import React, {Component} from 'react'
 import {StyleSheet, ScrollView, Text, TouchableHighlight, View} from 'react-native'
+import I18n from "../../../lib/I18n";
 
 import Dimensions from 'Dimensions';
 var {height, width} = Dimensions.get('window') // Screen dimensions in current orientation
@@ -67,12 +68,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({...authActions, ...globalActions}, dispatch)
   }
 }
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-import Translations from '../../../lib/Translations'
-I18n.translations = Translations
 
 class LoginRender extends Component {
   constructor(props) {
@@ -80,7 +75,6 @@ class LoginRender extends Component {
     this.errorAlert = new ErrorAlert()
     this.state = {
       value: {
-        username: this.props.auth.form.fields.username,
         email: this.props.auth.form.fields.email,
         password: this.props.auth.form.fields.password,
         passwordAgain: this.props.auth.form.fields.passwordAgain
@@ -95,7 +89,6 @@ class LoginRender extends Component {
   componentWillReceiveProps(nextprops) {
     this.setState({
       value: {
-        username: nextprops.auth.form.fields.username,
         email: nextprops.auth.form.fields.email,
         password: nextprops.auth.form.fields.password,
         passwordAgain: nextprops.auth.form.fields.passwordAgain
@@ -113,9 +106,6 @@ class LoginRender extends Component {
    * *Note* that the fields are validated by the authReducer
    */
   onChange(value) {
-    if (value.username !== '') {
-      this.props.actions.onAuthFormFieldChange('username', value.username)
-    }
     if (value.email !== '') {
       this.props.actions.onAuthFormFieldChange('email', value.email)
     }

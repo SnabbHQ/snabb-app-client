@@ -77,11 +77,9 @@ export default function profileReducer (state = initialState, action) {
      */
     case GET_PROFILE_SUCCESS:
       nextProfileState = state.setIn(['form', 'isFetching'], false)
-      .setIn(['form', 'fields', 'username'], action.payload.username)
       .setIn(['form', 'fields', 'email'], action.payload.email)
       .setIn(['form', 'fields', 'emailVerified'],
              action.payload.emailVerified)
-      .setIn(['form', 'originalProfile', 'username'], action.payload.username)
       .setIn(['form', 'originalProfile', 'email'], action.payload.email)
       .setIn(['form', 'originalProfile', 'emailVerified'], action.payload.emailVerified)
       .setIn(['form', 'originalProfile', 'objectId'], action.payload.objectId)
@@ -96,10 +94,9 @@ export default function profileReducer (state = initialState, action) {
      *
      */
     case LOGOUT_SUCCESS:
-      nextProfileState = state.setIn(['form', 'fields', 'username'], '')
+      nextProfileState = state.setIn(['form', 'fields'], '')
       .setIn(['form', 'fields', 'email'], '')
       .setIn(['form', 'fields', 'emailVerified'], false)
-      .setIn(['form', 'originalProfile', 'username'], '')
       .setIn(['form', 'originalProfile', 'email'], '')
       .setIn(['form', 'originalProfile', 'emailVerified'], false)
       .setIn(['form', 'originalProfile', 'objectId'], null)
@@ -144,17 +141,11 @@ export default function profileReducer (state = initialState, action) {
           .setIn(['form', 'isValid'], profile.isValid)
           .setIn(['form', 'isFetching'], profile.isFetching)
           .setIn(['form', 'originalProfile',
-                  'username'], profile.originalProfile.username)
-          .setIn(['form', 'originalProfile',
                   'email'], profile.originalProfile.email)
           .setIn(['form', 'originalProfile',
                   'objectId'], profile.originalProfile.objectId)
           .setIn(['form', 'originalProfile',
                   'emailVerified'], profile.originalProfile.emailVerified)
-          .setIn(['form', 'fields',
-                  'username'], profile.fields.username)
-          .setIn(['form', 'fields',
-                  'usernameHasError'], profile.fields.usernameHasError)
           .setIn(['form', 'fields',
                   'email'], profile.fields.email)
           .setIn(['form', 'fields',

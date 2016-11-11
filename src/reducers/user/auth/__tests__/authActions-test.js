@@ -246,19 +246,17 @@ describe('authActions', () => {
       {type: SIGNUP_REQUEST},
         {type: SIGNUP_SUCCESS,
          payload: {status: 201,
-                   username: 'user',
                    email: 'email'}},
       {type: LOGOUT}
     ]
 
     const store = mockStore({})
 
-    return store.dispatch(actions.signup('user', 'email', 'password'))
+    return store.dispatch(actions.signup('email', 'password'))
       .then(() => {
         expect(store.getActions()[0]).toEqual(expectedActions[0])
         expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
         expect(store.getActions()[1].payload.status).toEqual(expectedActions[1].payload.status)
-        expect(store.getActions()[1].payload.username).toEqual(expectedActions[1].payload.username)
         expect(store.getActions()[1].payload.email).toEqual(expectedActions[1].payload.email)
         expect(store.getActions()[2]).toEqual(expectedActions[2])
       })

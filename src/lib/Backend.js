@@ -17,7 +17,7 @@ export default class Backend {
    *
    * @param data object
    *
-   * {username: "barton", email: "foo@gmail.com", password: "Passw0rd!"}
+   * {email: "foo@gmail.com", password: "Passw0rd!"}
    *
    * @return
    * if ok, {createdAt: "2015-12-30T15:17:05.379Z",
@@ -35,7 +35,7 @@ export default class Backend {
    *
    * @param data
    *
-   *  {username: "barton", password: "Passw0rd!"}
+   *  {password: "Passw0rd!"}
    *
    * @returns
    *
@@ -44,7 +44,6 @@ export default class Backend {
    * objectId: "Z4yvP19OeL"
    * sessionToken: "r:Kt9wXIBWD0dNijNIq2u5rRllW"
    * updatedAt: "2015-12-30T16:08:50.419Z"
-   * username: "barton"
    *
    */
   login (data) {
@@ -97,7 +96,7 @@ export default class Backend {
    *
    * @param userId
    * @param data object:
-   * {username: "barton", email: "barton@foo.com"}
+   * {email: "barton@foo.com"}
    */
   updateProfile (userId, data) {
   }
