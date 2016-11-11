@@ -8,21 +8,22 @@
  */
 'use strict';
 
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import {Content} from 'native-base';
-import * as profileActions from "../../reducers/user/profile/profileActions";
-import * as globalActions from "../../reducers/global/globalActions";
-import DefaultNavBar from "../../components/DefaultNavBar";
-import ErrorAlert from "../../components/ErrorAlert";
-import FormButton from "../../components/FormButton";
-import Header from "../../components/Header";
-import ItemCheckbox from "../../components/ItemCheckbox";
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import {Content, Button} from 'native-base'
 import {Actions} from "react-native-router-flux";
-import React, {Component} from "react";
-import {StyleSheet, View} from "react-native";
-import t from "tcomb-form-native";
-import I18n from "../../lib/I18n";
+import * as profileActions from "../../reducers/user/profile/profileActions"
+import * as globalActions from "../../reducers/global/globalActions"
+import * as authActions from "../../reducers/user/auth/authActions"
+import DefaultNavBar from "../../components/DefaultNavBar"
+import ErrorAlert from "../../components/ErrorAlert"
+import FormButton from "../../components/FormButton"
+import Header from "../../components/Header"
+import ItemCheckbox from "../../components/ItemCheckbox"
+import React, {Component} from "react"
+import {StyleSheet, View, Alert} from "react-native"
+import t from "tcomb-form-native"
+import I18n from "../../lib/I18n"
 
 let Form = t.form.Form;
 
@@ -42,7 +43,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...profileActions, ...globalActions}, dispatch)
+    actions: bindActionCreators({...profileActions, ...authActions, ...globalActions}, dispatch)
   }
 }
 
@@ -108,6 +109,20 @@ class ProfileScreen extends Component {
         }
       })
     }
+  }
+
+  handleLogoutPress() {
+    let self = this
+
+    // Works on both iOS and Android
+    Alert.alert(
+      'Are you sure?',
+      'Are you sure you log out?',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => self.props.actions.logout()}
+      ]
+    )
   }
 
   /**
@@ -186,6 +201,8 @@ class ProfileScreen extends Component {
           isDisabled={!this.props.profile.form.isValid || this.props.profile.form.isFetching}
           onPress={onButtonPress.bind(self)}
           buttonText={profileButtonText}/>
+
+        <Button onPress={this.handleLogoutPress.bind(this)}>Logout</Button>
 
       </Content>
     )

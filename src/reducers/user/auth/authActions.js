@@ -143,6 +143,7 @@ export function logout() {
       })
   }
 }
+
 /**
  * ## onAuthFormFieldChange
  * Set the payload so the reducer can work on it
