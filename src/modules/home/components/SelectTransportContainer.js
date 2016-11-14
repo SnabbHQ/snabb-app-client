@@ -42,21 +42,26 @@ class SelectTransportScreen extends Component {
   render() {
 
     var items = ['Simon Mignolet', 'Nathaniel Clyne', 'Dejan Lovren', 'Mama Sakho', 'Emre Can'];
-    var items = [{icon: 'ios-alarm', name: 'Simon Mignolet'}]
 
     return (
-      <View style={{flex: 1, flexDirection: 'column', height: 300}}>
+      <View style={{flex: 1, flexDirection: 'column', height: 400}}>
         <Content>
-          <View style={{flexDirection: 'row'}}>
-            <Icon size={40} name='notifications' style={{padding: 20}}/>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-start'}}>
-                <Text style={{fontSize: 20, fontWeight: 'bold'}}>4min</Text>
-                <Text style={{fontSize: 20}}>2.2 km away</Text>
-              </View>
-              <Text style={{padding: 30, fontSize: 20}}>€5.00</Text>
-            </View>
-          </View>
+          <List dataArray={items}
+                renderRow={(item) =>
+                  <ListItem style={{padding: -10}}>
+                    <View style={{flexDirection: 'row'}}>
+                      <Icon size={40} name='notifications' style={{paddingTop: 20, paddingRight: 20}}/>
+                      <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-start'}}>
+                          <Text style={{fontSize: 20, fontWeight: 'bold'}}>4min</Text>
+                          <Text style={{fontSize: 20}}>2.2 km away</Text>
+                        </View>
+                        <Text style={{padding: 30, fontSize: 20}}>€5.00</Text>
+                      </View>
+                    </View>
+                  </ListItem>
+                }>
+          </List>
         </Content>
       </View>
     )
