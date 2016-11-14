@@ -13,7 +13,11 @@ import MapView from "react-native-maps";
 import LocationPin from "./LocationPin";
 import SetPickupContainer from "./SetPickupContainer"
 import RequestPickupContainer from "./RequestPickupContainer"
+import SelectTransportContainer from "./SelectTransportContainer"
 
+
+import Dimensions from 'Dimensions';
+var {height, width} = Dimensions.get('window') // Screen dimensions in current orientation
 
 const {
   PICKUP_LOCATION,
@@ -73,7 +77,9 @@ class HomeMapView extends React.Component {
   }
 
   handleRequestPickupPress() {
-    Actions.RequestingPickupScreen()
+    //Actions.RequestingPickupScreen()
+    showPickup = false
+    this.forceUpdate()
   }
 
   handleBackToSetPickupPress() {
@@ -95,9 +101,7 @@ class HomeMapView extends React.Component {
 
   showWhat() {
     if (showPickup) {
-      return <SetPickupContainer
-        onLocationBoxPress={() => this.handlePickupLocationBoxPress()}
-        onSetPickupPress={() => this.handleSetPickupPress()}/>
+      return <SelectTransportContainer/>
     } else {
       return <RequestPickupContainer
         pickupLocationBoxPress={() => this.handlePickupLocationBoxPress()}
@@ -114,23 +118,26 @@ class HomeMapView extends React.Component {
           style={styles.map}
           showsUserLocation={true}
           region={this.props.location.pickupLocation}
-          onRegionChangeComplete={region => this.onRegionChange(region)}/>
+          onRegionChangeComplete={region => this.onRegionChange(region)}>
 
-        <LocationPin
-          text={""}
-          pinColor={"#000"}
-          textColor={"#FFF"}
-          top={0}/>
+          <LocationPin
+            text={""}
+            pinColor={"#000"}
+            textColor={"#FFF"}
+            top={0}/>
 
-        <View style={styles.content} pointerEvents={'box-none'}>
-          <View style={{flexDirection: 'row'}}>
-            {this.renderBackButton()}
-            <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
-              <Icon name='location-arrow' style={styles.locationIcon}/>
-            </Button>
+          <View style={styles.content} pointerEvents={'box-none'}>
+            <View style={{flexDirection: 'row'}}>
+              {this.renderBackButton()}
+              <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
+                <Icon name='location-arrow' style={styles.locationIcon}/>
+              </Button>
+            </View>
+            <View style={{backgroundColor: '#ffffff', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
+              {this.showWhat()}
+            </View>
           </View>
-          {this.showWhat()}
-        </View>
+          </MapView>
       </View>
     );
   }

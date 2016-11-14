@@ -38,7 +38,7 @@
     "native-base": "^0.5.11",
     "react": "15.3.2",
     "react-mixin": "2.0.2",
-    "react-native": "0.35.0",
+    "react-native": "0.37.0",
     "react-native-drawer": "^2.3.0",
     "react-native-geocoder": "^0.4.5",
     "react-native-google-places-autocomplete": "^1.2.6",

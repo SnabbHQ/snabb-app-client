@@ -31,48 +31,34 @@ class RequestPickupContainer extends React.Component {
   render() {
     return (
       <View style={styles.requestPickupContainer}>
-        <Grid>
-          <Col style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Row>
-              <Icon name='motorcycle' style={{fontSize: 50, color: '#007AFF'}}/>
-              <Text>Motorbike</Text>
-              <Text>10 Kg</Text>
-            </Row>
-          </Col>
-          <Row>
-            <LocationBox
-              latlng={{
-                lat: this.props.location.pickupLocation.latitude,
-                lng: this.props.location.pickupLocation.longitude
-              }}
-              margin={10}
-              showLabel={true}
-              labelText={"Pickup Location"}
-              defaultText={"Choose Your Location"}
-              labelColor={"rgba(113,187,28,1)"}
-              textColor={"rgba(0,0,0,1)"}
-              onPress={this.props.pickupLocationBoxPress}/>
-          </Row>
-          <Row>
-            <LocationBox
-              latlng={{
-                lat: this.props.location.deliveryLocation.latitude,
-                lng: this.props.location.deliveryLocation.longitude
-              }}
-              margin={10}
-              showLabel={true}
-              labelText={"Delivery Location"}
-              defaultText={"Choose Your Location"}
-              labelColor={"rgba(113,187,28,1)"}
-              textColor={"rgba(0,0,0,1)"}
-              onPress={this.props.deliveryLocationBoxPress}/>
-          </Row>
-          <Row>
-            <TouchableOpacity style={styles.setPickupLocation} onPress={this.props.handleRequestPickupPress}>
-              <Text style={styles.setPickupLocationText}>Set Pickup</Text>
-            </TouchableOpacity>
-          </Row>
-        </Grid>
+        <LocationBox
+          latlng={{
+            lat: this.props.location.pickupLocation.latitude,
+            lng: this.props.location.pickupLocation.longitude
+          }}
+          margin={10}
+          showLabel={true}
+          labelText={"Pickup Location"}
+          defaultText={"Choose Your Location"}
+          labelColor={"rgba(113,187,28,1)"}
+          textColor={"rgba(0,0,0,1)"}
+          onPress={this.props.pickupLocationBoxPress}/>
+        <LocationBox
+          latlng={{
+            lat: this.props.location.deliveryLocation.latitude,
+            lng: this.props.location.deliveryLocation.longitude
+          }}
+          margin={10}
+          showLabel={true}
+          labelText={"Delivery Location"}
+          defaultText={"Choose Your Location"}
+          labelColor={"rgba(113,187,28,1)"}
+          textColor={"rgba(0,0,0,1)"}
+          onPress={this.props.deliveryLocationBoxPress}/>
+
+        <TouchableOpacity style={styles.setPickupLocation} onPress={this.props.handleRequestPickupPress}>
+          <Text style={styles.setPickupLocationText}>Set Pickup</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -80,14 +66,16 @@ class RequestPickupContainer extends React.Component {
 
 const styles = StyleSheet.create({
   requestPickupContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
     backgroundColor: '#F7F7F7',
     shadowRadius: 2,
     shadowOpacity: 0.2,
     shadowColor: '#000',
-    height: 300
+    flexWrap: 'wrap',
+    flex: 1,
+    height: 200
   },
   setPickupLocation: {
     backgroundColor: '#00D5D5',
