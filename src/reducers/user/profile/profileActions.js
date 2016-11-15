@@ -67,6 +67,7 @@ export function getProfile (sessionToken) {
       })
       .catch((error) => {
         dispatch(getProfileFailure(error))
+        throw (error)
       })
   }
 }

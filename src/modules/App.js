@@ -53,9 +53,7 @@ let App = React.createClass({
         this.props.actions.getSessionToken()
           .then(token => this.props.actions.getProfile(token))
           .then(() => Actions.HomeScreen())
-          .catch((error) => {
-            Actions.LoginRegisterScreen()
-          })
+          .catch(() => Actions.LoginRegisterScreen())
       },
       500
     )
