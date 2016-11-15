@@ -8,9 +8,11 @@
 
 import CONFIG from './config'
 import Hapi from './Hapi'
+import SnabbApi from './SnabbApi'
 
 export default function BackendFactory(token = null) {
-  if (CONFIG.backend.hapiLocal || CONFIG.backend.hapiRemote) {
-    return new Hapi(token)
-  }
+  return new SnabbApi(token)
+  // if (CONFIG.backend.hapiLocal || CONFIG.backend.hapiRemote) {
+  //   return new Hapi(token)
+  // }
 }

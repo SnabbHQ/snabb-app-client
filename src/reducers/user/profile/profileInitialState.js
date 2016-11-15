@@ -22,7 +22,11 @@ const {Record} = require('immutable');
  */
 const Form = Record({
   originalProfile: new (Record({
+    name: null,
+    lastName: null,
+    phoneNumber: null,
     email: null,
+    thumbnail: null,
     objectId: null,
     emailVerified: null
   })),
@@ -31,6 +35,9 @@ const Form = Record({
   isValid: false,
   isFetching: false,
   fields: new (Record({
+    name: '',
+    lastName: '',
+    phoneNumber: '',
     email: '',
     emailHasError: false,
     emailErrorMsg: '',

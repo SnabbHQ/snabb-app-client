@@ -59,7 +59,21 @@ export default class SnabbApi extends Backend {
    * if error, {code: xxx, error: 'message'}
    */
   async signup (data) {
-    return await this.response
+    return await this._fetch({
+      method: 'POST',
+      url: '/account/register',
+      body: data
+    })
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          return res.json
+        } else {
+          throw res.json
+        }
+      })
+      .catch((error) => {
+        throw (error)
+      })
   }
 
   /**
@@ -80,7 +94,27 @@ export default class SnabbApi extends Backend {
    *
    */
   async login (data) {
-    return await this.response
+    return await this._fetch({
+      method: 'POST',
+      url: '/auth/login/',
+      body: data
+    })
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          return {
+            createdAt: "2015-12-30T15:29:36.611Z",
+            updatedAt: "2015-12-30T16:08:50.419Z",
+            objectId: "Z4yvP19OeL",
+            email: "barton@foo.com",
+            sessionToken: "r:Kt9wXIBWD0dNijNIq2u5rRllW"
+          }
+        } else {
+          throw (res.json)
+        }
+      })
+      .catch((error) => {
+        throw (error)
+      })
   }
   /**
    * ### logout
@@ -152,7 +186,17 @@ export default class SnabbApi extends Backend {
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201)) {
-          return res.json
+          return {
+            objectId: "Z4yvP19OeL",
+            sessionToken: "r:uFeYONgIsZMPyxOWVJ6VqJGqv",
+            updatedAt: "2015-12-30T15:29:36.611Z",
+            name: 'Michael',
+            lastName: 'Knight',
+            userName: 'michaelKnight',
+            email: 'michael.knight@snabb.io',
+            phoneNumber: '+46712345678',
+            thumbnail: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw'
+          }
         } else {
           throw (res.json)
         }
@@ -186,6 +230,19 @@ export default class SnabbApi extends Backend {
       .catch((error) => {
         throw (error)
       })
+  }
+
+  /**
+   * ### _fetch
+   * A generic function that prepares the request
+   *
+   * @returns object:
+   *  {code: response.code,
+   *   status: response.status,
+   *   json: response.json()
+   */
+  async _fetch (opts) {
+    return await this.response
   }
 };
 

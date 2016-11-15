@@ -1,12 +1,23 @@
+import {connect} from "react-redux"
 import {Image, View, StyleSheet, TouchableOpacity} from "react-native";
 import React, {Component} from 'react';
 
+/**
+ * ## Redux boilerplate
+ */
+function mapStateToProps(state) {
+  return {
+    profile: state.profile,
+    global: {
+      currentUser: state.global.currentUser,
+    }
+  }
+}
 
 class UserProfileImage extends Component {
 
   constructor(param) {
     super(param)
-
   }
 
   render() {
@@ -22,7 +33,7 @@ class UserProfileImage extends Component {
     return (
       <View style={[styles.container, this.props.style]}>
         <TouchableOpacity onPress={this.props.onPress}>
-          <Image style={profileImage} source={this.props.source}/>
+          <Image style={profileImage} source={this.props.profile.profile_image}/>
         </TouchableOpacity>
       </View>
     )
@@ -38,4 +49,5 @@ const styles = StyleSheet.create({
   }
 })
 
-export default UserProfileImage;
+export default connect(mapStateToProps, null)(UserProfileImage)
+

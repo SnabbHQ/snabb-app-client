@@ -50,7 +50,7 @@ const {
 import {Actions} from "react-native-router-flux"
 
 const AppAuthToken = require('../../../lib/__mocks__/AppAuthToken').default;
-const BackendFactory = require('../../../lib/__mocks__/BackendFactory').default;
+const BackendFactory = require('../../../lib/BackendFactory').default;
 
 const _ = require('underscore');
 
@@ -294,8 +294,8 @@ export function signup(email, password) {
                 })
             ))
             dispatch(logoutState())
-            // navigate to Tabbar
-            Actions.Tabbar()
+            // navigate to HomeScreen
+            Actions.HomeScreen()
           })
       })
       .catch((error) => {
@@ -402,7 +402,7 @@ export function resetPassword(email) {
       .then(() => {
         dispatch(loginState())
         dispatch(resetPasswordSuccess())
-        Actions.Login()
+        Actions.LoginRegisterScreen()
       })
       .catch((error) => {
         dispatch(resetPasswordFailure(error))

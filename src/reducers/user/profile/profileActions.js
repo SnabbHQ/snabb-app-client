@@ -25,7 +25,7 @@ const {
  * BackendFactory - base class for server implementation
  * AppAuthToken for localStorage sessionToken access
  */
-const BackendFactory = require('../../../lib/__mocks__/BackendFactory').default;
+const BackendFactory = require('../../../lib/BackendFactory').default;
 const AppAuthToken = require('../../../lib/__mocks__/AppAuthToken').default;
 
 /**

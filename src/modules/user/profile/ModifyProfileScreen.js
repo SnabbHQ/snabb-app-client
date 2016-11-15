@@ -54,8 +54,12 @@ class ModifyProfileScreen extends Component {
     this.errorAlert = new ErrorAlert()
     this.state = {
       formValues: {
-        email: ''
-      }
+        name: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+      },
+      thumbnail: ''
     }
   }
 
@@ -68,7 +72,10 @@ class ModifyProfileScreen extends Component {
    */
   onChange(value) {
     if (value.email !== '') {
+      this.props.actions.onProfileFormFieldChange('name', value.name)
+      this.props.actions.onProfileFormFieldChange('lastName', value.lastName)
       this.props.actions.onProfileFormFieldChange('email', value.email)
+      this.props.actions.onProfileFormFieldChange('phoneNumber', value.phoneNumber)
     }
     this.setState({value})
   }
@@ -82,8 +89,11 @@ class ModifyProfileScreen extends Component {
   componentWillReceiveProps(props) {
     this.setState({
       formValues: {
-        email: props.profile.form.fields.email
-      }
+        name: props.profile.form.fields.name,
+        lastName: props.profile.form.fields.lastName,
+        email: props.profile.form.fields.email,
+      },
+      profileImage: props.profile.thumbnail
     })
   }
 
@@ -100,8 +110,12 @@ class ModifyProfileScreen extends Component {
     } else {
       this.setState({
         formValues: {
+          name: this.props.profile.form.fields.name,
+          lasName: this.props.profile.form.fields.lastName,
+          phoneNumber: this.props.profile.form.fields.phoneNumber,
           email: this.props.profile.form.fields.email
-        }
+        },
+        profileImage: this.props.profile.thumbnail
       })
     }
   }
@@ -121,8 +135,11 @@ class ModifyProfileScreen extends Component {
      */
     this.props.actions.updateProfile(
       this.props.profile.form.originalProfile.objectId,
-      this.props.profile.form.fields.username,
+      this.props.profile.form.fields.name,
+      this.props.profile.form.fields.lastName,
+      this.props.profile.form.fields.phoneNumber,
       this.props.profile.form.fields.email,
+      this.props.profile.thumbnail,
       this.props.global.currentUser)
 
     Actions.pop();
@@ -162,8 +179,8 @@ class ModifyProfileScreen extends Component {
         }
 
         this.setState({
-          avatarSource: source
-        });
+          thumbnail: source
+        })
       }
     });
   }
@@ -190,7 +207,7 @@ class ModifyProfileScreen extends Component {
           <Row size={1}>
             <Col size={1.5} style={{padding: 10, alignItems: 'center', justifyContent: 'center'}}>
               <UserProfileImage
-                source={{uri: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw"}}
+                source={{uri: this.props.profile.thumbnail}}
                 size={80} style={{alignSelf: 'center'}} onPress={this.onChangeProfilePhotoPress.bind(this)}/>
               <Text style={{
                 fontSize: 12,
@@ -203,11 +220,13 @@ class ModifyProfileScreen extends Component {
             </Col>
             <Col size={3} style={{padding: 5}}>
               <Row>
-                <Input placeholder='First Name' style={{flex: 1, alignSelf: 'stretch'}}/>
+                <Input placeholder='First Name' style={{flex: 1, alignSelf: 'stretch'}}
+                       value={this.state.formValues.name}/>
               </Row>
               <View style={{backgroundColor: '#E7E7E7', height: 1}}/>
               <Row>
-                <Input placeholder='Last Name' style={{flex: 1, alignSelf: 'stretch'}}/>
+                <Input placeholder='Last Name' style={{flex: 1, alignSelf: 'stretch'}}
+                       value={this.state.formValues.lastName}/>
               </Row>
             </Col>
           </Row>
