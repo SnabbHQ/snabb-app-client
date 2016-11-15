@@ -207,9 +207,8 @@ class ModifyProfileScreen extends Component {
         <Grid>
           <Row size={1}>
             <Col size={1.5} style={{padding: 10, alignItems: 'center', justifyContent: 'center'}}>
-              <UserProfileImage
-                source={{uri: this.state.thumbnail}}
-                size={80} style={{alignSelf: 'center'}} onPress={this.onChangeProfilePhotoPress.bind(this)}/>
+              <UserProfileImage size={80} style={{alignSelf: 'center'}}
+                                onPress={this.onChangeProfilePhotoPress.bind(this)}/>
               <Text style={{
                 fontSize: 12,
                 paddingLeft: 4,

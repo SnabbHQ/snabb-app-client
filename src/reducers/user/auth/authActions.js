@@ -238,7 +238,7 @@ export function getSessionToken() {
         if (token) {
           dispatch(sessionTokenRequestSuccess(token))
           dispatch(logoutState())
-          Actions.HomeScreen()
+          //Actions.HomeScreen()
         } else {
           dispatch(sessionTokenRequestFailure())
           Actions.LoginRegisterScreen()

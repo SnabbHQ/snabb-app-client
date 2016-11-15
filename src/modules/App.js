@@ -2,9 +2,11 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
+import {Actions} from "react-native-router-flux"
 import * as authActions from "../reducers/user/auth/authActions"
 import * as deviceActions from "../reducers/device/deviceActions"
 import * as globalActions from "../reducers/global/globalActions"
+import * as profileActions from "../reducers/user/profile/profileActions"
 import React from "react"
 import {StyleSheet, View, Text} from "react-native"
 import TimerMixin from "react-timer-mixin"
@@ -34,7 +36,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...authActions, ...deviceActions, ...globalActions}, dispatch)
+    actions: bindActionCreators({...authActions, ...profileActions, ...deviceActions, ...globalActions}, dispatch)
   }
 }
 
@@ -49,6 +51,11 @@ let App = React.createClass({
     this.setTimeout(
       () => {
         this.props.actions.getSessionToken()
+          .then(token => this.props.actions.getProfile(token))
+          .then(() => Actions.HomeScreen())
+          .catch((error) => {
+            Actions.LoginRegisterScreen()
+          })
       },
       500
     )

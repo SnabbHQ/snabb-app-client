@@ -7,18 +7,13 @@ import React, {Component} from 'react';
  */
 function mapStateToProps(state) {
   return {
-    profile: state.profile,
-    global: {
-      currentUser: state.global.currentUser,
+    profile: {
+      thumbnail: state.profile.form.fields.thumbnail,
     }
   }
 }
 
 class UserProfileImage extends Component {
-
-  constructor(param) {
-    super(param)
-  }
 
   render() {
     let profileImage = {
@@ -33,7 +28,7 @@ class UserProfileImage extends Component {
     return (
       <View style={[styles.container, this.props.style]}>
         <TouchableOpacity onPress={this.props.onPress}>
-          <Image style={profileImage} source={this.props.profile.profile_image}/>
+          <Image style={profileImage} source={{uri: this.props.profile.thumbnail}}/>
         </TouchableOpacity>
       </View>
     )
