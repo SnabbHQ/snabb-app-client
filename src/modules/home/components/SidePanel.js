@@ -27,7 +27,7 @@ class SidePanel extends React.Component {
         style={styles.sidebar}>
         <TouchableOpacity onPress={() => Actions.ProfileScreen()}
                           style={styles.sidebarHeader}>
-          <UserProfileImage/>
+          <UserProfileImage size={50}/>
           <View style={{flex: 1, marginRight: 5, marginLeft: 10}}>
             <Text
               style={{fontSize: 16, fontWeight: 'bold', marginBottom: 5, color: '#09091A'}}>

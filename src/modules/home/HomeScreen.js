@@ -8,8 +8,8 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as authActions from "../../reducers/user/auth/authActions";
 import * as globalActions from "../../reducers/global/globalActions";
-import {Drawer} from "native-base";
-import LefNavigationPanel from "./components/SidePanel";
+import Drawer from "react-native-drawer";
+import SidePanel from "./components/SidePanel";
 import HomeMapView from "./components/HomeMapView";
 import React, {Component} from "react";
 import {StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native";
@@ -60,21 +60,32 @@ class HomeScreen extends Component {
         // onClose={()=>Actions.refresh({key:state.key, open: false})}
         type="overlay"
         tweenDuration={150}
-        content={<LefNavigationPanel />}
+        content={<SidePanel />}
         tapToClose={true}
         acceptPan={false}
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
-        negotiatePan={true}
+        openDrawerOffset={0.35}
+        panCloseMask={0.35}
         style={styles.drawer}
-        tweenHandler={(ratio) => {
-          return {
-            drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
-            main: {
-              opacity: (2 - ratio) / 2
-            }
-          };
-        }}>
+        styles={{
+          drawer: {
+            shadowColor: '#000000',
+            shadowOpacity: 0.8,
+            shadowRadius: 3,
+          },
+        }}
+        tweenHandler={(ratio) => ({
+          drawer: {
+            shadowColor: '#000000',
+            shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5
+          },
+          main: {
+            opacity: 1,
+          },
+          mainOverlay: {
+            opacity: ratio / 1.5,
+            backgroundColor: 'black',
+          }
+        })}>
         <View style={styles.container}>
           <HomeMapView/>
           <UserProfileImage style={styles.userProfile} onPress={() => this.openControlPanel()}/>
@@ -88,7 +99,8 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'black'
   },
   drawer: {
     shadowColor: '#000',
