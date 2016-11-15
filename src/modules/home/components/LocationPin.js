@@ -26,12 +26,12 @@ class LocationPin extends React.Component {
       flex: 1
     };
     let top = -19 + Dimensions.get('window').height / 2 + (this.props.top || 0);
-    let left = 0 + (this.props.left || 0);
+    let left = (this.props.left || 0);
     let style = {
       borderRadius: 21,
       backgroundColor: backgroundColor,
-      left: this.props.left || 0,
-      top: this.props.top || 0,
+      left: this.props.left || left,
+      top: this.props.top || top,
       height: 41
     };
 
@@ -48,8 +48,8 @@ class LocationPin extends React.Component {
       width: 3,
       height: 20,
       backgroundColor: backgroundColor,
-      left: this.props.left || 0,
-      top: this.props.top || 0,
+      left: this.props.left || left,
+      top: this.props.top || top,
     };
 
     return (
