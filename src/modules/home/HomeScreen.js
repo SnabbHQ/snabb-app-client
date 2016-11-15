@@ -88,7 +88,7 @@ class HomeScreen extends Component {
         })}>
         <View style={styles.container}>
           <HomeMapView/>
-          <UserProfileImage style={styles.userProfile} onPress={() => this.openControlPanel()}/>
+          <UserProfileImage dropShadow style={styles.userProfile} onPress={() => this.openControlPanel()}/>
         </View>
       </Drawer>
     )
