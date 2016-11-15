@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 import {Image, View, StyleSheet, TouchableOpacity} from "react-native";
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 
 /**
  * ## Redux boilerplate
@@ -13,14 +13,15 @@ function mapStateToProps(state) {
   }
 }
 
+const propTypes = {
+  dropShadow: PropTypes.bool,
+}
+
+const defaultProps = {
+  dropShadow: false,
+}
+
 class UserProfileImage extends Component {
-
-  constructor(params) {
-    super(params)
-
-    this.props.dropShadow = {}
-  }
-
   getDropShadowStyle(borderRadius) {
     if (this.props.dropShadow) {
       return {
@@ -59,6 +60,9 @@ class UserProfileImage extends Component {
     )
   }
 }
+
+UserProfileImage.propTypes = propTypes;
+UserProfileImage.defaultProps = defaultProps;
 
 var styles = StyleSheet.create({
   container: {
