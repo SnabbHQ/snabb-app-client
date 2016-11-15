@@ -6,6 +6,7 @@ module.exports = {
     RegisterScreen: function () {},
     ForgotPasswordScreen: function () {},
     ProfileScreen: function() {},
+    ModifyProfileScreen: function() {},
     LogoutScreen: function () {},
     SetLocationScreen: function () {},
     OngoingDeliveriesScreen: function () {},

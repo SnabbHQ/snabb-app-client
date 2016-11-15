@@ -10,7 +10,8 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {Content, Text, Button, Grid, Icon, Row, List, ListItem} from "native-base"
+import {Actions} from "react-native-router-flux"
+import {Text, Button, Grid, Icon, Row, List, ListItem} from "native-base"
 import * as profileActions from "../../reducers/user/profile/profileActions"
 import * as globalActions from "../../reducers/global/globalActions"
 import * as authActions from "../../reducers/user/auth/authActions"
@@ -18,7 +19,6 @@ import DefaultNavBar from "../../components/DefaultNavBar"
 import ErrorAlert from "../../components/ErrorAlert"
 import React, {Component} from "react"
 import {StyleSheet, View, Alert, TouchableOpacity} from "react-native"
-import t from "tcomb-form-native"
 import I18n from "../../lib/I18n"
 import UserProfileImage from "../user/components/UserProfileImage"
 
@@ -92,7 +92,11 @@ class ProfileScreen extends Component {
     }
   }
 
-  handleLogoutPress() {
+  onEditProfilePress() {
+    Actions.ModifyProfileScreen()
+  }
+
+  onLogoutPress() {
     let self = this
 
     // Works on both iOS and Android
@@ -122,7 +126,8 @@ class ProfileScreen extends Component {
             <Text>Michael Knight</Text>
             <Text>michael.knight@snabb.io</Text>
             <Text>+46 7123 45 678</Text>
-            <Button bordered style={{marginTop: 10, alignSelf: 'center'}}>Edit Profile</Button>
+            <Button bordered style={{marginTop: 10, alignSelf: 'center'}} onPress={this.onEditProfilePress.bind(this)}>Edit
+              Profile</Button>
           </Row>
           <Row style={{backgroundColor: '#E7E7E7', flexDirection: 'column', paddingTop: 30}}>
             <Text style={{fontSize: 17, marginLeft: 20, marginBottom: 10}}>Default Locations</Text>
@@ -145,7 +150,7 @@ class ProfileScreen extends Component {
               </ListItem>
             </List>
             <View style={{flex: 1, flexDirection: 'row'}}>
-              <Button bordered danger onPress={this.handleLogoutPress.bind(this)}
+              <Button danger onPress={this.onLogoutPress.bind(this)}
                       style={{flex: 1, alignSelf: 'flex-end', margin: 10}}>Logout</Button>
             </View>
           </Row>
