@@ -26,8 +26,8 @@ class UserProfileImage extends Component {
       return {
         borderRadius: borderRadius,
         shadowColor: "#000000",
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
+        shadowOpacity: 0.4,
+        shadowRadius: 1,
         shadowOffset: {
           height: 1,
           width: 0

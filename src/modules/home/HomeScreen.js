@@ -63,7 +63,7 @@ class HomeScreen extends Component {
         content={<SidePanel />}
         tapToClose={true}
         acceptPan={false}
-        openDrawerOffset={0.35}
+        openDrawerOffset={0.25}
         panCloseMask={0.35}
         style={styles.drawer}
         styles={{
