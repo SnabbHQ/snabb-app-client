@@ -10,15 +10,15 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {Content, Button, TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem} from "native-base"
+import {Actions} from "react-native-router-flux"
+import {TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem} from "native-base"
 import * as profileActions from "../../../reducers/user/profile/profileActions"
 import * as globalActions from "../../../reducers/global/globalActions"
 import * as authActions from "../../../reducers/user/auth/authActions"
-import DefaultNavBar from "../../../components/DefaultNavBar"
 import ErrorAlert from "../../../components/ErrorAlert"
 import React, {Component} from "react"
 import {StyleSheet, View, Alert} from "react-native"
-import I18n from "../../../lib/I18n"
+import NavBar, {NavTitle, NavButton} from "react-native-nav"
 import UserProfileImage from "../components/UserProfileImage"
 
 /**
@@ -105,7 +105,13 @@ class ModifyProfileScreen extends Component {
     }
   }
 
+  onBackButtonPress() {
+    Actions.pop();
+  }
+
   onUpdateProfilePress() {
+
+    // TODO - Make sure this actually works!
 
     /**
      * When the button is pressed, send the users info including the
@@ -117,6 +123,8 @@ class ModifyProfileScreen extends Component {
       this.props.profile.form.fields.username,
       this.props.profile.form.fields.email,
       this.props.global.currentUser)
+
+    Actions.pop();
   }
 
   /**
@@ -128,7 +136,15 @@ class ModifyProfileScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <DefaultNavBar title={I18n.t('Navigation.edit_profile')}/>
+        <NavBar>
+          <NavButton onPress={this.onBackButtonPress.bind(this)}>
+            <Text>Cancel</Text>
+          </NavButton>
+          <NavTitle>Edit Profile</NavTitle>
+          <NavButton onPress={this.onUpdateProfilePress.bind(this)}>
+            <Text style={{color: '#00D5D5', fontWeight: 'bold'}}>Save</Text>
+          </NavButton>
+        </NavBar>
         <Grid>
           <Row size={1}>
             <Col size={1.5} style={{padding: 10, alignItems: 'center', justifyContent: 'center'}}>
@@ -157,19 +173,13 @@ class ModifyProfileScreen extends Component {
             <List style={{backgroundColor: 'white'}}>
               <ListItem iconLeft>
                 <Icon name='ios-call-outline'/>
-                <Input placeholder='Mobile Telephone' style={{fontWeight: 'bold'}}/>
+                <Input placeholder='Mobile Telephone'/>
               </ListItem>
-              <ListItem iconLeft iconRight>
+              <ListItem iconLeft>
                 <Icon name='ios-mail-outline'/>
-                <Text>michael.knight@snabb.io</Text>
-                <Icon name='ios-arrow-forward'/>
+                <Input placeholder='Email'/>
               </ListItem>
             </List>
-
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <Button primary onPress={this.onUpdateProfilePress.bind(this)}
-                      style={{flex: 1, alignSelf: 'flex-end', margin: 10}}>Save</Button>
-            </View>
           </Row>
         </Grid>
       </View>

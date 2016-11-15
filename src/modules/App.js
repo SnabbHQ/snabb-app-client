@@ -1,16 +1,15 @@
 'use strict';
 
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import * as authActions from "../reducers/user/auth/authActions";
-import * as deviceActions from "../reducers/device/deviceActions";
-import * as globalActions from "../reducers/global/globalActions";
-import {Actions} from "react-native-router-flux";
-import React from "react";
-import {StyleSheet, View, Text} from "react-native";
-import TimerMixin from "react-timer-mixin";
-import ReactMixin from 'react-mixin'
-import I18n from '../lib/I18n'
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as authActions from "../reducers/user/auth/authActions"
+import * as deviceActions from "../reducers/device/deviceActions"
+import * as globalActions from "../reducers/global/globalActions"
+import React from "react"
+import {StyleSheet, View, Text} from "react-native"
+import TimerMixin from "react-timer-mixin"
+import ReactMixin from "react-mixin"
+import I18n from "../lib/I18n"
 
 /**
  *  Save that state

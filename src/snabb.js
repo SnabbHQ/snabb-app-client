@@ -118,7 +118,8 @@ export default function native(platform) {
                      component={ProfileScreen}/>
 
               <Scene key='ModifyProfileScreen'
-                     component={ModifyProfileScreen}/>
+                     component={ModifyProfileScreen}
+                     direction='vertical'/>
 
               <Scene key='LogoutScreen'
                      title={I18n.t('snabb.logout')}
