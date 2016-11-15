@@ -10,14 +10,14 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {Content, Button} from "native-base"
+import {Content, Text, Button, Grid, Icon, Row, List, ListItem} from "native-base"
 import * as profileActions from "../../reducers/user/profile/profileActions"
 import * as globalActions from "../../reducers/global/globalActions"
 import * as authActions from "../../reducers/user/auth/authActions"
 import DefaultNavBar from "../../components/DefaultNavBar"
 import ErrorAlert from "../../components/ErrorAlert"
 import React, {Component} from "react"
-import {StyleSheet, View, Alert} from "react-native"
+import {StyleSheet, View, Alert, TouchableOpacity} from "react-native"
 import t from "tcomb-form-native"
 import I18n from "../../lib/I18n"
 import UserProfileImage from "../user/components/UserProfileImage"
@@ -113,12 +113,44 @@ class ProfileScreen extends Component {
   render() {
 
     return (
-      <Content>
+      <View style={styles.container}>
         <DefaultNavBar title={I18n.t('Navigation.profile')}/>
-        <UserProfileImage style={styles.userProfile} onPress={() => this.openControlPanel()}/>
-
-        <Button onPress={this.handleLogoutPress.bind(this)}>Logout</Button>
-      </Content>
+        <Grid>
+          <Row
+            style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+            <UserProfileImage size={100} style={styles.userProfile}/>
+            <Text>Michael Knight</Text>
+            <Text>michael.knight@snabb.io</Text>
+            <Text>+46 7123 45 678</Text>
+            <Button bordered style={{marginTop: 10, alignSelf: 'center'}}>Edit Profile</Button>
+          </Row>
+          <Row style={{backgroundColor: '#E7E7E7', flexDirection: 'column', paddingTop: 30}}>
+            <Text style={{fontSize: 17, marginLeft: 20, marginBottom: 10}}>Default Locations</Text>
+            <List style={{backgroundColor: 'white'}}>
+              <ListItem iconLeft iconRight>
+                <Icon name='ios-chatboxes'/>
+                <View style={{marginLeft: 15}}>
+                  <Text style={{fontWeight: 'bold'}}>Pickup Location</Text>
+                  <Text style={{fontSize: 13}}>Olof Palmes Gatan, 13, Stockholm</Text>
+                </View>
+                <Icon name='ios-arrow-forward'/>
+              </ListItem>
+              <ListItem iconLeft iconRight>
+                <Icon name='ios-alarm'/>
+                <View style={{marginLeft: 15}}>
+                  <Text style={{fontWeight: 'bold'}}>Delivery Location</Text>
+                  <Text style={{fontSize: 13}}>Handverkagatan, 5, Stockholm</Text>
+                </View>
+                <Icon name='ios-arrow-forward'/>
+              </ListItem>
+            </List>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <Button bordered danger onPress={this.handleLogoutPress.bind(this)}
+                      style={{flex: 1, alignSelf: 'flex-end', margin: 10}}>Logout</Button>
+            </View>
+          </Row>
+        </Grid>
+      </View>
     )
   }
 }

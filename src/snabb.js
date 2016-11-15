@@ -9,14 +9,24 @@ import {Router, Scene} from "react-native-router-flux"
 import {Provider} from "react-redux"
 import configureStore from "./lib/configureStore"
 import App from "./modules/App"
-import LoginRegisterView from "./modules/user/LoginRegisterViewScreen"
-import LoginView from "./modules/user/LoginScreen"
-import Logout from "./modules/user/LogoutSceen"
-import RegisterView from "./modules/user/RegisterScreen"
-import ForgotPassword from "./modules/user/ForgotPasswordScreen"
-import ProfileView from "./modules/user/ProfileScreen"
-import HomeView from "./modules/home/HomeScreen"
-import SettingsView from "./modules/settings/SettingsScreen"
+import LoginRegisterScreen from "./modules/user/LoginRegisterViewScreen"
+import LoginScreen from "./modules/user/LoginScreen"
+import LogoutScreen from "./modules/user/LogoutSceen"
+import RegisterScreen from "./modules/user/RegisterScreen"
+import ForgotPasswordScreen from "./modules/user/ForgotPasswordScreen"
+import ProfileScreen from "./modules/user/ProfileScreen"
+import ModifyProfileScreen from "./modules/user/ProfileScreen"
+import HomeScreen from "./modules/home/HomeScreen"
+import SettingsScreen from "./modules/settings/SettingsScreen"
+import HelpScreen from "./modules/help/HelpScreen"
+import PaymentsScreen from "./modules/payments/PaymentsScreen"
+import OngoingDeliveriesScreen from "./modules/ongoing/OngoingDeliveriesScreen"
+import HistoryScreen from "./modules/history/HistoryScreen"
+import SetLocationScreen from "./modules/delivery/SetLocationScreen"
+import RequestingPickupScreen from "./modules/delivery/RequestingPickupScreen"
+import DeliveryAssignedScreen from "./modules/delivery/DeliveryAssignedScreen"
+import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen";
+
 import {setPlatform, setVersion} from "./reducers/device/deviceActions"
 import {setStore} from "./reducers/global/globalActions"
 import AuthInitialState from "./reducers/user/auth/authInitialState"
@@ -25,15 +35,9 @@ import GlobalInitialState from "./reducers/global/globalInitialState"
 import ProfileInitialState from "./reducers/user/profile/profileInitialState"
 import LocationInitialState from "./reducers/location/locationInitialState"
 import pack from "../package"
-import HelpView from "./modules/help/HelpScreen"
-import PaymentsView from "./modules/payments/PaymentsScreen"
-import OngoingDeliveriesView from "./modules/ongoing/OngoingDeliveriesScreen"
-import HistoryView from "./modules/history/HistoryScreen"
-import SetLocationView from "./modules/delivery/SetLocationScreen"
+
 import I18n from "./lib/I18n"
-import RequestingPickupScreen from "./modules/delivery/RequestingPickupScreen"
-import DeliveryAssignedScreen from "./modules/delivery/DeliveryAssignedScreen"
-import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen";
+
 
 /**
  *  The version of the app but not  displayed yet
@@ -90,47 +94,50 @@ export default function native(platform) {
                      initial/>
 
               <Scene key='LoginRegisterScreen'
-                     component={LoginRegisterView}
+                     component={LoginRegisterScreen}
                      type='replace'/>
 
               <Scene key='HomeScreen'
-                     component={HomeView}
+                     component={HomeScreen}
                      type='replace'/>
 
               <Scene key='LoginScreen'
-                     component={LoginView}/>
+                     component={LoginScreen}/>
 
               <Scene key='RegisterScreen'
-                     component={RegisterView}/>
+                     component={RegisterScreen}/>
 
               <Scene key='ForgotPasswordScreen'
-                     component={ForgotPassword}
+                     component={ForgotPasswordScreen}
                      type='replace'/>
 
               <Scene key='SetLocationScreen'
-                     component={SetLocationView}/>
+                     component={SetLocationScreen}/>
 
               <Scene key='ProfileScreen'
-                     component={ProfileView}/>
+                     component={ProfileScreen}/>
+
+              <Scene key='ModifyProfileScreen'
+                     component={ModifyProfileScreen}/>
 
               <Scene key='LogoutScreen'
                      title={I18n.t('snabb.logout')}
-                     component={Logout}/>
+                     component={LogoutScreen}/>
 
               <Scene key='OngoingDeliveriesScreen'
-                     component={OngoingDeliveriesView}/>
+                     component={OngoingDeliveriesScreen}/>
 
               <Scene key='HistoryScreen'
-                     component={HistoryView}/>
+                     component={HistoryScreen}/>
               
               <Scene key='PaymentScreen'
-                     component={PaymentsView}/>
+                     component={PaymentsScreen}/>
 
               <Scene key='HelpScreen'
-                     component={HelpView}/>
+                     component={HelpScreen}/>
 
               <Scene key='SettingsScreen'
-                     component={SettingsView}/>
+                     component={SettingsScreen}/>
 
               <Scene key='RequestingPickupScreen'
                      component={RequestingPickupScreen}/>

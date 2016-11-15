@@ -35,7 +35,7 @@
   "dependencies": {
     "immutable": "3.8.1",
     "key-mirror": "1.0.1",
-    "native-base": "^0.5.11",
+    "native-base": "^0.5.13",
     "react": "15.3.2",
     "react-mixin": "2.0.2",
     "react-native": "0.37.0",

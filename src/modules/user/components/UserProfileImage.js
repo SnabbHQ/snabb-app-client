@@ -7,7 +7,6 @@ class UserProfileImage extends Component {
   constructor(param) {
     super(param)
 
-    this.props.style = {}
   }
 
   render() {
@@ -15,19 +14,26 @@ class UserProfileImage extends Component {
       backgroundColor: '#AAA',
       borderColor: '#FFFFFF',
       borderWidth: 3,
-      height: this.props.style.height ? this.props.style.height : 40,
-      width: this.props.style.width ? this.props.style.width : 40,
-      borderRadius: this.props.style.borderRadius ? this.props.style.borderRadius : 20
+      height: this.props.size ? this.props.size : 40,
+      width: this.props.size ? this.props.size: 40,
+      borderRadius: this.props.size/2 ? this.props.size /2 : 20
     }
 
     return (
-      <View style={this.props.style}>
+      <View style={[styles.container, this.props.style]}>
         <TouchableOpacity onPress={this.props.onPress}>
-          <Image style={profileImage}/>
+          <Image style={profileImage} source={{uri: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw"}}/>
         </TouchableOpacity>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+})
 
 export default UserProfileImage;
