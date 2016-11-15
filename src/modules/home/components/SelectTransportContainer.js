@@ -34,19 +34,19 @@ class SelectTransportScreen extends Component {
     var items = ['Simon Mignolet', 'Nathaniel Clyne', 'Dejan Lovren', 'Mama Sakho', 'Emre Can'];
 
     return (
-      <View style={{flex: 1, flexDirection: 'column', height: 400}}>
+      <View style={{flex: 1, flexDirection: 'column', height: 280}}>
         <Content>
           <List dataArray={items}
                 renderRow={(item) =>
                   <ListItem button onPress={this.handleRequestPickupPress.bind(this)} style={{padding: 0}}>
                     <View style={{flexDirection: 'row'}}>
-                      <Icon size={40} name='notifications' style={{paddingTop: 20, paddingRight: 20}}/>
+                      <Icon size={30} name='notifications' style={{paddingTop: 16, paddingRight: 15}}/>
                       <View style={{flex: 1, flexDirection: 'row'}}>
                         <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-start'}}>
-                          <Text style={{fontSize: 20, fontWeight: 'bold'}}>4min</Text>
-                          <Text style={{fontSize: 20}}>2.2 km away</Text>
+                          <Text style={{fontSize: 16, fontWeight: 'bold'}}>4min</Text>
+                          <Text style={{fontSize: 14}}>2.2 km away</Text>
                         </View>
-                        <Text style={{padding: 30, fontSize: 20}}>€5.00</Text>
+                        <Text style={{padding: 16, fontSize: 20}}>€5.00</Text>
                       </View>
                     </View>
                   </ListItem>
