@@ -91,9 +91,10 @@ class ModifyProfileScreen extends Component {
       formValues: {
         name: props.profile.form.fields.name,
         lastName: props.profile.form.fields.lastName,
+        phoneNumber: props.profile.form.fields.phoneNumber,
         email: props.profile.form.fields.email,
       },
-      profileImage: props.profile.thumbnail
+      thumbnail: props.profile.thumbnail
     })
   }
 
@@ -111,11 +112,11 @@ class ModifyProfileScreen extends Component {
       this.setState({
         formValues: {
           name: this.props.profile.form.fields.name,
-          lasName: this.props.profile.form.fields.lastName,
+          lastName: this.props.profile.form.fields.lastName,
           phoneNumber: this.props.profile.form.fields.phoneNumber,
           email: this.props.profile.form.fields.email
         },
-        profileImage: this.props.profile.thumbnail
+        thumbnail: this.props.profile.thumbnail
       })
     }
   }
@@ -207,7 +208,7 @@ class ModifyProfileScreen extends Component {
           <Row size={1}>
             <Col size={1.5} style={{padding: 10, alignItems: 'center', justifyContent: 'center'}}>
               <UserProfileImage
-                source={{uri: this.props.profile.thumbnail}}
+                source={{uri: this.state.thumbnail}}
                 size={80} style={{alignSelf: 'center'}} onPress={this.onChangeProfilePhotoPress.bind(this)}/>
               <Text style={{
                 fontSize: 12,
@@ -235,11 +236,11 @@ class ModifyProfileScreen extends Component {
             <List style={{backgroundColor: 'white'}}>
               <ListItem iconLeft>
                 <Icon name='ios-call-outline'/>
-                <Input placeholder='Mobile Telephone'/>
+                <Input placeholder='Mobile Telephone' value={this.state.formValues.phoneNumber}/>
               </ListItem>
               <ListItem iconLeft>
                 <Icon name='ios-mail-outline'/>
-                <Input placeholder='Email'/>
+                <Input placeholder='Email' value={this.state.formValues.email}/>
               </ListItem>
             </List>
           </Row>

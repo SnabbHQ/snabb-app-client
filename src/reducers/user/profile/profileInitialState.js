@@ -39,6 +39,7 @@ const Form = Record({
     lastName: '',
     phoneNumber: '',
     email: '',
+    thumbnail: '',
     emailHasError: false,
     emailErrorMsg: '',
     emailVerified: false
