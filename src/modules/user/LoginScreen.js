@@ -9,7 +9,7 @@ import {View} from "react-native";
 import NavBar, {NavButton} from "react-native-nav";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import {Actions} from "react-native-router-flux";
-import Translations from "../../lib/Translations";
+import I18n from '../../lib/I18n'
 
 const {
   LOGIN,
@@ -37,12 +37,6 @@ function mapDispatchToProps(dispatch) {
 function buttonPressHandler(login, email, password) {
   login(email, password)
 }
-
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-I18n.translations = Translations
 
 class LoginScreen extends Component {
 

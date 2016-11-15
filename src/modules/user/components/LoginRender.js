@@ -38,28 +38,6 @@ const {
 } = require('../../../lib/constants').default
 
 /**
- * ## Styles
- */
-var styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    flex: 1
-  },
-  inputs: {
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 10,
-    marginRight: 10
-  },
-  forgotContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10
-  }
-})
-/**
  * ## Redux boilerplate
  */
 
@@ -130,7 +108,7 @@ class LoginRender extends Component {
       <TouchableHighlight
         onPress={() => {
           actions.forgotPasswordState()
-          Actions.ForgotPassword()
+          Actions.ForgotPasswordScreen()
         }}>
         <Text>{I18n.t('LoginRender.forgot_password')}</Text>
       </TouchableHighlight>
@@ -139,7 +117,7 @@ class LoginRender extends Component {
       <TouchableHighlight
         onPress={() => {
           actions.loginState()
-          Actions.Login()
+          Actions.LoginScreen()
         }}>
         <Text>{I18n.t('LoginRender.already_have_account')}</Text>
       </TouchableHighlight>
@@ -148,7 +126,7 @@ class LoginRender extends Component {
       <TouchableHighlight
         onPress={() => {
           actions.registerState()
-          Actions.Register()
+          Actions.RegisterScreen()
         }}>
         <Text>{I18n.t('LoginRender.register')}</Text>
       </TouchableHighlight>
@@ -246,4 +224,28 @@ class LoginRender extends Component {
     )
   }
 }
+
+/**
+ * ## Styles
+ */
+var styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    flex: 1
+  },
+  inputs: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10
+  },
+  forgotContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10
+  }
+})
+
 export default connect(null, mapDispatchToProps)(LoginRender)

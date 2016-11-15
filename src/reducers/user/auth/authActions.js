@@ -122,22 +122,21 @@ export function logoutFailure(error) {
  * device and logged out there.
  */
 export function logout() {
+
   return dispatch => {
     dispatch(logoutRequest())
     return new AppAuthToken().getSessionToken()
-
       .then((token) => {
         return BackendFactory(token).logout()
       })
-
       .then(() => {
         dispatch(loginState())
         dispatch(logoutSuccess())
         dispatch(deleteSessionToken())
         Actions.LoginRegisterScreen()
       })
-
       .catch((error) => {
+        console.log(error)
         dispatch(loginState())
         dispatch(logoutFailure(error))
       })

@@ -134,7 +134,11 @@ export default class SnabbApi extends Backend {
    * prepare the request and call _fetch
    */
   async logout () {
-    return await this.response()
+    return await this._fetch({
+      method: 'POST',
+      url: '/account/logout',
+      body: {}
+    })
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
             (res.status === 400 && res.code === 209)) {
