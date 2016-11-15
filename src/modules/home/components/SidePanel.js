@@ -1,9 +1,22 @@
-import React from "react";
-import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native";
-import {Content, Text, List, ListItem, Icon, View} from "native-base";
-import {Actions} from "react-native-router-flux";
-import UserProfileImage from "../../user/components/UserProfileImage";
-import I18n from "../../../lib/I18n";
+import React from "react"
+import {connect} from "react-redux"
+import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native"
+import {Content, Text, List, ListItem, Icon, View} from "native-base"
+import {Actions} from "react-native-router-flux"
+import UserProfileImage from "../../user/components/UserProfileImage"
+import I18n from "../../../lib/I18n"
+
+
+/**
+ * ## Redux boilerplate
+ */
+function mapStateToProps(state) {
+  return {
+    profile: {
+      name: state.profile.form.fields.name,
+    }
+  }
+}
 
 class SidePanel extends React.Component {
 
@@ -17,8 +30,8 @@ class SidePanel extends React.Component {
           <UserProfileImage/>
           <View style={{flex: 1, marginRight: 5, marginLeft: 10}}>
             <Text
-              style={{fontSize: 16, fontWeight: 'bold', marginBottom: 5, color: '#09091A'}}>Javier
-              Tarazaga Gomez
+              style={{fontSize: 16, fontWeight: 'bold', marginBottom: 5, color: '#09091A'}}>
+              {this.props.profile.name}
             </Text>
             <Text style={{marginRight: 10, color: '#969696'}}>View Profile</Text>
           </View>
@@ -142,4 +155,4 @@ const styles = StyleSheet.create({
 });
 
 
-module.exports = SidePanel;
+export default connect(mapStateToProps, null)(SidePanel)

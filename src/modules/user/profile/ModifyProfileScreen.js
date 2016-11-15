@@ -11,6 +11,7 @@
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import {Actions} from "react-native-router-flux"
+import _ from 'underscore'
 import {TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem} from "native-base"
 import * as profileActions from "../../../reducers/user/profile/profileActions"
 import * as globalActions from "../../../reducers/global/globalActions"
@@ -71,13 +72,13 @@ class ModifyProfileScreen extends Component {
    *
    */
   onChange(value) {
-    if (value.name) {
+    if (!_.isUndefined(value.name)) {
       this.props.actions.onProfileFormFieldChange('name', value.name)
-    } else if (value.email) {
+    } else if (!_.isUndefined(value.email)) {
       this.props.actions.onProfileFormFieldChange('email', value.email)
-    } else if (value.lastName) {
+    } else if (!_.isUndefined(value.lastName)) {
       this.props.actions.onProfileFormFieldChange('lastName', value.lastName)
-    } else if (value.phoneNumber) {
+    } else if (!_.isUndefined(value.phoneNumber)) {
       this.props.actions.onProfileFormFieldChange('phoneNumber', value.phoneNumber)
     }
 
@@ -130,6 +131,8 @@ class ModifyProfileScreen extends Component {
   }
 
   onUpdateProfilePress() {
+
+    // TODO - Make sure to do proper validation
     /**
      * When the button is pressed, send the users info including the
      * ```currrentUser``` object as it contains the sessionToken and
@@ -145,8 +148,8 @@ class ModifyProfileScreen extends Component {
         thumbnail: this.props.profile.form.fields.thumbnail,
       },
       this.props.global.currentUser)
-
-    Actions.pop();
+      .then(() => Actions.pop())
+      .catch((error) => this.errorAlert.checkError(error))
   }
 
   onChangeProfilePhotoPress() {
