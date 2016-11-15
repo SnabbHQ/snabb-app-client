@@ -10,20 +10,19 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {Content, Button} from 'native-base'
-import {Actions} from "react-native-router-flux";
+import {Content, TextInput, InputGroup, Input, Icon, Text, Grid, Col, Row, List, ListItem} from "native-base"
 import * as profileActions from "../../reducers/user/profile/profileActions"
 import * as globalActions from "../../reducers/global/globalActions"
 import * as authActions from "../../reducers/user/auth/authActions"
 import DefaultNavBar from "../../components/DefaultNavBar"
 import ErrorAlert from "../../components/ErrorAlert"
 import FormButton from "../../components/FormButton"
-import Header from "../../components/Header"
 import ItemCheckbox from "../../components/ItemCheckbox"
 import React, {Component} from "react"
 import {StyleSheet, View, Alert} from "react-native"
 import t from "tcomb-form-native"
 import I18n from "../../lib/I18n"
+import UserProfileImage from "../user/components/UserProfileImage"
 
 let Form = t.form.Form;
 
@@ -163,32 +162,51 @@ class ModifyProfileScreen extends Component {
     let verfiedText = I18n.t('Profile.verified') + ' (' + I18n.t('Profile.display') + ')';
 
     return (
-      <Content>
-        <DefaultNavBar title={I18n.t('Navigation.profile')}/>
-        <Header isFetching={this.props.profile.form.isFetching}
-                showState={this.props.global.showState}
-                currentState={this.props.global.currentState}
-                onGetState={this.props.actions.getState}
-                onSetState={this.props.actions.setState}
-        />
-        <View style={styles.inputs}>
-          <Form
-            ref='form'
-            type={ProfileForm}
-            options={options}
-            value={this.state.formValues}
-            onChange={this.onChange.bind(self)}/>
-          <ItemCheckbox text={verfiedText}
-                        disabled
-                        checked={this.props.profile.form.fields.emailVerified}/>
-        </View>
+      <View style={styles.container}>
+        <DefaultNavBar title={I18n.t('Navigation.edit_profile')}/>
+        <Grid>
+          <Row size={1}>
+            <Col size={1.5} style={{padding: 10, alignItems: 'center', justifyContent: 'center'}}>
+              <UserProfileImage size={80} style={{alignSelf: 'center'}}/>
+            </Col>
+            <Col size={3} style={{padding: 5}}>
+              <Row>
+                <Input placeholder='First Name' style={{flex: 1, alignSelf: 'stretch'}}/>
+              </Row>
+              <View style={{backgroundColor: '#E7E7E7', height: 1}}/>
+              <Row>
+                <Input placeholder='Last Name' style={{flex: 1, alignSelf: 'stretch'}}/>
+              </Row>
+            </Col>
+          </Row>
+          <Row size={3} style={{backgroundColor: '#E7E7E7', flexDirection: 'column', paddingTop: 30}}>
+            <Text style={{fontSize: 17, marginLeft: 20, marginBottom: 10}}>Personal Information</Text>
+            <List style={{backgroundColor: 'white'}}>
+              <ListItem iconLeft iconRight>
+                <Icon name='ios-chatboxes'/>
+                <View style={{marginLeft: 15}}>
+                  <Text style={{fontWeight: 'bold'}}>Pickup Location</Text>
+                  <Text style={{fontSize: 13}}>Olof Palmes Gatan, 13, Stockholm</Text>
+                </View>
+                <Icon name='ios-arrow-forward'/>
+              </ListItem>
+              <ListItem iconLeft iconRight>
+                <Icon name='ios-alarm'/>
+                <View style={{marginLeft: 15}}>
+                  <Text style={{fontWeight: 'bold'}}>Delivery Location</Text>
+                  <Text style={{fontSize: 13}}>Handverkagatan, 5, Stockholm</Text>
+                </View>
+                <Icon name='ios-arrow-forward'/>
+              </ListItem>
+            </List>
 
-        <FormButton
-          isDisabled={!this.props.profile.form.isValid || this.props.profile.form.isFetching}
-          onPress={onButtonPress.bind(self)}
-          buttonText={profileButtonText}/>
-
-      </Content>
+            <FormButton
+              isDisabled={!this.props.profile.form.isValid || this.props.profile.form.isFetching}
+              onPress={onButtonPress.bind(self)}
+              buttonText={profileButtonText}/>
+          </Row>
+        </Grid>
+      </View>
     )
   }
 }
@@ -201,12 +219,6 @@ var styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     backgroundColor: 'transparent'
-  },
-  inputs: {
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 10,
-    marginRight: 10
   }
 });
 
