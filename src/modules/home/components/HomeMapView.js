@@ -100,7 +100,7 @@ class HomeMapView extends React.Component {
   }
 
   showWhat() {
-    if (showPickup) {
+    if (!showPickup) {
       return <SelectTransportContainer/>
     } else {
       return <RequestPickupContainer
