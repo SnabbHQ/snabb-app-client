@@ -22,15 +22,17 @@ import {StyleSheet, View, Alert, TouchableOpacity} from "react-native"
 import I18n from "../../../lib/I18n"
 import UserProfileImage from "../components/UserProfileImage"
 
-import Dimensions from 'Dimensions';
-var {height, width} = Dimensions.get('window') // Screen dimensions in current orientation
-
 /**
  * ## Redux boilerplate
  */
 function mapStateToProps(state) {
   return {
-    profile: state.profile,
+    profile: {
+      name: state.profile.form.fields.name,
+      lastName: state.profile.form.fields.lastName,
+      phoneNumber: state.profile.form.fields.phoneNumber,
+      email: state.profile.form.fields.email,
+    },
     global: {
       currentUser: state.global.currentUser,
       currentState: state.global.currentState,
@@ -84,14 +86,8 @@ class ProfileScreen extends Component {
    * form fields.  Otherwise, we need to go fetch the fields
    */
   componentDidMount() {
-    if (this.props.profile.form.fields.email === '') {
+    if (this.props.profile.email === '') {
       this.props.actions.getProfile(this.props.global.currentUser)
-    } else {
-      this.setState({
-        formValues: {
-          email: this.props.profile.form.fields.email
-        }
-      })
     }
   }
 
@@ -119,6 +115,8 @@ class ProfileScreen extends Component {
    */
   render() {
 
+    var nameFormatted = this.props.profile.name + ' ' + this.props.profile.lastName
+
     return (
       <View style={styles.container}>
         <DefaultNavBar title={I18n.t('Navigation.profile')}/>
@@ -127,9 +125,9 @@ class ProfileScreen extends Component {
             <Row
               style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
               <UserProfileImage size={100} style={styles.userProfile}/>
-              <Text>Michael Knight</Text>
-              <Text>michael.knight@snabb.io</Text>
-              <Text>+46 7123 45 678</Text>
+              <Text>{nameFormatted}</Text>
+              <Text>{this.props.profile.email}</Text>
+              <Text>{this.props.profile.phoneNumber}</Text>
               <Button bordered style={{marginTop: 10, marginBottom: 10, alignSelf: 'center'}}
                       onPress={this.onEditProfilePress.bind(this)}>Edit
                 Profile</Button>

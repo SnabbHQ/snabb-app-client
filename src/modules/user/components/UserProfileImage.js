@@ -33,8 +33,6 @@ class UserProfileImage extends Component {
       </View>
     )
   }
-
-// <Image style={profileImage} source={{uri: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw"}}/>
 }
 
 const styles = StyleSheet.create({
