@@ -71,12 +71,16 @@ class ModifyProfileScreen extends Component {
    *
    */
   onChange(value) {
-    if (value.email !== '') {
+    if (value.name) {
       this.props.actions.onProfileFormFieldChange('name', value.name)
-      this.props.actions.onProfileFormFieldChange('lastName', value.lastName)
+    } else if (value.email) {
       this.props.actions.onProfileFormFieldChange('email', value.email)
+    } else if (value.lastName) {
+      this.props.actions.onProfileFormFieldChange('lastName', value.lastName)
+    } else if (value.phoneNumber) {
       this.props.actions.onProfileFormFieldChange('phoneNumber', value.phoneNumber)
     }
+
     this.setState({value})
   }
 
@@ -94,7 +98,7 @@ class ModifyProfileScreen extends Component {
         phoneNumber: props.profile.form.fields.phoneNumber,
         email: props.profile.form.fields.email,
       },
-      thumbnail: props.profile.thumbnail
+      thumbnail: props.profile.form.fields.thumbnail
     })
   }
 
@@ -116,7 +120,7 @@ class ModifyProfileScreen extends Component {
           phoneNumber: this.props.profile.form.fields.phoneNumber,
           email: this.props.profile.form.fields.email
         },
-        thumbnail: this.props.profile.thumbnail
+        thumbnail: this.props.profile.form.fields.thumbnail
       })
     }
   }
@@ -126,9 +130,6 @@ class ModifyProfileScreen extends Component {
   }
 
   onUpdateProfilePress() {
-
-    // TODO - Make sure this actually works!
-
     /**
      * When the button is pressed, send the users info including the
      * ```currrentUser``` object as it contains the sessionToken and
@@ -136,11 +137,13 @@ class ModifyProfileScreen extends Component {
      */
     this.props.actions.updateProfile(
       this.props.profile.form.originalProfile.objectId,
-      this.props.profile.form.fields.name,
-      this.props.profile.form.fields.lastName,
-      this.props.profile.form.fields.phoneNumber,
-      this.props.profile.form.fields.email,
-      this.props.profile.thumbnail,
+      {
+        name: this.props.profile.form.fields.name,
+        lastName: this.props.profile.form.fields.lastName,
+        phoneNumber: this.props.profile.form.fields.phoneNumber,
+        email: this.props.profile.form.fields.email,
+        thumbnail: this.props.profile.form.fields.thumbnail,
+      },
       this.props.global.currentUser)
 
     Actions.pop();
@@ -221,12 +224,14 @@ class ModifyProfileScreen extends Component {
             <Col size={3} style={{padding: 5}}>
               <Row>
                 <Input placeholder='First Name' style={{flex: 1, alignSelf: 'stretch'}}
-                       value={this.state.formValues.name}/>
+                       value={this.state.formValues.name}
+                       onChangeText={(text) => this.onChange({name: text})}/>
               </Row>
               <View style={{backgroundColor: '#E7E7E7', height: 1}}/>
               <Row>
                 <Input placeholder='Last Name' style={{flex: 1, alignSelf: 'stretch'}}
-                       value={this.state.formValues.lastName}/>
+                       value={this.state.formValues.lastName}
+                       onChangeText={(text) => this.onChange({lastName: text})}/>
               </Row>
             </Col>
           </Row>
@@ -235,11 +240,13 @@ class ModifyProfileScreen extends Component {
             <List style={{backgroundColor: 'white'}}>
               <ListItem iconLeft>
                 <Icon name='ios-call-outline'/>
-                <Input placeholder='Mobile Telephone' value={this.state.formValues.phoneNumber}/>
+                <Input placeholder='Mobile Telephone' value={this.state.formValues.phoneNumber}
+                       onChangeText={(text) => this.onChange({phoneNumber: text})}/>
               </ListItem>
               <ListItem iconLeft>
                 <Icon name='ios-mail-outline'/>
-                <Input placeholder='Email' value={this.state.formValues.email}/>
+                <Input placeholder='Email' value={this.state.formValues.email}
+                       onChangeText={(text) => this.onChange({email: text})}/>
               </ListItem>
             </List>
           </Row>

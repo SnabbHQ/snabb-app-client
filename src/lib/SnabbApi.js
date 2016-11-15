@@ -16,7 +16,20 @@ import CONFIG from './config'
 import _ from 'underscore'
 import Backend from './Backend'
 
+var fakeUser = {
+  objectId: "Z4yvP19OeL",
+  sessionToken: "r:uFeYONgIsZMPyxOWVJ6VqJGqv",
+  updatedAt: "2015-12-30T15:29:36.611Z",
+  name: 'Michael',
+  lastName: 'Knight',
+  userName: 'michaelKnight',
+  email: 'michael.knight@snabb.io',
+  phoneNumber: '+46712345678',
+  thumbnail: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw'
+}
+
 export default class SnabbApi extends Backend {
+
   /**
    * ## Hapi.js client
    *
@@ -186,17 +199,7 @@ export default class SnabbApi extends Backend {
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201)) {
-          return {
-            objectId: "Z4yvP19OeL",
-            sessionToken: "r:uFeYONgIsZMPyxOWVJ6VqJGqv",
-            updatedAt: "2015-12-30T15:29:36.611Z",
-            name: 'Michael',
-            lastName: 'Knight',
-            userName: 'michaelKnight',
-            email: 'michael.knight@snabb.io',
-            phoneNumber: '+46712345678',
-            thumbnail: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw'
-          }
+          return fakeUser
         } else {
           throw (res.json)
         }
@@ -222,6 +225,10 @@ export default class SnabbApi extends Backend {
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201)) {
+
+          // TODO - Obviously this should never be here
+          fakeUser = data;
+
           return {}
         } else {
           throw (res.json)

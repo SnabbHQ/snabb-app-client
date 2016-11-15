@@ -57,25 +57,6 @@ class ProfileScreen extends Component {
     super(props);
 
     this.errorAlert = new ErrorAlert()
-    this.state = {
-      formValues: {
-        email: ''
-      }
-    }
-  }
-
-  /**
-   * ### componentWillReceiveProps
-   *
-   * Since the Forms are looking at the state for the values of the
-   * fields, when we we need to set them
-   */
-  componentWillReceiveProps(props) {
-    this.setState({
-      formValues: {
-        email: props.profile.form.fields.email
-      }
-    })
   }
 
   /**

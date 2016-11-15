@@ -96,7 +96,7 @@ export function profileUpdateFailure (json) {
 /**
  * ## updateProfile
  * @param {string} userId -  objectId
- * @param {string] email - user's email
+ * @param {Object } newUserData - the new user info
  * @param {Object} sessionToken - the sessionToken
  *
  * The sessionToken is provided when Hot Loading.
@@ -106,14 +106,18 @@ export function profileUpdateFailure (json) {
  * the data as now persisted on the serverx
  *
  */
-export function updateProfile (userId, email, sessionToken) {
+export function updateProfile (userId, newUserData, sessionToken) {
   return dispatch => {
     dispatch(profileUpdateRequest())
     return new AppAuthToken().getSessionToken(sessionToken)
       .then((token) => {
         return BackendFactory(token).updateProfile(userId,
           {
-            email: email
+            name: newUserData.name,
+            lastName: newUserData.lastName,
+            phoneNumber: newUserData.phoneNumber,
+            email: newUserData.email,
+            thumbnail: newUserData.thumbnail
           }
         )
       })
