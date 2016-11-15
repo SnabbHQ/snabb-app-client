@@ -7,7 +7,7 @@ import TimerMixin from 'react-timer-mixin';
 import * as locationActions from "../../reducers/location/locationActions"
 import * as globalActions from "../../reducers/global/globalActions"
 import React, {Component} from "react"
-import {StyleSheet, Text} from "react-native"
+import {StyleSheet, Text, Alert} from "react-native"
 import {View, Button, Content} from "native-base"
 import DefaultNavBar from "../../components/DefaultNavBar"
 import I18n from "../../lib/I18n";
@@ -26,7 +26,22 @@ class RequestingPickupScreen extends Component {
     setTimeout(() => {
         Actions.DeliveryAssignedScreen()
       },
-      2000
+      3000
+    )
+  }
+
+  handleCancelPress() {
+    // Works on both iOS and Android
+    Alert.alert(
+      'Are you sure?',
+      'Are you sure you want to cancel your current delivery?',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => {
+          // @TODO - Cancel current delivery and go back to home screen
+          Actions.HomeScreen()
+        }},
+      ]
     )
   }
 
@@ -35,7 +50,7 @@ class RequestingPickupScreen extends Component {
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
         <View style={{}}>
           <Text style={styles.summary}>Requesting Pickup</Text>
-          <Button>Cancel Request</Button>
+          <Button onPress={this.handleCancelPress.bind(this)}>Cancel Request</Button>
         </View>
       </View>
     )
