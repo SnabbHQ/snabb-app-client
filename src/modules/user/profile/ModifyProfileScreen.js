@@ -17,9 +17,10 @@ import * as globalActions from "../../../reducers/global/globalActions"
 import * as authActions from "../../../reducers/user/auth/authActions"
 import ErrorAlert from "../../../components/ErrorAlert"
 import React, {Component} from "react"
-import {StyleSheet, View, Alert} from "react-native"
+import {StyleSheet, View, Alert, Platform} from "react-native"
 import NavBar, {NavTitle, NavButton} from "react-native-nav"
 import UserProfileImage from "../components/UserProfileImage"
+import ImagePicker from 'react-native-image-picker'
 
 /**
  * ## Redux boilerplate
@@ -127,6 +128,46 @@ class ModifyProfileScreen extends Component {
     Actions.pop();
   }
 
+  onChangeProfilePhotoPress() {
+
+    var options = {
+      title: 'Select Profile Image',
+      storageOptions: {
+        skipBackup: true,
+        path: 'images'
+      }
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      }
+      else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
+        // You can display the image using either data...
+        const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
+
+        // or a reference to the platform specific asset location
+        if (Platform.OS === 'ios') {
+          const source = {uri: response.uri.replace('file://', ''), isStatic: true};
+        } else {
+          const source = {uri: response.uri, isStatic: true};
+        }
+
+        this.setState({
+          avatarSource: source
+        });
+      }
+    });
+  }
+
   /**
    * ### render
    * display the form wrapped with the header and button
@@ -148,7 +189,9 @@ class ModifyProfileScreen extends Component {
         <Grid>
           <Row size={1}>
             <Col size={1.5} style={{padding: 10, alignItems: 'center', justifyContent: 'center'}}>
-              <UserProfileImage size={80} style={{alignSelf: 'center'}}/>
+              <UserProfileImage
+                source={{uri: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw"}}
+                size={80} style={{alignSelf: 'center'}} onPress={this.onChangeProfilePhotoPress.bind(this)}/>
               <Text style={{
                 fontSize: 12,
                 paddingLeft: 4,

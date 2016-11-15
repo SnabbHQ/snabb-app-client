@@ -22,11 +22,13 @@ class UserProfileImage extends Component {
     return (
       <View style={[styles.container, this.props.style]}>
         <TouchableOpacity onPress={this.props.onPress}>
-          <Image style={profileImage} source={{uri: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw"}}/>
+          <Image style={profileImage} source={this.props.source}/>
         </TouchableOpacity>
       </View>
     )
   }
+
+// <Image style={profileImage} source={{uri: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw"}}/>
 }
 
 const styles = StyleSheet.create({
