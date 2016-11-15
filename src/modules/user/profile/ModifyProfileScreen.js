@@ -157,10 +157,7 @@ class ModifyProfileScreen extends Component {
             <List style={{backgroundColor: 'white'}}>
               <ListItem iconLeft>
                 <Icon name='ios-call-outline'/>
-                <View style={{marginLeft: 15}}>
-                  <Text style={{fontWeight: 'bold'}}>Pickup Location</Text>
-                  <Text style={{fontSize: 13}}>Olof Palmes Gatan, 13, Stockholm</Text>
-                </View>
+                <Input placeholder='Mobile Telephone' style={{fontWeight: 'bold'}}/>
               </ListItem>
               <ListItem iconLeft iconRight>
                 <Icon name='ios-mail-outline'/>
