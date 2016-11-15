@@ -24,23 +24,13 @@ class SelectTransportScreen extends Component {
 
   constructor(props) {
     super(props)
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows([
-        {
-          name: 'Bicycle'
-        }, {
-          name: 'row 2'
-        }
-      ]),
-    };
   }
 
-  componentDidMount() {
+  handleRequestPickupPress() {
+    Actions.RequestingPickupScreen()
   }
 
   render() {
-
     var items = ['Simon Mignolet', 'Nathaniel Clyne', 'Dejan Lovren', 'Mama Sakho', 'Emre Can'];
 
     return (
@@ -48,7 +38,7 @@ class SelectTransportScreen extends Component {
         <Content>
           <List dataArray={items}
                 renderRow={(item) =>
-                  <ListItem style={{padding: -10}}>
+                  <ListItem button onPress={this.handleRequestPickupPress.bind(this)} style={{padding: 0}}>
                     <View style={{flexDirection: 'row'}}>
                       <Icon size={40} name='notifications' style={{paddingTop: 20, paddingRight: 20}}/>
                       <View style={{flex: 1, flexDirection: 'row'}}>
