@@ -57,9 +57,10 @@ class SetLocationScreen extends Component {
           <GooglePlacesAutocomplete
             placeholder='Search'
             minLength={2} // minimum length of text to search
-            autoFocus={false}
+            autoFocus={true}
             listViewDisplayed='auto'    // true/false/undefined
             fetchDetails={true}
+            enablePoweredByContainer={false}
             onPress={(data, details = null) => this.handlePlacePress(data, details)}
             getDefaultValue={() => {
               return ''; // text input default value
@@ -85,7 +86,6 @@ class SetLocationScreen extends Component {
               rankby: 'distance'
             }}
             filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
-
             predefinedPlaces={[homePlace, workPlace]}
           />
         </Content>

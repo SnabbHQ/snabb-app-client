@@ -162,20 +162,24 @@ class HomeMapView extends Component {
     }
   }
 
+  focusMap() {
+    this.map.fitToSuppliedMarkers(['pickup', 'delivery'], true);
+  }
+
   render() {
     var markerPickup;
     var markerDelivery;
 
     if (!showPickup) {
-      markerPickup = <MapView.Marker key='pickup' coordinate={this.props.location.pickupLocation}/>
-      markerDelivery = <MapView.Marker key='delivery' coordinate={this.props.location.deliveryLocation}/>
+      markerPickup = <MapView.Marker identifier='pickup' coordinate={this.props.location.pickupLocation}/>
+      markerDelivery = <MapView.Marker identifier='delivery' coordinate={this.props.location.deliveryLocation}/>
     }
 
     return (
       <View style={styles.container}>
         <MapView
           ref={ref => {
-            this.map = ref;
+            this.map = ref
           }}
           style={styles.map}
           showsUserLocation={true}
