@@ -13,6 +13,7 @@ import MapView from "react-native-maps";
 import LocationPin from "./LocationPin";
 import SetPickupContainer from "./SetPickupContainer"
 import RequestPickupContainer from "./RequestPickupContainer"
+import * as Defaults from '../../../reducers/location/locationConstants'
 import SelectTransportContainer from "./SelectTransportContainer"
 
 
@@ -51,8 +52,8 @@ class HomeMapView extends Component {
       currentLocation: {
         latitude: 0,
         longitude: 0,
-        latitudeDelta: 0,
-        longitudeDelta: 0
+        latitudeDelta: Defaults.LATITUDE_DELTA,
+        longitudeDelta: Defaults.LONGITUDE_DELTA
       },
       pickupLocation: {
         latitude: 0,
@@ -72,14 +73,14 @@ class HomeMapView extends Component {
       currentLocation: {
         latitude: props.location.pickupLocation.latitude,
         longitude: props.location.pickupLocation.longitude,
-        latitudeDelta: props.location.pickupLocation.latitudeDelta,
-        longitudeDelta: props.location.pickupLocation.longitudeDelta
+        latitudeDelta: props.location.pickupLocation.latitudeDelta || Defaults.LATITUDE_DELTA,
+        longitudeDelta: props.location.pickupLocation.longitudeDelta || Defaults.LONGITUDE_DELTA
       },
       pickupLocation: {
         latitude: props.location.pickupLocation.latitude,
         longitude: props.location.pickupLocation.longitude,
-        latitudeDelta: props.location.pickupLocation.latitudeDelta,
-        longitudeDelta: props.location.pickupLocation.longitudeDelta
+        latitudeDelta: props.location.pickupLocation.latitudeDelta || Defaults.LATITUDE_DELTA,
+        longitudeDelta: props.location.pickupLocation.longitudeDelta || Defaults.LONGITUDE_DELTA
       }
     })
   }

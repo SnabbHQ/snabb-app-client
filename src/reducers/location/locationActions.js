@@ -42,7 +42,8 @@ export function setPickupLocation(location) {
       latitude: location.latitude,
       longitude: location.longitude,
       latitudeDelta: location.latitudeDelta,
-      longitudeDelta: location.longitudeDelta
+      longitudeDelta: location.longitudeDelta,
+      address: location.address
     }
   }
 }
@@ -57,7 +58,8 @@ export function setDeliveryLocation(location) {
       latitude: location.latitude,
       longitude: location.longitude,
       latitudeDelta: location.latitudeDelta,
-      longitudeDelta: location.longitudeDelta
+      longitudeDelta: location.longitudeDelta,
+      address: location.address
     }
   }
 }
