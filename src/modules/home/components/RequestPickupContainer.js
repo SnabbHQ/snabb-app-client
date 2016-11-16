@@ -40,8 +40,8 @@ class RequestPickupContainer extends Component {
           }}
           margin={10}
           showLabel={true}
-          labelText={"Pickup Location"}
-          defaultText={"Choose Your Location"}
+          labelText={"PICKUP LOCATION"}
+          defaultText={"Choose Location"}
           labelColor={"rgba(113,187,28,1)"}
           textColor={"rgba(0,0,0,1)"}
           onPress={this.props.onPickupLocationBoxPress}/>
@@ -53,8 +53,8 @@ class RequestPickupContainer extends Component {
           }}
           margin={10}
           showLabel={true}
-          labelText={"Delivery Location"}
-          defaultText={"Choose Your Location"}
+          labelText={"DELIVERY LOCATION"}
+          defaultText={"Choose Location"}
           labelColor={"rgba(113,187,28,1)"}
           textColor={"rgba(0,0,0,1)"}
           onPress={this.props.onDeliveryLocationBoxPress}/>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   requestPickupContainer: {
     flexDirection: 'column',
     backgroundColor: '#F7F7F7',
-    shadowRadius: 2,
+    shadowRadius: 4,
     shadowOpacity: 0.2,
     shadowColor: '#000',
     flexWrap: 'wrap',

@@ -38,8 +38,8 @@ class SetPickupContainer extends Component {
           latlng={{lat: this.props.location.pickupLocation.latitude, lng: this.props.location.pickupLocation.longitude}}
           margin={10}
           showLabel={true}
-          labelText={"MY LOCATION"}
-          defaultText={"Choose Your Location"}
+          labelText={"PICKUP LOCATION"}
+          defaultText={"Choose Location"}
           labelColor={"rgba(113,187,28,1)"}
           textColor={"rgba(0,0,0,1)"}
           onPress={this.props.onPickupLocationBoxPress}/>
@@ -58,7 +58,7 @@ var styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#F7F7F7',
-    shadowRadius: 2,
+    shadowRadius: 4,
     shadowOpacity: 0.2,
     shadowColor: '#000',
     height: 130

@@ -41,8 +41,8 @@ export function setPickupLocation(location) {
     payload: {
       latitude: location.latitude,
       longitude: location.longitude,
-      latitudeDelta: Defaults.LATITUDE_DELTA,
-      longitudeDelta: Defaults.LONGITUDE_DELTA
+      latitudeDelta: location.latitudeDelta,
+      longitudeDelta: location.longitudeDelta
     }
   }
 }

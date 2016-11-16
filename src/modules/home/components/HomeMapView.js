@@ -43,8 +43,45 @@ let showPickup = true;
 
 class HomeMapView extends Component {
 
+
+  constructor(params) {
+    super(params)
+
+    this.state = {
+      currentLocation: {
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0,
+        longitudeDelta: 0
+      },
+      pickupLocation: {
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0,
+        longitudeDelta: 0
+      }
+    }
+  }
+
   componentDidMount() {
     this.centerOnUser();
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      currentLocation: {
+        latitude: props.location.pickupLocation.latitude,
+        longitude: props.location.pickupLocation.longitude,
+        latitudeDelta: props.location.pickupLocation.latitudeDelta,
+        longitudeDelta: props.location.pickupLocation.longitudeDelta
+      },
+      pickupLocation: {
+        latitude: props.location.pickupLocation.latitude,
+        longitude: props.location.pickupLocation.longitude,
+        latitudeDelta: props.location.pickupLocation.latitudeDelta,
+        longitudeDelta: props.location.pickupLocation.longitudeDelta
+      }
+    })
   }
 
   centerOnUser() {
@@ -52,9 +89,11 @@ class HomeMapView extends Component {
   }
 
   onRegionChange(region) {
-    if (showPickup) {
-      this.props.actions.setPickupLocation(region)
-    }
+    this.setState({currentLocation: region});
+  }
+
+  onRegionChangeComplete(region) {
+    this.props.actions.setPickupLocation(region)
   }
 
   onPickupLocationBoxPress() {
@@ -121,8 +160,9 @@ class HomeMapView extends Component {
           }}
           style={styles.map}
           showsUserLocation={true}
-          region={this.props.location.pickupLocation}
-          onRegionChangeComplete={region => this.onRegionChange(region)}/>
+          region={this.state.currentLocation}
+          onRegionChange={region => this.onRegionChange(region)}
+          onRegionChangeComplete={region => this.onRegionChangeComplete(region)}/>
 
         <LocationPin
           text={""}

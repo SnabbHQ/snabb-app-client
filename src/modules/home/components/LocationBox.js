@@ -1,22 +1,44 @@
-import React from "react";
+import React, {Component, PropTypes} from "react";
 import {StyleSheet, Image, Text, View, Dimensions, TouchableOpacity} from "react-native";
 import Geocoder from 'react-native-geocoder';
 
 Geocoder.fallbackToGoogle('AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw');
 
-class LocationBox extends React.Component {
+const propTypes = {
+  location: PropTypes.object.isRequired,
+  showLabel: PropTypes.bool,
+  labelText: PropTypes.string,
+  defaultText: PropTypes.string,
+  labelColor: PropTypes.string,
+  textColor: PropTypes.string
+}
+
+const defaultProps = {
+  location: {
+    latitude: 0,
+    longitude: 0,
+  },
+  showLabel: false,
+  labelText: 'My Location',
+  defaultText: 'Choose Your Location',
+  labelColor: 'black',
+  textColor: 'black'
+}
+
+class LocationBox extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {}
+
+    this.state = {
+      address: ''
+    }
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.latlng && newProps.latlng !== this.props.latlng) {
-      Geocoder.geocodePosition(newProps.latlng)
+    if (newProps.location && newProps.location !== this.props.location) {
+      Geocoder.geocodePosition(newProps.location)
         .then(res => {
-          console.log(res[0]);
-
           this.setState({
             address: res[0].feature
           });
@@ -89,4 +111,8 @@ class LocationBox extends React.Component {
     )
   }
 }
+
+LocationBox.propTypes = propTypes;
+LocationBox.defaultProps = defaultProps;
+
 export default LocationBox
