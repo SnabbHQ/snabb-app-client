@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   sidebarIcon: {
     fontSize: 21,
-    color: '#B2B2BA',
+    color: '#000000',
     lineHeight: 25,
     backgroundColor: 'transparent'
   },
