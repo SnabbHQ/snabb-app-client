@@ -23,9 +23,16 @@ var InitialState = Record({
     latitude: Defaults.LATITUDE,
     longitude: Defaults.LONGITUDE,
     latitudeDelta: Defaults.LATITUDE_DELTA,
-    longitudeDelta: Defaults.LONGITUDE_DELTA
+    longitudeDelta: Defaults.LONGITUDE_DELTA,
+    address: ''
   },
-  deliveryLocation: {}
+  deliveryLocation: {
+    latitude: 0,
+    longitude: 0,
+    latitudeDelta: 0,
+    longitudeDelta: 0,
+    address: ''
+  }
 });
 
 export default InitialState

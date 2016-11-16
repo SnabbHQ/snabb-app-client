@@ -1,15 +1,14 @@
 'use strict';
 
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import * as locationActions from "../../reducers/location/locationActions";
-import * as globalActions from "../../reducers/global/globalActions";
-import {Actions} from "react-native-router-flux";
-import React, {Component} from "react";
-import {StyleSheet, Text} from "react-native";
-import {View, Content} from "native-base";
-import DefaultNavBar from "../../components/DefaultNavBar";
-import {GooglePlacesAutocomplete} from "react-native-google-places-autocomplete";
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as locationActions from "../../reducers/location/locationActions"
+import {Actions} from "react-native-router-flux"
+import React, {Component} from "react"
+import {StyleSheet, Text} from "react-native"
+import {View, Content} from "native-base"
+import DefaultNavBar from "../../components/DefaultNavBar"
+import {GooglePlacesAutocomplete} from "react-native-google-places-autocomplete"
 
 // TODO - Make sure this is not hardcoded but setup by the user
 const homePlace = {description: 'Home', geometry: {location: {lat: 48.8152937, lng: 2.4597668}}};
@@ -22,7 +21,7 @@ const {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...locationActions, ...globalActions}, dispatch)
+    actions: bindActionCreators({...locationActions}, dispatch)
   }
 }
 
@@ -34,7 +33,8 @@ class SetLocationScreen extends Component {
 
     var location = {
       latitude: details.geometry.location.lat,
-      longitude: details.geometry.location.lng
+      longitude: details.geometry.location.lng,
+      address: details.formatted_address
     }
 
     switch (this.props.viewType) {
