@@ -24,9 +24,7 @@ export function getCurrentPosition() {
       (position) => {
         dispatch(currentPosition({
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          latitudeDelta: Defaults.LATITUDE_DELTA,
-          longitudeDelta: Defaults.LONGITUDE_DELTA
+          longitude: position.coords.longitude
         }))
       },
       (error) => console.log(error.message),

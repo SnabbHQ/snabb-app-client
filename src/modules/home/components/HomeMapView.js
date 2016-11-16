@@ -49,18 +49,15 @@ class HomeMapView extends Component {
     super(params)
 
     this.state = {
-      currentLocation: {
-        latitude: 0,
-        longitude: 0,
-        latitudeDelta: Defaults.LATITUDE_DELTA,
-        longitudeDelta: Defaults.LONGITUDE_DELTA
-      },
       pickupLocation: {
         latitude: 0,
         longitude: 0,
-        latitudeDelta: 0,
-        longitudeDelta: 0
-      }
+      },
+      map: {
+        latitudeDelta: Defaults.LATITUDE_DELTA,
+        longitudeDelta: Defaults.LONGITUDE_DELTA,
+      },
+      markers: []
     }
   }
 
@@ -68,21 +65,15 @@ class HomeMapView extends Component {
     this.centerOnUser();
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({
-      currentLocation: {
-        latitude: props.location.pickupLocation.latitude,
-        longitude: props.location.pickupLocation.longitude,
-        latitudeDelta: props.location.pickupLocation.latitudeDelta || Defaults.LATITUDE_DELTA,
-        longitudeDelta: props.location.pickupLocation.longitudeDelta || Defaults.LONGITUDE_DELTA
-      },
-      pickupLocation: {
-        latitude: props.location.pickupLocation.latitude,
-        longitude: props.location.pickupLocation.longitude,
-        latitudeDelta: props.location.pickupLocation.latitudeDelta || Defaults.LATITUDE_DELTA,
-        longitudeDelta: props.location.pickupLocation.longitudeDelta || Defaults.LONGITUDE_DELTA
-      }
-    })
+  componentWillReceiveProps(newProps) {
+    if (newProps.location.pickupLocation && newProps.location.pickupLocation !== this.props.pickupLocation) {
+      this.setState({
+        pickupLocation: {
+          latitude: newProps.location.pickupLocation.latitude,
+          longitude: newProps.location.pickupLocation.longitude
+        }
+      })
+    }
   }
 
   centerOnUser() {
@@ -90,7 +81,13 @@ class HomeMapView extends Component {
   }
 
   onRegionChange(region) {
-    this.setState({currentLocation: region});
+    this.setState({
+      pickupLocation: region,
+      map: {
+        latitudeDelta: region.latitudeDelta,
+        longitudeDelta: region.longitudeDelta
+      }
+    });
   }
 
   onRegionChangeComplete(region) {
@@ -173,9 +170,23 @@ class HomeMapView extends Component {
           }}
           style={styles.map}
           showsUserLocation={true}
-          region={this.state.currentLocation}
+          region={{
+            latitude: this.state.pickupLocation.latitude,
+            longitude: this.state.pickupLocation.longitude,
+            latitudeDelta: this.state.map.latitudeDelta,
+            longitudeDelta: this.state.map.longitudeDelta,
+          }}
           onRegionChange={region => this.onRegionChange(region)}
-          onRegionChangeComplete={region => this.onRegionChangeComplete(region)}/>
+          onRegionChangeComplete={region => this.onRegionChangeComplete(region)}>
+
+          {/*{this.state.markers.map(marker => (*/}
+            {/*<MapView.Marker*/}
+              {/*key={marker.key}*/}
+              {/*coordinate={marker.coordinate}*/}
+            {/*/>*/}
+          {/*))}*/}
+
+        </MapView>
 
         {this.showLocationPin()}
 
