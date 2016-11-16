@@ -57,18 +57,15 @@ var styles = StyleSheet.create({
   locationPanel: {
     flex: 1,
     flexDirection: 'column',
-    borderRadius: 8,
     backgroundColor: '#F7F7F7',
     shadowRadius: 2,
     shadowOpacity: 0.2,
     shadowColor: '#000',
-    height: 130,
-    margin: 10
+    height: 130
   },
   setPickupLocation: {
-    backgroundColor: '#00D5D5',
+    backgroundColor: '#313335',
     flex: 1,
-    borderRadius: 8,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,

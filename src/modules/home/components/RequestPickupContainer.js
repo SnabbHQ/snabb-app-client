@@ -72,20 +72,17 @@ RequestPickupContainer.propTypes = propTypes;
 const styles = StyleSheet.create({
   requestPickupContainer: {
     flexDirection: 'column',
-    borderRadius: 8,
     backgroundColor: '#F7F7F7',
     shadowRadius: 2,
     shadowOpacity: 0.2,
     shadowColor: '#000',
     flexWrap: 'wrap',
-    margin: 10,
     flex: 1,
     height: 200
   },
   setPickupLocation: {
-    backgroundColor: '#00D5D5',
+    backgroundColor: '#313335',
     flex: 1,
-    borderRadius: 8,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
