@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as locationActions from "../../../reducers/location/locationActions";
 import * as globalActions from "../../../reducers/global/globalActions";
-import React from "react";
+import React, {Component} from "react";
 import {StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
 import {Actions} from "react-native-router-flux";
 import {Button} from "native-base";
@@ -41,7 +41,7 @@ function mapDispatchToProps(dispatch) {
 
 let showPickup = true;
 
-class HomeMapView extends React.Component {
+class HomeMapView extends Component {
 
   componentDidMount() {
     this.centerOnUser();
@@ -57,26 +57,26 @@ class HomeMapView extends React.Component {
     }
   }
 
-  handlePickupLocationBoxPress() {
+  onPickupLocationBoxPress() {
     Actions.SetLocationScreen({
       title: 'Pickup location',
       viewType: PICKUP_LOCATION
     })
   }
 
-  handleDeliveryLocationBoxPress() {
+  onDeliveryLocationBoxPress() {
     Actions.SetLocationScreen({
       title: 'Delivery location',
       viewType: DELIVERY_LOCATION
     })
   }
 
-  handleSetPickupPress() {
+  onSetPickupPress() {
     showPickup = false
     this.forceUpdate()
   }
 
-  handleRequestPickupPress() {
+  onRequestPickupButtonPress() {
     //Actions.RequestingPickupScreen()
     showPickup = false
     this.forceUpdate()
@@ -100,13 +100,15 @@ class HomeMapView extends React.Component {
   }
 
   showWhat() {
-    if (!showPickup) {
-      return <SelectTransportContainer/>
+    if (showPickup) {
+      return <SetPickupContainer
+        onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
+        onSetPickupPress={() => this.onSetPickupPress()}/>
     } else {
       return <RequestPickupContainer
-        pickupLocationBoxPress={() => this.handlePickupLocationBoxPress()}
-        deliveryLocationBoxPress={() => this.handleDeliveryLocationBoxPress()}
-        handleRequestPickupPress={() => this.handleRequestPickupPress()}/>
+        onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
+        onDeliveryLocationBoxPress={() => this.onDeliveryLocationBoxPress()}
+        onRequestPickupButtonPress={() => this.onRequestPickupButtonPress()}/>
     }
   }
 
@@ -114,30 +116,31 @@ class HomeMapView extends React.Component {
     return (
       <View style={styles.container}>
         <MapView
-          ref={ref => { this.map = ref; }}
+          ref={ref => {
+            this.map = ref;
+          }}
           style={styles.map}
           showsUserLocation={true}
           region={this.props.location.pickupLocation}
-          onRegionChangeComplete={region => this.onRegionChange(region)}>
+          onRegionChangeComplete={region => this.onRegionChange(region)}/>
 
-          <LocationPin
-            text={""}
-            pinColor={"#000"}
-            textColor={"#FFF"}
-            top={0}/>
+        <LocationPin
+          text={""}
+          pinColor={"#000"}
+          textColor={"#FFF"}
+          top={0}/>
 
-          <View style={styles.content} pointerEvents={'box-none'}>
-            <View style={{flexDirection: 'row'}}>
-              {this.renderBackButton()}
-              <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
-                <Icon name='location-arrow' style={styles.locationIcon}/>
-              </Button>
-            </View>
-            <View style={{backgroundColor: '#ffffff', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
-              {this.showWhat()}
-            </View>
+        <View style={styles.content} pointerEvents={'box-none'}>
+          <View style={{flexDirection: 'row'}}>
+            {this.renderBackButton()}
+            <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
+              <Icon name='location-arrow' style={styles.locationIcon}/>
+            </Button>
           </View>
-          </MapView>
+          <View style={{backgroundColor: 'transparent', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
+            {this.showWhat()}
+          </View>
+        </View>
       </View>
     );
   }

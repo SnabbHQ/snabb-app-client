@@ -26,7 +26,7 @@ class SelectTransportScreen extends Component {
     super(props)
   }
 
-  handleRequestPickupPress() {
+  onRequestPickupButtonPress() {
     Actions.RequestingPickupScreen()
   }
 
@@ -38,7 +38,7 @@ class SelectTransportScreen extends Component {
         <Content>
           <List dataArray={items}
                 renderRow={(item) =>
-                  <ListItem button onPress={this.handleRequestPickupPress.bind(this)} style={{padding: 0}}>
+                  <ListItem button onPress={this.onRequestPickupButtonPress.bind(this)} style={{padding: 0}}>
                     <View style={{flexDirection: 'row'}}>
                       <Icon size={30} name='notifications' style={{paddingTop: 16, paddingRight: 15}}/>
                       <View style={{flex: 1, flexDirection: 'row'}}>

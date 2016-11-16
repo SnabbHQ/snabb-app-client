@@ -1,15 +1,12 @@
 'use strict'
 
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import * as locationActions from "../../../reducers/location/locationActions";
-import React from "react";
-import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native";
-import {Text, View} from "native-base";
-import {Grid, Row, Col} from "native-base";
-import Icon from "react-native-vector-icons/FontAwesome";
-import LocationBox from "./LocationBox";
-import I18n from "../../../lib/I18n";
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as locationActions from "../../../reducers/location/locationActions"
+import React, {Component, PropTypes} from "react"
+import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native"
+import {Text, View} from "native-base"
+import LocationBox from "./LocationBox"
 
 /**
  * ## Redux boilerplate
@@ -26,7 +23,12 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class RequestPickupContainer extends React.Component {
+const propTypes = {
+  onPickupLocationBoxPress: PropTypes.func,
+  onDeliveryLocationBoxPress: PropTypes.func,
+}
+
+class RequestPickupContainer extends Component {
 
   render() {
     return (
@@ -42,7 +44,8 @@ class RequestPickupContainer extends React.Component {
           defaultText={"Choose Your Location"}
           labelColor={"rgba(113,187,28,1)"}
           textColor={"rgba(0,0,0,1)"}
-          onPress={this.props.pickupLocationBoxPress}/>
+          onPress={this.props.onPickupLocationBoxPress}/>
+
         <LocationBox
           latlng={{
             lat: this.props.location.deliveryLocation.latitude,
@@ -54,9 +57,9 @@ class RequestPickupContainer extends React.Component {
           defaultText={"Choose Your Location"}
           labelColor={"rgba(113,187,28,1)"}
           textColor={"rgba(0,0,0,1)"}
-          onPress={this.props.deliveryLocationBoxPress}/>
+          onPress={this.props.onDeliveryLocationBoxPress}/>
 
-        <TouchableOpacity style={styles.setPickupLocation} onPress={this.props.handleRequestPickupPress}>
+        <TouchableOpacity style={styles.setPickupLocation} onPress={this.props.onRequestPickupButtonPress}>
           <Text style={styles.setPickupLocationText}>Set Pickup</Text>
         </TouchableOpacity>
       </View>
@@ -64,22 +67,25 @@ class RequestPickupContainer extends React.Component {
   }
 }
 
+RequestPickupContainer.propTypes = propTypes;
+
 const styles = StyleSheet.create({
   requestPickupContainer: {
     flexDirection: 'column',
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    borderRadius: 8,
     backgroundColor: '#F7F7F7',
     shadowRadius: 2,
     shadowOpacity: 0.2,
     shadowColor: '#000',
     flexWrap: 'wrap',
+    margin: 10,
     flex: 1,
     height: 200
   },
   setPickupLocation: {
     backgroundColor: '#00D5D5',
     flex: 1,
+    borderRadius: 8,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
