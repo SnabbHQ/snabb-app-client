@@ -65,13 +65,7 @@ export function pickupLocationSetSuccess(location) {
   console.log(location)
   return {
     type: SET_PICKUP_LOCATION,
-    payload: {
-      latitude: location.latitude,
-      longitude: location.longitude,
-      latitudeDelta: location.latitudeDelta,
-      longitudeDelta: location.longitudeDelta,
-      address: location.address
-    }
+    payload: location
   }
 }
 
@@ -81,13 +75,7 @@ export function pickupLocationSetSuccess(location) {
 export function setDeliveryLocation(location) {
   return {
     type: SET_DELIVERY_LOCATION,
-    payload: {
-      latitude: location.latitude,
-      longitude: location.longitude,
-      latitudeDelta: location.latitudeDelta,
-      longitudeDelta: location.longitudeDelta,
-      address: location.address
-    }
+    payload: location
   }
 }
 
