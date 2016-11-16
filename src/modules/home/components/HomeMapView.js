@@ -167,8 +167,8 @@ class HomeMapView extends Component {
     var markerDelivery;
 
     if (!showPickup) {
-      markerPickup = <MapView.Marker coordinate={this.props.location.pickupLocation}/>
-      markerDelivery = <MapView.Marker coordinate={this.props.location.deliveryLocation}/>
+      markerPickup = <MapView.Marker key='pickup' coordinate={this.props.location.pickupLocation}/>
+      markerDelivery = <MapView.Marker key='delivery' coordinate={this.props.location.deliveryLocation}/>
     }
 
     return (

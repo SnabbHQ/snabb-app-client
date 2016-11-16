@@ -9,7 +9,6 @@ import * as globalActions from "../../reducers/global/globalActions"
 import React, {Component} from "react"
 import {StyleSheet, Text, Alert} from "react-native"
 import {View, Button, Content} from "native-base"
-import DefaultNavBar from "../../components/DefaultNavBar"
 import I18n from "../../lib/I18n";
 
 function mapDispatchToProps(dispatch) {
@@ -18,16 +17,21 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+let requestingTimeout
+const timeout = 3000;
+
 class RequestingPickupScreen extends Component {
 
   componentDidMount() {
+    requestingTimeout = setTimeout(() => {
+      Actions.DeliveryAssignedScreen()
+    }, timeout);
+  }
 
-    // TODO - Lets Fake the requesting period
-    setTimeout(() => {
-        Actions.DeliveryAssignedScreen()
-      },
-      3000
-    )
+  componentWillUnmount() {
+    if (requestingTimeout) {
+      clearTimeout(requestingTimeout);
+    }
   }
 
   handleCancelPress() {

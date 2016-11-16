@@ -141,7 +141,8 @@ export default function native(platform) {
                      component={SettingsScreen}/>
 
               <Scene key='RequestingPickupScreen'
-                     component={RequestingPickupScreen}/>
+                     component={RequestingPickupScreen}
+                     type='replace'/>
 
               <Scene key='DeliveryAssignedScreen'
                      component={DeliveryAssignedScreen}/>
