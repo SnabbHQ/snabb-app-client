@@ -3,7 +3,7 @@ import {StyleSheet, Image, Text, View, Dimensions, TouchableOpacity} from "react
 
 
 const propTypes = {
-  address: PropTypes.string.isRequired,
+  address: PropTypes.string,
   showLabel: PropTypes.bool,
   labelText: PropTypes.string,
   defaultText: PropTypes.string,
