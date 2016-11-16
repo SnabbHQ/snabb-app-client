@@ -64,7 +64,7 @@ var styles = StyleSheet.create({
     height: 130
   },
   setPickupLocation: {
-    backgroundColor: '#313335',
+    backgroundColor: '#31445d',
     flex: 1,
     marginLeft: 10,
     marginRight: 10,
