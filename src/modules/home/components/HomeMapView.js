@@ -49,17 +49,12 @@ class HomeMapView extends Component {
     super(params)
 
     this.state = {
-      pickupLocation: {
-        latitude: 0,
-        longitude: 0,
-      },
       map: {
         latitude: 0,
         longitude: 0,
         latitudeDelta: Defaults.LATITUDE_DELTA,
         longitudeDelta: Defaults.LONGITUDE_DELTA,
-      },
-      markers: []
+      }
     }
   }
 
@@ -69,7 +64,7 @@ class HomeMapView extends Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.location.pickupLocation && newProps.location.pickupLocation !== this.props.pickupLocation
-    && newProps.location.from !== 'map') {
+      && newProps.location.from !== 'map') {
       this.setState({
         map: {
           ...this.state.map,
@@ -96,7 +91,9 @@ class HomeMapView extends Component {
   }
 
   onRegionChangeComplete(region) {
-    this.props.actions.setPickupLocation(region, 'map')
+    if (showPickup) {
+      this.props.actions.setPickupLocation(region, 'map')
+    }
   }
 
   onPickupLocationBoxPress() {
@@ -147,6 +144,7 @@ class HomeMapView extends Component {
         onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
         onSetPickupPress={() => this.onSetPickupPress()}/>
     } else {
+
       return <RequestPickupContainer
         onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
         onDeliveryLocationBoxPress={() => this.onDeliveryLocationBoxPress()}
@@ -161,12 +159,18 @@ class HomeMapView extends Component {
         pinColor={"#000"}
         textColor={"#FFF"}
         top={0}/>
-    } else {
-      return null
     }
   }
 
   render() {
+    var markerPickup;
+    var markerDelivery;
+
+    if (!showPickup) {
+      markerPickup = <MapView.Marker coordinate={this.props.location.pickupLocation}/>
+      markerDelivery = <MapView.Marker coordinate={this.props.location.deliveryLocation}/>
+    }
+
     return (
       <View style={styles.container}>
         <MapView
@@ -184,12 +188,8 @@ class HomeMapView extends Component {
           onRegionChange={region => this.onRegionChange(region)}
           onRegionChangeComplete={region => this.onRegionChangeComplete(region)}>
 
-          {/*{this.state.markers.map(marker => (*/}
-            {/*<MapView.Marker*/}
-              {/*key={marker.key}*/}
-              {/*coordinate={marker.coordinate}*/}
-            {/*/>*/}
-          {/*))}*/}
+          {markerPickup}
+          {markerDelivery}
 
         </MapView>
 
@@ -210,6 +210,7 @@ class HomeMapView extends Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
