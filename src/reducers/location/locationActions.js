@@ -34,7 +34,6 @@ export function getCurrentPosition() {
 }
 
 export function geoCodePosition(location) {
-  console.log(location)
   return Geocoder.geocodePosition({
       lat: location.latitude,
       lng: location.longitude
@@ -45,25 +44,25 @@ export function geoCodePosition(location) {
   })
 }
 
-/**
- * ## Set the pickup location
- */
-export function setPickupLocation(location) {
+export function setPickupLocation(location, from) {
   return dispatch => {
     return geoCodePosition(location)
       .then((res) => {
         location.address = res[0].feature
-        dispatch(pickupLocationSetSuccess(location))
+        dispatch(pickupLocationSetSuccess(location, from))
       })
       .catch(() => pickupLocationSetSuccess(location))
   }
 }
 
-export function pickupLocationSetSuccess(location) {
+export function pickupLocationSetSuccess(location, from) {
   console.log(location)
   return {
     type: SET_PICKUP_LOCATION,
-    payload: location
+    payload: {
+      location: location,
+      from: from
+    }
   }
 }
 
@@ -80,6 +79,8 @@ export function setDeliveryLocation(location) {
 export function currentPosition(position) {
   return {
     type: CURRENT_POSITION,
-    payload: position
+    payload: {
+      location: position
+    }
   }
 }

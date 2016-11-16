@@ -54,6 +54,8 @@ class HomeMapView extends Component {
         longitude: 0,
       },
       map: {
+        latitude: 0,
+        longitude: 0,
         latitudeDelta: Defaults.LATITUDE_DELTA,
         longitudeDelta: Defaults.LONGITUDE_DELTA,
       },
@@ -66,9 +68,11 @@ class HomeMapView extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.location.pickupLocation && newProps.location.pickupLocation !== this.props.pickupLocation) {
+    if (newProps.location.pickupLocation && newProps.location.pickupLocation !== this.props.pickupLocation
+    && newProps.location.from !== 'map') {
       this.setState({
-        pickupLocation: {
+        map: {
+          ...this.state.map,
           latitude: newProps.location.pickupLocation.latitude,
           longitude: newProps.location.pickupLocation.longitude
         }
@@ -82,8 +86,9 @@ class HomeMapView extends Component {
 
   onRegionChange(region) {
     this.setState({
-      pickupLocation: region,
       map: {
+        latitude: region.latitude,
+        longitude: region.longitude,
         latitudeDelta: region.latitudeDelta,
         longitudeDelta: region.longitudeDelta
       }
@@ -91,7 +96,7 @@ class HomeMapView extends Component {
   }
 
   onRegionChangeComplete(region) {
-    this.props.actions.setPickupLocation(region)
+    this.props.actions.setPickupLocation(region, 'map')
   }
 
   onPickupLocationBoxPress() {
@@ -171,8 +176,8 @@ class HomeMapView extends Component {
           style={styles.map}
           showsUserLocation={true}
           region={{
-            latitude: this.state.pickupLocation.latitude,
-            longitude: this.state.pickupLocation.longitude,
+            latitude: this.state.map.latitude,
+            longitude: this.state.map.longitude,
             latitudeDelta: this.state.map.latitudeDelta,
             longitudeDelta: this.state.map.longitudeDelta,
           }}

@@ -15,14 +15,16 @@ const initialState = new InitialState();
  * @param {Object} state - initialState
  * @param {Object} action - type and payload
  */
-export default function locationReducer (state = initialState, action) {
+export default function locationReducer(state = initialState, action) {
   if (!(state instanceof InitialState)) return initialState.merge(state)
 
   switch (action.type) {
 
     case CURRENT_POSITION:
     case SET_PICKUP_LOCATION:
-      return state.set('pickupLocation', action.payload)
+      var next = state.set('pickupLocation', action.payload.location)
+                      .set('from', action.payload.from)
+      return next
 
 
     case SET_DELIVERY_LOCATION:

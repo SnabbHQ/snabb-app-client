@@ -19,6 +19,7 @@ import * as Defaults from './locationConstants'
  * The fields we're concerned with
  */
 var InitialState = Record({
+  from: '',
   pickupLocation: {
     latitude: Defaults.LATITUDE,
     longitude: Defaults.LONGITUDE,
