@@ -34,7 +34,7 @@ class RequestPickupContainer extends Component {
     return (
       <View style={styles.requestPickupContainer}>
         <LocationBox
-          latlng={{
+          location={{
             lat: this.props.location.pickupLocation.latitude,
             lng: this.props.location.pickupLocation.longitude
           }}
@@ -47,7 +47,7 @@ class RequestPickupContainer extends Component {
           onPress={this.props.onPickupLocationBoxPress}/>
 
         <LocationBox
-          latlng={{
+          location={{
             lat: this.props.location.deliveryLocation.latitude,
             lng: this.props.location.deliveryLocation.longitude
           }}

@@ -35,7 +35,7 @@ class SetPickupContainer extends Component {
     return (
       <View style={styles.locationPanel}>
         <LocationBox
-          latlng={{lat: this.props.location.pickupLocation.latitude, lng: this.props.location.pickupLocation.longitude}}
+          location={this.props.location.pickupLocation}
           margin={10}
           showLabel={true}
           labelText={"PICKUP LOCATION"}
