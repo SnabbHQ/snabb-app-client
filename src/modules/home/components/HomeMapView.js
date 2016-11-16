@@ -152,6 +152,18 @@ class HomeMapView extends Component {
     }
   }
 
+  showLocationPin() {
+    if (showPickup) {
+      return <LocationPin
+        text={""}
+        pinColor={"#000"}
+        textColor={"#FFF"}
+        top={0}/>
+    } else {
+      return null
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -165,11 +177,7 @@ class HomeMapView extends Component {
           onRegionChange={region => this.onRegionChange(region)}
           onRegionChangeComplete={region => this.onRegionChangeComplete(region)}/>
 
-        <LocationPin
-          text={""}
-          pinColor={"#000"}
-          textColor={"#FFF"}
-          top={0}/>
+        {this.showLocationPin()}
 
         <View style={styles.content} pointerEvents={'box-none'}>
           <View style={{flexDirection: 'row'}}>
