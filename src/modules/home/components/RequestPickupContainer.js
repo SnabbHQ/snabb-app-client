@@ -7,6 +7,7 @@ import React, {Component, PropTypes} from "react"
 import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native"
 import {Text, View} from "native-base"
 import LocationBox from "./LocationBox"
+import Swiper from "react-native-swiper"
 
 /**
  * ## Redux boilerplate
@@ -33,6 +34,25 @@ class RequestPickupContainer extends Component {
   render() {
     return (
       <View style={styles.requestPickupContainer}>
+        <Swiper
+          height={150}
+          width={Dimensions.get('window').width}
+          style={styles.wrapper}
+          showsButtons={false}
+          showsPagination={false}>
+          <View style={styles.slide1}>
+            <Text style={styles.text}>Small</Text>
+            <Text>Hello Swiper</Text>
+          </View>
+          <View style={styles.slide2}>
+            <Text style={styles.text}>Medium</Text>
+            <Text>Hello Swiper</Text>
+          </View>
+          <View style={styles.slide3}>
+            <Text style={styles.text}>Big</Text>
+            <Text>Hello Swiper</Text>
+          </View>
+        </Swiper>
         <LocationBox
           address={this.props.location.pickupLocation.address}
           margin={10}
@@ -72,7 +92,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     flexWrap: 'wrap',
     flex: 1,
-    height: 200
+    height: 320
   },
   setPickupLocation: {
     backgroundColor: '#31445d',
@@ -88,6 +108,30 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: 'bold',
     fontSize: 18
+  },
+  wrapper: {},
+  slide1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
+  slide2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
+  text: {
+    color: '#000',
+    fontSize: 20,
+    fontWeight: 'bold',
   }
 });
 

@@ -8,7 +8,7 @@ import React, {Component} from "react";
 import {StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
 import {Actions} from "react-native-router-flux";
 import {Button} from "native-base";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/Ionicons";
 import MapView from "react-native-maps";
 import LocationPin from "./LocationPin";
 import SetPickupContainer from "./SetPickupContainer"
@@ -203,7 +203,7 @@ class HomeMapView extends Component {
           <View style={{flexDirection: 'row'}}>
             {this.renderBackButton()}
             <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
-              <Icon name='location-arrow' style={styles.locationIcon}/>
+              <Icon name='ios-locate-outline' style={styles.locationIcon}/>
             </Button>
           </View>
           <View style={{backgroundColor: 'transparent', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
@@ -245,8 +245,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7F7F7'
   },
   locationIcon: {
-    fontSize: 20,
-    color: '#007AFF'
+    fontSize: 23,
+    color: '#31445d'
   }
 });
 
