@@ -55,6 +55,8 @@ export default keyMirror({
   SET_DELIVERY_LOCATION: null,
 
   PICKUP_LOCATION: null,
-  DELIVERY_LOCATION: null
+  DELIVERY_LOCATION: null,
 
+  DELIVERY_SET_PICKUP: null,
+  DELIVERY_REQUEST: null
 })
