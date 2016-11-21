@@ -7,15 +7,12 @@
 'use strict'
 
 import { createStore, applyMiddleware } from 'redux'
+import { createEpicMiddleware } from 'redux-observable';
 import thunk from 'redux-thunk'
 
-/**
-* ## Reducer
-* The reducer contains the 5 reducers from
- *
-* device, global, auth, profile, location
-*/
-import reducer from '../reducers'
+import rootReducer from '../reducers'
+import profileRootEpics from '../reducers/user/profile/epics'
+
 
 /**
  * ## creatStoreWithMiddleware
@@ -31,5 +28,25 @@ const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
  *
  */
 export default function configureStore (initialState) {
-  return createStoreWithMiddleware(reducer, initialState)
+  return createStoreWithMiddleware(rootReducer, initialState)
 };
+
+
+// const epicMiddleware = createEpicMiddleware(profileRootEpics);
+//
+//
+// /**
+//  * ## configureStore
+//  * @param initialState {Object} the state with for keys:
+//  * device, global, auth, profile, location
+//  *
+//  */
+// export default function configureStore(initialState) {
+//   return createStore(
+//     rootReducer,
+//     applyMiddleware(
+//       epicMiddleware,
+//       thunk
+//     )
+//   )
+// }

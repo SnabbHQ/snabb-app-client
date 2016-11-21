@@ -235,9 +235,10 @@ export function getSessionToken() {
 
       .then((token) => {
         if (token) {
+          console.log(token)
           dispatch(sessionTokenRequestSuccess(token))
           dispatch(logoutState())
-          //Actions.HomeScreen()
+          Actions.HomeScreen()
         } else {
           dispatch(sessionTokenRequestFailure())
           Actions.LoginRegisterScreen()
@@ -245,6 +246,7 @@ export function getSessionToken() {
       })
 
       .catch((error) => {
+        console.log(error)
         dispatch(sessionTokenRequestFailure(error))
         dispatch(loginState())
         Actions.LoginRegisterScreen()

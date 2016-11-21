@@ -4,22 +4,8 @@
  * The actions to support the users profile
  */
 'use strict'
-/**
- * ## Imports
- *
- * The actions for profile
- */
-const {
-  GET_PROFILE_REQUEST,
-  GET_PROFILE_SUCCESS,
-  GET_PROFILE_FAILURE,
 
-  PROFILE_UPDATE_REQUEST,
-  PROFILE_UPDATE_SUCCESS,
-  PROFILE_UPDATE_FAILURE,
-
-  ON_PROFILE_FORM_FIELD_CHANGE
-} = require('../../../lib/constants').default;
+import * as Actions from './actions'
 
 /**
  * BackendFactory - base class for server implementation
@@ -29,68 +15,25 @@ const BackendFactory = require('../../../lib/BackendFactory').default;
 const AppAuthToken = require('../../../lib/__mocks__/AppAuthToken').default;
 
 /**
- * ## retreiving profile actions
- */
-export function getProfileRequest () {
-  return {
-    type: GET_PROFILE_REQUEST
-  }
-}
-export function getProfileSuccess (json) {
-  return {
-    type: GET_PROFILE_SUCCESS,
-    payload: json
-  }
-}
-export function getProfileFailure (json) {
-  return {
-    type: GET_PROFILE_FAILURE,
-    payload: json
-  }
-}
-
-/**
  * ## State actions
  * controls which form is displayed to the user
  * as in login, register, logout or reset password
  */
 export function getProfile (sessionToken) {
   return dispatch => {
-    dispatch(getProfileRequest());
+    dispatch(Actions.getProfileRequest());
     // store or get a sessionToken
     return new AppAuthToken().getSessionToken(sessionToken)
       .then((token) => {
         return BackendFactory(token).getProfile()
       })
       .then((json) => {
-        dispatch(getProfileSuccess(json))
+        dispatch(Actions.getProfileSuccess(json))
       })
       .catch((error) => {
-        dispatch(getProfileFailure(error))
+        dispatch(Actions.getProfileFailure(error))
         throw (error)
       })
-  }
-}
-
-/**
- * ## State actions
- * controls which form is displayed to the user
- * as in login, register, logout or reset password
- */
-export function profileUpdateRequest () {
-  return {
-    type: PROFILE_UPDATE_REQUEST
-  }
-}
-export function profileUpdateSuccess () {
-  return {
-    type: PROFILE_UPDATE_SUCCESS
-  }
-}
-export function profileUpdateFailure (json) {
-  return {
-    type: PROFILE_UPDATE_FAILURE,
-    payload: json
   }
 }
 
@@ -109,7 +52,7 @@ export function profileUpdateFailure (json) {
  */
 export function updateProfile (userId, newUserData, sessionToken) {
   return dispatch => {
-    dispatch(profileUpdateRequest())
+    dispatch(Actions.profileUpdateRequest())
     return new AppAuthToken().getSessionToken(sessionToken)
       .then((token) => {
         return BackendFactory(token).updateProfile(userId,
@@ -123,21 +66,11 @@ export function updateProfile (userId, newUserData, sessionToken) {
         )
       })
       .then(() => {
-        dispatch(profileUpdateSuccess())
+        dispatch(Actions.profileUpdateSuccess())
         dispatch(getProfile())
       })
       .catch((error) => {
-        dispatch(profileUpdateFailure(error))
+        dispatch(Actions.profileUpdateFailure(error))
       })
-  }
-}
-/**
- * ## onProfileFormFieldChange
- *
- */
-export function onProfileFormFieldChange (field, value) {
-  return {
-    type: ON_PROFILE_FORM_FIELD_CHANGE,
-    payload: {field: field, value: value}
   }
 }
