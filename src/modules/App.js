@@ -6,7 +6,7 @@ import {Actions} from "react-native-router-flux"
 import * as authActions from "../reducers/user/auth/authActions"
 import * as deviceActions from "../reducers/device/deviceActions"
 import * as globalActions from "../reducers/global/globalActions"
-import getProfile from "../reducers/user/profile/epics/getProfile"
+import * as profileActions from "../reducers/user/profile/actions/profileActions"
 import React from "react"
 import {StyleSheet, View, Text} from "react-native"
 import TimerMixin from "react-timer-mixin"
@@ -36,7 +36,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...authActions, getProfile, ...deviceActions, ...globalActions}, dispatch)
+    actions: bindActionCreators({...authActions, ...profileActions, ...deviceActions, ...globalActions}, dispatch)
   }
 }
 
@@ -50,10 +50,11 @@ let App = React.createClass({
     // Use a timer so App screen is displayed
     this.setTimeout(
       () => {
-        this.props.actions.getSessionToken()
-          .then(token => this.props.actions.getProfile(token))
-          .then(() => Actions.HomeScreen())
-          .catch(() => Actions.LoginRegisterScreen())
+        this.props.actions.getProfileRequest()
+        // this.props.actions.getSessionToken()
+        //   .then(token => this.props.actions.getProfileRequest())
+        //   .then(() => Actions.HomeScreen())
+        //   .catch(() => Actions.LoginRegisterScreen())
       },
       500
     )
