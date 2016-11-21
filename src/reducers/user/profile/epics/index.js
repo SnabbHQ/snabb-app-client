@@ -1,6 +1,8 @@
 import { combineEpics } from 'redux-observable';
-import getProfileEpic from './getProfileEpic';
+import getProfile from './getProfile';
+import updateProfile from './updateProfile';
 
-export default combineEpics(
-  getProfileEpic
-)
+export default {
+  getProfile,
+  updateProfile
+}

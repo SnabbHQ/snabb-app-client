@@ -6,7 +6,7 @@ import {Actions} from "react-native-router-flux"
 import * as authActions from "../reducers/user/auth/authActions"
 import * as deviceActions from "../reducers/device/deviceActions"
 import * as globalActions from "../reducers/global/globalActions"
-import * as profileActions from "../reducers/user/profile/profileActions"
+import getProfile from "../reducers/user/profile/epics/getProfile"
 import React from "react"
 import {StyleSheet, View, Text} from "react-native"
 import TimerMixin from "react-timer-mixin"
@@ -36,7 +36,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...authActions, ...profileActions, ...deviceActions, ...globalActions}, dispatch)
+    actions: bindActionCreators({...authActions, getProfile, ...deviceActions, ...globalActions}, dispatch)
   }
 }
 

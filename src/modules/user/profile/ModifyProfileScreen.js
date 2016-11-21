@@ -13,7 +13,7 @@ import {connect} from "react-redux"
 import {Actions} from "react-native-router-flux"
 import _ from 'underscore'
 import {TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem} from "native-base"
-import * as profileActions from "../../../reducers/user/profile/profileActions"
+import * as profileActions from "../../../reducers/user/profile/epics"
 import * as globalActions from "../../../reducers/global/globalActions"
 import * as authActions from "../../../reducers/user/auth/authActions"
 import ErrorAlert from "../../../components/ErrorAlert"

@@ -1,11 +1,8 @@
 import * as ActionTypes from './ProfileActionTypes';
 
-export function getProfileRequest(sessionToken) {
+export function getProfileRequest() {
   return {
     type: ActionTypes.GET_PROFILE_REQUEST,
-    payload: {
-      sessionToken
-    }
   }
 }
 
