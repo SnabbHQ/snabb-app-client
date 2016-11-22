@@ -1,13 +1,10 @@
-'use strict';
+'use strict'
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {Actions} from "react-native-router-flux"
-import * as authActions from "../reducers/user/auth/authActions"
-import * as deviceActions from "../reducers/device/deviceActions"
-import * as globalActions from "../reducers/global/globalActions"
+import {Actions} from "react-native-router-flux";
 import * as profileActions from "../reducers/user/profile/actions/profileActions"
-import React from "react"
+import React, {Component} from "react"
 import {StyleSheet, View, Text} from "react-native"
 import TimerMixin from "react-timer-mixin"
 import ReactMixin from "react-mixin"
@@ -19,20 +16,11 @@ import I18n from "../lib/I18n"
 function mapStateToProps(state) {
   return {
     deviceVersion: state.device.version,
-    auth: {
-      form: {
-        isFetching: state.auth.form.isFetching
-      }
-    },
     profile: {
       form: {
         isFetching: state.profile.form.isFetching,
         user: state.profile.form.fields
       }
-    },
-    global: {
-      currentState: state.global.currentState,
-      showState: state.global.showState
     }
   }
 }
@@ -42,17 +30,16 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...authActions, ...profileActions, ...deviceActions, ...globalActions}, dispatch)
+    actions: bindActionCreators({...profileActions}, dispatch)
   }
 }
 
-let App = React.createClass({
+class App extends Component {
+
   /**
    * See if there's a sessionToken from a previous login
-   *
    */
   componentDidMount () {
-
     // Use a timer so App screen is displayed
     this.setTimeout(
       () => {
@@ -60,13 +47,18 @@ let App = React.createClass({
       },
       500
     )
-  },
+  }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.profile.form.user) {
-      Actions.HomeScreen()
+    const { form } = newProps.profile;
+    if (!form.isFetching) {
+      if (form.user && form.user.email) {
+        Actions.HomeScreen()
+      } else {
+        Actions.LoginRegisterScreen()
+      }
     }
-  },
+  }
 
   render() {
     return (
@@ -75,7 +67,7 @@ let App = React.createClass({
       </View>
     )
   }
-});
+}
 
 var styles = StyleSheet.create({
   container: {
