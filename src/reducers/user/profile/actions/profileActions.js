@@ -1,6 +1,6 @@
 import * as ActionTypes from './ProfileActionTypes';
 
-export function getProfileRequest() {
+export function getUserProfile() {
   return {
     type: ActionTypes.GET_PROFILE_REQUEST,
   }

@@ -24,6 +24,12 @@ function mapStateToProps(state) {
         isFetching: state.auth.form.isFetching
       }
     },
+    profile: {
+      form: {
+        isFetching: state.profile.form.isFetching,
+        user: state.profile.form.fields
+      }
+    },
     global: {
       currentState: state.global.currentState,
       showState: state.global.showState
@@ -50,14 +56,16 @@ let App = React.createClass({
     // Use a timer so App screen is displayed
     this.setTimeout(
       () => {
-        this.props.actions.getProfileRequest()
-        // this.props.actions.getSessionToken()
-        //   .then(token => this.props.actions.getProfileRequest())
-        //   .then(() => Actions.HomeScreen())
-        //   .catch(() => Actions.LoginRegisterScreen())
+        this.props.actions.getUserProfile()
       },
       500
     )
+  },
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.profile.form.user) {
+      Actions.HomeScreen()
+    }
   },
 
   render() {
@@ -69,7 +77,7 @@ let App = React.createClass({
   }
 });
 
-const styles = StyleSheet.create({
+var styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',

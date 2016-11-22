@@ -7,14 +7,14 @@
 'use strict'
 
 import { createStore, applyMiddleware, compose } from 'redux'
-import { createEpicMiddleware } from 'redux-observable';
+import { createEpicMiddleware } from 'redux-observable'
 import thunk from 'redux-thunk'
 
-import rootReducer from '../reducers';
-import rootEpic from '../reducers/user/profile/epics';
+import rootReducer from '../reducers'
+import rootEpic from '../reducers/user/profile/epics'
 
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware(rootEpic)
 
 export default function configureStore() {
   const composeEnhancers = compose;
@@ -26,5 +26,5 @@ export default function configureStore() {
         epicMiddleware,
       )
     )
-  );
+  )
 }
