@@ -20,9 +20,22 @@ export function getProfileFailure(json) {
   };
 }
 
-export function profileUpdateRequest () {
+/**
+ * ## updateProfile
+ * @param {string} userId -  objectId
+ * @param {Object } newUserData - the new user info
+ * @param {Object} sessionToken - the sessionToken
+ **/
+export function updateUserProfile(userId, newUserData, sessionToken) {
   return {
-    type: ActionTypes.PROFILE_UPDATE_REQUEST
+    type: ActionTypes.PROFILE_UPDATE_REQUEST,
+    payload: {
+      data: {
+        userId: userId,
+        newUserData: newUserData,
+        sessionToken: sessionToken
+      }
+    }
   }
 }
 

@@ -59,7 +59,8 @@ export default function profileReducer(state = initialState, action) {
      * set the form to fetching as done
      */
     case ActionTypes.PROFILE_UPDATE_SUCCESS:
-      return state.setIn(['form', 'isFetching'], false);
+      return state.setIn(['form', 'isFetching'], false)
+        .setIn(['form', 'done'], true)
 
     /**
      * ### Request ends successfully
@@ -76,8 +77,7 @@ export default function profileReducer(state = initialState, action) {
         .setIn(['form', 'fields', 'phoneNumber'], action.payload.phoneNumber)
         .setIn(['form', 'fields', 'email'], action.payload.email)
         .setIn(['form', 'fields', 'thumbnail'], action.payload.thumbnail)
-        .setIn(['form', 'fields', 'emailVerified'],
-          action.payload.emailVerified)
+        .setIn(['form', 'fields', 'emailVerified'], action.payload.emailVerified)
         .setIn(['form', 'originalProfile', 'name'], action.payload.name)
         .setIn(['form', 'originalProfile', 'lastName'], action.payload.lastName)
         .setIn(['form', 'originalProfile', 'phoneNumber'], action.payload.phoneNumber)

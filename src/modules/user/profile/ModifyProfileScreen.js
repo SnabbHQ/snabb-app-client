@@ -13,7 +13,7 @@ import {connect} from "react-redux"
 import {Actions} from "react-native-router-flux"
 import _ from 'underscore'
 import {TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem} from "native-base"
-import * as profileActions from "../../../reducers/user/profile/epics"
+import * as profileActions from "../../../reducers/user/profile/actions/profileActions"
 import * as globalActions from "../../../reducers/global/globalActions"
 import * as authActions from "../../../reducers/user/auth/authActions"
 import ErrorAlert from "../../../components/ErrorAlert"
@@ -138,7 +138,7 @@ class ModifyProfileScreen extends Component {
      * ```currrentUser``` object as it contains the sessionToken and
      * user objectId
      */
-    this.props.actions.updateProfile(
+    this.props.actions.updateUserProfile(
       this.props.profile.form.originalProfile.objectId,
       {
         name: this.props.profile.form.fields.name,
@@ -148,8 +148,9 @@ class ModifyProfileScreen extends Component {
         thumbnail: this.props.profile.form.fields.thumbnail,
       },
       this.props.global.currentUser)
-      .then(() => Actions.pop())
-      .catch((error) => this.errorAlert.checkError(error))
+
+      // .then(() => Actions.pop())
+      // .catch((error) => this.errorAlert.checkError(error))
   }
 
   onChangeProfilePhotoPress() {
