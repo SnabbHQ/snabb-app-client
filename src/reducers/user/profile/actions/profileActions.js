@@ -13,10 +13,10 @@ export function getProfileSuccess(json) {
   };
 }
 
-export function getProfileFailure(json) {
+export function getProfileFailure(error) {
   return {
     type: ActionTypes.GET_PROFILE_FAILURE,
-    payload: json
+    payload: error
   };
 }
 

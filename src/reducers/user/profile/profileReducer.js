@@ -60,7 +60,6 @@ export default function profileReducer(state = initialState, action) {
      */
     case ActionTypes.PROFILE_UPDATE_SUCCESS:
       return state.setIn(['form', 'isFetching'], false)
-        .setIn(['form', 'done'], true)
 
     /**
      * ### Request ends successfully

@@ -91,15 +91,15 @@ class ModifyProfileScreen extends Component {
    * Since the Forms are looking at the state for the values of the
    * fields, when we we need to set them
    */
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps(newProps) {
     this.setState({
       formValues: {
-        name: props.profile.form.fields.name,
-        lastName: props.profile.form.fields.lastName,
-        phoneNumber: props.profile.form.fields.phoneNumber,
-        email: props.profile.form.fields.email,
+        name: newProps.profile.form.fields.name,
+        lastName: newProps.profile.form.fields.lastName,
+        phoneNumber: newProps.profile.form.fields.phoneNumber,
+        email: newProps.profile.form.fields.email,
       },
-      thumbnail: props.profile.form.fields.thumbnail
+      thumbnail: newProps.profile.form.fields.thumbnail
     })
   }
 
@@ -112,7 +112,7 @@ class ModifyProfileScreen extends Component {
    */
   componentDidMount() {
     if (this.props.profile.form.fields.email === '') {
-      this.props.actions.getProfile(this.props.global.currentUser)
+      this.props.actions.getUserProfile(this.props.global.currentUser)
     } else {
       this.setState({
         formValues: {
@@ -148,9 +148,6 @@ class ModifyProfileScreen extends Component {
         thumbnail: this.props.profile.form.fields.thumbnail,
       },
       this.props.global.currentUser)
-
-      // .then(() => Actions.pop())
-      // .catch((error) => this.errorAlert.checkError(error))
   }
 
   onChangeProfilePhotoPress() {

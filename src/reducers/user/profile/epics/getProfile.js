@@ -6,6 +6,7 @@ import * as ActionTypes from "../actions/ProfileActionTypes"
 
 import {Observable} from 'rxjs/Observable';
 
+import "rxjs/add/observable/of"
 import 'rxjs/add/observable/fromPromise';
 import "rxjs/add/operator/switchMap"
 import "rxjs/add/operator/map"
@@ -19,7 +20,9 @@ export default function getProfile(action$) {
           return Observable.fromPromise(BackendFactory(sessionToken).getProfile())
         })
         .map(getProfileSuccess)
-        .catch(getProfileFailure)
+        .catch(error => Observable.of(
+          getProfileFailure(error)
+        ))
     )
 }
 
