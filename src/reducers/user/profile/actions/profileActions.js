@@ -39,7 +39,7 @@ export function updateUserProfile(userId, newUserData, sessionToken) {
   }
 }
 
-export function profileUpdateSuccess () {
+export function profileUpdateSuccess() {
   return {
     type: ActionTypes.PROFILE_UPDATE_SUCCESS
   }

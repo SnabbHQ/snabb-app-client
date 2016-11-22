@@ -1,15 +1,10 @@
-import BackendFactory from '../../../../lib/BackendFactory'
-import AppAuthToken from '../../../../lib/__mocks__/AppAuthToken'
-import * as profileActions from '../actions/profileActions'
-
+import BackendFactory from "../../../../lib/BackendFactory"
+import AppAuthToken from "../../../../lib/__mocks__/AppAuthToken"
 import {getUserProfile, profileUpdateSuccess, profileUpdateFailure} from "../actions/profileActions"
-
 import * as ActionTypes from "../actions/ProfileActionTypes"
-import getProfile from './getProfile'
-
-import {Observable} from 'rxjs/Observable';
-
-import 'rxjs/add/observable/fromPromise';
+import {Observable} from "rxjs/Observable"
+import "rxjs/add/observable/of"
+import "rxjs/add/observable/fromPromise"
 import "rxjs/add/operator/switchMap"
 import "rxjs/add/operator/map"
 import "rxjs/add/operator/catch"
@@ -39,33 +34,8 @@ export default function updateProfile(action$) {
           ))
         })
         .map(profileUpdateSuccess)
-        .map(getUserProfile)
-        .catch(profileUpdateFailure)
+        .catch(error => Observable.of(
+          profileUpdateFailure(error)
+        ))
     )
 }
-
-
-// export default function updateProfile(userId, newUserData, sessionToken) {
-//   return dispatch => {
-//     dispatch(profileActions.profileUpdateRequest())
-//     return new AppAuthToken().getSessionToken(sessionToken)
-//       .then((token) => {
-//         return BackendFactory(token).updateProfile(userId,
-//           {
-//             name: newUserData.name,
-//             lastName: newUserData.lastName,
-//             phoneNumber: newUserData.phoneNumber,
-//             email: newUserData.email,
-//             thumbnail: newUserData.thumbnail
-//           }
-//         )
-//       })
-//       .then(() => {
-//         dispatch(profileActions.profileUpdateSuccess())
-//         dispatch(getProfile())
-//       })
-//       .catch((error) => {
-//         dispatch(profileActions.profileUpdateFailure(error))
-//       })
-//   }
-// }

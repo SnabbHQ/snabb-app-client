@@ -101,6 +101,10 @@ class ModifyProfileScreen extends Component {
       },
       thumbnail: newProps.profile.form.fields.thumbnail
     })
+
+    if (newProps.profile.form.updated) {
+      Actions.pop()
+    }
   }
 
   /**

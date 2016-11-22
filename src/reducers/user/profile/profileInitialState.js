@@ -34,6 +34,7 @@ const Form = Record({
   error: null,
   isValid: false,
   isFetching: false,
+  updated: false,
   fields: new (Record({
     name: '',
     lastName: '',
