@@ -25,7 +25,7 @@ import HistoryScreen from "./modules/history/HistoryScreen"
 import SetLocationScreen from "./modules/delivery/SetLocationScreen"
 import RequestingPickupScreen from "./modules/delivery/RequestingPickupScreen"
 import DeliveryAssignedScreen from "./modules/delivery/DeliveryAssignedScreen"
-import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen";
+import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen"
 
 import {setPlatform, setVersion} from "./reducers/device/deviceActions"
 import {setStore} from "./reducers/global/globalActions"
