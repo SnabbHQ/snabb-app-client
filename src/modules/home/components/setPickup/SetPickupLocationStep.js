@@ -46,14 +46,13 @@ class SetPickupLocationStep extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View pointerEvents={'box-none'} style={styles.content}>
         <LocationPin
           text={""}
           pinColor={"#000"}
           textColor={"#FFF"}
           top={0}/>
-
-        <View style={styles.content} pointerEvents={'box-none'}>
+        <View pointerEvents={'box-none'}>
           <View style={{flexDirection: 'row'}}>
             <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
               <Icon name='ios-locate-outline' style={styles.locationIcon}/>
