@@ -1,32 +1,34 @@
 'use strict';
 
+import {bindActionCreators} from "redux"
 import {Actions} from "react-native-router-flux";
 import {connect} from "react-redux"
+import * as deliveryActions from "../../reducers/delivery/deliveryActions"
 import React, {Component} from "react"
 import {StyleSheet, Image, Alert} from "react-native"
 import {View, Icon, Button, Text, List, ListItem} from "native-base"
 
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({...deliveryActions}, dispatch)
+  }
+}
+
 class DeliveryAssignedScreen extends Component {
 
   componentDidMount() {
-
-    // // TODO - Lets Fake the requesting period
-    // setTimeout(() => {
-    //     Actions.DeliveryReviewScreen()
-    //   },
-    //   2000
-    // )
   }
 
   handleContactPress() {
-
   }
 
   handleSMSPress() {
-
   }
 
   handleCancelPress() {
+    var self = this
+
     // Works on both iOS and Android
     Alert.alert(
       'Are you sure?',
@@ -35,6 +37,7 @@ class DeliveryAssignedScreen extends Component {
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
         {text: 'OK', onPress: () => {
           // @TODO - Cancel current delivery and go back to home screen
+          self.props.actions.resetDelivery()
           Actions.HomeScreen()
         }},
       ]
@@ -99,8 +102,8 @@ var styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center'
   }
-});
+})
 
-export default connect(null, null)(DeliveryAssignedScreen)
+export default connect(null, mapDispatchToProps)(DeliveryAssignedScreen)
 
 

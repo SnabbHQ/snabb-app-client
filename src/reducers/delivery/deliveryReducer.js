@@ -19,6 +19,9 @@ export default function deliveryStepReducer(state = initialState, action) {
 
     case ActionTypes.REQUEST_PICKUP:
       return state.setIn(['step'], ActionTypes.REQUEST_PICKUP)
+
+    case ActionTypes.RESET:
+      return initialState
   }
 
   return state

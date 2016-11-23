@@ -162,6 +162,6 @@ var styles = StyleSheet.create({
     fontSize: 23,
     color: '#31445d'
   }
-});
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeMapView)

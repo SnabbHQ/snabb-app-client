@@ -34,7 +34,7 @@ class RequestPickupStep extends Component {
   }
 
   onRequestPickupButtonPress() {
-    //TODO
+    Actions.RequestingPickupScreen()
   }
 
   onPickupLocationBoxPress() {
