@@ -18,4 +18,4 @@ module.exports = {
     DeliveryAssignedScreen: function () {},
     DeliveryReviewScreen: function () {}
   }
-};
+}

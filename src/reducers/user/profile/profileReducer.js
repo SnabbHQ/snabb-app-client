@@ -19,25 +19,19 @@ import formValidation from './profileFormValidation'
  *
  */
 const {
-  ON_PROFILE_FORM_FIELD_CHANGE,
-  GET_PROFILE_REQUEST,
-  GET_PROFILE_SUCCESS,
-  GET_PROFILE_FAILURE,
-
-  PROFILE_UPDATE_REQUEST,
-  PROFILE_UPDATE_SUCCESS,
-  PROFILE_UPDATE_FAILURE,
-
   LOGOUT_SUCCESS,
 
   SET_STATE
 } = require('../../../lib/constants').default;
 
+
+import * as ActionTypes from './actions/ProfileActionTypes';
+
 /**
  * ## Initial State
  *
  */
-const InitialState = require('./profileInitialState').default;
+const InitialState = require('./profileInitialState').default
 const initialState = new InitialState();
 
 /**
@@ -55,17 +49,19 @@ export default function profileReducer(state = initialState, action) {
      * ### Request starts
      * set the form to fetching and clear any errors
      */
-    case GET_PROFILE_REQUEST:
-    case PROFILE_UPDATE_REQUEST:
+    case ActionTypes.GET_PROFILE_REQUEST:
+    case ActionTypes.PROFILE_UPDATE_REQUEST:
       return state.setIn(['form', 'isFetching'], true)
-        .setIn(['form', 'error'], null);
+        .setIn(['form', 'error'], null)
+        .setIn(['form', 'updated'], false)
 
     /**
      * ### Request end successfully
      * set the form to fetching as done
      */
-    case PROFILE_UPDATE_SUCCESS:
-      return state.setIn(['form', 'isFetching'], false);
+    case ActionTypes.PROFILE_UPDATE_SUCCESS:
+      return state.setIn(['form', 'isFetching'], false)
+        .setIn(['form', 'updated'], true)
 
     /**
      * ### Request ends successfully
@@ -75,15 +71,14 @@ export default function profileReducer(state = initialState, action) {
      * Validate the data to make sure it's all good and someone didn't
      * mung it up through some other mechanism
      */
-    case GET_PROFILE_SUCCESS:
+    case ActionTypes.GET_PROFILE_SUCCESS:
       nextProfileState = state.setIn(['form', 'isFetching'], false)
         .setIn(['form', 'fields', 'name'], action.payload.name)
         .setIn(['form', 'fields', 'lastName'], action.payload.lastName)
         .setIn(['form', 'fields', 'phoneNumber'], action.payload.phoneNumber)
         .setIn(['form', 'fields', 'email'], action.payload.email)
         .setIn(['form', 'fields', 'thumbnail'], action.payload.thumbnail)
-        .setIn(['form', 'fields', 'emailVerified'],
-          action.payload.emailVerified)
+        .setIn(['form', 'fields', 'emailVerified'], action.payload.emailVerified)
         .setIn(['form', 'originalProfile', 'name'], action.payload.name)
         .setIn(['form', 'originalProfile', 'lastName'], action.payload.lastName)
         .setIn(['form', 'originalProfile', 'phoneNumber'], action.payload.phoneNumber)
@@ -123,10 +118,11 @@ export default function profileReducer(state = initialState, action) {
      * ### Request fails
      * we're done fetching and the error needs to be displayed to the user
      */
-    case GET_PROFILE_FAILURE:
-    case PROFILE_UPDATE_FAILURE:
+    case ActionTypes.GET_PROFILE_FAILURE:
+    case ActionTypes.PROFILE_UPDATE_FAILURE:
       return state.setIn(['form', 'isFetching'], false)
-        .setIn(['form', 'error'], action.payload);
+        .setIn(['form', 'error'], action.payload)
+        .setIn(['form', 'updated'], false)
 
     /**
      * ### form fields have changed
@@ -134,10 +130,11 @@ export default function profileReducer(state = initialState, action) {
      * Set the state with the fields, clear the form error
      * and perform field and form validation
      */
-    case ON_PROFILE_FORM_FIELD_CHANGE:
+    case ActionTypes.ON_PROFILE_FORM_FIELD_CHANGE:
       const {field, value} = action.payload
       let nextState = state.setIn(['form', 'fields', field], value)
-        .setIn(['form', 'error'], null);
+        .setIn(['form', 'error'], null)
+        .setIn(['form', 'updated'], false)
 
       return formValidation(
         fieldValidation(nextState, action)

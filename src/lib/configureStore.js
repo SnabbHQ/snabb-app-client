@@ -6,30 +6,25 @@
  */
 'use strict'
 
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { createEpicMiddleware } from 'redux-observable'
 import thunk from 'redux-thunk'
 
-/**
-* ## Reducer
-* The reducer contains the 5 reducers from
- *
-* device, global, auth, profile, location
-*/
-import reducer from '../reducers'
+import rootReducer from '../reducers'
+import rootEpic from '../reducers/user/profile/epics'
 
-/**
- * ## creatStoreWithMiddleware
- *
- * Like the name...
- */
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 
-/**
- * ## configureStore
- * @param initialState {Object} the state with for keys:
- * device, global, auth, profile, location
- *
- */
-export default function configureStore (initialState) {
-  return createStoreWithMiddleware(reducer, initialState)
-};
+const epicMiddleware = createEpicMiddleware(rootEpic)
+
+export default function configureStore() {
+  const composeEnhancers = compose;
+  return createStore(
+    rootReducer,
+    composeEnhancers(
+      applyMiddleware(
+        thunk,
+        epicMiddleware,
+      )
+    )
+  )
+}

@@ -130,7 +130,7 @@ class HomeMapView extends Component {
     if (!showPickup) {
       return (
         <Button style={styles.backToSetPickup} onPress={() => this.handleBackToSetPickupPress()}>
-          <Icon name='arrow-left' style={styles.locationIcon}/>
+          <Icon name='ios-arrow-round-back' style={styles.backIcon}/>
         </Button>
       )
     } else {
@@ -243,6 +243,10 @@ const styles = StyleSheet.create({
     height: 36,
     width: 36,
     backgroundColor: '#F7F7F7'
+  },
+  backIcon: {
+    fontSize: 30,
+    color: '#31445d'
   },
   locationIcon: {
     fontSize: 23,
