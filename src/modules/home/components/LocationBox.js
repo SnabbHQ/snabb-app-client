@@ -3,12 +3,14 @@ import {StyleSheet, Image, Text, View, Dimensions, TouchableOpacity} from "react
 
 
 const propTypes = {
+  margin: PropTypes.number,
   address: PropTypes.string,
   showLabel: PropTypes.bool,
   labelText: PropTypes.string,
   defaultText: PropTypes.string,
   labelColor: PropTypes.string,
   textColor: PropTypes.string,
+  iconColor: PropTypes.string,
 
   /**
    * Callback that is called as soon as we have geocode the position
@@ -17,12 +19,14 @@ const propTypes = {
 }
 
 const defaultProps = {
+  margin: 0,
   address: '',
   showLabel: false,
   labelText: 'My Location',
   defaultText: 'Choose Your Location',
   labelColor: 'black',
-  textColor: 'black'
+  textColor: 'black',
+  iconColor: 'pink'
 }
 
 class LocationBox extends Component {
@@ -30,7 +34,7 @@ class LocationBox extends Component {
   render() {
     let style = {
       flex: 1,
-      margin: this.props.margin || 0
+      margin: this.props.margin
     };
 
     let searchboxStyle = {
@@ -54,12 +58,11 @@ class LocationBox extends Component {
       alignItems: 'center'
     };
 
-    let iconURL = 'https://api.icons8.com/download/19343120d27c16dd3e9d21ad3aa637f94fd4d5fa/Android_L/PNG/256/Very_Basic/search-256.png'
     let iconSize = 16;
     let iconStyle = {
       width: iconSize,
       height: iconSize,
-      opacity: 32 / 100
+      backgroundColor: this.props.iconColor,
     };
 
     let labelStyle = {
@@ -79,8 +82,7 @@ class LocationBox extends Component {
       <TouchableOpacity style={[style, this.props.style]} onPress={this.props.onPress}>
         <View style={searchboxStyle}>
           <View style={searchboxInnerStyle}>
-            <Image source={{uri: iconURL}}
-                   style={iconStyle}/>
+            <View style={iconStyle}/>
             <View style={searchboxTextContainerStyle}>
               {this.props.showLabel && <Text style={labelStyle}>{this.props.labelText}</Text>}
               <Text style={textStyle}>{this.props.address || this.props.defaultText}</Text>

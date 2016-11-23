@@ -5,6 +5,7 @@ import {connect} from "react-redux"
 import * as locationActions from "../../../reducers/location/locationActions"
 import React, {Component, PropTypes} from "react"
 import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native"
+import {Grid, Col} from 'native-base'
 import {Text, View} from "native-base"
 import LocationBox from "./LocationBox"
 import Swiper from "react-native-swiper"
@@ -42,7 +43,18 @@ class RequestPickupContainer extends Component {
           showsPagination={false}>
           <View style={styles.slide1}>
             <Text style={styles.text}>Small</Text>
-            <Text>Hello Swiper</Text>
+            <Grid style={{marginTop: 10}}>
+              <Col style={{alignItems: 'center'}}>
+                <View style={{width: 50, height: 50, borderRadius: 25, backgroundColor: 'grey'}}/>
+                <Text style={{fontSize: 18, fontWeight: 'bold'}}>5€</Text>
+                <Text>8min</Text>
+              </Col>
+              <Col style={{alignItems: 'center'}}>
+                <View style={{width: 50, height: 50, borderRadius: 25, backgroundColor: 'grey'}}/>
+                <Text>6€</Text>
+                <Text>7min</Text>
+              </Col>
+            </Grid>
           </View>
           <View style={styles.slide2}>
             <Text style={styles.text}>Medium</Text>
@@ -56,7 +68,7 @@ class RequestPickupContainer extends Component {
         <LocationBox
           address={this.props.location.pickupLocation.address}
           margin={10}
-          showLabel={true}
+          showLabel={false}
           labelText={"PICKUP LOCATION"}
           defaultText={"Choose Location"}
           labelColor={"rgba(113,187,28,1)"}
@@ -66,7 +78,7 @@ class RequestPickupContainer extends Component {
         <LocationBox
           address={this.props.location.deliveryLocation.address}
           margin={10}
-          showLabel={true}
+          showLabel={false}
           labelText={"DELIVERY LOCATION"}
           defaultText={"Choose Location"}
           labelColor={"rgba(113,187,28,1)"}
@@ -109,7 +121,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18
   },
-  wrapper: {},
+  wrapper: {
+    marginTop: 10,
+  },
   slide1: {
     flex: 1,
     justifyContent: 'center',
