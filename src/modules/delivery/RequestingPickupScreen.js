@@ -2,7 +2,7 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {Actions} from "react-native-router-flux";
+import {Actions, ActionConst} from "react-native-router-flux";
 import TimerMixin from 'react-timer-mixin';
 import * as locationActions from "../../reducers/location/locationActions"
 import * as globalActions from "../../reducers/global/globalActions"
@@ -24,7 +24,7 @@ class RequestingPickupScreen extends Component {
 
   componentDidMount() {
     requestingTimeout = setTimeout(() => {
-      Actions.DeliveryAssignedScreen()
+      Actions.DeliveryAssignedScreen({type: ActionConst.REPLACE})
     }, timeout);
   }
 
