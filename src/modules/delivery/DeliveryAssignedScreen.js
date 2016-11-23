@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import {connect} from "react-redux"
 import SlidingUpPanel from 'react-native-sliding-up-panel';
 import MapView from "react-native-maps"
 import DeliveryAssignedContainer from './DeliveryAssignedContainer'
@@ -16,6 +17,15 @@ var deviceHeight = Dimensions.get('window').height;
 
 var MAXIMUM_HEIGHT = deviceHeight - 150;
 var MINIMUM_HEIGHT = 80;
+
+/**
+ * ## Redux boilerplate
+ */
+function mapStateToProps(state) {
+  return {
+    location: state.location
+  }
+}
 
 class DeliveryAssignedScreen extends Component {
 
@@ -34,6 +44,10 @@ class DeliveryAssignedScreen extends Component {
             this.map = ref
           }}
           style={styles.map}>
+
+          <MapView.Marker identifier='pickup' coordinate={this.props.location.pickupLocation}/>
+          <MapView.Marker identifier='delivery' coordinate={this.props.location.deliveryLocation}/>
+
         </MapView>
 
         <SlidingUpPanel
@@ -113,4 +127,4 @@ var styles = StyleSheet.create({
   }
 })
 
-export default DeliveryAssignedScreen
+export default connect(mapStateToProps, null)(DeliveryAssignedScreen)
