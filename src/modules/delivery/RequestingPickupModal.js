@@ -2,24 +2,21 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import {Actions, ActionConst} from "react-native-router-flux";
-import TimerMixin from 'react-timer-mixin';
-import * as locationActions from "../../reducers/location/locationActions"
-import * as globalActions from "../../reducers/global/globalActions"
+import {Actions, ActionConst} from "react-native-router-flux"
+import * as deliveryActions from "../../reducers/delivery/deliveryActions"
 import React, {Component} from "react"
 import {StyleSheet, Text, ActivityIndicator} from "react-native"
-import {View, Button, Content} from "native-base"
-import Spinner from 'react-native-spinkit'
-import I18n from "../../lib/I18n"
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({...locationActions, ...globalActions}, dispatch)
-  }
-}
+import {View, Button} from "native-base"
 
 let requestingTimeout
 const timeout = 3000;
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({...deliveryActions}, dispatch)
+  }
+}
 
 class RequestingPickupScreen extends Component {
 
@@ -36,6 +33,7 @@ class RequestingPickupScreen extends Component {
 
   componentDidMount() {
     requestingTimeout = setTimeout(() => {
+      this.props.actions.resetDelivery()
       this.dismissModal()
       Actions.DeliveryAssignedScreen({type: ActionConst.REPLACE})
     }, timeout);
@@ -86,6 +84,6 @@ var styles = StyleSheet.create({
   }
 });
 
-export default connect(null, null)(RequestingPickupScreen)
+export default connect(null, mapDispatchToProps)(RequestingPickupScreen)
 
 

@@ -57,7 +57,7 @@ class RequestPickupStep extends Component {
         <View style={{
           flexDirection: 'row'
         }}>
-          <View style={{
+          <View pointerEvents={'box-none'} style={{
             justifyContent: 'space-between',
             flex: 1,
             flexDirection: 'row',

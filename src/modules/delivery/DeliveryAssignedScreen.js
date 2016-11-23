@@ -2,12 +2,13 @@
 
 import React, {Component} from "react"
 import {connect} from "react-redux"
+import {Actions} from "react-native-router-flux";
 import SlidingUpPanel from "react-native-sliding-up-panel"
 import MapView from "react-native-maps"
 import DeliveryAssignedContainer from "./DeliveryAssignedContainer"
 import * as Defaults from "../../reducers/location/locationConstants"
 import {StyleSheet, View, Dimensions, Image, TouchableHighlight} from "react-native"
-import {Grid, Text, Col, Row, Icon} from 'native-base'
+import {Grid, Text, Col, Button, Row, Icon} from 'native-base'
 
 const deviceHeight = Dimensions.get('window').height
 const MAXIMUM_HEIGHT = deviceHeight - 150
@@ -43,6 +44,10 @@ class DeliveryAssignedScreen extends Component {
     }
   }
 
+  onRequestAnotherDeliveryPress() {
+    Actions.HomeScreen()
+  }
+
   focusMap() {
     this.map.fitToSuppliedMarkers(['pickup', 'delivery'], true);
   }
@@ -67,6 +72,14 @@ class DeliveryAssignedScreen extends Component {
 
         </MapView>
 
+        <Button
+          primary
+          block
+          style=
+            {{
+              marginTop: 30, margin: 10
+            }}
+          onPress={this.onRequestAnotherDeliveryPress.bind(this)}>Request another delivery</Button>
         <SlidingUpPanel
           ref={panel => {
             this.panel = panel
@@ -115,7 +128,8 @@ class HandlerOne extends Component {
           </Row>
         </Col>
         <Col style={{marginRight: 5, alignItems: 'flex-end'}}>
-          <TouchableHighlight onPress={() => {}}>
+          <TouchableHighlight onPress={() => {
+          }}>
             <View>
               <Icon style={{padding: 10, fontSize: 40}} name='ios-call-outline'/>
             </View>
