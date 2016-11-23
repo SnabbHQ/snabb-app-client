@@ -1,26 +1,20 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React, {Component} from "react"
 import {connect} from "react-redux"
-import SlidingUpPanel from 'react-native-sliding-up-panel';
+import SlidingUpPanel from "react-native-sliding-up-panel"
 import MapView from "react-native-maps"
-import DeliveryAssignedContainer from './DeliveryAssignedContainer'
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Image
-} from 'react-native';
+import DeliveryAssignedContainer from "./DeliveryAssignedContainer"
+import * as Defaults from "../../reducers/location/locationConstants"
+import {StyleSheet, Text, View, Dimensions, Image} from "react-native"
 
-var deviceHeight = Dimensions.get('window').height;
+const deviceHeight = Dimensions.get('window').height
+const MAXIMUM_HEIGHT = deviceHeight - 150
+const MINIMUM_HEIGHT = 80
+const timeout = 4000;
 
-var MAXIMUM_HEIGHT = deviceHeight - 150;
-var MINIMUM_HEIGHT = 80;
+let animationTimeout
 
-/**
- * ## Redux boilerplate
- */
 function mapStateToProps(state) {
   return {
     location: state.location
@@ -36,12 +30,34 @@ class DeliveryAssignedScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    animationTimeout = setTimeout(() => {
+      this.focusMap();
+    }, timeout);
+  }
+
+  componentWillUnmount() {
+    if (animationTimeout) {
+      clearTimeout(animationTimeout);
+    }
+  }
+
+  focusMap() {
+    this.map.fitToSuppliedMarkers(['pickup', 'delivery'], true);
+  }
+
   render() {
     return (
       <View style={styles.parentContainer}>
         <MapView
           ref={ref => {
             this.map = ref
+          }}
+          initialRegion={{
+            latitude: this.props.location.pickupLocation.latitude,
+            longitude: this.props.location.pickupLocation.longitude,
+            latitudeDelta: Defaults.LATITUDE_DELTA,
+            longitudeDelta: Defaults.LONGITUDE_DELTA,
           }}
           style={styles.map}>
 
