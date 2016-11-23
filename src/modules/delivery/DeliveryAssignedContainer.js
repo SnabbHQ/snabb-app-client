@@ -74,12 +74,9 @@ class DeliveryAssignedContainer extends Component {
               <Text>Notify Receiver by SMS</Text>
               <Icon name='ios-arrow-forward'/>
             </ListItem>
-            <ListItem button iconLeft iconRight onPress={this.handleCancelPress.bind(this)}>
-              <Icon name='ios-settings-outline'/>
-              <Text>Cancel Delivery</Text>
-              <Icon name='ios-arrow-forward'/>
-            </ListItem>
           </List>
+          <Button danger block style={{margin: 10}}
+                  onPress={this.handleCancelPress.bind(this)}>Cancel Request</Button>
         </View>
           </ScrollView>
       </View>

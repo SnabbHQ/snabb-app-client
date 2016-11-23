@@ -26,7 +26,8 @@ function mapStateToProps(state) {
 class DeliveryAssignedScreen extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
+
     this.state = {
       containerHeight: 0
     }
@@ -34,13 +35,13 @@ class DeliveryAssignedScreen extends Component {
 
   componentDidMount() {
     animationTimeout = setTimeout(() => {
-      this.focusMap();
-    }, timeout);
+      this.focusMap()
+    }, timeout)
   }
 
   componentWillUnmount() {
     if (animationTimeout) {
-      clearTimeout(animationTimeout);
+      clearTimeout(animationTimeout)
     }
   }
 
@@ -49,7 +50,7 @@ class DeliveryAssignedScreen extends Component {
   }
 
   focusMap() {
-    this.map.fitToSuppliedMarkers(['pickup', 'delivery'], true);
+    this.map.fitToSuppliedMarkers(['pickup', 'delivery'], true)
   }
 
   render() {
