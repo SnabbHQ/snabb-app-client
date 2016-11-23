@@ -42,9 +42,16 @@ class RequestPickupStep extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
-        <View style={styles.content} pointerEvents={'box-none'}>
-          <View style={{flexDirection: 'row'}}>
+      <View pointerEvents={'box-none'} style={styles.content}>
+        <View style={{
+          flexDirection: 'row'
+        }}>
+          <View style={{
+            justifyContent: 'space-between',
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'flex-end'
+          }}>
             <Button style={styles.backToSetPickup} onPress={() => this.handleBackToSetPickupPress()}>
               <Icon name='ios-arrow-round-back' style={styles.backIcon}/>
             </Button>
@@ -52,12 +59,12 @@ class RequestPickupStep extends Component {
               <Icon name='ios-locate-outline' style={styles.locationIcon}/>
             </Button>
           </View>
-          <View style={{backgroundColor: 'transparent', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
-            <RequestPickupContainer
-              onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
-              onDeliveryLocationBoxPress={() => this.onDeliveryLocationBoxPress()}
-              onRequestPickupButtonPress={() => this.onRequestPickupButtonPress()}/>
-          </View>
+        </View>
+        <View style={{backgroundColor: 'transparent', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
+          <RequestPickupContainer
+            onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
+            onDeliveryLocationBoxPress={() => this.onDeliveryLocationBoxPress()}
+            onRequestPickupButtonPress={() => this.onRequestPickupButtonPress()}/>
         </View>
       </View>
     )
@@ -67,27 +74,19 @@ class RequestPickupStep extends Component {
 var styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end'
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject
   },
   content: {
     ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end'
+    justifyContent: 'flex-end'
   },
   backToSetPickup: {
-    marginRight: 30,
-    marginBottom: 15,
+    margin: 15,
     height: 36,
     width: 36,
     backgroundColor: '#F7F7F7'
   },
   centerOnUserButton: {
-    marginRight: 15,
-    marginBottom: 15,
+    margin: 15,
     height: 36,
     width: 36,
     backgroundColor: '#F7F7F7'

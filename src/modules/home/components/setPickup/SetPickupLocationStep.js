@@ -52,17 +52,16 @@ class SetPickupLocationStep extends Component {
           pinColor={"#000"}
           textColor={"#FFF"}
           top={0}/>
-        <View pointerEvents={'box-none'}>
-          <View style={{flexDirection: 'row'}}>
-            <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
-              <Icon name='ios-locate-outline' style={styles.locationIcon}/>
-            </Button>
-          </View>
-          <View style={{backgroundColor: 'transparent', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
-            <SetPickupContainer
-              onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
-              onSetPickupPress={() => this.onSetPickupPress()}/>
-          </View>
+
+        <View style={{flexDirection: 'row'}}>
+          <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
+            <Icon name='ios-locate-outline' style={styles.locationIcon}/>
+          </Button>
+        </View>
+        <View style={{backgroundColor: 'transparent', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
+          <SetPickupContainer
+            onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
+            onSetPickupPress={() => this.onSetPickupPress()}/>
         </View>
       </View>
     )

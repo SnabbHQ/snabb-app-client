@@ -84,7 +84,7 @@ class HomeMapView extends Component {
 
   renderStep() {
     switch (this.state.step) {
-      case "SET_PICKUP":
+      case "SET_PICKUPs":
         return <SetPickupLocationStep/>
       default:
         return <RequestPickupStep/>
