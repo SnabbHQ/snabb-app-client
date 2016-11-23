@@ -34,7 +34,7 @@ class RequestPickupStep extends Component {
   }
 
   onRequestPickupButtonPress() {
-    Actions.RequestingPickupModal({error: "Network failed...", hide: false})
+    Actions.RequestingPickupModal()
   }
 
   onPickupLocationBoxPress() {
