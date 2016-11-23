@@ -3,6 +3,7 @@
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import * as locationActions from "../../../../reducers/location/locationActions"
+import * as deliveryActions from "../../../../reducers/delivery/deliveryActions"
 import React, {Component} from "react"
 import {StyleSheet, View, Dimensions} from "react-native"
 import {Actions} from "react-native-router-flux"
@@ -19,7 +20,7 @@ const {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...locationActions}, dispatch)
+    actions: bindActionCreators({...locationActions, ...deliveryActions}, dispatch)
   }
 }
 
@@ -41,7 +42,7 @@ class SetPickupLocationStep extends Component {
   }
 
   onSetPickupPress() {
-    // TODO
+    this.props.actions.goToRequestPickuUp()
   }
 
   render() {

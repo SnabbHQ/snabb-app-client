@@ -11,6 +11,7 @@
 'use strict';
 
 import {Record} from 'immutable'
+import * as ActionTypes from './DeliveryStepActionTypes';
 
 /**
  * ## InitialState
@@ -18,7 +19,7 @@ import {Record} from 'immutable'
  * The fields we're concerned with
  */
 var InitialState = Record({
-  step: 1
+  step: ActionTypes.SET_PICKUP
 });
 
 export default InitialState

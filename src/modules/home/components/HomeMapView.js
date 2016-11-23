@@ -11,13 +11,15 @@ import MapView from "react-native-maps"
 import * as Defaults from "../../../reducers/location/locationConstants"
 import SetPickupLocationStep from './setPickup/SetPickupLocationStep'
 import RequestPickupStep from './requestDelivery/RequestPickupStep'
+import * as DeliveryStepActionTypes from '../../../reducers/delivery/DeliveryStepActionTypes'
 
 /**
  * ## Redux boilerplate
  */
 function mapStateToProps(state) {
   return {
-    location: state.location
+    location: state.location,
+    deliveryStep: state.delivery.step
   }
 }
 
@@ -38,16 +40,14 @@ class HomeMapView extends Component {
         longitude: 0,
         latitudeDelta: Defaults.LATITUDE_DELTA,
         longitudeDelta: Defaults.LONGITUDE_DELTA,
-      },
-      step: 'SET_PICKUP'
+      }
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.location.pickupLocation && newProps.location.pickupLocation !== this.props.pickupLocation
+    if (newProps.location.pickupLocation && newProps.location.pickupLocation !== this.props.location.pickupLocation
       && newProps.location.from !== 'map') {
       this.setState({
-        ...this.state,
         map: {
           ...this.state.map,
           latitude: newProps.location.pickupLocation.latitude,
@@ -59,21 +59,20 @@ class HomeMapView extends Component {
 
   onRegionChange(region) {
     this.setState({
-      ...this.state,
       map: {
         latitude: region.latitude,
         longitude: region.longitude,
         latitudeDelta: region.latitudeDelta,
         longitudeDelta: region.longitudeDelta
       }
-    });
+    })
   }
 
   onRegionChangeComplete(region) {
 
     // Make sure we only propagate this on the set_pickup step, otherwise when moving the map in the other
     // steps will cause the current pickup location to update.
-    if (this.state.step === 'SET_PICKUP') {
+    if (this.props.deliveryStep === DeliveryStepActionTypes.SET_PICKUP) {
       this.props.actions.setPickupLocation(region, 'map')
     }
   }
@@ -83,8 +82,8 @@ class HomeMapView extends Component {
   }
 
   renderStep() {
-    switch (this.state.step) {
-      case "SET_PICKUP":
+    switch (this.props.deliveryStep) {
+      case DeliveryStepActionTypes.SET_PICKUP:
         return <SetPickupLocationStep/>
       default:
         return <RequestPickupStep/>
@@ -95,7 +94,7 @@ class HomeMapView extends Component {
     var markerPickup;
     var markerDelivery;
 
-    if (this.state.step !== 'SET_PICKUP') {
+    if (this.props.deliveryStep !== DeliveryStepActionTypes.SET_PICKUP) {
       markerPickup = <MapView.Marker identifier='pickup' coordinate={this.props.location.pickupLocation}/>
       markerDelivery = <MapView.Marker identifier='delivery' coordinate={this.props.location.deliveryLocation}/>
     }

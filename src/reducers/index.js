@@ -11,6 +11,7 @@ import device from './device/deviceReducer'
 import location from './location/locationReducer'
 import global from './global/globalReducer'
 import profile from './user/profile/profileReducer'
+import delivery from './delivery/deliveryReducer'
 
 import { combineReducers } from 'redux'
 
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   device,
   location,
   global,
-  profile
+  profile,
+  delivery
 });
 
 export default rootReducer

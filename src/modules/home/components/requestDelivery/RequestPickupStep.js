@@ -3,6 +3,7 @@
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import React, {Component} from "react"
+import * as deliveryActions from "../../../../reducers/delivery/deliveryActions"
 import {StyleSheet, View, Dimensions} from "react-native"
 import {Actions} from "react-native-router-flux"
 import {Button} from "native-base"
@@ -16,6 +17,12 @@ const {
   DELIVERY_LOCATION
 } = require('../../../../lib/constants').default
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({...deliveryActions}, dispatch)
+  }
+}
+
 class RequestPickupStep extends Component {
 
   centerOnUser() {
@@ -23,7 +30,7 @@ class RequestPickupStep extends Component {
   }
 
   onBackPress() {
-    //TODO
+    this.props.actions.goToSetPickup()
   }
 
   onRequestPickupButtonPress() {
@@ -105,4 +112,4 @@ var styles = StyleSheet.create({
   }
 });
 
-export default connect(null, null)(RequestPickupStep)
+export default connect(null, mapDispatchToProps)(RequestPickupStep)
