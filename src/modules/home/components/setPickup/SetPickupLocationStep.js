@@ -69,36 +69,16 @@ class SetPickupLocationStep extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end'
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject
-  },
   content: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
     alignItems: 'flex-end'
   },
-  backToSetPickup: {
-    marginRight: 30,
-    marginBottom: 15,
-    height: 36,
-    width: 36,
-    backgroundColor: '#F7F7F7'
-  },
   centerOnUserButton: {
-    marginRight: 15,
-    marginBottom: 15,
+    margin: 15,
     height: 36,
     width: 36,
     backgroundColor: '#F7F7F7'
-  },
-  backIcon: {
-    fontSize: 30,
-    color: '#31445d'
   },
   locationIcon: {
     fontSize: 23,

@@ -18,7 +18,11 @@ const {
 
 class RequestPickupStep extends Component {
 
-  handleBackToSetPickupPress() {
+  centerOnUser() {
+    this.props.actions.getCurrentPosition()
+  }
+
+  onBackPress() {
     //TODO
   }
 
@@ -52,7 +56,7 @@ class RequestPickupStep extends Component {
             flexDirection: 'row',
             alignItems: 'flex-end'
           }}>
-            <Button style={styles.backToSetPickup} onPress={() => this.handleBackToSetPickupPress()}>
+            <Button style={styles.backToSetPickup} onPress={() => this.onBackPress()}>
               <Icon name='ios-arrow-round-back' style={styles.backIcon}/>
             </Button>
             <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
