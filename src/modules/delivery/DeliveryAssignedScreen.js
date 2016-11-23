@@ -6,7 +6,8 @@ import SlidingUpPanel from "react-native-sliding-up-panel"
 import MapView from "react-native-maps"
 import DeliveryAssignedContainer from "./DeliveryAssignedContainer"
 import * as Defaults from "../../reducers/location/locationConstants"
-import {StyleSheet, Text, View, Dimensions, Image} from "react-native"
+import {StyleSheet, View, Dimensions, Image, TouchableHighlight} from "react-native"
+import {Grid, Text, Col, Row, Icon} from 'native-base'
 
 const deviceHeight = Dimensions.get('window').height
 const MAXIMUM_HEIGHT = deviceHeight - 150
@@ -26,7 +27,7 @@ class DeliveryAssignedScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      containerHeight : 0
+      containerHeight: 0
     }
   }
 
@@ -67,7 +68,9 @@ class DeliveryAssignedScreen extends Component {
         </MapView>
 
         <SlidingUpPanel
-          ref={panel => { this.panel = panel }}
+          ref={panel => {
+            this.panel = panel
+          }}
           containerMaximumHeight={MAXIMUM_HEIGHT}
           handlerHeight={MINIMUM_HEIGHT}
           allowStayMiddle={false}
@@ -82,53 +85,73 @@ class DeliveryAssignedScreen extends Component {
 
   getContainerHeight = (height) => {
     this.setState({
-      containerHeight : height
+      containerHeight: height
     })
   }
 }
 
-class HandlerOne extends Component{
+class HandlerOne extends Component {
   render() {
     return (
-    <View style={{flexDirection: 'row'}}>
-      <Image
-        style={{width: 80, height: 80}}
-        source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
-      />
-      <View style={{flexDirection: 'column'}}>
-        <Text>Order Number: 12344</Text>
-        <Text>Picking up in about 5 min</Text>
-      </View>
-    </View>
+      <Grid style={{
+        flex: 1,
+        shadowRadius: 4,
+        shadowOpacity: 0.2,
+        shadowColor: '#000',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10
+      }}>
+        <Image
+          style={{width: 66, height: 66, borderRadius: 33}}
+          source={{uri: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJNtdspFBnm_n6ugwDkCJ_nqiRlnxhryy9s7lA5eJ4ztKVpJiF'}}
+        />
+        <Col style={{padding: 10, flex: 3}}>
+          <Row>
+            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Order #12344</Text>
+          </Row>
+          <Row>
+            <Text>Picking up in 5 min - 4km</Text>
+          </Row>
+        </Col>
+        <Col style={{marginRight: 5, alignItems: 'flex-end'}}>
+          <TouchableHighlight onPress={() => {}}>
+            <View>
+              <Icon style={{padding: 10, fontSize: 40}} name='ios-call-outline'/>
+            </View>
+          </TouchableHighlight>
+
+        </Col>
+      </Grid>
     )
   }
 }
 
 var styles = StyleSheet.create({
   parentContainer: {
-    flex : 1,
+    flex: 1,
   },
   map: {
     ...StyleSheet.absoluteFillObject
   },
   backContainer: {
-    flex : 1,
-    backgroundColor : 'blue'
+    flex: 1,
+    backgroundColor: 'blue'
   },
   frontContainer: {
-    flex : 1,
+    flex: 1,
   },
   logText: {
-    color : 'white',
+    color: 'white',
     fontWeight: '700',
   },
   panelText: {
-    color : 'white',
+    color: 'white',
   },
   textContainer: {
-    backgroundColor : 'transparent',
-    height : MINIMUM_HEIGHT,
-    justifyContent : 'center'
+    backgroundColor: 'transparent',
+    height: MINIMUM_HEIGHT,
+    justifyContent: 'center'
   },
   handlerText: {
     color: 'white',
@@ -136,9 +159,9 @@ var styles = StyleSheet.create({
     fontWeight: '700',
   },
   button: {
-    backgroundColor : 'black',
-    justifyContent : 'center',
-    alignSelf : 'center',
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignSelf: 'center',
     padding: 5
   }
 })

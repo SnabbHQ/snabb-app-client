@@ -49,16 +49,16 @@ class DeliveryAssignedContainer extends Component {
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         <ScrollView>
         <View style={{}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Icon name='ios-cube-outline' style={{fontSize: 50, margin: 15}}/>
-            <View style={{flexDirection: 'column', flexWrap: 'wrap'}}>
+          <View style={{padding: 10, flexDirection: 'row', alignItems: 'center'}}>
+            <Icon name='ios-cube-outline' style={{fontSize: 33, margin: 15}}/>
+            <View style={{flex: 0.8, flexDirection: 'column'}}>
               <Text>AV/Navarro Reverter 15, 46006</Text>
               <Text>Stairs A. To call simply put 16 and the press the bell in the entry panel</Text>
             </View>
           </View>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{padding: 10, flexDirection: 'row', alignItems: 'center'}}>
             <Icon name='ios-flag-outline' style={{fontSize: 50, margin: 15}}/>
-            <View style={{flexDirection: 'column'}}>
+            <View style={{flex: 0.8, flexDirection: 'column'}}>
               <Text>C/San Vicente, 91, 46001</Text>
               <Text>Stairs A. To call simply put 16 and the press the bell in the entry panel</Text>
             </View>
