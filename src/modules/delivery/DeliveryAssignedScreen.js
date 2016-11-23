@@ -103,15 +103,15 @@ class HandlerOne extends Component {
         padding: 10
       }}>
         <Image
-          style={{width: 66, height: 66, borderRadius: 33}}
+          style={{width: 60, height: 60, borderRadius: 30}}
           source={{uri: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJNtdspFBnm_n6ugwDkCJ_nqiRlnxhryy9s7lA5eJ4ztKVpJiF'}}
         />
-        <Col style={{padding: 10, flex: 3}}>
+        <Col style={{marginLeft: 5, padding: 5, flex: 4}}>
           <Row>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>Order #12344</Text>
+            <Text style={{fontSize: 15, fontWeight: 'bold'}}>Order #12344</Text>
           </Row>
           <Row>
-            <Text>Picking up in 5 min - 4km</Text>
+            <Text style={{fontSize: 13}}>ETA of 5 min - 4km</Text>
           </Row>
         </Col>
         <Col style={{marginRight: 5, alignItems: 'flex-end'}}>
