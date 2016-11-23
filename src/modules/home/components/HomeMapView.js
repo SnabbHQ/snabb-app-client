@@ -1,23 +1,19 @@
-'use strict';
+'use strict'
 
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import * as locationActions from "../../../reducers/location/locationActions";
-import * as globalActions from "../../../reducers/global/globalActions";
-import React, {Component} from "react";
-import {StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
-import {Actions} from "react-native-router-flux";
-import {Button} from "native-base";
-import Icon from "react-native-vector-icons/Ionicons";
-import MapView from "react-native-maps";
-import LocationPin from "./LocationPin";
-import SetPickupContainer from "./SetPickupContainer"
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as locationActions from "../../../reducers/location/locationActions"
+import * as globalActions from "../../../reducers/global/globalActions"
+import React, {Component} from "react"
+import {StyleSheet, View, Dimensions} from "react-native"
+import {Actions} from "react-native-router-flux"
+import {Button} from "native-base"
+import Icon from "react-native-vector-icons/Ionicons"
+import MapView from "react-native-maps"
 import RequestPickupContainer from "./RequestPickupContainer"
-import * as Defaults from '../../../reducers/location/locationConstants'
-import SelectTransportContainer from "./SelectTransportContainer"
+import * as Defaults from "../../../reducers/location/locationConstants"
+import SetPickupLocationStep from './setPickup/SetPickupStep'
 
-
-import Dimensions from 'Dimensions';
 var {height, width} = Dimensions.get('window') // Screen dimensions in current orientation
 
 const {
@@ -30,7 +26,8 @@ const {
  */
 function mapStateToProps(state) {
   return {
-    location: state.location
+    location: state.location,
+    step: 'SET_PICKUP'
   }
 }
 
@@ -40,10 +37,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-let showPickup = true;
-
 class HomeMapView extends Component {
-
 
   constructor(params) {
     super(params)
@@ -56,10 +50,6 @@ class HomeMapView extends Component {
         longitudeDelta: Defaults.LONGITUDE_DELTA,
       }
     }
-  }
-
-  componentDidMount() {
-    this.centerOnUser();
   }
 
   componentWillReceiveProps(newProps) {
@@ -75,10 +65,6 @@ class HomeMapView extends Component {
     }
   }
 
-  centerOnUser() {
-    this.props.actions.getCurrentPosition()
-  }
-
   onRegionChange(region) {
     this.setState({
       map: {
@@ -91,74 +77,8 @@ class HomeMapView extends Component {
   }
 
   onRegionChangeComplete(region) {
-    if (showPickup) {
+    if (this.props.step == 'SET_PICKUP') {
       this.props.actions.setPickupLocation(region, 'map')
-    }
-  }
-
-  onPickupLocationBoxPress() {
-    Actions.SetLocationScreen({
-      title: 'Pickup location',
-      viewType: PICKUP_LOCATION
-    })
-  }
-
-  onDeliveryLocationBoxPress() {
-    Actions.SetLocationScreen({
-      title: 'Delivery location',
-      viewType: DELIVERY_LOCATION
-    })
-  }
-
-  onSetPickupPress() {
-    showPickup = false
-    this.forceUpdate()
-  }
-
-  onRequestPickupButtonPress() {
-    //Actions.RequestingPickupScreen()
-    showPickup = false
-    this.forceUpdate()
-  }
-
-  handleBackToSetPickupPress() {
-    showPickup = true
-    this.forceUpdate()
-  }
-
-  renderBackButton() {
-    if (!showPickup) {
-      return (
-        <Button style={styles.backToSetPickup} onPress={() => this.handleBackToSetPickupPress()}>
-          <Icon name='ios-arrow-round-back' style={styles.backIcon}/>
-        </Button>
-      )
-    } else {
-      return null
-    }
-  }
-
-  showWhat() {
-    if (showPickup) {
-      return <SetPickupContainer
-        onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
-        onSetPickupPress={() => this.onSetPickupPress()}/>
-    } else {
-
-      return <RequestPickupContainer
-        onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
-        onDeliveryLocationBoxPress={() => this.onDeliveryLocationBoxPress()}
-        onRequestPickupButtonPress={() => this.onRequestPickupButtonPress()}/>
-    }
-  }
-
-  showLocationPin() {
-    if (showPickup) {
-      return <LocationPin
-        text={""}
-        pinColor={"#000"}
-        textColor={"#FFF"}
-        top={0}/>
     }
   }
 
@@ -170,7 +90,7 @@ class HomeMapView extends Component {
     var markerPickup;
     var markerDelivery;
 
-    if (!showPickup) {
+    if (this.props.step !== 'SET_PICKUP') {
       markerPickup = <MapView.Marker identifier='pickup' coordinate={this.props.location.pickupLocation}/>
       markerDelivery = <MapView.Marker identifier='delivery' coordinate={this.props.location.deliveryLocation}/>
     }
@@ -194,26 +114,63 @@ class HomeMapView extends Component {
 
           {markerPickup}
           {markerDelivery}
-
         </MapView>
 
-        {this.showLocationPin()}
+        <SetPickupLocationStep/>
+      </View>
+    )
+  }
+}
 
+class RequestPickupStep extends Component {
+
+  handleBackToSetPickupPress() {
+    //TODO
+  }
+
+  onRequestPickupButtonPress() {
+    //TODO
+  }
+
+  onPickupLocationBoxPress() {
+    Actions.SetLocationScreen({
+      title: 'Pickup location',
+      viewType: PICKUP_LOCATION
+    })
+  }
+
+  onDeliveryLocationBoxPress() {
+    Actions.SetLocationScreen({
+      title: 'Delivery location',
+      viewType: DELIVERY_LOCATION
+    })
+  }
+
+  render() {
+    return (
+      <View style={{flex: 1}}>
         <View style={styles.content} pointerEvents={'box-none'}>
           <View style={{flexDirection: 'row'}}>
-            {this.renderBackButton()}
+            <Button style={styles.backToSetPickup} onPress={() => this.handleBackToSetPickupPress()}>
+              <Icon name='ios-arrow-round-back' style={styles.backIcon}/>
+            </Button>
             <Button style={styles.centerOnUserButton} onPress={() => this.centerOnUser()}>
               <Icon name='ios-locate-outline' style={styles.locationIcon}/>
             </Button>
           </View>
           <View style={{backgroundColor: 'transparent', flexWrap: 'wrap', flexDirection: 'row', width: width}}>
-            {this.showWhat()}
+            <RequestPickupContainer
+              onPickupLocationBoxPress={() => this.onPickupLocationBoxPress()}
+              onDeliveryLocationBoxPress={() => this.onDeliveryLocationBoxPress()}
+              onRequestPickupButtonPress={() => this.onRequestPickupButtonPress()}/>
           </View>
         </View>
       </View>
-    );
+    )
   }
 }
+
+
 
 
 const styles = StyleSheet.create({

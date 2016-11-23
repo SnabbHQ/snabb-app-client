@@ -2,12 +2,12 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as locationActions from "../../../reducers/location/locationActions";
+import * as locationActions from "../../../../reducers/location/locationActions";
 import React, {Component, PropTypes} from "react"
 import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native";
 import {Text, View} from "native-base";
-import LocationBox from "./LocationBox";
-import I18n from "../../../lib/I18n";
+import LocationBox from "../LocationBox";
+import I18n from "../../../../lib/I18n";
 
 /**
  * ## Redux boilerplate
