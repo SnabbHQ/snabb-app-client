@@ -102,6 +102,11 @@ class ModifyProfileScreen extends Component {
       thumbnail: newProps.profile.form.fields.thumbnail
     })
 
+    // TODO - Make sure to display a loader
+    if (newProps.profile.form.isFetching) {
+
+    }
+
     if (newProps.profile.form.updated) {
       Actions.pop()
     }
