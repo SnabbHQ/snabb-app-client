@@ -86,7 +86,7 @@ class RequestPickupContainer extends Component {
           onPress={this.props.onDeliveryLocationBoxPress}/>
 
         <TouchableOpacity style={styles.setPickupLocation} onPress={this.props.onRequestPickupButtonPress}>
-          <Text style={styles.setPickupLocationText}>Set Pickup</Text>
+          <Text style={styles.setPickupLocationText}>Request Pickup</Text>
         </TouchableOpacity>
       </View>
     );
