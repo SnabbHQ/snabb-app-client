@@ -19,7 +19,6 @@ export default function locationReducer(state = initialState, action) {
   if (!(state instanceof InitialState)) return initialState.merge(state)
 
   switch (action.type) {
-
     case CURRENT_POSITION:
     case SET_PICKUP_LOCATION:
       var next = state.set('pickupLocation', action.payload.location)

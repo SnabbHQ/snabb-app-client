@@ -13,7 +13,7 @@ import {Grid, Text, Col, Button, Row, Icon} from 'native-base'
 const deviceHeight = Dimensions.get('window').height
 const MAXIMUM_HEIGHT = deviceHeight - 150
 const MINIMUM_HEIGHT = 80
-const timeout = 4000;
+const timeout = 2000;
 
 let animationTimeout
 

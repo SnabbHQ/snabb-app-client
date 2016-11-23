@@ -1,7 +1,7 @@
 'use strict';
 
 import {bindActionCreators} from "redux"
-import {Actions} from "react-native-router-flux";
+import {Actions, ActionConst} from "react-native-router-flux";
 import {connect} from "react-redux"
 import * as deliveryActions from "../../reducers/delivery/deliveryActions"
 import React, {Component} from "react"
@@ -38,7 +38,7 @@ class DeliveryAssignedContainer extends Component {
         {text: 'OK', onPress: () => {
           // @TODO - Cancel current delivery and go back to home screen
           self.props.actions.resetDelivery()
-          Actions.HomeScreen()
+          Actions.HomeScreen({type: ActionConst.REPLACE})
         }},
       ]
     )
