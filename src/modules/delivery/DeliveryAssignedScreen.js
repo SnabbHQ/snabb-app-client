@@ -1,106 +1,184 @@
 'use strict';
 
-import {Actions} from "react-native-router-flux";
-import {connect} from "react-redux"
 import React, {Component} from "react"
-import {StyleSheet, Image, Alert} from "react-native"
-import {View, Icon, Button, Text, List, ListItem} from "native-base"
+import {connect} from "react-redux"
+import {Actions} from "react-native-router-flux";
+import SlidingUpPanel from "react-native-sliding-up-panel"
+import MapView from "react-native-maps"
+import DeliveryAssignedContainer from "./DeliveryAssignedContainer"
+import * as Defaults from "../../reducers/location/locationConstants"
+import {StyleSheet, View, Dimensions, Image, TouchableHighlight} from "react-native"
+import {Grid, Text, Col, Button, Row, Icon} from 'native-base'
+
+const deviceHeight = Dimensions.get('window').height
+const MAXIMUM_HEIGHT = deviceHeight - 150
+const MINIMUM_HEIGHT = 80
+const timeout = 2000;
+
+let animationTimeout
+
+function mapStateToProps(state) {
+  return {
+    location: state.location
+  }
+}
 
 class DeliveryAssignedScreen extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      containerHeight: 0
+    }
+  }
+
   componentDidMount() {
-
-    // // TODO - Lets Fake the requesting period
-    // setTimeout(() => {
-    //     Actions.DeliveryReviewScreen()
-    //   },
-    //   2000
-    // )
+    animationTimeout = setTimeout(() => {
+      this.focusMap()
+    }, timeout)
   }
 
-  handleContactPress() {
-
+  componentWillUnmount() {
+    if (animationTimeout) {
+      clearTimeout(animationTimeout)
+    }
   }
 
-  handleSMSPress() {
-
+  onRequestAnotherDeliveryPress() {
+    Actions.HomeScreen()
   }
 
-  handleCancelPress() {
-    // Works on both iOS and Android
-    Alert.alert(
-      'Are you sure?',
-      'Are you sure you want to cancel your current delivery?',
-      [
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'OK', onPress: () => {
-          // @TODO - Cancel current delivery and go back to home screen
-          Actions.HomeScreen()
-        }},
-      ]
-    )
+  focusMap() {
+    this.map.fitToSuppliedMarkers(['pickup', 'delivery'], true)
   }
 
   render() {
     return (
-      <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
-        <View style={{}}>
-          <View style={{flexDirection: 'row'}}>
-            <Image
-              style={{width: 100, height: 100}}
-              source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
-            />
-            <View style={{flexDirection: 'column'}}>
-              <Text>Order Number: 12344</Text>
-              <Text>Picking up in about 5 min</Text>
-            </View>
-          </View>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Icon name='ios-cube-outline' style={{fontSize: 50, margin: 15}}/>
-            <View style={{flexDirection: 'column', flexWrap: 'wrap'}}>
-              <Text>AV/Navarro Reverter 15, 46006</Text>
-              <Text>Stairs A. To call simply put 16 and the press the bell in the entry panel</Text>
-            </View>
-          </View>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Icon name='ios-flag-outline' style={{fontSize: 50, margin: 15}}/>
-            <View style={{flexDirection: 'column'}}>
-              <Text>C/San Vicente, 91, 46001</Text>
-              <Text>Stairs A. To call simply put 16 and the press the bell in the entry panel</Text>
-            </View>
-          </View>
-          <List>
-            <ListItem button iconLeft iconRight onPress={this.handleContactPress.bind(this)}>
-              <Icon name='ios-call-outline'/>
-              <Text>Contact Courier</Text>
-              <Icon name='ios-arrow-forward'/>
-            </ListItem>
-            <ListItem button iconLeft iconRight onPress={this.handleSMSPress.bind(this)}>
-              <Icon name='ios-information-circle-outline'/>
-              <Text>Notify Receiver by SMS</Text>
-              <Icon name='ios-arrow-forward'/>
-            </ListItem>
-            <ListItem button iconLeft iconRight onPress={this.handleCancelPress.bind(this)}>
-              <Icon name='ios-settings-outline'/>
-              <Text>Cancel Delivery</Text>
-              <Icon name='ios-arrow-forward'/>
-            </ListItem>
-          </List>
-        </View>
+      <View style={styles.parentContainer}>
+        <MapView
+          ref={ref => {
+            this.map = ref
+          }}
+          initialRegion={{
+            latitude: this.props.location.pickupLocation.latitude,
+            longitude: this.props.location.pickupLocation.longitude,
+            latitudeDelta: Defaults.LATITUDE_DELTA,
+            longitudeDelta: Defaults.LONGITUDE_DELTA,
+          }}
+          style={styles.map}>
+
+          <MapView.Marker identifier='pickup' coordinate={this.props.location.pickupLocation}/>
+          <MapView.Marker identifier='delivery' coordinate={this.props.location.deliveryLocation}/>
+
+        </MapView>
+
+        <Button
+          primary
+          block
+          style=
+            {{
+              marginTop: 30, margin: 10
+            }}
+          onPress={this.onRequestAnotherDeliveryPress.bind(this)}>Request another delivery</Button>
+        <SlidingUpPanel
+          ref={panel => {
+            this.panel = panel
+          }}
+          containerMaximumHeight={MAXIMUM_HEIGHT}
+          handlerHeight={MINIMUM_HEIGHT}
+          allowStayMiddle={false}
+          handlerDefaultView={<HandlerOne/>}
+          getContainerHeight={this.getContainerHeight}>
+
+          <DeliveryAssignedContainer styles={styles.frontContainer}/>
+        </SlidingUpPanel>
       </View>
+    )
+  }
+
+  getContainerHeight = (height) => {
+    this.setState({
+      containerHeight: height
+    })
+  }
+}
+
+class HandlerOne extends Component {
+  render() {
+    return (
+      <Grid style={{
+        flex: 1,
+        shadowRadius: 4,
+        shadowOpacity: 0.2,
+        shadowColor: '#000',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10
+      }}>
+        <Image
+          style={{width: 60, height: 60, borderRadius: 30}}
+          source={{uri: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJNtdspFBnm_n6ugwDkCJ_nqiRlnxhryy9s7lA5eJ4ztKVpJiF'}}
+        />
+        <Col style={{marginLeft: 5, padding: 5, flex: 4}}>
+          <Row>
+            <Text style={{fontSize: 15, fontWeight: 'bold'}}>Order #12344</Text>
+          </Row>
+          <Row>
+            <Text style={{fontSize: 13}}>ETA of 5 min - 4km</Text>
+          </Row>
+        </Col>
+        <Col style={{marginRight: 5, alignItems: 'flex-end'}}>
+          <TouchableHighlight onPress={() => {
+          }}>
+            <View>
+              <Icon style={{padding: 10, fontSize: 40}} name='ios-call-outline'/>
+            </View>
+          </TouchableHighlight>
+
+        </Col>
+      </Grid>
     )
   }
 }
 
 var styles = StyleSheet.create({
-  summary: {
-    fontFamily: 'BodoniSvtyTwoITCTT-Book',
-    fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center'
+  parentContainer: {
+    flex: 1,
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject
+  },
+  backContainer: {
+    flex: 1,
+    backgroundColor: 'blue'
+  },
+  frontContainer: {
+    flex: 1,
+  },
+  logText: {
+    color: 'white',
+    fontWeight: '700',
+  },
+  panelText: {
+    color: 'white',
+  },
+  textContainer: {
+    backgroundColor: 'transparent',
+    height: MINIMUM_HEIGHT,
+    justifyContent: 'center'
+  },
+  handlerText: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  button: {
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    padding: 5
   }
-});
+})
 
-export default connect(null, null)(DeliveryAssignedScreen)
-
-
+export default connect(mapStateToProps, null)(DeliveryAssignedScreen)

@@ -2,18 +2,19 @@
  *  HomeView.js
  *  Main application view. This view should be displayed right after the user has successfully logged in the platform.
  */
-'use strict';
+'use strict'
 
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import * as authActions from "../../reducers/user/auth/authActions";
-import * as globalActions from "../../reducers/global/globalActions";
-import Drawer from "react-native-drawer";
-import SidePanel from "./components/SidePanel";
-import HomeMapView from "./components/HomeMapView";
-import React, {Component} from "react";
-import {StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native";
-import UserProfileImage from "../user/components/UserProfileImage";
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as authActions from "../../reducers/user/auth/authActions"
+import * as globalActions from "../../reducers/global/globalActions"
+import Drawer from "react-native-drawer"
+import SidePanel from "./components/SidePanel"
+import HomeMapView from "./components/HomeMapView"
+import DeliveryAssignedScreen from "../delivery/DeliveryAssignedScreen"
+import React, {Component} from "react"
+import {StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native"
+import UserProfileImage from "../user/components/UserProfileImage"
 
 /**
  *  Instead of including all app states via ...state
@@ -86,10 +87,9 @@ class HomeScreen extends Component {
             backgroundColor: 'black',
           }
         })}>
-        <View style={styles.container}>
-          <HomeMapView/>
-          <UserProfileImage dropShadow style={styles.userProfile} onPress={() => this.openControlPanel()}/>
-        </View>
+
+        <HomeMapView/>
+        <UserProfileImage dropShadow style={styles.userProfile} onPress={() => this.openControlPanel()}/>
       </Drawer>
     )
   }

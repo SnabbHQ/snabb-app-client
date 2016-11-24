@@ -14,7 +14,7 @@ module.exports = {
     PaymentScreen: function () {},
     HelpScreen: function () {},
     SettingsScreen: function () {},
-    RequestingPickupScreen: function () {},
+    RequestingPickupModal: function () {},
     DeliveryAssignedScreen: function () {},
     DeliveryReviewScreen: function () {}
   }

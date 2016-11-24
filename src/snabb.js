@@ -4,8 +4,8 @@
  *  snabb ![snabb](https://cloud.githubusercontent.com/assets/1282364/11599365/1a1c39d2-9a8c-11e5-8819-bc1e48b30525.png)
  */
 import React from "react"
-import {AppRegistry, StyleSheet, View, Text} from "react-native"
-import {Router, Scene} from "react-native-router-flux"
+import {AppRegistry} from "react-native"
+import {Router, Scene, Modal} from "react-native-router-flux"
 import {Provider} from "react-redux"
 import configureStore from "./lib/configureStore"
 import App from "./modules/App"
@@ -23,9 +23,9 @@ import PaymentsScreen from "./modules/payments/PaymentsScreen"
 import OngoingDeliveriesScreen from "./modules/ongoing/OngoingDeliveriesScreen"
 import HistoryScreen from "./modules/history/HistoryScreen"
 import SetLocationScreen from "./modules/delivery/SetLocationScreen"
-import RequestingPickupScreen from "./modules/delivery/RequestingPickupScreen"
+import RequestingPickupModal from "./modules/delivery/RequestingPickupModal"
 import DeliveryAssignedScreen from "./modules/delivery/DeliveryAssignedScreen"
-import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen";
+import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen"
 
 import {setPlatform, setVersion} from "./reducers/device/deviceActions"
 import {setStore} from "./reducers/global/globalActions"
@@ -87,68 +87,69 @@ export default function native(platform) {
 
         <Provider store={store}>
           <Router sceneStyle={{ backgroundColor: 'white' }}>
-            <Scene key='root' hideNavBar>
-              <Scene key='AppScene'
-                     component={App}
-                     type='replace'
-                     initial/>
+            <Scene key="modal" component={Modal}>
+              <Scene key='root' hideNavBar>
+                <Scene key='AppScene'
+                       component={App}
+                       type='replace'
+                       initial/>
 
-              <Scene key='LoginRegisterScreen'
-                     component={LoginRegisterScreen}
-                     type='replace'/>
+                <Scene key='LoginRegisterScreen'
+                       component={LoginRegisterScreen}
+                       type='replace'/>
 
-              <Scene key='HomeScreen'
-                     component={HomeScreen}
-                     type='replace'/>
+                <Scene key='HomeScreen'
+                       component={HomeScreen}
+                       type='replace'/>
 
-              <Scene key='LoginScreen'
-                     component={LoginScreen}/>
+                <Scene key='LoginScreen'
+                       component={LoginScreen}/>
 
-              <Scene key='RegisterScreen'
-                     component={RegisterScreen}/>
+                <Scene key='RegisterScreen'
+                       component={RegisterScreen}/>
 
-              <Scene key='ForgotPasswordScreen'
-                     component={ForgotPasswordScreen}
-                     type='replace'/>
+                <Scene key='ForgotPasswordScreen'
+                       component={ForgotPasswordScreen}
+                       type='replace'/>
 
-              <Scene key='SetLocationScreen'
-                     component={SetLocationScreen}/>
+                <Scene key='SetLocationScreen'
+                       component={SetLocationScreen}/>
 
-              <Scene key='ProfileScreen'
-                     component={ProfileScreen}/>
+                <Scene key='ProfileScreen'
+                       component={ProfileScreen}/>
 
-              <Scene key='ModifyProfileScreen'
-                     component={ModifyProfileScreen}
-                     direction='vertical'/>
+                <Scene key='ModifyProfileScreen'
+                       component={ModifyProfileScreen}
+                       direction='vertical'/>
 
-              <Scene key='LogoutScreen'
-                     title={I18n.t('snabb.logout')}
-                     component={LogoutScreen}/>
+                <Scene key='LogoutScreen'
+                       title={I18n.t('snabb.logout')}
+                       component={LogoutScreen}/>
 
-              <Scene key='OngoingDeliveriesScreen'
-                     component={OngoingDeliveriesScreen}/>
+                <Scene key='OngoingDeliveriesScreen'
+                       component={OngoingDeliveriesScreen}/>
 
-              <Scene key='HistoryScreen'
-                     component={HistoryScreen}/>
-              
-              <Scene key='PaymentScreen'
-                     component={PaymentsScreen}/>
+                <Scene key='HistoryScreen'
+                       component={HistoryScreen}/>
 
-              <Scene key='HelpScreen'
-                     component={HelpScreen}/>
+                <Scene key='PaymentScreen'
+                       component={PaymentsScreen}/>
 
-              <Scene key='SettingsScreen'
-                     component={SettingsScreen}/>
+                <Scene key='HelpScreen'
+                       component={HelpScreen}/>
 
-              <Scene key='RequestingPickupScreen'
-                     component={RequestingPickupScreen}/>
+                <Scene key='SettingsScreen'
+                       component={SettingsScreen}/>
 
-              <Scene key='DeliveryAssignedScreen'
-                     component={DeliveryAssignedScreen}/>
+                <Scene key='DeliveryAssignedScreen'
+                       component={DeliveryAssignedScreen}/>
 
-              <Scene key='DeliveryReviewScreen'
-                     component={DeliveryReviewScreen}/>
+                <Scene key='DeliveryReviewScreen'
+                       component={DeliveryReviewScreen}/>
 
+              </Scene>
+              <Scene key='RequestingPickupModal'
+                     component={RequestingPickupModal}/>
             </Scene>
           </Router>
         </Provider>

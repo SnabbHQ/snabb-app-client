@@ -103,8 +103,9 @@ export function logoutFailure(error) {
     payload: error
   }
 }
+
 /**
- * ## Login
+ * ## Logout
  * After dispatching the logoutRequest, get the sessionToken
  *
  *
