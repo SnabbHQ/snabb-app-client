@@ -37,7 +37,7 @@ const actions = require('../actions/profileActions');
 /**
  * ## Actions to test
  */
-const {
+import {
   GET_PROFILE_REQUEST,
   GET_PROFILE_SUCCESS,
   GET_PROFILE_FAILURE,
@@ -48,7 +48,7 @@ const {
 
   ON_PROFILE_FORM_FIELD_CHANGE
 
-} = require('../../../../lib/constants').default;
+} from '../actions/ProfileActionTypes'
 
 /**
  * ## Tests
@@ -60,25 +60,39 @@ describe('profileActions', () => {
    * ### simple tests that prove the actions have the specific type
    */
   it('should getProfileRequest', () => {
-    expect(actions.getProfileRequest()).toEqual({type: GET_PROFILE_REQUEST})
+    expect(actions.getUserProfile()).toEqual({type: GET_PROFILE_REQUEST})
   })
 
   it('should getProfileSuccess', () => {
-    var json = {json: true}
-    expect(actions.getProfileSuccess(json)).toEqual({type:
-                                                     GET_PROFILE_SUCCESS,
-                                                     payload: json})
+    const json = {json: true}
+    expect(actions.getProfileSuccess(json)).toEqual({
+      type: GET_PROFILE_SUCCESS,
+      payload: json
+    })
   })
 
   it('should getProfileFailure', () => {
-    var json = {json: true}
-    expect(actions.getProfileFailure(json)).toEqual({type:
-                                                     GET_PROFILE_FAILURE,
-                                                     payload: json})
+    const json = {json: true}
+    expect(actions.getProfileFailure(json)).toEqual({
+      type: GET_PROFILE_FAILURE,
+      payload: json
+    })
   })
 
   it('should profileUpdateRequest', () => {
-    expect(actions.profileUpdateRequest()).toEqual({type: PROFILE_UPDATE_REQUEST})
+    const userId = 'userId'
+    const json = {json: true}
+    const sessionToken = 'sessionToken'
+    expect(actions.updateUserProfile(userId, json, sessionToken)).toEqual({
+      type: PROFILE_UPDATE_REQUEST,
+      payload: {
+        data: {
+          userId: userId,
+          newUserData: json,
+          sessionToken: sessionToken
+        }
+      }
+    })
   })
 
   it('should profileUpdateSuccess', () => {
@@ -86,17 +100,19 @@ describe('profileActions', () => {
   })
 
   it('should profileUpdateFailure', () => {
-    var json = {json: true}
-    expect(actions.profileUpdateFailure(json)).toEqual({type:
-                                                        PROFILE_UPDATE_FAILURE,
-                                                        payload: json})
+    const json = {json: true}
+    expect(actions.profileUpdateFailure(json)).toEqual({
+      type: PROFILE_UPDATE_FAILURE,
+      payload: json
+    })
   })
 
   it('should onProfileFormFieldChange', () => {
     let field = 'field'
     let value = 'value'
     expect(actions.onProfileFormFieldChange(field, value)).toEqual({
-      type: ON_PROFILE_FORM_FIELD_CHANGE, payload: {field: field, value: value}})
+      type: ON_PROFILE_FORM_FIELD_CHANGE, payload: {field: field, value: value}
+    })
   })
 
   /**
