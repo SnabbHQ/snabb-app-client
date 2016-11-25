@@ -20,12 +20,11 @@ import formValidation from './profileFormValidation'
  */
 const {
   LOGOUT_SUCCESS,
-
   SET_STATE
-} = require('../../../lib/constants').default;
+} = require('../../../lib/constants').default
 
 
-import * as ActionTypes from './actions/ProfileActionTypes';
+import * as ActionTypes from './actions/ProfileActionTypes'
 
 /**
  * ## Initial State

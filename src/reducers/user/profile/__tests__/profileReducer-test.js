@@ -15,16 +15,7 @@
  *
  * These actions of the users profile
  */
-const {
-  ON_PROFILE_FORM_FIELD_CHANGE,
-  GET_PROFILE_REQUEST,
-  GET_PROFILE_SUCCESS,
-  GET_PROFILE_FAILURE,
-
-  PROFILE_UPDATE_REQUEST,
-  PROFILE_UPDATE_SUCCESS,
-  PROFILE_UPDATE_FAILURE
-} = require('../../../../lib/constants').default
+import * as ActionTypes from '../actions/ProfileActionTypes'
 
 /**
  * ## Class under test
@@ -52,7 +43,7 @@ describe('profileReducer', () => {
      */
     it('starts fetching', () => {
       const action = {
-        type: GET_PROFILE_REQUEST
+        type: ActionTypes.GET_PROFILE_REQUEST
       }
       let next = profileReducer(undefined, action)
 
@@ -72,7 +63,7 @@ describe('profileReducer', () => {
      */
     it('finishes fetching on success', () => {
       const action = {
-        type: GET_PROFILE_SUCCESS,
+        type: ActionTypes.GET_PROFILE_SUCCESS,
         payload: {
           email: 'barton@foo.com',
           emailVerified: true,
@@ -97,7 +88,7 @@ describe('profileReducer', () => {
      */
     it('finishes fetching on failure', () => {
       const action = {
-        type: GET_PROFILE_FAILURE,
+        type: ActionTypes.GET_PROFILE_FAILURE,
         payload: {error: 'error'}
       }
       let next = profileReducer(undefined, action)
@@ -118,7 +109,7 @@ describe('profileReducer', () => {
      */
     it('starts fetching on request', () => {
       const action = {
-        type: PROFILE_UPDATE_REQUEST
+        type: ActionTypes.PROFILE_UPDATE_REQUEST
       }
       let next = profileReducer(undefined, action)
 
@@ -132,7 +123,7 @@ describe('profileReducer', () => {
      */
     it('finishes fetching on success', () => {
       const action = {
-        type: PROFILE_UPDATE_SUCCESS
+        type: ActionTypes.PROFILE_UPDATE_SUCCESS
       }
       let next = profileReducer(undefined, action)
 
@@ -146,7 +137,7 @@ describe('profileReducer', () => {
      */
     it('finishes fetching on failure and saves error', () => {
       const action = {
-        type: PROFILE_UPDATE_FAILURE,
+        type: ActionTypes.PROFILE_UPDATE_FAILURE,
         payload: {error: 'error'}
       }
       let next = profileReducer(undefined, action)
@@ -164,9 +155,9 @@ describe('profileReducer', () => {
      *
      * Should have a valid form when the field has no error
      */
-    it('form is valid with valid email & username', () => {
+    it('form is valid with valid email', () => {
       const emailAction = {
-        type: ON_PROFILE_FORM_FIELD_CHANGE,
+        type: ActionTypes.ON_PROFILE_FORM_FIELD_CHANGE,
         payload: {field: 'email', value: 'barton@gmail.com'}
       }
 
@@ -184,7 +175,7 @@ describe('profileReducer', () => {
      */
     it('form is invalid with invalid email', () => {
       const emailAction = {
-        type: ON_PROFILE_FORM_FIELD_CHANGE,
+        type: ActionTypes.ON_PROFILE_FORM_FIELD_CHANGE,
         payload: {field: 'email', value: 'bart'}
       }
 
