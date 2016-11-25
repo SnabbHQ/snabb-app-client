@@ -11,14 +11,15 @@
 
 jest.mock('ActivityIndicator', () => 'ActivityIndicator')
 
+/** This is due to the fact that NativeBase does not support yet jest. Mock until it does
+ * https://github.com/GeekyAnts/NativeBase/issues/272 **/
+jest.mock('../FormButton', () => 'FormButton')
+
 /**
 * ## Imports
 */
-import 'react-native'
 import React from 'react'
-
 import Header from '../Header'
-
 import renderer from 'react/lib/ReactTestRenderer'
 
 /**

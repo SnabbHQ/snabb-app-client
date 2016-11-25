@@ -18,89 +18,45 @@
 */
 'use strict'
 
-/**
- * ## Imports
- *
- * React
-*/
-import React, {PropTypes} from 'react'
-import
-{
-  ActivityIndicator,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableHighlight,
-  View
-} from 'react-native'
+import React, {PropTypes} from "react"
+import {ActivityIndicator, Image, StyleSheet, Text, TextInput, TouchableHighlight, View} from "react-native"
+import FormButton from "./FormButton"
 
 /**
- * Project component that will respond to onPress
+ * ### propTypes
+ * * isFetching: display the spinner if true
+ * * showState: should the JSON state, currentState, be displayed
+ * * currentState: the JSON state
+ * * onGetState: the action to call to get the current state
+ * * onSetState: the action to call to set the state
  */
-const FormButton = require('./FormButton')
-/**
- * ## Styles
- */
-var styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    flex: 1,
-    marginTop: 10
-  },
-  header: {
-    marginTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent'
-  },
-  mark: {
-    height: 100,
-    width: 100
-  }
+const propTypes = {
+  isFetching: PropTypes.bool,
+  showState: PropTypes.bool,
+  currentState: PropTypes.object,
+  onGetState: PropTypes.func,
+  onSetState: PropTypes.func
+}
 
-})
+class Header extends React.Component {
 
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-import Translations from '../lib/Translations'
-I18n.translations = Translations
+  constructor(props: P) {
+    super(props)
 
-var Header = React.createClass({
-  /**
-   * ## Header.class
-   * set the initial state of having the button be disabled.
-   */
-  getInitialState () {
-    return {
+    this.state = {
       text: '',
       isDisabled: true
     }
-  },
-  /**
-   * ### propTypes
-   * * isFetching: display the spinner if true
-   * * showState: should the JSON state, currentState, be displayed
-   * * currentState: the JSON state
-   * * onGetState: the action to call to get the current state
-   * * onSetState: the action to call to set the state
-   */
-  propTypes: {
-    isFetching: PropTypes.bool,
-    showState: PropTypes.bool,
-    currentState: PropTypes.object,
-    onGetState: PropTypes.func,
-    onSetState: PropTypes.func
-  },
+  }
+
   /**
    * ### _onPressMark
    * Call the onGetState action passing the state prop
    */
   _onPressMark () {
     this.props.onGetState(!this.props.showState)
-  },
+  }
+
   /**
    * ### _onChangeText
    * when the textinput value changes, set the state for that component
@@ -110,14 +66,15 @@ var Header = React.createClass({
       text,
       isDisabled: false
     })
-  },
+  }
+
   /**
    * ### _updateStateButtonPress
    * When the button for the state is pressed, call ```onSetState```
    */
   _updateStateButtonPress () {
     this.props.onSetState(this.state.text)
-  },
+  }
 
   /**
    * ### render
@@ -178,6 +135,31 @@ var Header = React.createClass({
       </View>
     )
   }
-});
+}
 
-module.exports = Header;
+Header.propTypes = propTypes
+
+/**
+ * ## Styles
+ */
+let styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    flex: 1,
+    marginTop: 10
+  },
+  header: {
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent'
+  },
+  mark: {
+    height: 100,
+    width: 100
+  }
+
+})
+
+
+export default Header

@@ -4,19 +4,21 @@
  * Display a button that responds to onPress and is colored appropriately
  */
 'use strict'
-/**
- * ## Imports
- *
- * React
- */
-import React from 'react'
+
+import React, {Component, PropTypes} from 'react'
 import{ StyleSheet, View } from 'react-native'
 import {Button} from 'native-base'
 
-class FormButton extends React.Component {
+const propTypes = {
+  isDisabled: PropTypes.bool,
+  onPress: PropTypes.func,
+  buttonText: PropTypes.string
+}
+
+class FormButton extends Component {
   render () {
     return (
-      <View style={styles.signin}>
+      <View style={styles.signIn}>
         <Button style={styles.button}
                 textStyle={{fontSize: 18}}
                 isDisabled={this.props.isDisabled}
@@ -28,8 +30,10 @@ class FormButton extends React.Component {
   }
 }
 
-var styles = StyleSheet.create({
-  signin: {
+FormButton.propTypes = propTypes
+
+let styles = StyleSheet.create({
+  signIn: {
     marginLeft: 10,
     marginRight: 10
   },
