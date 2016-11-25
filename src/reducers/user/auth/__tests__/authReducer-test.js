@@ -154,8 +154,7 @@ describe('authReducer', () => {
       }
       let init = authReducer(initialState, action)
       let withFields =
-            init.setIn(['form', 'fields'], 'dummy')
-            .setIn(['form', 'fields', 'email'], 'notvalid')
+            init.setIn(['form', 'fields', 'email'], 'notvalid')
             .setIn(['form', 'fields', 'password'], 'foo')
             .setIn(['form', 'fields', 'passwordAgain'], 'foo')
       let next = authReducer(withFields, action)
@@ -281,18 +280,18 @@ describe('authReducer', () => {
      * provide valid input and the form should be valid
      */
     it('form is  valid with valid fields', () => {
-      const userNameFieldChangeAction = {
+      const emailFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
-        payload: {field: 'username', value: 'barton'}
+        payload: {field: 'email', value: 'barton@foo.com'}
       }
       const passwordFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
-        payload: {field: 'password', value: 'Bart0n!'}
+        payload: {field: 'password', value: 'Bart0n'}
       }
 
-      let userNameState = authReducer(initialState,
-                                      userNameFieldChangeAction)
-      let passwordState = authReducer(userNameState,
+      let emailState = authReducer(initialState,
+                                      emailFieldChangeAction)
+      let passwordState = authReducer(emailState,
                                       passwordFieldChangeAction)
 
       const action = {
@@ -311,18 +310,18 @@ describe('authReducer', () => {
      * formValidation will flag as such
      */
     it('form is invalid with invalid fields', () => {
-      const userNameFieldChangeAction = {
+      const emailFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
-        payload: {field: 'username', value: 'bart'}
+        payload: {field: 'email', value: 'bart'}
       }
       const passwordFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
         payload: {field: 'password', value: 'Bart!'}
       }
 
-      let userNameState = authReducer(initialState,
-                                      userNameFieldChangeAction)
-      let passwordState = authReducer(userNameState,
+      let emailState = authReducer(initialState,
+                                      emailFieldChangeAction)
+      let passwordState = authReducer(emailState,
                                       passwordFieldChangeAction)
 
       const action = {
@@ -374,26 +373,20 @@ describe('authReducer', () => {
      * Provide valid input and get a valid form
      */
     it('form is  valid with valid fields', () => {
-      const userNameFieldChangeAction = {
-        type: ON_AUTH_FORM_FIELD_CHANGE,
-        payload: {field: 'username', value: 'barton'}
-      }
       const emailFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
         payload: {field: 'email', value: 'bar@ton.com'}
       }
       const passwordFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
-        payload: {field: 'password', value: 'Bart0n!'}
+        payload: {field: 'password', value: 'Bart0n'}
       }
       const passwordAgainFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
-        payload: {field: 'passwordAgain', value: 'Bart0n!'}
+        payload: {field: 'passwordAgain', value: 'Bart0n'}
       }
 
-      let userNameState = authReducer(initialState,
-                                      userNameFieldChangeAction)
-      let emailState = authReducer(userNameState,
+      let emailState = authReducer(initialState,
                                    emailFieldChangeAction)
       let passwordState = authReducer(emailState,
                                       passwordFieldChangeAction)
@@ -417,10 +410,6 @@ describe('authReducer', () => {
      * Bad data in, invalid form out!
      */
     it('form is  invalid with invalid fields', () => {
-      const userNameFieldChangeAction = {
-        type: ON_AUTH_FORM_FIELD_CHANGE,
-        payload: {field: 'username', value: 'bart'}
-      }
       const emailFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
         payload: {field: 'email', value: 'barton'}
@@ -434,9 +423,7 @@ describe('authReducer', () => {
         payload: {field: 'passwordAgain', value: 'Ba!'}
       }
 
-      let userNameState = authReducer(initialState,
-                                      userNameFieldChangeAction)
-      let emailState = authReducer(userNameState,
+      let emailState = authReducer(initialState,
                                    emailFieldChangeAction)
       let passwordState = authReducer(emailState,
                                       passwordFieldChangeAction)
