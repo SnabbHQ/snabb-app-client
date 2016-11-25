@@ -32,7 +32,7 @@ const mockStore = configureStore(middlewares);
  * ## Class under test
  *
  */
-const actions = require('../profileActions');
+const actions = require('../actions/profileActions');
 
 /**
  * ## Actions to test

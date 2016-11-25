@@ -31,7 +31,8 @@ const {
   ON_AUTH_FORM_FIELD_CHANGE,
 
   SIGNUP_FAILURE
-} = require('../../../lib/constants').default
+} = require('../../../../lib/constants').default
+
 
 /**
  * ## Class under test
@@ -40,7 +41,8 @@ const {
  * formValidation and fieldValidation objects, so we're testing them
  * as well
  */
-const authReducer = require('../authReducer').default
+import authReducer from '../authReducer'
+
 /**
  * ## Tests
  *

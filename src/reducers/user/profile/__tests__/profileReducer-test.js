@@ -28,9 +28,9 @@ const {
 
 /**
  * ## Class under test
- *
  */
-const profileReducer = require('../profileReducer').default
+import profileReducer from '../profileReducer'
+
 /**
  * ## Tests
  *

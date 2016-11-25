@@ -14,8 +14,8 @@
  *
  * Need to mock router so the "keys" are available (see src/__mocks__)
  */
-jest.mock('../../../lib/AppAuthToken')
-jest.mock('../../../lib/BackendFactory')
+jest.mock('../../../../lib/AppAuthToken')
+jest.mock('../../../../lib/BackendFactory')
 jest.mock('react-native-router-flux')
 
 /**
@@ -34,7 +34,8 @@ const mockStore = configureStore(middlewares)
  * ## Class under test
  *
  */
-var actions = require('../authActions')
+import actions from '../authActions'
+
 
 /**
  * ## Imports
@@ -70,7 +71,7 @@ const {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILURE
-} = require('../../../lib/constants').default
+} = require('../../../../lib/constants').default
 
 /**
  * ## Tests
