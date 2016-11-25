@@ -7,7 +7,7 @@
     "moduleNameMapper": {
       "\\./datepicker$": "<rootDir>/node_modules/tcomb-form-native/lib/templates/bootstrap/datepicker.ios.js"
     },
-    "preprocessorIgnorePatterns": [
+    "transformIgnorePatterns": [
       "node_modules/(?!react-native|tcomb-form-native|apsl-react-native-button)"
     ],
     "collectCoverage": true,
@@ -26,12 +26,12 @@
   },
   "scripts": {
     "format": "standard --fix",
-    "test": "standard && jest",
+    "test": "jest",
     "start": "react-native start",
     "test:watch": "npm run test -- --watch",
     "test-chrome": "node-debug --preload false --nodejs --harmony jest --runInBand",
-    "docs": "./node_modules/docker/docker -w -i src/ -o ../snabb-pages ",
-    "flow": "./node_modules/flow-bin/vendor/flow"
+    "docs": "docker -w -i src/ -o ../snabb-pages ",
+    "flow": "flow"
   },
   "dependencies": {
     "immutable": "3.8.1",
@@ -71,15 +71,16 @@
   "devDependencies": {
     "babel-core": "6.17.0",
     "babel-eslint": "6.1.2",
-    "babel-jest": "14.0.0",
+    "babel-jest": "^14.0.0",
     "babel-plugin-transform-react-jsx-source": "^6.9.0",
-    "babel-preset-react-native": "1.9.0",
+    "babel-preset-react-native": "^1.9.0",
     "docker": "1.0.0",
     "flow-bin": "^0.35.0",
     "istanbul": "0.4.3",
-    "jest": "15.1.1",
-    "jest-react-native": "15.0.0",
+    "jest": "test",
+    "jest-react-native": "test",
     "react-addons-test-utils": "15.0.2",
+    "react-test-renderer": "^15.4.1",
     "redux-mock-store": "1.1.2",
     "rnpm-plugin-upgrade": "0.26.0",
     "standard": "8.0.0"
