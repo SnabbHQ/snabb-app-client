@@ -30,11 +30,11 @@ import thunk from 'redux-thunk'
 
 const middlewares = [thunk] // add your middlewares like `redux-thunk`
 const mockStore = configureStore(middlewares)
+
 /**
  * ## Class under test
- *
  */
-import actions from '../authActions'
+import * as actions from '../authActions'
 
 
 /**

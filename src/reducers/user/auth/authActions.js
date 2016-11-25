@@ -65,6 +65,7 @@ export function logoutState() {
     type: LOGOUT
   }
 }
+
 export function registerState() {
   return {
     type: REGISTER
