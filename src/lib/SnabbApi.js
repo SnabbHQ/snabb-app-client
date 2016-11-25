@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * # Hapi.js
  *
@@ -16,7 +18,7 @@ import CONFIG from './config'
 import _ from 'underscore'
 import Backend from './Backend'
 
-var fakeUser = {
+let fakeUser = {
   objectId: "Z4yvP19OeL",
   sessionToken: "r:uFeYONgIsZMPyxOWVJ6VqJGqv",
   updatedAt: "2015-12-30T15:29:36.611Z",
@@ -28,33 +30,40 @@ var fakeUser = {
   thumbnail: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw'
 }
 
+
 export default class SnabbApi extends Backend {
+
+  API_BASE_URL: string
+
+  sessionToken: string
+  response: Object
 
   /**
    * ## Hapi.js client
    *
-   *
    * @throws tokenMissing if token is undefined
    */
-  constructor (token) {
+  constructor (token: Object = {}) {
     super(token)
+
     if (!_.isNull(token) && _.isUndefined(token.sessionToken)) {
       throw new Error('TokenMissing')
     }
-    this._sessionToken =
-      _.isNull(token) ? null : token.sessionToken.sessionToken
+
+    this.sessionToken = _.isNull(token) ? '' : token.sessionToken.sessionToken
 
     this.API_BASE_URL = CONFIG.backend.hapiLocal
           ? CONFIG.HAPI.local.url
           : CONFIG.HAPI.remote.url
 
-    var _bodyInit = JSON.stringify({
+    let bodyInit = JSON.stringify({
       code: 200
-    })
+    });
+
     this.response = {
-      'status': 201
+      'status': 201,
+      bodyInit: bodyInit
     }
-    this.response._bodyInit = _bodyInit
   }
 
   /**
@@ -71,7 +80,7 @@ export default class SnabbApi extends Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  async signup (data) {
+  async signup (data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/account/register',
@@ -106,7 +115,7 @@ export default class SnabbApi extends Backend {
    * sessionToken: "r:Kt9wXIBWD0dNijNIq2u5rRllW"
    *
    */
-  async login (data) {
+  async login (data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/auth/login/',
@@ -162,7 +171,7 @@ export default class SnabbApi extends Backend {
    *
    * if error:  {code: xxx, error: 'message'}
    */
-  async resetPassword (data) {
+  async resetPassword (data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/account/resetPasswordRequest',
@@ -172,8 +181,7 @@ export default class SnabbApi extends Backend {
         if ((response.status === 200 || response.status === 201)) {
           return {}
         } else {
-          var res = JSON.parse(response._bodyInit)
-          throw (res)
+          throw (JSON.parse(response.bodyInit))
         }
       })
       .catch((error) => {
@@ -221,7 +229,7 @@ export default class SnabbApi extends Backend {
    * @param data object:
    * {email: "barton@foo.com"}
    */
-  async updateProfile (userId, data) {
+  async updateProfile (userId: string, data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/account/profile/' + userId,

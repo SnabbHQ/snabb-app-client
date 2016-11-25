@@ -9,6 +9,29 @@
 # Ignore malformed json
 .*/node_modules/y18n/test/.*\.json
 
+# Some modules have their own node_modules with overlap
+.*/node_modules/node-haste/.*
+
+# Ignore react-tools where there are overlaps, but don't ignore anything that
+# react-native relies on
+.*/node_modules/react-tools/src/vendor/core/ExecutionEnvironment.js
+.*/node_modules/react-tools/src/browser/eventPlugins/ResponderEventPlugin.js
+.*/node_modules/react-tools/src/browser/ui/React.js
+.*/node_modules/react-tools/src/core/ReactInstanceHandles.js
+.*/node_modules/react-tools/src/event/EventPropagators.js
+
+# TODO - Ignore native base for now until solved flow issues
+.*/node_modules/react-native/Libraries/*
+.*/node_modules/react-native/lib/*
+.*/node_modules/react-native/local-cli/*
+.*/node_modules/react-native/packager/*
+.*/node_modules/native-base/*
+.*/node_modules/react-native-experimental-navigation/*
+.*/node_modules/react-native-keyboard-aware-scroll-view/*
+.*/node_modules/react-native-nav/*
+.*/node_modules/react-native-easy-grid/*
+
+
 [include]
 
 [libs]
@@ -38,4 +61,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(>=0\\.\\(2[0-7]\\|1[0-9]\\|[0-9
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 
 [version]
-^0.27.0
+^0.35.0

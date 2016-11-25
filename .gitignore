@@ -45,3 +45,4 @@ android/keystores/debug.keystore
 ios/DerivedData2
 ios/Pods
 ios/Frameworks/
+*.js.save
