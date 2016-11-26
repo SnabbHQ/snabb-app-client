@@ -7,8 +7,10 @@
  */
 'use strict'
 
-const Backend = require('./Backend').default
+// TODO - As we don't have a backend yet lets use the mocked version of our API
+// import Backend from './Backend'
+import SnabbApi from '../SnabbApi'
 
 export default function BackendFactory (token = null) {
-  return new Backend()
+  return new SnabbApi(token)
 }
