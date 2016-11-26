@@ -50,7 +50,7 @@ export default class SnabbApi extends Backend {
       throw new Error('TokenMissing')
     }
 
-    this.sessionToken = _.isNull(token) ? '' : token.sessionToken.sessionToken
+    this.sessionToken = _.isNull(token) ? '' : token.sessionToken
 
     this.API_BASE_URL = CONFIG.backend.hapiLocal
           ? CONFIG.HAPI.local.url
