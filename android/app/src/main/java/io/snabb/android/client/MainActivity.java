@@ -1,4 +1,4 @@
-package com.snabb;
+package io.snabb.android.client;
 
 import com.facebook.react.ReactActivity;
 
