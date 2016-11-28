@@ -1,3 +1,9 @@
+// Manifest version information!
+def versionMajor = 0
+def versionMinor = 0
+def versionPatch = 1
+def versionCodeApp = versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100
+
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -62,8 +68,7 @@ import com.android.build.OutputFile
  *
  *   // supply additional arguments to the packager
  *   extraPackagerArgs: []
- * ]
- */
+ * ]*/
 
 apply from: "../../node_modules/react-native/react.gradle"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
@@ -73,13 +78,11 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
  *   - An APK that only works on x86 devices
  * The advantage is the size of the APK is reduced by about 4MB.
  * Upload all the APKs to the Play Store and people will download
- * the correct one based on the CPU architecture of their device.
- */
+ * the correct one based on the CPU architecture of their device.*/
 def enableSeparateBuildPerCPUArchitecture = false
 
 /**
- * Run Proguard to shrink the Java bytecode in release builds.
- */
+ * Run Proguard to shrink the Java bytecode in release builds.*/
 def enableProguardInReleaseBuilds = false
 
 android {
@@ -90,8 +93,10 @@ android {
         applicationId "io.snabb.android.client"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+
+        versionCode versionCodeApp
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -100,11 +105,27 @@ android {
         abi {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
-            universalApk false  // If true, also generate a universal APK
+            universalApk false // If true, also generate a universal APK
             include "armeabi-v7a", "x86"
         }
     }
+
+    // Build types:
+    // - Create build targets assemble<TYPE>, install<TYPE> etc.
+    // - Adds build path src/<TYPE>
     buildTypes {
+        // Use when needing to create a version of the application for development purposes.
+        debug {
+            debuggable true
+
+            applicationIdSuffix ".debug"
+            versionNameSuffix ".DEBUG"
+
+            signingConfig signingConfigs.debug
+        }
+
+        // Used when needing to create a version of the application which will be released to the
+        // public (published in Google Play per example)
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
@@ -115,11 +136,11 @@ android {
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
             // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a":1, "x86":2]
+            def versionCodes = ["armeabi-v7a": 1, "x86": 2]
             def abi = output.getFilter(OutputFile.ABI)
-            if (abi != null) {  // null for the universal-debug, universal-release variants
-                output.versionCodeOverride =
-                        versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
+            if (abi != null) {
+                // null for the universal-debug, universal-release variants
+                output.versionCodeOverride = versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
         }
     }
@@ -134,12 +155,12 @@ dependencies {
     compile project(':react-native-i18n')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:25.0.1"
-    compile "com.facebook.react:react-native:+"  // From node_modules
+    compile "com.facebook.react:react-native:+" // From node_modules
 }
 
 // Run this once to be able to run the application with BUCK
 // puts all compile dependencies into folder libs for BUCK to use
 task copyDownloadableDepsToLibs(type: Copy) {
-  from configurations.compile
-  into 'libs'
+    from configurations.compile
+    into 'libs'
 }
