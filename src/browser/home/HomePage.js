@@ -27,7 +27,7 @@ const HomePage = () => (
     <Image
       alt="50x50 placeholder"
       mt={2}
-      src={'./50x50.png'}
+      src={require('./50x50.png')}
     />
   </View>
 );
