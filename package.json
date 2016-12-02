@@ -94,7 +94,7 @@
     "react-native-swiper": "^1.5.3",
     "react-native-vector-icons": "^2.1.0",
     "react-redux": "4.4.5",
-    "react-router": "^3.0.0",
+    "react-router": "4.0.0-alpha.6",
     "react-timer-mixin": "0.13.3",
     "rebass": "^0.3.1",
     "redux": "3.5.2",
@@ -118,11 +118,6 @@
     "validator": "^6.0.0"
   },
   "devDependencies": {
-    "babel-core": "6.17.0",
-    "babel-eslint": "6.1.2",
-    "babel-jest": "^14.0.0",
-    "babel-plugin-transform-react-jsx-source": "^6.9.0",
-    "babel-preset-react-native": "^1.9.0",
     "css-loader": "^0.26.0",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^13.0.0",

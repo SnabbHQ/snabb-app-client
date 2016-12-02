@@ -59,6 +59,8 @@ Header.propTypes = {
 
 export default connect(
   (state: State) => ({
-    viewer: state.users.viewer,
+    viewer: ''
+    // TODO
+    //viewer: state.users.viewer,
   }),
 )(Header);

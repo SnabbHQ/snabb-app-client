@@ -38,6 +38,9 @@ Match.propTypes = {
 
 export default connect(
   (state: State) => ({
-    viewer: state.users.viewer,
+
+    // TODO - Fix viewer
+    viewer: ''
+    // viewer: state.users.viewer,
   }),
 )(Match);
