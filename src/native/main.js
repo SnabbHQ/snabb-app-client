@@ -4,7 +4,7 @@
  *  snabb ![snabb](https://cloud.githubusercontent.com/assets/1282364/11599365/1a1c39d2-9a8c-11e5-8819-bc1e48b30525.png)
  */
 import React from "react"
-import {AppRegistry} from "react-native"
+import {AppRegistry, Platform} from "react-native"
 import Root from './app/Root'
 import configureStore from "../common/configureStore"
 
@@ -40,39 +40,25 @@ function getInitialState() {
   }
 }
 
-/**
- * ## Native
- *
- * ```configureStore``` with the ```initialState``` and set the
- * ```platform``` and ```version``` into the store by ```dispatch```.
- * *Note* the ```store``` itself is set into the ```store```.  This
- * will be used when doing hot loading
- */
+const Snabb = () => {
+  const store = configureStore({
+    initialState: getInitialState()
+  });
 
-export default function native(platform) {
+  // configureStore will combine reducers from snabb and main application
+  // it will then create the store based on aggregate state from all reducers
+  store.dispatch(setPlatform(Platform.OS));
+  store.dispatch(setVersion(VERSION));
+  store.dispatch(setStore(store));
 
-  let snabb = React.createClass({
-    render () {
-      const store = configureStore({
-        initialState: getInitialState()
-      });
-
-      // configureStore will combine reducers from snabb and main application
-      // it will then create the store based on aggregate state from all reducers
-      store.dispatch(setPlatform(platform));
-      store.dispatch(setVersion(VERSION));
-      store.dispatch(setStore(store));
-
-      // setup the router table with App selected as the initial component
-      // note: See https://github.com/aksonov/react-native-router-flux/issues/948
-      return (
-        <Root store={store}/>
-      )
-    }
-  })
-
-  /**
-   * registerComponent to the AppRegister and off we go....
-   */
-  AppRegistry.registerComponent('snabb', () => snabb)
+  // setup the router table with App selected as the initial component
+  // note: See https://github.com/aksonov/react-native-router-flux/issues/948
+  return (
+    <Root store={store}/>
+  )
 }
+
+/**
+ * registerComponent to the AppRegister and off we go....
+ */
+AppRegistry.registerComponent('snabb', () => Snabb)

@@ -19,7 +19,7 @@ import {Record} from 'immutable'
  *
  * The fields we're concerned with
  */
-var InitialState = Record({
+let InitialState = Record({
   isMobile: false,
   platform: '',
   version: null
