@@ -1,10 +1,10 @@
 // @flow
 
 /**
- * # Hapi.js
+ * # SnabbApi.js
  *
- * This class interfaces with Hapi.com using the rest api
- * see [http://hapijs.com/api](http://hapijs.com/api)
+ * This class interfaces with Snabb's API using the rest api
+ * see []()
  *
  */
 'use strict'
@@ -39,7 +39,7 @@ export default class SnabbApi extends Backend {
   response: Object
 
   /**
-   * ## Hapi.js client
+   * ## SnabbApi.js client
    *
    * @throws tokenMissing if token is undefined
    */
@@ -52,9 +52,9 @@ export default class SnabbApi extends Backend {
 
     this.sessionToken = _.isNull(token) ? '' : token.sessionToken
 
-    this.API_BASE_URL = CONFIG.backend.hapiLocal
+    this.API_BASE_URL = CONFIG.backend.local
           ? CONFIG.HAPI.local.url
-          : CONFIG.HAPI.remote.url
+          : CONFIG.HAPI.develop.url
 
     let bodyInit = JSON.stringify({
       code: 200
