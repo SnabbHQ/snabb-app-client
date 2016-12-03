@@ -5,27 +5,9 @@
  */
 import React from "react"
 import {AppRegistry} from "react-native"
-import {Router, Scene, Modal} from "react-native-router-flux"
-import {Provider} from "react-redux"
+import Root from './app/Root'
 import configureStore from "../common/configureStore"
-import App from "./modules/App"
-import LoginRegisterScreen from "./modules/user/LoginRegisterViewScreen"
-import LoginScreen from "./modules/user/LoginScreen"
-import LogoutScreen from "./modules/user/LogoutSceen"
-import RegisterScreen from "./modules/user/RegisterScreen"
-import ForgotPasswordScreen from "./modules/user/ForgotPasswordScreen"
-import ProfileScreen from "./modules/user/profile/ProfileScreen"
-import ModifyProfileScreen from "./modules/user/profile/ModifyProfileScreen"
-import HomeScreen from "./modules/home/HomeScreen"
-import SettingsScreen from "./modules/settings/SettingsScreen"
-import HelpScreen from "./modules/help/HelpScreen"
-import PaymentsScreen from "./modules/payments/PaymentsScreen"
-import OngoingDeliveriesScreen from "./modules/ongoing/OngoingDeliveriesScreen"
-import HistoryScreen from "./modules/history/HistoryScreen"
-import SetLocationScreen from "./modules/delivery/SetLocationScreen"
-import RequestingPickupModal from "./modules/delivery/RequestingPickupModal"
-import DeliveryAssignedScreen from "./modules/delivery/DeliveryAssignedScreen"
-import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen"
+
 
 import {setPlatform, setVersion} from "../common/device/deviceActions"
 import {setStore} from "../common/global/globalActions"
@@ -35,8 +17,6 @@ import GlobalInitialState from "../common/global/globalInitialState"
 import ProfileInitialState from "../common/user/profile/profileInitialState"
 import LocationInitialState from "../common/location/locationInitialState"
 import pack from "../../package"
-
-import I18n from "../common/lib/I18n"
 
 
 /**
@@ -86,81 +66,13 @@ export default function native(platform) {
       // setup the router table with App selected as the initial component
       // note: See https://github.com/aksonov/react-native-router-flux/issues/948
       return (
-
-        <Provider store={store}>
-          <Router sceneStyle={{ backgroundColor: 'white' }}>
-            <Scene key="modal" component={Modal}>
-              <Scene key='root' hideNavBar>
-                <Scene key='AppScene'
-                       component={App}
-                       type='replace'
-                       initial/>
-
-                <Scene key='LoginRegisterScreen'
-                       component={LoginRegisterScreen}
-                       type='replace'/>
-
-                <Scene key='HomeScreen'
-                       component={HomeScreen}
-                       type='replace'/>
-
-                <Scene key='LoginScreen'
-                       component={LoginScreen}/>
-
-                <Scene key='RegisterScreen'
-                       component={RegisterScreen}/>
-
-                <Scene key='ForgotPasswordScreen'
-                       component={ForgotPasswordScreen}
-                       type='replace'/>
-
-                <Scene key='SetLocationScreen'
-                       component={SetLocationScreen}/>
-
-                <Scene key='ProfileScreen'
-                       component={ProfileScreen}/>
-
-                <Scene key='ModifyProfileScreen'
-                       component={ModifyProfileScreen}
-                       direction='vertical'/>
-
-                <Scene key='LogoutScreen'
-                       title={I18n.t('snabb.logout')}
-                       component={LogoutScreen}/>
-
-                <Scene key='OngoingDeliveriesScreen'
-                       component={OngoingDeliveriesScreen}/>
-
-                <Scene key='HistoryScreen'
-                       component={HistoryScreen}/>
-
-                <Scene key='PaymentScreen'
-                       component={PaymentsScreen}/>
-
-                <Scene key='HelpScreen'
-                       component={HelpScreen}/>
-
-                <Scene key='SettingsScreen'
-                       component={SettingsScreen}/>
-
-                <Scene key='DeliveryAssignedScreen'
-                       component={DeliveryAssignedScreen}/>
-
-                <Scene key='DeliveryReviewScreen'
-                       component={DeliveryReviewScreen}/>
-
-              </Scene>
-              <Scene key='RequestingPickupModal'
-                     component={RequestingPickupModal}/>
-            </Scene>
-          </Router>
-        </Provider>
+        <Root store={store}/>
       )
     }
   })
 
   /**
-   * registerComponent to the AppRegistery and off we go....
+   * registerComponent to the AppRegister and off we go....
    */
   AppRegistry.registerComponent('snabb', () => snabb)
 }
