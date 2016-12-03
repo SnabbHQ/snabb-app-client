@@ -1,6 +1,7 @@
 /* @flow weak */
 import configureDeps from './configureDeps';
 import configureEpics from './configureEpics';
+import thunk from 'redux-thunk'
 import createLoggerMiddleware from 'redux-logger';
 import { createEpicMiddleware } from 'redux-observable';
 
@@ -18,6 +19,7 @@ const configureMiddleware = (initialState, platformDeps, platformMiddleware) => 
 
   const middleware = [
     injectMiddleware(deps),
+    thunk,
     epicMiddleware,
     ...platformMiddleware,
   ];

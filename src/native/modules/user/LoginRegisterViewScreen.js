@@ -9,7 +9,7 @@ import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
 import {Dimensions, StyleSheet, Image, View, Text} from "react-native";
 import Swiper from "react-native-swiper"
-import FitImage from "../../components/FitImage";
+import FitImage from "../../app/components/FitImage";
 import I18n from "../../common/lib/I18n";
 
 /**
@@ -54,7 +54,7 @@ class LoginRegisterScreen extends Component {
   }
 
   // TODO - Add mocked images for now. Also the FitImage does not seem to calculate really good the dimensions to fix
-  // the image in the parent container. 
+  // the image in the parent container.
   render() {
     return (
       <View style={styles.container}>

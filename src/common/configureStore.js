@@ -4,6 +4,7 @@ import configureReducer from './configureReducer';
 import configureStorage from './configureStorage';
 import { applyMiddleware, createStore, compose } from 'redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
+import thunk from 'redux-thunk'
 
 type Options = {
   initialState: Object,

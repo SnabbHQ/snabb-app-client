@@ -16,7 +16,7 @@ import {TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem} from "nati
 import * as profileActions from "../../../reducers/user/profile/actions/profileActions"
 import * as globalActions from "../../../reducers/global/globalActions"
 import * as authActions from "../../../reducers/user/auth/authActions"
-import ErrorAlert from "../../../components/ErrorAlert"
+import ErrorAlert from "../../../app/components/ErrorAlert"
 import React, {Component} from "react"
 import {StyleSheet, View, Alert, Platform} from "react-native"
 import NavBar, {NavTitle, NavButton} from "react-native-nav"

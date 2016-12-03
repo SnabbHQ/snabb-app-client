@@ -7,42 +7,42 @@ import React from "react"
 import {AppRegistry} from "react-native"
 import {Router, Scene, Modal} from "react-native-router-flux"
 import {Provider} from "react-redux"
-import configureStore from "./common/lib/configureStore"
-import App from "./native/modules/App"
-import LoginRegisterScreen from "./native/modules/user/LoginRegisterViewScreen"
-import LoginScreen from "./native/modules/user/LoginScreen"
-import LogoutScreen from "./native/modules/user/LogoutSceen"
-import RegisterScreen from "./native/modules/user/RegisterScreen"
-import ForgotPasswordScreen from "./native/modules/user/ForgotPasswordScreen"
-import ProfileScreen from "./native/modules/user/profile/ProfileScreen"
-import ModifyProfileScreen from "./native/modules/user/profile/ModifyProfileScreen"
-import HomeScreen from "./native/modules/home/HomeScreen"
-import SettingsScreen from "./native/modules/settings/SettingsScreen"
-import HelpScreen from "./native/modules/help/HelpScreen"
-import PaymentsScreen from "./native/modules/payments/PaymentsScreen"
-import OngoingDeliveriesScreen from "./native/modules/ongoing/OngoingDeliveriesScreen"
-import HistoryScreen from "./native/modules/history/HistoryScreen"
-import SetLocationScreen from "./native/modules/delivery/SetLocationScreen"
-import RequestingPickupModal from "./native/modules/delivery/RequestingPickupModal"
-import DeliveryAssignedScreen from "./native/modules/delivery/DeliveryAssignedScreen"
-import DeliveryReviewScreen from "./native/modules/delivery/DeliveryReviewScreen"
+import configureStore from "../common/configureStore"
+import App from "./modules/App"
+import LoginRegisterScreen from "./modules/user/LoginRegisterViewScreen"
+import LoginScreen from "./modules/user/LoginScreen"
+import LogoutScreen from "./modules/user/LogoutSceen"
+import RegisterScreen from "./modules/user/RegisterScreen"
+import ForgotPasswordScreen from "./modules/user/ForgotPasswordScreen"
+import ProfileScreen from "./modules/user/profile/ProfileScreen"
+import ModifyProfileScreen from "./modules/user/profile/ModifyProfileScreen"
+import HomeScreen from "./modules/home/HomeScreen"
+import SettingsScreen from "./modules/settings/SettingsScreen"
+import HelpScreen from "./modules/help/HelpScreen"
+import PaymentsScreen from "./modules/payments/PaymentsScreen"
+import OngoingDeliveriesScreen from "./modules/ongoing/OngoingDeliveriesScreen"
+import HistoryScreen from "./modules/history/HistoryScreen"
+import SetLocationScreen from "./modules/delivery/SetLocationScreen"
+import RequestingPickupModal from "./modules/delivery/RequestingPickupModal"
+import DeliveryAssignedScreen from "./modules/delivery/DeliveryAssignedScreen"
+import DeliveryReviewScreen from "./modules/delivery/DeliveryReviewScreen"
 
-import {setPlatform, setVersion} from "./common/device/deviceActions"
-import {setStore} from "./common/global/globalActions"
-import AuthInitialState from "./common/user/auth/authInitialState"
-import DeviceInitialState from "./common/device/deviceInitialState"
-import GlobalInitialState from "./common/global/globalInitialState"
-import ProfileInitialState from "./common/user/profile/profileInitialState"
-import LocationInitialState from "./common/location/locationInitialState"
-import pack from "../package"
+import {setPlatform, setVersion} from "../common/device/deviceActions"
+import {setStore} from "../common/global/globalActions"
+import AuthInitialState from "../common/user/auth/authInitialState"
+import DeviceInitialState from "../common/device/deviceInitialState"
+import GlobalInitialState from "../common/global/globalInitialState"
+import ProfileInitialState from "../common/user/profile/profileInitialState"
+import LocationInitialState from "../common/location/locationInitialState"
+import pack from "../../package"
 
-import I18n from "./common/lib/I18n"
+import I18n from "../common/lib/I18n"
 
 
 /**
  *  The version of the app but not  displayed yet
  */
-var VERSION = pack.version;
+let VERSION = pack.version;
 
 /**
  *
@@ -73,7 +73,9 @@ export default function native(platform) {
 
   let snabb = React.createClass({
     render () {
-      const store = configureStore(getInitialState());
+      const store = configureStore({
+        initialState: getInitialState()
+      });
 
       // configureStore will combine reducers from snabb and main application
       // it will then create the store based on aggregate state from all reducers
@@ -155,7 +157,7 @@ export default function native(platform) {
         </Provider>
       )
     }
-  });
+  })
 
   /**
    * registerComponent to the AppRegistery and off we go....

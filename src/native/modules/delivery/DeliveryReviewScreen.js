@@ -6,7 +6,7 @@ import {Actions} from "react-native-router-flux";
 import {StyleSheet, TextInput, Image} from "react-native"
 import {View, Text, Button, InputGroup, Input} from "native-base"
 import StarRating from 'react-native-star-rating';
-import DefaultNavBar from "../../components/DefaultNavBar"
+import DefaultNavBar from "../../app/components/DefaultNavBar"
 
 class DeliveryReviewScreen extends Component {
 

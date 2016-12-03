@@ -1,5 +1,1 @@
-'use strict'
-
-import snabb from './src/snabb'
-
-snabb('ios');
+import snabb from './src/native/'

@@ -1,6 +1,2 @@
-'use strict'
-
-import snabb from './src/snabb'
-
-snabb('android');
+import snabb from './src/native'
 

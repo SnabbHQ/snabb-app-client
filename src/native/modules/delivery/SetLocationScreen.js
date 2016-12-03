@@ -7,7 +7,7 @@ import {Actions} from "react-native-router-flux"
 import React, {Component} from "react"
 import {StyleSheet, Text} from "react-native"
 import {View, Content} from "native-base"
-import DefaultNavBar from "../../components/DefaultNavBar"
+import DefaultNavBar from "../../app/components/DefaultNavBar"
 import {GooglePlacesAutocomplete} from "react-native-google-places-autocomplete"
 
 // TODO - Make sure this is not hardcoded but setup by the user

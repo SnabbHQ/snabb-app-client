@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import * as authActions from "../../reducers/user/auth/authActions";
 import LoginRender from "./components/LoginRender";
 import React, {Component} from "react";
-import DefaultNavBar from "../../components/DefaultNavBar";
+import DefaultNavBar from "../../app/components/DefaultNavBar";
 import {Actions} from "react-native-router-flux";
 import {View} from "react-native";
 import I18n from "../../common/lib/I18n";

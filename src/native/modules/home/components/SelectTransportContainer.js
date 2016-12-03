@@ -10,7 +10,7 @@ import React, {Component} from "react"
 import {StyleSheet, Text, ListView} from "react-native"
 import {View, Button, Content, List, ListItem} from "native-base"
 import Icon from "react-native-vector-icons/MaterialIcons";
-import DefaultNavBar from "../../../components/DefaultNavBar"
+import DefaultNavBar from "../../../app/components/DefaultNavBar"
 import I18n from "../../../common/lib/I18n";
 
 function mapDispatchToProps(dispatch) {
