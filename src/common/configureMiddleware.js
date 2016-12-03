@@ -17,8 +17,9 @@ const configureMiddleware = (initialState, platformDeps, platformMiddleware) => 
   const rootEpic = configureEpics(deps);
   const epicMiddleware = createEpicMiddleware(rootEpic);
 
+  //injectMiddleware(deps),
+
   const middleware = [
-    injectMiddleware(deps),
     thunk,
     epicMiddleware,
     ...platformMiddleware,

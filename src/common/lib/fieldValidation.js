@@ -16,12 +16,7 @@
  */
 import validate from 'validate.js'
 import _ from 'underscore'
-/**
- * ### Translations
- */
-var I18n = require('react-native-i18n')
-import Translations from './Translations'
-I18n.translations = Translations
+
 
 /**
  * ## Email validation setup
@@ -60,6 +55,8 @@ const passwordAgainConstraints = {
  * @param {Object} state Redux state
  * @param {Object} action type & payload
  */
+
+// TODO - Make sure we change back all the localised messages
 export default function fieldValidation (state, action) {
   const {field, value} = action.payload
 
@@ -76,7 +73,7 @@ export default function fieldValidation (state, action) {
       } else {
         return state.setIn(['form', 'fields', 'emailHasError'], true)
         .setIn(['form', 'fields', 'emailErrorMsg'],
-                 I18n.t('FieldValidation.valid_email'))
+                 'Email is not valid')
       }
 
     /**
@@ -94,7 +91,7 @@ export default function fieldValidation (state, action) {
       } else {
         return state.setIn(['form', 'fields', 'passwordHasError'], true)
         .setIn(['form', 'fields', 'passwordErrorMsg'],
-          I18n.t('FieldValidation.valid_password'))
+          'Password not valid')
       }
 
     /**
@@ -113,7 +110,7 @@ export default function fieldValidation (state, action) {
         return state.setIn(['form', 'fields', 'passwordAgainHasError'],
                           true)
         .setIn(['form', 'fields', 'passwordAgainErrorMsg'],
-        I18n.t('FieldValidation.valid_password_again'))
+        'Passwords are not equal or invalid')
       }
 
     /**
