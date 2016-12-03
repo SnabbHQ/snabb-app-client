@@ -12,10 +12,10 @@ import {
 
 const HomePage = () => (
   <View>
-    <Title message="Este.js" />
+    <Title message="Snabb. Delivering Now" />
     <PageHeader
-      description="Starter kit for universal full–fledged React apps. One stack for browser, mobile, server."
-      heading="Este"
+      heading="Snabb"
+      description="One stack for browser, mobile, server."
     />
     {/* This is a block with margin-bottom: scale[4]. Inline styles rocks. */}
     <Block mb={4}>
