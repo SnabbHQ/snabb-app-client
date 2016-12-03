@@ -1,13 +1,12 @@
 'use strict'
 
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import * as locationActions from "../../../../reducers/location/locationActions";
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as locationActions from "../../../../../common/location/locationActions"
 import React, {Component, PropTypes} from "react"
-import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native";
-import {Text, View} from "native-base";
-import LocationBox from "../LocationBox";
-import I18n from "../../../../common/lib/I18n";
+import {TouchableOpacity, StyleSheet} from "react-native"
+import {Text, View} from "native-base"
+import LocationBox from "../LocationBox"
 
 /**
  * ## Redux boilerplate

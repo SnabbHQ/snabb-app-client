@@ -104,7 +104,7 @@ class Header extends React.Component {
           <TouchableHighlight onPress={this._onPressMark}>
 
             <Image style={styles.mark}
-              source={require('./snabb.png')}
+              source={require('./img/snabb.png')}
             />
           </TouchableHighlight>
             {this.props.isFetching

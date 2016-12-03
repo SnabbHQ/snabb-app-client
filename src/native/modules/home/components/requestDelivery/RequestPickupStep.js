@@ -3,7 +3,7 @@
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import React, {Component} from "react"
-import * as deliveryActions from "../../../../reducers/delivery/deliveryActions"
+import * as deliveryActions from "../../../../../common/delivery/deliveryActions"
 import {StyleSheet, View, Dimensions} from "react-native"
 import {Actions} from "react-native-router-flux"
 import {Button} from "native-base"
@@ -15,7 +15,7 @@ var {height, width} = Dimensions.get('window') // Screen dimensions in current o
 const {
   PICKUP_LOCATION,
   DELIVERY_LOCATION
-} = require('../../.././constants').default
+} = require('../../../../../common/lib/constants').default
 
 function mapDispatchToProps(dispatch) {
   return {

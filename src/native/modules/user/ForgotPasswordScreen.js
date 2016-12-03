@@ -7,15 +7,15 @@
 import React, {Component}  from "react"
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import * as authActions from "../../reducers/user/auth/authActions"
+import * as authActions from "../../../common/user/auth/authActions"
 import LoginRender from "./components/LoginRender"
-import I18n from '../../common/lib/I18n'
+import I18n from '../../../common/lib/I18n'
 
 const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('.././constants').default
+} = require('../../../common/lib/constants').default
 
 
 function mapStateToProps (state) {

@@ -2,13 +2,13 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import * as authActions from "../../reducers/user/auth/authActions"
-import * as globalActions from "../../reducers/global/globalActions"
+import * as authActions from "../../../common/user/auth/authActions"
+import * as globalActions from "../../../common/global/globalActions"
 import Header from "../../app/components/Header"
 import FormButton from "../../app/components/FormButton"
 import React, {Component} from "react"
 import {StyleSheet, View} from "react-native"
-import I18n from '../../common/lib/I18n'
+import I18n from '../../../common/lib/I18n'
 
 
 var styles = StyleSheet.create({

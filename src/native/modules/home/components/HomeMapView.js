@@ -2,16 +2,15 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import * as locationActions from "../../../reducers/location/locationActions"
-import * as globalActions from "../../../reducers/global/globalActions"
+import * as locationActions from "../../../../common/location/locationActions"
+import * as globalActions from "../../../../common/global/globalActions"
 import React, {Component} from "react"
-import {StyleSheet, View, Dimensions} from "react-native"
-import {Actions} from "react-native-router-flux"
+import {StyleSheet, View} from "react-native"
 import MapView from "react-native-maps"
-import * as Defaults from "../../../reducers/location/locationConstants"
-import SetPickupLocationStep from './setPickup/SetPickupLocationStep'
-import RequestPickupStep from './requestDelivery/RequestPickupStep'
-import * as DeliveryStepActionTypes from '../../../reducers/delivery/DeliveryStepActionTypes'
+import * as Defaults from "../../../../common/location/locationConstants"
+import SetPickupLocationStep from "./setPickup/SetPickupLocationStep"
+import RequestPickupStep from "./requestDelivery/RequestPickupStep"
+import * as DeliveryStepActionTypes from "../../../../common/delivery/DeliveryStepActionTypes"
 
 /**
  * ## Redux boilerplate

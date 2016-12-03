@@ -4,7 +4,7 @@ import React, {Component} from "react";
 import {StyleSheet, Text} from "react-native";
 import {View, Content} from "native-base";
 import DefaultNavBar from '../../app/components/DefaultNavBar'
-import I18n from "../../common/lib/I18n";
+import I18n from "../../../common/lib/I18n";
 
 /**
  * ## Redux boilerplate

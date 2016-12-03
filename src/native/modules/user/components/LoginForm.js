@@ -21,7 +21,7 @@ const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('../.././constants').default
+} = require('../../../../common/lib/constants').default
 
 /**
  *  The fantastic little form library
@@ -32,11 +32,11 @@ let Form = t.form.Form
 /**
  * ### Translations
  */
-var I18n = require('react-native-i18n')
-import Translations from '../../../common/lib/Translations'
+let I18n = require('react-native-i18n')
+import Translations from '../../../../common/lib/Translations'
 I18n.translations = Translations
 
-var LoginForm = React.createClass({
+let LoginForm = React.createClass({
   /**
    * ## LoginForm class
    *

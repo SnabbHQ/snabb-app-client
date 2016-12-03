@@ -2,11 +2,10 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import * as locationActions from "../../../../reducers/location/locationActions"
+import * as locationActions from "../../../../../common/location/locationActions"
 import React, {Component, PropTypes} from "react"
-import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native"
-import {Grid, Col} from 'native-base'
-import {Text, View} from "native-base"
+import {TouchableOpacity, StyleSheet, Dimensions} from "react-native"
+import {Grid, Col, Text, View} from "native-base"
 import LocationBox from "../LocationBox"
 import Swiper from "react-native-swiper"
 

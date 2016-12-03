@@ -6,7 +6,7 @@ import {Actions} from "react-native-router-flux";
 import SlidingUpPanel from "react-native-sliding-up-panel"
 import MapView from "react-native-maps"
 import DeliveryAssignedContainer from "./DeliveryAssignedContainer"
-import * as Defaults from "../../reducers/location/locationConstants"
+import * as Defaults from "../../../common/location/locationConstants"
 import {StyleSheet, View, Dimensions, Image, TouchableHighlight} from "react-native"
 import {Grid, Text, Col, Button, Row, Icon} from 'native-base'
 

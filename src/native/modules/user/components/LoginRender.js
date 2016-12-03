@@ -12,8 +12,8 @@
  */
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import * as authActions from '../../../reducers/user/auth/authActions'
-import * as globalActions from '../../../reducers/global/globalActions'
+import * as authActions from '../../../../common/user/auth/authActions'
+import * as globalActions from '../../../../common/global/globalActions'
 
 import {Actions} from 'react-native-router-flux'
 import Header from '../../../app/components/Header'
@@ -23,10 +23,10 @@ import LoginForm from './LoginForm'
 import ItemCheckbox from '../../../app/components/ItemCheckbox'
 import React, {Component} from 'react'
 import {StyleSheet, ScrollView, Text, TouchableHighlight, View} from 'react-native'
-import I18n from "../../../common/lib/I18n";
+import I18n from "../../../../common/lib/I18n";
 
 import Dimensions from 'Dimensions';
-var {height, width} = Dimensions.get('window') // Screen dimensions in current orientation
+let {height, width} = Dimensions.get('window') // Screen dimensions in current orientation
 
 /**
  * The states were interested in
@@ -35,7 +35,7 @@ const {
   LOGIN,
   REGISTER,
   FORGOT_PASSWORD
-} = require('../.././constants').default
+} = require('../../../../common/lib/constants').default
 
 /**
  * ## Redux boilerplate
@@ -228,7 +228,7 @@ class LoginRender extends Component {
 /**
  * ## Styles
  */
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     flex: 1

@@ -1,11 +1,11 @@
 'use strict';
 
 import {bindActionCreators} from "redux"
-import {Actions, ActionConst} from "react-native-router-flux";
+import {Actions, ActionConst} from "react-native-router-flux"
 import {connect} from "react-redux"
-import * as deliveryActions from "../../reducers/delivery/deliveryActions"
+import * as deliveryActions from "../../../common/delivery/deliveryActions"
 import React, {Component} from "react"
-import {StyleSheet, Image, Alert, ScrollView} from "react-native"
+import {StyleSheet, Alert, ScrollView} from "react-native"
 import {View, Icon, Button, Text, List, ListItem} from "native-base"
 
 

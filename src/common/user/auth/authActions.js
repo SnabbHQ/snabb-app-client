@@ -44,13 +44,13 @@ const {
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILURE
 
-} = require('../.././constants').default;
+} = require('../../../common/lib/constants').default;
 
 
 import {Actions} from "react-native-router-flux"
 
-const AppAuthToken = require('../.././__mocks__/AppAuthToken').default;
-const BackendFactory = require('../.././BackendFactory').default;
+const AppAuthToken = require('../../../common/lib/__mocks__/AppAuthToken').default;
+const BackendFactory = require('../../../common/lib/BackendFactory').default;
 
 const _ = require('underscore');
 

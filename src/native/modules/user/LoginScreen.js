@@ -2,20 +2,20 @@
 
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import * as authActions from "../../reducers/user/auth/authActions";
+import * as authActions from "../../../common/user/auth/authActions";
 import LoginRender from "./components/LoginRender";
 import React, {Component} from "react";
 import {View} from "react-native";
 import NavBar, {NavButton} from "react-native-nav";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import {Actions} from "react-native-router-flux";
-import I18n from '../../common/lib/I18n'
+import I18n from '../../../common/lib/I18n'
 
 const {
   LOGIN,
   REGISTER,
   FORGOT_PASSWORD
-} = require('.././constants').default
+} = require('../../../common/lib/constants').default
 
 /**
  * ## Redux boilerplate

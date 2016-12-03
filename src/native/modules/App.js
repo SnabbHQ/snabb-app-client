@@ -3,12 +3,12 @@
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import {Actions} from "react-native-router-flux";
-import * as profileActions from "../reducers/user/profile/actions/profileActions"
+import * as profileActions from "../../common/user/profile/actions/profileActions"
 import React, {Component} from "react"
 import {StyleSheet, View, Text} from "react-native"
 import TimerMixin from "react-timer-mixin"
 import ReactMixin from "react-mixin"
-import I18n from "../common/lib/I18n"
+import I18n from "../../common/lib/I18n"
 
 /**
  *  Save that state

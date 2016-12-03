@@ -3,14 +3,14 @@
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Button} from 'native-base';
-import * as authActions from "../../reducers/user/auth/authActions";
-import * as globalActions from "../../reducers/global/globalActions";
+import * as authActions from "../../../common/user/auth/authActions";
+import * as globalActions from "../../../common/global/globalActions";
 import {Actions} from "react-native-router-flux";
 import React, {Component} from "react";
 import {Dimensions, StyleSheet, Image, View, Text} from "react-native";
 import Swiper from "react-native-swiper"
 import FitImage from "../../app/components/FitImage";
-import I18n from "../../common/lib/I18n";
+import I18n from "../../../common/lib/I18n";
 
 /**
  *  Instead of including all app states via ...state

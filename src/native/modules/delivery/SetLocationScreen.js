@@ -2,7 +2,7 @@
 
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
-import * as locationActions from "../../reducers/location/locationActions"
+import * as locationActions from "../../../common/location/locationActions"
 import {Actions} from "react-native-router-flux"
 import React, {Component} from "react"
 import {StyleSheet, Text} from "react-native"
@@ -17,7 +17,7 @@ const workPlace = {description: 'Work', geometry: {location: {lat: 48.8496818, l
 const {
   PICKUP_LOCATION,
   DELIVERY_LOCATION
-} = require('.././constants').default
+} = require('../../../common/lib/constants').default
 
 function mapDispatchToProps(dispatch) {
   return {

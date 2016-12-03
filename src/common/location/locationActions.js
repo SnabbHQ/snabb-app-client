@@ -12,7 +12,7 @@ const {
   CURRENT_POSITION,
   SET_PICKUP_LOCATION,
   SET_DELIVERY_LOCATION
-} = require('.././constants').default;
+} = require('../../common/lib/constants').default;
 
 
 /**

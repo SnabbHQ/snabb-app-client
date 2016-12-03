@@ -1,10 +1,10 @@
 import React from "react"
 import {connect} from "react-redux"
-import {Image, TouchableOpacity, StyleSheet, Platform, Dimensions} from "react-native"
+import {TouchableOpacity, StyleSheet, Platform} from "react-native"
 import {Content, Text, List, ListItem, Icon, View} from "native-base"
 import {Actions} from "react-native-router-flux"
 import UserProfileImage from "../../user/components/UserProfileImage"
-import I18n from "../../../common/lib/I18n"
+import I18n from "../../../../common/lib/I18n"
 
 
 /**

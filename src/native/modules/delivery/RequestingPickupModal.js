@@ -3,7 +3,7 @@
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import {Actions, ActionConst} from "react-native-router-flux"
-import * as deliveryActions from "../../reducers/delivery/deliveryActions"
+import * as deliveryActions from "../../../common/delivery/deliveryActions"
 import React, {Component} from "react"
 import {StyleSheet, Text, ActivityIndicator} from "react-native"
 import {View, Button} from "native-base"
