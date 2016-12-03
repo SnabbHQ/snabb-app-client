@@ -62,6 +62,9 @@ export const compute = (theme: Object) => ({
     active: { textDecoration: 'underline' },
   },
   Container: {
+    maxWidth: 'auto',
+    paddingLeft: 0,
+    paddingRight: 0,
     backgroundColor: theme.colors.white,
     color: theme.colors.black, // inherited
     fontFamily: theme.fontFamily, // inherited
@@ -69,7 +72,6 @@ export const compute = (theme: Object) => ({
     lineHeight: theme.lineHeight, // inherited
   },
   Toolbar: {
-    marginTop: theme.scale[2],
     padding: theme.scale[2],
   },
 });

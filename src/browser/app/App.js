@@ -23,7 +23,7 @@ const styles = {
     minHeight: '100vh',
   },
   page: {
-    flex: 1,
+    flex: 1
   },
 };
 
