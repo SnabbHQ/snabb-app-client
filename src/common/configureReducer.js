@@ -6,6 +6,7 @@ import device from './device/deviceReducer';
 import auth from './user/auth/authReducer';
 import profile from './user/profile/profileReducer';
 import location from './location/locationReducer';
+import delivery from './delivery/deliveryReducer';
 import global from './global/globalReducer';
 import intl from './intl/reducer';
 import themes from './themes/reducer';
@@ -44,6 +45,7 @@ const configureReducer = (initialState: Object) => {
     auth,
     profile,
     location,
+    delivery,
     config,
     device,
     fields,
