@@ -55,6 +55,7 @@
     "compression": "^1.4.0",
     "copy-webpack-plugin": "^4.0.0",
     "express": "^4.13.3",
+    "google-map-react": "^0.22.0",
     "gulp": "^3.9.0",
     "gulp-bg": "^0.0.8",
     "gulp-eslint": "^3.0.1",

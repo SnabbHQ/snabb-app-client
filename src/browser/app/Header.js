@@ -3,11 +3,12 @@ import type { State } from '../../common/types';
 import React from 'react';
 import linksMessages from '../../common/app/linksMessages';
 import { FormattedMessage } from 'react-intl';
-import { Link, Space, Toolbar } from '../app/components';
+import { Link, View, PrimaryButton, Space, Toolbar } from '../app/components';
 import { connect } from 'react-redux';
 
 const styles = {
   toolbar: {
+    justifyContent: 'space-between',
     flexWrap: 'wrap',
   },
   prefetch: {
@@ -21,11 +22,16 @@ const Header = ({ viewer }) => (
       <FormattedMessage {...linksMessages.home} />
     </Link>
     <Space x={2} />
-    {!viewer &&
+    <View>
+      <PrimaryButton backgroundColor='secondary'>Request a delivery</PrimaryButton>
+      <Space x={2} />
+      {!viewer &&
       <Link bold inverted to="/signin">
         <FormattedMessage {...linksMessages.signIn} />
       </Link>
-    }
+      }
+    </View>
+
   </Toolbar>
 );
 
@@ -35,7 +41,7 @@ Header.propTypes = {
 
 export default connect(
   (state: State) => ({
-    viewer: {}
+    viewer: undefined
     // TODO
     //viewer: state.users.viewer,
   }),

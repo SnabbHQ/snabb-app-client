@@ -20,6 +20,7 @@ const typography = {
 const colors = {
   primary: '#000',
   secondary: '#888',
+  accent: '#08e',
   info: '#08e',
   success: '#1c7',
   warning: '#f70',
@@ -74,6 +75,9 @@ export const compute = (theme: Object) => ({
   Toolbar: {
     padding: theme.scale[2],
   },
+  Button: {
+    backgroundColor: 'blue'
+  }
 });
 
 export default compute(theme);
