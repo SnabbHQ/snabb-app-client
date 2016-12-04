@@ -23,7 +23,7 @@ const Header = ({ viewer }) => (
     </Link>
     <Space x={2} />
     <View>
-      <PrimaryButton backgroundColor='secondary'>Request a delivery</PrimaryButton>
+      <PrimaryButton>Request a delivery</PrimaryButton>
       <Space x={2} />
       {!viewer &&
       <Link bold inverted to="/signin">
