@@ -1,14 +1,12 @@
-import React from 'react';
-import { provideHooks } from 'redial';
-import analytics from '../../lib/analytics';
-import {
-  loadClientExtra,
-  fetchClosestCity,
-  fetchWallets,
-  loadClientSettings
-} from '../../actions';
-import Navbar from '../Navbar';
-import layoutStyles from '../../../styles/layout.scss';
+import React from "react"
+import {provideHooks} from "redial"
+import analytics from "../../common/lib/analytics"
+import {loadClientExtra} from "../../common/user/extra/actions"
+import {loadClientSettings} from "../../common/user/settings/actions"
+import {fetchClosestCity } from "../../common/job/actions"
+import {fetchWallets } from "../../common/payments/actions"
+import Navbar from "../app/components/Navbar"
+import layoutStyles from "../app/styles/layout.scss"
 
 const hooks = {
   load: ({ dispatch }) => {
