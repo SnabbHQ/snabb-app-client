@@ -1,0 +1,40 @@
+.modal {
+  width: 460px;
+  background: #fff;
+  outline: none;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+.header {
+  border-bottom: 1px solid #f0f3f7;
+  padding: 7px 28px;
+}
+
+.headerTitle {
+  margin: 0;
+}
+
+.icon {
+  margin-bottom: 14px;
+}
+
+.content {
+  padding: 28px;
+}
+
+.confirmModal .content {
+  text-align: center;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20000;
+}

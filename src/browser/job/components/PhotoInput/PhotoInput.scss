@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  border-radius: 8px;
+  &.dragged {
+    background: #f0f3f7;
+  }
+}
+
+.input {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.preview, .input {
+  overflow: hidden;
+}
+
+.image {
+  width: 60px;
+  height: 60px;
+  vertical-align: bottom;
+  float: left;
+  border-radius: 8px;
+  margin-right: 14px;
+}
+
+.label {
+  display: block;
+  margin-top: 18px;
+  strong {
+    font-weight: inherit;
+    color: #11a3eb;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

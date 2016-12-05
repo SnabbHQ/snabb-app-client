@@ -12,21 +12,21 @@ import {
   retryJob,
   loadActiveJobs,
   updateJob
-} from '../../actions';
-import createPoller from '../../lib/createPoller';
-import createPromiseHandler from '../../lib/createPromiseHandler';
-import { isPending } from '../../lib/jobHelpers';
-import Blankslate from '../../components/Blankslate';
-import LoadingMessage from '../../components/LoadingMessage';
-import UpdateJobFields from '../../components/UpdateJobFields';
-import { SubmitModal } from '../../components/Modal';
-import CancelJobModal from '../../components/CancelJobModal';
-import Button from '../../components/Button';
-import RequestJobButton from '../../components/RequestJobButton';
-import ActiveJobsCards from '../../components/ActiveJobsCards';
-import JobMap from '../../components/JobMap';
-import layoutStyles from '../../../styles/layout.scss';
-import gridStyles from '../../../styles/grid.scss';
+} from '../../common/job/actions';
+import createPoller from '../../common/lib/createPoller';
+import createPromiseHandler from '../../common/lib/createPromiseHandler';
+import { isPending } from '../../common/job/jobHelpers';
+import Blankslate from '../app/components/Blankslate/index';
+import LoadingMessage from '../app/components/LoadingMessage/index';
+import UpdateJobFields from './components/UpdateJobFields';
+import { SubmitModal } from '../app/components/Modal/index';
+import CancelJobModal from './components/CancelJobModal';
+import Button from '../app/components/Button2/index';
+import RequestJobButton from './components/RequestJobButton';
+import ActiveJobsCards from './components/ActiveJobsCards/index';
+import JobMap from './components/JobMap';
+import layoutStyles from '../app/styles/layout.scss';
+import gridStyles from '../app/styles/grid.scss';
 import activeBlankslateIcon from '../../../assets/images/activeBlankslateIcon.svg';
 
 const POLL_JOBS_INTERVAL = 5000;

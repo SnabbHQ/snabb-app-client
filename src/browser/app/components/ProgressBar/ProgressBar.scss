@@ -1,0 +1,48 @@
+.searching, .hideText, .default, .delivering, .picking {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position: 40px 0;
+  }
+
+  to {
+    background-position: 0 0;
+  }
+}
+
+.progressBarContainer {
+  background-color: #f0f3f7;
+  border-radius: 2px;
+  box-shadow: inset 1px 0 1px 0 rgba(0, 0, 0, 0.15);
+  height: 8px;
+  overflow: hidden;
+}
+
+.searching, .default, .delivering, .picking {
+  background-color: #11a3eb;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 1px 0 1px 0 rgba(0, 0, 0, 0.15);
+  float: left;
+  height: 100%;
+  transition: width .6s ease;
+  width: 0;
+}
+
+.searching {
+  background-image: linear-gradient(45deg, hsla(0, 0%, 100%, 0.25) 25%, transparent 0, transparent 50%, hsla(0, 0%, 100%, 0.25) 0, hsla(0, 0%, 100%, 0.25) 75%, transparent 0, transparent);
+  background-size: 40px 40px;
+  animation: xJRWX 1s linear infinite;
+  background-color: #11a3eb;
+}
+
+.picking {
+  background-color: #ffb11f;
+}
+
+.delivering {
+  background-color: #0bce35;
+}

@@ -1,0 +1,45 @@
+.editButton, .cancelButton, .hideText {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.day {
+  margin-top: 28px;
+}
+
+.job {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 28px;
+  + .job {
+    border-top: 1px solid #f0f3f7;
+  }
+}
+
+.editButton, .cancelButton {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.actionsCol {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+.cancelButton {
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTMgM0wzIDEzTTMgM2wxMCAxMCIgc3Ryb2tlPSIjMTFBM0VCIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+PC9zdmc+);
+}
+
+.editButton {
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNS4zOTggOS40ODFMMTEuOTQgMi45NGMuMzM3LS4zMzggMS4yMzItLjc4NSAxLjg5Ny0uMTIuNjY0LjY2NC4yMTEgMS41NjQtLjEyIDEuODk2bC02LjU0MyA2LjU0Mm0tMi4wNDEuMjM5Yy0uODk4LS44OTgtMS4xMjctLjYyNC0xLjEyNy0uNjI0bC0xLjYyOCAzLjQwNCAzLjQwNC0xLjYyOHMuMjQ4LS4yNTUtLjY1LTEuMTUyeiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2U9IiMxMUEzRUIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiLz48L3N2Zz4=);
+}
+
+.placeCol {
+  width: 35%;
+}

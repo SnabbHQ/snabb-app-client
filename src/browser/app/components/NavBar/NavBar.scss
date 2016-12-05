@@ -1,0 +1,54 @@
+.itemLink {
+  transition: all .1s ease-in;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 5px 10px 7px;
+  border-radius: 4px;
+  vertical-align: middle;
+  border: 0;
+  outline: none;
+}
+
+.logo {
+  float: left;
+  margin-right: 28px;
+  margin-left: 14px;
+  padding: 14px 0;
+}
+
+.items {
+  list-style: none;
+}
+
+.item {
+  float: left;
+}
+
+.itemLink {
+  color: #8f96a0;
+  margin: 12px 5px 0 0;
+  &:hover {
+    background-color: rgba(210, 217, 220, 0.1);
+    text-decoration: none;
+  }
+}
+
+.itemLinkActive {
+  background-color: rgba(210, 217, 220, 0.2);
+  color: #fff;
+  &:hover {
+    background-color: rgba(210, 217, 220, 0.2);
+    color: #fff;
+  }
+}
+
+.rightItems {
+  float: right;
+  margin-top: 12px;
+}
+
+.accountMenuButton {
+  margin-left: 28px;
+  vertical-align: middle;
+  border-radius: 4px;
+}

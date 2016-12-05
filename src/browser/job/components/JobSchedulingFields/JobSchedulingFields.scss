@@ -1,0 +1,42 @@
+.checkbox + .checkbox {
+  margin-left: 14px;
+}
+
+.checkboxText {
+  position: relative;
+  margin-left: 7px;
+  &:before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 19px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTIiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCA1MiAxOSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zLjgxNSA4LjQ1N0w1LjcwNy0uMDU5Yy4wNi0uMjY3LjAwNC0uMjkyLS4xMzUtLjAzOEwuMDU3IDEwLjAyOGMtLjEzNC4yNDctLjAyNi40NDYuMjUzLjQ0NmgyLjUwNWwtMS44OTMgOC41Yy0uMDYuMjY3LS4wMDMuMjkyLjEzNS4wMzlsNS41MTUtMTAuMTFjLjEzNC0uMjQ2LjAyNy0uNDQ2LS4yNTMtLjQ0NkgzLjgxNXoiIGZpbGw9IiNGRkIxMUYiLz48cGF0aCBkPSJNMTEuODE1IDguNDU3bDEuODkyLTguNTE2Yy4wNi0uMjY3LjAwNC0uMjkyLS4xMzUtLjAzOEw4LjA1NyAxMC4wMjhjLS4xMzQuMjQ3LS4wMjYuNDQ2LjI1My40NDZoMi41MDVsLTEuODkzIDguNWMtLjA2LjI2Ny0uMDAzLjI5Mi4xMzUuMDM5bDUuNTE1LTEwLjExYy4xMzQtLjI0Ni4wMjctLjQ0Ni0uMjUzLS40NDZoLTIuNTA0eiIgZmlsbD0iI0QyRDlEQyIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyIDIpIj48ZyBzdHJva2U9IiNEMkQ5REMiPjxwYXRoIGQ9Ik0xMSAxLjVoLjVjMS41IDAgMiAxLjE4NSAyIDIuMDAyVjEyLjVjMCAuODE3LS41IDItMiAyaC05Yy0xLjUgMC0yLTEtMi0ydi05YzAtLjgxOC41LTIgMi0ySDNtMyAwaDIiLz48cGF0aCBkPSJNNC41LjR2Mi4xbTUtMnYyLjA3OSIgc3Ryb2tlLXdpZHRoPSIuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTEgNC41aDEyIi8+PC9nPjxjaXJjbGUgZmlsbD0iI0QyRDlEQyIgY3g9IjQiIGN5PSI5IiByPSIxIi8+PGNpcmNsZSBmaWxsPSIjRDJEOURDIiBjeD0iNyIgY3k9IjkiIHI9IjEiLz48Y2lyY2xlIGZpbGw9IiNEMkQ5REMiIGN4PSIxMCIgY3k9IjkiIHI9IjEiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzggMikiPjxnIHN0cm9rZT0iIzU5MzhDQSI+PHBhdGggZD0iTTExIDEuNWguNWMxLjUgMCAyIDEuMTg1IDIgMi4wMDJWMTIuNWMwIC44MTctLjUgMi0yIDJoLTljLTEuNSAwLTItMS0yLTJ2LTljMC0uODE4LjUtMiAyLTJIM20zIDBoMiIvPjxwYXRoIGQ9Ik00LjUuNHYyLjFtNS0ydjIuMDc5IiBzdHJva2Utd2lkdGg9Ii44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMSA0LjVoMTIiLz48L2c+PGNpcmNsZSBmaWxsPSIjNTkzOENBIiBjeD0iNCIgY3k9IjkiIHI9IjEiLz48Y2lyY2xlIGZpbGw9IiM1OTM4Q0EiIGN4PSI3IiBjeT0iOSIgcj0iMSIvPjxjaXJjbGUgZmlsbD0iIzU5MzhDQSIgY3g9IjEwIiBjeT0iOSIgcj0iMSIvPjwvZz48L2c+PC9zdmc+);
+  }
+}
+
+.nowCheckbox {
+  .checkboxText {
+    padding-left: 14px;
+    &:before {
+      width: 7px;
+      background-position: -8px 0;
+    }
+  }
+  &.checkboxText .checkboxText:before {
+    background-position: 0 0;
+  }
+}
+
+.laterCheckbox {
+  .checkboxText {
+    padding-left: 21px;
+    &:before {
+      width: 14px;
+      background-position: -22px 0;
+    }
+  }
+  &.checkboxText .checkboxText:before {
+    background-position: -38px 0;
+  }
+}

@@ -4,7 +4,7 @@ import {
   UPDATE_CLIENT_PASSWORD_SUCCESS,
   UPDATE_BILLING_DETAILS_SUCCESS,
   CLIENT_EXTRA_SUCCESS
-} from '../actions';
+} from './actions';
 
 export default function client(state = {
   isExtraLoaded: false

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { isPending } from '../../lib/jobHelpers';
-import { isPicking } from '../../lib/deliveryHelpers';
-import MarkersMap from '../MarkersMap';
+import { isPending } from '../../../common/job/jobHelpers';
+import { isPicking } from '../../../common/lib/deliveryHelpers';
+import MarkersMap from './MarkersMap';
 
 const JobMap = React.createClass({
   propTypes: {

@@ -1,0 +1,20 @@
+.company, .zipcode, .flexItem, .address, .country, .vat, .city {
+  width: auto;
+  margin-right: 14px; }
+
+.company:last-child, .zipcode:last-child, .flexItem:last-child, .address:last-child, .country:last-child, .vat:last-child, .city:last-child {
+  margin-right: 0; }
+
+.company {
+  -ms-flex-positive: 1;
+  flex-grow: 1; }
+
+.address {
+  -ms-flex-positive: 3;
+  flex-grow: 3; }
+
+.zipcode, .country, .vat, .city {
+  -ms-flex-positive: 1;
+  flex-grow: 1; }
+
+/*# sourceMappingURL=BillingDetailsFields.css.map */

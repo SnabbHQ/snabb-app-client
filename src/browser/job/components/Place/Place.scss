@@ -1,0 +1,30 @@
+.contact {
+  color: #0a0b0c;
+}
+
+.address {
+  color: #0a0b0c;
+  font-weight: 500;
+}
+
+.comment:not(:empty), ._2koHz {
+  margin-top: 14px;
+}
+
+.contactCompany:not(:empty):after {
+  border-right: 1px solid #d2d9dc;
+  content: ' ';
+  display: inline-block;
+  height: .8rem;
+  margin-right: .5rem;
+  padding-right: 0.5rem;
+}
+
+.placePU:before {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNCAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAuNjkyIDMuMzMzTDcgMSAxIDQuNTM1djYuOTNMNyAxNWw2LTMuNTM1VjQuNzMzbTAgMEw3IDggMy4zMDggNS42NjdNNyA4djQuMzUiIHN0cm9rZT0iI0ZGQjExRiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+);
+}
+
+.placeDO:before {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNSAxMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSAxMi45MTdMNC4xNzggMS4yOHMxLjUtLjggMy4wNjcuMzA3QzkuMTAzIDIuOTAzIDEwLjk4IDUuMDQzIDE0IDMuNTkybC0xLjY4MiA2LjA4NnMtMi4wMDcgMS4yNTItNC41MTYtLjU2MmMtMS4wMzYtLjc1LTEuNjEtMS42Ny0yLjgyLTEuNTc4IiBzdHJva2U9IiMwQkNFMzUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==);
+}
+
