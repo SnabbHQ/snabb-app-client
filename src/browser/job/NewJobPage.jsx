@@ -15,12 +15,12 @@ import {
   resetNewJob,
   updateNewJob
 } from '../../actions';
-import createPoller from '../../lib/createPoller';
-import JobFields from '../../components/JobFields';
-import MarkersMap from '../../components/MarkersMap';
-import Button from '../../components/Button';
-import Blankslate from '../../components/Blankslate';
-import LoadingMessage from '../../components/LoadingMessage';
+import createPoller from '../../common/lib/createPoller';
+import JobFields from './components/JobFields';
+import MarkersMap from './components/MarkersMap';
+import Button from '../app/components/Button2';
+import Blankslate from '../app/components/Blankslate';
+import LoadingMessage from '../app/components/LoadingMessage';
 import {
   CITIES,
   DEFAULT_CITY,

@@ -1,6 +1,6 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
-import { TRANSPORT_TYPES } from '../constants';
+import { TRANSPORT_TYPES } from '../lib/constants';
 import { CLOSEST_DRIVERS_SUCCESS } from '../actions';
 
 export const initialState = {
