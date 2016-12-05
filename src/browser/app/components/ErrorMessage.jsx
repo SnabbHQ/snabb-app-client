@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import styles from './LoadingMessage.scss';
+import styles from './LoadingMessage/LoadingMessage.scss';
 
 const LoadingMessage = React.createClass({
   render() {

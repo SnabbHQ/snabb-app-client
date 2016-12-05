@@ -12,7 +12,7 @@ import styles from './AuthPage.scss';
 import layoutStyles from '../../app/styles/layout.scss';
 import gridStyles from '../../app/styles/grid.scss';
 import textStyles from '../../app/styles/text.scss';
-import logoBlack from '../../../assets/images/logoBlack.svg';
+import logoBlack from '../../../../assets/images/logoBlack.svg';
 import wrapFields, { wrappedFieldsPropTypes } from '../../lib/wrapFields';
 import {
   CITIES,

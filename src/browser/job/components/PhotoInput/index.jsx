@@ -3,7 +3,7 @@ import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import cx from 'classnames';
 import omit from 'lodash/omit';
 import styles from './PhotoInput.scss';
-import clientPhotoDefaultMedium from '../../../assets/images/clientPhotoDefaultMedium.svg';
+import clientPhotoDefaultMedium from '../../../../../assets/images/clientPhotoDefaultMedium.svg';
 
 const PhotoInput = React.createClass({
   getInitialState() {

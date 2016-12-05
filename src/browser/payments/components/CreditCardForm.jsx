@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
-import ErrorMessage from '../ErrorMessage';
-import Button from '../../components/Button';
-import CreditCardFields from '../../components/CreditCardFields';
-import layoutStyles from '../../../styles/layout.scss';
+import ErrorMessage from '../../app/components/ErrorMessage';
+import Button from '../../app/components/Button2';
+import CreditCardFields from './CreditCardFields';
+import layoutStyles from '../../app/styles/layout.scss';
 
 const ERROR_MESSAGES = defineMessages({
   // error.key = PAYMENT_PLATFORM_ERROR

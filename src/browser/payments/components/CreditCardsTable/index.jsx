@@ -5,12 +5,11 @@ import Button from '../../components/Button';
 import style from './CreditCardsTable.scss';
 
 const CREDIT_CARD_ICONS = {
-  AX: require('../../../assets/images/cardIconAX.svg'),
-  DC: require('../../../assets/images/cardIconDC.svg'),
-  DS: require('../../../assets/images/cardIconDS.svg'),
-  MC: require('../../../assets/images/cardIconMC.svg'),
-  TO: require('../../../assets/images/cardIconTO.svg'),
-  VI: require('../../../assets/images/cardIconVI.svg')
+  AX: require('../../../../../assets/images/cardIconAX.svg'),
+  DS: require('../../../../../assets/images/cardIconDS.svg'),
+  MC: require('../../../../../assets/images/cardIconMC.svg'),
+  TO: require('../../../../../assets/images/cardIconTO.svg'),
+  VI: require('../../../../../assets/images/cardIconVI.svg')
 };
 
 const CreditCardsTable = React.createClass({

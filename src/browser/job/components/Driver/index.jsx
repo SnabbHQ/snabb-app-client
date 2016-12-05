@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import defaultDriverImage from '../../../assets/images/defaultDriver.svg';
+import defaultDriverImage from '../../../../../assets/images/defaultDriver.svg';
 import styles from './Driver.scss';
 
 const Driver = React.createClass({

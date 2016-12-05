@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
-import analytics from '../../lib/analytics';
-import Button from '../Button';
+import analytics from '../../../common/lib/analytics';
+import Button from '../../app/components/Button2';
 
 const RequestJobButton = React.createClass({
   propTypes: {

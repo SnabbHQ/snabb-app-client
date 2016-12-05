@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { defineMessages } from 'react-intl';
 import wrapFields, { wrappedFieldsPropTypes } from '../../lib/wrapFields';
-import gridStyles from '../../../styles/grid.scss';
+import gridStyles from '../../app/styles/grid.scss';
 
 const MESSAGES = defineMessages({
   contactCompanyPlaceholder: {

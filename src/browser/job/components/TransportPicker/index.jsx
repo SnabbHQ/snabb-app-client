@@ -5,13 +5,13 @@ import { FormattedNumber, FormattedMessage, intlShape, injectIntl, defineMessage
 import styles from './TransportPicker.scss';
 
 const ICONS = {
-  bike: require('../../../assets/images/bike.svg'),
-  car: require('../../../assets/images/car.svg'),
-  cargobike: require('../../../assets/images/cargobike.svg'),
-  motorbike: require('../../../assets/images/motorbike.svg'),
-  van: require('../../../assets/images/van.svg'),
-  walk: require('../../../assets/images/walk.svg'),
-  cargobikexl: require('../../../assets/images/cargobikeXL.svg')
+  bike: require('../../../../../assets/images/bike.svg'),
+  car: require('../../../../../assets/images/car.svg'),
+  cargobike: require('../../../../../assets/images/cargobike.svg'),
+  motorbike: require('../../../../../assets/images/motorbike.svg'),
+  van: require('../../../../../assets/images/van.svg'),
+  walk: require('../../../../../assets/images/walk.svg'),
+  cargobikexl: require('../../../../../assets/images/cargobikeXL.svg')
 };
 
 const MESSAGES = defineMessages({

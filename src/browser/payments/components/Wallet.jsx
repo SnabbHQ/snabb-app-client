@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { FormattedNumber } from 'react-intl';
-import ErrorMessage from '../ErrorMessage';
-import layoutStyles from '../../../styles/layout.scss';
+import ErrorMessage from '../../app/components/ErrorMessage';
+import layoutStyles from '../../app/styles/layout.scss';
 
 const ERRORS = [{ key: 'LOAD_WALLET_ERROR' }];
 const MESSAGES = {

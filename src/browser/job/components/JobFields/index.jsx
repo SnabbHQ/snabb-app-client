@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import PlaceFields, { PlaceShape } from '../PlaceFields';
 import JobSchedulingFields, { JobSchedulingShape } from '../JobSchedulingFields/index';
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessage from '../../../app/components/ErrorMessage';
 import wrapFields, { wrappedFieldsPropTypes } from '../../../lib/wrapFields';
 import Card from '../../../app/components/Card/index';
 import layoutStyles from '../../../app/styles/layout.scss';
@@ -10,21 +10,21 @@ import styles from './JobFields.scss';
 
 const ICONS = {
   pickUp: {
-    blank: require('../../../assets/images/pickUpBadgeBlank.svg'),
-    present: require('../../../assets/images/pickUpBadgePresent.svg'),
-    error: require('../../../assets/images/pickUpBadgeError.svg')
+    blank: require('../../../../../assets/images/pickUpBadgeBlank.svg'),
+    present: require('../../../../../assets/images/pickUpBadgePresent.svg'),
+    error: require('../../../../../assets/images/pickUpBadgeError.svg')
   },
   dropOff: {
-    blank: require('../../../assets/images/dropOffBadgeBlank.svg'),
-    present: require('../../../assets/images/dropOffBadgePresent.svg'),
-    error: require('../../../assets/images/dropOffBadgeError.svg')
+    blank: require('../../../../../assets/images/dropOffBadgeBlank.svg'),
+    present: require('../../../../../assets/images/dropOffBadgePresent.svg'),
+    error: require('../../../../../assets/images/dropOffBadgeError.svg')
   },
   vehicle: {
-    blank: require('../../../assets/images/vehicleBadgeBlank.svg'),
-    present: require('../../../assets/images/vehicleBadgePresent.svg')
+    blank: require('../../../../../assets/images/vehicleBadgeBlank.svg'),
+    present: require('../../../../../assets/images/vehicleBadgePresent.svg')
   },
   scheduling: {
-    blank: require('../../../assets/images/schedulingBadgeBlank.svg')
+    blank: require('../../../../../assets/images/schedulingBadgeBlank.svg')
   }
 };
 

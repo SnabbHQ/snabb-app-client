@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import some from 'lodash/some';
 import toString from 'lodash/toString';
-import AccountDetailsFields from '../../components/AccountDetailsFields';
-import AccountPasswordFields from '../../components/AccountPasswordFields';
-import Card from '../../components/Card';
-import Button from '../../components/Button';
+import AccountDetailsFields from './components/AccountDetailsFields';
+import AccountPasswordFields from './components/AccountPasswordFields';
+import Card from '../app/components/Card';
+import Button from '../app/components/Button';
 import {
   setClientGeneralValue,
   updateClient,
   setClientPasswordValue,
   updateClientPassword
-} from '../../actions';
-import layoutStyles from '../../../styles/layout.scss';
-import gridStyles from '../../../styles/grid.scss';
+} from '../../common/user/profile/actions/clientActions';
+import layoutStyles from '../app/styles/layout.scss';
+import gridStyles from '../app/styles/grid.scss';
 
 const GENERAL_FIELDS = [
   'photo',

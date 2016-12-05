@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { defineMessages } from 'react-intl';
 import wrapFields, { wrappedFormPropTypes } from '../../../lib/wrapFields';
-import layoutStyles from '../../../styles/layout.scss';
+import layoutStyles from '../../../app/styles/layout.scss';
 import styles from './BillingDetailsFields.scss';
 
 const MESSAGES = defineMessages({
@@ -71,8 +71,3 @@ const BillingDetailsFields = React.createClass({
 });
 
 export default wrapFields(BillingDetailsFields, { messages: MESSAGES });
-
-
-
-// WEBPACK FOOTER //
-// ./src/components/BillingDetailsFields/index.js

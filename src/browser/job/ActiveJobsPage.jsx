@@ -267,7 +267,6 @@ export const ActiveJobsPage = React.createClass({
         buttons={[
           <Button
             id={`editJobModalCancelButton-${job.id}`}
-            kind='danger'
             kind='secondary'
             disabled={isDisabled}
             onClick={this.closeUpdateJobModal}
@@ -278,7 +277,6 @@ export const ActiveJobsPage = React.createClass({
           </Button>,
           <Button
             id={`editJobModalSaveButton-${job.id}`}
-            kind='danger'
             type='submit'
             kind='primary'
             disabled={isDisabled}

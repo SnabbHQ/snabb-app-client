@@ -4,15 +4,15 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 
 const MARKERS = {
-  bike: require('../../../assets/images/bikeMarker.svg'),
-  cargobike: require('../../../assets/images/cargobikeMarker.svg'),
-  car: require('../../../assets/images/carMarker.svg'),
-  motorbike: require('../../../assets/images/motorbikeMarker.svg'),
-  cargobikexl: require('../../../assets/images/cargobikeXLMarker.svg'),
-  van: require('../../../assets/images/vanMarker.svg'),
-  walk: require('../../../assets/images/walkMarker.svg'),
-  dropOff: require('../../../assets/images/dropOffMarker.svg'),
-  pickUp: require('../../../assets/images/pickUpMarker.svg')
+  bike: require('../../../../assets/images/bikeMarker.svg'),
+  cargobike: require('../../../../assets/images/cargobikeMarker.svg'),
+  car: require('../../../../assets/images/carMarker.svg'),
+  motorbike: require('../../../../assets/images/motorbikeMarker.svg'),
+  cargobikexl: require('../../../../assets/images/cargobikeXLMarker.svg'),
+  van: require('../../../../assets/images/vanMarker.svg'),
+  walk: require('../../../../assets/images/walkMarker.svg'),
+  dropOff: require('../../../../assets/images/dropOffMarker.svg'),
+  pickUp: require('../../../../assets/images/pickUpMarker.svg')
 };
 
 const hasGoogle = typeof google !== 'undefined';

@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import wrapFields, { wrappedFieldsPropTypes } from '../../lib/wrapFields';
-import layoutStyles from '../../../styles/layout.scss';
-import gridStyles from '../../../styles/grid.scss';
+import layoutStyles from '../../app/styles/layout.scss';
+import gridStyles from '../../app/styles/grid.scss';
 
 // TODO Do not duplicate those messages
 const MESSAGES = defineMessages({

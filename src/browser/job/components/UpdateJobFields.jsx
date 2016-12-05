@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { defineMessages } from 'react-intl';
 import cx from 'classnames';
-import Place from '../Place';
+import Place from './Place';
 import wrapFields, { wrappedFormPropTypes } from '../../lib/wrapFields';
-import layoutStyles from '../../../styles/layout.scss';
+import layoutStyles from '../../app/styles/layout.scss';
 
 const MESSAGES = defineMessages({
   originCommentPlaceholder: {

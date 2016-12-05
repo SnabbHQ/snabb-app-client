@@ -10,7 +10,7 @@ import JobsHistoryTable from '../components/JobsHistoryTable';
 import styles from './JobsHistoryPage.scss';
 import gridStyles from '../../app/styles/grid.scss';
 import layoutStyles from '../../app/styles/layout.scss';
-import historyBlankslateIcon from '../../../assets/images/historyBlankslateIcon.svg';
+import historyBlankslateIcon from '../../../../assets/images/historyBlankslateIcon.svg';
 
 const JobsHistoryPage = React.createClass({
   handleLoadMoreClick() {
