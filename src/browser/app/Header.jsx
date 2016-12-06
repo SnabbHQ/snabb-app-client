@@ -13,7 +13,6 @@ const clientPhoto = require('../../../assets/images/clientPhotoDefaultSmall.svg'
 const styles = {
   toolbar: {
     justifyContent: 'space-between',
-    alignItems: 'center',
     flexWrap: 'wrap',
   },
   prefetch: {
