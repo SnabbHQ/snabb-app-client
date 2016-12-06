@@ -3,13 +3,17 @@ import type { State } from '../../common/types';
 import React from 'react';
 import linksMessages from '../../common/app/linksMessages';
 import { FormattedMessage } from 'react-intl';
-import { Link, View, PrimaryButton, Space, Toolbar } from '../app/components';
+import { Link, View, Flex, Image, PrimaryButton, Space, Toolbar } from '../app/components';
 import { connect } from 'react-redux';
 import Button from './components/Button2'
+
+const logo = require('../../../assets/images/logo.svg')
+const clientPhoto = require('../../../assets/images/clientPhotoDefaultSmall.svg')
 
 const styles = {
   toolbar: {
     justifyContent: 'space-between',
+    alignItems: 'center',
     flexWrap: 'wrap',
   },
   prefetch: {
@@ -19,19 +23,33 @@ const styles = {
 
 const Header = ({ viewer }) => (
   <Toolbar style={styles.toolbar}>
-    <Link bold inverted exactly to="/">
-      <FormattedMessage {...linksMessages.home} />
-    </Link>
-    <Space x={2} />
-    <View>
+    <Flex align="center">
+      <Space x={2} />
+      <Image
+        alt="Snabb"
+        src={logo}/>
+      <Space x={4} />
+      <Link inverted exactly to="/">
+        <FormattedMessage {...linksMessages.active} />
+      </Link>
+      <Space x={4} />
+      <Link inverted exactly to="/scheduled">
+        <FormattedMessage {...linksMessages.scheduled} />
+      </Link>
+      <Space x={4} />
+      <Link inverted exactly to="/Past">
+        <FormattedMessage {...linksMessages.past} />
+      </Link>
+      <Space x={4} />
+    </Flex>
+    <Flex>
       <PrimaryButton>Request a delivery</PrimaryButton>
       <Space x={2} />
-      {!viewer &&
-      <Link bold inverted to="/signin">
-        <FormattedMessage {...linksMessages.signIn} />
-      </Link>
+      <Image
+        alt="Snabb"
+        src={clientPhoto}/>
       }
-    </View>
+    </Flex>
 
   </Toolbar>
 );
@@ -42,8 +60,5 @@ Header.propTypes = {
 
 export default connect(
   (state: State) => ({
-    viewer: undefined
-    // TODO
-    //viewer: state.users.viewer,
   }),
 )(Header);

@@ -18,7 +18,7 @@ const typography = {
 };
 
 const colors = {
-  primary: '#white',
+  primary: '#000',
   secondary: '#888',
   accent: '#08e',
   info: '#08e',
@@ -36,7 +36,7 @@ const borders = {
   borderColor: 'rgba(0, 0, 0, .25)',
 };
 
-const inverted = colors.black;
+const inverted = colors.white;
 
 const zIndex = [0, 2, 4, 8, 16];
 
@@ -57,11 +57,11 @@ export const compute = (theme: Object) => ({
   ...theme,
 
   link: {
-    color: theme.colors.black,
+    color: theme.colors.accent,
     bold: { fontWeight: theme.bold },
     link: { textDecoration: 'none' },
     hover: { textDecoration: 'underline' },
-    active: { textDecoration: 'underline' },
+    active: { color: theme.colors.accent, textDecoration: 'none' },
   },
 
   Container: {
@@ -77,7 +77,7 @@ export const compute = (theme: Object) => ({
 
   Toolbar: {
     color: 'inherit',
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.primary,
     borderBottom: `1px solid rgba(0, 0, 0, ${1/8})`,
     padding: theme.scale[2],
   },

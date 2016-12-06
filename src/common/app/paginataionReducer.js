@@ -9,7 +9,7 @@ import {
   SCHEDULED_JOBS_REQUEST,
   SCHEDULED_JOBS_SUCCESS,
   SCHEDULED_JOBS_FAILURE
-} from '../actions';
+} from '../job/actions';
 
 export function createPaginationReducer(types) {
   if (!Array.isArray(types) || types.length !== 3) {

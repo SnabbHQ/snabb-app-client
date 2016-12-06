@@ -14,6 +14,18 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Users',
     id: 'app.links.users',
   },
+  active: {
+    defaultMessage: 'Active',
+    id: 'app.links.active',
+  },
+  scheduled: {
+    defaultMessage: 'Scheduled',
+    id: 'app.links.scheduled',
+  },
+  past: {
+    defaultMessage: 'Past',
+    id: 'app.links.past',
+  },
   home: {
     defaultMessage: 'Home',
     id: 'app.links.home',
