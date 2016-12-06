@@ -115,6 +115,7 @@
     "redux-thunk": "2.1.0",
     "reflexbox": "^2.1.0",
     "regenerator": "0.8.46",
+    "regenerator-runtime": "^0.10.0",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.0.2",
     "rxjs": "5.0.0-rc.1",
@@ -160,6 +161,7 @@
     "webpack": "^1.12.3",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.8.1",
-    "webpack-isomorphic-tools": "^2.2.24"
+    "webpack-isomorphic-tools": "^2.2.24",
+    "yargs": "^6.0.0"
   }
 }

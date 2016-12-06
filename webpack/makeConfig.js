@@ -18,7 +18,6 @@ const devtools = 'eval';
 
 const loaders = {
   css: '',
-  scss: '',
 };
 
 const serverIp = config.remoteHotReload
@@ -71,7 +70,7 @@ const makeConfig = (options) => {
           loader: 'url-loader?limit=100000',
           test: /\.(ttf|eot|woff|woff2)(\?.*)?$/,
         }, {
-          test: /\.js$/,
+          test: /\.jsx?$/, // Match both .js and .jsx files
           exclude: constants.NODE_MODULES_DIR,
           loader: 'babel',
           query: {
@@ -92,9 +91,6 @@ const makeConfig = (options) => {
               },
             },
           },
-        }, {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
         },
         ...stylesLoaders,
       ],
