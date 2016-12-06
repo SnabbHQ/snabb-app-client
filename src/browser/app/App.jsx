@@ -1,5 +1,6 @@
 /* @flow */
 import type { State } from '../../common/types';
+// $FlowFixMe
 import './App.css';
 import * as themes from './themes';
 import Footer from './Footer';

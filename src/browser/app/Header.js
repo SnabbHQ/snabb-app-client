@@ -1,13 +1,16 @@
 /* @flow */
-import type { State } from '../../common/types';
-import React from 'react';
-import linksMessages from '../../common/app/linksMessages';
-import { FormattedMessage } from 'react-intl';
-import { Link, View, Flex, Image, PrimaryButton, Space, Toolbar } from '../app/components';
-import { connect } from 'react-redux';
-import Button from './components/Button2'
+import type {State} from "../../common/types"
+import React from "react"
+import linksMessages from "../../common/app/linksMessages"
+import RequestJobButton from "../job/components/RequestJobButton"
+import {FormattedMessage} from "react-intl"
+import {Link, Flex, Image, Space, Toolbar} from "../app/components"
+import {connect} from "react-redux"
 
+// $FlowFixMe
 const logo = require('../../../assets/images/logo.svg')
+
+// $FlowFixMe
 const clientPhoto = require('../../../assets/images/clientPhotoDefaultSmall.svg')
 
 const styles = {
@@ -31,18 +34,18 @@ const Header = ({ viewer }) => (
       <Link inverted exactly to="/">
         <FormattedMessage {...linksMessages.active} />
       </Link>
-      <Space x={4} />
+      <Space x={3} />
       <Link inverted exactly to="/scheduled">
         <FormattedMessage {...linksMessages.scheduled} />
       </Link>
-      <Space x={4} />
+      <Space x={3} />
       <Link inverted exactly to="/Past">
         <FormattedMessage {...linksMessages.past} />
       </Link>
-      <Space x={4} />
+      <Space x={3} />
     </Flex>
     <Flex>
-      <PrimaryButton>Request a delivery</PrimaryButton>
+      <RequestJobButton message="Request a Delivery"/>
       <Space x={2} />
       <Image
         alt="Snabb"

@@ -1,42 +1,46 @@
+/* @flow */
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import analytics from '../../../common/lib/analytics';
-import Button from '../../app/components/Button2';
+import {Button} from '../../app/components';
 
-const RequestJobButton = React.createClass({
-  propTypes: {
-    message: PropTypes.node,
-    position: PropTypes.string.isRequired
-  },
+type Props = {
+  disabled?: boolean,
+  style?: any,
+  message: string
+};
 
-  contextTypes: {
-    router: PropTypes.object.isRequired
-  },
+const RequestJobButton = ({ disabled, style, message, ...props }: Props, { rebass, router }: Object) => {
+  const sx = {
+    ...style,
+    ...(disabled && rebass.states.disabled),
+  }
 
-  getDefaultProps() {
-    return {
-      message: <FormattedMessage id='newJobButton' defaultMessage='New job' />
-    };
-  },
-
-  goToNewJobPage(e) {
+  function goToNewJobPage(e) {
     e.preventDefault();
 
     analytics.track('Clicked new delivery button', {
       category: analytics.DELIVERY_REQUEST_FLOW_CATEGORY,
       position: this.props.position
-    });
+    })
 
-    this.context.router.push({ pathname: '/new' });
-  },
-
-  render() {
-    return (
-      <Button className='newJobButton' kind='primary' onClick={this.goToNewJobPage}>
-        {this.props.message}
-      </Button>
-    );
+    router.push({ pathname: '/new' });
   }
-});
+
+  return (
+    <Button {...props} disabled={disabled} backgroundColor={'accent'} style={sx} onClick={goToNewJobPage}>
+      {message}
+    </Button>
+  );
+};
+
+RequestJobButton.defaultProps = {
+  message: <FormattedMessage id='newJobButton' defaultMessage='New job' />
+}
+
+RequestJobButton.contextTypes = {
+  rebass: PropTypes.object,
+  router: PropTypes.object.isRequired
+};
 
 export default RequestJobButton;
