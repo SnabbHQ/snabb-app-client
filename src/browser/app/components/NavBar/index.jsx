@@ -9,10 +9,10 @@ import analytics from '../../../../common/lib/analytics';
 import { logOut } from '../../../../common/user/auth/actions2';
 import styles from './Navbar.scss';
 import gridStyles from '../../styles/grid.scss';
-import logo from '../../../assets/images/logo.svg';
-import clientPhotoDefaultSmall from '../../../assets/images/clientPhotoDefaultSmall.svg';
-import cogIcon from '../../../assets/images/cogIcon.svg';
-import logOutIcon from '../../../assets/images/logOutIcon.svg';
+import logo from '../../../../../assets/images/logo.svg';
+import clientPhotoDefaultSmall from '../../../../../assets/images/clientPhotoDefaultSmall.svg';
+import cogIcon from '../../../../../assets/images/cogIcon.svg';
+import logOutIcon from '../../../../../assets/images/logOutIcon.svg';
 
 const ITEMS = {
   active: {

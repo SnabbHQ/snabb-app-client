@@ -62,7 +62,6 @@ const App = ({ currentLocale, currentTheme }) => (
         ]}
       />
       <Flex flexColumn style={styles.container}>
-        <Header />
         <Box style={styles.page}>
           <Match exactly pattern="/" component={HomePage} />
           <Miss component={NotFoundPage} />

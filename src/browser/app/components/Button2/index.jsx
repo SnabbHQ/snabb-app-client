@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import styles from './Button.scss';
+import styles from './Button2.scss';
 import cx from 'classnames';
 
 const Button = React.createClass({

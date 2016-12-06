@@ -18,6 +18,7 @@ const devtools = 'eval';
 
 const loaders = {
   css: '',
+  scss: '',
 };
 
 const serverIp = config.remoteHotReload
@@ -91,6 +92,9 @@ const makeConfig = (options) => {
               },
             },
           },
+        }, {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
         },
         ...stylesLoaders,
       ],

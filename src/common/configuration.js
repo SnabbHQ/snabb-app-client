@@ -20,8 +20,8 @@ function getConfiguration() {
 
   const matches = stuartApiRoot.match(/(sandbox|beta)/);
   let snabbDashboardUrl;
-  if (process.env.STUART_DASHBOARD_URL) {
-    snabbDashboardUrl = process.env.STUART_DASHBOARD_URL;
+  if (process.env.SNABB_DASHBOARD_URL) {
+    snabbDashboardUrl = process.env.SNABB_DASHBOARD_URL;
   } else if (matches && matches[1]) {
     snabbDashboardUrl = `https://admin-${matches[1]}.snabb.com/client`;
   } else {

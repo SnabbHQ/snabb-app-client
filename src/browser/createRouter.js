@@ -1,14 +1,14 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
-import AccountDetailsPage from './containers/AccountDetailsPage';
-import ActiveJobsPage from './containers/ActiveJobsPage';
-import ScheduledJobsPage from './containers/ScheduledJobsPage';
-import App from './containers/App';
-import AuthPage from './containers/AuthPage';
-import BillingPage from './containers/BillingPage';
-import JobsHistoryPage from './containers/JobsHistoryPage';
-import NewJobPage from './containers/NewJobPage';
-import SettingsPage from './containers/SettingsPage';
+import AccountDetailsPage from './user/AccountDetailsPage';
+import ActiveJobsPage from './job/ActiveJobsPage';
+import ScheduledJobsPage from './job/ScheduledJobsPage';
+import App from './app/App2';
+import AuthPage from './user/AuthPage';
+import BillingPage from './payments/BillingPage';
+import JobsHistoryPage from './job/JobsHistoryPage';
+import NewJobPage from './job/NewJobPage';
+import SettingsPage from './user/SettingsPage';
 
 export default function createRoutes(store) {
   const isAuthenticated = () => !!store.getState().client.token;

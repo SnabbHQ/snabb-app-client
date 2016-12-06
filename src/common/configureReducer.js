@@ -3,6 +3,7 @@ import type { Action, State } from './types';
 import app from './app/reducer';
 import config from './config/reducer';
 import device from './device/deviceReducer';
+import job from './job/reducers'
 import auth from './user/auth/authReducer';
 import profile from './user/profile/profileReducer';
 import location from './location/locationReducer';
@@ -34,6 +35,7 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
     profile: initialState.profile,
     config: initialState.config,
     device: initialState.device,
+    job: initialState.job,
     intl: initialState.intl,
   }, action);
 };
@@ -48,6 +50,7 @@ const configureReducer = (initialState: Object) => {
     delivery,
     config,
     device,
+    job,
     fields,
     intl,
     themes,

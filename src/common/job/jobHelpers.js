@@ -4,7 +4,7 @@ import {
   ACTIVE_JOB_STATUSES,
   PENDING_JOB_STATUSES,
   SCHEDULED_JOB_STATUSES
-} from '../constants';
+} from '../lib/constants';
 
 export function isActive({ status }) {
   return includes(ACTIVE_JOB_STATUSES, status);

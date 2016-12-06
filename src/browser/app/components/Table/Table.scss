@@ -1,11 +1,11 @@
-.table {
+table {
   width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
-.header {
+header {
   text-align: left;
   font-weight: 500;
   font-size: 16px;
@@ -13,13 +13,13 @@
   border-bottom: 2px solid #d2d9dc;
 }
 
-.cell {
+cell {
   padding: 14px;
   border-bottom: 1px solid #d2d9dc;
   vertical-align: top;
 }
 
-.loadMore {
+loadMore {
   display: block;
   padding: 14px 0;
   text-align: center;

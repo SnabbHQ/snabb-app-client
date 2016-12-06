@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Tether from 'react-tether';
 import camelCase from 'lodash/camelCase';
 import styles from './Dropdown.scss';
-import menuStyles from '../../../styles/menu.scss';
+import menuStyles from '../../styles/menu.scss';
 
 const OPPOSITE_POSITION = {
   left: 'right',

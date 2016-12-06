@@ -5,6 +5,7 @@ import linksMessages from '../../common/app/linksMessages';
 import { FormattedMessage } from 'react-intl';
 import { Link, View, PrimaryButton, Space, Toolbar } from '../app/components';
 import { connect } from 'react-redux';
+import Button from './components/Button2'
 
 const styles = {
   toolbar: {

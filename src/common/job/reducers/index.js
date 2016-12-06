@@ -4,9 +4,11 @@ import closestDriver from './closestDrivers';
 import jobs from './jobs';
 import newJob from './newJob';
 
-export {
+const reducers = [
   closestCity,
   closestDriver,
   jobs,
   newJob,
-};
+]
+
+export default reducers
