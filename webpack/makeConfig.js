@@ -154,7 +154,7 @@ const makeConfig = (options) => {
     })(),
     postcss: () => [autoprefixer({ browsers: 'last 2 version' })],
     resolve: {
-      extensions: ['', '.js'], // .json is ommited to ignore ./firebase.json
+      extensions: ['', '.js', '.jsx'], // .json is ommited to ignore ./firebase.json
       modulesDirectories: ['src', 'node_modules'],
       root: constants.ABSOLUTE_BASE,
       alias: {

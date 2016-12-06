@@ -79,6 +79,7 @@
     "localforage": "^1.4.3",
     "make-error": "^1.0.4",
     "native-base": "^0.5.13",
+    "nconf": "^0.8.1",
     "ramda": "^0.22.1",
     "raven-js": "^3.8.1",
     "react": "15.3.2",

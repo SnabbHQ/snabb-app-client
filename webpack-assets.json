@@ -3,5 +3,9 @@
     "app": "http://localhost:8080/build/app.js"
   },
   "styles": {},
-  "assets": {}
+  "assets": {
+    "./src/browser/app/App.css": {
+      "_style": "* {\n  /*Because box-sizing is not inherited.*/\n  box-sizing: border-box;\n}\n\nhtml {\n  /*Changes the default tap highlight to be completely transparent in iOS.*/\n  -webkit-tap-highlight-color: rgba(0,0,0,0);\n  /*Prevent adjustments of font size after orientation changes in IE and iOS.*/\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%;\n}\n\nbody {\n  /*Remove the margin in all browsers.*/\n  margin: 0;\n}\n"
+    }
+  }
 }
