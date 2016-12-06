@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import ReactAutocomplete from 'react-autocomplete';
 import debounce from 'lodash/debounce';
-import controlsStyles from '../controls/Controls.scss';
-import menuStyles from '../../../styles/menu.scss';
+import controlsStyles from './Text/Text.scss';
+import menuStyles from '../styles/menu.scss';
 
 function renderMenu(items, value, style) {
   if (items.length === 0) { return <noscript />; }

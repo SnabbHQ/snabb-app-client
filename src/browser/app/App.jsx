@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 
 // Pages
 import HomePage from '../home/HomePage';
+import ActivePage from '../job/ActiveJobsPage';
 import NotFoundPage from '../notfound/NotFoundPage';
 
 const styles = {
@@ -64,7 +65,7 @@ const App = ({ currentLocale, currentTheme }) => (
       <Flex flexColumn style={styles.container}>
         <Header />
         <Box style={styles.page}>
-          <Match exactly pattern="/" component={HomePage} />
+          <Match exactly pattern="/" component={ActivePage} />
           <Miss component={NotFoundPage} />
         </Box>
         <Footer />

@@ -3,6 +3,10 @@
 require('babel-register');
 require('babel-polyfill');
 
+require.extensions['.scss'] = () => {
+  return;
+};
+
 const WebpackIsomorphicTools = require('webpack-isomorphic-tools');
 const config = require('./config').default;
 const polyfillLocales = require('./intl/polyfillLocales');

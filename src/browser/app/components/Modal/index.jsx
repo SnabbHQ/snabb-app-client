@@ -2,8 +2,8 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import ActionsBar from '../ActionsBar';
 import styles from './Modal.scss';
-import layoutStyles from '../../../styles/layout.scss';
-import warningRed from '../../../assets/images/warningRed.svg';
+import layoutStyles from '../../styles/layout.scss';
+import warningRed from '../../../../../assets/images/warningRed.svg';
 
 const Modal = React.createClass({
   render() {

@@ -18,6 +18,7 @@ const devtools = 'eval';
 
 const loaders = {
   css: '',
+  scss: '',
 };
 
 const serverIp = config.remoteHotReload
@@ -30,7 +31,7 @@ const makeConfig = (options) => {
   } = options;
 
   const stylesLoaders = Object.keys(loaders).map((ext) => {
-    const prefix = 'css-loader!postcss-loader';
+    const prefix = 'css-loader!postcss-loader!sass-loader';
     const extLoaders = prefix + loaders[ext];
     const loader = isDevelopment
       ? `style-loader!${extLoaders}`
@@ -91,8 +92,16 @@ const makeConfig = (options) => {
               },
             },
           },
+        }, {
+          test: /\.css$/,
+          loader: isDevelopment ?
+            'style-loader!css-loader?modules-true!postcss-loader' :
+            ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?modules-true!postcss-loader' }),
         },
-        ...stylesLoaders,
+        {
+          test: /\.scss$/,
+          loaders: ["style-loader", "css-loader", "sass-loader"]
+        },
       ],
     },
     output: isDevelopment ? {

@@ -1,5 +1,11 @@
 import React, { PropTypes } from 'react';
-import styles from './Button2.scss';
+
+// let styles = {}
+// if (typeof window !== 'undefined') {
+//   styles = require('./Button2.scss')
+// }
+import styles from './Button2.scss'
+
 import cx from 'classnames';
 
 const Button = React.createClass({

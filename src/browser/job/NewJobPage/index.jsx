@@ -16,9 +16,10 @@ import {
   updateNewJob
 } from '../../../common/job/actions';
 import createPoller from '../../../common/lib/createPoller';
+
 import JobFields from '../components/JobFields/index';
 import MarkersMap from '../components/MarkersMap';
-import Button from '../../app/components/Button2/index';
+import { Button } from '../../app/components';
 import Blankslate from '../../app/components/Blankslate/index';
 import LoadingMessage from '../../app/components/LoadingMessage/index';
 import {

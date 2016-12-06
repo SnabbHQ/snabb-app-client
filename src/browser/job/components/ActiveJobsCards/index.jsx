@@ -4,7 +4,7 @@ import cx from 'classnames';
 import LoadingMessage from '../../../app/components/LoadingMessage/index';
 import Card from '../../../app/components/Card/index';
 import Button from '../../../app/components/Button2/index';
-import ActionsBar from '../../../app/components/ActionBar/index';
+import ActionsBar from '../../../app/components/ActionsBar/index';
 import JobStatus from '../JobStatus/index';
 import Driver from '../Driver/index';
 import Place from '../Place/index';
