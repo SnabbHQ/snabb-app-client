@@ -1,14 +1,5 @@
 /* @flow */
-import closestCity from './closestCity';
-import closestDriver from './closestDrivers';
-import jobs from './jobs';
-import newJob from './newJob';
-
-const reducers = [
-  closestCity,
-  closestDriver,
-  jobs,
-  newJob,
-]
-
-export default reducers
+export { default as closestCity } from './closestCity';
+export { default as closestDrivers } from './closestDrivers';
+export { default as jobs } from './jobs';
+export { default as newJob } from './newJob';

@@ -3,7 +3,8 @@ import type { Action, State } from './types';
 import app from './app/reducer';
 import config from './config/reducer';
 import device from './device/deviceReducer';
-import job from './job/reducers'
+import {closestCity, closestDrivers, jobs, newJob } from './job/reducers'
+import pagination from './app/paginataionReducer'
 import auth from './user/auth/authReducer';
 import profile from './user/profile/profileReducer';
 import location from './location/locationReducer';
@@ -36,6 +37,11 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
     config: initialState.config,
     device: initialState.device,
     job: initialState.job,
+    pagination: initialState.pagination,
+    closestCity: initialState.closestCity,
+    closestDrivers: initialState.closestDrivers,
+    jobs: initialState.jobs,
+    newJob: initialState.newJob,
     intl: initialState.intl,
   }, action);
 };
@@ -50,7 +56,11 @@ const configureReducer = (initialState: Object) => {
     delivery,
     config,
     device,
-    job,
+    closestCity,
+    closestDrivers,
+    jobs,
+    pagination,
+    newJob,
     fields,
     intl,
     themes,

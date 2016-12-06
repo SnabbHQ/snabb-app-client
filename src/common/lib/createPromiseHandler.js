@@ -1,17 +1,37 @@
-import request from 'superagent';
+export default function createPromiseHandler(sourceHandler, onChange, options = {}) {
+  const { resetTimeout = 3000 } = options;
 
-function authRequest(method, path, data) {
-  return new Promise((resolve, reject) => {
-    request[method](path).send(data).end((error, response) => {
-      if (error) {
-        return reject(error);
-      }
+  let _timer;
 
-      resolve(response.body);
-    });
-  });
-}
+  function handlePromiseStateChange(state, error, shouldReset) {
+    clearTimeout(_timer);
 
-export const refreshClient = authRequest.bind(null, 'get', '/auth/client');
-export const signUp = authRequest.bind(null, 'post', '/auth/sign-up');
-export const logIn = authRequest.bind(null, 'post', '/auth/log-in');
+    onChange({ state, error });
+
+    if (resetTimeout && shouldReset) {
+      _timer = setTimeout(() => {
+        handlePromiseStateChange(null, null);
+      }, resetTimeout);
+    }
+  }
+
+  const promiseHandler = function() {
+    const promise = sourceHandler.apply(null, arguments);
+
+    if (promise.then) {
+      handlePromiseStateChange('pending', null);
+
+      promise.then(() => {
+        handlePromiseStateChange('resolved', null, true);
+      }).catch((error) => {
+        handlePromiseStateChange('rejected', error, true);
+      });
+    }
+
+    return promise;
+  };
+
+  promiseHandler.cancel = () => clearTimeout(_timer);
+
+  return promiseHandler;
+};

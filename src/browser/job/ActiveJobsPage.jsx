@@ -28,6 +28,7 @@ import JobMap from './components/JobMap';
 import layoutStyles from '../app/styles/layout.scss';
 import gridStyles from '../app/styles/grid.scss';
 import activeBlankslateIcon from '../../../assets/images/activeBlankslateIcon.svg';
+import {Flex} from '../app/components'
 
 const POLL_JOBS_INTERVAL = 5000;
 const POLL_DRIVERS_INTERVAL = 15000;
@@ -305,7 +306,7 @@ export const ActiveJobsPage = React.createClass({
 
   renderBlankSlate() {
     return (
-      <div className={[layoutStyles.content, layoutStyles.centered].join(' ')}>
+      <Flex align="center">
         <Blankslate
           icon={activeBlankslateIcon}
           title={
@@ -321,8 +322,8 @@ export const ActiveJobsPage = React.createClass({
           actions={
             <RequestJobButton position='Active blankslate' />
           } />
-      </div>
-    );
+      </Flex>
+    )
   },
 
   render() {
@@ -397,7 +398,7 @@ function mapStateToProps(state, ownProps) {
     }
   } = state;
 
-  const jobId = parseInt(ownProps.location.query.job, 10);
+  const jobId = '1'//parseInt(ownProps.location.query.job, 10);
   const selectedJob = jobsById[includes(ids, jobId) ? jobId : ids[0]];
 
   return {
