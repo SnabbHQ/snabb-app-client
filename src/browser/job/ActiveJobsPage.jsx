@@ -22,7 +22,7 @@ import UpdateJobFields from './components/UpdateJobFields';
 import { SubmitModal } from '../app/components/Modal/index';
 import CancelJobModal from './components/CancelJobModal';
 import Button from '../app/components/Button2/index';
-import RequestJobButton from './components/RequestJobButton';
+import RequestJobButton from './components/RequestNewDeliveryButton';
 import ActiveJobsCards from './components/ActiveJobsCards/index';
 import JobMap from './components/JobMap';
 import layoutStyles from '../app/styles/layout.scss';

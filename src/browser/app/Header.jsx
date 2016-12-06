@@ -2,7 +2,7 @@
 import type {State} from "../../common/types"
 import React from "react"
 import linksMessages from "../../common/app/linksMessages"
-import RequestJobButton from "../job/components/RequestJobButton"
+import RequestNewDeliveryButton from "../job/components/RequestNewDeliveryButton"
 import {FormattedMessage} from "react-intl"
 import {Link, Flex, Image, Space, Toolbar} from "../app/components"
 import {connect} from "react-redux"
@@ -45,7 +45,7 @@ const Header = ({ viewer }) => (
       <Space x={3} />
     </Flex>
     <Flex>
-      <RequestJobButton message="Request a Delivery"/>
+      <RequestNewDeliveryButton message="Request a Delivery"/>
       <Space x={2} />
       <Image
         alt="Snabb"

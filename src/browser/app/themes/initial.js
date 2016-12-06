@@ -60,7 +60,7 @@ export const compute = (theme: Object) => ({
     color: theme.colors.accent,
     bold: { fontWeight: theme.bold },
     link: { textDecoration: 'none' },
-    hover: { textDecoration: 'underline' },
+    hover: { backgroundColor: theme.colors.secondary, textDecoration: 'underline' },
     active: { color: theme.colors.accent, textDecoration: 'none' },
   },
 

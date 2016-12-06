@@ -19,12 +19,13 @@ const RequestJobButton = ({ disabled, style, message, ...props }: Props, { rebas
   function goToNewJobPage(e) {
     e.preventDefault();
 
-    analytics.track('Clicked new delivery button', {
-      category: analytics.DELIVERY_REQUEST_FLOW_CATEGORY,
-      position: this.props.position
-    })
+    // TODO
+    // analytics.track('Clicked new delivery button', {
+    //   category: analytics.DELIVERY_REQUEST_FLOW_CATEGORY,
+    //   position: this.props.position
+    // })
 
-    router.push({ pathname: '/new' });
+    router.transitionTo('/new');
   }
 
   return (
