@@ -95,15 +95,8 @@ const makeConfig = (options) => {
               },
             },
           },
-        }, {
-          test: /\.css$/,
-          loader: isDevelopment ?
-            'style-loader!css-loader?modules-true!postcss-loader' :
-            ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?modules-true!postcss-loader' }),
-        }, {
-          test: /\.scss$/,
-          loaders: ["style-loader", "css-loader", "sass-loader"]
         },
+        ...stylesLoaders
       ],
     },
     output: isDevelopment ? {
