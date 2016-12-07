@@ -47,7 +47,7 @@ const Form = Record({
   }))
 })
 
-var InitialState = Record({
+let InitialState = Record({
   form: new Form()
 })
 

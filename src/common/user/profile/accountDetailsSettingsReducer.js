@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import createPendingStatusReducer from '../lib/createPendingStatusReducer';
+import createPendingStatusReducer from '../../lib/createPendingStatusReducer';
 import {
   CLIENT_GENERAL_VALUE_CHANGE,
   UPDATE_CLIENT_REQUEST,

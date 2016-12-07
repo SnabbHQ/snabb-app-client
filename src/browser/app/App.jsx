@@ -1,25 +1,29 @@
 /* @flow */
-import type { State } from '../../common/types';
-// $FlowFixMe
-import './App.css';
-import * as themes from './themes';
-import Footer from './Footer';
-import Header from './Header';
-import Helmet from 'react-helmet';
-import R from 'ramda';
-import React from 'react';
-import favicon from '../../common/app/favicon';
-import start from '../../common/app/start';
-import { Box, Container, Flex } from '../app/components';
-import { Match, ThemeProvider } from '../../common/app/components';
-import { Miss } from 'react-router';
-import { connect } from 'react-redux';
+import type {State} from "../../common/types"
+import {provideHooks} from "redial"
 
+// $FlowFixMe
+import "./App.css"
+import * as themes from "./themes"
+import Footer from "./Footer"
+import Header from "./Header"
+import Helmet from "react-helmet"
+import R from "ramda"
+import React from "react"
+import {loadClientExtra} from "../../common/user/extra/actions"
+import {loadClientSettings} from "../../common/user/settings/actions"
+import {fetchClosestCity} from "../../common/job/actions"
+import {fetchWallets} from "../../common/payments/actions"
+import favicon from "../../common/app/favicon"
+import start from "../../common/app/start"
+import {Box, Container, Flex} from "../app/components"
+import {Match, ThemeProvider} from "../../common/app/components"
+import {Miss} from "react-router"
+import {connect} from "react-redux"
 // Pages
-import HomePage from '../home/HomePage';
-import ActivePage from '../job/ActiveJobsPage';
-import NewJobPage from '../job/NewJobPage';
-import NotFoundPage from '../notfound/NotFoundPage';
+import ActivePage from "../job/ActiveJobsPage"
+import NewJobPage from "../job/NewJobPage"
+import NotFoundPage from "../notfound/NotFoundPage"
 
 const styles = {
   container: {
@@ -32,7 +36,7 @@ const styles = {
 
 // v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
 const bootstrap4Metas: any = [
-  { charset: 'utf-8' },
+  {charset: 'utf-8'},
   {
     name: 'viewport',
     content: 'width=device-width, initial-scale=1, shrink-to-fit=no',
@@ -43,7 +47,7 @@ const bootstrap4Metas: any = [
   },
 ];
 
-const App = ({ currentLocale, currentTheme }) => (
+const App = ({currentLocale, currentTheme}) => (
   <ThemeProvider
     key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
     theme={themes[currentTheme] || themes.initial}
@@ -67,9 +71,9 @@ const App = ({ currentLocale, currentTheme }) => (
       <Flex flexColumn style={styles.container}>
         <Header />
         <Box style={styles.page}>
-          <Match exactly pattern="/" component={ActivePage} />
-          <Match exactly pattern="/new" component={NewJobPage} />
-          <Miss component={NotFoundPage} />
+          <Match exactly pattern="/" component={ActivePage}/>
+          <Match exactly pattern="/new" component={NewJobPage}/>
+          <Miss component={NotFoundPage}/>
         </Box>
         <Footer />
       </Flex>
@@ -82,6 +86,17 @@ App.propTypes = {
   currentTheme: React.PropTypes.string,
 };
 
+const hooks = {
+  load: ({dispatch}) => {
+    return Promise.all([
+      dispatch(loadClientExtra()),
+      dispatch(fetchWallets()),
+      dispatch(loadClientSettings())
+    ]);
+  },
+  browser: ({dispatch}) => dispatch(fetchClosestCity())
+};
+
 export default R.compose(
   connect(
     (state: State) => ({
@@ -90,4 +105,5 @@ export default R.compose(
     }),
   ),
   start,
+  provideHooks(hooks)
 )(App);

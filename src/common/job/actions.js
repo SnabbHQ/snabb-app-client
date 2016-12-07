@@ -1,5 +1,6 @@
 import keyBy from 'lodash/keyBy';
 import reduce from 'lodash/reduce';
+import {BrowserRouter} from "react-router"
 import storage from '../lib/storage';
 import getPosition from '../lib/getPosition';
 import getClosestCity from '../lib/getClosestCity';
@@ -637,7 +638,7 @@ export function createNewJob() {
         jobs: { [job.id]: job }
       });
 
-      browserHistory.push({
+      BrowserRouter.push({
         pathname: isScheduled ? '/scheduled' : '/active',
         query: { job: job.id }
       });

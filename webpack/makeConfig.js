@@ -59,6 +59,9 @@ const makeConfig = (options) => {
       noParse: [
         // https://github.com/localForage/localForage/issues/617
         new RegExp('localforage.js'),
+
+        // https://github.com/braintree/braintree-web/issues/52
+        /braintree-web/
       ],
       loaders: [
         {
@@ -97,8 +100,7 @@ const makeConfig = (options) => {
           loader: isDevelopment ?
             'style-loader!css-loader?modules-true!postcss-loader' :
             ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?modules-true!postcss-loader' }),
-        },
-        {
+        }, {
           test: /\.scss$/,
           loaders: ["style-loader", "css-loader", "sass-loader"]
         },
