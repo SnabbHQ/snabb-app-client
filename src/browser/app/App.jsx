@@ -10,16 +10,13 @@ import Header from "./Header"
 import Helmet from "react-helmet"
 import R from "ramda"
 import React from "react"
-import {loadClientExtra} from "../../common/user/extra/actions"
-import {loadClientSettings} from "../../common/user/settings/actions"
-import {fetchClosestCity} from "../../common/job/actions"
-import {fetchWallets} from "../../common/payments/actions"
 import favicon from "../../common/app/favicon"
 import start from "../../common/app/start"
 import {Box, Container, Flex} from "../app/components"
 import {Match, ThemeProvider} from "../../common/app/components"
 import {Miss} from "react-router"
 import {connect} from "react-redux"
+
 // Pages
 import ActivePage from "../job/ActiveJobsPage"
 import NewJobPage from "../job/NewJobPage"
@@ -86,17 +83,6 @@ App.propTypes = {
   currentTheme: React.PropTypes.string,
 };
 
-const hooks = {
-  load: ({dispatch}) => {
-    return Promise.all([
-      dispatch(loadClientExtra()),
-      dispatch(fetchWallets()),
-      dispatch(loadClientSettings())
-    ]);
-  },
-  browser: ({dispatch}) => dispatch(fetchClosestCity())
-};
-
 export default R.compose(
   connect(
     (state: State) => ({
@@ -105,5 +91,4 @@ export default R.compose(
     }),
   ),
   start,
-  provideHooks(hooks)
 )(App);
