@@ -320,7 +320,7 @@ export const ActiveJobsPage = React.createClass({
               defaultMessage='Jobs that are in progress will appear here.' />
           }
           actions={
-            <RequestJobButton position='Active blankslate' />
+            <RequestJobButton/>
           } />
       </Flex>
     )
