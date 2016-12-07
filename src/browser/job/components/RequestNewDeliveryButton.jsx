@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import analytics from '../../../common/lib/analytics';
-import {Button} from '../../app/components';
+import {PrimaryButton} from '../../app/components';
 
 type Props = {
   disabled?: boolean,
@@ -29,14 +29,14 @@ const RequestNewDeliveryButton = ({ disabled, style, message, ...props }: Props,
   }
 
   return (
-    <Button {...props} disabled={disabled} backgroundColor={'accent'} style={sx} onClick={goToNewJobPage}>
+    <PrimaryButton {...props} disabled={disabled} style={sx} onClick={goToNewJobPage}>
       {message}
-    </Button>
+    </PrimaryButton>
   );
 };
 
 RequestNewDeliveryButton.defaultProps = {
-  message: <FormattedMessage id='newJobButton' defaultMessage='New job' />
+  message: <FormattedMessage id='newDeliveryButton' defaultMessage='Request a Delivery' />
 }
 
 RequestNewDeliveryButton.contextTypes = {

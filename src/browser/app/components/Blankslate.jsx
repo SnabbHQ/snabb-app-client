@@ -39,8 +39,8 @@ const Blankslate = ({icon, actions, title, subtitle}: Props) => {
   return (
     <Flex flexColumn align="center" justify="center" style={styles.container}>
       {renderIcon()}
-      <Heading level={1} size={1} mt={1} mb={1} style={styles.title}><FormattedMessage {...title}/></Heading>
-      <Text mb={1} style={styles.subtitle}><FormattedMessage {...subtitle}/></Text>
+      <Heading level={1} size={3} mt={2} mb={1} style={styles.title}><FormattedMessage {...title}/></Heading>
+      <Text mb={3} style={styles.subtitle}><FormattedMessage {...subtitle}/></Text>
       {renderActions()}
     </Flex>
   )

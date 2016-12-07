@@ -13,7 +13,7 @@ const PrimaryButton = ({ disabled, style, ...props }: Props, { rebass }: Object)
     ...(disabled && rebass.states.disabled),
   };
   return (
-    <Button {...props} disabled={disabled} backgroundColor={'accent'} style={sx} />
+    <Button {...props} disabled={disabled} backgroundColor={'accent'} style={sx}/>
   );
 };
 
