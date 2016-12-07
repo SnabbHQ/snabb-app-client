@@ -9,8 +9,8 @@
     "airbnb",
     "plugin:flowtype/recommended"
   ],
-  env: {
-    jest: true
+  "env": {
+    "jest": true
   },
   "rules": {
     // Soft some rules.

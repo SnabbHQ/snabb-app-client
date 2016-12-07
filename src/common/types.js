@@ -71,6 +71,10 @@ export type ThemeState = {
   currentTheme: ?string,
 };
 
+export type JobsState = {
+  all: {[id: string]: Todo}
+}
+
 export type TodosState = {
   all: {[id: string]: Todo},
 };

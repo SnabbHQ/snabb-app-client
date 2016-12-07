@@ -72,7 +72,6 @@ const App = ({currentLocale, currentTheme}) => (
           <Match exactly pattern="/new" component={NewJobPage}/>
           <Miss component={NotFoundPage}/>
         </Box>
-        <Footer />
       </Flex>
     </Container>
   </ThemeProvider>

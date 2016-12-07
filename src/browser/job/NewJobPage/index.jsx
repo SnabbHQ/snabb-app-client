@@ -20,7 +20,7 @@ import createPoller from '../../../common/lib/createPoller';
 import JobFields from '../components/JobFields/index';
 import MarkersMap from '../components/MarkersMap';
 import { Button } from '../../app/components';
-import Blankslate from '../../app/components/Blankslate/index';
+import Blankslate from '../../app/components/Blankslate';
 import LoadingMessage from '../../app/components/LoadingMessage/index';
 import {
   CITIES,
