@@ -19,6 +19,7 @@ const typography = {
 
 const colors = {
   primary: '#000',
+  primaryLight: '#323232',
   secondary: '#888',
   accent: '#08e',
   info: '#08e',
@@ -60,8 +61,8 @@ export const compute = (theme: Object) => ({
     color: theme.colors.accent,
     bold: { fontWeight: theme.bold },
     link: { textDecoration: 'none' },
-    hover: { backgroundColor: theme.colors.secondary, textDecoration: 'none' },
-    active: { color: theme.colors.accent, textDecoration: 'none' },
+    hover: { textDecoration: 'none' },
+    active: { textDecoration: 'none' },
   },
 
   Container: {

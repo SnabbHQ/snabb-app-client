@@ -4,7 +4,7 @@ import {View, Heading, Flex, Image, Text} from './'
 import {FormattedMessage} from "react-intl"
 
 type Props = {
-  icon?: any,
+  icon?: string,
   actions?: any,
   subtitle: object,
   title: objects,
@@ -55,7 +55,7 @@ Blankslate.propTypes = {
     React.PropTypes.object,
     React.PropTypes.string,
   ]).isRequired,
-  icon: PropTypes.object,
+  icon: PropTypes.string,
   actions: PropTypes.object,
 }
 Blankslate.contextTypes = {
