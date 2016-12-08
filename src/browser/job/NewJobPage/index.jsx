@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { provideHooks } from 'redial';
-import { FormattedMessage, FormattedNumber } from 'react-intl';
-import some from 'lodash/some';
-import filter from 'lodash/filter';
-import size from 'lodash/size';
-import get from 'lodash/get';
+import React, {Component} from "react"
+import {connect} from "react-redux"
+import {provideHooks} from "redial"
+import {FormattedMessage, FormattedNumber} from "react-intl"
+import some from "lodash/some"
+import filter from "lodash/filter"
+import size from "lodash/size"
+import get from "lodash/get"
 import {
   createNewJob,
   fetchClosestDrivers,
@@ -14,31 +14,27 @@ import {
   loadSchedulingDays,
   resetNewJob,
   updateNewJob
-} from '../../../common/job/actions';
-import createPoller from '../../../common/lib/createPoller';
+} from "../../../common/job/actions"
+import createPoller from "../../../common/lib/createPoller"
+import JobFields from "../components/JobFields/index"
+import MarkersMap from "../components/MarkersMap"
+import {Button} from "../../app/components"
+import Blankslate from "../../app/components/Blankslate"
+import LoadingMessage from "../../app/components/LoadingMessage/index"
+import {CITIES, DEFAULT_CITY, POLL_DRIVERS_INTERVAL, POLL_QUOTES_INTERVAL} from "../../../common/lib/constants"
+import layoutStyles from "../../app/styles/layout.scss"
+import styles from "./NewJobPage.scss"
 
-import JobFields from '../components/JobFields/index';
-import MarkersMap from '../components/MarkersMap';
-import { Button } from '../../app/components';
-import Blankslate from '../../app/components/Blankslate';
-import LoadingMessage from '../../app/components/LoadingMessage/index';
-import {
-  CITIES,
-  DEFAULT_CITY,
-  POLL_DRIVERS_INTERVAL,
-  POLL_QUOTES_INTERVAL
-} from '../../../common/lib/constants';
-import layoutStyles from '../../app/styles/layout.scss';
-import styles from './NewJobPage.scss';
 
-const NewJobPage = React.createClass({
+class NewJobPage extends Component {
+
   componentWillMount() {
     // Use the place stored in locale storage if we were not able to fetch one
     // on the server.
     if (this.props.places.pickUpPlace == null) {
       this.props.resetNewJob();
     }
-  },
+  }
 
   componentDidMount() {
     this._driversPoller = createPoller(this.fetchClosestDrivers, {
@@ -49,18 +45,18 @@ const NewJobPage = React.createClass({
     });
 
     this.props.loadSchedulingDays(this.props.currentCity);
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.currentCity !== nextProps.currentCity) {
       this.props.loadSchedulingDays(nextProps.currentCity);
     }
-  },
+  }
 
   componentWillUnmount() {
     this._driversPoller.stop();
     this._quotesPoller.stop();
-  },
+  }
 
   fetchClosestDrivers() {
     const { pickUpPlace } = this.props.places;
@@ -68,13 +64,13 @@ const NewJobPage = React.createClass({
     if (pickUpPlace == null) { return Promise.resolve(); }
 
     return this.props.fetchClosestDrivers(pickUpPlace.address);
-  },
+  }
 
   handleSubmit(e) {
     e.preventDefault();
 
     this.props.createNewJob();
-  },
+  }
 
   renderCreditCardsBlankSlate() {
     return (
@@ -99,7 +95,7 @@ const NewJobPage = React.createClass({
           } />
       </div>
     );
-  },
+  }
 
   renderRequestButton() {
     const {
@@ -145,7 +141,7 @@ const NewJobPage = React.createClass({
         {buttonLabel}
       </Button>
     );
-  },
+  }
 
   render() {
     const {
@@ -207,7 +203,7 @@ const NewJobPage = React.createClass({
       </div>
     );
   }
-});
+}
 
 function mapStateToProps(state) {
   const {
