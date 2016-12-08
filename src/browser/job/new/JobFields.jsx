@@ -15,7 +15,7 @@ const JobFields = ({}) => {
         PICKUP
       </Heading>
 
-      <PlaceFields/>
+      <PlaceFields placeType={"pickUp"}/>
 
     </Block>
   )

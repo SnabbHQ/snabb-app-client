@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import {defineMessages} from 'react-intl';
-import wrapFields, {wrappedFieldsPropTypes} from '../../lib/wrapFields';
-import {Block, View, Heading, Grid, Input} from '../../app/components'
+import {View, Grid, Input} from '../../app/components'
 
 const MESSAGES = defineMessages({
   contactCompanyPlaceholder: {
@@ -51,7 +50,7 @@ export const PlaceShape = PropTypes.shape({
   contactEmail: PropTypes.string
 });
 
-const PlaceFields = ({}) => {
+const PlaceFields = ({placeType}) => {
 
   const onInputKeyDown = (event) => {
   }
@@ -61,6 +60,7 @@ const PlaceFields = ({}) => {
       <View>
         <Grid col={6} pt={2}>
           <Input
+            name={`${placeType}FirstName`}
             label="First Name"
             maxLength={100}
             onKeyDown={onInputKeyDown}
@@ -69,6 +69,7 @@ const PlaceFields = ({}) => {
         </Grid>
         <Grid col={6} pt={2} pl={2}>
           <Input
+            name={`${placeType}LastName`}
             label="Last Name"
             maxLength={100}
             onKeyDown={onInputKeyDown}
@@ -78,6 +79,7 @@ const PlaceFields = ({}) => {
       </View>
 
       <Input
+        name={`${placeType}BusinessName`}
         label="Business Name"
         maxLength={100}
         onKeyDown={onInputKeyDown}
@@ -85,6 +87,7 @@ const PlaceFields = ({}) => {
       />
 
       <Input
+        name={`${placeType}Address`}
         label="Address*"
         maxLength={100}
         onKeyDown={onInputKeyDown}
@@ -94,6 +97,7 @@ const PlaceFields = ({}) => {
       <View>
         <Grid col={6} >
           <Input
+            name={`${placeType}Email`}
             label="Email"
             maxLength={100}
             onKeyDown={onInputKeyDown}
@@ -102,6 +106,7 @@ const PlaceFields = ({}) => {
         </Grid>
         <Grid col={6} pl={2}>
           <Input
+            name={`${placeType}PhoneNumber`}
             label="Phone Number"
             maxLength={100}
             onKeyDown={onInputKeyDown}
@@ -111,6 +116,7 @@ const PlaceFields = ({}) => {
       </View>
 
       <Input
+        name={`${placeType}Comments`}
         label="Comments for the courier"
         maxLength={100}
         onKeyDown={onInputKeyDown}
@@ -121,11 +127,10 @@ const PlaceFields = ({}) => {
 }
 
 PlaceFields.propTypes = {
-  ...wrappedFieldsPropTypes,
   placeType: PropTypes.oneOf(['pickUp', 'dropOff']).isRequired,
-  recentAddresses: PropTypes.array.isRequired,
-  getAddresses: PropTypes.func.isRequired,
-  value: PlaceShape.isRequired
+  // recentAddresses: PropTypes.array.isRequired,
+  // getAddresses: PropTypes.func.isRequired,
+  // value: PlaceShape.isRequired
 }
 
 export default PlaceFields
