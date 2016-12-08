@@ -2,18 +2,18 @@
 import R from 'ramda'
 import React from "react"
 import {connect} from "react-redux"
-import {Block, BlankSlate } from "../app/components"
-import { NoActiveJobsPlaceholder } from "./components"
+import {Block} from "../../app/components"
+import NoItems from "./NoItems"
 
-const ActiveJobsPage = ({ jobs }) => {
+const ScheduledJobsPage = ({ jobs }) => {
   if (R.isEmpty(jobs)) {
     return (
-      <NoActiveJobsPlaceholder/>
+      <NoItems/>
     )
   }
 }
 
-ActiveJobsPage.propTypes = {
+ScheduledJobsPage.propTypes = {
   jobs: React.PropTypes.object.isRequired
 };
 
@@ -22,4 +22,4 @@ export default connect(
     jobs: {}//state.jobs.all,
   }),
   {},
-)(ActiveJobsPage);
+)(ScheduledJobsPage);

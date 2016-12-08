@@ -18,7 +18,8 @@ import {Miss} from "react-router"
 import {connect} from "react-redux"
 
 // Pages
-import ActivePage from "../job/ActiveJobsPage"
+import ActivePage from "../job/active/ActiveJobsPage"
+import ScheduledPage from "../job/scheduled/ScheduledJobsPage"
 import NewJobPage from "../job/new/NewJobPage"
 import NotFoundPage from "../notfound/NotFoundPage"
 
@@ -70,7 +71,9 @@ const App = ({currentLocale, currentTheme}) => (
         <Header/>
         <Box style={styles.page}>
           <Match exactly pattern="/" component={ActivePage}/>
+          <Match exactly pattern="/active" component={ActivePage}/>
           <Match exactly pattern="/new" component={NewJobPage}/>
+          <Match exactly pattern="/scheduled" component={ScheduledPage}/>
           <Miss component={NotFoundPage}/>
         </Box>
       </Flex>

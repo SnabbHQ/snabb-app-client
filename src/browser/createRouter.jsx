@@ -1,7 +1,7 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 import AccountDetailsPage from './user/AccountDetailsPage';
-import ActiveJobsPage from './job/ActiveJobsPage';
+import ActiveJobsPage from './job/active/ActiveJobsPage';
 import ScheduledJobsPage from './job/ScheduledJobsPage';
 import App from './app/App2';
 import AuthPage from './user/AuthPage';

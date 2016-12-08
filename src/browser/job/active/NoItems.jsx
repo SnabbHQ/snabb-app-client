@@ -2,7 +2,7 @@ import React from "react"
 import {Blankslate} from "../../app/components"
 import jobMessages from '../../../common/job/jobMessages'
 import activeBlankslateIcon from "../../../../assets/images/activeBlankslateIcon.svg"
-import {RequestNewDeliveryButton} from './'
+import {RequestNewDeliveryButton} from '../components'
 
 function NoActiveJobsPlaceholder() {
   return (
