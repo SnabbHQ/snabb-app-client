@@ -26,9 +26,6 @@ const NewJobPage = ({intl}) => {
         <JobFields/>
         {renderRequestButton()}
       </Box>
-      <Box col={6}>
-        Box p 2
-      </Box>
     </Flex>
   )
 }

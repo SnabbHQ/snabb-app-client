@@ -9,7 +9,7 @@
 
 const typography = {
   // www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide
-  fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif', // minimal set
+  fontFamily: '"Source Sans Pro", sans-serif', // minimal set
   monospace: '"Roboto Mono", Menlo, Consolas, monospace',
   fontSizes: [48, 32, 24, 20, 16, 14, 12],
   lineHeight: 1.5,
@@ -81,6 +81,10 @@ export const compute = (theme: Object) => ({
     backgroundColor: theme.colors.primary,
     borderBottom: `1px solid rgba(0, 0, 0, ${1/8})`,
     padding: theme.scale[2],
+  },
+
+  Input: {
+    label: { color: 'white' }
   },
 
   button: {
