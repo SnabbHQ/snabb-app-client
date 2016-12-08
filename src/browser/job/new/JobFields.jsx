@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import wrapFields, { wrappedFieldsPropTypes } from '../../lib/wrapFields'
-import {Block, Flex, Grid, View, Image, Space, Separator, Heading} from '../../app/components'
+import {Block, Flex, Grid, View, Image, Space, Divider, Heading} from '../../app/components'
 import PlaceFields from './PlaceFields'
 import pickupIcon from "../../../../assets/images/pickupBadgeBlank.svg"
 import dropIcon from "../../../../assets/images/dropOffBadgeBlank.svg"
@@ -28,7 +28,7 @@ const JobFields = ({}) => {
       </View>
       <PlaceFields placeType="pickUp"/>
       <Space x={1}/>
-      <Separator/>
+      <Divider/>
       <Space x={1}/>
       <View>
         <Grid>

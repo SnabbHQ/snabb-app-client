@@ -65,7 +65,7 @@ export const compute = (theme: Object) => ({
     active: { textDecoration: 'none' },
   },
 
-  separator: {
+  Divider: {
     backgroundColor: theme.colors.gray,
     height: 1
   },

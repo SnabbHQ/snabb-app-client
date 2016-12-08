@@ -16,8 +16,6 @@ export { default as View } from './View';
 export { default as focus } from './focus';
 export { default as fxbml } from './fxbml';
 export { default as Blankslate } from './Blankslate';
-export { default as Separator } from './Separator';
-
 
 // Rebass components
 // github.com/jxnblk/rebass
