@@ -1,52 +1,25 @@
-import React, { PropTypes } from 'react'
-import wrapFields, { wrappedFieldsPropTypes } from '../../lib/wrapFields'
-import {Block, Flex, Grid, View, Image, Space, Divider, Heading} from '../../app/components'
-import PlaceFields from './PlaceFields'
+import React from "react"
+import {View, Space, Divider} from "../../app/components"
+import PlaceFields from "./PlaceFields"
+import VehicleField from "./VehicleField"
 import pickupIcon from "../../../../assets/images/pickupBadgeBlank.svg"
 import dropIcon from "../../../../assets/images/dropOffBadgeBlank.svg"
-
+import vehicleIcon from "../../../../assets/images/vehicleBadgeBlank.svg"
 
 const JobFields = ({}) => {
 
   return (
     <View>
-      <View>
-        <Grid>
-          <Image
-            alt="Pickup Icon"
-            mt={2}
-            src={pickupIcon}
-          />
-        </Grid>
-        <Grid pt={2} ml={2}>
-          <Heading
-            level={2}
-            size={3}>
-            Pick up
-          </Heading>
-        </Grid>
-      </View>
-      <PlaceFields placeType="pickUp"/>
+      <PlaceFields icon={pickupIcon} title={"Pick Up"} placeType="pickUp"/>
       <Space x={1}/>
       <Divider/>
       <Space x={1}/>
-      <View>
-        <Grid>
-          <Image
-            alt="Pickup Icon"
-            mt={2}
-            src={dropIcon}
-          />
-        </Grid>
-        <Grid pt={2} ml={2}>
-          <Heading
-            level={2}
-            size={3}>
-            Drop Off
-          </Heading>
-        </Grid>
-      </View>
-      <PlaceFields placeType="dropOff"/>
+      <PlaceFields icon={dropIcon} title={"Drop Off"} placeType="dropOff"/>
+      <Space x={1}/>
+      <Divider/>
+      <Space x={1}/>
+      <VehicleField icon={vehicleIcon} title={"Select a Vehicle"}/>
+      <Space x={1}/>
     </View>
   )
 }

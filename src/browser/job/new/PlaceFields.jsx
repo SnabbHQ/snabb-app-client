@@ -1,6 +1,7 @@
-import React, {PropTypes} from 'react';
-import {defineMessages} from 'react-intl';
+import React, {PropTypes} from 'react'
+import {defineMessages} from 'react-intl'
 import {View, Grid, Input} from '../../app/components'
+import FieldHeader from "./FieldHeader"
 
 const MESSAGES = defineMessages({
   contactCompanyPlaceholder: {
@@ -50,13 +51,14 @@ export const PlaceShape = PropTypes.shape({
   contactEmail: PropTypes.string
 });
 
-const PlaceFields = ({placeType}) => {
+const PlaceFields = ({icon, title, placeType}) => {
 
   const onInputKeyDown = (event) => {
   }
 
   return (
     <View>
+      <FieldHeader icon={icon} title={"Pick Up"}/>
       <View>
         <Grid col={6} pt={2}>
           <Input
@@ -127,6 +129,8 @@ const PlaceFields = ({placeType}) => {
 }
 
 PlaceFields.propTypes = {
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
   placeType: PropTypes.oneOf(['pickUp', 'dropOff']).isRequired,
   // recentAddresses: PropTypes.array.isRequired,
   // getAddresses: PropTypes.func.isRequired,

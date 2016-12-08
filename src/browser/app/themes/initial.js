@@ -18,7 +18,7 @@ const typography = {
 };
 
 const colors = {
-  primary: '#000',
+  primary: '#222',
   primaryLight: '#323232',
   secondary: '#888',
   accent: '#08e',
@@ -29,6 +29,7 @@ const colors = {
   // only grayscale
   black: '#333',
   gray: '#ddd',
+  grayLight: '#fff',
   white: '#fff',
 };
 
@@ -66,7 +67,7 @@ export const compute = (theme: Object) => ({
   },
 
   Divider: {
-    backgroundColor: theme.colors.gray,
+    backgroundColor: theme.colors.grayLight,
     height: 1
   },
 
@@ -85,7 +86,7 @@ export const compute = (theme: Object) => ({
     color: 'inherit',
     backgroundColor: theme.colors.primary,
     borderBottom: `1px solid rgba(0, 0, 0, ${1/8})`,
-    padding: theme.scale[2],
+    padding: theme.scale[1],
   },
 
   Label: {

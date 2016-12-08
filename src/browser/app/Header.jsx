@@ -23,8 +23,8 @@ const Header = ({viewer}, {rebass}) => {
       display: 'none',
     },
     headerLink: {
-      hover: {borderRadius: 4, backgroundColor: rebass.colors.primaryLight},
-      active: {backgroundColor: rebass.colors.primary, color: rebass.colors.accent},
+      hover: {borderRadius: 4, backgroundColor: rebass.colors.grey},
+      active: {color: rebass.colors.accent},
     }
   }
 

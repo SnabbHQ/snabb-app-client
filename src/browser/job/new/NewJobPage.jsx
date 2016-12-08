@@ -1,19 +1,19 @@
 /* @flow */
 import React from 'react'
 import {provideHooks} from "redial"
-import linksMessages from '../../../common/app/linksMessages'
 import {PrimaryButton, Fixed, Flex, Box} from '../../app/components'
 import {injectIntl, intlShape, FormattedMessage} from 'react-intl'
 import JobFields from './JobFields'
 import GoogleMap from 'google-map-react';
 
-const NewJobPage = ({intl}) => {
+const NewJobPage = ({}) => {
 
   const styles = {
     leftPanel: {
       zIndex: 1,
       width: '60%',
-      boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)'
+      boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)',
+      paddingBottom: 80,
     },
     rightPanel: {
       width: '40%',
@@ -71,10 +71,6 @@ const NewJobPage = ({intl}) => {
       </Fixed>
     </Flex>
   )
-}
-
-NewJobPage.propTypes = {
-  intl: intlShape,
 }
 
 export default injectIntl(NewJobPage)

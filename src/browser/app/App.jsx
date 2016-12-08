@@ -28,7 +28,7 @@ const styles = {
     minHeight: '100vh',
   },
   page: {
-    paddingTop: 60,
+    paddingTop: 35,
     flex: 1
   },
 };
