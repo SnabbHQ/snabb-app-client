@@ -10,14 +10,26 @@ const NewJobPage = ({intl}) => {
 
   const styles = {
     leftPanel: {
+      width: '60%',
       boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)'
+    },
+    requestFixedContainer: {
+      height: 60,
+      width: '60%',
+      backgroundColor: 'white',
+      boxShadow: '0 -1px 1px rgba(0,0,0,.08)'
+    },
+    requestFlexContainer: {
+      justifyContent: 'flex-end',
+      height: 60,
+      paddingRight: 50,
     }
   }
 
   function renderRequestButton() {
     return (
-    <Fixed bottom left>
-      <Flex align="center">
+    <Fixed bottom left style={styles.requestFixedContainer}>
+      <Flex align="center" style={styles.requestFlexContainer}>
         <PrimaryButton
           type='submit'
           id='requestButton'>
@@ -32,7 +44,7 @@ const NewJobPage = ({intl}) => {
 
   return (
     <Flex>
-      <Box col={5} p={4} style={styles.leftPanel}>
+      <Box p={4} style={styles.leftPanel}>
         <JobFields/>
         {renderRequestButton()}
       </Box>
