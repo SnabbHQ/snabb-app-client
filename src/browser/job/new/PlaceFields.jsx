@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {defineMessages} from 'react-intl';
 import wrapFields, {wrappedFieldsPropTypes} from '../../lib/wrapFields';
+import {Block, View, Heading, Grid, Input} from '../../app/components'
 
 const MESSAGES = defineMessages({
   contactCompanyPlaceholder: {
@@ -51,60 +52,71 @@ export const PlaceShape = PropTypes.shape({
 });
 
 const PlaceFields = ({}) => {
+
+  const onInputKeyDown = (event) => {
+  }
+
   return (
-    <div>
-      <div className={gridStyles.row}>
-        <div className={gridStyles.col6}>
-          {renderText('contactFirstname', {debounce: DEBOUNCE_DELAY})}
-        </div>
-        <div className={gridStyles.col6}>
-          {renderText('contactLastname', {debounce: DEBOUNCE_DELAY})}
-        </div>
-      </div>
+    <View>
+      <View>
+        <Grid col={6} pt={2}>
+          <Input
+            label="First Name"
+            maxLength={100}
+            onKeyDown={onInputKeyDown}
+            placeholder={'Hola'}
+          />
+        </Grid>
+        <Grid col={6} pt={2} pl={2}>
+          <Input
+            label="Last Name"
+            maxLength={100}
+            onKeyDown={onInputKeyDown}
+            placeholder={'Hola'}
+          />
+        </Grid>
+      </View>
 
-      <div className={gridStyles.row}>
-        <div className={gridStyles.col12}>
-          {renderText('contactCompany', {debounce: DEBOUNCE_DELAY})}
-        </div>
-      </div>
+      <Input
+        label="Business Name"
+        maxLength={100}
+        onKeyDown={onInputKeyDown}
+        placeholder={'Business Name'}
+      />
 
-      <div className={gridStyles.row}>
-        <div className={gridStyles.col12}>
-          {renderAutocomplete('address', {
-            id: `${placeType}AddressInput`,
-            defaultItems: recentAddresses,
-            getItems: getAddresses,
-            placeholder
-          })}
-        </div>
-      </div>
+      <Input
+        label="Address*"
+        maxLength={100}
+        onKeyDown={onInputKeyDown}
+        placeholder={'Address'}
+      />
 
-      <div className={gridStyles.row}>
-        <div className={gridStyles.col6}>
-          {renderText('contactPhone', {
-            id: `${placeType}ContactPhone`,
-            type: 'tel',
-            debounce: MOAR_DEBOUNCE_DELAY
-          })}
-        </div>
-        <div className={gridStyles.col6}>
-          {renderText('contactEmail', {
-            id: `${placeType}ContactEmail`,
-            type: 'email',
-            debounce: MOAR_DEBOUNCE_DELAY
-          })}
-        </div>
-      </div>
+      <View>
+        <Grid col={6} >
+          <Input
+            label="Email"
+            maxLength={100}
+            onKeyDown={onInputKeyDown}
+            placeholder={'Hola'}
+          />
+        </Grid>
+        <Grid col={6} pl={2}>
+          <Input
+            label="Phone Number"
+            maxLength={100}
+            onKeyDown={onInputKeyDown}
+            placeholder={'Hola'}
+          />
+        </Grid>
+      </View>
 
-      <div className={gridStyles.row}>
-        <div className={gridStyles.col12}>
-          {renderText('comment', {
-            id: `${placeType}PlaceComment`,
-            debounce: DEBOUNCE_DELAY
-          })}
-        </div>
-      </div>
-    </div>
+      <Input
+        label="Comments for the courier"
+        maxLength={100}
+        onKeyDown={onInputKeyDown}
+        placeholder={'e.g. leave with the doorman'}
+      />
+    </View>
   )
 }
 
@@ -116,4 +128,4 @@ PlaceFields.propTypes = {
   value: PlaceShape.isRequired
 }
 
-export default wrapFields(PlaceFields, {messages: MESSAGES});
+export default PlaceFields
