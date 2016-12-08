@@ -29,7 +29,7 @@ const Header = ({viewer}, {rebass}) => {
   }
 
   return (
-    <Fixed top left right zIndex={1}>
+    <Fixed top left right zIndex={2}>
       <Toolbar style={styles.toolbar}>
         <Flex align="center">
           <Space x={2}/>

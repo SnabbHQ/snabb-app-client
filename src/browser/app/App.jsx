@@ -67,7 +67,7 @@ const App = ({currentLocale, currentTheme}) => (
         ]}
       />
       <Flex flexColumn style={styles.container}>
-        <Header fixed/>
+        <Header/>
         <Box style={styles.page}>
           <Match exactly pattern="/" component={ActivePage}/>
           <Match exactly pattern="/new" component={NewJobPage}/>
