@@ -19,7 +19,7 @@ import {connect} from "react-redux"
 
 // Pages
 import ActivePage from "../job/ActiveJobsPage"
-import NewJobPage from "../job/NewJobPage"
+import NewJobPage from "../job/new/NewJobPage"
 import NotFoundPage from "../notfound/NotFoundPage"
 
 const styles = {

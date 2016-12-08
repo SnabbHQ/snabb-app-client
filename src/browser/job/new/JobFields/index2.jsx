@@ -6,11 +6,11 @@ import ErrorMessage from '../../../app/components/ErrorMessage';
 import wrapFields, { wrappedFieldsPropTypes } from '../../../lib/wrapFields';
 import Card from '../../../app/components/Card/index';
 import layoutStyles from '../../../app/styles/layout.scss';
-import styles from './JobFields.scss';
+import styles from '../JobFields.scss';
 
 const ICONS = {
   pickUp: {
-    blank: require('../../../../../assets/images/pickUpBadgeBlank.svg'),
+    blank: require('../../../../../assets/images/pickupBadgeBlank.svg'),
     present: require('../../../../../assets/images/pickUpBadgePresent.svg'),
     error: require('../../../../../assets/images/pickUpBadgeError.svg')
   },

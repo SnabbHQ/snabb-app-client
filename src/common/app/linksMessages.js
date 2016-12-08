@@ -26,6 +26,10 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Past',
     id: 'app.links.past',
   },
+  new: {
+    defaultMessage: 'New Delivery',
+    id: 'app.links.new',
+  },
   home: {
     defaultMessage: 'Home',
     id: 'app.links.home',

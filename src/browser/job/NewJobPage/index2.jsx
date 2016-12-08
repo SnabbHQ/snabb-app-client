@@ -16,14 +16,14 @@ import {
   updateNewJob
 } from "../../../common/job/actions"
 import createPoller from "../../../common/lib/createPoller"
-import JobFields from "../components/JobFields/index"
+import JobFields from "../new/JobFields/index"
 import MarkersMap from "../components/MarkersMap"
 import {Button} from "../../app/components"
 import Blankslate from "../../app/components/Blankslate"
 import LoadingMessage from "../../app/components/LoadingMessage/index"
 import {CITIES, DEFAULT_CITY, POLL_DRIVERS_INTERVAL, POLL_QUOTES_INTERVAL} from "../../../common/lib/constants"
 import layoutStyles from "../../app/styles/layout.scss"
-import styles from "./NewJobPage.scss"
+import styles from "../new/NewJobPage.scss"
 
 
 class NewJobPage extends Component {

@@ -284,6 +284,7 @@ function resetNewJobWithJob(jobId) {
 }
 
 export function resetNewJob(jobId) {
+  console.log('hola')
   return (dispatch) => {
     if (jobId) {
       return dispatch(resetNewJobWithJob(jobId));
