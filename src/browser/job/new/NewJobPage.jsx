@@ -8,6 +8,12 @@ import JobFields from './JobFields'
 
 const NewJobPage = ({intl}) => {
 
+  const styles = {
+    leftPanel: {
+      boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)'
+    }
+  }
+
   function renderRequestButton() {
     return (
       <PrimaryButton
@@ -22,7 +28,7 @@ const NewJobPage = ({intl}) => {
 
   return (
     <Flex>
-      <Box col={6} p={3}>
+      <Box col={6} p={3} style={styles.leftPanel}>
         <JobFields/>
         {renderRequestButton()}
       </Box>

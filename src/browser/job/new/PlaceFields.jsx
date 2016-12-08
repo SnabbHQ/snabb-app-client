@@ -64,7 +64,7 @@ const PlaceFields = ({placeType}) => {
             label="First Name"
             maxLength={100}
             onKeyDown={onInputKeyDown}
-            placeholder={'Hola'}
+            placeholder={''}
           />
         </Grid>
         <Grid col={6} pt={2} pl={2}>
@@ -73,7 +73,7 @@ const PlaceFields = ({placeType}) => {
             label="Last Name"
             maxLength={100}
             onKeyDown={onInputKeyDown}
-            placeholder={'Hola'}
+            placeholder={''}
           />
         </Grid>
       </View>
@@ -83,7 +83,7 @@ const PlaceFields = ({placeType}) => {
         label="Business Name"
         maxLength={100}
         onKeyDown={onInputKeyDown}
-        placeholder={'Business Name'}
+        placeholder={''}
       />
 
       <Input
@@ -91,7 +91,7 @@ const PlaceFields = ({placeType}) => {
         label="Address*"
         maxLength={100}
         onKeyDown={onInputKeyDown}
-        placeholder={'Address'}
+        placeholder={'e.g. San Vicente, 91, 46001, Valencia'}
       />
 
       <View>
@@ -101,7 +101,7 @@ const PlaceFields = ({placeType}) => {
             label="Email"
             maxLength={100}
             onKeyDown={onInputKeyDown}
-            placeholder={'Hola'}
+            placeholder={''}
           />
         </Grid>
         <Grid col={6} pl={2}>
@@ -110,7 +110,7 @@ const PlaceFields = ({placeType}) => {
             label="Phone Number"
             maxLength={100}
             onKeyDown={onInputKeyDown}
-            placeholder={'Hola'}
+            placeholder={''}
           />
         </Grid>
       </View>

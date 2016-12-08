@@ -65,6 +65,11 @@ export const compute = (theme: Object) => ({
     active: { textDecoration: 'none' },
   },
 
+  separator: {
+    backgroundColor: theme.colors.gray,
+    height: 1
+  },
+
   Container: {
     maxWidth: 'auto',
     paddingLeft: 0,
