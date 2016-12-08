@@ -28,7 +28,7 @@ const NewJobPage = ({intl}) => {
 
   return (
     <Flex>
-      <Box col={6} p={3} style={styles.leftPanel}>
+      <Box col={7} p={4} style={styles.leftPanel}>
         <JobFields/>
         {renderRequestButton()}
       </Box>

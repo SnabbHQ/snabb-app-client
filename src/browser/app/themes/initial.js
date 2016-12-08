@@ -88,8 +88,8 @@ export const compute = (theme: Object) => ({
     padding: theme.scale[2],
   },
 
-  Input: {
-    label: { color: 'white' }
+  Label: {
+    color: theme.colors.grey
   },
 
   button: {
