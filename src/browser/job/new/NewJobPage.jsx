@@ -2,7 +2,7 @@
 import React from 'react'
 import {provideHooks} from "redial"
 import linksMessages from '../../../common/app/linksMessages'
-import {PrimaryButton, Flex, Box, Title} from '../../app/components'
+import {PrimaryButton, Toolbar, View, Fixed, Flex, Box, Title} from '../../app/components'
 import {injectIntl, intlShape, FormattedMessage} from 'react-intl'
 import JobFields from './JobFields'
 
@@ -16,19 +16,23 @@ const NewJobPage = ({intl}) => {
 
   function renderRequestButton() {
     return (
-      <PrimaryButton
-        type='submit'
-        id='requestButton'>
-        <FormattedMessage
-          id='newJobPage.requestButtonDisabled'
-          defaultMessage='Request'/>
-      </PrimaryButton>
+    <Fixed bottom left>
+      <Flex align="center">
+        <PrimaryButton
+          type='submit'
+          id='requestButton'>
+          <FormattedMessage
+            id='newJobPage.requestButtonDisabled'
+            defaultMessage='Request'/>
+        </PrimaryButton>
+      </Flex>
+    </Fixed>
     )
   }
 
   return (
     <Flex>
-      <Box col={7} p={4} style={styles.leftPanel}>
+      <Box col={5} p={4} style={styles.leftPanel}>
         <JobFields/>
         {renderRequestButton()}
       </Box>

@@ -27,6 +27,7 @@ const styles = {
     minHeight: '100vh',
   },
   page: {
+    paddingTop: 60,
     flex: 1
   },
 };
@@ -66,7 +67,7 @@ const App = ({currentLocale, currentTheme}) => (
         ]}
       />
       <Flex flexColumn style={styles.container}>
-        <Header />
+        <Header fixed/>
         <Box style={styles.page}>
           <Match exactly pattern="/" component={ActivePage}/>
           <Match exactly pattern="/new" component={NewJobPage}/>

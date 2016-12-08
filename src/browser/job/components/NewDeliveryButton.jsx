@@ -10,7 +10,7 @@ type Props = {
   message: string
 };
 
-const RequestNewDeliveryButton = ({ disabled, style, message, ...props }: Props, { rebass, router }: Object) => {
+const NewDeliveryButton = ({ disabled, style, message, ...props }: Props, { rebass, router }: Object) => {
   const sx = {
     ...style,
     ...(disabled && rebass.states.disabled),
@@ -35,13 +35,13 @@ const RequestNewDeliveryButton = ({ disabled, style, message, ...props }: Props,
   );
 };
 
-RequestNewDeliveryButton.defaultProps = {
-  message: <FormattedMessage id='newDeliveryButton' defaultMessage='Request a Delivery' />
+NewDeliveryButton.defaultProps = {
+  message: <FormattedMessage id='newDeliveryButton' defaultMessage='New Delivery' />
 }
 
-RequestNewDeliveryButton.contextTypes = {
+NewDeliveryButton.contextTypes = {
   rebass: PropTypes.object,
   router: PropTypes.object.isRequired
 };
 
-export default RequestNewDeliveryButton;
+export default NewDeliveryButton;

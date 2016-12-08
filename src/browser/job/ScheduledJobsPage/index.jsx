@@ -10,7 +10,7 @@ import createPromiseHandler from '../../../common/lib/createPromiseHandler';
 import Place from '../components/Place';
 import Card from '../../app/components/Card';
 import CancelJobModal from '../components/CancelJobModal';
-import RequestJobButton from '../components/RequestNewDeliveryButton';
+import RequestJobButton from '../components/NewDeliveryButton';
 import LoadingMessage from '../../app/components/LoadingMessage';
 import Blankslate from '../../app/components/Blankslate';
 import styles from './ScheduledJobsPage.scss';

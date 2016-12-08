@@ -2,9 +2,9 @@
 import type {State} from "../../common/types"
 import React from "react"
 import linksMessages from "../../common/app/linksMessages"
-import RequestNewDeliveryButton from "../job/components/RequestNewDeliveryButton"
+import NewDeliveryButton from "../job/components/NewDeliveryButton"
 import {FormattedMessage} from "react-intl"
-import {Link, Flex, Image, Space, Toolbar} from "../app/components"
+import {Link, Fixed, Flex, Image, Space, Toolbar} from "../app/components"
 import {connect} from "react-redux"
 
 // $FlowFixMe
@@ -13,7 +13,7 @@ const logo = require('../../../assets/images/logo.svg')
 // $FlowFixMe
 const clientPhoto = require('../../../assets/images/clientPhotoDefaultSmall.svg')
 
-const Header = ({viewer}, { rebass }) => {
+const Header = ({viewer}, {rebass}) => {
   const styles = {
     toolbar: {
       justifyContent: 'space-between',
@@ -29,34 +29,36 @@ const Header = ({viewer}, { rebass }) => {
   }
 
   return (
-    <Toolbar style={styles.toolbar}>
-      <Flex align="center">
-        <Space x={2}/>
-        <Image
-          alt="Snabb"
-          src={logo}/>
-        <Space x={4}/>
-        <Link p={1} inverted exactly style={styles.headerLink} to="/">
-          <FormattedMessage {...linksMessages.active} />
-        </Link>
-        <Space x={2}/>
-        <Link p={1} inverted exactly style={styles.headerLink} to="/scheduled">
-          <FormattedMessage {...linksMessages.scheduled} />
-        </Link>
-        <Space x={2}/>
-        <Link p={1} inverted exactly style={styles.headerLink} to="/Past">
-          <FormattedMessage {...linksMessages.past} />
-        </Link>
-        <Space x={2}/>
-      </Flex>
-      <Flex>
-        <RequestNewDeliveryButton message="Request a Delivery"/>
-        <Space x={2}/>
-        <Image
-          alt="Snabb"
-          src={clientPhoto}/>
-      </Flex>
-    </Toolbar>
+    <Fixed top left right zIndex={1}>
+      <Toolbar style={styles.toolbar}>
+        <Flex align="center">
+          <Space x={2}/>
+          <Image
+            alt="Snabb"
+            src={logo}/>
+          <Space x={4}/>
+          <Link p={1} inverted exactly style={styles.headerLink} to="/">
+            <FormattedMessage {...linksMessages.active} />
+          </Link>
+          <Space x={2}/>
+          <Link p={1} inverted exactly style={styles.headerLink} to="/scheduled">
+            <FormattedMessage {...linksMessages.scheduled} />
+          </Link>
+          <Space x={2}/>
+          <Link p={1} inverted exactly style={styles.headerLink} to="/Past">
+            <FormattedMessage {...linksMessages.past} />
+          </Link>
+          <Space x={2}/>
+        </Flex>
+        <Flex>
+          <NewDeliveryButton/>
+          <Space x={2}/>
+          <Image
+            alt="Snabb"
+            src={clientPhoto}/>
+        </Flex>
+      </Toolbar>
+    </Fixed>
   )
 }
 

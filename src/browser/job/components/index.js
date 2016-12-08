@@ -4,4 +4,4 @@
 
 // Job components
 export { default as NoActiveJobsPlaceholder } from './NoActiveJobsPlaceholder';
-export { default as RequestNewDeliveryButton } from './RequestNewDeliveryButton';
+export { default as RequestNewDeliveryButton } from './NewDeliveryButton';

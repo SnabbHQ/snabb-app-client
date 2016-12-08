@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { loadJobsHistory } from '../../../common/job/actions';
 import LoadingMessage from '../../app/components/LoadingMessage';
 import Blankslate from '../../app/components/Blankslate';
-import RequestJobButton from '../components/RequestNewDeliveryButton';
+import RequestJobButton from '../components/NewDeliveryButton';
 import JobsHistoryTable from '../components/JobsHistoryTable';
 import styles from './JobsHistoryPage.scss';
 import gridStyles from '../../app/styles/grid.scss';
