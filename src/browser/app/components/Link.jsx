@@ -29,7 +29,7 @@ const Link = ({bold, exactly, inverted, pseudo, to, ...props}, {rebass}) => {
     <Base
       {...linkProps}
       activeOnlyWhenExact={exactly}
-      activeStyle={rebass.link.active && props.style.active}
+      activeStyle={rebass.link.active && props.style.active ? props.style.active  : {}}
       is={RouterLink}
       to={to}
     />
