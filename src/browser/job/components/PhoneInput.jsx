@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import keys from 'lodash/keys';
-import Text from '../../app/components/Text/index';
+import Text from '../../app/components/Text/index2';
 
 const MASKS = {
   '33': '+11 1 11 11 11 11',

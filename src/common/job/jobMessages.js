@@ -10,13 +10,21 @@ export default defineMessages({
     defaultMessage: 'Jobs that are in progress will appear here.',
     id: 'jobs.new.noActiveJobsSubtitle',
   },
+  selectVehicleTitle: {
+    id: 'job.new.vehicle',
+    defaultMessage: 'Select a Vehicle'
+  },
+  excludeVAT: {
+    id: 'job.new.vat',
+    defaultMessage: 'Excl. VAT'
+  },
   noScheduledJobsTitle: {
-    defaultMessage: 'No scheduled jobs',
     id: 'jobs.scheduled.noScheduledJobsTitle',
+    defaultMessage: 'No scheduled jobs',
   },
   noScheduledJobsSubTitle: {
-    defaultMessage: 'Jobs that are scheduled will appear here.',
     id: 'jobs.scheduled.noScheduledJobsTitle',
-  }
+    defaultMessage: 'Jobs that are scheduled will appear here.',
+  },
 
 })

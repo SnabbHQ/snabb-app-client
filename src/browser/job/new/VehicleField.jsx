@@ -1,35 +1,39 @@
+/* @flow */
 import React, {PropTypes} from 'react'
-import { connect } from 'react-redux';
-import {View} from "../../app/components"
-import FieldHeader from "./FieldHeader"
+import R from "ramda"
+import {FormattedMessage, defineMessages} from 'react-intl'
+import {connect} from 'react-redux'
+import {View} from '../../app/components'
+import FieldHeader from './FieldHeader'
+import jobMessages from '../../../common/job/jobMessages'
+import vehicleIcon from '../../../../assets/images/vehicleBadgeBlank.svg'
+import TransportType from './TransportType'
 
-const VehicleField = ({icon, title, quotes}) => {
+const VehicleField = ({ quotes }) => {
 
   const renderExclVat = () => {
-    // If hash is null it means that there are no quotes.
-    if (!this.props.quotes.hash) { return; }
+    //if (R.isEmpty(quotes)) { return }
 
     return (
       <View>
-        <FormattedMessage
-          id='jobForm.exclVat'
-          defaultMessage='Excl. VAT' />
+        <FormattedMessage {...jobMessages.excludeVAT}/>
       </View>
     )
   }
 
+  //...jobMessages.selectVehicleTitle
   return (
     <View>
+      <FieldHeader icon={vehicleIcon} title={'Select a Vehicle'}/>
       {renderExclVat}
-      <FieldHeader icon={icon} title={title}/>
+      <TransportType/>
+      <TransportType/>
     </View>
   )
 }
 
 
 VehicleField.propTypes = {
-  icon: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   quotes: PropTypes.object.isRequired
 }
 

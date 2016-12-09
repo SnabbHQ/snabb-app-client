@@ -2,7 +2,7 @@
 import React from 'react'
 import {provideHooks} from "redial"
 import {PrimaryButton, Fixed, Flex, Box} from '../../app/components'
-import {injectIntl, intlShape, FormattedMessage} from 'react-intl'
+import {FormattedMessage} from 'react-intl'
 import JobFields from './JobFields'
 import GoogleMap from 'google-map-react';
 
@@ -73,4 +73,4 @@ const NewJobPage = ({}) => {
   )
 }
 
-export default injectIntl(NewJobPage)
+export default NewJobPage

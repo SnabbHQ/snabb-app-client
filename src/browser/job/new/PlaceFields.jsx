@@ -1,3 +1,4 @@
+/* @flow */
 import React, {PropTypes} from 'react'
 import {defineMessages} from 'react-intl'
 import {View, Grid, Input} from '../../app/components'

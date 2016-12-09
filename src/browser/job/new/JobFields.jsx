@@ -1,10 +1,10 @@
-import React from "react"
-import {View, Space, Divider} from "../../app/components"
-import PlaceFields from "./PlaceFields"
-import VehicleField from "./VehicleField"
-import pickupIcon from "../../../../assets/images/pickupBadgeBlank.svg"
-import dropIcon from "../../../../assets/images/dropOffBadgeBlank.svg"
-import vehicleIcon from "../../../../assets/images/vehicleBadgeBlank.svg"
+/* @flow */
+import React from 'react'
+import {View, Space, Divider} from '../../app/components'
+import PlaceFields from './PlaceFields'
+import VehicleField from './VehicleField'
+import pickupIcon from '../../../../assets/images/pickupBadgeBlank.svg'
+import dropIcon from '../../../../assets/images/dropOffBadgeBlank.svg'
 
 const JobFields = ({}) => {
 
@@ -18,7 +18,7 @@ const JobFields = ({}) => {
       <Space x={1}/>
       <Divider/>
       <Space x={1}/>
-      <VehicleField icon={vehicleIcon} title={"Select a Vehicle"}/>
+      <VehicleField/>
       <Space x={1}/>
     </View>
   )

@@ -6,7 +6,7 @@ import { camelize } from 'humps';
 import Autocomplete from '../app/components/Autocomplete';
 import Checkbox from '../app/components/Checkbox/index';
 import Select from '../app/components/Select/index';
-import Text from '../app/components/Text/index';
+import Text from '../app/components/Text/index2';
 import TransportPicker from '../job/components/TransportPicker/index';
 import { default as Phone } from '../job/components/PhoneInput';
 import { default as Photo } from '../job/components/PhotoInput/index';
