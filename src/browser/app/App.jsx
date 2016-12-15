@@ -62,7 +62,7 @@ const App = ({currentLocale, currentTheme}: AppProps) => (
         flex={1} // make footer sticky
         marginTop='big'
       >
-        <Match exactly pattern="/" component={HomePage}/>
+        <Match exactly pattern="/" component={ActivePage}/>
         {/*<Match exactly pattern="/" component={ActivePage}/>*/}
         {/*<Match exactly pattern="/active" component={ActivePage}/>*/}
         {/*<Match exactly pattern="/new" component={NewJobPage}/>*/}

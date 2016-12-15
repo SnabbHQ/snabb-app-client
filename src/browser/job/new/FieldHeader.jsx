@@ -1,6 +1,6 @@
 /* @flow */
 import React, {PropTypes} from 'react'
-import {Grid, View, Image, Heading} from '../../app/components'
+import {Grid, View, Image, Heading} from '../../app/components-old'
 
 const FieldHeader = ({icon, title}) => {
 

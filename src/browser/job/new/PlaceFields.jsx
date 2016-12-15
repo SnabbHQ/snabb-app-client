@@ -1,7 +1,7 @@
 /* @flow */
 import React, {PropTypes} from 'react'
 import {defineMessages} from 'react-intl'
-import {View, Grid, Input} from '../../app/components'
+import {View, Grid, Input} from '../../app/components-old'
 import FieldHeader from "./FieldHeader"
 
 const MESSAGES = defineMessages({

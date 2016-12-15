@@ -1,12 +1,12 @@
 /* @flow */
 import React from 'react'
-import {View, Space, Divider} from '../../app/components'
+import {View, Space, Divider} from '../../app/components-old'
 import PlaceFields from './PlaceFields'
 import VehicleField from './VehicleField'
 import pickupIcon from '../../../../assets/images/pickupBadgeBlank.svg'
 import dropIcon from '../../../../assets/images/dropOffBadgeBlank.svg'
 
-const JobFields = ({}) => {
+const JobFields = () => {
 
   return (
     <View>

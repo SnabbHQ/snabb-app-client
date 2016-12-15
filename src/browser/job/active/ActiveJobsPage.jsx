@@ -3,7 +3,7 @@ import type { State } from '../../../common/types';
 import R from "ramda"
 import React from "react"
 import {connect} from "react-redux"
-import {View} from "../../app/components-old"
+import {Box} from "../../app/components"
 import NoItems from "./NoItems"
 
 const ActiveJobsPage = ({ jobs }) => {
@@ -14,7 +14,7 @@ const ActiveJobsPage = ({ jobs }) => {
   }
 
   return (
-    <View/>
+    <Box/>
   )
 }
 

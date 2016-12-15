@@ -1,7 +1,8 @@
 /* @flow */
 import React from 'react'
 import {provideHooks} from "redial"
-import {PrimaryButton, Fixed, Flex, Box} from '../../app/components'
+import {Button, Box} from '../../app/components'
+import {Fixed} from '../../app/components-old'
 import {FormattedMessage} from 'react-intl'
 import JobFields from './JobFields'
 import GoogleMap from 'google-map-react';
@@ -31,18 +32,19 @@ const NewJobPage = () => {
     }
   }
 
+  //type='submit'
+  //id='requestButton'
+
   function renderRequestButton() {
     return (
       <Fixed bottom left style={styles.requestFixedContainer}>
-        <Flex align="center" style={styles.requestFlexContainer}>
-          <PrimaryButton
-            type='submit'
-            id='requestButton'>
+        <Box alignItems="center" style={styles.requestFlexContainer}>
+          <Button>
             <FormattedMessage
               id='newJobPage.requestButtonDisabled'
               defaultMessage='Request'/>
-          </PrimaryButton>
-        </Flex>
+          </Button>
+        </Box>
       </Fixed>
     )
   }
@@ -54,8 +56,8 @@ const NewJobPage = () => {
   };
 
   return (
-    <Flex>
-      <Box p={4} style={styles.leftPanel}>
+    <Box display="flex">
+      <Box padding='small' style={styles.leftPanel}>
         <JobFields/>
         {renderRequestButton()}
       </Box>
@@ -69,7 +71,7 @@ const NewJobPage = () => {
           defaultZoom={defaultProps.zoom}>
         </GoogleMap>
       </Fixed>
-    </Flex>
+    </Box>
   )
 }
 
