@@ -4,7 +4,7 @@ import React from "react"
 import linksMessages from "../../common/app/linksMessages"
 import NewDeliveryButton from "../job/components/NewDeliveryButton"
 import {FormattedMessage} from "react-intl"
-import {Link, Fixed, Flex, Image, Space, Toolbar} from "../app/components"
+import {Link, Fixed, Flex, Image, Space, Toolbar, DropdownMenu, Dropdown, NavItem} from "../app/components"
 import {connect} from "react-redux"
 
 // $FlowFixMe
@@ -13,54 +13,95 @@ const logo = require('../../../assets/images/logo.svg')
 // $FlowFixMe
 const clientPhoto = require('../../../assets/images/clientPhotoDefaultSmall.svg')
 
-const Header = ({viewer}, {rebass}) => {
-  const styles = {
-    toolbar: {
-      zIndex: 1,
-      justifyContent: 'space-between',
-      flexWrap: 'wrap',
-      boxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
-      webkitBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
-      mozBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
-    },
-    headerLink: {
-      hover: {borderRadius: 4, backgroundColor: rebass.colors.grey},
-      active: {color: rebass.colors.accent},
+class Header extends React.Component {
+
+  state: {
+    dropdownOpen: boolean
+  }
+  styles: Object
+  toggle: () => void
+
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      dropdownOpen: false
+    }
+
+    this.styles = {
+      toolbar: {
+        zIndex: 1,
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        boxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
+        webkitBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
+        mozBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
+      },
+      headerLink: {
+        hover: {borderRadius: 4, },//backgroundColor: rebass.colors.grey},
+        active: {}//color: rebass.colors.accent},
+      }
+    }
+
+    this.toggle = this.toggle.bind(this)
+  }
+
+  toggle(key) {
+    return (e) => {
+      const val = !this.state[key]
+      this.setState({ [key]: val })
     }
   }
 
-  return (
-    <Fixed top left right zIndex={2}>
-      <Toolbar style={styles.toolbar}>
-        <Flex align="center">
-          <Space x={2}/>
-          <Image
-            alt="Snabb"
-            src={logo}/>
-          <Space x={4}/>
-          <Link p={1} inverted exactly style={styles.headerLink} to="/">
-            <FormattedMessage {...linksMessages.active} />
-          </Link>
-          <Space x={2}/>
-          <Link p={1} inverted exactly style={styles.headerLink} to="/scheduled">
-            <FormattedMessage {...linksMessages.scheduled} />
-          </Link>
-          <Space x={2}/>
-          <Link p={1} inverted exactly style={styles.headerLink} to="/Past">
-            <FormattedMessage {...linksMessages.past} />
-          </Link>
-          <Space x={2}/>
-        </Flex>
-        <Flex>
-          <NewDeliveryButton/>
-          <Space x={2}/>
-          <Image
-            alt="Snabb"
-            src={clientPhoto}/>
-        </Flex>
-      </Toolbar>
-    </Fixed>
-  )
+  render() {
+    return (
+      <Fixed top left right zIndex={2}>
+        <Toolbar style={this.styles.toolbar}>
+          <Flex align="center">
+            <Space x={2}/>
+            <Image
+              alt="Snabb"
+              src={logo}/>
+            <Space x={4}/>
+            <Link p={1} inverted exactly style={this.styles.headerLink} to="/">
+              <FormattedMessage {...linksMessages.active} />
+            </Link>
+            <Space x={2}/>
+            <Link p={1} inverted exactly style={this.styles.headerLink} to="/scheduled">
+              <FormattedMessage {...linksMessages.scheduled} />
+            </Link>
+            <Space x={2}/>
+            <Link p={1} inverted exactly style={this.styles.headerLink} to="/Past">
+              <FormattedMessage {...linksMessages.past} />
+            </Link>
+            <Space x={2}/>
+          </Flex>
+          <Flex>
+            <NewDeliveryButton/>
+            <Space x={2}/>
+            <Dropdown>
+              <Image
+                alt="Snabb"
+                src={clientPhoto}
+                onClick={this.toggle('dropdownOpen')}/>
+              <DropdownMenu
+                onDismiss={this.toggle('dropdownOpen')}
+                open={this.state.dropdownOpen}>
+                <NavItem is="a">
+                  Settings
+                </NavItem>
+                <NavItem is="a">
+                  Logout
+                </NavItem>
+              </DropdownMenu>
+            </Dropdown>
+          </Flex>
+        </Toolbar>
+      </Fixed>
+    )
+  }
+
 }
 
 Header.propTypes = {
