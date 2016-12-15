@@ -6,7 +6,7 @@ import {FormattedMessage} from 'react-intl'
 import JobFields from './JobFields'
 import GoogleMap from 'google-map-react';
 
-const NewJobPage = ({}) => {
+const NewJobPage = () => {
 
   const styles = {
     leftPanel: {

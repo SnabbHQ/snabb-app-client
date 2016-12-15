@@ -16,11 +16,12 @@ const clientPhoto = require('../../../assets/images/clientPhotoDefaultSmall.svg'
 const Header = ({viewer}, {rebass}) => {
   const styles = {
     toolbar: {
+      zIndex: 1,
       justifyContent: 'space-between',
       flexWrap: 'wrap',
-    },
-    prefetch: {
-      display: 'none',
+      boxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
+      webkitBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
+      mozBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
     },
     headerLink: {
       hover: {borderRadius: 4, backgroundColor: rebass.colors.grey},
