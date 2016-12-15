@@ -22,11 +22,7 @@ import NotFoundPage from "../notfound/NotFoundPage"
 const styles = {
   container: {
     minHeight: '100vh',
-  },
-  page: {
-    paddingTop: 35,
-    flex: 1
-  },
+  }
 };
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
@@ -64,6 +60,7 @@ const App = ({currentLocale, currentTheme}: AppProps) => (
       <Header />
       <Box
         flex={1} // make footer sticky
+        marginTop='big'
       >
         <Match exactly pattern="/" component={HomePage}/>
         {/*<Match exactly pattern="/" component={ActivePage}/>*/}
@@ -85,32 +82,3 @@ export default R.compose(
   ),
   start,
 )(App);
-
-{/*<ThemeProvider*/}
-  {/*key={currentTheme}*/}
-  {/*// TODO: Do we need it?*/}
-  {/*// key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518*/}
-  {/*theme={theme(currentTheme)}*/}
-{/*>*/}
-  {/*<Container>*/}
-    {/*<Helmet*/}
-      {/*htmlAttributes={{ lang: currentLocale }}*/}
-      {/*meta={[*/}
-          {/*// v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template*/}
-          {/*{ charset: 'utf-8' },*/}
-          {/*{ name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },*/}
-          {/*{ 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },*/}
-          {/*...favicon.meta,*/}
-        {/*]}*/}
-      {/*link={[*/}
-          {/*...favicon.link,*/}
-        {/*]}*/}
-    {/*/>*/}
-    {/*<Flex flexColumn style={styles.container}>*/}
-      {/*<Header/>*/}
-      {/*<Box style={styles.page}>*/}
-
-      {/*</Box>*/}
-    {/*</Flex>*/}
-  {/*</Container>*/}
-{/*</ThemeProvider>*/}
