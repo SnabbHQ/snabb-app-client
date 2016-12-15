@@ -18,7 +18,7 @@ import {
   DEFAULT_CITY,
   CITIES } from '../../../common/lib/constants';
 import configuration from '../../../common/configuration';
-import Card from '../../app/components/Card';
+import Card from '../../app/components-old/Card';
 import CreditCardsTable from '../components/CreditCardsTable';
 import CreditCardForm from '../components/CreditCardForm';
 import BillingDetailsForm from '../components/BillingDetailsForm';

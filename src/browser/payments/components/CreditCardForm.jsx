@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
-import ErrorMessage from '../../app/components/ErrorMessage';
-import Button from '../../app/components/Button2';
+import ErrorMessage from '../../app/components-old/ErrorMessage';
+import Button from '../../app/components-old/Button2';
 import CreditCardFields from './CreditCardFields';
 import layoutStyles from '../../app/styles/layout.scss';
 

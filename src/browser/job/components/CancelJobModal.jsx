@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
-import { ConfirmModal } from '../../app/components/Modal/index';
-import Button from '../../app/components/Button2/index';
+import { ConfirmModal } from '../../app/components-old/Modal/index';
+import Button from '../../app/components-old/Button2/index';
 import layoutStyles from '../../app/styles/layout.scss';
 
 const CancelJobModal = React.createClass({

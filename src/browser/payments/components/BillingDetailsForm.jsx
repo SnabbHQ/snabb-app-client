@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import ErrorMessage from '../ErrorMessage';
-import Button from '../../components/Button';
+import Button from '../../components-old/Button';
 import BillingDetailsFields,
-{ BillingDetailsShape } from '../../components/BillingDetailsFields';
+{ BillingDetailsShape } from '../../components-old/BillingDetailsFields';
 import layoutStyles from '../../../styles/layout.scss';
 
 const ERROR_MESSAGES = defineMessages({

@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import ErrorMessage from '../ErrorMessage';
-import Button from '../../components/Button';
-import CouponFields from '../../components/CouponFields';
+import Button from '../../components-old/Button';
+import CouponFields from '../../components-old/CouponFields';
 import textStyles from '../../../styles/text.scss';
 import layoutStyles from '../../../styles/layout.scss';
 

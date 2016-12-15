@@ -17,7 +17,7 @@
     "global-require": 0,
     // Used by webpack-isomorphic-tools and React Native.
     "no-class-assign": 0,
-    // Class assign is used for higher order components.
+    // Class assign is used for higher order components-old.
     "no-nested-ternary": 0,
     // It's nice for JSX.
     "no-param-reassign": 0,

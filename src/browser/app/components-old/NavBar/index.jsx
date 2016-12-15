@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import map from 'lodash/map';
 import { FormattedMessage } from 'react-intl';
-import Dropdown, { Item as DropdownItem } from '../../components/Dropdown';
+import Dropdown, { Item as DropdownItem } from '..//Dropdown';
 import RequestJobButton from '../../../job/components/NewDeliveryButton';
 import analytics from '../../../../common/lib/analytics';
 import { logOut } from '../../../../common/user/auth/actions2';

@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import cx from 'classnames';
-import LoadingMessage from '../../../app/components/LoadingMessage/index';
-import Card from '../../../app/components/Card/index';
-import Button from '../../../app/components/Button2/index';
-import ActionsBar from '../../../app/components/ActionsBar/index';
+import LoadingMessage from '../../../app/components-old/LoadingMessage/index';
+import Card from '../../../app/components-old/Card/index';
+import Button from '../../../app/components-old/Button2/index';
+import ActionsBar from '../../../app/components-old/ActionsBar/index';
 import JobStatus from '../JobStatus/index';
 import Driver from '../Driver/index';
 import Place from '../Place/index';

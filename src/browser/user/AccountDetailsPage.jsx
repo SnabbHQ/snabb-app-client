@@ -5,8 +5,8 @@ import some from 'lodash/some';
 import toString from 'lodash/toString';
 import AccountDetailsFields from './components/AccountDetailsFields';
 import AccountPasswordFields from './components/AccountPasswordFields';
-import Card from '../app/components/Card';
-import Button from '../app/components/Button';
+import Card from '../app/components-old/Card';
+import Button from '../app/components-old/Button';
 import {
   setClientGeneralValue,
   updateClient,

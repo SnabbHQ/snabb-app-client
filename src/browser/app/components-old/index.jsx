@@ -2,7 +2,7 @@
 
 // jxnblk.com/writing/posts/patterns-for-style-composition-in-react
 
-// App components
+// App components-old
 export { default as Button } from './Button';
 export { default as PrimaryButton } from './PrimaryButton';
 export { default as FieldError } from './FieldError';
@@ -17,7 +17,7 @@ export { default as focus } from './focus';
 export { default as fxbml } from './fxbml';
 export { default as Blankslate } from './Blankslate';
 
-// Rebass components
+// Rebass components-old
 // github.com/jxnblk/rebass
 export {
   Base,
@@ -80,7 +80,7 @@ export {
   Tooltip,
 } from 'rebass';
 
-// Reflexbox components
+// Reflexbox components-old
 // github.com/jxnblk/reflexbox
 export {
   Reflex,

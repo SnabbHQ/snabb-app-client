@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Table from '../../app/components/Table';
+import Table from '../../app/components-old/Table';
 import {
   idColumn,
   pickUpColumn,

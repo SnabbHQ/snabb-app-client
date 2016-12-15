@@ -26,7 +26,7 @@ type Props = {
   store: Object,
 };
 
-// Must be the ES6 class to ensure hot reload works for stateless components.
+// Must be the ES6 class to ensure hot reload works for stateless components-old.
 /* eslint-disable react/prefer-stateless-function */
 class Root extends React.Component {
 

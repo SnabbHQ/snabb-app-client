@@ -5,7 +5,7 @@ import {
   FormattedMessage,
   FormattedDate
 } from 'react-intl';
-import ProgressBar, { ProgressBarSearching } from '../../../app/components/ProgressBar/index';
+import ProgressBar, { ProgressBarSearching } from '../../../app/components-old/ProgressBar/index';
 import { isPicking, isDelivering } from '../../../../common/lib/deliveryHelpers';
 import styles from './JobStatus.scss';
 
@@ -136,4 +136,4 @@ export default JobStatus;
 
 
 // WEBPACK FOOTER //
-// ./src/components/JobStatus/index.js
+// ./src/components-old/JobStatus/index.js

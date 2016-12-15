@@ -3,7 +3,7 @@ import { FormattedMessage, FormattedNumber } from 'react-intl';
 import { isCancellable } from '../../../../common/job/jobHelpers';
 import JobStatus from '../JobStatus/index';
 import Driver from '../Driver/index';
-import Button from '../../../app/components/Button2/index';
+import Button from '../../../app/components-old/Button2/index';
 import styles from './jobColumns.scss';
 import textStyles from '../../../app/styles/text.scss';
 
