@@ -17,6 +17,7 @@ const theme: Theme = {
     // TODO: Leverage openColor.
     primary: openColor.gray9,
     secondary: openColor.gray4,
+    accent: openColor.blue5,
     info: openColor.blue7,
     infoHover: openColor.blue5,
     success: '#1c7',

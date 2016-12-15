@@ -1,7 +1,6 @@
 /* @flow */
 import type { State } from '../../common/types';
 import * as themes from './themes';
-import Footer from './Footer';
 import Header from './Header';
 import Helmet from 'react-helmet';
 import R from 'ramda';
@@ -67,14 +66,11 @@ const App = ({currentLocale, currentTheme}: AppProps) => (
         flex={1} // make footer sticky
       >
         <Match exactly pattern="/" component={HomePage}/>
-        {/*  <Match pattern="/fields" component={FieldsPage} />
-         <Match pattern="/users" component={UsersPage} />
-         <Match pattern="/intl" component={IntlPage} />
-         <Match pattern="/offline" component={OfflinePage} />
-         <Match pattern="/signin" component={SignInPage} />
-         <Match pattern="/todos" component={TodosPage} />
-         <Match authorized pattern="/me" component={MePage} />
-         <Miss component={NotFoundPage} />*/}
+        {/*<Match exactly pattern="/" component={ActivePage}/>*/}
+        {/*<Match exactly pattern="/active" component={ActivePage}/>*/}
+        {/*<Match exactly pattern="/new" component={NewJobPage}/>*/}
+        {/*<Match exactly pattern="/scheduled" component={ScheduledPage}/>*/}
+        {/*<Miss component={NotFoundPage}/>*/}
       </Box>
     </Container>
   </ThemeProvider>
@@ -113,11 +109,7 @@ export default R.compose(
     {/*<Flex flexColumn style={styles.container}>*/}
       {/*<Header/>*/}
       {/*<Box style={styles.page}>*/}
-        {/*<Match exactly pattern="/" component={ActivePage}/>*/}
-        {/*<Match exactly pattern="/active" component={ActivePage}/>*/}
-        {/*<Match exactly pattern="/new" component={NewJobPage}/>*/}
-        {/*<Match exactly pattern="/scheduled" component={ScheduledPage}/>*/}
-        {/*<Miss component={NotFoundPage}/>*/}
+
       {/*</Box>*/}
     {/*</Flex>*/}
   {/*</Container>*/}

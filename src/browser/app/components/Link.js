@@ -19,7 +19,8 @@ const createLink = (tag, passProps) => styled((theme, props: LinkProps) => ({
   textDecoration: 'none',
   ':hover': {
     textDecoration: 'none',
-  }
+    color: 'grey'
+  },
 }), tag, passProps);
 
 const AnchorLink = createLink('a', [
@@ -31,7 +32,7 @@ const RouterLink = createLink(ReactRouterLink, [
 ]);
 
 const isExternalLink = to => to.includes('://');
-const routerLinkActiveStyle = { color: '', textDecoration: 'none' };
+const routerLinkActiveStyle = { color: 'grey', textDecoration: 'none' };
 
 const Link: Styled<LinkProps> = (props: LinkProps) => (
   isExternalLink(props.to) ?
@@ -40,7 +41,7 @@ const Link: Styled<LinkProps> = (props: LinkProps) => (
       href={props.to}
       target="_blank"
     />
-  :
+    :
     <RouterLink
       {...props}
       activeOnlyWhenExact={props.exactly}
