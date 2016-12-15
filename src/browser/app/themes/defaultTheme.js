@@ -15,8 +15,10 @@ const theme: Theme = {
   sizes: typography.sizes,
   colors: {
     // TODO: Leverage openColor.
-    primary: '#08e',
-    info: '#08e',
+    primary: openColor.gray9,
+    secondary: openColor.gray4,
+    info: openColor.blue7,
+    infoHover: openColor.blue5,
     success: '#1c7',
     warning: '#f70',
     danger: '#f52',

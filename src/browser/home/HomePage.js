@@ -17,7 +17,7 @@ const HomePage = () => (
     <PageHeader
       heading="Este"
       description="Starter kit for universal full–fledged React apps. One stack
-        for browser, mobile, server."
+        for  browser, mobile, server."
     />
     <Heading size="bigger">
       How it started

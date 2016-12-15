@@ -2,10 +2,10 @@
 import type {State, User} from "../../common/types"
 import React from "react"
 import linksMessages from "../../common/app/linksMessages"
-import NewDeliveryButton from "../job/components/NewDeliveryButton"
+//import NewDeliveryButton from "../job/components/NewDeliveryButton"
 import {FormattedMessage} from "react-intl"
-import {Link, Box} from "../app/components"
-import {Fixed, Flex, Image, Space, Toolbar, DropdownMenu, Dropdown, NavItem} from "../app/components-old"
+import {Link, Button, Box, Image} from "../app/components"
+import {Fixed, Space} from "../app/components-old"
 import {connect} from "react-redux"
 
 // $FlowFixMe
@@ -25,7 +25,7 @@ type HeaderLinkProps = {
   message: Object,
 };
 
-const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
+const HeaderLink = ({exactly, to, message}: HeaderLinkProps) => (
   <Link
     bold
     color="white"
@@ -37,25 +37,58 @@ const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
   </Link>
 );
 
-const Header = ({ viewer }: HeaderProps) => (
-  <Box
-    backgroundColor="primary"
-    display="flex"
-    flexWrap="wrap"
-    marginVertical="small"
-    paddingVertical="small"
-  >
-    <HeaderLink exactly to="/" message={linksMessages.home} />
-    <HeaderLink to="/users" message={linksMessages.users} />
-    <HeaderLink to="/todos" message={linksMessages.todos} />
-    <HeaderLink to="/fields" message={linksMessages.fields} />
-    <HeaderLink to="/intl" message={linksMessages.intl} />
-    <HeaderLink to="/offline" message={linksMessages.offline} />
-    <HeaderLink to="/me" message={linksMessages.me} />
-    {!viewer &&
-    <HeaderLink to="/signin" message={linksMessages.signIn} />
-    }
-  </Box>
+const Header = ({viewer}: HeaderProps) => (
+  <Fixed top left right zIndex={2}>
+    <Box
+      backgroundColor="primary"
+      display="flex"
+      flexWrap="wrap"
+      marginBottom="medium"
+      paddingVertical="small"
+    >
+      <Space x={2}/>
+      <Box
+        display="flex"
+        alignItems="center"
+      >
+        <Image
+          alt="Snabb logo"
+          height={50}
+          width={50}
+          src={logo}
+        />
+        <Space x={2}/>
+        <HeaderLink exactly to="/" message={linksMessages.active}/>
+        <Space x={2}/>
+        <HeaderLink to="/scheduled" message={linksMessages.scheduled}/>
+        <Space x={2}/>
+        <HeaderLink to="/past" message={linksMessages.past}/>
+      </Box>
+      <Space auto/>
+      <Box
+        display="flex"
+        alignItems="center">
+        <Button
+          size="small"
+          backgroundColor="info"
+        >
+          <Link
+            color="white"
+            to={"/new"}
+          >
+            <FormattedMessage {...linksMessages.new} />
+          </Link>
+        </Button>
+        <Space x={2}/>
+        <Image
+          height={40}
+          width={40}
+          alt="Snabb"
+          src={clientPhoto}/>
+      </Box>
+      <Space x={2}/>
+    </Box>
+  </Fixed>
 );
 
 export default connect(
@@ -63,6 +96,7 @@ export default connect(
     viewer: {}//state.users.viewer,
   }),
 )(Header);
+
 
 // const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
 //   <Link
@@ -119,21 +153,48 @@ export default connect(
 //
 //   render() {
 //     return (
-//     <Box
-//       backgroundColor="primary"
-//       display="flex"
-//       flexWrap="wrap"
-//       marginVertical="small"
-//       paddingVertical="small"
-//     >
-//       <HeaderLink exactly to="/" message={linksMessages.home} />
-//       <HeaderLink to="/users" message={linksMessages.users} />
-//       <HeaderLink to="/todos" message={linksMessages.todos} />
-//       <HeaderLink to="/fields" message={linksMessages.fields} />
-//       <HeaderLink to="/intl" message={linksMessages.intl} />
-//       <HeaderLink to="/offline" message={linksMessages.offline} />
-//       <HeaderLink to="/me" message={linksMessages.me} />
-//     </Box>
+//
+// <Toolbar style={this.styles.toolbar}>
+//   <Flex align="center">
+//     <Space x={2}/>
+//     <Image
+//       alt="Snabb"
+//       src={logo}/>
+//     <Space x={4}/>
+//     <Link p={1} inverted exactly style={this.styles.headerLink} to="/">
+//       <FormattedMessage {...linksMessages.active} />
+//     </Link>
+//     <Space x={2}/>
+//     <Link p={1} inverted exactly style={this.styles.headerLink} to="/scheduled">
+//       <FormattedMessage {...linksMessages.scheduled} />
+//     </Link>
+//     <Space x={2}/>
+//     <Link p={1} inverted exactly style={this.styles.headerLink} to="/Past">
+//       <FormattedMessage {...linksMessages.past} />
+//     </Link>
+//     <Space x={2}/>
+//   </Flex>
+//   <Flex>
+//     <NewDeliveryButton/>
+//     <Space x={2}/>
+//     <Dropdown>
+//       <Image
+//         alt="Snabb"
+//         src={clientPhoto}
+//         onClick={this.toggle('dropdownOpen')}/>
+//       <DropdownMenu
+//         onDismiss={this.toggle('dropdownOpen')}
+//         open={this.state.dropdownOpen}>
+//         <NavItem is="a">
+//           Settings
+//         </NavItem>
+//         <NavItem is="a">
+//           Logout
+//         </NavItem>
+//       </DropdownMenu>
+//     </Dropdown>
+//   </Flex>
+// </Toolbar>
 //     )
 //   }
 //
@@ -148,40 +209,4 @@ export default connect(
 // )(Header)
 
 
-// <Fixed top left right zIndex={2}>
-//   <Toolbar style={this.styles.toolbar}>
-//     <Flex align="center">
-//       <Space x={2}/>
-//       <Image
-//         alt="Snabb"
-//         src={logo}/>
-//       <Space x={4}/>
-//       <HeaderLink exactly to="/" message={linksMessages.active} />
-//       <Space x={2}/>
-//       <HeaderLink exactly to="/scheduled" message={linksMessages.scheduled} />
-//       <Space x={2}/>
-//       <HeaderLink exactly to="/Past" message={linksMessages.past} />
-//       <Space x={2}/>
-//     </Flex>
-//     <Flex>
-//       <NewDeliveryButton/>
-//       <Space x={2}/>
-//       <Dropdown>
-//         <Image
-//           alt="Snabb"
-//           src={clientPhoto}
-//           onClick={this.toggle('dropdownOpen')}/>
-//         <DropdownMenu
-//           onDismiss={this.toggle('dropdownOpen')}
-//           open={this.state.dropdownOpen}>
-//           <NavItem is="a">
-//             Settings
-//           </NavItem>
-//           <NavItem is="a">
-//             Logout
-//           </NavItem>
-//         </DropdownMenu>
-//       </Dropdown>
-//     </Flex>
-//   </Toolbar>
-//   </Fixed>
+

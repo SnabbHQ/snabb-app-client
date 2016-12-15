@@ -18,8 +18,8 @@ const createLink = (tag, passProps) => styled((theme, props: LinkProps) => ({
   color: props.color ? theme.colors[props.color] : theme.colors.primary,
   textDecoration: 'none',
   ':hover': {
-    textDecoration: 'underline',
-  },
+    textDecoration: 'none',
+  }
 }), tag, passProps);
 
 const AnchorLink = createLink('a', [
@@ -31,7 +31,7 @@ const RouterLink = createLink(ReactRouterLink, [
 ]);
 
 const isExternalLink = to => to.includes('://');
-const routerLinkActiveStyle = { textDecoration: 'underline' };
+const routerLinkActiveStyle = { color: '', textDecoration: 'none' };
 
 const Link: Styled<LinkProps> = (props: LinkProps) => (
   isExternalLink(props.to) ?

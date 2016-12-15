@@ -10,8 +10,8 @@ const Button: Styled<TextProps> = styled((theme, props) => ({
     ? theme.colors[props.backgroundColor]
     : theme.colors.primary,
   ':hover': {
-    color: 'black',
-    backgroundColor: 'grey'
+    // $FlowFixMe
+    backgroundColor: theme.colors.infoHover
   },
   borderRadius: props.borderRadius || theme.border.radius,
   color: theme.colors.white,
@@ -24,10 +24,5 @@ const Button: Styled<TextProps> = styled((theme, props) => ({
   paddingRight: theme.fontSizes.medium,
   paddingTop: theme.sizes.smallest,
 }));
-
-// Oser je, tohle prepisovat, nemuzu podedit element?
-{/* <Text
-  size="small"
->initial theme</Text> */}
 
 export default Button;
