@@ -22,7 +22,7 @@ const configureTypography = ({
   scaleRatio,
 }: createTypographyProps) => {
   const fontSize = number => Array
-    .from(Array(Math.abs(number)))
+    .from(new Array(Math.abs(number)))
     .reduce(
       size => number > 0 ? size * scaleRatio : size / scaleRatio,
       baseFontSize,

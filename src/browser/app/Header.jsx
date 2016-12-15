@@ -1,10 +1,11 @@
 /* @flow */
-import type {State} from "../../common/types"
+import type {State, User} from "../../common/types"
 import React from "react"
 import linksMessages from "../../common/app/linksMessages"
 import NewDeliveryButton from "../job/components/NewDeliveryButton"
 import {FormattedMessage} from "react-intl"
-import {Link, Fixed, Flex, Image, Space, Toolbar, DropdownMenu, Dropdown, NavItem} from "../app/components"
+import {Link, Box} from "../app/components"
+import {Fixed, Flex, Image, Space, Toolbar, DropdownMenu, Dropdown, NavItem} from "../app/components-old"
 import {connect} from "react-redux"
 
 // $FlowFixMe
@@ -13,105 +14,174 @@ const logo = require('../../../assets/images/logo.svg')
 // $FlowFixMe
 const clientPhoto = require('../../../assets/images/clientPhotoDefaultSmall.svg')
 
-class Header extends React.Component {
 
-  state: {
-    dropdownOpen: boolean
-  }
-  styles: Object
-  toggle: () => void
+type HeaderProps = {
+  viewer: ?User,
+};
 
+type HeaderLinkProps = {
+  exactly?: boolean,
+  to: string,
+  message: Object,
+};
 
-  constructor(props) {
-    super(props)
+const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
+  <Link
+    bold
+    color="white"
+    exactly={exactly}
+    marginHorizontal="small"
+    to={to}
+  >
+    <FormattedMessage {...message} />
+  </Link>
+);
 
-    this.state = {
-      dropdownOpen: false
+const Header = ({ viewer }: HeaderProps) => (
+  <Box
+    backgroundColor="primary"
+    display="flex"
+    flexWrap="wrap"
+    marginVertical="small"
+    paddingVertical="small"
+  >
+    <HeaderLink exactly to="/" message={linksMessages.home} />
+    <HeaderLink to="/users" message={linksMessages.users} />
+    <HeaderLink to="/todos" message={linksMessages.todos} />
+    <HeaderLink to="/fields" message={linksMessages.fields} />
+    <HeaderLink to="/intl" message={linksMessages.intl} />
+    <HeaderLink to="/offline" message={linksMessages.offline} />
+    <HeaderLink to="/me" message={linksMessages.me} />
+    {!viewer &&
+    <HeaderLink to="/signin" message={linksMessages.signIn} />
     }
-
-    this.styles = {
-      toolbar: {
-        zIndex: 1,
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        boxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
-        webkitBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
-        mozBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
-      },
-      headerLink: {
-        hover: {borderRadius: 4, },//backgroundColor: rebass.colors.grey},
-        active: {}//color: rebass.colors.accent},
-      }
-    }
-
-    this.toggle = this.toggle.bind(this)
-  }
-
-  toggle(key) {
-    return (e) => {
-      const val = !this.state[key]
-      this.setState({ [key]: val })
-    }
-  }
-
-  render() {
-    return (
-      <Fixed top left right zIndex={2}>
-        <Toolbar style={this.styles.toolbar}>
-          <Flex align="center">
-            <Space x={2}/>
-            <Image
-              alt="Snabb"
-              src={logo}/>
-            <Space x={4}/>
-            <Link p={1} inverted exactly style={this.styles.headerLink} to="/">
-              <FormattedMessage {...linksMessages.active} />
-            </Link>
-            <Space x={2}/>
-            <Link p={1} inverted exactly style={this.styles.headerLink} to="/scheduled">
-              <FormattedMessage {...linksMessages.scheduled} />
-            </Link>
-            <Space x={2}/>
-            <Link p={1} inverted exactly style={this.styles.headerLink} to="/Past">
-              <FormattedMessage {...linksMessages.past} />
-            </Link>
-            <Space x={2}/>
-          </Flex>
-          <Flex>
-            <NewDeliveryButton/>
-            <Space x={2}/>
-            <Dropdown>
-              <Image
-                alt="Snabb"
-                src={clientPhoto}
-                onClick={this.toggle('dropdownOpen')}/>
-              <DropdownMenu
-                onDismiss={this.toggle('dropdownOpen')}
-                open={this.state.dropdownOpen}>
-                <NavItem is="a">
-                  Settings
-                </NavItem>
-                <NavItem is="a">
-                  Logout
-                </NavItem>
-              </DropdownMenu>
-            </Dropdown>
-          </Flex>
-        </Toolbar>
-      </Fixed>
-    )
-  }
-
-}
-
-Header.propTypes = {
-  viewer: React.PropTypes.object,
-}
-
-Header.contextTypes = {
-  rebass: React.PropTypes.object,
-}
+  </Box>
+);
 
 export default connect(
-  (state: State) => ({}),
-)(Header)
+  (state: State) => ({
+    viewer: {}//state.users.viewer,
+  }),
+)(Header);
+
+// const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
+//   <Link
+//     bold
+//     color="white"
+//     exactly={exactly}
+//     marginHorizontal="small"
+//     to={to}
+//   >
+//     <FormattedMessage {...message} />
+//   </Link>
+// )
+//
+// class Header extends React.Component {
+//
+//   state: {
+//     dropdownOpen: boolean
+//   }
+//   styles: Object
+//   toggle: () => void
+//
+//
+//   constructor(props) {
+//     super(props)
+//
+//     this.state = {
+//       dropdownOpen: false
+//     }
+//
+//     this.styles = {
+//       toolbar: {
+//         zIndex: 1,
+//         justifyContent: 'space-between',
+//         flexWrap: 'wrap',
+//         boxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
+//         webkitBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
+//         mozBoxShadow: '0 2px 6px 0 rgba(0,0,0,.50)',
+//       },
+//       headerLink: {
+//         hover: {borderRadius: 4, },//backgroundColor: rebass.colors.grey},
+//         active: {}//color: rebass.colors.accent},
+//       }
+//     }
+//
+//     this.toggle = this.toggle.bind(this)
+//   }
+//
+//   toggle(key) {
+//     return (e) => {
+//       const val = !this.state[key]
+//       this.setState({ [key]: val })
+//     }
+//   }
+//
+//   render() {
+//     return (
+//     <Box
+//       backgroundColor="primary"
+//       display="flex"
+//       flexWrap="wrap"
+//       marginVertical="small"
+//       paddingVertical="small"
+//     >
+//       <HeaderLink exactly to="/" message={linksMessages.home} />
+//       <HeaderLink to="/users" message={linksMessages.users} />
+//       <HeaderLink to="/todos" message={linksMessages.todos} />
+//       <HeaderLink to="/fields" message={linksMessages.fields} />
+//       <HeaderLink to="/intl" message={linksMessages.intl} />
+//       <HeaderLink to="/offline" message={linksMessages.offline} />
+//       <HeaderLink to="/me" message={linksMessages.me} />
+//     </Box>
+//     )
+//   }
+//
+// }
+//
+// Header.propTypes = {
+//   viewer: React.PropTypes.object,
+// }
+
+// export default connect(
+//   (state: State) => ({}),
+// )(Header)
+
+
+// <Fixed top left right zIndex={2}>
+//   <Toolbar style={this.styles.toolbar}>
+//     <Flex align="center">
+//       <Space x={2}/>
+//       <Image
+//         alt="Snabb"
+//         src={logo}/>
+//       <Space x={4}/>
+//       <HeaderLink exactly to="/" message={linksMessages.active} />
+//       <Space x={2}/>
+//       <HeaderLink exactly to="/scheduled" message={linksMessages.scheduled} />
+//       <Space x={2}/>
+//       <HeaderLink exactly to="/Past" message={linksMessages.past} />
+//       <Space x={2}/>
+//     </Flex>
+//     <Flex>
+//       <NewDeliveryButton/>
+//       <Space x={2}/>
+//       <Dropdown>
+//         <Image
+//           alt="Snabb"
+//           src={clientPhoto}
+//           onClick={this.toggle('dropdownOpen')}/>
+//         <DropdownMenu
+//           onDismiss={this.toggle('dropdownOpen')}
+//           open={this.state.dropdownOpen}>
+//           <NavItem is="a">
+//             Settings
+//           </NavItem>
+//           <NavItem is="a">
+//             Logout
+//           </NavItem>
+//         </DropdownMenu>
+//       </Dropdown>
+//     </Flex>
+//   </Toolbar>
+//   </Fixed>

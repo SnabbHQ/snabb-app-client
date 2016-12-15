@@ -18,7 +18,6 @@ const devtools = 'eval';
 
 const loaders = {
   css: '',
-  scss: '',
 };
 
 const serverIp = config.remoteHotReload
@@ -31,7 +30,7 @@ const makeConfig = (options) => {
   } = options;
 
   const stylesLoaders = Object.keys(loaders).map((ext) => {
-    const prefix = 'css-loader!postcss-loader!sass-loader';
+    const prefix = 'css-loader!postcss-loader!';
     const extLoaders = prefix + loaders[ext];
     const loader = isDevelopment
       ? `style-loader!${extLoaders}`

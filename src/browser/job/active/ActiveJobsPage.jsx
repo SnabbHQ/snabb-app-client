@@ -1,8 +1,9 @@
 /* @flow */
+import type { State } from '../../../common/types';
 import R from "ramda"
 import React from "react"
 import {connect} from "react-redux"
-import {View} from "../../app/components"
+import {View} from "../../app/components-old"
 import NoItems from "./NoItems"
 
 const ActiveJobsPage = ({ jobs }) => {

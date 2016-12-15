@@ -6,8 +6,8 @@ import {FormattedMessage} from "react-intl"
 type Props = {
   icon?: string,
   actions?: any,
-  subtitle: object,
-  title: objects,
+  subtitle: Object,
+  title: Object,
 }
 
 const styles = {

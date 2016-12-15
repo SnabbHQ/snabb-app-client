@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,IAAK;EACH,UAAU,EAAE,KAAK;EACjB,UAAU,EAAE,iBAAiB;EAC7B,OAAO,EAAE,SAAS;EAClB,sBAAkB;IAChB,WAAW,EAAE,IAAI",
-"sources": ["ActionsBar.scss"],
-"names": [],
-"file": "ActionsBar.css"
-}

@@ -1,5 +1,5 @@
 import React from "react"
-import {Blankslate} from "../../app/components"
+import {Blankslate} from "../../app/components-old"
 import jobMessages from '../../../common/job/jobMessages'
 import activeBlankslateIcon from "../../../../assets/images/activeBlankslateIcon.svg"
 import {RequestNewDeliveryButton} from '../components'
