@@ -1,7 +1,7 @@
 /* @flow */
 import React from 'react'
 import {provideHooks} from "redial"
-import {Container, Fixed, Button, Box} from '../../app/components'
+import {Container, Fixed, Button, Panel, Box} from '../../app/components'
 //import {Fixed} from '../../app/components-old'
 import {FormattedMessage} from 'react-intl'
 import JobFields from './JobFields'
@@ -10,14 +10,6 @@ import GoogleMap from 'google-map-react';
 const NewJobPage = () => {
 
   const styles = {
-    leftPanel: {
-      zIndex: 1,
-      width: '60%',
-      paddingBottom: 30,
-    },
-    rightPanel: {
-      width: '40%',
-    },
     requestFixedContainer: {
       height: 60,
       width: '60%',
@@ -57,19 +49,29 @@ const NewJobPage = () => {
 
   return (
     <Box>
-      <Box
-        width="60%"
+      <Panel
         paddingRight="4em"
         paddingLeft="4em"
-        marginTop="6em"
         marginBottom="3em"
-        style={styles.leftPanel}
+        style={{
+          backgroundColor: 'white',
+          boxShadow: '3px 1px 3px rgba(0,0,0,.08)',
+        }}
       >
         <JobFields/>
         {renderRequestButton()}
-      </Box>
-      <Box width="40%">
-        <Fixed bottom right top style={styles.rightPanel}>
+      </Panel>
+      <Fixed bottom right top style={{
+        width: '40%',
+        zIndex: -1,
+      }}>
+        <Box style={{
+            position: 'absolute',
+            top: '72px',
+            bottom: 0,
+            left: '0px',
+            right: 0
+          }}>
           <GoogleMap
             bootstrapURLKeys={{
           key: 'AIzaSyAap17mxLF2XLZdnisFJeJd9bniprOKXCs',
@@ -78,8 +80,8 @@ const NewJobPage = () => {
             defaultCenter={defaultProps.center}
             defaultZoom={defaultProps.zoom}>
           </GoogleMap>
-        </Fixed>
-      </Box>
+        </Box>
+      </Fixed>
     </Box>
   )
 }

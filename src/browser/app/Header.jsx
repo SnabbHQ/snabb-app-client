@@ -43,7 +43,6 @@ const Header = ({viewer}: HeaderProps) => (
       backgroundColor="primary"
       display="flex"
       flexWrap="wrap"
-      marginBottom={0.5}
       paddingVertical={0.5}
     >
       <Space x={2}/>

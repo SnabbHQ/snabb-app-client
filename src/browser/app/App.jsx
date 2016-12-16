@@ -8,21 +8,15 @@ import React from 'react';
 import favicon from '../../common/app/favicon';
 import start from '../../common/app/start';
 import { Match } from '../../common/app/components';
-// import { Miss } from 'react-router';
+import { Miss } from 'react-router';
 import { Box, Container, ThemeProvider } from './components';
 import { connect } from 'react-redux';
 
 // Pages
 import ActivePage from "../job/active/ActiveJobsPage"
 import ScheduledPage from "../job/scheduled/ScheduledJobsPage"
-import NewJobPage from "../job/new/NewJobPage"
+import NewJobPage from "../job/new/NewDeliveryPage"
 import NotFoundPage from "../notfound/NotFoundPage"
-
-const styles = {
-  container: {
-    minHeight: '100vh',
-  }
-};
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
 
@@ -56,16 +50,16 @@ const App = ({currentLocale, currentTheme}: AppProps) => (
           //},
         ]}
       />
-      <Header />
+      <Header/>
       <Box
         flex={1} // make footer sticky
-        marginTop='big'
+        paddingTop="4.5em"
       >
         <Match exactly pattern="/" component={ActivePage}/>
-        {/*<Match exactly pattern="/active" component={ActivePage}/>*/}
+        <Match exactly pattern="/active" component={ActivePage}/>
         <Match exactly pattern="/new" component={NewJobPage}/>
-        {/*<Match exactly pattern="/scheduled" component={ScheduledPage}/>*/}
-        {/*<Miss component={NotFoundPage}/>*/}
+        <Match exactly pattern="/scheduled" component={ScheduledPage}/>
+        <Miss component={NotFoundPage}/>
       </Box>
     </Container>
   </ThemeProvider>
