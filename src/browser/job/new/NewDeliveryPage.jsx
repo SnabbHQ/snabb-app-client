@@ -1,11 +1,34 @@
 /* @flow */
-import React from 'react'
+import React from "react"
 import {provideHooks} from "redial"
-import {Container, Fixed, Button, Panel, Box} from '../../app/components'
-//import {Fixed} from '../../app/components-old'
-import {FormattedMessage} from 'react-intl'
-import JobFields from './JobFields'
-import GoogleMap from 'google-map-react';
+import {Fixed, Button, Box} from "../../app/components"
+import {FormattedMessage} from "react-intl"
+import JobFields from "./JobFields"
+import GoogleMap from "google-map-react"
+import styled from "../../app/components/styled"
+
+
+const LeftPanel = styled((theme, props) => ({
+  $extends: Box,
+  width: '60%',
+  '@media (max-width: 768px)': {
+    width: '100%'
+  },
+  paddingRight: "4em",
+  paddingLeft: "4em",
+  marginBottom: "3em",
+  backgroundColor: 'white',
+  boxShadow: '0 -1px 1px rgba(0,0,0,.08)'
+}))
+
+const RightPanel = styled((theme, props) => ({
+  $extends: Fixed,
+  bottom: '0px',
+  right: '0px',
+  top: '0px',
+  width: '40%',
+  zIndex: -1
+}))
 
 const NewJobPage = () => {
 
@@ -49,39 +72,21 @@ const NewJobPage = () => {
 
   return (
     <Box>
-      <Panel
-        paddingRight="4em"
-        paddingLeft="4em"
-        marginBottom="3em"
-        style={{
-          backgroundColor: 'white',
-          boxShadow: '3px 1px 3px rgba(0,0,0,.08)',
-        }}
-      >
+      <LeftPanel>
         <JobFields/>
         {renderRequestButton()}
-      </Panel>
-      <Fixed bottom right top style={{
-        width: '40%',
-        zIndex: -1,
-      }}>
-        <Box style={{
-            position: 'absolute',
-            top: '72px',
-            bottom: 0,
-            left: '0px',
-            right: 0
-          }}>
-          <GoogleMap
-            bootstrapURLKeys={{
-          key: 'AIzaSyAap17mxLF2XLZdnisFJeJd9bniprOKXCs',
-          language: 'en',
-        }}
-            defaultCenter={defaultProps.center}
-            defaultZoom={defaultProps.zoom}>
-          </GoogleMap>
-        </Box>
-      </Fixed>
+      </LeftPanel>
+      <RightPanel>
+        <RightPanel/>
+        <GoogleMap
+          bootstrapURLKeys={{
+                key: 'AIzaSyAap17mxLF2XLZdnisFJeJd9bniprOKXCs',
+                language: 'en',
+              }}
+          defaultCenter={defaultProps.center}
+          defaultZoom={defaultProps.zoom}>
+        </GoogleMap>
+      </RightPanel>
     </Box>
   )
 }

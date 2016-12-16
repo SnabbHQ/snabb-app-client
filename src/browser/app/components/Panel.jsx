@@ -4,7 +4,15 @@ import type { BoxProps } from './Box';
 import Box from './Box';
 import styled from './styled';
 
-const Panel: Styled<BoxProps> = styled((theme, props) => ({
+type PanelProps = {|
+  top?: boolean,
+  right?: boolean,
+  bottom?: boolean,
+  left?: boolean,
+  zIndex?: number
+|};
+
+const Panel: Styled<PanelProps> = styled((theme, props) => ({
   $extends: Box,
   width: '60%',
   '@media (max-width: 768px)': {
