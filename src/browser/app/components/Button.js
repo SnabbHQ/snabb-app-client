@@ -1,4 +1,5 @@
 /* @flow */
+import React from 'react'
 import type { Styled } from '../themes/types';
 import type { TextProps } from './Text';
 import Text from './Text';
@@ -20,6 +21,6 @@ const Button: Styled<TextProps> = styled((theme, props) => ({
     : props.bold ? theme.text.bold : 'normal',
   paddingLeft: '1em',
   paddingRight: '1em',
-}), 'button');
+}), 'button', ['onClick']);
 
 export default Button;

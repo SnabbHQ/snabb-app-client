@@ -18,7 +18,7 @@ const LeftPanel = styled((theme, props) => ({
   paddingLeft: "4em",
   marginBottom: "3em",
   backgroundColor: 'white',
-  boxShadow: '0 -1px 1px rgba(0,0,0,.08)'
+  boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)'
 }))
 
 const RightPanel = styled((theme, props) => ({
