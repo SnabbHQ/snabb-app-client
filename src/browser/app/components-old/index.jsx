@@ -3,7 +3,6 @@
 // jxnblk.com/writing/posts/patterns-for-style-composition-in-react
 
 // App components-old
-export { default as Button } from './Button';
 export { default as FieldError } from './FieldError';
 export { default as Form } from './Form';
 export { default as Image } from './Image';
@@ -27,7 +26,6 @@ export {
   Block,
   Blockquote,
   Breadcrumbs,
-  // Button,
   ButtonCircle,
   ButtonOutline,
   Card,
