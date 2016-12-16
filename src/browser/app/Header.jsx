@@ -44,6 +44,7 @@ const Header = ({viewer}: HeaderProps) => (
       display="flex"
       flexWrap="wrap"
       paddingVertical={0.5}
+      boxShadow="0px 2px 4px 0px rgba(0,0,0, 0.75)"
     >
       <Space x={2}/>
       <Box

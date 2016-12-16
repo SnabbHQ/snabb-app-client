@@ -24,6 +24,7 @@ export type BoxProps = {
   borderColor?: Color,
   borderRadius?: number,
   borderWidth?: number,
+  boxShadow?: string,
   display?: Display,
   flex?: number,
   flexBasis?: number | string,
@@ -122,6 +123,7 @@ const propToStyle = (prop, value: any, theme) => {
     case 'maxHeight':
     case 'minWidth':
     case 'minHeight':
+    case 'boxShadow':
     case 'display':
     case 'flex':
     case 'flexDirection':
