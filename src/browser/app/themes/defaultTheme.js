@@ -5,7 +5,7 @@ import typography from './typography';
 
 const theme: Theme = {
   typography: typography({
-    fontSize: 16,
+    fontSize: 14,
     fontSizeScale: 'step5', // modularscale.com
     lineHeight: 24,
   }),

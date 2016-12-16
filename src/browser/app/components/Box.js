@@ -148,9 +148,6 @@ const propToStyle = (prop, value: any, theme) => {
 const propsToStyle = (theme, props) => Object
   .keys(props)
   .reduce((style, prop) => {
-    console.log(style)
-    console.log(prop)
-    console.log(props[prop])
     if (prop === 'theme') return style;
     const propStyle = propToStyle(prop, props[prop], theme);
     if (propStyle === null) return style;

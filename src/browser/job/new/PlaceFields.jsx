@@ -1,44 +1,8 @@
 /* @flow */
-import React, {PropTypes} from 'react'
-import {defineMessages} from 'react-intl'
-import {View, Input} from '../../app/components-old'
-import {Grid} from '../../app/components'
+import React, {PropTypes} from "react"
+import {View} from "../../app/components-old"
+import {Input, Grid} from "../../app/components"
 import FieldHeader from "./FieldHeader"
-
-const MESSAGES = defineMessages({
-  contactCompanyPlaceholder: {
-    id: 'jobForm.company',
-    defaultMessage: 'Company'
-  },
-  contactFirstnamePlaceholder: {
-    id: 'jobForm.firstname',
-    defaultMessage: 'First name'
-  },
-  contactLastnamePlaceholder: {
-    id: 'jobForm.lastname',
-    defaultMessage: 'Last name'
-  },
-  pickUpAddressPlaceholder: {
-    id: 'jobForm.pickUpAddressPlaceholder',
-    defaultMessage: 'Select a pick up address...'
-  },
-  dropOffAddressPlaceholder: {
-    id: 'jobForm.dropOffAddressPlaceholder',
-    defaultMessage: 'Select a drop off address...'
-  },
-  contactPhonePlaceholder: {
-    id: 'jobForm.phonePlaceholder',
-    defaultMessage: 'Phone'
-  },
-  contactEmailPlaceholder: {
-    id: 'jobForm.emailPlaceholder',
-    defaultMessage: 'Email'
-  },
-  commentPlaceholder: {
-    id: 'jobForm.commentPlaceholder',
-    defaultMessage: 'Add a comment'
-  }
-});
 
 const DEBOUNCE_DELAY = 1000;
 const MOAR_DEBOUNCE_DELAY = 3000;
@@ -56,6 +20,8 @@ export const PlaceShape = PropTypes.shape({
 const PlaceFields = ({icon, title, placeType}) => {
 
   const onInputKeyDown = (event) => {
+    event.preventDefault()
+    console.log('hola')
   }
 
   return (
@@ -68,7 +34,7 @@ const PlaceFields = ({icon, title, placeType}) => {
             label="First Name"
             maxLength={100}
             onKeyDown={onInputKeyDown}
-            placeholder={''}
+            type="text"
           />
         </Grid>
         <Grid col={6} pt={2} pl={2}>
@@ -78,6 +44,7 @@ const PlaceFields = ({icon, title, placeType}) => {
             maxLength={100}
             onKeyDown={onInputKeyDown}
             placeholder={''}
+            type="text"
           />
         </Grid>
       </View>
@@ -88,6 +55,7 @@ const PlaceFields = ({icon, title, placeType}) => {
         maxLength={100}
         onKeyDown={onInputKeyDown}
         placeholder={''}
+        type="text"
       />
 
       <Input
@@ -96,6 +64,7 @@ const PlaceFields = ({icon, title, placeType}) => {
         maxLength={100}
         onKeyDown={onInputKeyDown}
         placeholder={'e.g. San Vicente, 91, 46001, Valencia'}
+        type="text"
       />
 
       <View>
@@ -106,6 +75,7 @@ const PlaceFields = ({icon, title, placeType}) => {
             maxLength={100}
             onKeyDown={onInputKeyDown}
             placeholder={''}
+            type="email"
           />
         </Grid>
         <Grid col={6} pl={2}>
@@ -115,6 +85,7 @@ const PlaceFields = ({icon, title, placeType}) => {
             maxLength={100}
             onKeyDown={onInputKeyDown}
             placeholder={''}
+            type="text"
           />
         </Grid>
       </View>
@@ -125,6 +96,7 @@ const PlaceFields = ({icon, title, placeType}) => {
         maxLength={100}
         onKeyDown={onInputKeyDown}
         placeholder={'e.g. leave with the doorman'}
+        type="text"
       />
     </View>
   )

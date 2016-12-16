@@ -13,6 +13,7 @@ export { default as Paragraph } from './Paragraph';
 export { default as Text } from './Text';
 export { default as Title } from './Title';
 export { default as styled } from './styled';
+export { default as Input } from './Input';
 
 // Reflexbox
 // github.com/jxnblk/reflexbox

@@ -44,7 +44,6 @@ export {
   Footer,
   Heading,
   HeadingLink,
-  Input,
   InlineForm,
   Label,
   LinkBlock,

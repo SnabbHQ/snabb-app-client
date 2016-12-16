@@ -30,5 +30,37 @@ export default defineMessages({
     id: 'jobs.scheduled.noScheduledJobsTitle',
     defaultMessage: 'Jobs that are scheduled will appear here.',
   },
+  contactCompanyPlaceholder: {
+    id: 'jobForm.company',
+    defaultMessage: 'Company'
+  },
+  contactFirstnamePlaceholder: {
+    id: 'jobForm.firstname',
+    defaultMessage: 'First name'
+  },
+  contactLastnamePlaceholder: {
+    id: 'jobForm.lastname',
+    defaultMessage: 'Last name'
+  },
+  pickUpAddressPlaceholder: {
+    id: 'jobForm.pickUpAddressPlaceholder',
+    defaultMessage: 'Select a pick up address...'
+  },
+  dropOffAddressPlaceholder: {
+    id: 'jobForm.dropOffAddressPlaceholder',
+    defaultMessage: 'Select a drop off address...'
+  },
+  contactPhonePlaceholder: {
+    id: 'jobForm.phonePlaceholder',
+    defaultMessage: 'Phone'
+  },
+  contactEmailPlaceholder: {
+    id: 'jobForm.emailPlaceholder',
+    defaultMessage: 'Email'
+  },
+  commentPlaceholder: {
+    id: 'jobForm.commentPlaceholder',
+    defaultMessage: 'Add a comment'
+  }
 
 })
