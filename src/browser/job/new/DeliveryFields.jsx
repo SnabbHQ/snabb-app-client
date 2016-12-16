@@ -7,10 +7,9 @@ import pickupIcon from '../../../../assets/images/pickupBadgeBlank.svg'
 import dropIcon from '../../../../assets/images/dropOffBadgeBlank.svg'
 
 const JobFields = () => {
-
   return (
     <View>
-      <PlaceFields icon={pickupIcon} title={"Pick Up"} placeType="pickUp"/>
+      <PlaceFields icon={pickupIcon} title={"Pick Up"} collapsible placeType="pickUp"/>
       <Space x={1}/>
       <Divider/>
       <Space x={1}/>

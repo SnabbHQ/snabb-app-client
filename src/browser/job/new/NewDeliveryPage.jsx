@@ -3,13 +3,14 @@ import React from "react"
 import {provideHooks} from "redial"
 import {Fixed, Button, Box} from "../../app/components"
 import {FormattedMessage} from "react-intl"
-import JobFields from "./DeliveryFields"
+import DeliveryFields from "./DeliveryFields"
 import GoogleMap from "google-map-react"
 import styled from "../../app/components/styled"
 
 
 const LeftPanel = styled((theme, props) => ({
   $extends: Box,
+  height: '100mvh',
   width: '60%',
   '@media (min-width: 1200px)': {
     width: '40%'
@@ -19,7 +20,8 @@ const LeftPanel = styled((theme, props) => ({
   },
   paddingRight: "4em",
   paddingLeft: "4em",
-  marginBottom: "3em",
+  paddingTop: "2em",
+  paddingBottom: "5em",
   backgroundColor: 'white',
   boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)'
 }))
@@ -31,7 +33,8 @@ const RequestPanel = styled((theme, props) => ({
   boxShadow: '0 -1px 1px rgba(0,0,0,.08)',
   paddingRight: "0px",
   paddingLeft: "0px",
-  marginBottom: "0px",
+  paddingTop: "0px",
+  paddingBottom: "0px",
   bottom: '0px',
   left: '0px',
 }))
@@ -79,7 +82,7 @@ const NewJobPage = () => {
   return (
     <Box>
       <LeftPanel>
-        <JobFields/>
+        <DeliveryFields/>
         {renderRequestButton()}
       </LeftPanel>
       <RightPanel>
