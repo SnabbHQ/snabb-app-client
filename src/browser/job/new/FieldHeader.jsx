@@ -1,11 +1,12 @@
 /* @flow */
 import React, {PropTypes} from 'react'
-import {Grid, View, Image, Heading} from '../../app/components-old'
+import {Box, Heading} from '../../app/components'
+import {Grid, Image} from '../../app/components-old'
 
 const FieldHeader = ({icon, title}) => {
 
   return (
-  <View>
+  <Box>
     <Grid>
       <Image
         alt={title}
@@ -14,13 +15,11 @@ const FieldHeader = ({icon, title}) => {
       />
     </Grid>
     <Grid pt={2} ml={2}>
-      <Heading
-        level={2}
-        size={3}>
+      <Heading size={1}>
         {title}
       </Heading>
     </Grid>
-  </View>
+  </Box>
   )
 }
 
