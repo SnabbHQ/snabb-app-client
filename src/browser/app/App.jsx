@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 
 // Pages
 import ActivePage from "../job/active/ActiveJobsPage"
-import ScheduledPage from "../job/scheduled/ScheduledJobsPage"
+import ScheduledPage from "../job/scheduled/ScheduledDeliveriesPage"
 import NewJobPage from "../job/new/NewDeliveryPage"
 import NotFoundPage from "../notfound/NotFoundPage"
 

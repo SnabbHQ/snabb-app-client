@@ -1,4 +1,5 @@
 /* @flow */
+import type { State } from '../../../common/types'
 import R from 'ramda'
 import React from "react"
 import {connect} from "react-redux"
@@ -11,6 +12,10 @@ const ScheduledJobsPage = ({ jobs }) => {
       <NoItems/>
     )
   }
+
+  return (
+    <Box/>
+  )
 }
 
 ScheduledJobsPage.propTypes = {
