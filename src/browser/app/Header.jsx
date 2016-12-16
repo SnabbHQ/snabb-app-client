@@ -30,7 +30,7 @@ const HeaderLink = ({exactly, to, message}: HeaderLinkProps) => (
     bold
     color="white"
     exactly={exactly}
-    marginHorizontal="small"
+    marginHorizontal="1.5em"
     to={to}
   >
     <FormattedMessage {...message} />
@@ -43,8 +43,8 @@ const Header = ({viewer}: HeaderProps) => (
       backgroundColor="primary"
       display="flex"
       flexWrap="wrap"
-      marginBottom="medium"
-      paddingVertical="small"
+      marginBottom={0.5}
+      paddingVertical={0.5}
     >
       <Space x={2}/>
       <Box
@@ -59,9 +59,7 @@ const Header = ({viewer}: HeaderProps) => (
         />
         <Space x={2}/>
         <HeaderLink exactly to="/" message={linksMessages.active}/>
-        <Space x={2}/>
         <HeaderLink to="/scheduled" message={linksMessages.scheduled}/>
-        <Space x={2}/>
         <HeaderLink to="/past" message={linksMessages.past}/>
       </Box>
       <Space auto/>

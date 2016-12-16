@@ -59,10 +59,10 @@ const NewJobPage = () => {
     <Box>
       <Box
         width="60%"
-        paddingRight="step6"
-        paddingLeft="step6"
-        marginTop="big"
-        marginBottom="big"
+        paddingRight="4em"
+        paddingLeft="4em"
+        marginTop="6em"
+        marginBottom="3em"
         style={styles.leftPanel}
       >
         <JobFields/>

@@ -5,10 +5,7 @@ import jobMessages from '../../../common/job/jobMessages'
 
 export default function NewDeliveryButton() {
   return (
-    <Button
-      size="small"
-      backgroundColor="info"
-    >
+    <Button backgroundColor="info">
       <Link
         color="white"
         to={"/new"}

@@ -34,13 +34,15 @@ const typography = ({
   lineHeight,
 }: typographyProps) => ({
   fontSize: (level: number) => Array
-    .from(Array(Math.abs(level)))
+    .from(new Array(Math.abs(level)))
     .reduce(
       size => {
         const scaleRatio = typeof fontSizeScale === 'string'
           ? scale[fontSizeScale]
           : fontSizeScale;
-        return level > 0 ? size * scaleRatio : size / scaleRatio;
+        var a = level > 0 ? size * scaleRatio : size / scaleRatio;
+        console.log(a)
+        return a
       },
       fontSize,
     ),
