@@ -11,6 +11,9 @@ import styled from "../../app/components/styled"
 const LeftPanel = styled((theme, props) => ({
   $extends: Box,
   width: '60%',
+  '@media (min-width: 1200px)': {
+    width: '40%'
+  },
   '@media (max-width: 768px)': {
     width: '100%'
   },
@@ -21,46 +24,52 @@ const LeftPanel = styled((theme, props) => ({
   boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)'
 }))
 
+const RequestPanel = styled((theme, props) => ({
+  $extends: LeftPanel,
+  position: 'fixed',
+  height: '60px',
+  boxShadow: '0 -1px 1px rgba(0,0,0,.08)',
+  paddingRight: "0px",
+  paddingLeft: "0px",
+  marginBottom: "0px",
+  bottom: '0px',
+  left: '0px',
+}))
+
+const ButtonBox = styled((theme, props) => ({
+  $extends: Box,
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  height: '100%',
+  paddingRight: '1em'
+}))
+
 const RightPanel = styled((theme, props) => ({
   $extends: Fixed,
   bottom: '0px',
   right: '0px',
   top: '0px',
   width: '40%',
+  '@media (min-width: 1200px)': {
+    width: '60%'
+  },
   zIndex: -1
 }))
 
 const NewJobPage = () => {
 
-  const styles = {
-    requestFixedContainer: {
-      height: 60,
-      width: '60%',
-      backgroundColor: 'white',
-      boxShadow: '0 -1px 1px rgba(0,0,0,.08)'
-    },
-    requestFlexContainer: {
-      justifyContent: 'flex-end',
-      height: 60,
-      paddingRight: 50,
-    }
-  }
-
-  // TODO - Not added any longer in the Button?
-  //type='submit'
-  //id='requestButton'
-
   function renderRequestButton() {
     return (
-      <Fixed bottom left style={styles.requestFixedContainer}>
-        <Box display="flex" alignItems="center" style={styles.requestFlexContainer}>
-          <Button>
+      <RequestPanel>
+        <ButtonBox>
+          <Button backgroundColor="info">
             <FormattedMessage
               id='newJobPage.requestButtonDisabled'
               defaultMessage='Request'/>
           </Button>
-        </Box>
-      </Fixed>
+        </ButtonBox>
+      </RequestPanel>
     )
   }
 

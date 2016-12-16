@@ -40,9 +40,7 @@ const typography = ({
         const scaleRatio = typeof fontSizeScale === 'string'
           ? scale[fontSizeScale]
           : fontSizeScale;
-        var a = level > 0 ? size * scaleRatio : size / scaleRatio;
-        console.log(a)
-        return a
+        return level > 0 ? size * scaleRatio : size / scaleRatio;
       },
       fontSize,
     ),
