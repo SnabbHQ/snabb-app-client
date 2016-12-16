@@ -13,7 +13,6 @@ import { Box, Container, ThemeProvider } from './components';
 import { connect } from 'react-redux';
 
 // Pages
-import HomePage from "../home/HomePage"
 import ActivePage from "../job/active/ActiveJobsPage"
 import ScheduledPage from "../job/scheduled/ScheduledJobsPage"
 import NewJobPage from "../job/new/NewJobPage"
@@ -51,10 +50,10 @@ const App = ({currentLocale, currentTheme}: AppProps) => (
         link={[
           ...favicon.link,
           // Test vertical rhythm.
-          {
-            href: `http://basehold.it/${theme(currentTheme).text.lineHeight}`,
-            rel: 'stylesheet',
-          },
+          //{
+          //  href: `http://basehold.it/${theme(currentTheme).text.lineHeight}`,
+          //  rel: 'stylesheet',
+          //},
         ]}
       />
       <Header />
@@ -63,9 +62,8 @@ const App = ({currentLocale, currentTheme}: AppProps) => (
         marginTop='big'
       >
         <Match exactly pattern="/" component={ActivePage}/>
-        {/*<Match exactly pattern="/" component={ActivePage}/>*/}
         {/*<Match exactly pattern="/active" component={ActivePage}/>*/}
-        {/*<Match exactly pattern="/new" component={NewJobPage}/>*/}
+        <Match exactly pattern="/new" component={NewJobPage}/>
         {/*<Match exactly pattern="/scheduled" component={ScheduledPage}/>*/}
         {/*<Miss component={NotFoundPage}/>*/}
       </Box>

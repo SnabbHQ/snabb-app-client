@@ -1,8 +1,8 @@
 /* @flow */
 import React from 'react'
 import {provideHooks} from "redial"
-import {Button, Box} from '../../app/components'
-import {Fixed} from '../../app/components-old'
+import {Container, Fixed, Button, Box} from '../../app/components'
+//import {Fixed} from '../../app/components-old'
 import {FormattedMessage} from 'react-intl'
 import JobFields from './JobFields'
 import GoogleMap from 'google-map-react';
@@ -13,8 +13,7 @@ const NewJobPage = () => {
     leftPanel: {
       zIndex: 1,
       width: '60%',
-      boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)',
-      paddingBottom: 80,
+      paddingBottom: 30,
     },
     rightPanel: {
       width: '40%',
@@ -32,13 +31,14 @@ const NewJobPage = () => {
     }
   }
 
+  // TODO - Not added any longer in the Button?
   //type='submit'
   //id='requestButton'
 
   function renderRequestButton() {
     return (
       <Fixed bottom left style={styles.requestFixedContainer}>
-        <Box alignItems="center" style={styles.requestFlexContainer}>
+        <Box display="flex" alignItems="center" style={styles.requestFlexContainer}>
           <Button>
             <FormattedMessage
               id='newJobPage.requestButtonDisabled'
@@ -56,21 +56,30 @@ const NewJobPage = () => {
   };
 
   return (
-    <Box display="flex">
-      <Box padding='small' style={styles.leftPanel}>
+    <Box>
+      <Box
+        width="60%"
+        paddingRight="step6"
+        paddingLeft="step6"
+        marginTop="big"
+        marginBottom="big"
+        style={styles.leftPanel}
+      >
         <JobFields/>
         {renderRequestButton()}
       </Box>
-      <Fixed bottom right top style={styles.rightPanel}>
-        <GoogleMap
-          bootstrapURLKeys={{
+      <Box width="40%">
+        <Fixed bottom right top style={styles.rightPanel}>
+          <GoogleMap
+            bootstrapURLKeys={{
           key: 'AIzaSyAap17mxLF2XLZdnisFJeJd9bniprOKXCs',
           language: 'en',
         }}
-          defaultCenter={defaultProps.center}
-          defaultZoom={defaultProps.zoom}>
-        </GoogleMap>
-      </Fixed>
+            defaultCenter={defaultProps.center}
+            defaultZoom={defaultProps.zoom}>
+          </GoogleMap>
+        </Fixed>
+      </Box>
     </Box>
   )
 }
