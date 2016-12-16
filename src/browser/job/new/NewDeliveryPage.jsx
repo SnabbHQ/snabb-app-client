@@ -3,7 +3,7 @@ import React from "react"
 import {provideHooks} from "redial"
 import {Fixed, Button, Box} from "../../app/components"
 import {FormattedMessage} from "react-intl"
-import JobFields from "./JobFields"
+import JobFields from "./DeliveryFields"
 import GoogleMap from "google-map-react"
 import styled from "../../app/components/styled"
 

@@ -81,7 +81,5 @@ export {
 // github.com/jxnblk/reflexbox
 export {
   Reflex,
-  Flex,
-  Box,
-  Grid,
+  Flex
 } from 'reflexbox';
