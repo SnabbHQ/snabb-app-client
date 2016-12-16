@@ -36,15 +36,6 @@ const RequestPanel = styled((theme, props) => ({
   left: '0px',
 }))
 
-const ButtonBox = styled((theme, props) => ({
-  $extends: Box,
-  display: 'flex',
-  justifyContent: 'flex-end',
-  alignItems: 'center',
-  height: '100%',
-  paddingRight: '1em'
-}))
-
 const RightPanel = styled((theme, props) => ({
   $extends: Fixed,
   bottom: '0px',
@@ -62,13 +53,19 @@ const NewJobPage = () => {
   function renderRequestButton() {
     return (
       <RequestPanel>
-        <ButtonBox>
+        <Box
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="center"
+          height="100%"
+          paddingRight={1}
+        >
           <Button backgroundColor="info">
             <FormattedMessage
               id='newJobPage.requestButtonDisabled'
               defaultMessage='Request'/>
           </Button>
-        </ButtonBox>
+        </Box>
       </RequestPanel>
     )
   }
