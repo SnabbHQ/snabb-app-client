@@ -1,12 +1,18 @@
-import React from "react"
+import React, {PropTypes} from "react"
 import {Button, Link} from '../../app/components'
 import {FormattedMessage} from "react-intl"
 import jobMessages from '../../../common/job/jobMessages'
 
-export default function NewDeliveryButton() {
+export default function NewDeliveryButton({}, {router}: Object) {
 
   const greet = () => {
-    alert('Hello World')
+    // TODO 
+    // analytics.track('Clicked new delivery button', {
+    //   category: analytics.DELIVERY_REQUEST_FLOW_CATEGORY, 
+    //   position: this.props.position 
+    // })  
+
+    router.transitionTo('/new');
   }
 
   return (
@@ -15,3 +21,7 @@ export default function NewDeliveryButton() {
     </Button>
   )
 }
+
+NewDeliveryButton.contextTypes = {
+  router: PropTypes.object.isRequired
+};
