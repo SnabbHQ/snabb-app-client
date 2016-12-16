@@ -4,45 +4,67 @@ import {Input, Text, Button, Box, Grid} from "../../app/components"
 import {Space} from "../../app/components-old"
 import FieldHeader from "./FieldHeader"
 
-const PlaceFields = ({icon, title, placeType, collapsible}) => {
+class PlaceFields extends React.Component {
 
-  var collapsed = true;
+  constructor(props: P, context: any) {
+    super(props, context)
 
-  const onInputKeyDown = (event) => {
-    event.preventDefault()
+    this.state = {
+      collapsed: false
+    }
+
+    this.renderEditButton = this.renderEditButton.bind(this)
+    this.renderFields = this.renderFields.bind(this)
+    this.renderExpandedFields = this.renderExpandedFields.bind(this)
+    this.renderCollapsedFields = this.renderCollapsedFields.bind(this)
+    this.onInputKeyDown = this.onInputKeyDown.bind(this)
   }
 
-  const renderEditButton = () => {
-    return collapsible ? <Button marginLeft="2em">{collapsed ? "Edit" : "Save"}</Button> : null
+  onInputKeyDown(event) {
+    //TODO
   }
 
-  const renderFields = () => {
-    if (collapsible && collapsed) {
-      return renderCollapsedFields()
+  renderEditButton(collapsed) {
+    if (this.props.collapsible) {
+      return (
+        <Button marginLeft="2em"
+                onClick={() => this.setState({collapsed: !this.state.collapsed})}
+        >
+          {collapsed ? "Edit" : "Save"}
+        </Button>
+      )
     } else {
-      return renderExpandedFields()
+      return null
     }
   }
 
-  const renderExpandedFields = () => {
+  renderFields(collapsed) {
+    if (this.props.collapsible && collapsed) {
+      return this.renderCollapsedFields()
+    } else {
+      return this.renderExpandedFields()
+    }
+  }
+
+  renderExpandedFields() {
     return (
       <Box>
         <Box>
           <Grid col={6} pt={2}>
             <Input
-              name={`${placeType}FirstName`}
+              name={`${this.props.placeType}FirstName`}
               label="First Name"
               maxLength={100}
-              onKeyDown={onInputKeyDown}
+              onKeyDown={this.onInputKeyDown}
               type="text"
             />
           </Grid>
           <Grid col={6} pt={2} pl={2}>
             <Input
-              name={`${placeType}LastName`}
+              name={`${this.props.placeType}LastName`}
               label="Last Name"
               maxLength={100}
-              onKeyDown={onInputKeyDown}
+              onKeyDown={this.onInputKeyDown}
               placeholder={''}
               type="text"
             />
@@ -50,40 +72,40 @@ const PlaceFields = ({icon, title, placeType, collapsible}) => {
         </Box>
 
         <Input
-          name={`${placeType}BusinessName`}
+          name={`${this.props.placeType}BusinessName`}
           label="Business Name"
           maxLength={100}
-          onKeyDown={onInputKeyDown}
+          onKeyDown={this.onInputKeyDown}
           placeholder={''}
           type="text"
         />
 
         <Input
-          name={`${placeType}Address`}
+          name={`${this.props.placeType}Address`}
           label="Address*"
           maxLength={100}
-          onKeyDown={onInputKeyDown}
+          onKeyDown={this.onInputKeyDown}
           placeholder={'e.g. San Vicente, 91, 46001, Valencia'}
           type="text"
         />
 
         <Box>
-          <Grid col={6} >
+          <Grid col={6}>
             <Input
-              name={`${placeType}Email`}
+              name={`${this.props.placeType}Email`}
               label="Email"
               maxLength={100}
-              onKeyDown={onInputKeyDown}
+              onKeyDown={this.onInputKeyDown}
               placeholder={''}
               type="email"
             />
           </Grid>
           <Grid col={6} pl={2}>
             <Input
-              name={`${placeType}PhoneNumber`}
+              name={`${this.props.placeType}PhoneNumber`}
               label="Phone Number"
               maxLength={100}
-              onKeyDown={onInputKeyDown}
+              onKeyDown={this.onInputKeyDown}
               placeholder={''}
               type="text"
             />
@@ -91,10 +113,10 @@ const PlaceFields = ({icon, title, placeType, collapsible}) => {
         </Box>
 
         <Input
-          name={`${placeType}Comments`}
+          name={`${this.props.placeType}Comments`}
           label="Comments for the courier"
           maxLength={100}
-          onKeyDown={onInputKeyDown}
+          onKeyDown={this.onInputKeyDown}
           placeholder={'e.g. leave with the doorman'}
           type="text"
         />
@@ -102,7 +124,7 @@ const PlaceFields = ({icon, title, placeType, collapsible}) => {
     )
   }
 
-  const renderCollapsedFields = () => {
+  renderCollapsedFields() {
     return (
       <Box display="flex" flexDirection="column">
         <Text bold>Javier Tarazaga</Text>
@@ -114,16 +136,18 @@ const PlaceFields = ({icon, title, placeType, collapsible}) => {
     )
   }
 
-  return (
-    <Box>
-      <Box display="flex" alignItems="center">
-        <FieldHeader icon={icon} title={title}/>
-        <Space auto/>
-        {renderEditButton()}
+  render() {
+    return (
+      <Box>
+        <Box display="flex" alignItems="center">
+          <FieldHeader icon={this.props.icon} title={this.props.title}/>
+          <Space auto/>
+          {this.renderEditButton(this.state.collapsed)}
+        </Box>
+        {this.renderFields(this.state.collapsed)}
       </Box>
-      {renderFields()}
-    </Box>
-  )
+    )
+  }
 }
 
 PlaceFields.propTypes = {
@@ -131,9 +155,10 @@ PlaceFields.propTypes = {
   icon: PropTypes.string.isRequired,
   placeType: PropTypes.oneOf(['pickUp', 'dropOff']).isRequired,
   collapsible: PropTypes.bool
-  // recentAddresses: PropTypes.array.isRequired,
-  // getAddresses: PropTypes.func.isRequired,
-  // value: PlaceShape.isRequired
+}
+
+PlaceFields.defaultProps = {
+  collapsible: false
 }
 
 export default PlaceFields

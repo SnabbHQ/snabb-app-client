@@ -56,6 +56,9 @@ const theme: Theme = {
     marginBottom: 1,
     maxWidth: '42em',
   },
+  input: {
+    borderColor: 'solid 1px ' + openColor.gray4
+  }
 };
 
 export default theme;
