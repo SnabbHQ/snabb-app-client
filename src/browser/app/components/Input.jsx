@@ -20,12 +20,13 @@ const CustomInput = styled((theme, props: InputProps) => ({
   width: '100%',
   color: props.color ? theme.colors[props.color] : theme.colors.black,
   borderColor: props.invalid ? theme.colors.error : '',
+  type: props.type ? props.type : 'text'
 }), 'input', ['name', 'placeholder', 'type', 'onKeyDown']);
 
 const Input: Styled<InputProps> = (props: InputProps) => {
   return (
     <Box marginBottom={'0.5em'}>
-      {props.label ? <Text bold size={0}>{props.label}</Text> : null}
+      {props.label ? <Text size={0}>{props.label}</Text> : null}
       <CustomInput {...props}/>
     </Box>
   )
