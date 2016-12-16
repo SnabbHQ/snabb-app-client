@@ -2,9 +2,9 @@
 import type {State, User} from "../../common/types"
 import React from "react"
 import linksMessages from "../../common/app/linksMessages"
-//import NewDeliveryButton from "../job/components/NewDeliveryButton"
+import {NewDeliveryButton} from '../job/components'
 import {FormattedMessage} from "react-intl"
-import {Link, Button, Box, Image} from "../app/components"
+import {Link, Box, Image} from "../app/components"
 import {Fixed, Space} from "../app/components-old"
 import {connect} from "react-redux"
 
@@ -67,18 +67,9 @@ const Header = ({viewer}: HeaderProps) => (
       <Space auto/>
       <Box
         display="flex"
-        alignItems="center">
-        <Button
-          size="small"
-          backgroundColor="info"
-        >
-          <Link
-            color="white"
-            to={"/new"}
-          >
-            <FormattedMessage {...linksMessages.new} />
-          </Link>
-        </Button>
+        alignItems="center"
+      >
+        <NewDeliveryButton/>
         <Space x={2}/>
         <Image
           height={40}

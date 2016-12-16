@@ -2,6 +2,10 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
+  newDelivery: {
+    defaultMessage: 'New Delivery',
+    id: 'jobs.new.newDelivery',
+  },
   noActiveJobsTitle: {
     defaultMessage: 'No active jobs',
     id: 'jobs.new.noActiveJobsTitle',
