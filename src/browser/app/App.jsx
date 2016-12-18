@@ -58,7 +58,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
       >
         <Header />
         <SideMenu />
-        <Box marginLeft="6em">
+        <Box marginLeft="5em">
           <Match exactly pattern="/" component={ActivePage} />
           <Match exactly pattern="/active" component={ActivePage} />
           <Match exactly pattern="/new" component={NewJobPage} />
