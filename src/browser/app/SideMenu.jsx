@@ -46,10 +46,9 @@ const SideMenu = () => (
     backgroundColor="black"
     zIndex={2}
     overFlowX="hidden"
-    paddingTop="3em"
+    paddingTop="4em"
     boxShadow="0 1px 2px rgba(0,0,0,0.15)"
   >
-    <Space x={3}/>
     <SideMenuLink exactly to="/" message={linksMessages.active}/>
     <SideMenuLink to="/active" message={linksMessages.active}/>
     <SideMenuLink to="/scheduled" message={linksMessages.scheduled}/>

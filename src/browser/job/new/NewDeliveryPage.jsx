@@ -1,6 +1,6 @@
 /* @flow */
 import React from 'react';
-import { Fixed, Title, Button, Box } from '../../app/components';
+import { Fixed, Title, Button, Heading, Box } from '../../app/components';
 import { FormattedMessage } from 'react-intl';
 import DeliveryFields from './DeliveryFields';
 import GoogleMap from 'google-map-react';
@@ -29,6 +29,15 @@ const LeftPanel = styled((theme) => ({
 const RequestPanel = styled(() => ({
   $extends: LeftPanel,
   position: 'fixed',
+  marginLeft: '2em',
+  '@media (min-width: 1200px)': {
+    width: '40%',
+    marginLeft: '3em',
+  },
+  '@media (max-width: 768px)': {
+    width: '100%',
+    marginLeft: '1em',
+  },
   height: '60px',
   boxShadow: '0 -1px 1px rgba(0,0,0,.08)',
   paddingRight: '0px',
@@ -36,7 +45,7 @@ const RequestPanel = styled(() => ({
   paddingTop: '0px',
   paddingBottom: '0px',
   bottom: '0px',
-  left: '0px',
+  left: '0em',
 }));
 
 const RightPanel = styled(() => ({
@@ -78,16 +87,18 @@ const NewJobPage = () => {
   }
 
   const defaultProps = {
-    center: { lat: 39.470128, lng: -0.370621 },
+    center: {lat: 39.470128, lng: -0.370621},
     zoom: 16,
-    greatPlaceCoords: { lat: 59.724465, lng: 30.080121 },
+    greatPlaceCoords: {lat: 59.724465, lng: 30.080121},
   };
 
   return (
     <Box>
+      <Title message="Snabb - New Delivery" />
       <LeftPanel>
-          <DeliveryFields />
-          {renderRequestButton()}
+        <Heading size={3}>New Delivery</Heading>
+        <DeliveryFields />
+        {renderRequestButton()}
       </LeftPanel>
       <RightPanel>
         <RightPanel />

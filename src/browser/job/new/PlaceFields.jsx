@@ -20,7 +20,7 @@ class PlaceFields extends React.Component {
     this.onInputKeyDown = this.onInputKeyDown.bind(this);
   }
 
-  onInputKeyDown(event) {
+  onInputKeyDown() {
     // TODO
   }
 
@@ -34,8 +34,6 @@ class PlaceFields extends React.Component {
           {collapsed ? 'Edit' : 'Save'}
         </Button>
       );
-    } else {
-      return null;
     }
   }
 
