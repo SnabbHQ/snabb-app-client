@@ -1,11 +1,16 @@
 /* @flow */
 import React from 'react'
-import type { Styled } from '../themes/types';
+import type { Exact, Styled } from '../themes/types';
 import type { TextProps } from './Text';
 import Text from './Text';
 import styled from './styled';
 
-const Button: Styled<TextProps> = styled((theme, props) => ({
+type ButtonProps = TextProps & {
+  disabled?: boolean,
+  onClick?: (e: SyntheticMouseEvent) => void,
+};
+
+const Button: Styled<ButtonProps> = styled((theme, props) => ({
   $extends: Text,
   backgroundColor: props.backgroundColor
     ? theme.colors[props.backgroundColor]
@@ -28,5 +33,9 @@ const Button: Styled<TextProps> = styled((theme, props) => ({
   paddingLeft: '1.5em',
   paddingRight: '1.5em',
 }), 'button', ['onClick']);
+
+Button.defaultProps = ({
+  antialiasing: true,
+}: Exact<TextProps>);
 
 export default Button;

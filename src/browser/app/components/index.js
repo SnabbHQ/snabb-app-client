@@ -15,6 +15,11 @@ export { default as Title } from './Title';
 export { default as styled } from './styled';
 export { default as Input } from './Input';
 
+// For another components inspiration, check:
+// developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets
+// jxnblk.com/rebass
+// vuetifyjs.com
+
 // Reflexbox
 // github.com/jxnblk/reflexbox
 export {
