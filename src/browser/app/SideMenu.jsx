@@ -16,7 +16,7 @@ type HeaderLinkProps = {
 };
 
 const SideMenuLink = ({ exactly, to, message }: HeaderLinkProps) => (
-  <Box marginVertical="2em" justifyContent="center" marginHorizontal="1em">
+  <Box displayb="flex" marginVertical="2em" justifyContent="center" marginHorizontal="1em">
     <Image
       alt="Snabb logo"
       height={50}
@@ -45,16 +45,10 @@ const SideMenu = () => (
     left
     bottom
     backgroundColor="black"
-    zIndex={3}
+    zIndex={1}
     overFlowX="hidden"
-    paddingTop="1em"
+    paddingTop="3em"
   >
-    <Image
-      alt="Snabb logo"
-      height={50}
-      width={50}
-      src={logo}
-    />
     <Space x={3} />
     <SideMenuLink exactly to="/" message={linksMessages.active} />
     <SideMenuLink to="/active" message={linksMessages.active} />

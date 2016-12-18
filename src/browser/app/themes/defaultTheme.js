@@ -12,7 +12,7 @@ const theme: Theme = {
   }),
   colors: {
     // TODO: Leverage openColor.
-    primary: openColor.gray9,
+    primary: openColor.gray7,
     secondary: openColor.gray4,
     accent: openColor.blue5,
     info: openColor.blue7,
