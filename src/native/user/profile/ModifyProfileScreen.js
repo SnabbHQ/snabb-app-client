@@ -15,7 +15,7 @@ import _ from 'underscore';
 import { TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem } from 'native-base';
 import * as profileActions from '../../../common/user/profile/actions/profileActions';
 import * as globalActions from '../../../common/global/globalActions';
-import * as authActions from '../../../common/user/auth/authActions';
+import * as authActions from '../../../common/auth/authActions';
 import ErrorAlert from '../../app/components/ErrorAlert';
 import React, { Component } from 'react';
 import { StyleSheet, View, Platform } from 'react-native';

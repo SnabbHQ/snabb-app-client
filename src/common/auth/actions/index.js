@@ -1,5 +1,24 @@
+import type { Action, Deps } from '../../types';
 import * as ActionTypes from './AuthActionTypes';
 import _ from 'underscore';
+
+/**
+ * TODO - Este Stuff
+ */
+export const resetPassword = (email: string): Action => ({
+  type: 'RESET_PASSWORD',
+  payload: { email },
+});
+
+export const signIn = (providerName: string, options?: Object): Action => ({
+  type: 'SIGN_IN',
+  payload: { providerName, options },
+});
+
+export const signUp = (providerName: string, options?: Object): Action => ({
+  type: 'SIGN_UP',
+  payload: { providerName, options },
+});
 
 /**
  * ## SessionToken actions

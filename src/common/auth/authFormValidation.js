@@ -17,7 +17,7 @@ const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD,
-} = require('../../../common/lib/constants').default;
+} = require('../../common/lib/constants').default;
 
 /**
  * ## formValidation

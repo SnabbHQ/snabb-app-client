@@ -12,7 +12,7 @@ import configureStore from '../common/configureStore';
 
 import { setPlatform, setVersion } from '../common/device/deviceActions';
 import { setStore } from '../common/global/globalActions';
-import AuthInitialState from '../common/user/auth/authInitialState';
+import AuthInitialState from '../common/auth/authInitialState';
 import DeviceInitialState from '../common/device/deviceInitialState';
 import GlobalInitialState from '../common/global/globalInitialState';
 import ProfileInitialState from '../common/user/profile/profileInitialState';

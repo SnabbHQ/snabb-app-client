@@ -6,7 +6,7 @@
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as authActions from '../../common/user/auth/authActions';
+import * as authActions from '../../common/auth/authActions';
 import * as globalActions from '../../common/global/globalActions';
 import Drawer from 'react-native-drawer';
 import SidePanel from './components/SidePanel';

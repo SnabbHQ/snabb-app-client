@@ -14,7 +14,7 @@ import { Actions } from 'react-native-router-flux';
 import { Content, Text, Button, Grid, Icon, Row, List, ListItem } from 'native-base';
 import * as profileActions from '../../../common/user/profile/epics';
 import * as globalActions from '../../../common/global/globalActions';
-import * as authActions from '../../../common/user/auth/authActions';
+import * as authActions from '../../../common/auth/authActions';
 import DefaultNavBar from '../../app/components/DefaultNavBar';
 import ErrorAlert from '../../app/components/ErrorAlert';
 import React, { Component } from 'react';

@@ -1,5 +1,5 @@
 import * as authUtils from './authUtils';
-import analytics from '../../lib/analytics';
+import analytics from '../lib/analytics';
 import { BrowserRouter } from 'react-router';
 
 export const CLIENT_REQUEST = 'CLIENT_REQUEST';

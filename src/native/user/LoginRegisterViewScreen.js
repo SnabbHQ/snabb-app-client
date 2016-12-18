@@ -3,7 +3,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button } from 'native-base';
-import * as authActions from '../../common/user/auth/authActions';
+import * as authActions from '../../common/auth/authActions';
 import * as globalActions from '../../common/global/globalActions';
 import { Actions } from 'react-native-router-flux';
 import React, { Component } from 'react';

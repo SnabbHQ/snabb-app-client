@@ -2,7 +2,7 @@ import request from 'superagent';
 import { camelizeKeys } from 'humps';
 import qs from 'qs';
 import configuration from '../../configuration';
-import { refreshClient } from '../user/auth/authUtils';
+import { refreshClient } from '../auth/authUtils';
 
 const STUART_API_ROOT = configuration.stuartApiRoot;
 

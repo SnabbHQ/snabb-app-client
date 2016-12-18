@@ -17,7 +17,8 @@ import { connect } from 'react-redux';
 import ActivePage from '../job/active/ActiveJobsPage';
 import ScheduledPage from '../job/scheduled/ScheduledDeliveriesPage';
 import NewJobPage from '../job/new/NewDeliveryPage';
-import ProfilePage from '../user/ProfilePage';
+import ProfilePage from '../user/ProfileContainer2';
+import SignInPage from '../auth/SignInPage';
 import NotFoundPage from '../notfound/NotFoundPage';
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
@@ -27,7 +28,8 @@ type AppProps = {
   currentTheme: ?string,
 };
 
-const App = ({ currentLocale, currentTheme }: AppProps) => (
+
+const App = ({ currentLocale, currentTheme, viewer }: AppProps) => (
   <ThemeProvider
     // TODO: Do we need it?
     // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
@@ -55,16 +57,16 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
       <Box
         backgroundColor={theme(currentTheme).colors.bodyBackground}
         flex={1} // make footer sticky
-        paddingTop="3.6em"
       >
         <Header />
         <SideMenu />
-        <Box marginLeft="5em">
+        <Box marginLeft="5em" paddingTop="4em">
           <Match exactly pattern="/" component={ActivePage} />
           <Match exactly pattern="/active" component={ActivePage} />
           <Match exactly pattern="/new" component={NewJobPage} />
           <Match exactly pattern="/scheduled" component={ScheduledPage} />
           <Match exactly pattern="/profile" component={ProfilePage} />
+          <Match exactly pattern="/signin" component={SignInPage} />
           <Miss component={NotFoundPage} />
         </Box>
       </Box>
@@ -77,6 +79,7 @@ export default R.compose(
     (state: State) => ({
       currentLocale: state.intl.currentLocale,
       currentTheme: state.themes.currentTheme,
+      viewer: undefined, //state.users.viewer,
     }),
   ),
   start,
