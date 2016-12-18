@@ -53,6 +53,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         ]}
       />
       <Box
+        backgroundColor={theme(currentTheme).colors.bodyBackground}
         flex={1} // make footer sticky
         paddingTop="3.6em"
       >

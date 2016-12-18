@@ -1,14 +1,15 @@
 /* @flow */
 import React from 'react';
-import { Fixed, Button, Box } from '../../app/components';
+import { Fixed, Title, Button, Box } from '../../app/components';
 import { FormattedMessage } from 'react-intl';
 import DeliveryFields from './DeliveryFields';
 import GoogleMap from 'google-map-react';
 import styled from '../../app/components/styled';
 
 
-const LeftPanel = styled(() => ({
+const LeftPanel = styled((theme) => ({
   $extends: Box,
+  display: 'block',
   height: '100mvh',
   width: '60%',
   '@media (min-width: 1200px)': {
@@ -17,12 +18,12 @@ const LeftPanel = styled(() => ({
   '@media (max-width: 768px)': {
     width: '100%',
   },
-  paddingRight: '4em',
-  paddingLeft: '4em',
-  paddingTop: '2em',
+  paddingRight: '3em',
+  paddingLeft: '3em',
+  paddingTop: '3em',
   paddingBottom: '5em',
-  backgroundColor: 'white',
   boxShadow: '0 2px 5px 0 rgba(0,0,0,.25)',
+  backgroundColor: theme.colors.white,
 }));
 
 const RequestPanel = styled(() => ({
@@ -47,6 +48,10 @@ const RightPanel = styled(() => ({
   '@media (min-width: 1200px)': {
     width: '60%',
   },
+  '@media (max-width: 768px)': {
+    width: '0%',
+  },
+  marginLeft: '1em',
   zIndex: -1,
 }));
 
@@ -81,8 +86,8 @@ const NewJobPage = () => {
   return (
     <Box>
       <LeftPanel>
-        <DeliveryFields />
-        {renderRequestButton()}
+          <DeliveryFields />
+          {renderRequestButton()}
       </LeftPanel>
       <RightPanel>
         <RightPanel />
