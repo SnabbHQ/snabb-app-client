@@ -18,10 +18,11 @@ const altOrRolePresentation = alt => alt
 const ImageWrapper = styled((theme, props) => ({
   display: 'block',
   // width: ,
-  height: `${
-    Math.floor(props.height / theme.typography.lineHeight) *
-    theme.typography.lineHeight
-  }px`,
+  // height: `${
+  //   Math.floor(props.height / theme.typography.lineHeight) *
+  //   theme.typography.lineHeight
+  // }px`,
+  height: props.height,
 }));
 
 const Image = (props: ImageProps) => (
