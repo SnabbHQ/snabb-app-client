@@ -1,7 +1,7 @@
 /* @flow */
-import React, {PropTypes} from 'react';
-import {connect} from "react-redux"
-import {Text, Radio, Image, Space, Flex} from '../../app/components-old'
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Text, Radio, Image, Space, Flex } from '../../app/components-old';
 
 const ICONS = {
   bike: require('../../../../assets/images/bike.svg'),
@@ -10,10 +10,10 @@ const ICONS = {
   motorbike: require('../../../../assets/images/motorbike.svg'),
   van: require('../../../../assets/images/van.svg'),
   walk: require('../../../../assets/images/walk.svg'),
-  cargobikexl: require('../../../../assets/images/cargobikeXL.svg')
+  cargobikexl: require('../../../../assets/images/cargobikeXL.svg'),
 };
 
-const TransportType = ({type, quotes}) => {
+const TransportType = ({ type, quotes }) => {
   const quote = quotes[type];
   const isDisabled = !quote || quote.errors;
 
@@ -23,30 +23,30 @@ const TransportType = ({type, quotes}) => {
         alt={'alt'}
         src={ICONS.bike}
       />
-      <Space x={2}/>
+      <Space x={2} />
       <Text>Bike</Text>
-      <Space auto/>
+      <Space auto />
       <Radio
         circle
         label=""
         name="radio_1"
       />
     </Flex>
-  )
-}
+  );
+};
 
 TransportType.PropTypes = {
   type: PropTypes.object.isRequired,
-  quotes: PropTypes.object.isRequired
-}
+  quotes: PropTypes.object.isRequired,
+};
 
 TransportType.DefaultProps = {
-  disabled: false
-}
+  disabled: false,
+};
 
 export default connect(
-  (state: State) => ({
-    quotes: {}//state.quotes.all,
+  () => ({
+    quotes: {}, // state.quotes.all,
   }),
   {},
 )(TransportType);

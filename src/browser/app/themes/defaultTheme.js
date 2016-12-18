@@ -41,6 +41,7 @@ const theme: Theme = {
       medium: 720,
       big: 960,
       bigger: 1140,
+      full: '100%',
     },
   },
   text: {

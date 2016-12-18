@@ -1,11 +1,9 @@
 /* @flow */
-import React, {PropTypes} from 'react'
-import {Box, Heading, Grid} from '../../app/components'
-import {Image} from '../../app/components-old'
+import React, { PropTypes } from 'react';
+import { Box, Heading, Grid } from '../../app/components';
+import { Image } from '../../app/components-old';
 
-const FieldHeader = ({icon, title}) => {
-
-  return (
+const FieldHeader = ({ icon, title }) => (
   <Box>
     <Grid>
       <Image
@@ -20,8 +18,7 @@ const FieldHeader = ({icon, title}) => {
       </Heading>
     </Grid>
   </Box>
-  )
-}
+  );
 
 FieldHeader.propTypes = {
   icon: PropTypes.string.isRequired,
@@ -29,6 +26,6 @@ FieldHeader.propTypes = {
     React.PropTypes.object,
     React.PropTypes.string,
   ]).isRequired,
-}
+};
 
-export default FieldHeader
+export default FieldHeader;
