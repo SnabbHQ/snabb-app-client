@@ -58,14 +58,21 @@ const App = ({ currentLocale, currentTheme, viewer }: AppProps) => (
         backgroundColor={theme(currentTheme).colors.bodyBackground}
         flex={1} // make footer sticky
       >
-        <Header />
-        <SideMenu />
-        <Box marginLeft="5em" paddingTop="4em">
-          <Match exactly pattern="/" component={ActivePage} />
-          <Match exactly pattern="/active" component={ActivePage} />
-          <Match exactly pattern="/new" component={NewJobPage} />
-          <Match exactly pattern="/scheduled" component={ScheduledPage} />
-          <Match exactly pattern="/profile" component={ProfilePage} />
+        {viewer ? (
+            <Box>
+              <Header />
+              <SideMenu />
+            </Box>
+          ) : ''}
+
+        <Box>
+          <Box marginLeft="5em" paddingTop="4em">
+            <Match authorized exactly pattern="/" component={ActivePage} />
+            <Match authorized pattern="/active" component={ActivePage} />
+            <Match authorized pattern="/new" component={NewJobPage} />
+            <Match authorized pattern="/scheduled" component={ScheduledPage} />
+            <Match authorized pattern="/profile" component={ProfilePage} />
+          </Box>
           <Match exactly pattern="/signin" component={SignInPage} />
           <Miss component={NotFoundPage} />
         </Box>
@@ -79,7 +86,7 @@ export default R.compose(
     (state: State) => ({
       currentLocale: state.intl.currentLocale,
       currentTheme: state.themes.currentTheme,
-      viewer: undefined, //state.users.viewer,
+      viewer: {}, //state.users.viewer,
     }),
   ),
   start,
