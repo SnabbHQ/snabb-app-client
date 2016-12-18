@@ -3,8 +3,8 @@ import type { Action, State } from './types';
 import app from './app/reducer';
 import config from './config/reducer';
 import device from './device/deviceReducer';
-import {closestCity, closestDrivers, jobs, newJob } from './job/reducers'
-import pagination from './app/paginataionReducer'
+import { closestCity, closestDrivers, jobs, newJob } from './job/reducers';
+import pagination from './app/paginataionReducer';
 import auth from './user/auth/authReducer';
 import profile from './user/profile/profileReducer';
 import location from './location/locationReducer';

@@ -7,28 +7,28 @@
  * see []()
  *
  */
-'use strict'
+
 
 /**
  * ## Imports
  *
  * Config for defaults and underscore for a couple of features
  */
-import CONFIG from './config'
-import _ from 'underscore'
-import Backend from './Backend'
+import CONFIG from './config';
+import _ from 'underscore';
+import Backend from './Backend';
 
 let fakeUser = {
-  objectId: "Z4yvP19OeL",
-  sessionToken: "r:uFeYONgIsZMPyxOWVJ6VqJGqv",
-  updatedAt: "2015-12-30T15:29:36.611Z",
+  objectId: 'Z4yvP19OeL',
+  sessionToken: 'r:uFeYONgIsZMPyxOWVJ6VqJGqv',
+  updatedAt: '2015-12-30T15:29:36.611Z',
   name: 'Michael',
   lastName: 'Knight',
   userName: 'michaelKnight',
   email: 'michael.knight@snabb.io',
   phoneNumber: '+46712345678',
-  thumbnail: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw'
-}
+  thumbnail: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw',
+};
 
 
 export default class SnabbApi extends Backend {
@@ -43,27 +43,27 @@ export default class SnabbApi extends Backend {
    *
    * @throws tokenMissing if token is undefined
    */
-  constructor (token: Object = {}) {
-    super(token)
+  constructor(token: Object = {}) {
+    super(token);
 
     if (!_.isNull(token) && _.isUndefined(token.sessionToken)) {
-      throw new Error('TokenMissing')
+      throw new Error('TokenMissing');
     }
 
-    this.sessionToken = _.isNull(token) ? '' : token.sessionToken
+    this.sessionToken = _.isNull(token) ? '' : token.sessionToken;
 
     this.API_BASE_URL = CONFIG.backend.local
           ? CONFIG.HAPI.local.url
-          : CONFIG.HAPI.develop.url
+          : CONFIG.HAPI.develop.url;
 
-    let bodyInit = JSON.stringify({
-      code: 200
+    const bodyInit = JSON.stringify({
+      code: 200,
     });
 
     this.response = {
-      'status': 201,
-      bodyInit: bodyInit
-    }
+      status: 201,
+      bodyInit,
+    };
   }
 
   /**
@@ -80,22 +80,22 @@ export default class SnabbApi extends Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  async signup (data: Object) {
+  async signup(data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/account/register',
-      body: data
+      body: data,
     })
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
-          return res.json
+          return res.json;
         } else {
-          throw res.json
+          throw res.json;
         }
       })
       .catch((error) => {
-        throw (error)
-      })
+        throw (error);
+      });
   }
 
   /**
@@ -115,50 +115,50 @@ export default class SnabbApi extends Backend {
    * sessionToken: "r:Kt9wXIBWD0dNijNIq2u5rRllW"
    *
    */
-  async login (data: Object) {
+  async login(data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/auth/login/',
-      body: data
+      body: data,
     })
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           return {
-            createdAt: "2015-12-30T15:29:36.611Z",
-            updatedAt: "2015-12-30T16:08:50.419Z",
-            objectId: "Z4yvP19OeL",
-            email: "barton@foo.com",
-            sessionToken: "r:Kt9wXIBWD0dNijNIq2u5rRllW"
-          }
+            createdAt: '2015-12-30T15:29:36.611Z',
+            updatedAt: '2015-12-30T16:08:50.419Z',
+            objectId: 'Z4yvP19OeL',
+            email: 'barton@foo.com',
+            sessionToken: 'r:Kt9wXIBWD0dNijNIq2u5rRllW',
+          };
         } else {
-          throw (res.json)
+          throw (res.json);
         }
       })
       .catch((error) => {
-        throw (error)
-      })
+        throw (error);
+      });
   }
   /**
    * ### logout
    * prepare the request and call _fetch
    */
-  async logout () {
+  async logout() {
     return await this._fetch({
       method: 'POST',
       url: '/account/logout',
-      body: {}
+      body: {},
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
             (res.status === 400 && res.code === 209)) {
-          return {}
+          return {};
         } else {
-          throw new Error({code: res.statusCode, error: res.message})
+          throw new Error({ code: res.statusCode, error: res.message });
         }
       })
       .catch((error) => {
-        throw (error)
-      })
+        throw (error);
+      });
   }
   /**
    * ### resetPassword
@@ -171,22 +171,22 @@ export default class SnabbApi extends Backend {
    *
    * if error:  {code: xxx, error: 'message'}
    */
-  async resetPassword (data: Object) {
+  async resetPassword(data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/account/resetPasswordRequest',
-      body: data
+      body: data,
     })
       .then((response) => {
         if ((response.status === 200 || response.status === 201)) {
-          return {}
+          return {};
         } else {
-          throw (JSON.parse(response.bodyInit))
+          throw (JSON.parse(response.bodyInit));
         }
       })
       .catch((error) => {
-        throw (error)
-      })
+        throw (error);
+      });
   }
   /**
    * ### getProfile
@@ -204,21 +204,21 @@ export default class SnabbApi extends Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  async getProfile () {
+  async getProfile() {
     return await this._fetch({
       method: 'GET',
-      url: '/account/profile/me'
+      url: '/account/profile/me',
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201)) {
-          return fakeUser
+          return fakeUser;
         } else {
-          throw (res.json)
+          throw (res.json);
         }
       })
       .catch((error) => {
-        throw (error)
-      })
+        throw (error);
+      });
   }
   /**
    * ### updateProfile
@@ -229,26 +229,25 @@ export default class SnabbApi extends Backend {
    * @param data object:
    * {email: "barton@foo.com"}
    */
-  async updateProfile (userId: string, data: Object) {
+  async updateProfile(userId: string, data: Object) {
     return await this._fetch({
       method: 'POST',
-      url: '/account/profile/' + userId,
-      body: data
+      url: `/account/profile/${userId}`,
+      body: data,
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201)) {
-
           // TODO - Obviously this should never be here
           fakeUser = data;
 
-          return {}
+          return {};
         } else {
-          throw (res.json)
+          throw (res.json);
         }
       })
       .catch((error) => {
-        throw (error)
-      })
+        throw (error);
+      });
   }
 
   /**
@@ -260,8 +259,8 @@ export default class SnabbApi extends Backend {
    *   status: response.status,
    *   json: response.json()
    */
-  async _fetch (opts) {
-    return await this.response
+  async _fetch(opts) {
+    return await this.response;
   }
-};
+}
 

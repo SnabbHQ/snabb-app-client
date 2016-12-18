@@ -3,13 +3,13 @@ import includes from 'lodash/includes';
 const PICKING_STATUSES = [
   'almost_picking',
   'waiting_at_pickup',
-  'picking'
+  'picking',
 ];
 
 const DELIVERING_STATUSES = [
   'almost_delivering',
   'waiting_at_dropoff',
-  'delivering'
+  'delivering',
 ];
 
 export function isPicking(delivery) {

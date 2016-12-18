@@ -1,13 +1,13 @@
-import BackendFactory from "../../../lib/BackendFactory"
-import AppAuthToken from "../../../lib/__mocks__/AppAuthToken"
-import {getUserProfile, profileUpdateSuccess, profileUpdateFailure} from "../actions/profileActions"
-import * as ActionTypes from "../actions/ProfileActionTypes"
-import {Observable} from "rxjs/Observable"
-import "rxjs/add/observable/of"
-import "rxjs/add/observable/fromPromise"
-import "rxjs/add/operator/switchMap"
-import "rxjs/add/operator/map"
-import "rxjs/add/operator/catch"
+import BackendFactory from '../../../lib/BackendFactory';
+import AppAuthToken from '../../../lib/__mocks__/AppAuthToken';
+import { getUserProfile, profileUpdateSuccess, profileUpdateFailure } from '../actions/profileActions';
+import * as ActionTypes from '../actions/ProfileActionTypes';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 /**
  * The sessionToken is provided when Hot Loading.
@@ -22,20 +22,18 @@ export default function updateProfile(action$) {
     .map(action => action.payload.data)
     .switchMap((data) =>
       Observable.fromPromise(new AppAuthToken().getSessionToken(data.sessionToken))
-        .switchMap((sessionToken) => {
-          return Observable.fromPromise(BackendFactory(sessionToken).updateProfile(data.userId,
-            {
-              name: data.newUserData.name,
-              lastName: data.newUserData.lastName,
-              phoneNumber: data.newUserData.phoneNumber,
-              email: data.newUserData.email,
-              thumbnail: data.newUserData.thumbnail
-            }
-          ))
-        })
+        .switchMap((sessionToken) => Observable.fromPromise(BackendFactory(sessionToken).updateProfile(data.userId,
+          {
+            name: data.newUserData.name,
+            lastName: data.newUserData.lastName,
+            phoneNumber: data.newUserData.phoneNumber,
+            email: data.newUserData.email,
+            thumbnail: data.newUserData.thumbnail,
+          },
+          )))
         .map(profileUpdateSuccess)
         .catch(error => Observable.of(
-          profileUpdateFailure(error)
-        ))
-    )
+          profileUpdateFailure(error),
+        )),
+    );
 }

@@ -7,7 +7,7 @@
  * fails, setting it back to false.
  *
  */
-'use strict';
+
 
 /**
  * ## Imports
@@ -42,12 +42,12 @@ const {
 
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILURE
+  RESET_PASSWORD_FAILURE,
 
 } = require('../../../common/lib/constants').default;
 
 
-import {Actions} from "react-native-router-flux"
+import { Actions } from 'react-native-router-flux';
 
 const AppAuthToken = require('../../../common/lib/__mocks__/AppAuthToken').default;
 const BackendFactory = require('../../../common/lib/BackendFactory').default;
@@ -62,26 +62,26 @@ const _ = require('underscore');
 
 export function logoutState() {
   return {
-    type: LOGOUT
-  }
+    type: LOGOUT,
+  };
 }
 
 export function registerState() {
   return {
-    type: REGISTER
-  }
+    type: REGISTER,
+  };
 }
 
 export function loginState() {
   return {
-    type: LOGIN
-  }
+    type: LOGIN,
+  };
 }
 
 export function forgotPasswordState() {
   return {
-    type: FORGOT_PASSWORD
-  }
+    type: FORGOT_PASSWORD,
+  };
 }
 
 /**
@@ -89,20 +89,20 @@ export function forgotPasswordState() {
  */
 export function logoutRequest() {
   return {
-    type: LOGOUT_REQUEST
-  }
+    type: LOGOUT_REQUEST,
+  };
 }
 
 export function logoutSuccess() {
   return {
-    type: LOGOUT_SUCCESS
-  }
+    type: LOGOUT_SUCCESS,
+  };
 }
 export function logoutFailure(error) {
   return {
     type: LOGOUT_FAILURE,
-    payload: error
-  }
+    payload: error,
+  };
 }
 
 /**
@@ -124,25 +124,22 @@ export function logoutFailure(error) {
  * device and logged out there.
  */
 export function logout() {
-
   return dispatch => {
-    dispatch(logoutRequest())
+    dispatch(logoutRequest());
     return new AppAuthToken().getSessionToken()
-      .then((token) => {
-        return BackendFactory(token).logout()
-      })
+      .then((token) => BackendFactory(token).logout())
       .then(() => {
-        dispatch(loginState())
-        dispatch(logoutSuccess())
-        dispatch(deleteSessionToken())
-        Actions.LoginRegisterScreen()
+        dispatch(loginState());
+        dispatch(logoutSuccess());
+        dispatch(deleteSessionToken());
+        Actions.LoginRegisterScreen();
       })
       .catch((error) => {
-        console.log(error)
-        dispatch(loginState())
-        dispatch(logoutFailure(error))
-      })
-  }
+        console.log(error);
+        dispatch(loginState());
+        dispatch(logoutFailure(error));
+      });
+  };
 }
 
 /**
@@ -152,48 +149,48 @@ export function logout() {
 export function onAuthFormFieldChange(field, value) {
   return {
     type: ON_AUTH_FORM_FIELD_CHANGE,
-    payload: {field: field, value: value}
-  }
+    payload: { field, value },
+  };
 }
 /**
  * ## Signup actions
  */
 export function signupRequest() {
   return {
-    type: SIGNUP_REQUEST
-  }
+    type: SIGNUP_REQUEST,
+  };
 }
 export function signupSuccess(json) {
   return {
     type: SIGNUP_SUCCESS,
-    payload: json
-  }
+    payload: json,
+  };
 }
 export function signupFailure(error) {
   return {
     type: SIGNUP_FAILURE,
-    payload: error
-  }
+    payload: error,
+  };
 }
 /**
  * ## SessionToken actions
  */
 export function sessionTokenRequest() {
   return {
-    type: SESSION_TOKEN_REQUEST
-  }
+    type: SESSION_TOKEN_REQUEST,
+  };
 }
 export function sessionTokenRequestSuccess(token) {
   return {
     type: SESSION_TOKEN_SUCCESS,
-    payload: token
-  }
+    payload: token,
+  };
 }
 export function sessionTokenRequestFailure(error) {
   return {
     type: SESSION_TOKEN_FAILURE,
-    payload: _.isUndefined(error) ? null : error
-  }
+    payload: _.isUndefined(error) ? null : error,
+  };
 }
 
 /**
@@ -201,13 +198,13 @@ export function sessionTokenRequestFailure(error) {
  */
 export function deleteTokenRequest() {
   return {
-    type: DELETE_TOKEN_REQUEST
-  }
+    type: DELETE_TOKEN_REQUEST,
+  };
 }
 export function deleteTokenRequestSuccess() {
   return {
-    type: DELETE_TOKEN_SUCCESS
-  }
+    type: DELETE_TOKEN_SUCCESS,
+  };
 }
 
 /**
@@ -217,12 +214,12 @@ export function deleteTokenRequestSuccess() {
  */
 export function deleteSessionToken() {
   return dispatch => {
-    dispatch(deleteTokenRequest())
+    dispatch(deleteTokenRequest());
     return new AppAuthToken().deleteSessionToken()
       .then(() => {
-        dispatch(deleteTokenRequestSuccess())
-      })
-  }
+        dispatch(deleteTokenRequestSuccess());
+      });
+  };
 }
 /**
  * ## Token
@@ -232,28 +229,28 @@ export function deleteSessionToken() {
  */
 export function getSessionToken() {
   return dispatch => {
-    dispatch(sessionTokenRequest())
+    dispatch(sessionTokenRequest());
     return new AppAuthToken().getSessionToken()
 
       .then((token) => {
         if (token) {
-          console.log(token)
-          dispatch(sessionTokenRequestSuccess(token))
-          dispatch(logoutState())
-          Actions.HomeScreen()
+          console.log(token);
+          dispatch(sessionTokenRequestSuccess(token));
+          dispatch(logoutState());
+          Actions.HomeScreen();
         } else {
-          dispatch(sessionTokenRequestFailure())
-          Actions.LoginRegisterScreen()
+          dispatch(sessionTokenRequestFailure());
+          Actions.LoginRegisterScreen();
         }
       })
 
       .catch((error) => {
-        console.log(error)
-        dispatch(sessionTokenRequestFailure(error))
-        dispatch(loginState())
-        Actions.LoginRegisterScreen()
-      })
-  }
+        console.log(error);
+        dispatch(sessionTokenRequestFailure(error));
+        dispatch(loginState());
+        Actions.LoginRegisterScreen();
+      });
+  };
 }
 
 /**
@@ -262,7 +259,7 @@ export function getSessionToken() {
  * @param {Object} json - object with sessionToken
  */
 export function saveSessionToken(json) {
-  return new AppAuthToken().storeSessionToken(json)
+  return new AppAuthToken().storeSessionToken(json);
 }
 /**
  * ## signup
@@ -276,35 +273,33 @@ export function saveSessionToken(json) {
  */
 export function signup(email, password) {
   return dispatch => {
-    dispatch(signupRequest())
+    dispatch(signupRequest());
     return BackendFactory().signup({
-      email: email,
-      password: password
+      email,
+      password,
     })
 
-      .then((json) => {
-        return saveSessionToken(
+      .then((json) => saveSessionToken(
           Object.assign({}, json,
             {
-              email: email
-            })
+              email,
+            }),
         )
           .then(() => {
             dispatch(signupSuccess(
               Object.assign({}, json,
                 {
-                  email: email
-                })
-            ))
-            dispatch(logoutState())
+                  email,
+                }),
+            ));
+            dispatch(logoutState());
             // navigate to HomeScreen
-            Actions.HomeScreen()
-          })
-      })
+            Actions.HomeScreen();
+          }))
       .catch((error) => {
-        dispatch(signupFailure(error))
-      })
-  }
+        dispatch(signupFailure(error));
+      });
+  };
 }
 
 /**
@@ -312,22 +307,22 @@ export function signup(email, password) {
  */
 export function loginRequest() {
   return {
-    type: LOGIN_REQUEST
-  }
+    type: LOGIN_REQUEST,
+  };
 }
 
 export function loginSuccess(json) {
   return {
     type: LOGIN_SUCCESS,
-    payload: json
-  }
+    payload: json,
+  };
 }
 
 export function loginFailure(error) {
   return {
     type: LOGIN_FAILURE,
-    payload: error
-  }
+    payload: error,
+  };
 }
 /**
  * ## Login
@@ -342,25 +337,23 @@ export function loginFailure(error) {
 
 export function login(password) {
   return dispatch => {
-    dispatch(loginRequest())
+    dispatch(loginRequest());
     return BackendFactory().login({
       email: 'devtest@gmail.com',
-      password: password
+      password,
     })
 
-      .then(function (json) {
-        return saveSessionToken(json)
-          .then(function () {
-            dispatch(loginSuccess(json))
+      .then((json) => saveSessionToken(json)
+          .then(() => {
+            dispatch(loginSuccess(json));
             // navigate to Tabbar
-            Actions.HomeScreen()
-            dispatch(logoutState())
-          })
-      })
+            Actions.HomeScreen();
+            dispatch(logoutState());
+          }))
       .catch((error) => {
-        dispatch(loginFailure(error))
-      })
-  }
+        dispatch(loginFailure(error));
+      });
+  };
 }
 
 /**
@@ -368,21 +361,21 @@ export function login(password) {
  */
 export function resetPasswordRequest() {
   return {
-    type: RESET_PASSWORD_REQUEST
-  }
+    type: RESET_PASSWORD_REQUEST,
+  };
 }
 
 export function resetPasswordSuccess() {
   return {
-    type: RESET_PASSWORD_SUCCESS
-  }
+    type: RESET_PASSWORD_SUCCESS,
+  };
 }
 
 export function resetPasswordFailure(error) {
   return {
     type: RESET_PASSWORD_FAILURE,
-    payload: error
-  }
+    payload: error,
+  };
 }
 /**
  * ## ResetPassword
@@ -398,17 +391,17 @@ export function resetPasswordFailure(error) {
  */
 export function resetPassword(email) {
   return dispatch => {
-    dispatch(resetPasswordRequest())
+    dispatch(resetPasswordRequest());
     return BackendFactory().resetPassword({
-      email: email
+      email,
     })
       .then(() => {
-        dispatch(loginState())
-        dispatch(resetPasswordSuccess())
-        Actions.LoginRegisterScreen()
+        dispatch(loginState());
+        dispatch(resetPasswordSuccess());
+        Actions.LoginRegisterScreen();
       })
       .catch((error) => {
-        dispatch(resetPasswordFailure(error))
-      })
-  }
+        dispatch(resetPasswordFailure(error));
+      });
+  };
 }

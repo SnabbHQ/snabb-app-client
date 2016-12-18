@@ -1,6 +1,6 @@
 import keyBy from 'lodash/keyBy';
 import reduce from 'lodash/reduce';
-import {BrowserRouter} from "react-router"
+import { BrowserRouter } from 'react-router';
 import storage from '../lib/storage';
 import getPosition from '../lib/getPosition';
 import getClosestCity from '../lib/getClosestCity';
@@ -15,7 +15,7 @@ import {
   PLACE_TYPES,
   POLL_QUOTES_INTERVAL,
   SCHEDULED_JOB_STATUSES,
-  TRANSPORT_TYPES
+  TRANSPORT_TYPES,
 } from '../lib/constants';
 
 const emptyFunction = () => {};
@@ -31,7 +31,7 @@ export function fetchClosestCity() {
     return getPosition().then((position) => {
       dispatch({
         type: CLOSEST_CITY_SUCCESS,
-        city: getClosestCity(position)
+        city: getClosestCity(position),
       });
     });
   };
@@ -58,24 +58,24 @@ export const loadScheduledJobs = loadJobs.bind(null, 'scheduled');
 const SCOPES = {
   active: {
     parameters: { status: ACTIVE_JOB_STATUSES.join(',') },
-    types: [ACTIVE_JOBS_REQUEST, ACTIVE_JOBS_SUCCESS, ACTIVE_JOBS_FAILURE]
+    types: [ACTIVE_JOBS_REQUEST, ACTIVE_JOBS_SUCCESS, ACTIVE_JOBS_FAILURE],
   },
   history: {
     parameters: { status: HISTORY_JOB_STATUSES.join(',') },
-    types: [JOBS_HISTORY_REQUEST, JOBS_HISTORY_SUCCESS, JOBS_HISTORY_FAILURE]
+    types: [JOBS_HISTORY_REQUEST, JOBS_HISTORY_SUCCESS, JOBS_HISTORY_FAILURE],
   },
   scheduled: {
     parameters: {
       status: SCHEDULED_JOB_STATUSES.join(','),
       sortBy: 'pickup_at asc',
-      per_page: 100
+      per_page: 100,
     },
-    types: [SCHEDULED_JOBS_REQUEST, SCHEDULED_JOBS_SUCCESS, SCHEDULED_JOBS_FAILURE]
-  }
+    types: [SCHEDULED_JOBS_REQUEST, SCHEDULED_JOBS_SUCCESS, SCHEDULED_JOBS_FAILURE],
+  },
 };
 
 function getNextPageUrl(response) {
-  const header = response.header['link'];
+  const header = response.header.link;
   if (header == null) { return; }
 
   const links = header.split(',').reduce((m, l) => {
@@ -106,19 +106,15 @@ function fetchJobs(scopeName, nextPageUrl) {
     const { apiClient } = getState();
 
     dispatch({ type: requestType });
-    const promise = apiClient.get(nextPageUrl, parameters).then(({ body, response }) => {
-      return dispatch({
-        type: successType,
-        jobs: keyBy(body, 'id'),
-        nextPageUrl: getNextPageUrl(response),
-        page: getIntHeader(response, 'x-page'),
-        total: getIntHeader(response, 'x-total')
-      });
-    });
+    const promise = apiClient.get(nextPageUrl, parameters).then(({ body, response }) => dispatch({
+      type: successType,
+      jobs: keyBy(body, 'id'),
+      nextPageUrl: getNextPageUrl(response),
+      page: getIntHeader(response, 'x-page'),
+      total: getIntHeader(response, 'x-total'),
+    }));
 
-    promise.catch((error) => {
-      return dispatch({ type: failureType, error });
-    });
+    promise.catch((error) => dispatch({ type: failureType, error }));
 
     return promise;
   };
@@ -150,7 +146,7 @@ export function fetchJob(jobId) {
     const promise = apiClient.get(`v1/jobs/${jobId}`).then(({ body: job }) => {
       dispatch({
         type: JOB_SUCCESS,
-        jobs: { [job.id]: job }
+        jobs: { [job.id]: job },
       });
     });
 
@@ -167,14 +163,14 @@ function getAddress(place) {
     id,
     address: {
       street,
-      postcode
-    }
+      postcode,
+    },
   } = place;
 
   return {
     id,
     description: street || postcode,
-    place
+    place,
   };
 }
 
@@ -194,19 +190,17 @@ export function fetchClosestDrivers(position) {
     dispatch({ type: CLOSEST_DRIVERS_REQUEST });
     const promise = apiClient.get('v1/transport/type/closest/drivers', {
       longitude,
-      latitude
+      latitude,
     }).then(({ body, response }) => {
       const drivers = keyBy(reduce(body, (m, v) => m.concat(v), []), 'id');
       return dispatch({
         type: CLOSEST_DRIVERS_SUCCESS,
         uniqueId: response.header['x-request-id'],
-        drivers
+        drivers,
       });
     });
 
-    promise.catch((error) => {
-      return dispatch({ type: CLOSEST_DRIVERS_FAILURE, error });
-    });
+    promise.catch((error) => dispatch({ type: CLOSEST_DRIVERS_FAILURE, error }));
 
     return promise;
   };
@@ -219,7 +213,7 @@ export function getAddresses(position, input) {
     input = input.trim();
     return apiClient.get('v1/directions/autocomplete', {
       ...position,
-      input
+      input,
     }).then(({ body: addresses }) => addresses);
   };
 }
@@ -234,14 +228,14 @@ function getPlaceValue(place) {
     contactLastname: place.contactLastname,
     contactPhone: place.contactPhone,
     contactEmail: place.contactEmail,
-    comment: place.comment
+    comment: place.comment,
   };
 }
 
 function resetNewJobWithLocaleStorage() {
   const value = {
     pickUp: {},
-    dropOff: {}
+    dropOff: {},
   };
   const places = {};
 
@@ -262,18 +256,18 @@ function resetNewJobWithJob(jobId) {
       const {
         originPlace: pickUpPlace,
         destinationPlace: dropOffPlace,
-        currentDelivery: d
+        currentDelivery: d,
       } = job;
 
       const value = {
         pickUp: getPlaceValue(pickUpPlace),
         dropOff: getPlaceValue(dropOffPlace),
-        transportType: d && d.transportType.code
+        transportType: d && d.transportType.code,
       };
 
       const places = {
         pickUpPlace,
-        dropOffPlace
+        dropOffPlace,
       };
 
       dispatch({ type: RESET_NEW_JOB, value, places });
@@ -319,7 +313,7 @@ export function loadSchedulingDays(city) {
             startTime,
             endTime,
             key: slotKey,
-            dayKey
+            dayKey,
           };
         });
 
@@ -327,7 +321,7 @@ export function loadSchedulingDays(city) {
           key: dayKey,
           date: body.date,
           slotKeys,
-          slotsByKey
+          slotsByKey,
         };
       });
 
@@ -348,8 +342,8 @@ export function loadSchedulingDays(city) {
         type: SCHEDULING_SUCCESS,
         scheduling: {
           dayKeys,
-          daysByKey
-        }
+          daysByKey,
+        },
       });
     });
   };
@@ -384,14 +378,12 @@ export function updateNewJob(value) {
       promises.push(dispatch(fetchNewJobPlace('dropOff', dropOffAddressChanged)));
     }
 
-    return Promise.all(promises).then(() => {
-      return dispatch(fetchNewJobQuotes());
-    }).then(() => {
+    return Promise.all(promises).then(() => dispatch(fetchNewJobQuotes())).then(() => {
       const {
         quotes: {
-          bike: bikeQuote
+          bike: bikeQuote,
         },
-        value: currentValue
+        value: currentValue,
       } = getState().newJob;
       const { transportType: t } = currentValue;
 
@@ -401,8 +393,8 @@ export function updateNewJob(value) {
           type: NEW_JOB_VALUE_CHANGE,
           value: {
             ...currentValue,
-            transportType: 'bike'
-          }
+            transportType: 'bike',
+          },
         });
       }
     });
@@ -433,7 +425,7 @@ function fetchNewJobPlace(placeType, addressHasChanged) {
     const placeData = getPlaceData();
     const {
       apiClient,
-      newJob: { places }
+      newJob: { places },
     } = getState();
 
     const { address, ...contactInformations } = placeData;
@@ -464,12 +456,12 @@ function fetchNewJobPlace(placeType, addressHasChanged) {
         // Address from autocomplete.
         let params = {
           placeTypeId: PLACE_TYPES[placeType],
-          geoPlaceId: address.id
+          geoPlaceId: address.id,
         };
         if (!shouldClearPlaceValue) {
           params = {
             ...params,
-            ...contactInformations
+            ...contactInformations,
           };
         }
 
@@ -490,7 +482,7 @@ function fetchNewJobPlace(placeType, addressHasChanged) {
         type: NEW_JOB_PLACE_SUCCESS,
         shouldFillPlaceValue: from === 'recentAddresses',
         place,
-        placeType
+        placeType,
       });
 
       if (from !== 'update' && placeType === 'pickUp') {
@@ -516,7 +508,7 @@ function fetchNewJobPlace(placeType, addressHasChanged) {
         email: currentPlaceData.contactEmail,
         comment: currentPlaceData.comment,
         addressFor: placeType,
-        category: analytics.ERRORS_CATEGORY
+        category: analytics.ERRORS_CATEGORY,
       });
     });
   };
@@ -541,12 +533,12 @@ export function fetchNewJobQuotes() {
       newJob: {
         quotes: {
           fetchedAtTime,
-          hash: currentHash
-        }
+          hash: currentHash,
+        },
       },
       closestDrivers: {
-        uniqueId: closestDriversUniqueId
-      }
+        uniqueId: closestDriversUniqueId,
+      },
     } = getState();
 
     // Bails out because if pick up or drop off places are not set. We need
@@ -568,7 +560,7 @@ export function fetchNewJobQuotes() {
       originPlaceId: pickUpPlace.id,
       destinationPlaceId: dropOffPlace.id,
       jobTypeId: JOB_TYPES.transport,
-      transportTypeIds: transportTypes.map((t) => TRANSPORT_TYPES[t]).join(',')
+      transportTypeIds: transportTypes.map((t) => TRANSPORT_TYPES[t]).join(','),
     }).then(({ body }) => {
       // Bails out if the places have changed while fetching the quotes.
       if (getPlaces().hash !== hash) { return; }
@@ -583,7 +575,7 @@ export function fetchNewJobQuotes() {
         type: NEW_JOB_QUOTES_SUCCESS,
         fetchedAtTime: Date.now(),
         quotes,
-        hash
+        hash,
       });
     });
 
@@ -610,13 +602,13 @@ export function createNewJob() {
           clientInvoiceReference,
           scheduling: {
             when,
-            slot: { dayKey, slotKey }
-          }
+            slot: { dayKey, slotKey },
+          },
         },
         places: { pickUpPlace, dropOffPlace },
         quotes,
-        scheduling: { daysByKey }
-      }
+        scheduling: { daysByKey },
+      },
     } = getState();
 
     dispatch({ type: CREATE_NEW_JOB_REQUEST });
@@ -626,7 +618,7 @@ export function createNewJob() {
       jobQuoteId: quotes[transportType].id,
       originComment: pickUpPlace.comment,
       destinationComment: dropOffPlace.comment,
-      clientInvoiceReference
+      clientInvoiceReference,
     };
     const isScheduled = when === 'later';
     if (isScheduled) {
@@ -635,19 +627,19 @@ export function createNewJob() {
     const promise = apiClient.post('v1/jobs', params).then(({ body: job }) => {
       dispatch({
         type: CREATE_NEW_JOB_SUCCESS,
-        jobs: { [job.id]: job }
+        jobs: { [job.id]: job },
       });
 
       BrowserRouter.push({
         pathname: isScheduled ? '/scheduled' : '/active',
-        query: { job: job.id }
+        query: { job: job.id },
       });
 
       storage.set(DEFAULT_PLACE_STORAGE_KEY, job.originPlace);
       dispatch(fetchClientExtra());
 
       const {
-        finalJobPrice: { finalTotalAmount, currency }
+        finalJobPrice: { finalTotalAmount, currency },
       } = job;
       analytics.track('Requested a delivery', {
         category: analytics.DELIVERY_REQUEST_FLOW_CATEGORY,
@@ -665,13 +657,11 @@ export function createNewJob() {
         hasPickUpEmail: !!pickUpPlace.contactEmail,
         hasDropOffEmail: !!dropOffPlace.contactEmail,
         hasPickUpComment: !!pickUpPlace.comment,
-        hasDropOffComment: !!dropOffPlace.comment
+        hasDropOffComment: !!dropOffPlace.comment,
       });
     });
 
-    promise.catch((error) => {
-      return dispatch({ type: CREATE_NEW_JOB_FAILURE, error });
-    });
+    promise.catch((error) => dispatch({ type: CREATE_NEW_JOB_FAILURE, error }));
 
     return promise;
   };
@@ -685,7 +675,7 @@ export function updateJob(jobId, changes) {
   return (dispatch, getState) => {
     const {
       apiClient,
-      jobs: { jobsById }
+      jobs: { jobsById },
     } = getState();
     const job = jobsById[jobId];
 
@@ -695,19 +685,19 @@ export function updateJob(jobId, changes) {
     // https://github.com/StuartApp/stuart-api/issues/1569
     const jobPromise = apiClient.patch(`v1/jobs/${job.id}`, {
       originComment: changes.originComment,
-      destinationComment: changes.destinationComment
+      destinationComment: changes.destinationComment,
     });
     const originPromise = apiClient.put(`v1/places/${job.originPlace.id}`, {
-      comment: changes.originComment
+      comment: changes.originComment,
     });
     const destinationPromise = apiClient.put(`v1/places/${job.destinationPlace.id}`, {
-      comment: changes.destinationComment
+      comment: changes.destinationComment,
     });
 
     const promise = Promise.all([
       jobPromise,
       originPromise,
-      destinationPromise
+      destinationPromise,
     ]).then(([jobR, originR, destinationR]) => {
       dispatch({
         type: UPDATE_JOB_SUCCESS,
@@ -715,9 +705,9 @@ export function updateJob(jobId, changes) {
           [job.id]: {
             ...jobR.body,
             originPlace: originR.body,
-            destinationPlace: destinationR.body
-          }
-        }
+            destinationPlace: destinationR.body,
+          },
+        },
       });
     });
 
@@ -737,12 +727,10 @@ export function fetchJobCancellationFee(jobId) {
   return (dispatch, getState) => {
     const {
       apiClient,
-      client: { id }
+      client: { id },
     } = getState();
 
-    return apiClient.get(`v1/clients/${id}/jobs/${jobId}/currentcancellationfee`).then((r) => {
-      return r.body;
-    });
+    return apiClient.get(`v1/clients/${id}/jobs/${jobId}/currentcancellationfee`).then((r) => r.body);
   };
 }
 
@@ -751,7 +739,7 @@ export function cancelJob(jobId) {
     const {
       apiClient,
       client: { id },
-      jobs: { jobsById }
+      jobs: { jobsById },
     } = getState();
     const job = jobsById[jobId];
 
@@ -764,7 +752,7 @@ export function cancelJob(jobId) {
       analytics.track('Cancelled a delivery', {
         id: job.id,
         status: job.status,
-        deliveryStatus
+        deliveryStatus,
       });
 
       // Fetch the job because the cancel response does not contain a job.
@@ -772,7 +760,7 @@ export function cancelJob(jobId) {
     }).then(({ body: job }) => {
       dispatch({
         type: CANCEL_JOB_SUCCESS,
-        jobs: { [job.id]: job }
+        jobs: { [job.id]: job },
       });
     });
 
@@ -791,7 +779,7 @@ function trackExpiredJob(job, eventName) {
 
   analytics.track(eventName, {
     expiredSince: (Date.now() - Date.parse(expiredAt)) / 1000,
-    category: analytics.ONGOING_DELIVERIES_CATEGORY
+    category: analytics.ONGOING_DELIVERIES_CATEGORY,
   });
 }
 
@@ -803,8 +791,8 @@ export function dismissJob(job) {
   return {
     type: DISMISS_JOB,
     jobs: {
-      [jobId]: null
-    }
+      [jobId]: null,
+    },
   };
 }
 
@@ -816,7 +804,7 @@ export function retryJob(job) {
   return {
     type: DISMISS_JOB,
     jobs: {
-      [jobId]: null
-    }
+      [jobId]: null,
+    },
   };
 }

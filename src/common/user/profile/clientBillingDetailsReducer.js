@@ -4,13 +4,13 @@ import {
   BILLING_DETAILS_CHANGE,
   UPDATE_BILLING_DETAILS_REQUEST,
   UPDATE_BILLING_DETAILS_SUCCESS,
-  UPDATE_BILLING_DETAILS_FAILURE
+  UPDATE_BILLING_DETAILS_FAILURE,
 } from '../actions';
 
 const billingDetailsIsSending = createPendingStatusReducer([
   UPDATE_BILLING_DETAILS_REQUEST,
   UPDATE_BILLING_DETAILS_SUCCESS,
-  UPDATE_BILLING_DETAILS_FAILURE
+  UPDATE_BILLING_DETAILS_FAILURE,
 ]);
 
 function billingDetailsValue(state = {}, action) {
@@ -26,5 +26,5 @@ function billingDetailsValue(state = {}, action) {
 
 export default combineReducers({
   billingDetailsIsSending,
-  billingDetailsValue
+  billingDetailsValue,
 });

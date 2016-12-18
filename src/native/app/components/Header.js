@@ -16,11 +16,11 @@
  *
  * When the mark image is clicked, it is just toggled to display or hide.
 */
-'use strict'
 
-import React, {PropTypes} from "react"
-import {ActivityIndicator, Image, StyleSheet, Text, TextInput, TouchableHighlight, View} from "react-native"
-import FormButton from "./FormButton"
+
+import React, { PropTypes } from 'react';
+import { ActivityIndicator, Image, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import FormButton from './FormButton';
 
 /**
  * ### propTypes
@@ -35,45 +35,45 @@ const propTypes = {
   showState: PropTypes.bool,
   currentState: PropTypes.object,
   onGetState: PropTypes.func,
-  onSetState: PropTypes.func
-}
+  onSetState: PropTypes.func,
+};
 
 class Header extends React.Component {
 
   constructor(props: P) {
-    super(props)
+    super(props);
 
     this.state = {
       text: '',
-      isDisabled: true
-    }
+      isDisabled: true,
+    };
   }
 
   /**
    * ### _onPressMark
    * Call the onGetState action passing the state prop
    */
-  _onPressMark () {
-    this.props.onGetState(!this.props.showState)
+  _onPressMark() {
+    this.props.onGetState(!this.props.showState);
   }
 
   /**
    * ### _onChangeText
    * when the textinput value changes, set the state for that component
    */
-  _onChangeText (text) {
+  _onChangeText(text) {
     this.setState({
       text,
-      isDisabled: false
-    })
+      isDisabled: false,
+    });
   }
 
   /**
    * ### _updateStateButtonPress
    * When the button for the state is pressed, call ```onSetState```
    */
-  _updateStateButtonPress () {
-    this.props.onSetState(this.state.text)
+  _updateStateButtonPress() {
+    this.props.onSetState(this.state.text);
   }
 
   /**
@@ -89,12 +89,12 @@ class Header extends React.Component {
    * ```_updateStateButtonPress``` and away we go...
    *
    */
-  render () {
-    let displayText
+  render() {
+    let displayText;
     if (this.props.showState) {
-      displayText = JSON.stringify(this.props.currentState)
+      displayText = JSON.stringify(this.props.currentState);
 
-      console.log(displayText)
+      console.log(displayText);
     }
 
     return (
@@ -103,12 +103,13 @@ class Header extends React.Component {
 
           <TouchableHighlight onPress={this._onPressMark}>
 
-            <Image style={styles.mark}
+            <Image
+              style={styles.mark}
               source={require('./img/snabb.png')}
             />
           </TouchableHighlight>
             {this.props.isFetching
-             ? <ActivityIndicator animating size='large' />
+             ? <ActivityIndicator animating size="large" />
              : null
           }
 
@@ -116,28 +117,34 @@ class Header extends React.Component {
             {this.props.showState
              ? <View style={styles.container}>
                <Text>{I18n.t('Header.current_state')} ({I18n.t('Header.see_console')})</Text>
-               <TextInput style={{height: 100, borderColor: 'gray', borderWidth: 1}}
+               <TextInput
+                 style={{ height: 100, borderColor: 'gray', borderWidth: 1 }}
                  value={displayText}
                  editable
                  multiline
                  onChangeText={(text) => this._onChangeText(text)}
-                 numberOfLines={20} />
+                 numberOfLines={20}
+               />
 
-               <View style={{
-                 marginTop: 10
-               }}>
-                 <FormButton isDisabled={this.state.isDisabled}
+               <View
+                 style={{
+                   marginTop: 10,
+                 }}
+               >
+                 <FormButton
+                   isDisabled={this.state.isDisabled}
                    onPress={this._updateStateButtonPress}
-                   buttonText={I18n.t('Header.update_state')} />
+                   buttonText={I18n.t('Header.update_state')}
+                 />
                </View>
              </View>
             : null}
       </View>
-    )
+    );
   }
 }
 
-Header.propTypes = propTypes
+Header.propTypes = propTypes;
 
 /**
  * ## Styles
@@ -146,20 +153,20 @@ let styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     flex: 1,
-    marginTop: 10
+    marginTop: 10,
   },
   header: {
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   mark: {
     height: 100,
-    width: 100
-  }
+    width: 100,
+  },
 
-})
+});
 
 
-export default Header
+export default Header;

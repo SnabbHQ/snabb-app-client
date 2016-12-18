@@ -11,26 +11,22 @@ export function createCreditCard(creditCard) {
       cardName,
       cardNumber,
       cardCode,
-      cardDate
+      cardDate,
     } = creditCard;
 
     const {
       apiClient,
-      client: { id }
+      client: { id },
     } = getState();
 
     dispatch({ type: CREATE_CREDIT_CARD_REQUEST });
 
-    const promise = apiClient.get(`v1/clients/${id}/creditcards/token`).then(({ body }) => {
-      return getNonce(body.token, cardCode, cardDate, cardNumber);
-    }).then((nonce) => {
-      return apiClient.post('v1/creditcards', { nonce, name: cardName }).then(r => r.body);
-    }).then((creditCard) => {
+    const promise = apiClient.get(`v1/clients/${id}/creditcards/token`).then(({ body }) => getNonce(body.token, cardCode, cardDate, cardNumber)).then((nonce) => apiClient.post('v1/creditcards', { nonce, name: cardName }).then(r => r.body)).then((creditCard) => {
       dispatch({
         type: CREATE_CREDIT_CARD_SUCCESS,
         creditCards: {
-          [creditCard.id]: creditCard
-        }
+          [creditCard.id]: creditCard,
+        },
       });
     });
 
@@ -50,7 +46,7 @@ export function deleteCreditCard(cardId) {
   return (dispatch, getState) => {
     const {
       apiClient,
-      client: { id }
+      client: { id },
     } = getState();
 
     dispatch({ type: DELETE_CREDIT_CARD_REQUEST });
@@ -72,13 +68,13 @@ export const DEFAULT_CREDIT_CARD_FAILURE = 'DEFAULT_CREDIT_CARD_FAILURE';
 export function defaultCreditCard(cardId) {
   return (dispatch, getState) => {
     const {
-      apiClient
+      apiClient,
     } = getState();
 
     dispatch({ type: DEFAULT_CREDIT_CARD_REQUEST });
 
     const promise = apiClient.patch(`v1/creditcards/${cardId}`, {
-      default: true
+      default: true,
     }).then(() => {
       dispatch({ type: DEFAULT_CREDIT_CARD_SUCCESS, cardId });
     }).catch((error) => {
@@ -96,13 +92,13 @@ export const REDEEM_COUPON_FAILURE = 'REDEEM_COUPON_FAILURE';
 export function redeemCoupon(code) {
   return (dispatch, getState) => {
     const {
-      apiClient
+      apiClient,
     } = getState();
 
     dispatch({ type: REDEEM_COUPON_REQUEST });
 
     const promise = apiClient.post('/v1/coupons/load', {
-      code
+      code,
     }).then(() => {
       dispatch({ type: REDEEM_COUPON_SUCCESS });
       return dispatch(fetchWallets());
@@ -124,7 +120,7 @@ export function fetchWallets() {
   return (dispatch, getState) => {
     const {
       apiClient,
-      client: { id }
+      client: { id },
     } = getState();
 
     dispatch({ type: FETCH_WALLETS_REQUEST });
@@ -153,7 +149,7 @@ export const BILLING_DETAILS_CHANGE = 'BILLING_DETAILS_CHANGE';
 export function setBillingDetailsValue(value) {
   return {
     type: BILLING_DETAILS_CHANGE,
-    billingAccount: value
+    billingAccount: value,
   };
 }
 
@@ -165,13 +161,13 @@ export function updateBillingDetails(value) {
   return (dispatch, getState) => {
     const {
       apiClient,
-      client: { id }
+      client: { id },
     } = getState();
 
     dispatch({ type: UPDATE_BILLING_DETAILS_REQUEST });
 
     const promise = apiClient.patch(`v1/clients/${id}`, {
-      billing_account: value
+      billing_account: value,
     }).then(({ body: client }) => {
       dispatch({ type: UPDATE_BILLING_DETAILS_SUCCESS, billingAccount: client.billingAccount });
     });

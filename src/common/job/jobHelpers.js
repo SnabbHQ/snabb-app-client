@@ -3,7 +3,7 @@ import { isPicking } from '../lib/deliveryHelpers';
 import {
   ACTIVE_JOB_STATUSES,
   PENDING_JOB_STATUSES,
-  SCHEDULED_JOB_STATUSES
+  SCHEDULED_JOB_STATUSES,
 } from '../lib/constants';
 
 export function isActive({ status }) {
@@ -24,4 +24,4 @@ export function isCancellable({ status, currentDelivery: d }) {
 
 export function getFlatStatus({ status, currentDelivery: d }) {
   return status === 'in_progress' ? d.status : status;
-};
+}

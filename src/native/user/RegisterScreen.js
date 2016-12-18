@@ -1,19 +1,18 @@
 
-'use strict';
 
-import {bindActionCreators} from "redux"
-import {connect} from "react-redux"
-import * as authActions from "../../common/user/auth/authActions"
-import LoginRender from "./components/LoginRender"
-import React, {Component} from "react"
-import DefaultNavBar from "../app/components/DefaultNavBar"
-import {View} from "react-native"
-import I18n from "../../common/lib/I18n"
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as authActions from '../../common/user/auth/authActions';
+import LoginRender from './components/LoginRender';
+import React, { Component } from 'react';
+import DefaultNavBar from '../app/components/DefaultNavBar';
+import { View } from 'react-native';
+import I18n from '../../common/lib/I18n';
 
 const {
   LOGIN,
   REGISTER,
-  FORGOT_PASSWORD
+  FORGOT_PASSWORD,
 } = require('../../common/lib/constants').default;
 
 /**
@@ -23,33 +22,33 @@ const {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
-    global: state.global
-  }
+    global: state.global,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(authActions, dispatch)
-  }
+    actions: bindActionCreators(authActions, dispatch),
+  };
 }
 
 function buttonPressHandler(signup, username, email, password) {
-  signup(username, email, password)
+  signup(username, email, password);
 }
 
 class RegisterScreen extends Component {
 
   render() {
-    let loginButtonText = I18n.t('Register.register')
-    let onButtonPress = buttonPressHandler.bind(null,
+    const loginButtonText = I18n.t('Register.register');
+    const onButtonPress = buttonPressHandler.bind(null,
       this.props.actions.signup,
       this.props.auth.form.fields.username,
       this.props.auth.form.fields.email,
-      this.props.auth.form.fields.password)
+      this.props.auth.form.fields.password);
 
     return (
       <View>
-        <DefaultNavBar title={I18n.t('Register.register')}/>
+        <DefaultNavBar title={I18n.t('Register.register')} />
 
         <LoginRender
           formType={REGISTER}
@@ -62,9 +61,9 @@ class RegisterScreen extends Component {
           global={this.props.global}
         />
       </View>
-    )
+    );
   }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);

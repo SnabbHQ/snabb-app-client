@@ -4,12 +4,13 @@
  * Abstract Base class for Backend support
  *
  */
-'use strict'
+
+
 /**
  * ## Async support
  *
  */
-require('regenerator/runtime')
+require('regenerator/runtime');
 
 export default class Backend {
   /**
@@ -26,7 +27,7 @@ export default class Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  signup (data) {
+  signup(data) {
 
   }
  /**
@@ -46,14 +47,14 @@ export default class Backend {
    * updatedAt: "2015-12-30T16:08:50.419Z"
    *
    */
-  login (data) {
+  login(data) {
 
   }
   /**
    * ### logout
    * prepare the request and call _fetch
    */
-  logout () {
+  logout() {
 
   }
   /**
@@ -67,7 +68,7 @@ export default class Backend {
    *
    * if error:  {code: xxx, error: 'message'}
    */
-  resetPassword (data) {
+  resetPassword(data) {
 
   }
   /**
@@ -87,7 +88,7 @@ export default class Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  getProfile () {
+  getProfile() {
   }
   /**
    * ### updateProfile
@@ -98,7 +99,7 @@ export default class Backend {
    * @param data object:
    * {email: "barton@foo.com"}
    */
-  updateProfile (userId, data) {
+  updateProfile(userId, data) {
   }
 
 }

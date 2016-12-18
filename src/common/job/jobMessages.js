@@ -16,11 +16,11 @@ export default defineMessages({
   },
   selectVehicleTitle: {
     id: 'job.new.vehicle',
-    defaultMessage: 'Select a Vehicle'
+    defaultMessage: 'Select a Vehicle',
   },
   excludeVAT: {
     id: 'job.new.vat',
-    defaultMessage: 'Excl. VAT'
+    defaultMessage: 'Excl. VAT',
   },
   noScheduledJobsTitle: {
     id: 'jobs.scheduled.noScheduledJobsTitle',
@@ -32,35 +32,35 @@ export default defineMessages({
   },
   contactCompanyPlaceholder: {
     id: 'jobForm.company',
-    defaultMessage: 'Company'
+    defaultMessage: 'Company',
   },
   contactFirstnamePlaceholder: {
     id: 'jobForm.firstname',
-    defaultMessage: 'First name'
+    defaultMessage: 'First name',
   },
   contactLastnamePlaceholder: {
     id: 'jobForm.lastname',
-    defaultMessage: 'Last name'
+    defaultMessage: 'Last name',
   },
   pickUpAddressPlaceholder: {
     id: 'jobForm.pickUpAddressPlaceholder',
-    defaultMessage: 'Select a pick up address...'
+    defaultMessage: 'Select a pick up address...',
   },
   dropOffAddressPlaceholder: {
     id: 'jobForm.dropOffAddressPlaceholder',
-    defaultMessage: 'Select a drop off address...'
+    defaultMessage: 'Select a drop off address...',
   },
   contactPhonePlaceholder: {
     id: 'jobForm.phonePlaceholder',
-    defaultMessage: 'Phone'
+    defaultMessage: 'Phone',
   },
   contactEmailPlaceholder: {
     id: 'jobForm.emailPlaceholder',
-    defaultMessage: 'Email'
+    defaultMessage: 'Email',
   },
   commentPlaceholder: {
     id: 'jobForm.commentPlaceholder',
-    defaultMessage: 'Add a comment'
-  }
+    defaultMessage: 'Add a comment',
+  },
 
-})
+});

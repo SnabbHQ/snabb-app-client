@@ -1,8 +1,8 @@
-import React, {Component} from "react";
-import {StyleSheet, View} from "react-native";
-import NavBar, {NavTitle, NavButton} from "react-native-nav";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import {Actions} from "react-native-router-flux";
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+import NavBar, { NavTitle, NavButton } from 'react-native-nav';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Actions } from 'react-native-router-flux';
 
 export default class DefaultNavBar extends Component {
 
@@ -15,14 +15,14 @@ export default class DefaultNavBar extends Component {
       <View>
         <NavBar>
           <NavButton onPress={this.backButtonPress.bind(this)}>
-            <Icon name="arrow-back" size={30} color="#444444"/>
+            <Icon name="arrow-back" size={30} color="#444444" />
           </NavButton>
           <NavTitle>
             {this.props.title}
           </NavTitle>
-          <NavButton/>
+          <NavButton />
         </NavBar>
       </View>
-    )
+    );
   }
 }

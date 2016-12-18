@@ -50,7 +50,7 @@ function getConfiguration() {
     publicPath,
     distPath,
     segmentWriteKey,
-    googleMapKey
+    googleMapKey,
   };
 }
 

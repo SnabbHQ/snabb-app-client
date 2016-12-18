@@ -1,4 +1,4 @@
-import keyMirror from 'key-mirror'
+import keyMirror from 'key-mirror';
 
 export const PENDING_JOB_STATUSES = ['new', 'searching', 'accepted'];
 export const ACTIVE_JOB_STATUSES = PENDING_JOB_STATUSES.concat(['in_progress']);
@@ -7,7 +7,7 @@ export const SCHEDULED_JOB_STATUSES = ['scheduled'];
 
 export const JOB_TYPES = {
   transport: 1,
-  package: 2
+  package: 2,
 };
 
 export const TRANSPORT_TYPES = {
@@ -17,19 +17,19 @@ export const TRANSPORT_TYPES = {
   motorbike: 3,
   car: 4,
   van: 6,
-  cargobikexl: 7
+  cargobikexl: 7,
 };
 
 export const PAYMENT_METHODS = {
   creditCard: 1,
   paypal: 2,
   corporate: 3,
-  wallet: 4
+  wallet: 4,
 };
 
 export const PLACE_TYPES = {
   pickUp: 2,
-  dropOff: 3
+  dropOff: 3,
 };
 
 export const DEFAULT_CITY = 'valencia';
@@ -40,24 +40,24 @@ export const CITIES = {
     countryCode: 46,
     center: {
       latitude: 59.3293,
-      longitude: 18.0686
+      longitude: 18.0686,
     },
     transportTypes: [
       'bike',
-    ]
+    ],
   },
   valencia: {
     isoCode: 'EUR',
     countryCode: 34,
     center: {
       latitude: 39.4699,
-      longitude: 0.3763
+      longitude: 0.3763,
     },
     transportTypes: [
       'bike',
-      'motorbike'
-    ]
-  }
+      'motorbike',
+    ],
+  },
 };
 
 export const DEFAULT_PLACE_STORAGE_KEY = 'snabb_default_place';
@@ -123,5 +123,5 @@ export default keyMirror({
   DELIVERY_LOCATION: null,
 
   DELIVERY_SET_PICKUP: null,
-  DELIVERY_REQUEST: null
-})
+  DELIVERY_REQUEST: null,
+});

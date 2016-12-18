@@ -8,21 +8,22 @@
  * By using Immutable, it's enforced.  Just saying....
  *
  */
-'use strict'
+
+
 /**
  * ## Import immutable record
  */
-import {Record} from 'immutable'
+import { Record } from 'immutable';
 
 /**
  * ## InitialState
  *
  * The fields we're concerned with
  */
-let InitialState = Record({
+const InitialState = Record({
   isMobile: false,
   platform: '',
-  version: null
+  version: null,
 });
 
-export default InitialState
+export default InitialState;

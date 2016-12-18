@@ -6,7 +6,7 @@
  * What version is the app?
  *
  */
-'use strict';
+
 
 /**
  * ## Imports
@@ -15,26 +15,26 @@
  */
 const {
   SET_PLATFORM,
-  SET_VERSION
-} = require('../../common/lib/constants').default
+  SET_VERSION,
+} = require('../../common/lib/constants').default;
 
 /**
  * ## Set the platformState
  *
  */
-export function setPlatform (platform) {
+export function setPlatform(platform) {
   return {
     type: SET_PLATFORM,
-    payload: platform
-  }
+    payload: platform,
+  };
 }
 /**
  * ## set the version
  *
  */
-export function setVersion (version) {
+export function setVersion(version) {
   return {
     type: SET_VERSION,
-    payload: version
-  }
+    payload: version,
+  };
 }

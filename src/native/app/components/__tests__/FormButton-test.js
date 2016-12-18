@@ -6,25 +6,25 @@
  * *Note:* if you want to understand the structures here, add a
  * ```console.log``` and then ```npm test```.
  */
-'use strict'
+
 
 /** This is due to the fact that NativeBase does not support yet jest. Mock until it does
  * https://github.com/GeekyAnts/NativeBase/issues/272 **/
-jest.mock('Button', () => 'Button')
+jest.mock('Button', () => 'Button');
 
 /**
 * ## Imports
  */
-import React from 'react'
-import FormButton from '../FormButton'
-import renderer from 'react/lib/ReactTestRenderer'
+import React from 'react';
+import FormButton from '../FormButton';
+import renderer from 'react/lib/ReactTestRenderer';
 
 it('FormButton', () => {
   const props = {
     isDisabled: false,
     onPress: () => {},
-    buttonText: 'TestString'
-  }
-  const tree = renderer.create(<FormButton {...props} />).toJSON()
-  expect(tree).toMatchSnapshot()
-})
+    buttonText: 'TestString',
+  };
+  const tree = renderer.create(<FormButton {...props} />).toJSON();
+  expect(tree).toMatchSnapshot();
+});

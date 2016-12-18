@@ -19,7 +19,7 @@ const createLink = (tag, passProps) => styled((theme, props: LinkProps) => ({
   textDecoration: 'none',
   ':hover': {
     textDecoration: 'none',
-    color: 'grey'
+    color: 'grey',
   },
 }), tag, passProps);
 

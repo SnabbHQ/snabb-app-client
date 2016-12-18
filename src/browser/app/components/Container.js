@@ -5,8 +5,10 @@ const Container = styled(theme => ({
   display: 'flex',
   flexDirection: 'column',
   margin: 'auto',
-  maxWidth: '100%',//theme.container.maxWidths.big, // TODO: Use media queries.
+  maxWidth: theme.container.maxWidths.big, // TODO: Use media queries.
   minHeight: '100vh', // make footer sticky
+  paddingLeft: theme.typography.rhythm(1),
+  paddingRight: theme.typography.rhythm(1),
 }));
 
 export default Container;

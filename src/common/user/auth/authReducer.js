@@ -3,16 +3,17 @@
  *
  * The reducer for all the actions from the various log states
  */
-'use strict'
+
+
 /**
  * ## Imports
  * The InitialState for auth
  * fieldValidation for validating the fields
  * formValidation for setting the form's valid flag
  */
-const InitialState = require('./authInitialState').default
-const fieldValidation = require('../../lib/fieldValidation').default
-const formValidation = require('./authFormValidation').default
+const InitialState = require('./authInitialState').default;
+const fieldValidation = require('../../lib/fieldValidation').default;
+const formValidation = require('./authFormValidation').default;
 
 /**
  * ## Auth actions
@@ -47,7 +48,7 @@ const {
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILURE,
 
-  SET_STATE
+  SET_STATE,
 } = require('../../../common/lib/constants').default;
 
 const initialState = new InitialState();
@@ -56,7 +57,7 @@ const initialState = new InitialState();
  * @param {Object} state - initialState
  * @param {Object} action - type and payload
  */
-export default function authReducer (state = initialState, action) {
+export default function authReducer(state = initialState, action) {
   if (!(state instanceof InitialState)) return initialState.mergeDeep(state);
 
   switch (action.type) {
@@ -69,9 +70,9 @@ export default function authReducer (state = initialState, action) {
     case LOGOUT_REQUEST:
     case LOGIN_REQUEST:
     case RESET_PASSWORD_REQUEST:
-      let nextState = state.setIn(['form', 'isFetching'], true)
-      .setIn(['form', 'error'], null)
-      return nextState
+      const nextState = state.setIn(['form', 'isFetching'], true)
+      .setIn(['form', 'error'], null);
+      return nextState;
 
     /**
      * ### Logout state
@@ -84,8 +85,8 @@ export default function authReducer (state = initialState, action) {
         .setIn(['form', 'error'], null)
         .setIn(['form', 'fields', 'email'], '')
         .setIn(['form', 'fields', 'password'], '')
-        .setIn(['form', 'fields', 'passwordAgain'], '')
-    )
+        .setIn(['form', 'fields', 'passwordAgain'], ''),
+    );
 
     /**
      * ### Loggin in state
@@ -99,8 +100,8 @@ export default function authReducer (state = initialState, action) {
     case FORGOT_PASSWORD:
       return formValidation(
       state.setIn(['form', 'state'], action.type)
-        .setIn(['form', 'error'], null)
-    )
+        .setIn(['form', 'error'], null),
+    );
 
     /**
      * ### Auth form field change
@@ -111,13 +112,13 @@ export default function authReducer (state = initialState, action) {
      * the formValidation
      */
     case ON_AUTH_FORM_FIELD_CHANGE: {
-      const {field, value} = action.payload
-      let nextState = state.setIn(['form', 'fields', field], value)
-          .setIn(['form', 'error'], null)
+      const { field, value } = action.payload;
+      const nextState = state.setIn(['form', 'fields', field], value)
+          .setIn(['form', 'error'], null);
 
       return formValidation(
       fieldValidation(nextState, action)
-      , action)
+      , action);
     }
     /**
      * ### Requests end, good or bad
@@ -129,7 +130,7 @@ export default function authReducer (state = initialState, action) {
     case LOGIN_SUCCESS:
     case LOGOUT_SUCCESS:
     case RESET_PASSWORD_SUCCESS:
-      return state.setIn(['form', 'isFetching'], false)
+      return state.setIn(['form', 'isFetching'], false);
 
     /**
      *
@@ -141,7 +142,7 @@ export default function authReducer (state = initialState, action) {
     case LOGIN_FAILURE:
     case RESET_PASSWORD_FAILURE:
       return state.setIn(['form', 'isFetching'], false)
-      .setIn(['form', 'error'], action.payload)
+      .setIn(['form', 'error'], action.payload);
 
     /**
      * ### Hot Loading support
@@ -149,7 +150,7 @@ export default function authReducer (state = initialState, action) {
      * Set all the field values from the payload
      */
     case SET_STATE:
-      var form = JSON.parse(action.payload).auth.form
+      var form = JSON.parse(action.payload).auth.form;
 
       var next = state.setIn(['form', 'state'], form.state)
           .setIn(['form', 'disabled'], form.disabled)
@@ -161,20 +162,20 @@ export default function authReducer (state = initialState, action) {
           .setIn(['form', 'fields', 'password'], form.fields.password)
           .setIn(['form', 'fields', 'passwordHasError'], form.fields.passwordHasError)
           .setIn(['form', 'fields', 'passwordAgain'], form.fields.passwordAgain)
-          .setIn(['form', 'fields', 'passwordAgainHasError'], form.fields.passwordAgainHasError)
+          .setIn(['form', 'fields', 'passwordAgainHasError'], form.fields.passwordAgainHasError);
 
-      return next
+      return next;
 
     case DELETE_TOKEN_REQUEST:
     case DELETE_TOKEN_SUCCESS:
         /**
          * no state change, just an ability to track action requests...
          */
-      return state
+      return state;
 
   }
   /**
    * ## Default
    */
-  return state
+  return state;
 }

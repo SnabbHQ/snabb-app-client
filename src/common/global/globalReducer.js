@@ -3,7 +3,8 @@
  *
  *
  */
-'use strict'
+
+
 /**
  * ## Imports
  * The InitialState for auth
@@ -25,7 +26,7 @@ const {
   SET_STORE,
 } = require('../../common/lib/constants').default;
 
-import InitialState from './globalInitialState'
+import InitialState from './globalInitialState';
 
 const initialState = new InitialState();
 /**
@@ -33,7 +34,7 @@ const initialState = new InitialState();
  * @param {Object} state - initialState
  * @param {Object} action - type and payload
  */
-export default function globalReducer (state = initialState, action) {
+export default function globalReducer(state = initialState, action) {
   if (!(state instanceof InitialState)) return initialState.merge(state);
 
   switch (action.type) {
@@ -84,24 +85,24 @@ export default function globalReducer (state = initialState, action) {
      * when trying to convert to JSON, it will be recursive and fail
      */
     case GET_STATE:
-      let _state = state.store.getState();
+      const _state = state.store.getState();
 
       if (action.payload) {
-        let newState = {};
-        newState['auth'] = _state.auth.toJS();
-        newState['device'] = _state.device.toJS();
-        newState['profile'] = _state.profile.toJS();
-        newState['location'] = _state.location.toJS();
+        const newState = {};
+        newState.auth = _state.auth.toJS();
+        newState.device = _state.device.toJS();
+        newState.profile = _state.profile.toJS();
+        newState.location = _state.location.toJS();
 
       // Make sure global doesn't have the previous currentState
         // let _noCurrentState =  _state.global.set('currentState',null);
         // let _noStore = _noCurrentState.set('store',null);
 
-        newState['global'] = _state.global.set('currentState', null).set('store', null).toJS();
+        newState.global = _state.global.set('currentState', null).set('store', null).toJS();
 
-        return state.set('showState', action.payload).set('currentState', newState)
+        return state.set('showState', action.payload).set('currentState', newState);
       } else {
-        return state.set('showState', action.payload)
+        return state.set('showState', action.payload);
       }
 
     /**
@@ -115,9 +116,9 @@ export default function globalReducer (state = initialState, action) {
       return state.set('currentUser', global.currentUser)
         .set('showState', false)
         .set('currentState', null)
-        .set('pickupLocation', global.pickupLocation)
+        .set('pickupLocation', global.pickupLocation);
 
   }
 
-  return state
+  return state;
 }

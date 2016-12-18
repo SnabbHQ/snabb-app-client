@@ -71,6 +71,6 @@ export default function createApiClient(token, retryRequest) {
     patch: requestStuart.bind(null, 'patch'),
     post: requestStuart.bind(null, 'post'),
     put: requestStuart.bind(null, 'put'),
-    toJSON() { return null; }
+    toJSON() { return null; },
   };
 }

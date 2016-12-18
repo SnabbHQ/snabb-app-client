@@ -4,29 +4,30 @@
  * This class is a little complicated as it handles multiple states.
  *
  */
-'use strict'
+
+
 /**
  * ## Imports
  *
  * Redux
  */
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import * as authActions from '../../../common/user/auth/authActions'
-import * as globalActions from '../../../common/global/globalActions'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as authActions from '../../../common/user/auth/authActions';
+import * as globalActions from '../../../common/global/globalActions';
 
-import {Actions} from 'react-native-router-flux'
-import Header from '../../app/components/Header'
-import ErrorAlert from '../../app/components/ErrorAlert'
-import FormButton from '../../app/components/FormButton'
-import LoginForm from './LoginForm'
-import ItemCheckbox from '../../app/components/ItemCheckbox'
-import React, {Component} from 'react'
-import {StyleSheet, ScrollView, Text, TouchableHighlight, View} from 'react-native'
-import I18n from "../../../common/lib/I18n";
+import { Actions } from 'react-native-router-flux';
+import Header from '../../app/components/Header';
+import ErrorAlert from '../../app/components/ErrorAlert';
+import FormButton from '../../app/components/FormButton';
+import LoginForm from './LoginForm';
+import ItemCheckbox from '../../app/components/ItemCheckbox';
+import React, { Component } from 'react';
+import { StyleSheet, ScrollView, Text, TouchableHighlight, View } from 'react-native';
+import I18n from '../../../common/lib/I18n';
 
 import Dimensions from 'Dimensions';
-let {height, width} = Dimensions.get('window') // Screen dimensions in current orientation
+let { height, width } = Dimensions.get('window'); // Screen dimensions in current orientation
 
 /**
  * The states were interested in
@@ -34,8 +35,8 @@ let {height, width} = Dimensions.get('window') // Screen dimensions in current o
 const {
   LOGIN,
   REGISTER,
-  FORGOT_PASSWORD
-} = require('../../../common/lib/constants').default
+  FORGOT_PASSWORD,
+} = require('../../../common/lib/constants').default;
 
 /**
  * ## Redux boilerplate
@@ -43,21 +44,21 @@ const {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...authActions, ...globalActions}, dispatch)
-  }
+    actions: bindActionCreators({ ...authActions, ...globalActions }, dispatch),
+  };
 }
 
 class LoginRender extends Component {
   constructor(props) {
-    super(props)
-    this.errorAlert = new ErrorAlert()
+    super(props);
+    this.errorAlert = new ErrorAlert();
     this.state = {
       value: {
         email: this.props.auth.form.fields.email,
         password: this.props.auth.form.fields.password,
-        passwordAgain: this.props.auth.form.fields.passwordAgain
-      }
-    }
+        passwordAgain: this.props.auth.form.fields.passwordAgain,
+      },
+    };
   }
 
   /**
@@ -69,9 +70,9 @@ class LoginRender extends Component {
       value: {
         email: nextprops.auth.form.fields.email,
         password: nextprops.auth.form.fields.password,
-        passwordAgain: nextprops.auth.form.fields.passwordAgain
-      }
-    })
+        passwordAgain: nextprops.auth.form.fields.passwordAgain,
+      },
+    });
   }
 
   /**
@@ -85,17 +86,17 @@ class LoginRender extends Component {
    */
   onChange(value) {
     if (value.email !== '') {
-      this.props.actions.onAuthFormFieldChange('email', value.email)
+      this.props.actions.onAuthFormFieldChange('email', value.email);
     }
     if (value.password !== '') {
-      this.props.actions.onAuthFormFieldChange('password', value.password)
+      this.props.actions.onAuthFormFieldChange('password', value.password);
     }
     if (value.passwordAgain !== '') {
-      this.props.actions.onAuthFormFieldChange('passwordAgain', value.passwordAgain)
+      this.props.actions.onAuthFormFieldChange('passwordAgain', value.passwordAgain);
     }
     this.setState(
-      {value}
-    )
+      { value },
+    );
   }
 
   /**
@@ -104,40 +105,43 @@ class LoginRender extends Component {
    *  @param actions the action for the message type
    */
   getMessage(messageType, actions) {
-    let forgotPassword =
-      <TouchableHighlight
+    const forgotPassword =
+      (<TouchableHighlight
         onPress={() => {
-          actions.forgotPasswordState()
-          Actions.ForgotPasswordScreen()
-        }}>
+          actions.forgotPasswordState();
+          Actions.ForgotPasswordScreen();
+        }}
+      >
         <Text>{I18n.t('LoginRender.forgot_password')}</Text>
-      </TouchableHighlight>
+      </TouchableHighlight>);
 
-    let alreadyHaveAccount =
-      <TouchableHighlight
+    const alreadyHaveAccount =
+      (<TouchableHighlight
         onPress={() => {
-          actions.loginState()
-          Actions.LoginScreen()
-        }}>
+          actions.loginState();
+          Actions.LoginScreen();
+        }}
+      >
         <Text>{I18n.t('LoginRender.already_have_account')}</Text>
-      </TouchableHighlight>
+      </TouchableHighlight>);
 
-    let register =
-      <TouchableHighlight
+    const register =
+      (<TouchableHighlight
         onPress={() => {
-          actions.registerState()
-          Actions.RegisterScreen()
-        }}>
+          actions.registerState();
+          Actions.RegisterScreen();
+        }}
+      >
         <Text>{I18n.t('LoginRender.register')}</Text>
-      </TouchableHighlight>
+      </TouchableHighlight>);
 
     switch (messageType) {
       case FORGOT_PASSWORD:
-        return forgotPassword
+        return forgotPassword;
       case LOGIN:
-        return alreadyHaveAccount
+        return alreadyHaveAccount;
       case REGISTER:
-        return register
+        return register;
     }
   }
 
@@ -146,37 +150,37 @@ class LoginRender extends Component {
    * Setup some default presentations and render
    */
   render() {
-    var formType = this.props.formType
-    var loginButtonText = this.props.loginButtonText
-    var onButtonPress = this.props.onButtonPress
-    var displayPasswordCheckbox = this.props.displayPasswordCheckbox
-    var leftMessageType = this.props.leftMessageType
-    var rightMessageType = this.props.rightMessageType
+    const formType = this.props.formType;
+    const loginButtonText = this.props.loginButtonText;
+    const onButtonPress = this.props.onButtonPress;
+    const displayPasswordCheckbox = this.props.displayPasswordCheckbox;
+    const leftMessageType = this.props.leftMessageType;
+    const rightMessageType = this.props.rightMessageType;
 
-    var passwordCheckbox = <Text />
-    let leftMessage = this.getMessage(leftMessageType, this.props.actions)
-    let rightMessage = this.getMessage(rightMessageType, this.props.actions)
+    let passwordCheckbox = <Text />;
+    const leftMessage = this.getMessage(leftMessageType, this.props.actions);
+    const rightMessage = this.getMessage(rightMessageType, this.props.actions);
 
-    let self = this
+    const self = this;
 
     // display the login / register / change password screens
-    this.errorAlert.checkError(this.props.auth.form.error)
+    this.errorAlert.checkError(this.props.auth.form.error);
 
     /**
      * Toggle the display of the Password and PasswordAgain fields
      */
     if (displayPasswordCheckbox) {
       passwordCheckbox =
-        <ItemCheckbox
+        (<ItemCheckbox
           text={I18n.t('LoginRender.show_password')}
           disabled={this.props.auth.form.isFetching}
           onCheck={() => {
-            this.props.actions.onAuthFormFieldChange('showPassword', true)
+            this.props.actions.onAuthFormFieldChange('showPassword', true);
           }}
           onUncheck={() => {
-            this.props.actions.onAuthFormFieldChange('showPassword', false)
+            this.props.actions.onAuthFormFieldChange('showPassword', false);
           }}
-        />
+        />);
     }
 
     /**
@@ -191,25 +195,29 @@ class LoginRender extends Component {
       <View style={styles.container}>
         <ScrollView horizontal={false} width={width} height={height}>
           <View>
-            <Header isFetching={this.props.auth.form.isFetching}
-                    showState={this.props.global.showState}
-                    currentState={this.props.global.currentState}
-                    onGetState={this.props.actions.getState}
-                    onSetState={this.props.actions.setState}/>
+            <Header
+              isFetching={this.props.auth.form.isFetching}
+              showState={this.props.global.showState}
+              currentState={this.props.global.currentState}
+              onGetState={this.props.actions.getState}
+              onSetState={this.props.actions.setState}
+            />
 
             <View style={styles.inputs}>
               <LoginForm
                 formType={formType}
                 form={this.props.auth.form}
                 value={this.state.value}
-                onChange={self.onChange.bind(self)}/>
+                onChange={self.onChange.bind(self)}
+              />
               {passwordCheckbox}
             </View>
 
             <FormButton
               isDisabled={!this.props.auth.form.isValid || this.props.auth.form.isFetching}
               onPress={onButtonPress}
-              buttonText={loginButtonText}/>
+              buttonText={loginButtonText}
+            />
 
             <View >
               <View style={styles.forgotContainer}>
@@ -221,7 +229,7 @@ class LoginRender extends Component {
           </View>
         </ScrollView>
       </View>
-    )
+    );
   }
 }
 
@@ -231,21 +239,21 @@ class LoginRender extends Component {
 let styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    flex: 1
+    flex: 1,
   },
   inputs: {
     marginTop: 10,
     marginBottom: 10,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
   },
   forgotContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
     marginLeft: 10,
-    marginRight: 10
-  }
-})
+    marginRight: 10,
+  },
+});
 
-export default connect(null, mapDispatchToProps)(LoginRender)
+export default connect(null, mapDispatchToProps)(LoginRender);

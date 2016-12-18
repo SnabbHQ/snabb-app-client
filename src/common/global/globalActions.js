@@ -3,7 +3,7 @@
  *
  * Actions that are global in nature
  */
-'use strict'
+
 
 /**
  * ## Imports
@@ -14,18 +14,18 @@ const {
   SET_SESSION_TOKEN,
   SET_STORE,
   SET_STATE,
-  GET_STATE
-} = require('../../common/lib/constants').default
+  GET_STATE,
+} = require('../../common/lib/constants').default;
 
 /**
  * ## set the sessionToken
  *
  */
-export function setSessionToken (sessionToken) {
+export function setSessionToken(sessionToken) {
   return {
     type: SET_SESSION_TOKEN,
-    payload: sessionToken
-  }
+    payload: sessionToken,
+  };
 }
 /**
  * ## set the store
@@ -35,29 +35,29 @@ export function setSessionToken (sessionToken) {
  * this is here to support Hot Loading
  *
  */
-export function setStore (store) {
+export function setStore(store) {
   return {
     type: SET_STORE,
-    payload: store
-  }
+    payload: store,
+  };
 }
 /**
  * ## set state
  *
  */
-export function setState (newState) {
+export function setState(newState) {
   return {
     type: SET_STATE,
-    payload: newState
-  }
+    payload: newState,
+  };
 }
 /**
  * ## getState
  *
  */
-export function getState (toggle) {
+export function getState(toggle) {
   return {
     type: GET_STATE,
-    payload: toggle
-  }
+    payload: toggle,
+  };
 }

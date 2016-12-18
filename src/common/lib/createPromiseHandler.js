@@ -15,8 +15,8 @@ export default function createPromiseHandler(sourceHandler, onChange, options = 
     }
   }
 
-  const promiseHandler = function() {
-    const promise = sourceHandler.apply(null, arguments);
+  const promiseHandler = function () {
+    const promise = sourceHandler(...arguments);
 
     if (promise.then) {
       handlePromiseStateChange('pending', null);
@@ -34,4 +34,4 @@ export default function createPromiseHandler(sourceHandler, onChange, options = 
   promiseHandler.cancel = () => clearTimeout(_timer);
 
   return promiseHandler;
-};
+}

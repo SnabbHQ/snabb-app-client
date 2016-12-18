@@ -3,20 +3,12 @@ const LETTER_REGEXP = /^[A-Za-z]$/;
 const ALPHANNUMERIC_REGEXP = /^[\dA-Za-z]$/;
 
 const DEFAULT_FORMATTERS = {
-  '1': (v) => {
-    return DIGIT_REGEXP.test(v) && v;
-  },
-  'a': (v) => {
-    return LETTER_REGEXP.test(v) && v;
-  },
-  '*': (v) => {
-    return ALPHANNUMERIC_REGEXP.test(v) && v;
-  }
+  1: (v) => DIGIT_REGEXP.test(v) && v,
+  a: (v) => LETTER_REGEXP.test(v) && v,
+  '*': (v) => ALPHANNUMERIC_REGEXP.test(v) && v,
 };
 
-const DEFAULT_FORMATTER = (v) => {
-  return v.replace(/^\//, '');
-};
+const DEFAULT_FORMATTER = (v) => v.replace(/^\//, '');
 
 /**
  * Create a function that format a string for a given mask
@@ -33,12 +25,12 @@ export default function zorro(mask) {
     if (DEFAULT_FORMATTERS[key]) {
       return {
         key,
-        format: DEFAULT_FORMATTERS[key]
+        format: DEFAULT_FORMATTERS[key],
       };
     } else {
       return {
         key: 'default',
-        format: DEFAULT_FORMATTER.bind(null, key)
+        format: DEFAULT_FORMATTER.bind(null, key),
       };
     }
   });
@@ -59,7 +51,7 @@ export default function zorro(mask) {
       if (f === false) { break; }
 
       const isDefault = key === 'default';
-      if ((isDefault && v === f) || !isDefault){
+      if ((isDefault && v === f) || !isDefault) {
         valueIndex++;
       }
 

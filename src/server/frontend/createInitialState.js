@@ -21,10 +21,9 @@ const createInitialState = () => ({
     currentLocale: config.defaultLocale,
     defaultLocale: config.defaultLocale,
     locales: config.locales,
-    messages
+    messages,
   },
 });
-
 
 
 export default createInitialState;

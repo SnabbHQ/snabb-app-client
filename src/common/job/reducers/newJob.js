@@ -12,13 +12,13 @@ import {
   CREATE_NEW_JOB_REQUEST,
   CREATE_NEW_JOB_SUCCESS,
   CREATE_NEW_JOB_FAILURE,
-  SCHEDULING_SUCCESS
+  SCHEDULING_SUCCESS,
 } from '../actions';
 
 export const isCreating = createPendingStatusReducer([
   CREATE_NEW_JOB_REQUEST,
   CREATE_NEW_JOB_SUCCESS,
-  CREATE_NEW_JOB_FAILURE
+  CREATE_NEW_JOB_FAILURE,
 ]);
 
 function schedulingValue(state, action) {
@@ -28,8 +28,8 @@ function schedulingValue(state, action) {
         when,
         slot: {
           dayKey: previousDayKey,
-          slotKey: previousSlotKey
-        }
+          slotKey: previousSlotKey,
+        },
       } = state;
 
       const { dayKeys, daysByKey } = action.scheduling;
@@ -41,8 +41,8 @@ function schedulingValue(state, action) {
         when,
         slot: {
           dayKey: day.key,
-          slotKey: slot.key
-        }
+          slotKey: slot.key,
+        },
       };
     default:
       return state;
@@ -53,20 +53,20 @@ export function value(state = {
   // transportType: 'bike',
   scheduling: {
     when: 'now',
-    slot: {}
-  }
+    slot: {},
+  },
 }, action) {
   switch (action.type) {
     case SCHEDULING_SUCCESS:
       return {
         ...state,
-        scheduling: schedulingValue(state.scheduling, action)
+        scheduling: schedulingValue(state.scheduling, action),
       };
     case RESET_NEW_JOB:
     case NEW_JOB_VALUE_CHANGE:
       return {
         ...state,
-        ...action.value
+        ...action.value,
       };
     case NEW_JOB_PLACE_REQUEST:
       const nextState = { ...state };
@@ -77,7 +77,7 @@ export function value(state = {
           ...state[action.placeType],
           contactPhone: '',
           contactEmail: '',
-          comment: ''
+          comment: '',
         };
       }
 
@@ -93,8 +93,8 @@ export function value(state = {
             contactLastname: action.place.contactLastname,
             contactPhone: action.place.contactPhone,
             contactEmail: action.place.contactEmail,
-            comment: action.place.comment
-          }
+            comment: action.place.comment,
+          },
         };
       }
       return;
@@ -111,12 +111,12 @@ export function errors(state = {}, action) {
     case NEW_JOB_PLACE_SUCCESS:
       return {
         ...state,
-        [action.placeType]: null
+        [action.placeType]: null,
       };
     case NEW_JOB_PLACE_FAILURE:
       return {
         ...state,
-        [action.placeType]: action.error.response.body.errors
+        [action.placeType]: action.error.response.body.errors,
       };
   }
 
@@ -130,12 +130,12 @@ export function places(state = {}, action) {
     case NEW_JOB_PLACE_REQUEST:
       return {
         ...state,
-        [`${action.placeType}Place`]: null
+        [`${action.placeType}Place`]: null,
       };
     case NEW_JOB_PLACE_SUCCESS:
       return {
         ...state,
-        [`${action.placeType}Place`]: action.place
+        [`${action.placeType}Place`]: action.place,
       };
   }
 
@@ -152,7 +152,7 @@ export function quotes(state = {}, action) {
       return {
         fetchedAtTime: action.fetchedAtTime,
         hash: action.hash,
-        ...action.quotes
+        ...action.quotes,
       };
   }
 
@@ -161,7 +161,7 @@ export function quotes(state = {}, action) {
 
 export function scheduling(state = {
   dayKeys: [],
-  daysByKey: {}
+  daysByKey: {},
 }, action) {
   switch (action.type) {
     case SCHEDULING_SUCCESS:
@@ -177,5 +177,5 @@ export default combineReducers({
   errors,
   places,
   quotes,
-  scheduling
+  scheduling,
 });

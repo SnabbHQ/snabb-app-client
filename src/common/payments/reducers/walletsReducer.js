@@ -1,5 +1,5 @@
 import {
-  FETCH_WALLETS_SUCCESS
+  FETCH_WALLETS_SUCCESS,
 } from '../actions';
 
 export default function wallet(state = null, action) {

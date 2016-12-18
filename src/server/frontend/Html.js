@@ -52,6 +52,6 @@ const Html = ({
   </head>
   <body dangerouslySetInnerHTML={{ __html: bodyHtml }} />
   </html>
-)
+);
 
 export default Html;

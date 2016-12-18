@@ -6,13 +6,14 @@
  * Login, Register or Reset Password
  *
  */
-'use strict'
+
+
 /**
  * ## Import
  *
  * React
  */
-import React, {PropTypes} from 'react'
+import React, { PropTypes } from 'react';
 
 /**
  * States of login display
@@ -20,23 +21,23 @@ import React, {PropTypes} from 'react'
 const {
   REGISTER,
   LOGIN,
-  FORGOT_PASSWORD
-} = require('../../../common/lib/constants').default
+  FORGOT_PASSWORD,
+} = require('../../../common/lib/constants').default;
 
 /**
  *  The fantastic little form library
  */
-const t = require('tcomb-form-native')
-let Form = t.form.Form
+const t = require('tcomb-form-native');
+const Form = t.form.Form;
 
 /**
  * ### Translations
  */
-let I18n = require('react-native-i18n')
-import Translations from '../../../common/lib/Translations'
-I18n.translations = Translations
+const I18n = require('react-native-i18n');
+import Translations from '../../../common/lib/Translations';
+I18n.translations = Translations;
 
-let LoginForm = React.createClass({
+const LoginForm = React.createClass({
   /**
    * ## LoginForm class
    *
@@ -48,7 +49,7 @@ let LoginForm = React.createClass({
     formType: PropTypes.string,
     form: PropTypes.object,
     value: PropTypes.object,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   },
 
   /**
@@ -57,43 +58,43 @@ let LoginForm = React.createClass({
    * setup all the fields using the props and default messages
    *
    */
-  render () {
-    let formType = this.props.formType
+  render() {
+    const formType = this.props.formType;
 
-    let options = {
+    const options = {
       fields: {
-      }
-    }
+      },
+    };
 
-    let email = {
+    const email = {
       label: I18n.t('LoginForm.email'),
       keyboardType: 'email-address',
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.emailHasError,
-      error: this.props.form.fields.emailErrorMsg
-    }
+      error: this.props.form.fields.emailErrorMsg,
+    };
 
-    let secureTextEntry = !this.props.form.fields.showPassword
+    const secureTextEntry = !this.props.form.fields.showPassword;
 
-    let password = {
+    const password = {
       label: I18n.t('LoginForm.password'),
       maxLength: 12,
-      secureTextEntry: secureTextEntry,
+      secureTextEntry,
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.passwordHasError,
-      error: this.props.form.fields.passwordErrorMsg
-    }
+      error: this.props.form.fields.passwordErrorMsg,
+    };
 
-    let passwordAgain = {
+    const passwordAgain = {
       label: I18n.t('LoginForm.password_again'),
-      secureTextEntry: secureTextEntry,
+      secureTextEntry,
       maxLength: 12,
       editable: !this.props.form.isFetching,
       hasError: this.props.form.fields.passwordAgainHasError,
-      error: this.props.form.fields.passwordAgainErrorMsg
-    }
+      error: this.props.form.fields.passwordAgainErrorMsg,
+    };
 
-    let loginForm
+    let loginForm;
     switch (formType) {
       /**
        * ### Registration
@@ -103,16 +104,16 @@ let LoginForm = React.createClass({
         loginForm = t.struct({
           email: t.String,
           password: t.String,
-          passwordAgain: t.String
-        })
-        options.fields['email'] = email
-        options.fields['email'].placeholder = I18n.t('LoginForm.email')
-        options.fields['email'].autoCapitalize = 'none'
-        options.fields['password'] = password
-        options.fields['password'].placeholder = I18n.t('LoginForm.password')
-        options.fields['passwordAgain'] = passwordAgain
-        options.fields['passwordAgain'].placeholder = I18n.t('LoginForm.password_again')
-        break
+          passwordAgain: t.String,
+        });
+        options.fields.email = email;
+        options.fields.email.placeholder = I18n.t('LoginForm.email');
+        options.fields.email.autoCapitalize = 'none';
+        options.fields.password = password;
+        options.fields.password.placeholder = I18n.t('LoginForm.password');
+        options.fields.passwordAgain = passwordAgain;
+        options.fields.passwordAgain.placeholder = I18n.t('LoginForm.password_again');
+        break;
 
       /**
        * ### Login
@@ -121,13 +122,13 @@ let LoginForm = React.createClass({
       case (LOGIN):
         loginForm = t.struct({
           email: t.String,
-          password: t.String
-        })
-        options.fields['email'] = email
-        options.fields['email'].autoCapitalize = 'none'
-        options.fields['password'] = password
-        options.fields['password'].placeholder = I18n.t('LoginForm.password')
-        break
+          password: t.String,
+        });
+        options.fields.email = email;
+        options.fields.email.autoCapitalize = 'none';
+        options.fields.password = password;
+        options.fields.password.placeholder = I18n.t('LoginForm.password');
+        break;
 
       /**
        * ### Reset password
@@ -135,12 +136,12 @@ let LoginForm = React.createClass({
        */
       case (FORGOT_PASSWORD):
         loginForm = t.struct({
-          email: t.String
-        })
-        options.fields['email'] = email
-        options.fields['email'].autoCapitalize = 'none'
-        options.fields['email'].placeholder = I18n.t('LoginForm.email')
-        break
+          email: t.String,
+        });
+        options.fields.email = email;
+        options.fields.email.autoCapitalize = 'none';
+        options.fields.email.placeholder = I18n.t('LoginForm.email');
+        break;
     } // switch
 
     /**
@@ -148,16 +149,17 @@ let LoginForm = React.createClass({
      * returns the Form component with the correct structures
      */
     return (
-      <Form ref='form'
+      <Form
+        ref="form"
         type={loginForm}
         options={options}
         value={this.props.value}
         onChange={this.props.onChange}
       />
 
-    )
-  }
-})
+    );
+  },
+});
 
-module.exports = LoginForm
+module.exports = LoginForm;
 

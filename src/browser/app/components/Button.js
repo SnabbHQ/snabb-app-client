@@ -1,5 +1,4 @@
 /* @flow */
-import React from 'react'
 import type { Exact, Styled } from '../themes/types';
 import type { TextProps } from './Text';
 import Text from './Text';
@@ -26,8 +25,6 @@ const Button: Styled<ButtonProps> = styled((theme, props) => ({
   fontWeight: props.bold === undefined
     ? 'bold'
     : props.bold ? theme.text.bold : 'normal',
-  paddingLeft: '1em',
-  paddingRight: '1em',
   paddingTop: '0.5em',
   paddingBottom: '0.5em',
   paddingLeft: '1.5em',

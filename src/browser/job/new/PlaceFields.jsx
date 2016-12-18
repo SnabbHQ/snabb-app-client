@@ -1,48 +1,49 @@
 /* @flow */
-import React, {PropTypes} from "react"
-import {Input, Text, Button, Box, Grid} from "../../app/components"
-import {Space} from "../../app/components-old"
-import FieldHeader from "./FieldHeader"
+import React, { PropTypes } from 'react';
+import { Input, Text, Button, Box, Grid } from '../../app/components';
+import { Space } from '../../app/components-old';
+import FieldHeader from './FieldHeader';
 
 class PlaceFields extends React.Component {
 
   constructor(props: P, context: any) {
-    super(props, context)
+    super(props, context);
 
     this.state = {
-      collapsed: false
-    }
+      collapsed: false,
+    };
 
-    this.renderEditButton = this.renderEditButton.bind(this)
-    this.renderFields = this.renderFields.bind(this)
-    this.renderExpandedFields = this.renderExpandedFields.bind(this)
-    this.renderCollapsedFields = this.renderCollapsedFields.bind(this)
-    this.onInputKeyDown = this.onInputKeyDown.bind(this)
+    this.renderEditButton = this.renderEditButton.bind(this);
+    this.renderFields = this.renderFields.bind(this);
+    this.renderExpandedFields = this.renderExpandedFields.bind(this);
+    this.renderCollapsedFields = this.renderCollapsedFields.bind(this);
+    this.onInputKeyDown = this.onInputKeyDown.bind(this);
   }
 
   onInputKeyDown(event) {
-    //TODO
+    // TODO
   }
 
   renderEditButton(collapsed) {
     if (this.props.collapsible) {
       return (
-        <Button marginLeft="2em"
-                onClick={() => this.setState({collapsed: !this.state.collapsed})}
+        <Button
+          marginLeft="2em"
+          onClick={() => this.setState({ collapsed: !this.state.collapsed })}
         >
-          {collapsed ? "Edit" : "Save"}
+          {collapsed ? 'Edit' : 'Save'}
         </Button>
-      )
+      );
     } else {
-      return null
+      return null;
     }
   }
 
   renderFields(collapsed) {
     if (this.props.collapsible && collapsed) {
-      return this.renderCollapsedFields()
+      return this.renderCollapsedFields();
     } else {
-      return this.renderExpandedFields()
+      return this.renderExpandedFields();
     }
   }
 
@@ -54,6 +55,7 @@ class PlaceFields extends React.Component {
             <Input
               name={`${this.props.placeType}FirstName`}
               label="First Name"
+              labelSize={-1}
               maxLength={100}
               onKeyDown={this.onInputKeyDown}
               type="text"
@@ -63,6 +65,7 @@ class PlaceFields extends React.Component {
             <Input
               name={`${this.props.placeType}LastName`}
               label="Last Name"
+              labelSize={-1}
               maxLength={100}
               onKeyDown={this.onInputKeyDown}
               placeholder={''}
@@ -74,6 +77,7 @@ class PlaceFields extends React.Component {
         <Input
           name={`${this.props.placeType}BusinessName`}
           label="Business Name"
+          labelSize={-1}
           maxLength={100}
           onKeyDown={this.onInputKeyDown}
           placeholder={''}
@@ -83,6 +87,7 @@ class PlaceFields extends React.Component {
         <Input
           name={`${this.props.placeType}Address`}
           label="Address*"
+          labelSize={-1}
           maxLength={100}
           onKeyDown={this.onInputKeyDown}
           placeholder={'e.g. San Vicente, 91, 46001, Valencia'}
@@ -94,6 +99,7 @@ class PlaceFields extends React.Component {
             <Input
               name={`${this.props.placeType}Email`}
               label="Email"
+              labelSize={-1}
               maxLength={100}
               onKeyDown={this.onInputKeyDown}
               placeholder={''}
@@ -104,6 +110,7 @@ class PlaceFields extends React.Component {
             <Input
               name={`${this.props.placeType}PhoneNumber`}
               label="Phone Number"
+              labelSize={-1}
               maxLength={100}
               onKeyDown={this.onInputKeyDown}
               placeholder={''}
@@ -115,13 +122,14 @@ class PlaceFields extends React.Component {
         <Input
           name={`${this.props.placeType}Comments`}
           label="Comments for the courier"
+          labelSize={-1}
           maxLength={100}
           onKeyDown={this.onInputKeyDown}
           placeholder={'e.g. leave with the doorman'}
           type="text"
         />
       </Box>
-    )
+    );
   }
 
   renderCollapsedFields() {
@@ -133,20 +141,20 @@ class PlaceFields extends React.Component {
         <Text>+34661518132</Text>
         <Text>Ring on the bell</Text>
       </Box>
-    )
+    );
   }
 
   render() {
     return (
       <Box>
         <Box display="flex" alignItems="center">
-          <FieldHeader icon={this.props.icon} title={this.props.title}/>
-          <Space auto/>
+          <FieldHeader icon={this.props.icon} title={this.props.title} />
+          <Space auto />
           {this.renderEditButton(this.state.collapsed)}
         </Box>
         {this.renderFields(this.state.collapsed)}
       </Box>
-    )
+    );
   }
 }
 
@@ -154,11 +162,11 @@ PlaceFields.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   placeType: PropTypes.oneOf(['pickUp', 'dropOff']).isRequired,
-  collapsible: PropTypes.bool
-}
+  collapsible: PropTypes.bool,
+};
 
 PlaceFields.defaultProps = {
-  collapsible: false
-}
+  collapsible: false,
+};
 
-export default PlaceFields
+export default PlaceFields;

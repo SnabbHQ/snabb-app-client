@@ -39,7 +39,7 @@ const typography = ({
   fontSize: (level: number) => Array
     .from(new Array(Math.abs(level)))
     .reduce(
-      size => {
+      (size) => {
         const scaleRatio = typeof fontSizeScale === 'string'
           ? scale[fontSizeScale]
           : fontSizeScale;

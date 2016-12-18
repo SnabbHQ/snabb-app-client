@@ -8,9 +8,9 @@
  * By using Immutable, it's enforced.  Just saying....
  *
  */
-'use strict';
 
-import {Record} from 'immutable'
+
+import { Record } from 'immutable';
 import * as ActionTypes from './DeliveryStepActionTypes';
 
 /**
@@ -18,8 +18,8 @@ import * as ActionTypes from './DeliveryStepActionTypes';
  *
  * The fields we're concerned with
  */
-var InitialState = Record({
-  step: ActionTypes.SET_PICKUP
+const InitialState = Record({
+  step: ActionTypes.SET_PICKUP,
 });
 
-export default InitialState
+export default InitialState;

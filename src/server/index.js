@@ -4,7 +4,7 @@ require('babel-register');
 require('babel-polyfill');
 
 require.extensions['.scss'] = () => {
-  return;
+
 };
 
 const WebpackIsomorphicTools = require('webpack-isomorphic-tools');

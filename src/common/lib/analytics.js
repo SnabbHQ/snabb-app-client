@@ -10,7 +10,7 @@ function getAnalytics() {
     track: emptyFunction,
     page: emptyFunction,
     reset: emptyFunction,
-    ready: emptyFunction
+    ready: emptyFunction,
   };
 }
 
@@ -22,7 +22,7 @@ analyticsProxy.identifyClient = (client) => {
   const integrations = {};
   if (client.intercomUserHash) {
     integrations.Intercom = {
-      user_hash: client.intercomUserHash
+      user_hash: client.intercomUserHash,
     };
   }
   analyticsProxy.identify(client.id, {
@@ -31,7 +31,7 @@ analyticsProxy.identifyClient = (client) => {
     lastName: client.lastname,
     email: client.email,
     phone: client.phone,
-    accountType: client.clientAccount.type
+    accountType: client.clientAccount.type,
   }, { integrations });
 };
 

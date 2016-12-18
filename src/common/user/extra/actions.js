@@ -1,5 +1,5 @@
 import keyBy from 'lodash/keyBy';
-import { getAddress } from '../../job/actions'
+import { getAddress } from '../../job/actions';
 
 export const CLIENT_EXTRA_SUCCESS = 'CLIENT_EXTRA_SUCCESS';
 
@@ -17,7 +17,7 @@ function fetchClientExtra() {
   return (dispatch, getState) => {
     const {
       apiClient,
-      client: { id }
+      client: { id },
     } = getState();
 
     if (id == null) { return; }
@@ -31,9 +31,9 @@ function fetchClientExtra() {
         type: CLIENT_EXTRA_SUCCESS,
         extra: {
           recentPickUpAddresses,
-          recentDropOffAddresses
+          recentDropOffAddresses,
         },
-        creditCards: keyBy(creditCards, 'id')
+        creditCards: keyBy(creditCards, 'id'),
       });
     });
   };

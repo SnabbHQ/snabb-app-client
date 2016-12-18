@@ -22,8 +22,8 @@ export const initialState = {
   jobIdsByFilter: {
     active: [],
     history: [],
-    scheduled: []
-  }
+    scheduled: [],
+  },
 };
 
 export default function jobs(state = initialState, action) {
@@ -32,7 +32,7 @@ export default function jobs(state = initialState, action) {
   if (jobs) {
     const jobsById = {
       ...state.jobsById,
-      ...jobs
+      ...jobs,
     };
 
     const jobIdsByFilter = reduce(jobsById, (m, j) => {
@@ -44,7 +44,7 @@ export default function jobs(state = initialState, action) {
     }, {
       active: [],
       history: [],
-      scheduled: []
+      scheduled: [],
     });
 
     jobIdsByFilter.active.sort((a, b) => b - a);
@@ -53,7 +53,7 @@ export default function jobs(state = initialState, action) {
 
     return {
       jobsById,
-      jobIdsByFilter
+      jobIdsByFilter,
     };
   }
 

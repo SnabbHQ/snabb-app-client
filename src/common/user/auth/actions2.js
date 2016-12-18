@@ -1,6 +1,6 @@
-import * as authUtils from "./authUtils"
-import analytics from "../../lib/analytics"
-import {BrowserRouter} from "react-router"
+import * as authUtils from './authUtils';
+import analytics from '../../lib/analytics';
+import { BrowserRouter } from 'react-router';
 
 export const CLIENT_REQUEST = 'CLIENT_REQUEST';
 export const CLIENT_SUCCESS = 'CLIENT_SUCCESS';
@@ -20,7 +20,7 @@ function auth(action, data) {
       dispatch({ type: CLIENT_SUCCESS, client, action });
 
       BrowserRouter.push({
-        pathname: '/'
+        pathname: '/',
       });
 
       analytics.identifyClient(client);
@@ -49,11 +49,11 @@ export function logOut() {
   return (dispatch, getState) => {
     const {
       apiClient,
-      client: { token }
+      client: { token },
     } = getState();
 
     analytics.track('Logged out', {
-      category: analytics.NAVIGATION_CATEGORY
+      category: analytics.NAVIGATION_CATEGORY,
     });
 
     return apiClient.post('/oauth/revoke', { token }).then(() => {

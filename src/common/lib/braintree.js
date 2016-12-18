@@ -12,14 +12,14 @@ import braintree from 'braintree-web';
 export function getNonce(token, cvv, expirationDate, number) {
   if (number === undefined ||
     expirationDate === undefined ||
-    cvv === undefined ) {
+    cvv === undefined) {
     Promise.reject(new Error('Incorrect credit card data provided.'));
   }
 
   return new Promise((resolve, reject) => {
     braintree.client.create({
-      authorization: token
-    }, function (error, client) {
+      authorization: token,
+    }, (error, client) => {
       if (error) return reject(error);
 
       client.request({
@@ -29,10 +29,10 @@ export function getNonce(token, cvv, expirationDate, number) {
           creditCard: {
             cvv,
             expirationDate,
-            number
-          }
-        }
-      }, function (error, response) {
+            number,
+          },
+        },
+      }, (error, response) => {
         if (error) return reject(error.error.message);
 
         resolve(response.creditCards[0].nonce);

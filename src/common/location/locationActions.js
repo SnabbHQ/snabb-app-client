@@ -1,6 +1,6 @@
-'use strict';
 
-import * as Defaults from './locationConstants'
+
+import * as Defaults from './locationConstants';
 import Geocoder from 'react-native-geocoder';
 
 Geocoder.fallbackToGoogle('AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw');
@@ -11,7 +11,7 @@ Geocoder.fallbackToGoogle('AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw');
 const {
   CURRENT_POSITION,
   SET_PICKUP_LOCATION,
-  SET_DELIVERY_LOCATION
+  SET_DELIVERY_LOCATION,
 } = require('../../common/lib/constants').default;
 
 
@@ -19,51 +19,47 @@ const {
  * Gets the user's current position
  */
 export function getCurrentPosition() {
-  return dispatch => {
-    return navigator.geolocation.getCurrentPosition(
+  return dispatch => navigator.geolocation.getCurrentPosition(
       (position) => {
         dispatch(currentPosition({
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        }))
+          longitude: position.coords.longitude,
+        }));
       },
       (error) => console.log(error.message),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
-  }
 }
 
 export function geoCodePosition(location) {
   return Geocoder.geocodePosition({
-      lat: location.latitude,
-      lng: location.longitude
-    }
+    lat: location.latitude,
+    lng: location.longitude,
+  },
   ).catch((error) => {
-    console.log(error)
-    throw (error)
-  })
+    console.log(error);
+    throw (error);
+  });
 }
 
 export function setPickupLocation(location, from) {
-  return dispatch => {
-    return geoCodePosition(location)
+  return dispatch => geoCodePosition(location)
       .then((res) => {
-        location.address = res[0].feature
-        dispatch(pickupLocationSetSuccess(location, from))
+        location.address = res[0].feature;
+        dispatch(pickupLocationSetSuccess(location, from));
       })
-      .catch(() => pickupLocationSetSuccess(location))
-  }
+      .catch(() => pickupLocationSetSuccess(location));
 }
 
 export function pickupLocationSetSuccess(location, from) {
-  console.log(location)
+  console.log(location);
   return {
     type: SET_PICKUP_LOCATION,
     payload: {
-      location: location,
-      from: from
-    }
-  }
+      location,
+      from,
+    },
+  };
 }
 
 /**
@@ -72,15 +68,15 @@ export function pickupLocationSetSuccess(location, from) {
 export function setDeliveryLocation(location) {
   return {
     type: SET_DELIVERY_LOCATION,
-    payload: location
-  }
+    payload: location,
+  };
 }
 
 export function currentPosition(position) {
   return {
     type: CURRENT_POSITION,
     payload: {
-      location: position
-    }
-  }
+      location: position,
+    },
+  };
 }

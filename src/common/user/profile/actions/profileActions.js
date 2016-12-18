@@ -3,20 +3,20 @@ import * as ActionTypes from './ProfileActionTypes';
 export function getUserProfile() {
   return {
     type: ActionTypes.GET_PROFILE_REQUEST,
-  }
+  };
 }
 
 export function getProfileSuccess(json) {
   return {
     type: ActionTypes.GET_PROFILE_SUCCESS,
-    payload: json
+    payload: json,
   };
 }
 
 export function getProfileFailure(error) {
   return {
     type: ActionTypes.GET_PROFILE_FAILURE,
-    payload: error
+    payload: error,
   };
 }
 
@@ -31,31 +31,31 @@ export function updateUserProfile(userId, newUserData, sessionToken) {
     type: ActionTypes.PROFILE_UPDATE_REQUEST,
     payload: {
       data: {
-        userId: userId,
-        newUserData: newUserData,
-        sessionToken: sessionToken
-      }
-    }
-  }
+        userId,
+        newUserData,
+        sessionToken,
+      },
+    },
+  };
 }
 
 export function profileUpdateSuccess() {
   return {
-    type: ActionTypes.PROFILE_UPDATE_SUCCESS
-  }
+    type: ActionTypes.PROFILE_UPDATE_SUCCESS,
+  };
 }
 
-export function profileUpdateFailure (json) {
+export function profileUpdateFailure(json) {
   return {
     type: ActionTypes.PROFILE_UPDATE_FAILURE,
-    payload: json
-  }
+    payload: json,
+  };
 }
 
 
 export function onProfileFormFieldChange(field, value) {
   return {
     type: ActionTypes.ON_PROFILE_FORM_FIELD_CHANGE,
-    payload: {field: field, value: value}
-  }
+    payload: { field, value },
+  };
 }

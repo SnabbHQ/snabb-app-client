@@ -1,4 +1,4 @@
-export default function([requestType, successType, failureType]) {
+export default function ([requestType, successType, failureType]) {
   return (state = false, action) => {
     switch (action.type) {
       case requestType:

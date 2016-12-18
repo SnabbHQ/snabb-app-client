@@ -6,4 +6,4 @@ export default function closestCity(state = null, action) {
   }
 
   return state;
-};
+}

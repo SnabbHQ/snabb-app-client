@@ -8,13 +8,9 @@ function fetchClientSettings() {
 
     dispatch({ type: CLIENT_SETTINGS_REQUEST });
 
-    const promise = apiClient.get('v1/clients/settings').then(({ body: settings }) => {
-      return dispatch({ type: CLIENT_SETTINGS_SUCCESS, settings });
-    });
+    const promise = apiClient.get('v1/clients/settings').then(({ body: settings }) => dispatch({ type: CLIENT_SETTINGS_SUCCESS, settings }));
 
-    promise.catch((error) => {
-      return dispatch({ type: CLIENT_SETTINGS_FAILURE, error });
-    });
+    promise.catch((error) => dispatch({ type: CLIENT_SETTINGS_FAILURE, error }));
 
     return promise;
   };

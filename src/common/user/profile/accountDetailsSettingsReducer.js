@@ -8,7 +8,7 @@ import {
   CLIENT_PASSWORD_VALUE_CHANGE,
   UPDATE_CLIENT_PASSWORD_REQUEST,
   UPDATE_CLIENT_PASSWORD_SUCCESS,
-  UPDATE_CLIENT_PASSWORD_FAILURE
+  UPDATE_CLIENT_PASSWORD_FAILURE,
 } from '../actions';
 
 function generalValue(state = {}, action) {
@@ -16,12 +16,12 @@ function generalValue(state = {}, action) {
     case UPDATE_CLIENT_SUCCESS:
       return {
         ...action.client,
-        company_name: action.client.companyName
+        company_name: action.client.companyName,
       };
     case CLIENT_GENERAL_VALUE_CHANGE:
       return {
         ...action.value,
-        company_name: action.value.company_name || action.value.companyName
+        company_name: action.value.company_name || action.value.companyName,
       };
     default:
       return state;
@@ -31,7 +31,7 @@ function generalValue(state = {}, action) {
 const generalIsSaving = createPendingStatusReducer([
   UPDATE_CLIENT_REQUEST,
   UPDATE_CLIENT_SUCCESS,
-  UPDATE_CLIENT_FAILURE
+  UPDATE_CLIENT_FAILURE,
 ]);
 
 function passwordValue(state = {}, action) {
@@ -48,12 +48,12 @@ function passwordValue(state = {}, action) {
 const passwordIsSaving = createPendingStatusReducer([
   UPDATE_CLIENT_PASSWORD_REQUEST,
   UPDATE_CLIENT_PASSWORD_SUCCESS,
-  UPDATE_CLIENT_PASSWORD_FAILURE
+  UPDATE_CLIENT_PASSWORD_FAILURE,
 ]);
 
 export default combineReducers({
   generalValue,
   generalIsSaving,
   passwordValue,
-  passwordIsSaving
+  passwordIsSaving,
 });

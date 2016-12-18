@@ -1,27 +1,27 @@
-import * as ActionTypes from './AuthActionTypes'
-import _ from 'underscore'
+import * as ActionTypes from './AuthActionTypes';
+import _ from 'underscore';
 
 /**
  * ## SessionToken actions
  */
 export function sessionTokenRequest() {
   return {
-    type: ActionTypes.SESSION_TOKEN_REQUEST
-  }
+    type: ActionTypes.SESSION_TOKEN_REQUEST,
+  };
 }
 
 export function sessionTokenRequestSuccess(token) {
   return {
     type: ActionTypes.SESSION_TOKEN_SUCCESS,
-    payload: token
-  }
+    payload: token,
+  };
 }
 
 export function sessionTokenRequestFailure(error) {
   return {
     type: ActionTypes.SESSION_TOKEN_FAILURE,
-    payload: _.isUndefined(error) ? null : error
-  }
+    payload: _.isUndefined(error) ? null : error,
+  };
 }
 
 /**
@@ -29,11 +29,11 @@ export function sessionTokenRequestFailure(error) {
  */
 export function deleteTokenRequest() {
   return {
-    type: ActionTypes.DELETE_TOKEN_REQUEST
-  }
+    type: ActionTypes.DELETE_TOKEN_REQUEST,
+  };
 }
 export function deleteTokenRequestSuccess() {
   return {
-    type: ActionTypes.DELETE_TOKEN_SUCCESS
-  }
+    type: ActionTypes.DELETE_TOKEN_SUCCESS,
+  };
 }

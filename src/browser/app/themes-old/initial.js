@@ -68,7 +68,7 @@ export const compute = (theme: Object) => ({
 
   Divider: {
     backgroundColor: theme.colors.grayLight,
-    height: 1
+    height: 1,
   },
 
   Container: {
@@ -85,17 +85,17 @@ export const compute = (theme: Object) => ({
   Toolbar: {
     color: 'inherit',
     backgroundColor: theme.colors.primary,
-    borderBottom: `1px solid rgba(0, 0, 0, ${1/8})`,
+    borderBottom: `1px solid rgba(0, 0, 0, ${1 / 8})`,
     padding: theme.scale[1],
   },
 
   Label: {
-    color: theme.colors.grey
+    color: theme.colors.grey,
   },
 
   button: {
-    backgroundColor: 'blue'
-  }
+    backgroundColor: 'blue',
+  },
 });
 
 export default compute(theme);

@@ -10,7 +10,7 @@ type ImageProps = {|
   width: number,
 |};
 
-const altOrRolePresentation = (alt) => alt
+const altOrRolePresentation = alt => alt
   ? { alt }
   : { role: 'presentation' };
 

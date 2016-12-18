@@ -7,7 +7,7 @@ export const initialState = {
   uniqueId: null,
   driversById: {},
   closestDriverByType: {},
-  transportTypeIds: []
+  transportTypeIds: [],
 };
 
 export default function closestDrivers(state = initialState, action) {
@@ -23,13 +23,13 @@ export default function closestDrivers(state = initialState, action) {
       return m;
     }, {});
 
-    const transportTypeIds = map(closestDriverByType, (v, k) => TRANSPORT_TYPES[k] );
+    const transportTypeIds = map(closestDriverByType, (v, k) => TRANSPORT_TYPES[k]);
 
     return {
       uniqueId,
       driversById,
       closestDriverByType,
-      transportTypeIds
+      transportTypeIds,
     };
   }
 

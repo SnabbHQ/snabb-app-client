@@ -11,7 +11,7 @@ function getPositionFromIp() {
 
       resolve({
         longitude,
-        latitude
+        latitude,
       });
     });
   });
@@ -21,7 +21,7 @@ const n = global.navigator;
 const hasGeolocation = n && n.geolocation && n.geolocation.getCurrentPosition;
 
 const GEOLOCATION_OPTIONS = {
-  maximumAge: 20 * 60 * 1000
+  maximumAge: 20 * 60 * 1000,
 };
 
 export default function getPosition() {
@@ -33,14 +33,11 @@ export default function getPosition() {
 
       resolve({
         longitude,
-        latitude
+        latitude,
       });
-    }, () => {
-      return resolve(getPositionFromIp());
-    }, GEOLOCATION_OPTIONS);
+    }, () => resolve(getPositionFromIp()), GEOLOCATION_OPTIONS);
   });
 }
-
 
 
 // WEBPACK FOOTER //

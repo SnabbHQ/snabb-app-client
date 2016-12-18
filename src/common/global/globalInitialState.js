@@ -8,9 +8,9 @@
  * By using Immutable, it's enforced.  Just saying....
  *
  */
-'use strict'
 
-import {Record} from 'immutable'
+
+import { Record } from 'immutable';
 
 /**
  * ## InitialState
@@ -26,10 +26,10 @@ import {Record} from 'immutable'
  *   * location
  *
  */
-var InitialState = Record({
+const InitialState = Record({
   currentUser: null,
   showState: false,
   currentState: null,
-  store: null
-})
-export default InitialState
+  store: null,
+});
+export default InitialState;

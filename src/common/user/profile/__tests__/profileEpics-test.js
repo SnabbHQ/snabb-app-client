@@ -1,16 +1,16 @@
 /**
  * Collection of tests for all profile epics defined
  */
-'use strict'
-
-jest.mock('../../../../lib/BackendFactory')
-jest.mock('react-native-router-flux')
 
 
-import configureMockStore from 'redux-mock-store'
-import { createEpicMiddleware } from 'redux-observable'
-import profileRootEpics from '../epics'
-import * as actions from '../actions/profileActions'
+jest.mock('../../../../lib/BackendFactory');
+jest.mock('react-native-router-flux');
+
+
+import configureMockStore from 'redux-mock-store';
+import { createEpicMiddleware } from 'redux-observable';
+import profileRootEpics from '../epics';
+import * as actions from '../actions/profileActions';
 
 
 /**
@@ -22,9 +22,9 @@ import {
 
   PROFILE_UPDATE_REQUEST,
   PROFILE_UPDATE_SUCCESS,
-} from '../actions/ProfileActionTypes'
+} from '../actions/ProfileActionTypes';
 
-const epicMiddleware = createEpicMiddleware(profileRootEpics)
+const epicMiddleware = createEpicMiddleware(profileRootEpics);
 const mockStore = configureMockStore([epicMiddleware]);
 
 
@@ -34,16 +34,15 @@ const mockStore = configureMockStore([epicMiddleware]);
  * profileEpics
  */
 describe('profileEpics', () => {
-
-  let store
+  let store;
 
   beforeEach(() => {
-    store = mockStore()
-  })
+    store = mockStore();
+  });
 
   afterEach(() => {
-    epicMiddleware.replaceEpic(profileRootEpics)
-  })
+    epicMiddleware.replaceEpic(profileRootEpics);
+  });
 
   /**
    * ### Rxjs tests
@@ -53,24 +52,23 @@ describe('profileEpics', () => {
    *
    */
   it('should getProfile', () => {
-
-    store.dispatch(actions.getUserProfile())
+    store.dispatch(actions.getUserProfile());
 
     expect(store.getActions()).toEqual([
-      {type: GET_PROFILE_REQUEST},
-      {type: GET_PROFILE_SUCCESS}
-    ])
-  })
+      { type: GET_PROFILE_REQUEST },
+      { type: GET_PROFILE_SUCCESS },
+    ]);
+  });
 
   it('should updateProfile', () => {
     const expectedActions = [
-      {type: PROFILE_UPDATE_REQUEST},
-      {type: PROFILE_UPDATE_SUCCESS},
-    ]
+      { type: PROFILE_UPDATE_REQUEST },
+      { type: PROFILE_UPDATE_SUCCESS },
+    ];
 
-    store.dispatch(actions.updateUserProfile('userId', {}, 'sessionToken'))
+    store.dispatch(actions.updateUserProfile('userId', {}, 'sessionToken'));
 
-    expect(store.getActions()[0].type).toEqual(expectedActions[0].type)
-    expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
-  })
-})
+    expect(store.getActions()[0].type).toEqual(expectedActions[0].type);
+    expect(store.getActions()[1].type).toEqual(expectedActions[1].type);
+  });
+});

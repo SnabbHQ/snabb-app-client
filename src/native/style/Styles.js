@@ -1,5 +1,5 @@
-var { StyleSheet, PixelRatio } = require('react-native')
-var deviceScreen = require('Dimensions').get('window')
+let { StyleSheet, PixelRatio } = require('react-native');
+const deviceScreen = require('Dimensions').get('window');
 
 module.exports = StyleSheet.create({
   scrollView: {
@@ -11,10 +11,10 @@ module.exports = StyleSheet.create({
   },
   controlPanel: {
     flex: 1,
-    backgroundColor:'#326945',
+    backgroundColor: '#326945',
   },
   controlPanelText: {
-    color:'white',
+    color: 'white',
   },
   welcome: {
     fontSize: 20,
@@ -25,50 +25,50 @@ module.exports = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 25,
-    color:'white',
-    fontWeight:'bold',
+    color: 'white',
+    fontWeight: 'bold',
   },
   categoryLabel: {
     fontSize: 15,
     textAlign: 'left',
     left: 10,
-    padding:10,
-    fontWeight:'bold',
+    padding: 10,
+    fontWeight: 'bold',
   },
   row: {
     flexDirection: 'row',
-    backgroundColor:'white',
+    backgroundColor: 'white',
     borderRadius: 0,
     borderWidth: 0,
-    padding:0,
+    padding: 0,
     borderTopWidth: 1 / PixelRatio.get(),
     borderColor: '#d6d7da',
-    padding:10,
-    alignItems: 'center'
+    padding: 10,
+    alignItems: 'center',
   },
   lastRow: {
     flexDirection: 'row',
-    backgroundColor:'white',
+    backgroundColor: 'white',
     borderRadius: 0,
     borderWidth: 0,
-    padding:0,
+    padding: 0,
     borderTopWidth: 1 / PixelRatio.get(),
     borderBottomWidth: 1 / PixelRatio.get(),
     borderColor: '#d6d7da',
-    padding:10,
-    alignItems: 'center'
+    padding: 10,
+    alignItems: 'center',
   },
   rowLabel: {
-    left:10,
-    fontSize:15,
-    flex:1,
+    left: 10,
+    fontSize: 15,
+    flex: 1,
   },
   rowInput: {
-    right:10,
+    right: 10,
   },
   sliderMetric: {
-    right:10,
-    width:30,
+    right: 10,
+    width: 30,
   },
   slider: {
     width: 150,
@@ -76,10 +76,10 @@ module.exports = StyleSheet.create({
     margin: 10,
   },
   picker: {
-    backgroundColor:'white',
+    backgroundColor: 'white',
     borderRadius: 0,
     borderWidth: 0,
-    padding:0,
+    padding: 0,
     borderBottomWidth: 1 / PixelRatio.get(),
     borderTopWidth: 1 / PixelRatio.get(),
     borderColor: '#d6d7da',
@@ -98,11 +98,11 @@ module.exports = StyleSheet.create({
     backgroundColor: 'white',
     padding: 15,
     borderColor: '#eeeeee',
-    borderWidth:1,
+    borderWidth: 1,
     borderBottomWidth: 1 / PixelRatio.get(),
     borderBottomColor: '#aaaaaa',
-    marginRight:20,
-    marginLeft:20,
+    marginRight: 20,
+    marginLeft: 20,
     alignSelf: 'center',
   },
 });

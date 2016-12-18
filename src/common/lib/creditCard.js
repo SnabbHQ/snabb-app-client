@@ -20,7 +20,7 @@ const DEFAULT_CARD_NUMBER_MASK = '1111111111111111';
  *                    - maestro
  */
 export function getCardType(cardNumber) {
-  cardNumber = cardNumber.replace(/\D+/g,''); // remove all but numbers
+  cardNumber = cardNumber.replace(/\D+/g, ''); // remove all but numbers
 
   const types = creditCardType(cardNumber);
 
@@ -61,7 +61,7 @@ export function cardCodeMask(cardType) {
     max = info.code.size;
   }
 
-  return new Array(max+1).join('1');
+  return new Array(max + 1).join('1');
 }
 
 /* Returns a card number mask depending on type, '1111 1111 1111 1111' by default
@@ -83,7 +83,7 @@ export function cardNumberMask(cardType) {
   for (let i = 0; offsets[i] < max; i++) {
     const start = offsets[i];
     const end = Math.min(offsets[i + 1], max);
-    const ones = new Array(end-start+1).join('1');
+    const ones = new Array(end - start + 1).join('1');
     components.push(ones);
   }
 

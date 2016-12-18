@@ -8,19 +8,19 @@
  * *Note*: in this app,```state``` is an Immutable.js object
  *
  */
-'use strict'
+
 
 /**
  * ## Imports
  *
  * These actions of the users profile
  */
-import * as ActionTypes from '../actions/ProfileActionTypes'
+import * as ActionTypes from '../actions/ProfileActionTypes';
 
 /**
  * ## Class under test
  */
-import profileReducer from '../profileReducer'
+import profileReducer from '../profileReducer';
 
 /**
  * ## Tests
@@ -43,13 +43,13 @@ describe('profileReducer', () => {
      */
     it('starts fetching', () => {
       const action = {
-        type: ActionTypes.GET_PROFILE_REQUEST
-      }
-      let next = profileReducer(undefined, action)
+        type: ActionTypes.GET_PROFILE_REQUEST,
+      };
+      const next = profileReducer(undefined, action);
 
-      expect(next.form.isFetching).toBe(true)
-      expect(next.form.error).toBe(null)
-    })
+      expect(next.form.isFetching).toBe(true);
+      expect(next.form.error).toBe(null);
+    });
     /**
      * #### it finishes fetching on success
      *
@@ -67,19 +67,19 @@ describe('profileReducer', () => {
         payload: {
           email: 'barton@foo.com',
           emailVerified: true,
-          objectId: 'someObjectId'
-        }
-      }
-      let next = profileReducer(undefined, action)
+          objectId: 'someObjectId',
+        },
+      };
+      const next = profileReducer(undefined, action);
 
-      expect(next.form.isFetching).toBe(false)
-      expect(next.form.error).toBe(null)
-      expect(next.form.fields.email).toEqual(action.payload.email)
-      expect(next.form.fields.emailVerified).toBe(action.payload.emailVerified)
+      expect(next.form.isFetching).toBe(false);
+      expect(next.form.error).toBe(null);
+      expect(next.form.fields.email).toEqual(action.payload.email);
+      expect(next.form.fields.emailVerified).toBe(action.payload.emailVerified);
 
-      expect(next.form.originalProfile.email).toEqual(action.payload.email)
-      expect(next.form.originalProfile.emailVerified).toBe(action.payload.emailVerified)
-    })
+      expect(next.form.originalProfile.email).toEqual(action.payload.email);
+      expect(next.form.originalProfile.emailVerified).toBe(action.payload.emailVerified);
+    });
     /**
      * #### finishes fetching on failure
      *
@@ -89,13 +89,13 @@ describe('profileReducer', () => {
     it('finishes fetching on failure', () => {
       const action = {
         type: ActionTypes.GET_PROFILE_FAILURE,
-        payload: {error: 'error'}
-      }
-      let next = profileReducer(undefined, action)
-      expect(next.form.isFetching).toBe(false)
-      expect(next.form.error).toBe(action.payload)
-    })
-  })// Profile Request
+        payload: { error: 'error' },
+      };
+      const next = profileReducer(undefined, action);
+      expect(next.form.isFetching).toBe(false);
+      expect(next.form.error).toBe(action.payload);
+    });
+  });// Profile Request
 
   /**
    * ### Profile update
@@ -109,13 +109,13 @@ describe('profileReducer', () => {
      */
     it('starts fetching on request', () => {
       const action = {
-        type: ActionTypes.PROFILE_UPDATE_REQUEST
-      }
-      let next = profileReducer(undefined, action)
+        type: ActionTypes.PROFILE_UPDATE_REQUEST,
+      };
+      const next = profileReducer(undefined, action);
 
-      expect(next.form.isFetching).toBe(true)
-      expect(next.form.error).toBe(null)
-    })
+      expect(next.form.isFetching).toBe(true);
+      expect(next.form.error).toBe(null);
+    });
     /**
      * #### finishes fetching on success
      *
@@ -123,12 +123,12 @@ describe('profileReducer', () => {
      */
     it('finishes fetching on success', () => {
       const action = {
-        type: ActionTypes.PROFILE_UPDATE_SUCCESS
-      }
-      let next = profileReducer(undefined, action)
+        type: ActionTypes.PROFILE_UPDATE_SUCCESS,
+      };
+      const next = profileReducer(undefined, action);
 
-      expect(next.form.isFetching).toBe(false)
-    })
+      expect(next.form.isFetching).toBe(false);
+    });
     /**
      * #### finishes fetching on failure and saves error
      *
@@ -138,13 +138,13 @@ describe('profileReducer', () => {
     it('finishes fetching on failure and saves error', () => {
       const action = {
         type: ActionTypes.PROFILE_UPDATE_FAILURE,
-        payload: {error: 'error'}
-      }
-      let next = profileReducer(undefined, action)
-      expect(next.form.isFetching).toBe(false)
-      expect(next.form.error).toBe(action.payload)
-    })
-  })// ProfileUpdate
+        payload: { error: 'error' },
+      };
+      const next = profileReducer(undefined, action);
+      expect(next.form.isFetching).toBe(false);
+      expect(next.form.error).toBe(action.payload);
+    });
+  });// ProfileUpdate
   /**
    * ### Profile form field changes
    *
@@ -158,16 +158,16 @@ describe('profileReducer', () => {
     it('form is valid with valid email', () => {
       const emailAction = {
         type: ActionTypes.ON_PROFILE_FORM_FIELD_CHANGE,
-        payload: {field: 'email', value: 'barton@gmail.com'}
-      }
+        payload: { field: 'email', value: 'barton@gmail.com' },
+      };
 
-      let firstState = profileReducer(undefined,
-                                emailAction)
+      const firstState = profileReducer(undefined,
+                                emailAction);
 
-      expect(firstState.form.isValid).toBe(true) //
-      expect(firstState.form.fields.email).toEqual(emailAction.payload.value)
-      expect(firstState.form.fields.emailHasError).toBe(false)
-    })
+      expect(firstState.form.isValid).toBe(true); //
+      expect(firstState.form.fields.email).toEqual(emailAction.payload.value);
+      expect(firstState.form.fields.emailHasError).toBe(false);
+    });
     /**
      * #### form is invalid with invalid email
      *
@@ -176,14 +176,14 @@ describe('profileReducer', () => {
     it('form is invalid with invalid email', () => {
       const emailAction = {
         type: ActionTypes.ON_PROFILE_FORM_FIELD_CHANGE,
-        payload: {field: 'email', value: 'bart'}
-      }
+        payload: { field: 'email', value: 'bart' },
+      };
 
-      let firstState = profileReducer(undefined, emailAction)
+      const firstState = profileReducer(undefined, emailAction);
 
-      expect(firstState.form.isValid).toBe(false)
-      expect(firstState.form.fields.email).toEqual(emailAction.payload.value)
-      expect(firstState.form.fields.emailHasError).toBe(true)
-    })
-  }) // FORM FIELD CHANGE
-})// profileReducer
+      expect(firstState.form.isValid).toBe(false);
+      expect(firstState.form.fields.email).toEqual(emailAction.payload.value);
+      expect(firstState.form.fields.emailHasError).toBe(true);
+    });
+  }); // FORM FIELD CHANGE
+});// profileReducer
