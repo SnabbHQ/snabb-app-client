@@ -13,10 +13,11 @@ import { Box, Container, ThemeProvider } from './components';
 import { connect } from 'react-redux';
 
 // Pages
-import ActivePage from "../job/active/ActiveJobsPage"
-import ScheduledPage from "../job/scheduled/ScheduledDeliveriesPage"
-import NewJobPage from "../job/new/NewDeliveryPage"
-import NotFoundPage from "../notfound/NotFoundPage"
+import ActivePage from '../job/active/ActiveJobsPage';
+import ScheduledPage from '../job/scheduled/ScheduledDeliveriesPage';
+import NewJobPage from '../job/new/NewDeliveryPage';
+import ProfilePage from '../user/ProfilePage';
+import NotFoundPage from '../notfound/NotFoundPage';
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
 
@@ -25,7 +26,7 @@ type AppProps = {
   currentTheme: ?string,
 };
 
-const App = ({currentLocale, currentTheme}: AppProps) => (
+const App = ({ currentLocale, currentTheme }: AppProps) => (
   <ThemeProvider
     // TODO: Do we need it?
     // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
@@ -50,16 +51,17 @@ const App = ({currentLocale, currentTheme}: AppProps) => (
           //},
         ]}
       />
-      <Header/>
+      <Header />
       <Box
         flex={1} // make footer sticky
         paddingTop="4.5em"
       >
-        <Match exactly pattern="/" component={ActivePage}/>
-        <Match exactly pattern="/active" component={ActivePage}/>
-        <Match exactly pattern="/new" component={NewJobPage}/>
-        <Match exactly pattern="/scheduled" component={ScheduledPage}/>
-        <Miss component={NotFoundPage}/>
+        <Match exactly pattern="/" component={ActivePage} />
+        <Match exactly pattern="/active" component={ActivePage} />
+        <Match exactly pattern="/new" component={NewJobPage} />
+        <Match exactly pattern="/scheduled" component={ScheduledPage} />
+        <Match exactly pattern="/profile" component={ProfilePage} />
+        <Miss component={NotFoundPage} />
       </Box>
     </Container>
   </ThemeProvider>
