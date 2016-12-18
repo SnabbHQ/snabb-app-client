@@ -131,6 +131,7 @@ const propToStyle = (prop, value: any, theme) => {
     case 'backgroundColor':
       return { backgroundColor: theme.colors[value] };
     // Unmodified props.
+    case 'boxShadow':
     case 'display':
     case 'flex':
     case 'flexDirection':

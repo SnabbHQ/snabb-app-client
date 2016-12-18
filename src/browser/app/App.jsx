@@ -2,6 +2,7 @@
 import type { State } from '../../common/types';
 import * as themes from './themes';
 import Header from './Header';
+import SideMenu from './SideMenu';
 import Helmet from 'react-helmet';
 import R from 'ramda';
 import React from 'react';
@@ -51,17 +52,20 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
           //},
         ]}
       />
-      <Header />
       <Box
         flex={1} // make footer sticky
-        paddingTop="4.5em"
+        paddingTop="3.6em"
       >
-        <Match exactly pattern="/" component={ActivePage} />
-        <Match exactly pattern="/active" component={ActivePage} />
-        <Match exactly pattern="/new" component={NewJobPage} />
-        <Match exactly pattern="/scheduled" component={ScheduledPage} />
-        <Match exactly pattern="/profile" component={ProfilePage} />
-        <Miss component={NotFoundPage} />
+        <Header />
+        <SideMenu />
+        <Box marginLeft="6em">
+          <Match exactly pattern="/" component={ActivePage} />
+          <Match exactly pattern="/active" component={ActivePage} />
+          <Match exactly pattern="/new" component={NewJobPage} />
+          <Match exactly pattern="/scheduled" component={ScheduledPage} />
+          <Match exactly pattern="/profile" component={ProfilePage} />
+          <Miss component={NotFoundPage} />
+        </Box>
       </Box>
     </Container>
   </ThemeProvider>

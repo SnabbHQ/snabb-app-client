@@ -33,7 +33,7 @@ const Image = (props: ImageProps) => (
       {...altOrRolePresentation(props.alt)}
       height="100%"
       src={props.src}
-      // width="100%"
+      width="100%"
     />
   </ImageWrapper>
 );
