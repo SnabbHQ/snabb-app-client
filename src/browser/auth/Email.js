@@ -8,15 +8,17 @@ import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
 import { resetPassword, signIn, signUp } from '../../common/auth/actions';
 import {
-  ButtonOutline as Button,
-  Form,
+  Button,
   Input,
+} from '../app/components';
+import {
+  Form,
   Message,
   Panel,
   PanelHeader,
-  Space,
   View,
   focus,
+  Space
 } from '../app/components-old';
 
 type LocalState = {
@@ -25,15 +27,6 @@ type LocalState = {
 };
 
 class Email extends React.Component {
-
-  static propTypes = {
-    disabled: React.PropTypes.bool.isRequired,
-    fields: React.PropTypes.object.isRequired,
-    intl: intlShape.isRequired,
-    resetPassword: React.PropTypes.func.isRequired,
-    signIn: React.PropTypes.func.isRequired,
-    signUp: React.PropTypes.func.isRequired,
-  };
 
   state: LocalState = {
     forgetPasswordIsShown: false,
@@ -149,7 +142,6 @@ class Email extends React.Component {
       </Form>
     );
   }
-
 }
 
 Email = focus(Email, 'error');
@@ -161,6 +153,15 @@ Email = fields({
   // fok: 123,
   fields: ['email', 'password'],
 })(Email);
+
+Email.propTypes = {
+  disabled: React.PropTypes.bool.isRequired,
+  fields: React.PropTypes.object.isRequired,
+  intl: intlShape.isRequired,
+  resetPassword: React.PropTypes.func.isRequired,
+  signIn: React.PropTypes.func.isRequired,
+  signUp: React.PropTypes.func.isRequired,
+};
 
 export default connect(
   (state: State) => ({

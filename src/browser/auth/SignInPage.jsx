@@ -10,11 +10,13 @@ import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
 import {
   Block,
-  Loading,
-  Message,
   PageHeader,
   Title,
-  View,
+  Box,
+} from '../app/components';
+import {
+  Loading,
+  Message,
 } from '../app/components-old';
 
 const SignInPage = ({ disabled, intl, location, authed }) => (
@@ -27,22 +29,21 @@ const SignInPage = ({ disabled, intl, location, authed }) => (
       ) || '/'}
     />
   :
-    <View>
+    <Box>
       <Title message={linksMessages.signIn} />
       <PageHeader heading={intl.formatMessage(linksMessages.signIn)} />
 
+      <Block>
+        <Email />
+      </Block>
       <SignInError />
       {disabled &&
         <Loading>
           {message => <Message>{message}</Message>}
         </Loading>
       }
-    </View>
+    </Box>
 );
-
-// <Block>
-//  <Email />
-// </Block>
 
 SignInPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
