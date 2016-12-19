@@ -55,7 +55,7 @@ export default R.compose(
   connect(
     (state: State) => ({
       disabled: state.auth.formDisabled,
-      viewer: undefined, //state.users.viewer,
+      viewer: {}, //state.users.viewer,
     }),
   ),
   injectIntl,

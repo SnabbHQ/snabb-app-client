@@ -2,6 +2,7 @@
 import type { State } from '../../common/types';
 import * as themes from './themes';
 import Header from './Header';
+import Page from './Page';
 import SideMenu from './SideMenu';
 import Helmet from 'react-helmet';
 import R from 'ramda';
@@ -58,24 +59,13 @@ const App = ({ currentLocale, currentTheme, viewer }: AppProps) => (
         backgroundColor={theme(currentTheme).colors.bodyBackground}
         flex={1} // make footer sticky
       >
-        {viewer ? (
-            <Box>
-              <Header />
-              <SideMenu />
-            </Box>
-          ) : ''}
-
-        <Box>
-          <Box marginLeft="5em" paddingTop="4em">
-            <Match authorized exactly pattern="/" component={ActivePage} />
-            <Match authorized pattern="/active" component={ActivePage} />
-            <Match authorized pattern="/new" component={NewJobPage} />
-            <Match authorized pattern="/scheduled" component={ScheduledPage} />
-            <Match authorized pattern="/profile" component={ProfilePage} />
-          </Box>
-          <Match exactly pattern="/signin" component={SignInPage} />
-          <Miss component={NotFoundPage} />
-        </Box>
+        <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
+        <Page authorized pattern="/active" component={ActivePage} includeHeader />
+        <Page authorized pattern="/new" component={NewJobPage} includeHeader />
+        <Page authorized pattern="/scheduled" component={ScheduledPage} includeHeader />
+        <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
+        <Page exactly pattern="/signin" component={SignInPage} />
+        <Miss component={NotFoundPage} />
       </Box>
     </Container>
   </ThemeProvider>
