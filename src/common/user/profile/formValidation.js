@@ -17,7 +17,7 @@
 export default function formValidation(state) {
   if (state.form.fields.email !== '' &&
         !state.form.fields.emailHasError &&
-         state.form.fields.email !== state.form.originalProfile.email) {
+         state.form.fields.email !== state.form.profile.email) {
     return state.setIn(['form', 'isValid'], true);
   } else {
     return state.setIn(['form', 'isValid'], false);

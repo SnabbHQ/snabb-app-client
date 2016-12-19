@@ -1,15 +1,12 @@
 /* @flow */
 import type { State } from '../../common/types';
 import * as themes from './themes';
-import Header from './Header';
 import Page from './Page';
-import SideMenu from './SideMenu';
 import Helmet from 'react-helmet';
 import R from 'ramda';
 import React from 'react';
 import favicon from '../../common/app/favicon';
 import start from '../../common/app/start';
-import { Match } from '../../common/app/components';
 import { Miss } from 'react-router';
 import { Box, Container, ThemeProvider } from './components';
 import { connect } from 'react-redux';
@@ -30,53 +27,54 @@ type AppProps = {
 };
 
 
-const App = ({ currentLocale, currentTheme, viewer }: AppProps) => (
-  <ThemeProvider
-    // TODO: Do we need it?
-    // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
-    theme={theme(currentTheme)}
-  >
-    <Container>
-      <Helmet
-        htmlAttributes={{ lang: currentLocale }}
-        meta={[
+const App = ({ currentLocale, currentTheme, viewer }: AppProps) => {
+  return (
+    <ThemeProvider
+      // TODO: Do we need it?
+      // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
+      theme={theme(currentTheme)}
+    >
+      <Container>
+        <Helmet
+          htmlAttributes={{ lang: currentLocale }}
+          meta={[
           // v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
           { charset: 'utf-8' },
           { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
           { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
-          ...favicon.meta,
-        ]}
-        link={[
-          ...favicon.link,
+            ...favicon.meta,
+          ]}
+          link={[
+            ...favicon.link,
           // Test vertical rhythm.
           //{
           //  href: `http://basehold.it/${theme(currentTheme).text.lineHeight}`,
           //  rel: 'stylesheet',
           //},
-        ]}
-      />
-      <Box
-        backgroundColor={theme(currentTheme).colors.bodyBackground}
-        flex={1} // make footer sticky
-      >
-        <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
-        <Page authorized pattern="/active" component={ActivePage} includeHeader />
-        <Page authorized pattern="/new" component={NewJobPage} includeHeader />
-        <Page authorized pattern="/scheduled" component={ScheduledPage} includeHeader />
-        <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
-        <Page exactly pattern="/signin" component={SignInPage} />
-        <Miss component={NotFoundPage} />
-      </Box>
-    </Container>
-  </ThemeProvider>
-);
+          ]}
+        />
+        <Box
+          backgroundColor={theme(currentTheme).colors.bodyBackground}
+          flex={1} // make footer sticky
+        >
+          <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
+          <Page authorized pattern="/active" component={ActivePage} includeHeader />
+          <Page authorized pattern="/new" component={NewJobPage} includeHeader />
+          <Page authorized pattern="/scheduled" component={ScheduledPage} includeHeader />
+          <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
+          <Page pattern="/signin" component={SignInPage} />
+          <Miss component={NotFoundPage} />
+        </Box>
+      </Container>
+    </ThemeProvider>
+  );
+};
 
 export default R.compose(
   connect(
     (state: State) => ({
       currentLocale: state.intl.currentLocale,
       currentTheme: state.themes.currentTheme,
-      viewer: {}, //state.users.viewer,
     }),
   ),
   start,

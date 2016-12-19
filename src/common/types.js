@@ -6,7 +6,6 @@
 // Core
 
 export type Deps = {
-  FBSDK: any,
   firebase: any,
   firebaseAuth: Function,
   firebaseDatabase: any,
@@ -18,18 +17,26 @@ export type Deps = {
 
 // Models
 
-export type Todo = {
-  completed: boolean,
-  createdAt: number,
+export type Delivery = {
   id: string,
-  title: string,
+};
+
+export type Phone = {
+  number: string
+}
+
+export type Profile = {
+  id: string,
+  name: ?string,
+  lastName: ?string,
+  phone: Phone,
+  email: string,
+  thumbnail: ?string,
+  emailVerified: boolean,
 };
 
 export type User = {
-  displayName: string,
-  email: ?string,
-  id: string,
-  photoURL: ?string,
+  profile: Profile,
 };
 
 // Reducers
@@ -71,17 +78,13 @@ export type ThemeState = {
   currentTheme: ?string,
 };
 
-export type JobsState = {
-  all: {[id: string]: Todo}
+export type DeliveriesState = {
+  all: {[id: string]: Delivery}
 }
 
-export type TodosState = {
-  all: {[id: string]: Todo},
-};
-
-export type UsersState = {
-  online: ?Array<User>,
-  viewer: ?User,
+export type UserState = {
+  form: Object,
+  profile: ?Profile,
 };
 
 // State
@@ -94,7 +97,7 @@ export type State = {
   fields: any,
   intl: IntlState,
   themes: ThemeState,
-  todos: TodosState,
+  deliveries: DeliveriesState,
   users: UsersState,
 };
 

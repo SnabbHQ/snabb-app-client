@@ -4,19 +4,19 @@ import React from 'react';
 import { Match as ReactRouterMatch, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
-const haveAccess = (viewer, authorized) => authorized ? viewer : true;
+const haveAccess = (authenticated, authorized) => authorized ? authenticated : true;
 
 const Match = ({
   authorized,
   component: Component,
   render,
-  viewer,
+  authed,
   ...props
 }) => (
   <ReactRouterMatch
     {...props}
     render={renderProps => (
-      haveAccess(viewer, authorized) ?
+      haveAccess(authed, authorized) ?
         render ? render(renderProps) : <Component {...renderProps} />
       :
         <Redirect
@@ -33,11 +33,11 @@ Match.propTypes = {
   authorized: React.PropTypes.bool,
   component: React.PropTypes.func,
   render: React.PropTypes.func,
-  viewer: React.PropTypes.object,
+  authed: React.PropTypes.object,
 };
 
 export default connect(
   (state: State) => ({
-    viewer: {}, //state.users.viewer,
+    authed: state.user.profile.email,
   }),
 )(Match);

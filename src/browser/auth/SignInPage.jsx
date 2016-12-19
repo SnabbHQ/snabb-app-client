@@ -17,8 +17,8 @@ import {
   View,
 } from '../app/components-old';
 
-const SignInPage = ({ disabled, intl, location, viewer }) => (
-  viewer ?
+const SignInPage = ({ disabled, intl, location, authed }) => (
+  authed ?
     <Redirect
       to={(
         location.state &&
@@ -40,22 +40,22 @@ const SignInPage = ({ disabled, intl, location, viewer }) => (
     </View>
 );
 
-//<Block>
+// <Block>
 //  <Email />
-//</Block>
+// </Block>
 
 SignInPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
   location: React.PropTypes.object.isRequired,
-  viewer: React.PropTypes.object,
+  authed: React.PropTypes.object,
 };
 
 export default R.compose(
   connect(
     (state: State) => ({
-      disabled: state.auth.formDisabled,
-      viewer: {}, //state.users.viewer,
+      disabled: state.auth.form.disabled,
+      authed: state.user.profile.email,
     }),
   ),
   injectIntl,

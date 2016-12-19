@@ -47,5 +47,6 @@ const Form = Record({
 const InitialState = Record({
   form: new Form(),
 });
+
 export default InitialState;
 

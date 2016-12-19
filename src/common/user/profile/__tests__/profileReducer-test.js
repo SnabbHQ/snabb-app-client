@@ -20,7 +20,7 @@ import * as ActionTypes from '../actions/ProfileActionTypes';
 /**
  * ## Class under test
  */
-import profileReducer from '../profileReducer';
+import profileReducer from '../reducer';
 
 /**
  * ## Tests
@@ -77,8 +77,8 @@ describe('profileReducer', () => {
       expect(next.form.fields.email).toEqual(action.payload.email);
       expect(next.form.fields.emailVerified).toBe(action.payload.emailVerified);
 
-      expect(next.form.originalProfile.email).toEqual(action.payload.email);
-      expect(next.form.originalProfile.emailVerified).toBe(action.payload.emailVerified);
+      expect(next.form.profile.email).toEqual(action.payload.email);
+      expect(next.form.profile.emailVerified).toBe(action.payload.emailVerified);
     });
     /**
      * #### finishes fetching on failure

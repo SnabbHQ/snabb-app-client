@@ -15,7 +15,7 @@ import { setStore } from '../common/global/globalActions';
 import AuthInitialState from '../common/auth/authInitialState';
 import DeviceInitialState from '../common/device/deviceInitialState';
 import GlobalInitialState from '../common/global/globalInitialState';
-import ProfileInitialState from '../common/user/profile/profileInitialState';
+import ProfileInitialState from '../common/user/profile/initialState';
 import LocationInitialState from '../common/location/locationInitialState';
 import pack from '../../package';
 

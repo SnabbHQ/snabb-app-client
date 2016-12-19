@@ -3,16 +3,11 @@
  *
  * The reducer user profile actions
  */
-
-
-/**
- * ## Imports
- *
- * fieldValidation for validating the fields
- * formValidation for setting the form's valid flag
- */
+import type { Action, UserState } from '../../types';
 import fieldValidation from '../../lib/fieldValidation';
-import formValidation from './profileFormValidation';
+import formValidation from './formValidation';
+import * as ActionTypes from './actions/ProfileActionTypes';
+import InitialState from './initialState';
 
 /**
  * ## Actions
@@ -23,14 +18,6 @@ const {
   SET_STATE,
 } = require('../../../common/lib/constants').default;
 
-
-import * as ActionTypes from './actions/ProfileActionTypes';
-
-/**
- * ## Initial State
- *
- */
-const InitialState = require('./profileInitialState').default;
 const initialState = new InitialState();
 
 /**
@@ -38,7 +25,8 @@ const initialState = new InitialState();
  * @param {Object} state - initialState
  * @param {Object} action - type and payload
  */
-export default function profileReducer(state = initialState, action) {
+const reducer = (state: UserState = initialState,
+                 action: Action): UserState => {
   let nextProfileState = null;
 
   if (!(state instanceof InitialState)) return initialState.mergeDeep(state);
@@ -65,7 +53,7 @@ export default function profileReducer(state = initialState, action) {
     /**
      * ### Request ends successfully
      *
-     * the fetching is done, set the UI fields and the originalProfile
+     * the fetching is done, set the UI fields and the profile
      *
      * Validate the data to make sure it's all good and someone didn't
      * mung it up through some other mechanism
@@ -78,14 +66,14 @@ export default function profileReducer(state = initialState, action) {
         .setIn(['form', 'fields', 'email'], action.payload.email)
         .setIn(['form', 'fields', 'thumbnail'], action.payload.thumbnail)
         .setIn(['form', 'fields', 'emailVerified'], action.payload.emailVerified)
-        .setIn(['form', 'originalProfile', 'name'], action.payload.name)
-        .setIn(['form', 'originalProfile', 'lastName'], action.payload.lastName)
-        .setIn(['form', 'originalProfile', 'phoneNumber'], action.payload.phoneNumber)
-        .setIn(['form', 'originalProfile', 'email'], action.payload.email)
-        .setIn(['form', 'originalProfile', 'thumbnail'], action.payload.thumbnail)
-        .setIn(['form', 'originalProfile', 'emailVerified'], action.payload.emailVerified)
-        .setIn(['form', 'originalProfile', 'objectId'], action.payload.objectId)
-        .setIn(['form', 'error'], null);
+        .setIn(['form', 'error'], null)
+        .setIn(['profile', 'id'], action.payload.id)
+        .setIn(['profile', 'name'], action.payload.name)
+        .setIn(['profile', 'lastName'], action.payload.lastName)
+        .setIn(['profile', 'phoneNumber'], action.payload.phoneNumber)
+        .setIn(['profile', 'email'], action.payload.email)
+        .setIn(['profile', 'thumbnail'], action.payload.thumbnail)
+        .setIn(['profile', 'emailVerified'], action.payload.emailVerified);
 
       return formValidation(
         fieldValidation(nextProfileState, action)
@@ -96,21 +84,9 @@ export default function profileReducer(state = initialState, action) {
      *
      */
     case LOGOUT_SUCCESS:
-      nextProfileState = state.setIn(['form', 'fields'], '')
-        .setIn(['form', 'fields', 'name'], '')
-        .setIn(['form', 'fields', 'lastName'], '')
-        .setIn(['form', 'fields', 'phoneNumber'], '')
-        .setIn(['form', 'fields', 'email'], '')
-        .setIn(['form', 'fields', 'thumbnail'], '')
-        .setIn(['form', 'fields', 'emailVerified'], false)
-        .setIn(['form', 'originalProfile', 'name'], '')
-        .setIn(['form', 'originalProfile', 'lastName'], '')
-        .setIn(['form', 'originalProfile', 'phoneNumber'], '')
-        .setIn(['form', 'originalProfile', 'email'], '')
-        .setIn(['form', 'originalProfile', 'thumbnail'], '')
-        .setIn(['form', 'originalProfile', 'emailVerified'], false)
-        .setIn(['form', 'originalProfile', 'objectId'], null)
-        .setIn(['form', 'error'], null);
+      nextProfileState = state.remove('form')
+        .remove('profile');
+
       return formValidation(nextProfileState, action);
 
     /**
@@ -129,15 +105,14 @@ export default function profileReducer(state = initialState, action) {
      * Set the state with the fields, clear the form error
      * and perform field and form validation
      */
-    case ActionTypes.ON_PROFILE_FORM_FIELD_CHANGE:
+    case ActionTypes.ON_PROFILE_FORM_FIELD_CHANGE: {
       const { field, value } = action.payload;
       const nextState = state.setIn(['form', 'fields', field], value)
         .setIn(['form', 'error'], null)
         .setIn(['form', 'updated'], false);
 
-      return formValidation(
-        fieldValidation(nextState, action)
-        , action);
+      return formValidation(fieldValidation(nextState, action), action);
+    }
 
     /**
      * ### set the state
@@ -146,31 +121,31 @@ export default function profileReducer(state = initialState, action) {
      * and set the values into the state
      *
      */
-    case SET_STATE:
-      var profile = JSON.parse(action.payload).profile.form;
-      var next = state.setIn(['form', 'disabled'], profile.disabled)
+    case SET_STATE: {
+      const profile = JSON.parse(action.payload).profile.form;
+      return state.setIn(['form', 'disabled'], profile.disabled)
         .setIn(['form', 'error'], profile.error)
         .setIn(['form', 'isValid'], profile.isValid)
         .setIn(['form', 'isFetching'], profile.isFetching)
-        .setIn(['form', 'originalProfile', 'name'], profile.originalProfile.name)
-        .setIn(['form', 'originalProfile', 'lastName'], profile.originalProfile.lastName)
-        .setIn(['form', 'originalProfile', 'phoneNumber'], profile.originalProfile.phoneNumber)
-        .setIn(['form', 'originalProfile', 'email'], profile.originalProfile.email)
-        .setIn(['form', 'originalProfile', 'thumbnail'], profile.originalProfile.thumbnail)
-        .setIn(['form', 'originalProfile', 'objectId'], profile.originalProfile.objectId)
-        .setIn(['form', 'originalProfile', 'emailVerified'], profile.originalProfile.emailVerified)
         .setIn(['form', 'fields', 'name'], profile.fields.name)
         .setIn(['form', 'fields', 'lastName'], profile.fields.lastName)
         .setIn(['form', 'fields', 'phoneNumber'], profile.fields.phoneNumber)
         .setIn(['form', 'fields', 'email'], profile.fields.email)
         .setIn(['form', 'fields', 'thumbnail'], profile.fields.thumbnail)
         .setIn(['form', 'fields', 'emailHasError'], profile.fields.emailHasError)
-        .setIn(['form', 'fields', 'emailVerified'], profile.fields.emailVerified);
-      return next;
+        .setIn(['form', 'fields', 'emailVerified'], profile.fields.emailVerified)
+        .setIn(['profile', 'name'], profile.profile.name)
+        .setIn(['profile', 'lastName'], profile.profile.lastName)
+        .setIn(['profile', 'phoneNumber'], profile.profile.phoneNumber)
+        .setIn(['profile', 'email'], profile.profile.email)
+        .setIn(['profile', 'thumbnail'], profile.profile.thumbnail)
+        .setIn(['profile', 'objectId'], profile.profile.objectId)
+        .setIn(['profile', 'emailVerified'], profile.profile.emailVerified);
+    }
 
-  }// switch
-  /**
-   * # Default
-   */
-  return state;
-}
+    default:
+      return state;
+  }
+};
+
+export default reducer;

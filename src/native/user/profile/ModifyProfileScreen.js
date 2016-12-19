@@ -147,7 +147,7 @@ class ModifyProfileScreen extends Component {
      * user objectId
      */
     this.props.actions.updateUserProfile(
-      this.props.profile.form.originalProfile.objectId,
+      this.props.profile.form.profile.objectId,
       {
         name: this.props.profile.form.fields.name,
         lastName: this.props.profile.form.fields.lastName,
