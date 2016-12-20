@@ -20,7 +20,7 @@ const CustomInput = styled((theme, props: InputProps) => ({
   display: 'block',
   width: '100%',
   color: props.color ? theme.colors[props.color] : theme.colors.black,
-  border: true,
+  border: theme.input.borderColor,
   borderColor: props.invalid ? theme.colors.error : theme.input.borderColor,
   transition: 'border 0.3s',
   type: props.type ? props.type : 'text',
