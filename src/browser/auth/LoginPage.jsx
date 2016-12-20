@@ -1,14 +1,14 @@
 /* @flow */
 import type { State } from '../../common/types';
-import Email from './Email';
+import LoginFields from './LoginFields';
 import R from 'ramda';
 import React from 'react';
 import SignInError from './SignInError';
 import linksMessages from '../../common/app/linksMessages';
-import emailMessages from '../../common/auth/emailMessages';
+import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { Block, Divider, Image, Link, Title, Loading, Box, Fixed } from '../app/components';
 import { Message } from '../app/components-old';
 
@@ -37,7 +37,7 @@ const SignInPage = ({ disabled, location, authed }) => (
               src={logo}
             />
           </Box>
-          <Email />
+          <LoginFields />
           <Divider marginVertical="0.3em" />
           <Link
             display="block"
@@ -47,7 +47,7 @@ const SignInPage = ({ disabled, location, authed }) => (
             to="/createAccount"
             align="center"
           >
-            <FormattedMessage {...emailMessages.createAccount} />
+            <FormattedMessage {...authMessages.createAccount} />
           </Link>
         </Block>
         <SignInError />

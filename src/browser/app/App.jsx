@@ -16,7 +16,7 @@ import ActivePage from '../job/active/ActiveJobsPage';
 import ScheduledPage from '../job/scheduled/ScheduledDeliveriesPage';
 import NewJobPage from '../job/new/NewDeliveryPage';
 import ProfilePage from '../user/ProfileContainer';
-import SignInPage from '../auth/SignInPage';
+import LoginPage from '../auth/LoginPage';
 import NotFoundPage from '../notfound/NotFoundPage';
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
@@ -57,7 +57,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
           <Page authorized pattern="/new" component={NewJobPage} includeHeader />
           <Page authorized pattern="/scheduled" component={ScheduledPage} includeHeader />
           <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
-          <Page pattern="/signin" component={SignInPage} />
+          <Page pattern="/login" component={LoginPage} />
           <Miss component={NotFoundPage} />
       </Container>
     </ThemeProvider>

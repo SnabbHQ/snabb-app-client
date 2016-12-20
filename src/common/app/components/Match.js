@@ -21,7 +21,7 @@ const Match = ({
       :
         <Redirect
           to={{
-            pathname: '/signin',
+            pathname: '/login',
             state: { from: renderProps.location },
           }}
         />

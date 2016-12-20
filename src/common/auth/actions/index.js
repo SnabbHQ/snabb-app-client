@@ -10,7 +10,7 @@ export const resetPassword = (email: string): Action => ({
   payload: { email },
 });
 
-export const signIn = (providerName: string, options?: Object): Action => ({
+export const login = (providerName: string, options?: Object): Action => ({
   type: 'SIGN_IN',
   payload: { providerName, options },
 });

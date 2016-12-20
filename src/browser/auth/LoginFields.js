@@ -2,15 +2,15 @@
 import type { State } from '../../common/types';
 import React from 'react';
 import buttonsMessages from '../../common/app/buttonsMessages';
-import emailMessages from '../../common/auth/emailMessages';
+import emailMessages from '../../common/auth/authMessages';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
-import { signIn } from '../../common/auth/actions';
+import { login } from '../../common/auth/actions';
 import { Button, Input, Box, Card } from '../app/components';
 import { Form, focus } from '../app/components-old';
 
-class Email extends React.Component {
+class LoginFields extends React.Component {
 
   onFormSubmit = () => {
     this.signInViaPassword();
@@ -57,16 +57,16 @@ class Email extends React.Component {
   }
 }
 
-Email = focus(Email, 'error');
+LoginFields = focus(LoginFields, 'error');
 
-Email = injectIntl(Email);
+LoginFields = injectIntl(LoginFields);
 
-Email = fields({
+LoginFields = fields({
   path: ['auth', 'email'],
   fields: ['email', 'password'],
-})(Email);
+})(LoginFields);
 
-Email.propTypes = {
+LoginFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   fields: React.PropTypes.object.isRequired,
   intl: intlShape.isRequired,
@@ -78,5 +78,5 @@ export default connect(
     disabled: state.auth.formDisabled,
     error: state.auth.error,
   }),
-  { signIn },
-)(Email);
+  { login },
+)(LoginFields);

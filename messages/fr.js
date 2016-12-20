@@ -25,11 +25,11 @@ export default [
     "defaultMessage": "Enregistrer",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Authentification",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Connexion",
   },
   {
@@ -93,7 +93,7 @@ export default [
     "defaultMessage": "Paramètres",
   },
   {
-    "id": "app.links.signIn",
+    "id": "app.links.login",
     "defaultMessage": "Connexion",
   },
   {

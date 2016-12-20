@@ -1,6 +1,6 @@
 /* @flow */
 import type { State } from '../../common/types';
-import Email from './Email';
+import Email from './LoginFields';
 import R from 'ramda';
 import React from 'react';
 import SignInError from './SignInError';

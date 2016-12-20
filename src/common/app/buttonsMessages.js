@@ -32,7 +32,7 @@ const buttonsMessages = defineMessages({
   },
   signIn: {
     defaultMessage: 'Sign In',
-    id: 'app.buttons.signIn',
+    id: 'app.buttons.login',
   },
   signOut: {
     defaultMessage: 'Sign Out',

@@ -25,11 +25,11 @@ export default [
     "defaultMessage": "Salvar",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Iniciar Sesión",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Iniciar Sesión",
   },
   {
@@ -93,7 +93,7 @@ export default [
     "defaultMessage": "Ajustes",
   },
   {
-    "id": "app.links.signIn",
+    "id": "app.links.login",
     "defaultMessage": "Iniciar Sesión",
   },
   {

@@ -25,11 +25,11 @@ export default [
     "defaultMessage": "Salvați",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Autentificare",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Autentificare",
   },
   {
@@ -93,7 +93,7 @@ export default [
     "defaultMessage": "Parametri",
   },
   {
-    "id": "app.links.signIn",
+    "id": "app.links.login",
     "defaultMessage": "Autentificare",
   },
   {

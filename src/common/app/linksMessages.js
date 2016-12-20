@@ -52,7 +52,7 @@ const LinkMessages = defineMessages({
   },
   signIn: {
     defaultMessage: 'Sign in',
-    id: 'app.links.signIn',
+    id: 'app.links.login',
   },
   todos: {
     defaultMessage: 'Todos',

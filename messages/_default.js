@@ -25,7 +25,7 @@ export default [
     "defaultMessage": "Save",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Sign In",
   },
   {
@@ -85,7 +85,7 @@ export default [
     "defaultMessage": "Settings",
   },
   {
-    "id": "app.links.signIn",
+    "id": "app.links.login",
     "defaultMessage": "Sign in",
   },
   {
