@@ -8,7 +8,7 @@ import React from 'react';
 import favicon from '../../common/app/favicon';
 import start from '../../common/app/start';
 import { Miss } from 'react-router';
-import { Box, Container, ThemeProvider } from './components';
+import { Container, ThemeProvider } from './components';
 import { connect } from 'react-redux';
 
 // Pages
@@ -27,8 +27,7 @@ type AppProps = {
 };
 
 
-const App = ({ currentLocale, currentTheme, viewer }: AppProps) => {
-  return (
+const App = ({ currentLocale, currentTheme }: AppProps) => (
     <ThemeProvider
       // TODO: Do we need it?
       // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
@@ -53,10 +52,6 @@ const App = ({ currentLocale, currentTheme, viewer }: AppProps) => {
           //},
           ]}
         />
-        <Box
-          backgroundColor={theme(currentTheme).colors.bodyBackground}
-          flex={1} // make footer sticky
-        >
           <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
           <Page authorized pattern="/active" component={ActivePage} includeHeader />
           <Page authorized pattern="/new" component={NewJobPage} includeHeader />
@@ -64,11 +59,9 @@ const App = ({ currentLocale, currentTheme, viewer }: AppProps) => {
           <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
           <Page pattern="/signin" component={SignInPage} />
           <Miss component={NotFoundPage} />
-        </Box>
       </Container>
     </ThemeProvider>
   );
-};
 
 export default R.compose(
   connect(

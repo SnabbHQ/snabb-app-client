@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import Header from './Header';
 import SideMenu from './SideMenu';
@@ -20,7 +21,12 @@ const Page = ({ component: Component, includeHeader, ...props }: PageProps) => (
           <SideMenu />
         </Box>
       }
-      <Box flex={1} marginLeft={includeHeader && 5} paddingTop={includeHeader && 5}>
+      <Box
+        backgroundColor={'#f5f7fa'} // TODO - use the theme.colors.bodyBackground instead
+        flex={1}
+        marginLeft={includeHeader && 5}
+        paddingTop={includeHeader && 5}
+      >
         <Component {...renderProps} />
       </Box>
     </Container>

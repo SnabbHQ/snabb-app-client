@@ -21,6 +21,7 @@ type Colors = {
 };
 
 export type Color = $Keys<Colors>;
+export type RhythmOrString = number | string | false;
 export type Styled<Props> = (props: Exact<Props>) => React$Element<any>;
 export type TopBottomLeftRight = 'top' | 'bottom' | 'left' | 'right';
 

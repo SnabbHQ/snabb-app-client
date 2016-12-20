@@ -9,13 +9,12 @@ import type {
   FlexFlow,
   FlexWrap,
   JustifyContent,
+  RhythmOrString,
   Styled,
   TopBottomLeftRight,
 } from '../themes/types';
 import styled from './styled';
 import warning from 'warning';
-
-type RhythmOrString = number | string | false;
 
 export type BoxProps = {
   // CSS

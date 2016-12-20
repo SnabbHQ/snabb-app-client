@@ -62,6 +62,9 @@ const theme: Theme = {
   input: {
     borderColor: `solid 1px ${openColor.gray4}`,
   },
+  divider: {
+    borderColor: openColor.gray4,
+  },
 };
 
 export default theme;

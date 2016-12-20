@@ -5,17 +5,16 @@ import R from 'ramda';
 import React from 'react';
 import SignInError from './SignInError';
 import linksMessages from '../../common/app/linksMessages';
-import emailMessages from '../../common/auth/emailMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
-import { Block, Divider, Image, Link, Title, Loading, Box, Fixed } from '../app/components';
+import { injectIntl, intlShape } from 'react-intl';
+import { Block, Image, Title, Loading, Box, Fixed } from '../app/components';
 import { Message } from '../app/components-old';
 
 // $FlowFixMe
 const logo = require('../../../assets/images/logoBlack.svg');
 
-const SignInPage = ({ disabled, location, authed }) => (
+const RegisterPage = ({ disabled, location, authed }) => (
   authed ?
     <Redirect
       to={(
@@ -37,18 +36,8 @@ const SignInPage = ({ disabled, location, authed }) => (
               src={logo}
             />
           </Box>
+
           <Email />
-          <Divider marginVertical="0.3em" />
-          <Link
-            display="block"
-            bold
-            antialiasing
-            color="accent"
-            to="/createAccount"
-            align="center"
-          >
-            <FormattedMessage {...emailMessages.createAccount} />
-          </Link>
         </Block>
         <SignInError />
         { disabled &&
@@ -60,9 +49,9 @@ const SignInPage = ({ disabled, location, authed }) => (
     </Fixed>
 );
 
-
-SignInPage.propTypes = {
+RegisterPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
+  intl: intlShape,
   location: React.PropTypes.object.isRequired,
   authed: React.PropTypes.object,
 };
@@ -75,4 +64,4 @@ export default R.compose(
     }),
   ),
   injectIntl,
-)(SignInPage);
+)(RegisterPage);
