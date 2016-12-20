@@ -45,7 +45,7 @@ const LogInPage = ({ disabled, location, authed }) => (
               bold
               antialiasing
               color="accent"
-              to="/createAccount"
+              to="/register"
               align="center"
             >
               <FormattedMessage {...authMessages.createAccount} />
