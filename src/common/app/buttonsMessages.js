@@ -39,7 +39,7 @@ const buttonsMessages = defineMessages({
     id: 'app.buttons.resetPassword',
   },
   register: {
-    defaultMessage: 'Register',
+    defaultMessage: 'Create an account',
     id: 'app.buttons.register',
   },
   submit: {

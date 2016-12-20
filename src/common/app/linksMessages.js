@@ -59,8 +59,16 @@ const LinkMessages = defineMessages({
     id: 'app.links.resetPassword',
   },
   register: {
-    defaultMessage: 'Register',
+    defaultMessage: 'Join Snabb',
     id: 'app.links.register',
+  },
+  terms: {
+    defaultMessage: 'Terms & Conditions',
+    id: 'app.links.terms',
+  },
+  privacyPolicy: {
+    defaultMessage: 'Privacy Policy',
+    id: 'app.links.privacyPolicy',
   },
 });
 

@@ -8,8 +8,8 @@ import linksMessages from '../../common/app/linksMessages';
 import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from 'react-intl';
-import { Block, Divider, Image, Text, Title, Loading, Box, Fixed } from '../app/components';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import { Block, Divider, Link, Image, Text, Title, Loading, Box, Fixed } from '../app/components';
 import { Message } from '../app/components-old';
 
 // $FlowFixMe
@@ -27,7 +27,7 @@ const RegisterPage = ({ disabled, intl, location, authed }) => (
     :
     <Fixed top bottom left right>
       <Box display="flex" height="100%" alignItems="center" justifyContent="center">
-        <Box width="350px">
+        <Box width="500px">
           <Title message={linksMessages.register} />
           <Block>
             <Box marginBottom={1}>
@@ -47,6 +47,31 @@ const RegisterPage = ({ disabled, intl, location, authed }) => (
               {intl.formatMessage(authMessages.createAccountHeader)}
             </Text>
             <RegisterFields />
+            <Divider marginVertical="0.3em" />
+            <Box display="block">
+              <Text size={-1}>{intl.formatMessage(authMessages.termsLabelPart1)}</Text>
+              <Link
+                bold
+                antialiasing
+                color="accent"
+                to="/todo"
+                size={-1}
+                align="center"
+              >
+                <FormattedMessage {...linksMessages.terms} />
+              </Link>
+              <Text size={-1}>{intl.formatMessage(authMessages.termsLabelPart2)}</Text>
+              <Link
+                bold
+                antialiasing
+                color="accent"
+                to="/todo"
+                align="center"
+                size={-1}
+              >
+                <FormattedMessage {...linksMessages.privacyPolicy} />
+              </Link>
+            </Box>
           </Block>
           <SignInError />
           { disabled &&

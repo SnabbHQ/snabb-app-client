@@ -27,8 +27,16 @@ const authMessages = defineMessages({
     id: 'auth.register.createAccount',
   },
   createAccountHeader: {
-    defaultMessage: 'Tell us a bit more about you',
+    defaultMessage: 'Tell us a about your business',
     id: 'auth.register.createAccountHeader',
+  },
+  termsLabelPart1: {
+    defaultMessage: 'By clicking on "Create an account", you are agreeing to the ',
+    id: 'auth.register.termsLabelPart1',
+  },
+  termsLabelPart2: {
+    defaultMessage: ' and the ',
+    id: 'auth.register.termsLabelPart2',
   },
   businessName: {
     defaultMessage: 'Business Name',
