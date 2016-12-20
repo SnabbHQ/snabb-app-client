@@ -13,12 +13,12 @@ import { Form, focus } from '../app/components-old';
 class LoginFields extends React.Component {
 
   onFormSubmit = () => {
-    this.signInViaPassword();
+    this.loginViaPassword();
   };
 
-  signInViaPassword() {
-    const { fields, signIn } = this.props;
-    signIn('password', fields.$values());
+  loginViaPassword() {
+    const { fields, login } = this.props;
+    login('password', fields.$values());
   }
 
   render() {
@@ -49,7 +49,7 @@ class LoginFields extends React.Component {
             />
             <Box marginTop="1em">
               <Button width="100%" disabled={disabled} align="center">
-                <FormattedMessage {...buttonsMessages.signIn} />
+                <FormattedMessage {...buttonsMessages.logIn} />
               </Button>
             </Box>
           </Box>
@@ -58,7 +58,7 @@ class LoginFields extends React.Component {
           marginTop="1em"
           display="block"
           antialiasing
-          to="/forgotPassword"
+          to="/resetPassword"
           align="end"
           size={-1}
         >
@@ -82,7 +82,7 @@ LoginFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   fields: React.PropTypes.object.isRequired,
   intl: intlShape.isRequired,
-  signIn: React.PropTypes.func.isRequired,
+  login: React.PropTypes.func.isRequired,
 };
 
 export default connect(

@@ -8,14 +8,14 @@ import linksMessages from '../../common/app/linksMessages';
 import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Block, Divider, Image, Link, Title, Loading, Box, Fixed } from '../app/components';
 import { Message } from '../app/components-old';
 
 // $FlowFixMe
 const logo = require('../../../assets/images/logoBlack.svg');
 
-const SignInPage = ({ disabled, location, authed }) => (
+const LogInPage = ({ disabled, location, authed }) => (
   authed ?
     <Redirect
       to={(
@@ -27,7 +27,7 @@ const SignInPage = ({ disabled, location, authed }) => (
     :
     <Fixed top bottom left right>
       <Box display="flex" height="100%" alignItems="center" justifyContent="center">
-        <Title message={linksMessages.signIn} />
+        <Title message={linksMessages.logIn} />
         <Block>
           <Box marginBottom={1}>
             <Image
@@ -61,7 +61,7 @@ const SignInPage = ({ disabled, location, authed }) => (
 );
 
 
-SignInPage.propTypes = {
+LogInPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   location: React.PropTypes.object.isRequired,
   authed: React.PropTypes.object,
@@ -74,5 +74,4 @@ export default R.compose(
       authed: state.user.profile.email,
     }),
   ),
-  injectIntl,
-)(SignInPage);
+)(LogInPage);

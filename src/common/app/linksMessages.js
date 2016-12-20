@@ -50,13 +50,17 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Settings',
     id: 'app.links.settings',
   },
-  signIn: {
-    defaultMessage: 'Sign in',
-    id: 'app.links.login',
+  logIn: {
+    defaultMessage: 'Log in',
+    id: 'app.links.logIn',
   },
-  todos: {
-    defaultMessage: 'Todos',
-    id: 'app.links.todos',
+  resetPassword: {
+    defaultMessage: 'Reset Password',
+    id: 'app.links.resetPassword',
+  },
+  register: {
+    defaultMessage: 'Register',
+    id: 'app.links.register',
   },
 });
 
