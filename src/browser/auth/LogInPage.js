@@ -27,35 +27,37 @@ const LogInPage = ({ disabled, location, authed }) => (
     :
     <Fixed top bottom left right>
       <Box display="flex" height="100%" alignItems="center" justifyContent="center">
-        <Title message={linksMessages.logIn} />
-        <Block>
-          <Box marginBottom={1}>
-            <Image
-              alt="Snabb logo"
-              height={100}
-              width={100}
-              src={logo}
-            />
-          </Box>
-          <LoginFields />
-          <Divider marginVertical="0.3em" />
-          <Link
-            display="block"
-            bold
-            antialiasing
-            color="accent"
-            to="/createAccount"
-            align="center"
-          >
-            <FormattedMessage {...authMessages.createAccount} />
-          </Link>
-        </Block>
-        <SignInError />
-        { disabled &&
-        <Loading>
-          {message => <Message>{message}</Message>}
-        </Loading>
-        }
+        <Box width="350px">
+          <Title message={linksMessages.logIn} />
+          <Block>
+            <Box marginBottom={1}>
+              <Image
+                alt="Snabb logo"
+                height={100}
+                width={100}
+                src={logo}
+              />
+            </Box>
+            <LoginFields />
+            <Divider marginVertical="0.3em" />
+            <Link
+              display="block"
+              bold
+              antialiasing
+              color="accent"
+              to="/createAccount"
+              align="center"
+            >
+              <FormattedMessage {...authMessages.createAccount} />
+            </Link>
+          </Block>
+          <SignInError />
+          { disabled &&
+          <Loading>
+            {message => <Message>{message}</Message>}
+          </Loading>
+          }
+        </Box>
       </Box>
     </Fixed>
 );
@@ -64,7 +66,7 @@ const LogInPage = ({ disabled, location, authed }) => (
 LogInPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   location: React.PropTypes.object.isRequired,
-  authed: React.PropTypes.object,
+  authed: React.PropTypes.string,
 };
 
 export default R.compose(

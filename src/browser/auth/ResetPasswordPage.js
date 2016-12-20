@@ -1,14 +1,15 @@
 /* @flow */
 import type { State } from '../../common/types';
-import Email from './LoginFields';
+import ResetPasswordFields from './ResetPasswordFields';
 import R from 'ramda';
 import React from 'react';
 import SignInError from './SignInError';
 import linksMessages from '../../common/app/linksMessages';
+import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
-import { Block, Image, Title, Loading, Box, Fixed, PageHeader } from '../app/components';
+import { Block, Image, Title, Loading, Box, Fixed, Text } from '../app/components';
 import { Message } from '../app/components-old';
 
 // $FlowFixMe
@@ -25,26 +26,40 @@ const ResetPasswordPage = ({ disabled, intl, authed }) => (
     />
     :
   <Fixed top bottom left right>
-    <Box display="flex" height="100%" alignItems="center" justifyContent="center">
-      <Title message={linksMessages.logIn} />
-      <Block>
-        <Box marginBottom={1}>
-          <Image
-            alt="Snabb logo"
-            height={100}
-            width={100}
-            src={logo}
-          />
-        </Box>
-
-        <Email />
-      </Block>
-      <SignInError />
-      { disabled &&
-      <Loading>
-        {message => <Message>{message}</Message>}
-      </Loading>
-      }
+    <Box display="flex" height="80%" alignItems="center" justifyContent="center">
+      <Box width="350px">
+        <Title message={linksMessages.resetPassword} />
+        <Block>
+          <Box marginBottom={1}>
+            <Image
+              alt="Snabb logo"
+              height={100}
+              width={100}
+              src={logo}
+            />
+          </Box>
+          <Text
+            align="center"
+            display="block"
+            size={2}
+          >
+            {intl.formatMessage(authMessages.resetPassword)}
+          </Text>
+          <Text
+            align="center"
+            display="block"
+          >
+            {intl.formatMessage(authMessages.resetPasswordDescription)}
+          </Text>
+          <ResetPasswordFields />
+        </Block>
+        <SignInError />
+        { disabled &&
+        <Loading>
+          {message => <Message>{message}</Message>}
+        </Loading>
+        }
+      </Box>
     </Box>
   </Fixed>
 );

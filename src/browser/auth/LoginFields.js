@@ -25,7 +25,7 @@ class LoginFields extends React.Component {
     const { disabled, fields, intl } = this.props;
 
     return (
-      <Box width="350px">
+      <Box>
         <Form onSubmit={this.onFormSubmit} small>
           <Box>
             <Input

@@ -53,7 +53,7 @@ class ResetPasswordFields extends React.Component {
           />
           <Box marginTop="1em">
             <Button width="100%" disabled={disabled} align="center">
-              <FormattedMessage {...buttonsMessages.logIn} />
+              <FormattedMessage {...buttonsMessages.resetPassword} />
             </Button>
           </Box>
         </Box>

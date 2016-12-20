@@ -43,12 +43,14 @@ RegisterPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
   location: React.PropTypes.object.isRequired,
+  authed: React.PropTypes.string,
 };
 
 export default R.compose(
   connect(
     (state: State) => ({
       disabled: state.auth.form.disabled,
+      authed: state.user.profile.email,
     }),
   ),
 )(RegisterPage);
