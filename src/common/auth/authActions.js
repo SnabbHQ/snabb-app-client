@@ -342,7 +342,6 @@ export function login(password) {
       email: 'devtest@gmail.com',
       password,
     })
-
       .then((json) => saveSessionToken(json)
           .then(() => {
             dispatch(loginSuccess(json));
@@ -377,6 +376,7 @@ export function resetPasswordFailure(error) {
     payload: error,
   };
 }
+
 /**
  * ## ResetPassword
  *

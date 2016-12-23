@@ -8,7 +8,7 @@ import React from 'react';
 import favicon from '../../common/app/favicon';
 import start from '../../common/app/start';
 import { Miss } from 'react-router';
-import { Container, ThemeProvider } from './components';
+import { Container, ThemeProvider, Box } from './components';
 import { connect } from 'react-redux';
 
 // Pages
@@ -30,42 +30,47 @@ type AppProps = {
 
 
 const App = ({ currentLocale, currentTheme }: AppProps) => (
-    <ThemeProvider
-      // TODO: Do we need it?
-      // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
-      theme={theme(currentTheme)}
-    >
-      <Container>
-        <Helmet
-          htmlAttributes={{ lang: currentLocale }}
-          meta={[
+  <ThemeProvider
+    // TODO: Do we need it?
+    // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
+    theme={theme(currentTheme)}
+  >
+    <Container>
+      <Helmet
+        htmlAttributes={{ lang: currentLocale }}
+        meta={[
           // v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
           { charset: 'utf-8' },
           { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
           { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
-            ...favicon.meta,
-          ]}
-          link={[
-            ...favicon.link,
+          ...favicon.meta,
+        ]}
+        link={[
+          ...favicon.link,
           // Test vertical rhythm.
           //{
           //  href: `http://basehold.it/${theme(currentTheme).text.lineHeight}`,
           //  rel: 'stylesheet',
           //},
-          ]}
-        />
-          <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
-          <Page authorized pattern="/active" component={ActivePage} includeHeader />
-          <Page authorized pattern="/new" component={NewJobPage} includeHeader />
-          <Page authorized pattern="/scheduled" component={ScheduledPage} includeHeader />
-          <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
-          <Page pattern="/login" component={LogInPage} />
-          <Page pattern="/register" component={RegisterPage} />
-          <Page pattern="/resetPassword" component={ResetPassword} />
-          <Miss component={NotFoundPage} />
-      </Container>
-    </ThemeProvider>
-  );
+        ]}
+      />
+      <Box
+        backgroundColor={theme(currentTheme).colors.bodyBackground}
+        flex={1} // make footer sticky
+      >
+        <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
+        <Page authorized pattern="/active" component={ActivePage} includeHeader />
+        <Page authorized pattern="/new" component={NewJobPage} includeHeader />
+        <Page authorized pattern="/scheduled" component={ScheduledPage} includeHeader />
+        <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
+        <Page pattern="/login" component={LogInPage} />
+        <Page pattern="/register" component={RegisterPage} />
+        <Page pattern="/resetPassword" component={ResetPassword} />
+        <Miss component={NotFoundPage} />
+      </Box>
+    </Container>
+  </ThemeProvider>
+);
 
 export default R.compose(
   connect(

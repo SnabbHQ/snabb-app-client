@@ -22,10 +22,8 @@ const Page = ({ component: Component, includeHeader, ...props }: PageProps) => (
         </Box>
       }
       <Box
-        backgroundColor={'#f5f7fa'} // TODO - use the theme.colors.bodyBackground instead
-        flex={1}
-        marginLeft={includeHeader && 5}
-        paddingTop={includeHeader && 5}
+        marginLeft={includeHeader && 3}
+        paddingTop={includeHeader && 2}
       >
         <Component {...renderProps} />
       </Box>
