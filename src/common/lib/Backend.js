@@ -1,3 +1,4 @@
+// @flow
 /**
  * # Backend.js
  *
@@ -27,9 +28,8 @@ export default class Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  register(data) {
+  register(data) {}
 
-  }
  /**
    * ### logIn
    * encode the data and and call _fetch
@@ -47,16 +47,13 @@ export default class Backend {
    * updatedAt: "2015-12-30T16:08:50.419Z"
    *
    */
-  login(data) {
+  login(data) {}
 
-  }
   /**
    * ### logOut
    * prepare the request and call _fetch
    */
-  logOut() {
-
-  }
+  logOut() {}
   /**
    * ### resetPassword
    * the data is already in a JSON format, so call _fetch
@@ -68,9 +65,8 @@ export default class Backend {
    *
    * if error:  {code: xxx, error: 'message'}
    */
-  resetPassword(data) {
+  resetPassword(data) {}
 
-  }
   /**
    * ### getProfile
    * Using the sessionToken, we'll get everything about
@@ -88,8 +84,7 @@ export default class Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  getProfile() {
-  }
+  getProfile() {}
 
   /**
    * ### updateProfile
@@ -100,8 +95,6 @@ export default class Backend {
    * @param data object:
    * {email: "barton@foo.com"}
    */
-  updateProfile(userId, data) {
-  }
-
+  updateProfile(userId, data) {}
 }
 

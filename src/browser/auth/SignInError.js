@@ -9,15 +9,14 @@ import { connect } from 'react-redux';
 const styles = {
   message: {
     display: 'inline-block',
-    width: '100%'
+    width: '100%',
   },
 };
 
 const SignInError = ({ error }) => {
   if (!error) return null;
 
-  const message =
-    errorMessages[error.name];
+  const message = errorMessages[error.name];
 
   return (
     <Message style={styles.message} theme="error">

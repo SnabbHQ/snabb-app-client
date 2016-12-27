@@ -74,7 +74,7 @@ export default class SnabbApi extends Backend {
    * if error, {code: xxx, error: 'message'}
    */
   async register(data: Object) {
-    return await this._fetch({
+    return await this.fetch({
       method: 'POST',
       url: '/account/register',
       body: data,
@@ -109,7 +109,7 @@ export default class SnabbApi extends Backend {
    *
    */
   async login(data: Object) {
-    return await this._fetch({
+    return await this.fetch({
       method: 'POST',
       url: '/auth/login/',
       body: data,
@@ -136,7 +136,7 @@ export default class SnabbApi extends Backend {
    * prepare the request and call _fetch
    */
   async logOut() {
-    return await this._fetch({
+    return await this.fetch({
       method: 'POST',
       url: '/account/logout',
       body: {},
@@ -165,7 +165,7 @@ export default class SnabbApi extends Backend {
    * if error:  {code: xxx, error: 'message'}
    */
   async resetPassword(data: Object) {
-    return await this._fetch({
+    return await this.fetch({
       method: 'POST',
       url: '/account/resetPasswordRequest',
       body: data,
@@ -198,7 +198,7 @@ export default class SnabbApi extends Backend {
    * if error, {code: xxx, error: 'message'}
    */
   async getProfile() {
-    return await this._fetch({
+    return await this.fetch({
       method: 'GET',
       url: '/account/profile/me',
     })
@@ -223,7 +223,7 @@ export default class SnabbApi extends Backend {
    * {email: "barton@foo.com"}
    */
   async updateProfile(userId: string, data: Object) {
-    return await this._fetch({
+    return await this.fetch({
       method: 'POST',
       url: `/account/profile/${userId}`,
       body: data,

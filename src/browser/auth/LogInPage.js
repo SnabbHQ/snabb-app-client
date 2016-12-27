@@ -73,7 +73,7 @@ export default R.compose(
   connect(
     (state: State) => ({
       disabled: state.auth.formDisabled,
-      authed: state.user.profile.email,
+      authed: state.user,
     }),
   ),
 )(LogInPage);
