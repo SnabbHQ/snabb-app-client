@@ -1,7 +1,5 @@
 // @flow
 import type { Deps } from '../../types';
-import BackendFactory from '../../lib/BackendFactory';
-import AppAuthToken from '../../lib/__mocks__/AppAuthToken';
 
 import { loginSuccess, loginFail } from '../actions';
 import { Observable } from 'rxjs/Observable';
@@ -21,23 +19,15 @@ const validateEmailAndPassword = (validate, fields) => validate(fields)
   .simplePassword()
   .promise;
 
-/**
- * ## saveSessionToken
- * @param {Object} json - object with sessionToken
- */
-export function saveSessionToken(json) {
-  return new AppAuthToken().storeSessionToken(json);
-}
-
-const login = (action$: any, { validate }: Deps) =>
+const login = (action$: any, { backendFactory, appAuthToken, validate }: Deps) =>
   action$.ofType('LOG_IN')
     .map(action => action.payload.options)
     .mergeMap((options) => {
       const { email, password } = options;
       return Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
-        .switchMap(() => Observable.fromPromise(BackendFactory().login({ email, password })))
-        .map(saveSessionToken)
-        .switchMap(() => Observable.fromPromise(BackendFactory().getProfile()))
+        .switchMap(() => Observable.fromPromise(backendFactory.login({ email, password })))
+        .map(json => appAuthToken.storeSessionToken(appAuthToken, json))
+        .switchMap(() => Observable.fromPromise(backendFactory.getProfile()))
         .map(loginSuccess)
         .catch(error => Observable.of(loginFail(error)));
     });

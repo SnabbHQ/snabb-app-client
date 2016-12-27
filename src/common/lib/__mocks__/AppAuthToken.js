@@ -11,6 +11,7 @@
  * Need to still treat as async
  */
 require('regenerator/runtime');
+
 export default class AppAuthToken {
   /**
    * ## AppAuthToken

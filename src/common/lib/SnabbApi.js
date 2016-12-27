@@ -132,10 +132,10 @@ export default class SnabbApi extends Backend {
       });
   }
   /**
-   * ### logOut
+   * ### logout
    * prepare the request and call _fetch
    */
-  async logOut() {
+  async logout() {
     return await this.fetch({
       method: 'POST',
       url: '/account/logout',

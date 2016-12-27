@@ -39,7 +39,7 @@ const LogInPage = ({ disabled, location, authed }) => (
               />
             </Box>
             <SignInError />
-            { disabled &&
+            { !disabled &&
             <Loading>
               {message => <Message>{message}</Message>}
             </Loading>
@@ -66,7 +66,7 @@ const LogInPage = ({ disabled, location, authed }) => (
 LogInPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   location: React.PropTypes.object.isRequired,
-  authed: React.PropTypes.string,
+  authed: React.PropTypes.object,
 };
 
 export default R.compose(

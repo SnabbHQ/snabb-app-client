@@ -93,8 +93,8 @@ RegisterPage.propTypes = {
 export default R.compose(
   connect(
     (state: State) => ({
-      disabled: state.auth.form.disabled,
-      authed: state.user.profile.email,
+      disabled: state.auth.formDisabled,
+      authed: state.user,
     }),
   ),
   injectIntl,

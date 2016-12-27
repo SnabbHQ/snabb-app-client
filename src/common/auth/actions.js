@@ -16,12 +16,13 @@ export const loginFail = (error: Error): Action => ({
   payload: { error },
 });
 
-export const logout = () => ({ firebaseAuth }: Deps): Action => {
-  firebaseAuth().signOut();
-  return {
-    type: 'LOG_OUT',
-  };
-};
+export const logout = (): Action => ({
+  type: 'LOG_OUT',
+});
+
+export const logoutSuccess = (): Action => ({
+  type: 'LOG_OUT_SUCCESS',
+});
 
 export const register = (providerName: string, options?: Object): Action => ({
   type: 'REGISTER',
