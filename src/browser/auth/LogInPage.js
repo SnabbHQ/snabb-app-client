@@ -38,6 +38,12 @@ const LogInPage = ({ disabled, location, authed }) => (
                 src={logo}
               />
             </Box>
+            <SignInError />
+            { disabled &&
+            <Loading>
+              {message => <Message>{message}</Message>}
+            </Loading>
+            }
             <LoginFields />
             <Divider marginVertical="0.3em" />
             <Link
@@ -51,12 +57,6 @@ const LogInPage = ({ disabled, location, authed }) => (
               <FormattedMessage {...authMessages.createAccount} />
             </Link>
           </Block>
-          <SignInError />
-          { disabled &&
-          <Loading>
-            {message => <Message>{message}</Message>}
-          </Loading>
-          }
         </Box>
       </Box>
     </Fixed>

@@ -33,7 +33,7 @@ class LoginFields extends React.Component {
 
     return (
       <Box>
-        <Form onSubmit={() => console.log('hola')} small>
+        <Form onSubmit={this.onFormSubmit} small>
           <Box>
             <Input
               {...fields.email}
