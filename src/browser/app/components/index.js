@@ -7,6 +7,8 @@ export { default as Card } from './Card';
 export { default as Container } from './Container';
 export { default as Divider } from './Divider';
 export { default as Fixed } from './Fixed';
+export { default as focus } from './focus';
+export { default as Form } from './Form';
 export { default as Heading } from './Heading';
 export { default as Image } from './Image';
 export { default as Link } from './Link';

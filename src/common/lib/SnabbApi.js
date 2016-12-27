@@ -8,12 +8,6 @@
  *
  */
 
-
-/**
- * ## Imports
- *
- * Config for defaults and underscore for a couple of features
- */
 import CONFIG from './config';
 import _ from 'underscore';
 import Backend from './Backend';
@@ -34,7 +28,6 @@ let fakeUser = {
 export default class SnabbApi extends Backend {
 
   API_BASE_URL: string
-
   sessionToken: string
   response: Object
 
@@ -67,7 +60,7 @@ export default class SnabbApi extends Backend {
   }
 
   /**
-   * ### signup
+   * ### register
    *
    * @param data object
    *
@@ -80,7 +73,7 @@ export default class SnabbApi extends Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  async signup(data: Object) {
+  async register(data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/account/register',
@@ -99,7 +92,7 @@ export default class SnabbApi extends Backend {
   }
 
   /**
-   * ### login
+   * ### logIn
    * encode the data and and call _fetch
    *
    * @param data
@@ -115,7 +108,7 @@ export default class SnabbApi extends Backend {
    * sessionToken: "r:Kt9wXIBWD0dNijNIq2u5rRllW"
    *
    */
-  async login(data: Object) {
+  async logIn(data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/auth/login/',
@@ -139,10 +132,10 @@ export default class SnabbApi extends Backend {
       });
   }
   /**
-   * ### logout
+   * ### logOut
    * prepare the request and call _fetch
    */
-  async logout() {
+  async logOut() {
     return await this._fetch({
       method: 'POST',
       url: '/account/logout',
@@ -251,7 +244,7 @@ export default class SnabbApi extends Backend {
   }
 
   /**
-   * ### _fetch
+   * ### fetch
    * A generic function that prepares the request
    *
    * @returns object:
@@ -259,7 +252,7 @@ export default class SnabbApi extends Backend {
    *   status: response.status,
    *   json: response.json()
    */
-  async _fetch(opts) {
+  async fetch(opts) {
     return await this.response;
   }
 }

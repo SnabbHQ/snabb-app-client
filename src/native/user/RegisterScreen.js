@@ -2,7 +2,7 @@
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as authActions from '../../common/auth/authActions';
+import * as authActions from '../../common/auth/actions';
 import LoginRender from './components/LoginRender';
 import React, { Component } from 'react';
 import DefaultNavBar from '../app/components/DefaultNavBar';

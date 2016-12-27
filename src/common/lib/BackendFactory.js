@@ -4,9 +4,6 @@
  * This class sets up the backend by checking the config.js
  *
  */
-
-
-import CONFIG from './config';
 import SnabbApi from './SnabbApi';
 
 export default function BackendFactory(token = null) {

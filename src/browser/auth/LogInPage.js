@@ -72,7 +72,7 @@ LogInPage.propTypes = {
 export default R.compose(
   connect(
     (state: State) => ({
-      disabled: state.auth.form.disabled,
+      disabled: state.auth.formDisabled,
       authed: state.user.profile.email,
     }),
   ),

@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as authActions from '../../common/auth/authActions';
+import * as authActions from '../../common/auth/actions';
 import LoginRender from './components/LoginRender';
 import I18n from '../../common/lib/I18n';
 

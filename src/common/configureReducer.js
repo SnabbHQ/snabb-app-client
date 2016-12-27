@@ -5,7 +5,7 @@ import config from './config/reducer';
 import device from './device/deviceReducer';
 import { closestCity, closestDrivers, jobs, newJob } from './job/reducers';
 import pagination from './app/paginataionReducer';
-import auth from './auth/authReducer';
+import auth from './auth/reducer';
 import user from './user/reducer';
 import location from './location/locationReducer';
 import delivery from './delivery/deliveryReducer';

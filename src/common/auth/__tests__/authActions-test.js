@@ -34,7 +34,7 @@ const mockStore = configureStore(middlewares);
 /**
  * ## Class under test
  */
-import * as actions from '../authActions';
+import * as actions from '../actions';
 
 
 /**

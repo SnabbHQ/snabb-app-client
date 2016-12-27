@@ -1,33 +1,34 @@
 /* @flow */
+import type { BoxProps } from './Box';
+import type { Styled } from '../themes/types';
+import Box from './Box';
+import styled from './styled';
 import React from 'react';
 
-type Props = {
-  onSubmit?: () => void,
-  small?: boolean,
-  style?: any,
+type FormProps = BoxProps & {
+  onSubmit?: SyntheticEvent => void
 };
 
-const maxWidth = 42;
-const maxWidthSmall = 30;
-
-const Form = ({ small, ...props }: Props) => {
-  const style = {
-    maxWidth: `${small ? maxWidthSmall : maxWidth}em`,
-    ...props.style,
-  };
-  const onBaseSubmit = (e) => {
-    e.preventDefault();
-    if (!props.onSubmit) return;
-    props.onSubmit(e);
-  };
-  return (
-    <Base
-      {...props}
-      onSubmit={onBaseSubmit}
-      style={style}
-      is="form"
-    />
-  );
+const onSubmitWithPreventDefault = onSubmit => event => {
+  if (!onSubmit) return;
+  event.preventDefault();
+  onSubmit(event);
 };
+
+// Look
+const StyledForm: Styled<FormProps> = styled((theme, {
+  maxWidth = theme.block.maxWidth,
+}) => ({
+  $extends: Box,
+  maxWidth,
+}), 'form', ['onSubmit']);
+
+// Feel
+const Form: Styled<FormProps> = ({ onSubmit, ...props }) => (
+  <StyledForm
+    onSubmit={onSubmitWithPreventDefault(onSubmit)}
+    {...props}
+  />
+);
 
 export default Form;

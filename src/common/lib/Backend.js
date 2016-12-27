@@ -14,7 +14,7 @@ require('regenerator/runtime');
 
 export default class Backend {
   /**
-   * ### signup
+   * ### register
    *
    * @param data object
    *
@@ -27,11 +27,11 @@ export default class Backend {
    *
    * if error, {code: xxx, error: 'message'}
    */
-  signup(data) {
+  register(data) {
 
   }
  /**
-   * ### login
+   * ### logIn
    * encode the data and and call _fetch
    *
    * @param data
@@ -47,14 +47,14 @@ export default class Backend {
    * updatedAt: "2015-12-30T16:08:50.419Z"
    *
    */
-  login(data) {
+  logIn(data) {
 
   }
   /**
-   * ### logout
+   * ### logOut
    * prepare the request and call _fetch
    */
-  logout() {
+  logOut() {
 
   }
   /**
@@ -90,6 +90,7 @@ export default class Backend {
    */
   getProfile() {
   }
+
   /**
    * ### updateProfile
    * for this user, update their record

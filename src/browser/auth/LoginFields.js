@@ -7,10 +7,17 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
 import { login } from '../../common/auth/actions';
-import { Button, Input, Link, Box } from '../app/components';
-import { Form, focus } from '../app/components-old';
+import { Button, Input, Link, Form, focus, Box } from '../app/components';
 
 class LoginFields extends React.Component {
+
+
+  constructor(props: P) {
+    super(props);
+
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.loginViaPassword = this.loginViaPassword.bind(this);
+  }
 
   onFormSubmit = () => {
     this.loginViaPassword();
@@ -18,7 +25,7 @@ class LoginFields extends React.Component {
 
   loginViaPassword() {
     const { fields, login } = this.props;
-    login('password', fields.$values());
+    login(fields.$values());
   }
 
   render() {

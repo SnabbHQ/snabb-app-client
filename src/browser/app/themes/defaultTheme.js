@@ -50,6 +50,9 @@ const theme: Theme = {
     // www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide
     fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
   },
+  block: {
+    maxWidth: '42em',
+  },
   heading: {
     bold: 700,
     fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',

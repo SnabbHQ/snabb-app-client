@@ -111,19 +111,18 @@ export type Action =
   | { type: 'APP_STARTED' }
   | { type: 'APP_STOP' }
   | { type: 'APP_STORAGE_LOADED' }
-  | { type: 'CLEAR_ALL_COMPLETED_TODOS' }
-  | { type: 'CLEAR_ALL_TODOS' }
   | { type: 'ON_AUTH', payload: { firebaseUser: ?Object } }
   | { type: 'RESET_PASSWORD', payload: { email: string } }
-  | { type: 'RESET_PASSWORD_DONE', payload: { email: string } }
+  | { type: 'RESET_PASSWORD_SUCCESS', payload: { email: string } }
   | { type: 'SAVE_USER_DONE' }
   | { type: 'SET_CURRENT_LOCALE', payload: { locale: string } }
   | { type: 'SET_THEME', payload: { theme: string } }
   | { type: 'LOG_IN', payload: { providerName: string, options?: Object } }
-  | { type: 'LOG_IN_DONE', payload: { user: ?User } }
+  | { type: 'LOG_IN_SUCCESS', payload: { user: ?User } }
   | { type: 'LOG_IN_FAIL', payload: { error: Error } }
   | { type: 'LOG_OUT' }
+  | { type: 'LOG_OUT_SUCCESS' }
   | { type: 'REGISTER', payload: { providerName: string, options?: Object } }
-  | { type: 'REGISTER_DONE', payload: { user: ?User } }
+  | { type: 'REGISTER_SUCCESS', payload: { user: ?User } }
   | { type: 'REGISTER_FAIL', payload: { error: Error } }
   ;
