@@ -7,7 +7,6 @@ const initialState = {
   isFetching: false,
 };
 
-
 const reducer = (
   state: AuthState = initialState,
   action: Action,
@@ -20,10 +19,10 @@ const reducer = (
       return { ...state, formDisabled: true, isFetching: true, error: null };
     }
 
-    case 'LOG_IN_DONE':
-    case 'REGISTER_DONE':
-    case 'LOG_OUT_DONE':
-    case 'RESET_PASSWORD_DONE': {
+    case 'LOG_IN_SUCCESS':
+    case 'REGISTER_SUCCESS':
+    case 'LOG_OUT_SUCCESS':
+    case 'RESET_PASSWORD_SUCCESS': {
       return { ...state, formDisabled: false, isFetching: false, error: null };
     }
 

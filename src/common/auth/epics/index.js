@@ -5,7 +5,7 @@ import resetPassword from './resetPassword';
 
 export const epics = [
   login,
-  //logout,
+  logout,
   //register,
   //resetPassword,
 ];

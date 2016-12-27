@@ -83,7 +83,7 @@ export type DeliveriesState = {
 }
 
 export type UserState = {
-  form: Object,
+  user: ?Profile,
   profile: ?Profile,
 };
 
@@ -111,17 +111,17 @@ export type Action =
   | { type: 'APP_STARTED' }
   | { type: 'APP_STOP' }
   | { type: 'APP_STORAGE_LOADED' }
-  | { type: 'ON_AUTH', payload: { firebaseUser: ?Object } }
-  | { type: 'RESET_PASSWORD', payload: { email: string } }
-  | { type: 'RESET_PASSWORD_SUCCESS', payload: { email: string } }
-  | { type: 'SAVE_USER_DONE' }
-  | { type: 'SET_CURRENT_LOCALE', payload: { locale: string } }
-  | { type: 'SET_THEME', payload: { theme: string } }
   | { type: 'LOG_IN', payload: { providerName: string, options?: Object } }
   | { type: 'LOG_IN_SUCCESS', payload: { user: ?User } }
   | { type: 'LOG_IN_FAIL', payload: { error: Error } }
   | { type: 'LOG_OUT' }
   | { type: 'LOG_OUT_SUCCESS' }
+  | { type: 'PROFILE_UPDATE' }
+  | { type: 'UPDATE_USER_SUCCESS' }
+  | { type: 'RESET_PASSWORD', payload: { email: string } }
+  | { type: 'RESET_PASSWORD_SUCCESS', payload: { email: string } }
+  | { type: 'SET_CURRENT_LOCALE', payload: { locale: string } }
+  | { type: 'SET_THEME', payload: { theme: string } }
   | { type: 'REGISTER', payload: { providerName: string, options?: Object } }
   | { type: 'REGISTER_SUCCESS', payload: { user: ?User } }
   | { type: 'REGISTER_FAIL', payload: { error: Error } }

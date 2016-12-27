@@ -1,5 +1,5 @@
 /* @flow */
-import type { Action, Deps, User } from '../types';
+import type { Action, User } from '../types';
 
 export const login = (options?: Object): Action => ({
   type: 'LOG_IN',
@@ -29,7 +29,7 @@ export const register = (providerName: string, options?: Object): Action => ({
   payload: { providerName, options },
 });
 
-export const registerSuccess = (firebaseUser: Object): Action => ({
+export const registerSuccess = (): Action => ({
   type: 'REGISTER_SUCCESS',
   payload: {
     user: createUserFirebase(firebaseUser),

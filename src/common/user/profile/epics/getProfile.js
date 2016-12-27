@@ -1,9 +1,7 @@
 // @flow
-import BackendFactory from '../../../lib/BackendFactory';
-import AppAuthToken from '../../../lib/__mocks__/AppAuthToken';
+import type { Deps } from '../../../types';
 
-import { getProfileSuccess, getProfileFailure } from '../actions/profileActions';
-import * as ActionTypes from '../actions/ProfileActionTypes';
+import { getProfileSuccess, getProfileFailure } from '../actions';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -14,25 +12,22 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 /**
- * Epic fetching the user profile when the action {@link ActionTypes.GET_PROFILE_REQUEST} gets
- * fired.
+ * Epic fetching the user profile when the action GET_PROFILE gets fired.
  *
  * In order to do so, this epic will fetch the auth sessionToken previously in order to communicate
  * with the server.
  *
- * @param action$
  * @return {Observable<R|I>}
  */
-export default function getProfile(action$) {
-  return action$.ofType(ActionTypes.GET_PROFILE_REQUEST)
+const getProfile = (action$: any, { backendFactory, appAuthToken }: Deps) =>
+  action$.ofType('GET_PROFILE_REQUEST')
     .switchMap(() =>
-      Observable.fromPromise(new AppAuthToken().getSessionToken())
-        .switchMap((sessionToken) => Observable.fromPromise(
-          BackendFactory(sessionToken).getProfile()),
-        )
+      Observable.fromPromise(appAuthToken.getSessionToken())
+        .switchMap(Observable.fromPromise(backendFactory.getProfile()))
         .map(getProfileSuccess)
         .catch(error => Observable.of(
           getProfileFailure(error),
         )),
     );
-}
+
+export default getProfile;

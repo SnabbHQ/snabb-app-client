@@ -1,9 +1,9 @@
 // @flow
-import BackendFactory from '../../../lib/BackendFactory';
-import AppAuthToken from '../../../lib/__mocks__/AppAuthToken';
-import { profileUpdateSuccess, profileUpdateFailure } from '../actions/profileActions';
-import * as ActionTypes from '../actions/ProfileActionTypes';
+import type { Deps } from '../../../types';
+
+import { profileUpdateSuccess, profileUpdateFailure } from '../actions';
 import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/switchMap';
@@ -15,16 +15,15 @@ import 'rxjs/add/operator/catch';
  *
  * With the sessionToken, the server is called with the data to update
  * If successful, get the profile so that the screen is updated with
- * the data as now persisted on the serverx
+ * the data as now persisted on the server
  *
  */
-export default function updateProfile(action$) {
-  return action$.ofType(ActionTypes.PROFILE_UPDATE_REQUEST)
+const updateProfile = (action$: any, { backendFactory, appAuthToken, validate }: Deps) =>
+  action$.ofType('PROFILE_UPDATE')
     .map(action => action.payload.data)
     .switchMap((data) =>
-      Observable.fromPromise(new AppAuthToken().getSessionToken(data.sessionToken))
-        .switchMap((sessionToken) => Observable.fromPromise(
-          BackendFactory(sessionToken).updateProfile(data.userId, {
+      Observable.fromPromise(appAuthToken.getSessionToken(data.sessionToken))
+        .switchMap(Observable.fromPromise(backendFactory.updateProfile(data.userId, {
             name: data.newUserData.name,
             lastName: data.newUserData.lastName,
             phoneNumber: data.newUserData.phoneNumber,
@@ -37,4 +36,6 @@ export default function updateProfile(action$) {
           profileUpdateFailure(error),
         )),
     );
-}
+
+export default updateProfile;
+

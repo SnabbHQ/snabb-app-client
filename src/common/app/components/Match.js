@@ -38,6 +38,6 @@ Match.propTypes = {
 
 export default connect(
   (state: State) => ({
-    authed: state.user.profile.email,
+    authed: state.user.profile,
   }),
 )(Match);

@@ -10,11 +10,10 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-const logout = (action$: any, { backendFactory, appAuthToken}: Deps) =>
+const logout = (action$: any, { backendFactory, appAuthToken }: Deps) =>
   action$.ofType('LOG_OUT')
-    .swichMap(() => Observable.fromPromise(backendFactory.logout())
+    .switchMap(() => Observable.fromPromise(backendFactory.logout())
       .map(appAuthToken.deleteSessionToken)
-      .map(logoutSucess)
-    );
+      .map(logoutSucess));
 
 export default logout;

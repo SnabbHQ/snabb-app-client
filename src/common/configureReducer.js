@@ -22,8 +22,8 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
 ) => {
   const userWasSignedOut =
     action.type === 'ON_AUTH' &&
-    state.user &&
-    !action.payload.firebaseUser;
+    state.user.profile &&
+    !action.payload.user;
   if (!userWasSignedOut) {
     return reducer(state, action);
   }
@@ -33,13 +33,10 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
     app: state.app,
     global: initialState.global,
     location: initialState.location,
-    user: initialState.user,
     config: initialState.config,
     device: initialState.device,
     job: initialState.job,
     pagination: initialState.pagination,
-    closestCity: initialState.closestCity,
-    closestDrivers: initialState.closestDrivers,
     jobs: initialState.jobs,
     newJob: initialState.newJob,
     intl: initialState.intl,
@@ -56,8 +53,6 @@ const configureReducer = (initialState: Object) => {
     delivery,
     config,
     device,
-    closestCity,
-    closestDrivers,
     jobs,
     pagination,
     newJob,

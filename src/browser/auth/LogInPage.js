@@ -39,7 +39,7 @@ const LogInPage = ({ disabled, location, authed }) => (
               />
             </Box>
             <SignInError />
-            { !disabled &&
+            { disabled &&
             <Loading>
               {message => <Message>{message}</Message>}
             </Loading>
@@ -73,7 +73,7 @@ export default R.compose(
   connect(
     (state: State) => ({
       disabled: state.auth.formDisabled,
-      authed: state.user,
+      authed: state.user.profile,
     }),
   ),
 )(LogInPage);
