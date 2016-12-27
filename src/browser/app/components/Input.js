@@ -6,30 +6,60 @@ import Text, { TextProps } from './Text';
 import Box from './Box';
 
 export type InputProps = TextProps & {
-  name?: string,
+  inline?: boolean,
+  invalid?: boolean,
   label?: string,
   labelSize?: string,
-  placeholder?: string,
   maxLength?: number,
+  onChange?: (SyntheticEvent) => void,
+  name?: string,
+  placeholder?: string,
   type?: InputTypes,
-  invalid?: boolean
+  value?: string,
 }
 
-const CustomInput = styled((theme, props: InputProps) => ({
+// This is gold. Input looks like exactly as Text in all modern browsers.
+// That's great for in place editing UI with vertical rhythm everywhere.
+const enforceTextLook = {
+  map: style => ({
+    ...style,
+    // This fixes a lot of issues and it's ok. Input can't be multiline.
+    height: style.lineHeight,
+  }),
+  // All these values are required. Otherwise, Edge or Firefox would break.
+  style: {
+    borderWidth: 0,
+    display: 'block',
+    margin: 0,
+    outline: 'none', // Input doesn't need the outline, focus state is obvious.
+    padding: 15,
+    width: '100%',
+  },
+};
+
+const StyledInput: Styled<InputProps> = styled((theme, props: InputProps) => ({
   $extends: Text,
-  display: 'block',
-  width: '100%',
-  color: props.color ? theme.colors[props.color] : theme.colors.black,
+  $map: enforceTextLook.map,
+  ...enforceTextLook.style,
   border: theme.input.borderColor,
   borderColor: props.invalid ? theme.colors.error : theme.input.borderColor,
+  color: props.color ? theme.colors[props.color] : theme.colors.black,
   transition: 'border 0.3s',
-  type: props.type ? props.type : 'text',
-}), 'input', ['name', 'placeholder', 'type', 'onKeyDown']);
+  width: '100%',
+}), 'input', [
+  'name',
+  'onChange',
+  'placeholder',
+  'type',
+  'value',
+  'onKeyDown',
+  'maxLength',
+]);
 
 const Input: Styled<InputProps> = (props: InputProps) => (
   <Box marginBottom={'0.5em'}>
     {props.label ? <Text size={props.labelSize ? props.labelSize : 0}>{props.label}</Text> : null}
-    <CustomInput {...props} />
+    <StyledInput {...props} />
   </Box>
 );
 

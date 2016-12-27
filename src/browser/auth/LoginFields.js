@@ -1,4 +1,5 @@
 /* @flow */
+import R from 'ramda';
 import type { State } from '../../common/types';
 import React from 'react';
 import buttonsMessages from '../../common/app/buttonsMessages';
@@ -11,7 +12,6 @@ import { Button, Input, Link, Form, focus, Box } from '../app/components';
 
 class LoginFields extends React.Component {
 
-
   constructor(props: P) {
     super(props);
 
@@ -19,9 +19,9 @@ class LoginFields extends React.Component {
     this.loginViaPassword = this.loginViaPassword.bind(this);
   }
 
-  onFormSubmit = () => {
+  onFormSubmit() {
     this.loginViaPassword();
-  };
+  }
 
   loginViaPassword() {
     const { fields, login } = this.props;
@@ -33,7 +33,7 @@ class LoginFields extends React.Component {
 
     return (
       <Box>
-        <Form onSubmit={this.onFormSubmit} small>
+        <Form onSubmit={() => console.log('hola')} small>
           <Box>
             <Input
               {...fields.email}
@@ -55,7 +55,7 @@ class LoginFields extends React.Component {
               type="password"
             />
             <Box marginTop="1em">
-              <Button width="100%" disabled={disabled} align="center">
+              <Button type="submit" width="100%" disabled={disabled} align="center">
                 <FormattedMessage {...buttonsMessages.logIn} />
               </Button>
             </Box>
@@ -76,15 +76,6 @@ class LoginFields extends React.Component {
   }
 }
 
-LoginFields = focus(LoginFields, 'error');
-
-LoginFields = injectIntl(LoginFields);
-
-LoginFields = fields({
-  path: ['auth', 'email'],
-  fields: ['email', 'password'],
-})(LoginFields);
-
 LoginFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   fields: React.PropTypes.object.isRequired,
@@ -92,10 +83,19 @@ LoginFields.propTypes = {
   login: React.PropTypes.func.isRequired,
 };
 
-export default connect(
-  (state: State) => ({
-    disabled: state.auth.formDisabled,
-    error: state.auth.error,
+LoginFields = focus(LoginFields, 'error');
+
+export default R.compose(
+  connect(
+    (state: State) => ({
+      disabled: state.auth.formDisabled,
+      error: state.auth.error,
+    }),
+    { login },
+  ),
+  injectIntl,
+  fields({
+    path: 'login',
+    fields: ['email', 'password'],
   }),
-  { login },
 )(LoginFields);

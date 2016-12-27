@@ -6,7 +6,7 @@ import styled from './styled';
 import React from 'react';
 
 type FormProps = BoxProps & {
-  onSubmit?: SyntheticEvent => void
+  onSubmit?: (SyntheticEvent) => void
 };
 
 const onSubmitWithPreventDefault = onSubmit => event => {

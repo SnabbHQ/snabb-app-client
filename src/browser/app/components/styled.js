@@ -1,33 +1,58 @@
 /* @flow */
 import type { BrowserStyle, Styled, Theme } from '../themes/types';
-import React from 'react';
 import { createComponent } from 'react-fela';
+import React from 'react';
 
-type DivButtonProps = {
-  disabled?: boolean,
-};
-
-// TODO: Configure via context for React Native.
+// TODO: Inject platform specific types via React context.
 const getPlatformType = (type) => {
-  // TODO: Use View for div and Text for span. Etc.
   if (type === 'button') {
-    // developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets
-    return (props: DivButtonProps) => (
-      <div tabIndex={props.disabled ? -1 : 0} role="button" {...props} />
+
+    // TODO - Reverted to button so we can have a form working properly. Worry about rendering
+    // later when required.
+    // Render button as div because button is not consistently rendered across
+    // browsers and it's hard and tricky to enforce the same look.
+    // developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
+    // developer.mozilla.org/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets
+    return (props: {
+      disabled?: boolean,
+      onClick?: Function,
+    }) => (
+      <button // eslint-disable-line jsx-a11y/no-static-element-interactions
+        {...props}
+        role="button"
+        onKeyPress={e => {
+          const isSpacebar = e.key === ' ';
+          if (!isSpacebar) return;
+          e.preventDefault();
+          if (typeof props.onClick !== 'function') return;
+          props.onClick(e);
+        }}
+        tabIndex={props.disabled ? -1 : 0}
+      />
     );
   }
   return type;
 };
 
-const createComponentRule = (rule) => (props) => {
-  const { $extends, ...style } = typeof rule === 'function'
-    ? rule(props.theme, props)
-    : rule;
-  if (!$extends) return style;
-  const spread = []
-    .concat($extends)
-    .reduce((prev, next) => ({ ...prev, ...next.rule(props) }), {});
-  return { ...spread, ...style };
+const createExtendedRule = (rule) => (props) => {
+  const {
+    $extends,
+    $map = i => i,
+    ...style
+  } = typeof rule === 'function' ? rule(props.theme, props) : rule;
+  // Unfortunatelly, we need $extends helper because Flowtype spread is broken.
+  const extended = $extends
+    ? Array.isArray($extends)
+      ? $extends[0].rule({
+        ...props,
+        ...$extends[1],
+      })
+      : $extends.rule(props)
+    : {};
+  return {
+    maps: [$map].concat(extended.maps || []),
+    style: { ...extended.style, ...style },
+  };
 };
 
 const styled = <Props>(
@@ -35,10 +60,18 @@ const styled = <Props>(
   type?: string | Function,
   passProps?: Array<string>,
 ): Styled<Props> => {
-  const componentRule = createComponentRule(rule);
-  const platformType = getPlatformType(type);
-  const Component = createComponent(componentRule, platformType, passProps);
-  Component.rule = componentRule;
+  const extendedRule = createExtendedRule(rule);
+  const componentRule = (props) => {
+    const { style, maps } = extendedRule(props);
+    // For debugging or post processing.
+    return maps.reduce((style, map) => map(style), style);
+  };
+  const Component = createComponent(
+    componentRule,
+    getPlatformType(type),
+    passProps,
+  );
+  Component.rule = extendedRule;
   return Component;
 };
 

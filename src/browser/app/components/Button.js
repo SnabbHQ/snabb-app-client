@@ -29,7 +29,7 @@ const Button: Styled<ButtonProps> = styled((theme, props) => ({
   paddingBottom: '0.5em',
   paddingLeft: '1.5em',
   paddingRight: '1.5em',
-}), 'button', ['onClick']);
+}), 'button', ['onClick', 'type']);
 
 Button.defaultProps = ({
   antialiasing: true,
