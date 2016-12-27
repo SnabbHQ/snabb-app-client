@@ -108,7 +108,7 @@ export default class SnabbApi extends Backend {
    * sessionToken: "r:Kt9wXIBWD0dNijNIq2u5rRllW"
    *
    */
-  async logIn(data: Object) {
+  async login(data: Object) {
     return await this._fetch({
       method: 'POST',
       url: '/auth/login/',

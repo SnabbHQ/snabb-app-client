@@ -1,10 +1,9 @@
 // @flow
-import type { Action, Deps } from '../../types';
+import type { Deps } from '../../types';
 import BackendFactory from '../../lib/BackendFactory';
 import AppAuthToken from '../../lib/__mocks__/AppAuthToken';
 
-import { logInSuccess, logInFail } from '../actions';
-
+import { loginSuccess, loginFail } from '../actions';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -30,20 +29,20 @@ export function saveSessionToken(json) {
   return new AppAuthToken().storeSessionToken(json);
 }
 
-const logIn = (action$: any, { validate }: Deps) =>
+const login = (action$: any, { validate }: Deps) =>
   action$.ofType('LOG_IN')
     .map(action => action.payload.options)
     .mergeMap((options) => {
       const { email, password } = options;
-      Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
+      return Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
         .switchMap(() => Observable.fromPromise(
-          BackendFactory().logIn({ email, password })),
+          BackendFactory().login({ email, password })),
         )
-        .map((json) => (
+        .map((json) => {
           saveSessionToken();
-          logInSuccess(json);
-        ))
-        .catch(error => Observable.of(logInFail(error)));
+          return loginSuccess(json);
+        })
+        .catch(error => Observable.of(loginFail(error)));
     });
 
-export default logIn;
+export default login;

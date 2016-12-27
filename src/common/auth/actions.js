@@ -16,7 +16,7 @@ export const loginFail = (error: Error): Action => ({
   payload: { error },
 });
 
-export const signOut = () => ({ firebaseAuth }: Deps): Action => {
+export const logout = () => ({ firebaseAuth }: Deps): Action => {
   firebaseAuth().signOut();
   return {
     type: 'LOG_OUT',

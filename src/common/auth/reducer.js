@@ -31,7 +31,7 @@ const reducer = (
     case 'REGISTER_FAIL':
     case 'LOG_OUT_FAIL':
     case 'RESET_PASSWORD_FAIL': {
-      return { ...state, formDisabled: false, error: action.payload.error };
+      return { ...state, formDisabled: false, isFetching: false, error: action.payload.error };
     }
 
     default:

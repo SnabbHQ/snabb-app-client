@@ -47,7 +47,7 @@ export default class Backend {
    * updatedAt: "2015-12-30T16:08:50.419Z"
    *
    */
-  logIn(data) {
+  login(data) {
 
   }
   /**

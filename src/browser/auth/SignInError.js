@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 const styles = {
   message: {
     display: 'inline-block',
+    width: '100%'
   },
 };
 
