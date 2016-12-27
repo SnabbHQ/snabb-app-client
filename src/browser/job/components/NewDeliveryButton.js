@@ -1,7 +1,7 @@
-import React, {PropTypes} from "react"
-import {Button} from '../../app/components'
-import {FormattedMessage} from "react-intl"
-import jobMessages from '../../../common/job/jobMessages'
+import React, { PropTypes } from 'react';
+import { Button } from '../../app/components';
+import { FormattedMessage } from 'react-intl';
+import jobMessages from '../../../common/job/jobMessages';
 import styled from '../../app/components/styled';
 
 const CustomButton = styled((theme, props) => ({
@@ -9,28 +9,27 @@ const CustomButton = styled((theme, props) => ({
   backgroundColor: theme.colors.info,
   ':hover': {
     backgroundColor: theme.colors.infoHover,
-  }
-}), 'button', ['onClick'])
+  },
+}), 'button', ['onClick']);
 
-export default function NewDeliveryButton({}, {router}: Object) {
-
+export default function NewDeliveryButton({}, { router }: Object) {
   const onButtonClick = () => {
-    // TODO 
+    // TODO
     // analytics.track('Clicked new delivery button', {
-    //   category: analytics.DELIVERY_REQUEST_FLOW_CATEGORY, 
-    //   position: this.props.position 
-    // })  
+    //   category: analytics.DELIVERY_REQUEST_FLOW_CATEGORY,
+    //   position: this.props.position
+    // })
 
     router.transitionTo('/new');
-  }
+  };
 
   return (
     <CustomButton onClick={onButtonClick}>
       <FormattedMessage {...jobMessages.newDelivery} />
     </CustomButton>
-  )
+  );
 }
 
 NewDeliveryButton.contextTypes = {
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
 };

@@ -1,10 +1,8 @@
 /* @flow */
 import React from 'react';
-import { Fixed, Container, Text, Button, Box } from '../app/components';
-import { FormattedMessage } from 'react-intl';
+import { Container, Text, Box } from '../app/components';
 import { Match } from '../../common/app/components';
 import styled from '../app/components/styled';
-import ProfilePage from './ProfilePage';
 import BillingPage from './BillingPage';
 
 

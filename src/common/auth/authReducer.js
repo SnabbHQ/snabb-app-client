@@ -144,28 +144,6 @@ export default function authReducer(state = initialState, action) {
       return state.setIn(['form', 'isFetching'], false)
       .setIn(['form', 'error'], action.payload);
 
-    /**
-     * ### Hot Loading support
-     *
-     * Set all the field values from the payload
-     */
-    case SET_STATE:
-      var form = JSON.parse(action.payload).auth.form;
-
-      var next = state.setIn(['form', 'state'], form.state)
-          .setIn(['form', 'disabled'], form.disabled)
-          .setIn(['form', 'error'], form.error)
-          .setIn(['form', 'isValid'], form.isValid)
-          .setIn(['form', 'isFetching'], form.isFetching)
-          .setIn(['form', 'fields', 'email'], form.fields.email)
-          .setIn(['form', 'fields', 'emailHasError'], form.fields.emailHasError)
-          .setIn(['form', 'fields', 'password'], form.fields.password)
-          .setIn(['form', 'fields', 'passwordHasError'], form.fields.passwordHasError)
-          .setIn(['form', 'fields', 'passwordAgain'], form.fields.passwordAgain)
-          .setIn(['form', 'fields', 'passwordAgainHasError'], form.fields.passwordAgainHasError);
-
-      return next;
-
     case DELETE_TOKEN_REQUEST:
     case DELETE_TOKEN_SUCCESS:
         /**

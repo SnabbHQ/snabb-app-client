@@ -1,8 +1,6 @@
 /* @flow */
 import React from 'react';
-import { Fixed, Container, Text, Button, Box } from '../app/components';
-import { FormattedMessage } from 'react-intl';
-import styled from '../app/components/styled';
+import { Text, Box } from '../app/components';
 
 const BillingPage = () => (
   <Box display="flex">

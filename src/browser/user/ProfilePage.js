@@ -1,9 +1,6 @@
 /* @flow */
-import React from 'react';
-import { Fixed, Container, Text, Button, Box } from '../app/components';
-import { FormattedMessage } from 'react-intl';
-import { Match } from '../../common/app/components';
-import styled from '../app/components/styled';
+import React from "react";
+import { Text, Box } from "../app/components";
 
 const ProfilePage = () => (
   <Box display="flex">
