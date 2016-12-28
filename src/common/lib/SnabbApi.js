@@ -12,7 +12,7 @@ import CONFIG from './config';
 import _ from 'underscore';
 import Backend from './Backend';
 
-let fakeUser = {
+let fakeProfile = {
   objectId: 'Z4yvP19OeL',
   sessionToken: 'r:uFeYONgIsZMPyxOWVJ6VqJGqv',
   updatedAt: '2015-12-30T15:29:36.611Z',
@@ -204,7 +204,7 @@ export default class SnabbApi extends Backend {
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201)) {
-          return fakeUser;
+          return fakeProfile;
         } else {
           throw (res.json);
         }
@@ -231,7 +231,7 @@ export default class SnabbApi extends Backend {
       .then((res) => {
         if ((res.status === 200 || res.status === 201)) {
           // TODO - Obviously this should never be here
-          fakeUser = data;
+          fakeProfile = data;
 
           return {};
         } else {

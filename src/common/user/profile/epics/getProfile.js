@@ -1,7 +1,7 @@
 // @flow
 import type { Deps } from '../../../types';
 
-import { getProfileSuccess, getProfileFailure } from '../actions';
+import { getProfileSuccess, getProfileFail } from '../actions';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -20,14 +20,15 @@ import 'rxjs/add/operator/catch';
  * @return {Observable<R|I>}
  */
 const getProfile = (action$: any, { backendFactory, appAuthToken }: Deps) =>
-  action$.ofType('GET_PROFILE_REQUEST')
-    .switchMap(() =>
+  action$.ofType('GET_PROFILE')
+    .mergeMap(() =>
       Observable.fromPromise(appAuthToken.getSessionToken())
         .switchMap(Observable.fromPromise(backendFactory.getProfile()))
         .map(getProfileSuccess)
-        .catch(error => Observable.of(
-          getProfileFailure(error),
-        )),
+        .catch(error => {
+          console.log(error);
+          return Observable.of(getProfileFail(error));
+        }),
     );
 
 export default getProfile;

@@ -1,22 +1,22 @@
-export function getUserProfile() {
-  return {
-    type: 'GET_PROFILE',
-  };
-}
+/* @flow */
+import type { Action, Profile } from '../../types';
 
-export function getProfileSuccess(json) {
-  return {
-    type: 'GET_PROFILE_SUCCESS',
-    payload: json,
-  };
-}
 
-export function getProfileFailure(error) {
-  return {
-    type: 'GET_PROFILE_FAIL',
-    payload: error,
-  };
-}
+export const getProfile = (): Action => ({
+  type: 'GET_PROFILE',
+});
+
+export const getProfileSuccess = (profile: Profile): Action => ({
+  type: 'GET_PROFILE_SUCCESS',
+  payload: {
+    profile: { profile },
+  },
+});
+
+export const getProfileFail = (error: Error): Action => ({
+  type: 'GET_PROFILE_FAIL',
+  payload: { error },
+});
 
 export function updateUserProfile(userId, newUserData, sessionToken) {
   return {
