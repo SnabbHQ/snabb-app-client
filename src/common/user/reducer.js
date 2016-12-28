@@ -16,8 +16,12 @@ const reducer = (
 ): UserState => {
   switch (action.type) {
 
+    case 'LOG_IN_SUCCESS': {
+      return { ...state, profile: action.payload.user };
+    }
+
     case 'LOG_OUT_SUCCESS': {
-      return { ...state, user: null };
+      return { ...state, profile: null };
     }
 
     default:

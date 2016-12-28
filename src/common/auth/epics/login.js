@@ -2,7 +2,6 @@
 import type { Deps } from '../../types';
 
 import { loginSuccess, loginFail } from '../actions';
-import { getProfile } from '../../user/profile/actions';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -28,6 +27,7 @@ const login = (action$: any, { backendFactory, appAuthToken, validate }: Deps) =
       return Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
         .switchMap(() => Observable.fromPromise(backendFactory.login({ email, password })))
         .map(json => appAuthToken.storeSessionToken(appAuthToken, json))
+        .switchMap(() => Observable.fromPromise(backendFactory.getProfile()))
         .map(loginSuccess)
         .catch(error => Observable.of(loginFail(error)));
     });

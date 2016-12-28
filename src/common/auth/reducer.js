@@ -7,6 +7,7 @@ const initialState = {
   isFetching: false,
 };
 
+
 const reducer = (
   state: AuthState = initialState,
   action: Action,
