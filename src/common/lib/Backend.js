@@ -33,27 +33,15 @@ export default class Backend {
  /**
    * ### logIn
    * encode the data and and call _fetch
-   *
-   * @param data
-   *
-   *  {password: "Passw0rd!"}
-   *
-   * @returns
-   *
-   * createdAt: "2015-12-30T15:29:36.611Z"
-   * email: "barton@foo.com"
-   * objectId: "Z4yvP19OeL"
-   * sessionToken: "r:Kt9wXIBWD0dNijNIq2u5rRllW"
-   * updatedAt: "2015-12-30T16:08:50.419Z"
-   *
    */
-  login(data) {}
+  auth(data) {}
 
   /**
    * ### logOut
    * prepare the request and call _fetch
    */
   logOut() {}
+
   /**
    * ### resetPassword
    * the data is already in a JSON format, so call _fetch
@@ -68,21 +56,9 @@ export default class Backend {
   resetPassword(data) {}
 
   /**
-   * ### getProfile
+   * ### getProfile*
    * Using the sessionToken, we'll get everything about
    * the current user.
-   *
-   * @returns
-   *
-   * if good:
-   * {createdAt: "2015-12-30T15:29:36.611Z"
-   *  email: "barton@acclivyx.com"
-   *  objectId: "Z4yvP19OeL"
-   *  sessionToken: "r:uFeYONgIsZMPyxOWVJ6VqJGqv"
-   *  updatedAt: "2015-12-30T15:29:36.611Z"
-   *  username: "barton"}
-   *
-   * if error, {code: xxx, error: 'message'}
    */
   getProfile() {}
 

@@ -25,7 +25,7 @@ const login = (action$: any, { backendFactory, appAuthToken, validate }: Deps) =
     .mergeMap((options) => {
       const { email, password } = options;
       return Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
-        .switchMap(() => Observable.fromPromise(backendFactory.login({ email, password })))
+        .switchMap(() => Observable.fromPromise(backendFactory.auth({ email, password })))
         .map(json => appAuthToken.storeSessionToken(appAuthToken, json))
         .switchMap(() => Observable.fromPromise(backendFactory.getProfile()))
         .map(loginSuccess)

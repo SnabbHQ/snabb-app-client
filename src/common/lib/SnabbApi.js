@@ -88,20 +88,19 @@ export default class SnabbApi extends Backend {
    *
    *  {email: "barton@foo.com", password: "Passw0rd!"}
    */
-  async login(data: Object) {
+  async auth(data: Object) {
     return await this.fetch({
       method: 'POST',
-      url: '/auth/login/',
+      url: '/oauth/token/',
       body: data,
     })
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           return {
-            createdAt: '2015-12-30T15:29:36.611Z',
-            updatedAt: '2015-12-30T16:08:50.419Z',
-            objectId: 'Z4yvP19OeL',
-            email: 'barton@foo.com',
-            sessionToken: 'r:Kt9wXIBWD0dNijNIq2u5rRllW',
+            access_token: 'J1qK1c18UUGJFAzz9xnH56584l4',
+            token_type: 'bearer',
+            expires_in: 2592000,
+            scope: 'api',
           };
         } else {
           throw (res.json);

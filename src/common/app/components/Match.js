@@ -4,7 +4,7 @@ import React from 'react';
 import { Match as ReactRouterMatch, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
-const haveAccess = (authenticated, authorized) => authorized ? true : true;
+const haveAccess = (authed, authorized) => authorized ? authed : true;
 
 const Match = ({
   authorized,
