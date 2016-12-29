@@ -46,8 +46,8 @@ export default class SnabbApi extends Backend {
     this.sessionToken = _.isNull(token) ? '' : token.sessionToken;
 
     this.API_BASE_URL = CONFIG.backend.local
-      ? CONFIG.HAPI.local.url
-      : CONFIG.HAPI.develop.url;
+      ? CONFIG.Api.local.url
+      : CONFIG.Api.develop.url;
 
     const bodyInit = JSON.stringify({
       code: 200,
@@ -57,6 +57,49 @@ export default class SnabbApi extends Backend {
       status: 201,
       bodyInit,
     };
+  }
+
+  /**
+   * ### logIn
+   * encode the data and and call fetch
+   *
+   * @param data
+   *
+   *  {email: "barton@foo.com", password: "Passw0rd!"}
+   */
+  async auth(data: Object) {
+    let formBody = [];
+
+    const authDetails = {
+      client_id: '123',
+      username: data.email,
+      password: data.password,
+      grant_type: 'password',
+    };
+
+    for (const property in authDetails) {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(authDetails[property]);
+      formBody.push(`${encodedKey}=${encodedValue}`);
+    }
+
+    formBody = formBody.join('&');
+
+    return await fetch(`${this.API_BASE_URL}/oauth/token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formBody,
+    })
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
+        }
+
+        throw (json);
+      }))
+      .catch((error) => {
+        throw (error);
+      });
   }
 
   /**
@@ -75,32 +118,6 @@ export default class SnabbApi extends Backend {
           throw res.json;
         }
       })
-      .catch((error) => {
-        throw (error);
-      });
-  }
-
-  /**
-   * ### logIn
-   * encode the data and and call fetch
-   *
-   * @param data
-   *
-   *  {email: "barton@foo.com", password: "Passw0rd!"}
-   */
-  async auth(data: Object) {
-    return await this.fetchMock({
-      method: 'POST',
-      url: '/oauth/token',
-      body: data,
-    })
-      .then((res) => res.json().then(json => {
-        if (res.status === 200 || res.status === 201) {
-          return json;
-        } else {
-          throw (res.json);
-        }
-      }))
       .catch((error) => {
         throw (error);
       });
@@ -214,7 +231,7 @@ export default class SnabbApi extends Backend {
    *   status: response.status,
    *   json: response.json()
    */
-  async fetch(opts) {
+  async _fetch(opts) {
     opts = _.extend({
       method: 'GET',
       url: null,
@@ -225,14 +242,14 @@ export default class SnabbApi extends Backend {
     const reqOpts = {
       method: opts.method,
       headers: {
-        'X-Parse-Application-Id': this._applicationId,
-        'X-Parse-REST-API-Key': this._restAPIKey,
+        // 'X-Parse-Application-Id': this._applicationId,
+        // 'X-Parse-REST-API-Key': this._restAPIKey,
       },
     };
 
-    if (this._sessionToken) {
-      reqOpts.headers['X-Parse-Session-Token'] = this._sessionToken;
-    }
+    // if (this._sessionToken) {
+    //   //reqOpts.headers['X-Parse-Session-Token'] = this._sessionToken;
+    // }
 
     if (opts.method === 'POST' || opts.method === 'PUT') {
       reqOpts.headers.Accept = 'application/json';
