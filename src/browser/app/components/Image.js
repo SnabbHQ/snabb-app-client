@@ -8,6 +8,7 @@ type ImageProps = {|
   height: number,
   src: string | number, // number, because src={require('./foo.png')}
   width: number,
+  onClick: func,
 |};
 
 const altOrRolePresentation = alt => alt
@@ -35,6 +36,7 @@ const Image = (props: ImageProps) => (
       height="100%"
       src={props.src}
       width="100%"
+      onClick={props.onClick}
     />
   </ImageWrapper>
 );

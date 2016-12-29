@@ -1,7 +1,6 @@
 /* @flow */
 import type { State, User } from '../../common/types';
-import React from 'react';
-import linksMessages from '../../common/app/linksMessages';
+import React, { PropTypes } from 'react';
 import { NewDeliveryButton } from '../job/components';
 import { FormattedMessage } from 'react-intl';
 import { Fixed, Link, Text, Box, Image } from '../app/components';
@@ -38,51 +37,62 @@ const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
   </Link>
 );
 
-const Header = ({ viewer }: HeaderProps) => (
-  <Fixed top left right zIndex={5}>
-    <Box
-      backgroundColor="primary"
-      display="flex"
-      flexWrap="wrap"
-      paddingVertical={0.3}
-      boxShadow="0 1px 2px rgba(0,0,0,0.15)"
-    >
-      <Space x={3} />
+const Header = ({ user }: HeaderProps, { router }: Object) => {
+  const onProfileImageClick = () => {
+    router.transitionTo('/profile');
+  };
+
+  return (
+    <Fixed top left right zIndex={5}>
       <Box
+        backgroundColor="primary"
         display="flex"
-        alignItems="center"
+        flexWrap="wrap"
+        paddingVertical={0.3}
+        boxShadow="0 1px 2px rgba(0,0,0,0.15)"
       >
-        <Image
-          alt="Snabb logo"
-          height={50}
-          width={50}
-          src={logo}
-        />
-        <Space x={1} />
-        <Text color="white" size={1}>Snabb</Text>
-      </Box>
-      <Space auto />
-      <Box
-        display="flex"
-        alignItems="center"
-      >
-        <NewDeliveryButton />
+        <Space x={3} />
+        <Box
+          display="flex"
+          alignItems="center"
+        >
+          <Image
+            alt="Snabb logo"
+            height={50}
+            width={50}
+            src={logo}
+          />
+          <Space x={1} />
+          <Text color="white" size={1}>Snabb</Text>
+        </Box>
+        <Space auto />
+        <Box
+          display="flex"
+          alignItems="center"
+        >
+          <NewDeliveryButton />
+          <Space x={2} />
+          <Image
+            height={40}
+            width={40}
+            alt="Snabb"
+            src={clientPhoto}
+            onClick={onProfileImageClick}
+          />
+        </Box>
         <Space x={2} />
-        <Image
-          height={40}
-          width={40}
-          alt="Snabb"
-          src={clientPhoto}
-        />
       </Box>
-      <Space x={2} />
-    </Box>
-  </Fixed>
-);
+    </Fixed>
+  );
+};
+
+Header.contextTypes = {
+  router: PropTypes.object.isRequired,
+};
 
 export default connect(
   (state: State) => ({
-    viewer: {}, // state.users.viewer,
+    user: state.user,
   }),
 )(Header);
 
