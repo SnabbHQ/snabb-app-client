@@ -28,10 +28,10 @@ const SideMenuLink = ({ exactly, to, message }: HeaderLinkProps) => (
     size={-1}
     align="center"
   >
-    <Box backgroundColor="white" width="2px" height="100%" display="block" />
     <Image
       alt="Snabb logo"
       height={40}
+      width={40}
       src={logo}
     />
     <FormattedMessage {...message} />

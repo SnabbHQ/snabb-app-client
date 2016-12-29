@@ -58,8 +58,8 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
         >
           <Image
             alt="Snabb logo"
-            height={50}
-            width={50}
+            height={40}
+            width={30}
             src={logo}
           />
           <Space x={1} />
@@ -74,7 +74,7 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
           <Space x={2} />
           <Image
             height={40}
-            width={40}
+            width={30}
             alt="Snabb"
             src={clientPhoto}
             onClick={onProfileImageClick}
