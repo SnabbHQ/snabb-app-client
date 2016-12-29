@@ -5,12 +5,12 @@ module.exports = {
     develop: false,
     production: false,
   },
-  HAPI: {
+  Api: {
     local: {
       url: 'http://127.0.0.1:8000/api',
     },
     production: {
-      url: '',
+      url: 'https://snabb-api-mock.herokuapp.com/api/v1',
     },
   },
 };

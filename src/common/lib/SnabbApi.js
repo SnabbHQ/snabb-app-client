@@ -46,8 +46,8 @@ export default class SnabbApi extends Backend {
     this.sessionToken = _.isNull(token) ? '' : token.sessionToken;
 
     this.API_BASE_URL = CONFIG.backend.local
-          ? CONFIG.HAPI.local.url
-          : CONFIG.HAPI.develop.url;
+      ? CONFIG.HAPI.local.url
+      : CONFIG.HAPI.develop.url;
 
     const bodyInit = JSON.stringify({
       code: 200,
@@ -63,7 +63,7 @@ export default class SnabbApi extends Backend {
    * ### register
    */
   async register(data: Object) {
-    return await this.fetch({
+    return await this.fetchMock({
       method: 'POST',
       url: '/account/register',
       body: data,
@@ -82,47 +82,43 @@ export default class SnabbApi extends Backend {
 
   /**
    * ### logIn
-   * encode the data and and call _fetch
+   * encode the data and and call fetch
    *
    * @param data
    *
    *  {email: "barton@foo.com", password: "Passw0rd!"}
    */
   async auth(data: Object) {
-    return await this.fetch({
+    return await this.fetchMock({
       method: 'POST',
-      url: '/oauth/token/',
+      url: '/oauth/token',
       body: data,
     })
-      .then((res) => {
+      .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
-          return {
-            access_token: 'J1qK1c18UUGJFAzz9xnH56584l4',
-            token_type: 'bearer',
-            expires_in: 2592000,
-            scope: 'api',
-          };
+          return json;
         } else {
           throw (res.json);
         }
-      })
+      }))
       .catch((error) => {
         throw (error);
       });
   }
+
   /**
    * ### logout
    * prepare the request and call _fetch
    */
   async logout() {
-    return await this.fetch({
+    return await this.fetchMock({
       method: 'POST',
       url: '/account/logout',
       body: {},
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
-            (res.status === 400 && res.code === 209)) {
+          (res.status === 400 && res.code === 209)) {
           return {};
         } else {
           throw new Error({ code: res.statusCode, error: res.message });
@@ -138,7 +134,7 @@ export default class SnabbApi extends Backend {
    * the data is already in a JSON format, so call _fetch
    */
   async resetPassword(data: Object) {
-    return await this.fetch({
+    return await this.fetchMock({
       method: 'POST',
       url: '/account/resetPasswordRequest',
       body: data,
@@ -163,7 +159,7 @@ export default class SnabbApi extends Backend {
    * @returns
    */
   async getProfile() {
-    return await this.fetch({
+    return await this.fetchMock({
       method: 'GET',
       url: '/account/profile/me',
     })
@@ -178,6 +174,7 @@ export default class SnabbApi extends Backend {
         throw (error);
       });
   }
+
   /**
    * ### updateProfile
    * for this user, update their record
@@ -188,7 +185,7 @@ export default class SnabbApi extends Backend {
    * {email: "barton@foo.com"}
    */
   async updateProfile(userId: string, data: Object) {
-    return await this.fetch({
+    return await this.fetchMock({
       method: 'POST',
       url: `/account/profile/${userId}`,
       body: data,
@@ -218,6 +215,47 @@ export default class SnabbApi extends Backend {
    *   json: response.json()
    */
   async fetch(opts) {
+    opts = _.extend({
+      method: 'GET',
+      url: null,
+      body: null,
+      callback: null,
+    }, opts);
+
+    const reqOpts = {
+      method: opts.method,
+      headers: {
+        'X-Parse-Application-Id': this._applicationId,
+        'X-Parse-REST-API-Key': this._restAPIKey,
+      },
+    };
+
+    if (this._sessionToken) {
+      reqOpts.headers['X-Parse-Session-Token'] = this._sessionToken;
+    }
+
+    if (opts.method === 'POST' || opts.method === 'PUT') {
+      reqOpts.headers.Accept = 'application/json';
+      reqOpts.headers['Content-Type'] = 'application/json';
+    }
+
+    if (opts.body) {
+      reqOpts.body = JSON.stringify(opts.body);
+    }
+
+    return await fetch(this.API_BASE_URL + opts.url, reqOpts);
+  }
+
+  /**
+   * ### fetch
+   * A generic function that prepares the request
+   *
+   * @returns object:
+   *  {code: response.code,
+   *   status: response.status,
+   *   json: response.json()
+   */
+  async fetchMock(opts) {
     return await this.response;
   }
 }
