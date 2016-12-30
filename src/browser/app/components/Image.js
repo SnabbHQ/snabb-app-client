@@ -7,7 +7,7 @@ type ImageProps = {|
   alt?: string,
   height: number,
   src: string | number, // number, because src={require('./foo.png')}
-  width: number,
+  width?: number,
   onClick: func,
 |};
 
@@ -29,7 +29,7 @@ const Image = (props: ImageProps) => (
       {...altOrRolePresentation(props.alt)}
       height="100%"
       src={props.src}
-      width="100%"
+      width={props.width ? props.width : '100%'}
     />
   </ImageWrapper>
 );

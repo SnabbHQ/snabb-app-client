@@ -50,6 +50,10 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Account Details',
     id: 'app.links.accountDetails',
   },
+  billing: {
+    defaultMessage: 'Billing',
+    id: 'app.links.billing',
+  },
   settings: {
     defaultMessage: 'Settings',
     id: 'app.links.settings',

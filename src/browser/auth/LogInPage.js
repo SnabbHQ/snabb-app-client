@@ -34,7 +34,7 @@ const LogInPage = ({ disabled, location, authed }) => (
               <Image
                 alt="Snabb logo"
                 height={100}
-                width={100}
+                width="100%"
                 src={logo}
               />
             </Box>

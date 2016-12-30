@@ -1,6 +1,8 @@
 /* @flow */
 import React from 'react';
-import { Container, Text, Box } from '../app/components';
+import linksMessages from '../../common/app/linksMessages';
+import { FormattedMessage } from 'react-intl';
+import { Container, Link, Text, Box } from '../app/components';
 import { Match } from '../../common/app/components';
 import styled from '../app/components/styled';
 import Billing from './Billing';
@@ -32,13 +34,26 @@ const RightPanel = styled(() => ({
   },
 }));
 
+const ProfileLink = ({ exactly, to, message }: HeaderLinkProps) => (
+  <Link
+    display="block"
+    antialiasing
+    bold
+    color="black"
+    exactly={exactly}
+    marginHorizontal="1.5em"
+    to={to}
+  >
+    <FormattedMessage {...message} />
+  </Link>
+);
+
 const ProfilePage = ({ pathname }) => (
   <Container maxWidth="1140px">
     <Box display="flex">
       <LeftPanel>
-        <Text display="block">Hola</Text>
-        <Text display="block">Hola</Text>
-        <Text display="block">Hola2</Text>
+        <ProfileLink to={`${pathname}/details`} message={linksMessages.accountDetails} />
+        <ProfileLink to={`${pathname}/billing`} message={linksMessages.billing} />
       </LeftPanel>
       <RightPanel>
         <Box marginLeft="5em">

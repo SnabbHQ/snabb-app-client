@@ -10,8 +10,9 @@ const Card: Styled<CardProps> = styled((theme, props) => ({
   $extends: Box,
   display: 'block',
   border: true,
-  borderWidth: '10px',
-  borderColor: '#000',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: theme.divider.borderColor,
   padding: '2em',
   backgroundColor: 'white',
 }));

@@ -24,7 +24,7 @@ const theme: Theme = {
     white: '#fff',
     gray: openColor.gray4,
     open: openColor,
-    bodyBackground: '#f5f7fa',
+    bodyBackground: 'white',
   },
   border: {
     radius: 2,

@@ -1,28 +1,90 @@
 /* @flow */
 import React from 'react';
 import linksMessages from '../../common/app/linksMessages';
-import { FormattedMessage } from 'react-intl';
-import { Link, Text, Title, Box } from '../app/components';
+import { Text, Card, Input, Image, Title, Box } from '../app/components';
 
-const ProfileLink = ({ exactly, to, message }: HeaderLinkProps) => (
-  <Link
-    antialiasing
-    bold
-    color="white"
-    exactly={exactly}
-    marginHorizontal="1.5em"
-    to={to}
-  >
-    <FormattedMessage {...message} />
-  </Link>
-);
-
+// $FlowFixMe
+const logo = require('../../../assets/images/clientPhotoDefaultMedium.svg');
 
 const ProfileDetails = () => (
-  <Box display="flex">
+  <Box>
     <Title message={linksMessages.profile} />
-    <Text>Profile Details</Text>
-    <ProfileLink to="/active" message={linksMessages.accountDetails} />
+    <Card>
+      <Text>Business Information</Text>
+      <Image
+        alt="Profile Image"
+        height={50}
+        width={50}
+        src={logo}
+      />
+      <Input
+        name="Business Name"
+        label="Business Name"
+        labelSize={-1}
+        maxLength={100}
+        placeholder={''}
+        type="text"
+      />
+      <Text>General Information</Text>
+      <Box display="flex">
+        <Input
+          name="Business Name"
+          label="Business Name"
+          labelSize={-1}
+          maxLength={100}
+          placeholder={''}
+          type="text"
+        />
+        <Input
+          name="Business Name"
+          label="Business Name"
+          labelSize={-1}
+          maxLength={100}
+          placeholder={''}
+          type="text"
+        />
+      </Box>
+      <Box display="flex">
+        <Input
+          name="Business Name"
+          label="Business Name"
+          labelSize={-1}
+          maxLength={100}
+          placeholder={''}
+          type="text"
+        />
+        <Input
+          name="Business Name"
+          label="Business Name"
+          labelSize={-1}
+          maxLength={100}
+          placeholder={''}
+          type="text"
+        />
+      </Box>
+    </Card>
+
+    <Card>
+      <Text>Change your password</Text>
+      <Box display="flex">
+        <Input
+          name="Business Name"
+          label="Business Name"
+          labelSize={-1}
+          maxLength={100}
+          placeholder={''}
+          type="text"
+        />
+        <Input
+          name="Business Name"
+          label="Business Name"
+          labelSize={-1}
+          maxLength={100}
+          placeholder={''}
+          type="text"
+        />
+      </Box>
+    </Card>
   </Box>
 );
 

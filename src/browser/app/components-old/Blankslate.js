@@ -1,6 +1,7 @@
 /* @flow */
 import React, {PropTypes} from 'react'
-import {View, Heading, Flex, Image, Text} from './'
+import {View, Heading, Flex, Text} from './'
+import {Image, } from '../components'
 import {FormattedMessage} from "react-intl"
 
 type Props = {

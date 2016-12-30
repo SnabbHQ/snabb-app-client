@@ -1,14 +1,12 @@
 /* @flow */
 import React, { PropTypes } from 'react';
-import { Box, Heading, Grid } from '../../app/components';
-import { Image } from '../../app/components-old';
+import { Box, Heading, Grid, Image } from '../../app/components';
 
 const FieldHeader = ({ icon, title }) => (
   <Box>
     <Grid>
       <Image
         alt={title}
-        mt={2}
         src={icon}
       />
     </Grid>

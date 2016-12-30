@@ -1,7 +1,8 @@
 /* @flow */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Text, Radio, Image, Space, Flex } from '../../app/components-old';
+import { Radio, Space, Flex } from '../../app/components-old';
+import { Text, Image } from '../../app/components';
 
 const ICONS = {
   bike: require('../../../../assets/images/bike.svg'),
