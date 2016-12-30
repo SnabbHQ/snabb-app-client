@@ -1,8 +1,8 @@
 /* @flow */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Text, Image } from '../../app/components';
-import { Radio, Space, Flex } from '../../app/components-old';
+import { Text, Image, Space } from '../../app/components';
+import { Radio, Flex } from '../../app/components-old';
 
 const ICONS = {
   visa: require('../../../../assets/images/cardIconVI.svg'),

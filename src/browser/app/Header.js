@@ -4,8 +4,7 @@ import React, { PropTypes } from 'react';
 import linksMessages from '../../common/app/linksMessages';
 import { NewDeliveryButton } from '../job/components';
 import { FormattedMessage } from 'react-intl';
-import { Fixed, Link, Text, Box, Image } from '../app/components';
-import { Space } from '../app/components-old';
+import { Fixed, Link, Text, Box, Image, Space } from '../app/components';
 import { connect } from 'react-redux';
 
 // $FlowFixMe

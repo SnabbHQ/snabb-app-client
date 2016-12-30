@@ -5,7 +5,7 @@
 // modularscale.com
 // type-scale.com
 
-const scale = {
+export const scale = {
   step0: 1,
   step1: 15 / 16,
   step2: 8 / 9,

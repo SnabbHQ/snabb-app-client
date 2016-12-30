@@ -17,6 +17,7 @@ export { default as PageHeader } from './PageHeader';
 export { default as Paragraph } from './Paragraph';
 export { default as Text } from './Text';
 export { default as Title } from './Title';
+export { default as Space } from './Space';
 export { default as styled } from './styled';
 export { default as Input } from './Input';
 
