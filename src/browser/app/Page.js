@@ -20,7 +20,7 @@ const Page = ({ component: Component, includeHeader, ...props }: PageProps) => (
         </Box>
       }
       <Box
-        paddingTop={includeHeader && 2}
+        paddingTop={includeHeader && 3}
       >
         <Component {...renderProps} />
       </Box>
