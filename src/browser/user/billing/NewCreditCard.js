@@ -1,5 +1,5 @@
 /* @flow */
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import { FormattedMessage } from 'react-intl';

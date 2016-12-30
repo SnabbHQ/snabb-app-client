@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Text, FieldHeader, Button, Box } from '../../app/components';
 import { defineMessages, FormattedMessage } from 'react-intl';

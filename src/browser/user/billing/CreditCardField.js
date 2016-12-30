@@ -57,7 +57,7 @@ CreditCardField.DefaultProps = {
 
 export default connect(
   () => ({
-    cards: {}, // state.quotes.all,
+    cards: {}, // state.cards.all,
   }),
   {},
 )(CreditCardField);

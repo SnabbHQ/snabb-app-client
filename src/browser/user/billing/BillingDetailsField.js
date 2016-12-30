@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Space } from '../../app/components-old';
 import buttonMessages from '../../../common/app/buttonsMessages';
