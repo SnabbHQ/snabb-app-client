@@ -3,8 +3,8 @@ import React from 'react';
 import { Container, Text, Box } from '../app/components';
 import { Match } from '../../common/app/components';
 import styled from '../app/components/styled';
-import BillingPage from './BillingPage';
-import ProfileDetailsPage from './ProfileDetailsPage';
+import Billing from './Billing';
+import ProfileDetails from './ProfileDetails';
 
 
 const LeftPanel = styled(() => ({
@@ -42,8 +42,8 @@ const ProfilePage = ({ pathname }) => (
       </LeftPanel>
       <RightPanel>
         <Box marginLeft="5em">
-          <Match pattern={`${pathname}/details`} component={ProfileDetailsPage} />
-          <Match pattern={`${pathname}/billing`} component={BillingPage} />
+          <Match pattern={`${pathname}/details`} component={ProfileDetails} />
+          <Match pattern={`${pathname}/billing`} component={Billing} />
         </Box>
       </RightPanel>
     </Box>

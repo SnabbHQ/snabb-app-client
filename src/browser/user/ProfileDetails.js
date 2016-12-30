@@ -2,7 +2,7 @@
 import React from 'react';
 import linksMessages from '../../common/app/linksMessages';
 import { FormattedMessage } from 'react-intl';
-import { Link, Title, Box } from '../app/components';
+import { Link, Text, Title, Box } from '../app/components';
 
 const ProfileLink = ({ exactly, to, message }: HeaderLinkProps) => (
   <Link
@@ -18,12 +18,13 @@ const ProfileLink = ({ exactly, to, message }: HeaderLinkProps) => (
 );
 
 
-const ProfileDetailsPage = () => (
+const ProfileDetails = () => (
   <Box display="flex">
     <Title message={linksMessages.profile} />
+    <Text>Profile Details</Text>
     <ProfileLink to="/active" message={linksMessages.accountDetails} />
   </Box>
 );
 
-export default ProfileDetailsPage;
+export default ProfileDetails;
 

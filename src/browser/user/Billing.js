@@ -2,7 +2,7 @@
 import React from 'react';
 import { Text, Box } from '../app/components';
 
-const BillingPage = () => (
+const Billing = () => (
   <Box display="flex">
     <Text display="block">Billing</Text>
     <Text display="block">Billing</Text>
@@ -11,5 +11,5 @@ const BillingPage = () => (
   </Box>
 );
 
-export default BillingPage;
+export default Billing;
 
