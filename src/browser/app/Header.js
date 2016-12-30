@@ -67,8 +67,7 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
         </Box>
         <Space auto />
         <HeaderLink to="/active" message={linksMessages.active} />
-        <HeaderLink to="/scheduled" message={linksMessages.scheduled} />
-        <HeaderLink to="/past" message={linksMessages.past} />
+        <HeaderLink to="/history" message={linksMessages.history} />
         <Space auto />
         <Box
           display="flex"

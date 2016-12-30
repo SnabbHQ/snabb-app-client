@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 
 // Pages
 import ActivePage from '../job/active/ActiveJobsPage';
-import ScheduledPage from '../job/scheduled/ScheduledDeliveriesPage';
+import HistoryPage from '../job/history/HistoryPage';
 import NewJobPage from '../job/new/NewDeliveryPage';
 import ProfilePage from '../user/ProfilePage';
 import LogInPage from '../auth/LogInPage';
@@ -60,7 +60,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
         <Page authorized pattern="/active" component={ActivePage} includeHeader />
         <Page authorized pattern="/new" component={NewJobPage} includeHeader />
-        <Page authorized pattern="/history" component={ScheduledPage} includeHeader />
+        <Page authorized pattern="/history" component={HistoryPage} includeHeader />
         <Page pattern="/profile" component={ProfilePage} includeHeader />
         <Page pattern="/login" component={LogInPage} />
         <Page pattern="/register" component={RegisterPage} />

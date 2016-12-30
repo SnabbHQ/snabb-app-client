@@ -4,12 +4,12 @@ import R from 'ramda';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Box } from '../../app/components';
-import NoActiveJobsPlaceholder from './NoActiveJobsPlaceholder';
+import NoHistoryPlaceholder from './NoHistoryPlaceholder';
 
-const ActiveJobsPage = ({ jobs }) => {
+const HistoryPage = ({ jobs }) => {
   if (R.isEmpty(jobs)) {
     return (
-      <NoActiveJobsPlaceholder />
+      <NoHistoryPlaceholder />
     );
   }
 
@@ -18,7 +18,7 @@ const ActiveJobsPage = ({ jobs }) => {
   );
 };
 
-ActiveJobsPage.propTypes = {
+HistoryPage.propTypes = {
   jobs: React.PropTypes.object.isRequired,
 };
 
@@ -27,4 +27,4 @@ export default connect(
     jobs: {}, // state.jobs.all,
   }),
   {},
-)(ActiveJobsPage);
+)(HistoryPage);

@@ -30,6 +30,14 @@ export default defineMessages({
     id: 'jobs.scheduled.noScheduledJobsTitle',
     defaultMessage: 'Jobs that are scheduled will appear here.',
   },
+  noHistoryJobsTitle: {
+    id: 'jobs.history.noHistoryJobsTitle',
+    defaultMessage: 'No deliveries performed yet',
+  },
+  noHistoryJobsSubtitle: {
+    id: 'jobs.history.noHistoryJobsTitle',
+    defaultMessage: 'The list of all the deliveries you have performed will appear here..',
+  },
   contactCompanyPlaceholder: {
     id: 'jobForm.company',
     defaultMessage: 'Company',

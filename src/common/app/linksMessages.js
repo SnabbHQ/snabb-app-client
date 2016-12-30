@@ -22,9 +22,9 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Scheduled',
     id: 'app.links.scheduled',
   },
-  past: {
-    defaultMessage: 'Past',
-    id: 'app.links.past',
+  history: {
+    defaultMessage: 'History',
+    id: 'app.links.history',
   },
   home: {
     defaultMessage: 'Home',
