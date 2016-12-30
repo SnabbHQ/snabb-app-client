@@ -7,24 +7,44 @@ import billingMessages from '../../../common/user/billing/billingMessages';
 import CreditCardRow from './CreditCardRow';
 import NewCreditCard from './NewCreditCard';
 
-const ICONS = {
-  card: require('../../../../assets/images/cardIconTO.svg'),
-};
+class CreditCardField extends React.Component {
 
-const CreditCardField = ({ type, cards }) => {
-  const card = cards[type];
+  constructor(props: P, context: any) {
+    super(props, context);
 
-  return (
-    <Box>
-      <FieldHeader title={billingMessages.cardTitle} />
-      <CreditCardRow />
-      <NewCreditCard />
-      <Button>
-        <FormattedMessage {...billingMessages.addCard} />
-      </Button>
-    </Box>
-  );
-};
+    this.state = {
+      addCardShown: false,
+    };
+
+    this.addCreditCardPress = this.addCreditCardPress.bind(this);
+  }
+
+  addCreditCardPress() {
+    this.setState({ addCardShown: true });
+  }
+
+  renderNewCreditCard() {
+    if (!this.state.addCardShown) {
+      return (
+        <Button onClick={this.addCreditCardPress}>
+          <FormattedMessage {...billingMessages.addCard} />
+        </Button>
+      );
+    }
+
+    return <NewCreditCard />;
+  }
+
+  render() {
+    return (
+      <Box>
+        <FieldHeader title={billingMessages.cardTitle} />
+        <CreditCardRow />
+        { this.renderNewCreditCard() }
+      </Box>
+    );
+  }
+}
 
 CreditCardField.PropTypes = {
   type: PropTypes.object.isRequired,
