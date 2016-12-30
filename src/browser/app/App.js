@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import ActivePage from '../job/active/ActiveJobsPage';
 import ScheduledPage from '../job/scheduled/ScheduledDeliveriesPage';
 import NewJobPage from '../job/new/NewDeliveryPage';
-import ProfilePage from '../user/ProfileContainer';
+import ProfilePage from '../user/ProfilePage';
 import LogInPage from '../auth/LogInPage';
 import RegisterPage from '../auth/RegisterPage';
 import ResetPassword from '../auth/ResetPasswordPage';
