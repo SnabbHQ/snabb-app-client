@@ -23,8 +23,8 @@ class CreditCardField extends React.Component {
     this.setState({ addCardShown: true });
   }
 
-  renderNewCreditCard() {
-    if (!this.state.addCardShown) {
+  renderNewCreditCard(addCardShown: boolean) {
+    if (!addCardShown) {
       return (
         <Button onClick={this.addCreditCardPress}>
           <FormattedMessage {...billingMessages.addCard} />
@@ -32,7 +32,7 @@ class CreditCardField extends React.Component {
       );
     }
 
-    return <NewCreditCard />;
+    return <NewCreditCard onCancelClick={() => this.setState({ addCardShown: false })} />;
   }
 
   render() {
@@ -40,7 +40,7 @@ class CreditCardField extends React.Component {
       <Box>
         <FieldHeader title={billingMessages.cardTitle} />
         <CreditCardRow />
-        { this.renderNewCreditCard() }
+        { this.renderNewCreditCard(this.state.addCardShown) }
       </Box>
     );
   }

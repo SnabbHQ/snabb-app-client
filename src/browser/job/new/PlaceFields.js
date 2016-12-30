@@ -34,6 +34,8 @@ class PlaceFields extends React.Component {
         </Button>
       );
     }
+
+    return null;
   }
 
   renderFields(collapsed) {

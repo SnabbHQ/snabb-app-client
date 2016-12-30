@@ -5,11 +5,13 @@ import buttonMessages from '../../../common/app/buttonsMessages';
 import { FormattedMessage } from 'react-intl';
 import { Box, Input, Button, Space } from '../../app/components';
 
-const ICONS = {
-  card: require('../../../../assets/images/cardIconTO.svg'),
-};
+type NewCreditCardProps = {
+  type: Object,
+  cards: Object,
+  onCancelClick?: func,
+}
 
-const NewCreditCard = ({ type, cards }) => {
+const NewCreditCard = ({ type, cards, onCancelClick }: NewCreditCardProps) => {
   const card = cards[type];
 
   return (
@@ -46,7 +48,7 @@ const NewCreditCard = ({ type, cards }) => {
       </Box>
       <Box display="flex">
         <Space auto />
-        <Button>
+        <Button onClick={onCancelClick}>
           <FormattedMessage {...buttonMessages.cancel} />
         </Button>
         <Button>
@@ -55,11 +57,6 @@ const NewCreditCard = ({ type, cards }) => {
       </Box>
     </Box>
   );
-};
-
-NewCreditCard.PropTypes = {
-  type: PropTypes.object.isRequired,
-  cards: PropTypes.object.isRequired,
 };
 
 NewCreditCard.DefaultProps = {
