@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import Header from './Header';
-import SideMenu from './SideMenu';
 import { Match } from '../../common/app/components';
 import { Box, Container } from './components';
 
@@ -18,11 +17,9 @@ const Page = ({ component: Component, includeHeader, ...props }: PageProps) => (
       { includeHeader &&
         <Box>
           <Header />
-          <SideMenu />
         </Box>
       }
       <Box
-        marginLeft={includeHeader && 3}
         paddingTop={includeHeader && 2}
       >
         <Component {...renderProps} />

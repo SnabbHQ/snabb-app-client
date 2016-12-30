@@ -30,7 +30,7 @@ const LogInPage = ({ disabled, location, authed }) => (
         <Box width="350px">
           <Title message={linksMessages.logIn} />
           <Block>
-            <Box marginBottom={1}>
+            <Box marginBottom={1} alignItems="center" justifyContent="center">
               <Image
                 alt="Snabb logo"
                 height={100}

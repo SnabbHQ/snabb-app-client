@@ -1,6 +1,7 @@
 /* @flow */
 import type { State, User } from '../../common/types';
 import React, { PropTypes } from 'react';
+import linksMessages from '../../common/app/linksMessages';
 import { NewDeliveryButton } from '../job/components';
 import { FormattedMessage } from 'react-intl';
 import { Fixed, Link, Text, Box, Image } from '../app/components';
@@ -65,6 +66,9 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
           <Space x={1} />
           <Text color="white" size={1}>Snabb</Text>
         </Box>
+        <HeaderLink to="/active" message={linksMessages.active} />
+        <HeaderLink to="/scheduled" message={linksMessages.scheduled} />
+        <HeaderLink to="/past" message={linksMessages.past} />
         <Space auto />
         <Box
           display="flex"

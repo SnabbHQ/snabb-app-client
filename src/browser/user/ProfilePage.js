@@ -1,6 +1,6 @@
 /* @flow */
-import React from "react";
-import { Text, Box } from "../app/components";
+import React from 'react';
+import { Text, Box } from '../app/components';
 
 const ProfilePage = () => (
   <Box display="flex">
