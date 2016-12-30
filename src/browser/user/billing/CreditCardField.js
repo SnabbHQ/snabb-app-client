@@ -1,38 +1,34 @@
 /* @flow */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Text, Image, Space } from '../../app/components';
-import { Radio, Flex } from '../../app/components-old';
+import { Box, Text, Button } from '../../app/components';
+import { defineMessages, FormattedMessage } from 'react-intl';
+import CreditCardRow from './CreditCardRow';
+import NewCreditCard from './NewCreditCard';
 
 const ICONS = {
-  visa: require('../../../../assets/images/cardIconVI.svg'),
-  mastercard: require('../../../../assets/images/cardIconMC.svg'),
+  card: require('../../../../assets/images/cardIconTO.svg'),
 };
+
+const creditCardMessages = defineMessages({
+  addCard: {
+    defaultMessage: 'Add Credit Card',
+    id: 'billing.card.ard',
+  },
+});
 
 const CreditCardField = ({ type, cards }) => {
   const card = cards[type];
 
   return (
-    <Flex align="center">
-      <Radio
-        circle
-        label=""
-        name="radio_1"
-      />
-      <Space x={2} />
-      <Image
-        alt={'alt'}
-        src={ICONS.visa}
-      />
-      <Space x={2} />
-      <Text>main</Text>
-      <Space auto />
-      <Text>Expires 11/2018</Text>
-      <Space auto />
-      <Text>Default Card</Text>
-      <Space auto />
-      <Text>Delete</Text>
-    </Flex>
+    <Box>
+      <Text>Credit Cards</Text>
+      <CreditCardRow />
+      <NewCreditCard />
+      <Button>
+        <FormattedMessage {...creditCardMessages.addCard} />
+      </Button>
+    </Box>
   );
 };
 

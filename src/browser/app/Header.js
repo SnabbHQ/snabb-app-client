@@ -65,6 +65,7 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
           <Space x={1} />
           <Text color="white" size={1}>Snabb</Text>
         </Box>
+        <Space auto />
         <HeaderLink to="/active" message={linksMessages.active} />
         <HeaderLink to="/scheduled" message={linksMessages.scheduled} />
         <HeaderLink to="/past" message={linksMessages.past} />

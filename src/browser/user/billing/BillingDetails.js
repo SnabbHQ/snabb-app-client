@@ -1,8 +1,8 @@
-import React from "react";
-import { Space } from "../../app/components-old";
-import buttonMessages from "../../../common/app/buttonsMessages";
-import { FormattedMessage } from "react-intl";
-import { Button, Input, Text, Box } from "../../app/components";
+import React from 'react';
+import { Space } from '../../app/components-old';
+import buttonMessages from '../../../common/app/buttonsMessages';
+import { FormattedMessage } from 'react-intl';
+import { Button, Input, Text, Box } from '../../app/components';
 
 const BillingDetails = () => (
   <Box>

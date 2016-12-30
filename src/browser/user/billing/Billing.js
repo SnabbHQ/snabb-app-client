@@ -2,8 +2,8 @@
 import React from 'react';
 import linksMessages from '../../../common/app/linksMessages';
 import { Title, Card, Text, Box } from '../../app/components';
-import CreditCardField from './CreditCardField';
 import BillingDetails from './BillingDetails';
+import CreditCardField from './CreditCardField';
 
 const Billing = () => (
   <Box>
@@ -14,9 +14,7 @@ const Billing = () => (
       <Text>Add Coupon</Text>
     </Card>
     <Card>
-      <Text>Credit Cards</Text>
       <CreditCardField />
-      <Text>Add credit card</Text>
     </Card>
     <Card>
       <BillingDetails />

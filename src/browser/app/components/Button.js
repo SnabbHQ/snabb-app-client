@@ -16,7 +16,7 @@ const Button: Styled<ButtonProps> = styled((theme, props) => ({
     : theme.colors.primary,
   borderRadius: props.borderRadius || theme.border.radius,
   borderWidth: 0,
-  color: theme.colors.white,
+  color: props.color ? props.color : theme.colors.white,
   cursor: 'pointer',
   display: props.display || 'inline-block',
   fontSize: theme.typography.fontSize(
