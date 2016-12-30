@@ -2,11 +2,11 @@
 import React from 'react';
 import linksMessages from '../../common/app/linksMessages';
 import { FormattedMessage } from 'react-intl';
-import { Container, Link, Text, Box } from '../app/components';
+import { Container, Link, Box } from '../app/components';
 import { Match } from '../../common/app/components';
 import styled from '../app/components/styled';
-import Billing from './Billing';
-import ProfileDetails from './ProfileDetails';
+import Billing from './billing/Billing';
+import ProfileDetails from './details/ProfileDetails';
 
 
 const LeftPanel = styled(() => ({

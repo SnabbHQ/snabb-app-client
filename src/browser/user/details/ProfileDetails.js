@@ -1,10 +1,10 @@
 /* @flow */
 import React from 'react';
-import linksMessages from '../../common/app/linksMessages';
-import { Text, Card, Input, Image, Title, Box } from '../app/components';
+import linksMessages from '../../../common/app/linksMessages';
+import { Text, Card, Input, Image, Title, Box } from '../../app/components';
 
 // $FlowFixMe
-const logo = require('../../../assets/images/clientPhotoDefaultMedium.svg');
+const logo = require('../../../../assets/images/clientPhotoDefaultMedium.svg');
 
 const ProfileDetails = () => (
   <Box>
