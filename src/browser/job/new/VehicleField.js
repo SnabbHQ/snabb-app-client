@@ -21,7 +21,7 @@ const VehicleField = () => {
   // ...jobMessages.selectVehicleTitle
   return (
     <View>
-      <FieldHeader icon={vehicleIcon} title={'Select a Vehicle'} />
+      <FieldHeader icon={vehicleIcon} title={jobMessages.selectVehicle} />
       {renderExclVat}
       <TransportType />
       <TransportType />

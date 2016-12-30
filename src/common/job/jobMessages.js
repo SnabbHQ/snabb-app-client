@@ -14,7 +14,7 @@ export default defineMessages({
     defaultMessage: 'Jobs that are in progress will appear here.',
     id: 'jobs.new.noActiveJobsSubtitle',
   },
-  selectVehicleTitle: {
+  selectVehicle: {
     id: 'job.new.vehicle',
     defaultMessage: 'Select a Vehicle',
   },
@@ -50,6 +50,14 @@ export default defineMessages({
     id: 'jobForm.lastname',
     defaultMessage: 'Last name',
   },
+  pickUp: {
+    id: 'jobForm.pickUp',
+    defaultMessage: 'Pick Up',
+  },
+  dropOff: {
+    id: 'jobForm.dropOff',
+    defaultMessage: 'Drop Off',
+  },
   pickUpAddressPlaceholder: {
     id: 'jobForm.pickUpAddressPlaceholder',
     defaultMessage: 'Select a pick up address...',
@@ -69,6 +77,5 @@ export default defineMessages({
   commentPlaceholder: {
     id: 'jobForm.commentPlaceholder',
     defaultMessage: 'Add a comment',
-  },
-
+  }
 });

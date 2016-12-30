@@ -158,7 +158,7 @@ class PlaceFields extends React.Component {
 }
 
 PlaceFields.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.object.isRequired,
   icon: PropTypes.string.isRequired,
   placeType: PropTypes.oneOf(['pickUp', 'dropOff']).isRequired,
   collapsible: PropTypes.bool,

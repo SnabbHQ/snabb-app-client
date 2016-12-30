@@ -87,9 +87,9 @@ const NewJobPage = () => {
   }
 
   const defaultProps = {
-    center: {lat: 39.470128, lng: -0.370621},
+    center: { lat: 39.470128, lng: -0.370621 },
     zoom: 16,
-    greatPlaceCoords: {lat: 59.724465, lng: 30.080121},
+    greatPlaceCoords: { lat: 59.724465, lng: 30.080121 },
   };
 
   return (
