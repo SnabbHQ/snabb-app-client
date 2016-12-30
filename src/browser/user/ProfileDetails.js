@@ -28,16 +28,16 @@ const ProfileDetails = () => (
       <Text>General Information</Text>
       <Box display="flex">
         <Input
-          name="Business Name"
-          label="Business Name"
+          name="Contact Name"
+          label="Contact Name"
           labelSize={-1}
           maxLength={100}
           placeholder={''}
           type="text"
         />
         <Input
-          name="Business Name"
-          label="Business Name"
+          name="Contact Last Name"
+          label="Contact Last Name"
           labelSize={-1}
           maxLength={100}
           placeholder={''}
@@ -46,16 +46,16 @@ const ProfileDetails = () => (
       </Box>
       <Box display="flex">
         <Input
-          name="Business Name"
-          label="Business Name"
+          name="Business Email"
+          label="Business Email"
           labelSize={-1}
           maxLength={100}
           placeholder={''}
           type="text"
         />
         <Input
-          name="Business Name"
-          label="Business Name"
+          name="Business Phone"
+          label="Business Phone"
           labelSize={-1}
           maxLength={100}
           placeholder={''}
@@ -68,16 +68,16 @@ const ProfileDetails = () => (
       <Text>Change your password</Text>
       <Box display="flex">
         <Input
-          name="Business Name"
-          label="Business Name"
+          name="Current Password"
+          label="Current Password"
           labelSize={-1}
           maxLength={100}
           placeholder={''}
           type="text"
         />
         <Input
-          name="Business Name"
-          label="Business Name"
+          name="New Password"
+          label="New Password"
           labelSize={-1}
           maxLength={100}
           placeholder={''}
