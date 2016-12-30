@@ -46,6 +46,10 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Profile',
     id: 'app.links.profile',
   },
+  accountDetails: {
+    defaultMessage: 'Account Details',
+    id: 'app.links.accountDetails',
+  },
   settings: {
     defaultMessage: 'Settings',
     id: 'app.links.settings',

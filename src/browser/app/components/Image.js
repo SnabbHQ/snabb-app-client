@@ -15,13 +15,9 @@ const altOrRolePresentation = alt => alt
   ? { alt }
   : { role: 'presentation' };
 
-// TODO: Use more sophisticated logic based on aspect ratio etc.
 const ImageWrapper = styled((theme, props) => ({
   display: 'block',
   height: props.height,
-  ':hover': {
-    backgroundColor: 'grey',
-  },
 }), 'div', ['onClick']);
 
 const Image = (props: ImageProps) => (
