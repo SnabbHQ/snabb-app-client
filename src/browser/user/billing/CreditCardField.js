@@ -1,8 +1,9 @@
 /* @flow */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Box, Text, Button } from '../../app/components';
-import { defineMessages, FormattedMessage } from 'react-intl';
+import { Box, FieldHeader, Button } from '../../app/components';
+import { FormattedMessage } from 'react-intl';
+import billingMessages from '../../../common/user/billing/billingMessages';
 import CreditCardRow from './CreditCardRow';
 import NewCreditCard from './NewCreditCard';
 
@@ -10,23 +11,16 @@ const ICONS = {
   card: require('../../../../assets/images/cardIconTO.svg'),
 };
 
-const creditCardMessages = defineMessages({
-  addCard: {
-    defaultMessage: 'Add Credit Card',
-    id: 'billing.card.ard',
-  },
-});
-
 const CreditCardField = ({ type, cards }) => {
   const card = cards[type];
 
   return (
     <Box>
-      <Text>Credit Cards</Text>
+      <FieldHeader title={billingMessages.cardTitle} />
       <CreditCardRow />
       <NewCreditCard />
       <Button>
-        <FormattedMessage {...creditCardMessages.addCard} />
+        <FormattedMessage {...billingMessages.addCard} />
       </Button>
     </Box>
   );

@@ -1,7 +1,8 @@
 /* @flow */
 import React from 'react';
 import linksMessages from '../../../common/app/linksMessages';
-import { Text, Card, Input, Image, Title, Box } from '../../app/components';
+import profileMessages from '../../../common/user/profile/profileMessages';
+import { Text, FieldHeader, Card, Input, Image, Title, Box } from '../../app/components';
 
 // $FlowFixMe
 const logo = require('../../../../assets/images/clientPhotoDefaultMedium.svg');
@@ -10,7 +11,7 @@ const ProfileDetails = () => (
   <Box>
     <Title message={linksMessages.profile} />
     <Card>
-      <Text>Business Information</Text>
+      <FieldHeader title={profileMessages.businessInfo} />
       <Image
         alt="Profile Image"
         height={50}
@@ -25,7 +26,7 @@ const ProfileDetails = () => (
         placeholder={''}
         type="text"
       />
-      <Text>General Information</Text>
+      <FieldHeader title={profileMessages.generalInfo} />
       <Box display="flex">
         <Input
           name="Contact Name"
@@ -65,6 +66,7 @@ const ProfileDetails = () => (
     </Card>
 
     <Card>
+      <FieldHeader title={profileMessages.changePassword} />
       <Text>Change your password</Text>
       <Box display="flex">
         <Input

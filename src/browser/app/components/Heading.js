@@ -1,4 +1,5 @@
 /* @flow */
+import React from 'react';
 import type { Styled } from '../themes/types';
 import type { TextProps } from './Text';
 import Text from './Text';

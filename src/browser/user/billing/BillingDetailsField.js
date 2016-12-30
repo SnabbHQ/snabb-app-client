@@ -1,12 +1,13 @@
 import React from 'react';
 import { Space } from '../../app/components-old';
 import buttonMessages from '../../../common/app/buttonsMessages';
+import billingMessages from '../../../common/user/billing/billingMessages';
 import { FormattedMessage } from 'react-intl';
-import { Button, Input, Text, Box } from '../../app/components';
+import { Button, Input, FieldHeader, Box } from '../../app/components';
 
 const BillingDetails = () => (
   <Box>
-    <Text>Billing Details</Text>
+    <FieldHeader title={billingMessages.billingDetailsTitle} />
     <Box display="flex">
       <Input
         name="Company Name"

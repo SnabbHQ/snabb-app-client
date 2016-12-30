@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { View } from '../../app/components-old';
-import FieldHeader from './FieldHeader';
+import { FieldHeader } from '../../app/components';
 import jobMessages from '../../../common/job/jobMessages';
 import vehicleIcon from '../../../../assets/images/vehicleBadgeBlank.svg';
 import TransportType from './TransportType';
