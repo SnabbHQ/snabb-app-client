@@ -19,10 +19,7 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
   action: Action,
 ) => {
   const userWasSignedOut = action.type === 'LOG_OUT'; // && state.user.profile && !action.payload.user;
-  // if (!userWasSignedOut) {
-  //   return reducer(state, action);
-  // }
-  if (userWasSignedOut) {
+  if (!userWasSignedOut) {
     return reducer(state, action);
   }
 
