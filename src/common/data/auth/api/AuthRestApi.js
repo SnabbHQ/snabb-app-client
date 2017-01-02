@@ -1,12 +1,7 @@
-// @flow
 import SnabbApi from '../../../lib/SnabbApi';
 import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 export default class UserRestApi {
 
@@ -14,7 +9,7 @@ export default class UserRestApi {
     this.snabbApi = snabbApi;
   }
 
-  getProfile() {
-    return Observable.fromPromise(this.snabbApi.getProfile());
+  auth(username: string, password: string) {
+    return Observable.fromPromise(this.snabbApi.auth({ username, password }));
   }
 }

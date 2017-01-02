@@ -1,3 +1,4 @@
+// @flow
 import UserRepository from '../../domain/UserRepository';
 import UserDataStoreFactory from './dataSource/UserDataStoreFactory';
 
@@ -10,8 +11,8 @@ class UserDataRepository extends UserRepository {
     this.userDataStoreFactory = new UserDataStoreFactory();
   }
 
-  getUser(userName: string, password: string) {
-    return this.userDataStoreFactory.create().getUser(userName, password);
+  getProfile() {
+    return this.userDataStoreFactory.create().getProfile();
   }
 }
 

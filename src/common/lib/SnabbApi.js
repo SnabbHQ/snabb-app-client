@@ -72,7 +72,7 @@ export default class SnabbApi extends Backend {
 
     const authDetails = {
       client_id: '123',
-      username: data.email,
+      username: data.username,
       password: data.password,
       grant_type: 'password',
     };

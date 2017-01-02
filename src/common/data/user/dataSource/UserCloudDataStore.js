@@ -11,8 +11,8 @@ class UserCloudDataStore extends UserDataStore {
     this.userRestApi = userRestApi;
   }
 
-  getUser(userName: string, password: string) {
-    return this.userRestApi.login(userName, password);
+  getProfile() {
+    return this.userRestApi.getProfile();
   }
 }
 

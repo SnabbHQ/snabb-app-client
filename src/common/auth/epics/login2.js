@@ -3,6 +3,7 @@ import type { Deps } from '../../types';
 
 import { loginSuccess, loginFail } from '../actions';
 import { Observable } from 'rxjs/Observable';
+import AuthDataRepository from '../../data/auth/AuthDataRepository';
 import UserDataRepository from '../../data/user/UserDataRepository';
 
 import 'rxjs/add/observable/of';
@@ -28,7 +29,8 @@ const login = (action$: any, { validate }: Deps) =>
     .mergeMap((options) => {
       const { email, password } = options;
       return Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
-        .switchMap(() => new UserDataRepository().getUser(email, password))
+        .switchMap(() => new AuthDataRepository().auth(email, password))
+        .switchMap(() => new UserDataRepository().getProfile())
         .map(loginSuccess)
         .catch(error => Observable.of(loginFail(error)));
     });
