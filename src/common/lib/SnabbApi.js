@@ -39,11 +39,11 @@ export default class SnabbApi extends Backend {
   constructor(token: Object = {}) {
     super(token);
 
-    if (!_.isNull(token) && _.isUndefined(token.sessionToken)) {
-      throw new Error('TokenMissing');
-    }
-
-    this.sessionToken = _.isNull(token) ? '' : token.sessionToken;
+    // if (!_.isNull(token) && _.isUndefined(token.sessionToken)) {
+    //   throw new Error('TokenMissing');
+    // }
+    //
+    // this.sessionToken = _.isNull(token) ? '' : token.sessionToken;
 
     this.API_BASE_URL = CONFIG.backend.local
       ? CONFIG.Api.local.url

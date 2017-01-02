@@ -6,7 +6,6 @@
  *
  */
 
-
 /**
  * ## Async support
  *

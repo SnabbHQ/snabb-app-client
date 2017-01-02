@@ -41,7 +41,7 @@ const appStartEpic = (action$: any) =>
   action$.ofType(REHYDRATE)
     .map(appStarted);
 
-const appStartedFirebaseEpic = (action$: any, deps: Deps) => {
+const appStartedEpic = (action$: any, deps: Deps) => {
   const { getState } = deps;
 
   const appOnline$ = Observable.create((observer) => {
@@ -70,5 +70,5 @@ const appStartedFirebaseEpic = (action$: any, deps: Deps) => {
 
 export const epics = [
   appStartEpic,
-  appStartedFirebaseEpic,
+  appStartedEpic,
 ];

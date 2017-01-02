@@ -128,6 +128,8 @@ export type Action =
   | { type: 'SESSION_TOKEN_FAIL', payload: { error: Error} }
   | { type: 'SET_CURRENT_LOCALE', payload: { locale: string } }
   | { type: 'SET_THEME', payload: { theme: string } }
+  | { type: 'SILENT_LOG_IN' }
+  | { type: 'SILENT_LOG_IN_SUCCESS', payload: { user: ?User } }
   | { type: 'REGISTER', payload: { providerName: string, options?: Object } }
   | { type: 'REGISTER_SUCCESS', payload: { user: ?User } }
   | { type: 'REGISTER_FAIL', payload: { error: Error } }
