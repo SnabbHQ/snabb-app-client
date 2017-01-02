@@ -23,14 +23,14 @@ const validateEmailAndPassword = (validate, fields) => validate(fields)
 
 // const userDataRepository = () => new UserDataRepository();
 
-const login = (action$: any, { validate }: Deps) =>
+const login = (action$: any, { authRepository, userRepository, validate }: Deps) =>
   action$.ofType('LOG_IN')
     .map(action => action.payload.options)
     .mergeMap((options) => {
       const { email, password } = options;
       return Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
-        .switchMap(() => new AuthDataRepository().auth(email, password))
-        .switchMap(() => new UserDataRepository().getProfile())
+        .switchMap(() => authRepository.auth(email, password))
+        .switchMap(() => userRepository.getProfile())
         .map(loginSuccess)
         .catch(error => Observable.of(loginFail(error)));
     });

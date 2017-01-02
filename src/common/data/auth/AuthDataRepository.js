@@ -5,11 +5,10 @@ import AuthDataStoreFactory from './dataSource/AuthDataStoreFactory';
 class AuthDataRepository extends AuthRepository {
   authDataStoreFactory: AuthDataStoreFactory;
 
-  constructor() {
+  constructor(authDataStoreFactory: AuthDataStoreFactory) {
     super();
 
-    // TODO - For now use here (with out DI)
-    this.authDataStoreFactory = new AuthDataStoreFactory();
+    this.authDataStoreFactory = authDataStoreFactory;
   }
 
   auth(username: string, password: string) {

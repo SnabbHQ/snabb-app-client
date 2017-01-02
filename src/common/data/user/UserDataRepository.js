@@ -5,10 +5,10 @@ import UserDataStoreFactory from './dataSource/UserDataStoreFactory';
 class UserDataRepository extends UserRepository {
   userDataStoreFactory: UserDataStoreFactory;
 
-  constructor() {
+  constructor(userDataStoreFactory: UserDataStoreFactory) {
     super();
 
-    this.userDataStoreFactory = new UserDataStoreFactory();
+    this.userDataStoreFactory = userDataStoreFactory;
   }
 
   getProfile() {

@@ -3,14 +3,9 @@
 /**
  * # SnabbApi.js
  *
- * This class interfaces with Snabb's API using the rest api
- * see []()
+ * This class interfaces with Snabb's API using the rest api.
  *
  */
-
-import CONFIG from './config';
-import _ from 'underscore';
-import Backend from './Backend';
 
 let fakeProfile = {
   objectId: 'Z4yvP19OeL',
@@ -24,8 +19,7 @@ let fakeProfile = {
   thumbnail: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw',
 };
 
-
-export default class SnabbApi extends Backend {
+class SnabbApi {
 
   API_BASE_URL: string
   sessionToken: string
@@ -33,21 +27,9 @@ export default class SnabbApi extends Backend {
 
   /**
    * ## SnabbApi.js client
-   *
-   * @throws tokenMissing if token is undefined
    */
-  constructor(token: Object = {}) {
-    super(token);
-
-    // if (!_.isNull(token) && _.isUndefined(token.sessionToken)) {
-    //   throw new Error('TokenMissing');
-    // }
-    //
-    // this.sessionToken = _.isNull(token) ? '' : token.sessionToken;
-
-    this.API_BASE_URL = CONFIG.backend.local
-      ? CONFIG.Api.local.url
-      : CONFIG.Api.develop.url;
+  constructor(apiConfig) {
+    this.API_BASE_URL = apiConfig.snabbApi.develop;
 
     const bodyInit = JSON.stringify({
       code: 200,
@@ -276,4 +258,6 @@ export default class SnabbApi extends Backend {
     return await this.response;
   }
 }
+
+export default SnabbApi;
 
