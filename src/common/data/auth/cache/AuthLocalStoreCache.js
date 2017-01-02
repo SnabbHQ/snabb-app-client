@@ -1,10 +1,11 @@
 import AuthCache from './AuthCache';
-// This storage not only works with RN but by normal browser as well.
-// import store from 'react-native-simple-store';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/observable/fromPromise';
 
 const TOKEN_KEY = 'SESSION_TOKEN_KEY';
 
-class AuthLocalCache extends AuthCache {
+class AuthLocalStoreCache extends AuthCache {
 
   constructor(localStore) {
     super();
@@ -32,9 +33,11 @@ class AuthLocalCache extends AuthCache {
   getSessionToken(sessionToken) {
     if (sessionToken) {
       return this.storeSessionToken(sessionToken)
-        .then(() => JSON.parse(this.localStorage.getItem(this.SESSION_TOKEN_KEY)));
+        .then(() => Observable.fromPromise(
+          JSON.parse(this.localStorage.getItem(this.SESSION_TOKEN_KEY)))
+        );
     }
-    return JSON.parse(this.localStore.getItem(this.SESSION_TOKEN_KEY));
+    return Observable.fromPromise(JSON.parse(this.localStore.getItem(this.SESSION_TOKEN_KEY)));
   }
 
   /**
@@ -44,6 +47,19 @@ class AuthLocalCache extends AuthCache {
   deleteSessionToken() {
     return this.localStore.removeItem(this.SESSION_TOKEN_KEY);
   }
+
+
+  isCached() {
+    return Observable.fromPromise(this.localStore.getItem(this.SESSION_TOKEN_KEY))
+      .map(token => !!token);
+  }
+
+
+  isValid() {
+    // TODO - We should make sure that the token expires_in is correctly computer but return this
+    // for now.
+    return this.isCached();
+  }
 }
 
-export default AuthLocalCache;
+export default AuthLocalStoreCache;

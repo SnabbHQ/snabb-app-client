@@ -20,4 +20,8 @@ export default class AuthCache {
    * Deleted during log out
    */
   deleteSessionToken() {}
+
+  isCached() {}
+
+  isValid() {}
 }

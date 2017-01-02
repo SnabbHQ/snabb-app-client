@@ -8,7 +8,7 @@ const paths = [
   ['fields'],
   ['intl', ['currentLocale']],
   ['themes', ['currentTheme']],
-  ['users', ['online', 'viewer']],
+  ['user', ['profile']],
 ];
 
 const transforms = [];

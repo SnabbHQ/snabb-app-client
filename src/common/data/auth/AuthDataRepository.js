@@ -13,7 +13,11 @@ class AuthDataRepository extends AuthRepository {
   }
 
   auth(username: string, password: string) {
-    return this.authDataStoreFactory.create().auth(username, password);
+    return this.authDataStoreFactory.createCloudDataStore().auth(username, password);
+  }
+
+  getToken() {
+    return this.authDataStoreFactory.createLocalDataStore().getToken();
   }
 }
 

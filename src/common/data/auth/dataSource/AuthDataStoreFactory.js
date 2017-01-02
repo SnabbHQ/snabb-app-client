@@ -1,8 +1,9 @@
 // @flow
 import AuthCloudDataStore from './AuthCloudDataStore';
+import AuthLocalDataStore from './AuthLocalDataStore';
 import AuthRestApi from '../api/AuthRestApi';
 import AuthCache from '../cache/AuthCache';
-import AuthLocalCache from '../cache/AuthLocalCache';
+import AuthLocalCache from '../cache/AuthLocalStoreCache';
 import SnabbApi from '../../../lib/SnabbApi';
 
 export default class UserDataStoreFactory {
@@ -21,5 +22,9 @@ export default class UserDataStoreFactory {
 
   createCloudDataStore() {
     return new AuthCloudDataStore(this.authRestApi, this.authCache);
+  }
+
+  createLocalDataStore() {
+    return new AuthLocalDataStore(this.authCache);
   }
 }

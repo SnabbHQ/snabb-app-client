@@ -3,31 +3,19 @@ import type { Deps } from '../../types';
 
 import { loginSuccess, loginFail } from '../actions';
 import { Observable } from 'rxjs/Observable';
+import AuthDataRepository from '../../data/auth/AuthDataRepository';
+import UserDataRepository from '../../data/user/UserDataRepository';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-const validateEmailAndPassword = (validate, fields) => validate(fields)
-  .prop('email')
-  .required()
-  .email()
-  .prop('password')
-  .required()
-  .simplePassword()
-  .promise;
-
-const login = (action$: any, { backendFactory, appAuthToken, validate }: Deps) =>
+const silentLogin = (action$: any, {}: Deps) =>
   action$.ofType('SILENT_LOG_IN')
-    .mergeMap(() => {
-      return Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
-        .switchMap(() => Observable.fromPromise(backendFactory.auth({ email, password })))
-        .map(json => appAuthToken.storeSessionToken(appAuthToken, json))
-        .switchMap(() => Observable.fromPromise(backendFactory.getProfile()))
-        .map(loginSuccess)
-        .catch(error => Observable.of(loginFail(error)));
-    });
+    .mergeMap(() => new AuthDataRepository().getToken())
+      .switchMap(() => new UserDataRepository().getProfile())
+      .map(loginSuccess)
+      .catch(error => Observable.of(loginFail(error)));
 
-export default login;
+export default silentLogin;

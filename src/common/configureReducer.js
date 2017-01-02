@@ -4,7 +4,6 @@ import app from './app/reducer';
 import config from './config/reducer';
 import device from './device/deviceReducer';
 import { closestCity, closestDrivers, jobs, newJob } from './job/reducers';
-import pagination from './app/paginataionReducer';
 import auth from './auth/reducer';
 import user from './user/reducer';
 import location from './location/locationReducer';
@@ -36,7 +35,6 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
     config: initialState.config,
     device: initialState.device,
     job: initialState.job,
-    pagination: initialState.pagination,
     jobs: initialState.jobs,
     newJob: initialState.newJob,
     intl: initialState.intl,
@@ -54,8 +52,6 @@ const configureReducer = (initialState: Object) => {
     config,
     device,
     jobs,
-    pagination,
-    newJob,
     fields,
     intl,
     themes,
