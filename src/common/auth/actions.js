@@ -16,11 +16,11 @@ export const loginFail = (error: Error): Action => ({
   payload: { error },
 });
 
-export const logout = (): Action => ({
+export const logOut = (): Action => ({
   type: 'LOG_OUT',
 });
 
-export const logoutSuccess = (): Action => ({
+export const logOutSuccess = (): Action => ({
   type: 'LOG_OUT_SUCCESS',
 });
 

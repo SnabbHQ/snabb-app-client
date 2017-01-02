@@ -3,7 +3,6 @@ import type { Action, State } from './types';
 import app from './app/reducer';
 import config from './config/reducer';
 import device from './device/deviceReducer';
-import { closestCity, closestDrivers, jobs, newJob } from './job/reducers';
 import auth from './auth/reducer';
 import user from './user/reducer';
 import location from './location/locationReducer';
@@ -19,11 +18,11 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
   state: State,
   action: Action,
 ) => {
-  const userWasSignedOut =
-    action.type === 'ON_AUTH' &&
-    state.user.profile &&
-    !action.payload.user;
-  if (!userWasSignedOut) {
+  const userWasSignedOut = action.type === 'LOG_OUT'; // && state.user.profile && !action.payload.user;
+  // if (!userWasSignedOut) {
+  //   return reducer(state, action);
+  // }
+  if (userWasSignedOut) {
     return reducer(state, action);
   }
 
@@ -34,9 +33,6 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
     location: initialState.location,
     config: initialState.config,
     device: initialState.device,
-    job: initialState.job,
-    jobs: initialState.jobs,
-    newJob: initialState.newJob,
     intl: initialState.intl,
   }, action);
 };
@@ -51,7 +47,6 @@ const configureReducer = (initialState: Object) => {
     delivery,
     config,
     device,
-    jobs,
     fields,
     intl,
     themes,

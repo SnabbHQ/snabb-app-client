@@ -4,6 +4,7 @@ import linksMessages from '../../../common/app/linksMessages';
 import { Card, Title, Box } from '../../app/components';
 import BusinessInfoField from './BusinessInfoField';
 import ChangePasswordField from './ChangePasswordField';
+import LogOut from '../../auth/LogoutButton';
 
 const ProfileDetails = () => (
   <Box>
@@ -14,6 +15,7 @@ const ProfileDetails = () => (
     <Card>
       <ChangePasswordField />
     </Card>
+    <LogOut />
   </Box>
 );
 
