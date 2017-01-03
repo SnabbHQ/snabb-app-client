@@ -57,7 +57,13 @@ class Validation {
 
   phone() {
     return this.validate((value, prop) => {
-      if (this.validator.contains(value, '+34')) return;
+      if (!this.validator.contains(value, '+34') ) {
+        throw new ValidationError('countryNotSupported', { prop });
+      }
+
+      // Password must be at least 12 characters. (+34 123 45 67 89)
+      const minLength = 12;
+      if (value.length >= minLength) return;
       throw new ValidationError('phone', { prop });
     });
   }

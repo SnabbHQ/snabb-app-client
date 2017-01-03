@@ -34,7 +34,6 @@ class RegisterFields extends React.Component {
             labelSize={-1}
             maxLength={1000}
             padding="0.5em"
-            type="password"
           />
           <Input
             {...fields.email}

@@ -6,6 +6,6 @@ import resetPassword from './resetPassword';
 export const epics = [
   login,
   logout,
-  //register,
+  register,
   resetPassword,
 ];
