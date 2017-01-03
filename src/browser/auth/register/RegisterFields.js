@@ -13,10 +13,10 @@ import { Form, focus , Button, Input, Box } from '../../app/components';
 class RegisterFields extends React.Component {
 
   onFormSubmit = () => {
-    this.loginViaPassword();
+    this.register();
   };
 
-  loginViaPassword() {
+  register = () => {
     const { fields, register } = this.props;
     register('password', fields.$values());
   }
@@ -64,7 +64,7 @@ class RegisterFields extends React.Component {
             type="password"
           />
           <Box marginTop="1em">
-            <Button primary width="100%" disabled={disabled} align="center">
+            <Button primary onClick={this.register} width="100%" disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.register} />
             </Button>
           </Box>

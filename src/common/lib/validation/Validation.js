@@ -55,6 +55,13 @@ class Validation {
     });
   }
 
+  phone() {
+    return this.validate((value, prop) => {
+      if (this.validator.contains(value, '+34')) return;
+      throw new ValidationError('phone', { prop });
+    });
+  }
+
 }
 
 export default Validation;

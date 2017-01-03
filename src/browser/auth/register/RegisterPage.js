@@ -45,6 +45,12 @@ const RegisterPage = ({ disabled, intl, location, authed }) => (
           >
             {intl.formatMessage(authMessages.createAccountHeader)}
           </Text>
+          <FormError />
+          { disabled &&
+          <Loading>
+            {message => <Message>{message}</Message>}
+          </Loading>
+          }
           <RegisterFields />
           <Divider marginVertical="0.3em" />
           <Box display="block">
@@ -72,12 +78,6 @@ const RegisterPage = ({ disabled, intl, location, authed }) => (
             </Link>
           </Box>
         </Block>
-        <FormError />
-        { disabled &&
-        <Loading>
-          {message => <Message>{message}</Message>}
-        </Loading>
-        }
       </Box>
     </Box>
 );

@@ -12,18 +12,11 @@ import { Button, Input, Form, focus, Box } from '../app/components';
 
 class LoginFields extends React.Component {
 
-  constructor(props: P) {
-    super(props);
-
-    this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.loginViaPassword = this.loginViaPassword.bind(this);
-  }
-
-  onFormSubmit() {
+  onFormSubmit = () => {
     this.loginViaPassword();
   }
 
-  loginViaPassword() {
+  loginViaPassword = () => {
     const { fields, login } = this.props;
     login(fields.$values());
   }
