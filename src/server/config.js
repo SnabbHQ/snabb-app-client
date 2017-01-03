@@ -26,13 +26,8 @@ nconf.defaults({
   // stackoverflow.com/questions/3132105
   remoteHotReload: false,
   sentryUrl: 'https://f297cec9c9654088b8ccf1ea9136c458@app.getsentry.com/77415',
-  snabbApi: {
-    local: {
-      baseUrl: 'http://127.0.0.1:8000/api',
-    },
-    develop: {
-      baseUrl: 'https://snabb-api-mock.herokuapp.com/api/v1',
-    },
+  apiConfig: {
+    baseUrl: 'https://snabb-api-mock.herokuapp.com/api/v1',
   },
 });
 

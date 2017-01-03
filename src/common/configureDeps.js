@@ -3,7 +3,7 @@ import AuthDataRepository from './data/auth/AuthDataRepository';
 import AuthDataStoreFactory from './data/auth/dataSource/AuthDataStoreFactory';
 import AuthRestApi from './data/auth/api/AuthRestApi';
 import validate from './validate';
-import SnabbApi from './data/SnabbApi';
+import SnabbApi from './lib/SnabbApi';
 import UserDataRepository from './data/user/UserDataRepository';
 import UserDataStoreFactory from './data/user/dataSource/UserDataStoreFactory';
 import UserRestApi from './data/user/api/UserRestApi';
@@ -14,6 +14,7 @@ let dataDeps = null;
 const createDataDeps = (apiConfig) => {
   if (!dataDeps) {
     const snabbApi = new SnabbApi(apiConfig);
+
     const authRestApi = new AuthRestApi(snabbApi);
     const authDataStoreFactory = new AuthDataStoreFactory(authRestApi);
 

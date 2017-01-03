@@ -13,7 +13,7 @@ const createInitialState = () => ({
     appName: config.appName,
     appVersion: config.appVersion,
     sentryUrl: config.sentryUrl,
-    snabbApi: config.snabbApi,
+    apiConfig: config.apiConfig,
   },
   device: deviceReducer(),
   intl: {

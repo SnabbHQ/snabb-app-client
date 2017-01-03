@@ -29,7 +29,7 @@ class SnabbApi {
    * ## SnabbApi.js client
    */
   constructor(apiConfig) {
-    this.API_BASE_URL = apiConfig.snabbApi.develop;
+    this.API_BASE_URL = apiConfig.baseUrl;
 
     const bodyInit = JSON.stringify({
       code: 200,

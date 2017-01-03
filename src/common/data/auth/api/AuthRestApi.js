@@ -1,4 +1,4 @@
-import SnabbApi from '../../SnabbApi';
+import SnabbApi from '../../../lib/SnabbApi';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/fromPromise';
