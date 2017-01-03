@@ -42,6 +42,10 @@ const buttonsMessages = defineMessages({
     defaultMessage: 'Create an account',
     id: 'app.buttons.register',
   },
+  returnToLogIn: {
+    defaultMessage: 'Return to login',
+    id: 'app.buttons.returnToLogIn',
+  },
   submit: {
     defaultMessage: 'Submit',
     id: 'app.buttons.submit',

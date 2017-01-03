@@ -1,21 +1,79 @@
 /* @flow */
+import React, { PropTypes } from 'react';
 import type { State } from '../../common/types';
 import ResetPasswordFields from './ResetPasswordFields';
 import R from 'ramda';
-import React from 'react';
 import FormError from './FormError';
 import linksMessages from '../../common/app/linksMessages';
+import buttonsMessages from '../../common/app/buttonsMessages';
 import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape } from 'react-intl';
-import { Block, Image, Title, Loading, Box, Fixed, Text } from '../app/components';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { Block, Image, Button, Title, Loading, Box, Fixed, Text } from '../app/components';
 import { Message } from '../app/components-old';
 
 // $FlowFixMe
 const logo = require('../../../assets/images/logoBlack.svg');
 
-const ResetPasswordPage = ({ disabled, intl, authed }) => (
+const ResetPasswordSent = (props, { router }: Object) => {
+  const backToLogin = () => {
+    router.transitionTo('/new');
+  };
+
+  return (
+    <Box>
+      <Title message={authMessages.resetPasswordSent} />
+      <Text
+        align="center"
+        display="block"
+        size={2}
+      >
+        {props.intl.formatMessage(authMessages.resetPassword)}
+      </Text>
+      <Text
+        align="center"
+        display="block"
+      >
+        {props.intl.formatMessage(authMessages.resetPasswordSentDesc)}
+      </Text>
+      <Button marginVertical="1em" width="100%" align="center" onClick={backToLogin}>
+        <FormattedMessage {...buttonsMessages.returnToLogIn} />
+      </Button>
+    </Box>
+  );
+};
+
+ResetPasswordSent.contextTypes = {
+  router: PropTypes.object.isRequired,
+};
+
+const ResetPasswordField = (props) => (
+  <Box>
+    <FormError />
+    { props.disabled &&
+    <Loading>
+      {message => <Message>{message}</Message>}
+    </Loading>
+    }
+    <Text
+      align="center"
+      display="block"
+      size={2}
+    >
+      {props.intl.formatMessage(authMessages.resetPassword)}
+    </Text>
+    <Text
+      align="center"
+      display="block"
+    >
+      {props.intl.formatMessage(authMessages.resetPasswordDescription)}
+    </Text>
+    <ResetPasswordFields />
+  </Box>
+);
+
+const ResetPasswordPage = ({ disabled, intl, authed, resetPasswordSent }) => (
   authed ?
     <Redirect
       to={(
@@ -25,49 +83,40 @@ const ResetPasswordPage = ({ disabled, intl, authed }) => (
       ) || '/'}
     />
     :
-  <Fixed top bottom left right>
-    <Box display="flex" height="80%" alignItems="center" justifyContent="center">
-      <Box width="350px">
-        <Title message={linksMessages.resetPassword} />
-        <Block>
-          <Box marginBottom={1}>
-            <Image
-              alt="Snabb logo"
-              height={100}
-              width="100%"
-              src={logo}
-            />
-          </Box>
-          <FormError />
-          { disabled &&
-          <Loading>
-            {message => <Message>{message}</Message>}
-          </Loading>
-          }
-          <Text
-            align="center"
-            display="block"
-            size={2}
-          >
-            {intl.formatMessage(authMessages.resetPassword)}
-          </Text>
-          <Text
-            align="center"
-            display="block"
-          >
-            {intl.formatMessage(authMessages.resetPasswordDescription)}
-          </Text>
-          <ResetPasswordFields />
-        </Block>
+    <Fixed top bottom left right>
+      <Box display="flex" height="80%" alignItems="center" justifyContent="center">
+        <Box width="350px">
+          <Title message={linksMessages.resetPassword} />
+          <Block>
+            <Box marginBottom={1}>
+              <Image
+                alt="Snabb logo"
+                height={100}
+                width="100%"
+                src={logo}
+              />
+            </Box>
+            { resetPasswordSent ?
+              <ResetPasswordSent
+                intl={intl}
+              />
+              :
+              <ResetPasswordField
+                disabled={disabled}
+                intl={intl}
+              />
+            }
+          </Block>
+        </Box>
       </Box>
-    </Box>
-  </Fixed>
+    </Fixed>
 );
 
 ResetPasswordPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
   location: React.PropTypes.object.isRequired,
+  resetPasswordSent: React.PropTypes.bool.isRequired,
 };
 
 export default R.compose(
@@ -75,6 +124,7 @@ export default R.compose(
     (state: State) => ({
       disabled: state.auth.formDisabled,
       authed: state.user.profile,
+      resetPasswordSent: state.auth.resetPasswordSent,
     }),
   ),
   injectIntl,

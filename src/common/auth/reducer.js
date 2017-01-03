@@ -5,6 +5,7 @@ const initialState = {
   error: null,
   isValid: false,
   isFetching: false,
+  resetPasswordSent: false,
 };
 
 
@@ -22,16 +23,31 @@ const reducer = (
 
     case 'LOG_IN_SUCCESS':
     case 'REGISTER_SUCCESS':
-    case 'LOG_OUT_SUCCESS':
-    case 'RESET_PASSWORD_SUCCESS': {
+    case 'LOG_OUT_SUCCESS': {
       return { ...state, formDisabled: false, isFetching: false, error: null };
+    }
+
+    case 'RESET_PASSWORD_SUCCESS': {
+      return {
+        ...state,
+        resetPasswordSent: true,
+        formDisabled: false,
+        isFetching: false,
+        error: null,
+      };
     }
 
     case 'LOG_IN_FAIL':
     case 'REGISTER_FAIL':
     case 'LOG_OUT_FAIL':
     case 'RESET_PASSWORD_FAIL': {
-      return { ...state, formDisabled: false, isFetching: false, error: action.payload.error };
+      return {
+        ...state,
+        resetPasswordSent: false,
+        formDisabled: false,
+        isFetching: false,
+        error: action.payload.error,
+      };
     }
 
     default:
