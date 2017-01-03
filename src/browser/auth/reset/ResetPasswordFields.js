@@ -8,8 +8,7 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../../common/lib/redux-fields';
 import { resetPassword } from '../../../common/auth/actions';
-import { Form, Button, Input, Box } from '../../app/components';
-import { focus } from '../../app/components-old';
+import { Form, focus, Button, Input, Box } from '../../app/components';
 
 class ResetPasswordFields extends React.Component {
 
@@ -72,8 +71,6 @@ ResetPasswordFields.propTypes = {
   resetPassword: React.PropTypes.func.isRequired,
 };
 
-ResetPasswordFields = focus(ResetPasswordFields, 'error');
-
 export default R.compose(
   connect(
     (state: State) => ({
@@ -87,4 +84,5 @@ export default R.compose(
     path: 'resetPassword',
     fields: ['email'],
   }),
+  focus('error'),
 )(ResetPasswordFields);

@@ -1,14 +1,14 @@
 /* @flow */
-import type { State } from '../../common/types';
+import R from 'ramda';
+import type { State } from '../../../common/types';
 import React from 'react';
-import buttonsMessages from '../../common/app/buttonsMessages';
-import authMessages from '../../common/auth/authMessages';
+import buttonsMessages from '../../../common/app/buttonsMessages';
+import authMessages from '../../../common/auth/authMessages';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
-import { fields } from '../../common/lib/redux-fields';
-import { login } from '../../common/auth/actions';
-import { Button, Input, Link, Box } from '../app/components';
-import { Form, focus } from '../app/components-old';
+import { fields } from '../../../common/lib/redux-fields';
+import { register } from '../../../common/auth/actions';
+import { Form, focus , Button, Input, Box } from '../../app/components';
 
 class RegisterFields extends React.Component {
 
@@ -17,8 +17,8 @@ class RegisterFields extends React.Component {
   };
 
   loginViaPassword() {
-    const { fields, login } = this.props;
-    login('password', fields.$values());
+    const { fields, register } = this.props;
+    register('password', fields.$values());
   }
 
   render() {
@@ -64,7 +64,7 @@ class RegisterFields extends React.Component {
             type="password"
           />
           <Box marginTop="1em">
-            <Button width="100%" disabled={disabled} align="center">
+            <Button primary width="100%" disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.register} />
             </Button>
           </Box>
@@ -74,26 +74,25 @@ class RegisterFields extends React.Component {
   }
 }
 
-RegisterFields = focus(RegisterFields, 'error');
-
-RegisterFields = injectIntl(RegisterFields);
-
-RegisterFields = fields({
-  path: ['auth', 'email'],
-  fields: ['name', 'email', 'phone', 'password'],
-})(RegisterFields);
-
 RegisterFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   fields: React.PropTypes.object.isRequired,
   intl: intlShape.isRequired,
-  login: React.PropTypes.func.isRequired,
+  register: React.PropTypes.func.isRequired,
 };
 
-export default connect(
-  (state: State) => ({
-    disabled: state.auth.formDisabled,
-    error: state.auth.error,
+export default R.compose(
+  connect(
+    (state: State) => ({
+      disabled: state.auth.formDisabled,
+      error: state.auth.error,
+    }),
+    { register },
+  ),
+  injectIntl,
+  fields({
+    path: ['register'],
+    fields: ['name', 'email', 'phone', 'password'],
   }),
-  { login },
+  focus('error'),
 )(RegisterFields);

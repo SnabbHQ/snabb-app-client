@@ -9,7 +9,7 @@ import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Block, Divider, Image, Button, Link, Title, Loading, Box, Fixed } from '../app/components';
+import { Block, Divider, Image, Button, Title, Loading, Box, Fixed } from '../app/components';
 import { resetAuthState } from '../../common/auth/actions';
 import { Message } from '../app/components-old';
 
@@ -20,6 +20,11 @@ const LogInPage = ({ disabled, location, authed, resetAuthState }, { router }: O
   const forgotPassword = () => {
     resetAuthState();
     router.transitionTo('/resetPassword');
+  };
+
+  const register = () => {
+    resetAuthState();
+    router.transitionTo('/register');
   };
 
   return (
@@ -68,16 +73,18 @@ const LogInPage = ({ disabled, location, authed, resetAuthState }, { router }: O
                 </Button>
               </Box>
               <Divider marginVertical="0.3em" />
-              <Link
+              <Button
+                onClick={register}
+                marginTop="1em"
                 display="block"
-                bold
                 antialiasing
-                color="accent"
-                to="/register"
+                backgroundColor="white"
+                color="primary"
+                to="/resetPassword"
                 align="center"
               >
                 <FormattedMessage {...authMessages.createAccount} />
-              </Link>
+              </Button>
             </Block>
           </Box>
         </Box>

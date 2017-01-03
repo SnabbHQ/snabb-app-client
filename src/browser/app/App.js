@@ -17,7 +17,7 @@ import HistoryPage from '../job/history/HistoryPage';
 import NewJobPage from '../job/new/NewDeliveryPage';
 import ProfilePage from '../user/ProfilePage';
 import LogInPage from '../auth/LogInPage';
-import RegisterPage from '../auth/RegisterPage';
+import RegisterPage from '../auth/register/RegisterPage';
 import ResetPassword from '../auth/reset/ResetPasswordPage';
 import NotFoundPage from '../notfound/NotFoundPage';
 

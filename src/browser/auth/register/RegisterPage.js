@@ -1,19 +1,19 @@
 /* @flow */
-import type { State } from '../../common/types';
+import type { State } from '../../../common/types';
 import RegisterFields from './RegisterFields';
 import R from 'ramda';
 import React from 'react';
-import FormError from './FormError';
-import linksMessages from '../../common/app/linksMessages';
-import authMessages from '../../common/auth/authMessages';
+import FormError from '../FormError';
+import linksMessages from '../../../common/app/linksMessages';
+import authMessages from '../../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
-import { Block, Divider, Link, Image, Text, Title, Loading, Box } from '../app/components';
-import { Message } from '../app/components-old';
+import { Block, Divider, Link, Image, Text, Title, Loading, Box } from '../../app/components';
+import { Message } from '../../app/components-old';
 
 // $FlowFixMe
-const logo = require('../../../assets/images/logoBlack.svg');
+const logo = require('../../../../assets/images/logoBlack.svg');
 
 const RegisterPage = ({ disabled, intl, location, authed }) => (
   authed ?
@@ -33,7 +33,7 @@ const RegisterPage = ({ disabled, intl, location, authed }) => (
             <Image
               alt="Snabb logo"
               height={100}
-              width={100}
+              width="100%"
               src={logo}
             />
           </Box>
@@ -87,14 +87,14 @@ RegisterPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
   location: React.PropTypes.object.isRequired,
-  authed: React.PropTypes.string,
+  authed: React.PropTypes.object,
 };
 
 export default R.compose(
   connect(
     (state: State) => ({
       disabled: state.auth.formDisabled,
-      authed: state.user,
+      authed: state.user.profile,
     }),
   ),
   injectIntl,

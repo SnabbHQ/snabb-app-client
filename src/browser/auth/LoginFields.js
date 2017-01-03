@@ -71,8 +71,6 @@ LoginFields.propTypes = {
   login: React.PropTypes.func.isRequired,
 };
 
-LoginFields = focus(LoginFields, 'error');
-
 export default R.compose(
   connect(
     (state: State) => ({
@@ -86,4 +84,5 @@ export default R.compose(
     path: 'login',
     fields: ['email', 'password'],
   }),
+  focus('error'),
 )(LoginFields);
