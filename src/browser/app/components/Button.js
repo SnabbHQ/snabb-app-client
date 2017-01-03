@@ -28,7 +28,7 @@ const Button: Styled<ButtonProps> = styled((theme, props) => ({
   paddingTop: '0.5em',
   paddingBottom: '0.5em',
   paddingLeft: '1.5em',
-  paddingRight: '1.5em',
+  paddingRight: props.padding'1.5em',
 }), 'button', ['onClick', 'type']);
 
 Button.defaultProps = ({

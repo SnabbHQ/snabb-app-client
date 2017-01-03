@@ -8,7 +8,7 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
 import { login } from '../../common/auth/actions';
-import { Button, Input, Link, Form, focus, Box } from '../app/components';
+import { Button, Input, Form, focus, Box } from '../app/components';
 
 class LoginFields extends React.Component {
 
@@ -32,46 +32,34 @@ class LoginFields extends React.Component {
     const { disabled, fields, intl } = this.props;
 
     return (
-      <Box>
-        <Form onSubmit={this.onFormSubmit} small>
-          <Box>
-            <Input
-              {...fields.email}
-              disabled={disabled}
-              label={intl.formatMessage(authMessages.emailLabel)}
-              labelSize={-1}
-              maxLength={100}
-              padding="0.5em"
-              placeholder={intl.formatMessage(authMessages.emailPlaceholder)}
-            />
-            <Input
-              {...fields.password}
-              disabled={disabled}
-              label={intl.formatMessage(authMessages.passwordLabel)}
-              labelSize={-1}
-              maxLength={1000}
-              padding="0.5em"
-              placeholder={intl.formatMessage(authMessages.passwordPlaceholder)}
-              type="password"
-            />
-            <Box marginTop="1em">
-              <Button type="submit" width="100%" disabled={disabled} align="center">
-                <FormattedMessage {...buttonsMessages.logIn} />
-              </Button>
-            </Box>
+      <Form onSubmit={this.onFormSubmit} small>
+        <Box>
+          <Input
+            {...fields.email}
+            disabled={disabled}
+            label={intl.formatMessage(authMessages.emailLabel)}
+            labelSize={-1}
+            maxLength={100}
+            padding="0.5em"
+            placeholder={intl.formatMessage(authMessages.emailPlaceholder)}
+          />
+          <Input
+            {...fields.password}
+            disabled={disabled}
+            label={intl.formatMessage(authMessages.passwordLabel)}
+            labelSize={-1}
+            maxLength={1000}
+            padding="0.5em"
+            placeholder={intl.formatMessage(authMessages.passwordPlaceholder)}
+            type="password"
+          />
+          <Box marginTop="1em">
+            <Button type="submit" width="100%" disabled={disabled} align="center">
+              <FormattedMessage {...buttonsMessages.logIn} />
+            </Button>
           </Box>
-        </Form>
-        <Link
-          marginTop="1em"
-          display="block"
-          antialiasing
-          to="/resetPassword"
-          align="end"
-          size={-1}
-        >
-          <FormattedMessage {...authMessages.passwordForgotten} />
-        </Link>
-      </Box>
+        </Box>
+      </Form>
     );
   }
 }
