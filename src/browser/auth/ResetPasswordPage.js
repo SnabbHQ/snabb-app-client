@@ -34,7 +34,7 @@ const ResetPasswordPage = ({ disabled, intl, authed }) => (
             <Image
               alt="Snabb logo"
               height={100}
-              width={100}
+              width="100%"
               src={logo}
             />
           </Box>
@@ -73,8 +73,8 @@ ResetPasswordPage.propTypes = {
 export default R.compose(
   connect(
     (state: State) => ({
-      disabled: state.auth.form.disabled,
-      authed: state.user.profile.email,
+      disabled: state.auth.formDisabled,
+      authed: state.user.profile,
     }),
   ),
   injectIntl,

@@ -7,8 +7,8 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
 import { resetPassword } from '../../common/auth/actions';
-import { Button, Input, Link, Box } from '../app/components';
-import { Form, focus } from '../app/components-old';
+import { Form, Button, Input, Link, Box } from '../app/components';
+import { focus } from '../app/components-old';
 
 type LocalState = {
   recoveryEmailSent: boolean,
