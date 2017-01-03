@@ -14,10 +14,6 @@
 - Stateless functional UI components with JavaScript styles
 - Flowtype
 - Vanilla hot reloading makes everything hot reloadable
-- [Firebase](https://firebase.google.com/) integration ([este.firebaseapp.com](https://este.firebaseapp.com))
-  - email and facebook login
-  - declarative queryFirebase higher order component for Firebase imperative API
-  - users presence
 
 ## Libraries
 
@@ -29,7 +25,6 @@
 - [formatjs](http://formatjs.io/)
 - [jest](https://facebook.github.io/jest/) Painless JavaScript Testing.
 - [raven-js](https://github.com/getsentry/raven-js) Crash reporting client for [Sentry](https://getsentry.com).
-- [rebass](https://github.com/jxnblk/rebass) Configurable React Stateless Functional UI Components
 - And much more. Explore the repository.
 
 ## Prerequisites
