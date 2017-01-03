@@ -18,7 +18,7 @@ import NewJobPage from '../job/new/NewDeliveryPage';
 import ProfilePage from '../user/ProfilePage';
 import LogInPage from '../auth/LogInPage';
 import RegisterPage from '../auth/RegisterPage';
-import ResetPassword from '../auth/ResetPasswordPage';
+import ResetPassword from '../auth/reset/ResetPasswordPage';
 import NotFoundPage from '../notfound/NotFoundPage';
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;

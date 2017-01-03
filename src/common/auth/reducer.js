@@ -50,6 +50,9 @@ const reducer = (
       };
     }
 
+    case 'RESET_AUTH_STATE':
+      return initialState;
+
     default:
       return state;
   }

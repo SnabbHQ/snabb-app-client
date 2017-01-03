@@ -1,15 +1,15 @@
 /* @flow */
 import R from 'ramda';
-import type { State } from '../../common/types';
+import type { State } from '../../../common/types';
 import React from 'react';
-import buttonsMessages from '../../common/app/buttonsMessages';
-import authMessages from '../../common/auth/authMessages';
+import buttonsMessages from '../../../common/app/buttonsMessages';
+import authMessages from '../../../common/auth/authMessages';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
-import { fields } from '../../common/lib/redux-fields';
-import { resetPassword } from '../../common/auth/actions';
-import { Form, Button, Input, Box } from '../app/components';
-import { focus } from '../app/components-old';
+import { fields } from '../../../common/lib/redux-fields';
+import { resetPassword } from '../../../common/auth/actions';
+import { Form, Button, Input, Box } from '../../app/components';
+import { focus } from '../../app/components-old';
 
 class ResetPasswordFields extends React.Component {
 

@@ -1,52 +1,21 @@
 /* @flow */
-import React, { PropTypes } from 'react';
-import type { State } from '../../common/types';
+import React from 'react';
+import type { State } from '../../../common/types';
 import ResetPasswordFields from './ResetPasswordFields';
+import ResetPasswordSent from './ResetPasswordSent';
 import R from 'ramda';
-import FormError from './FormError';
-import linksMessages from '../../common/app/linksMessages';
-import buttonsMessages from '../../common/app/buttonsMessages';
-import authMessages from '../../common/auth/authMessages';
+import FormError from '../FormError';
+import linksMessages from '../../../common/app/linksMessages';
+import authMessages from '../../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
-import { Block, Image, Button, Title, Loading, Box, Fixed, Text } from '../app/components';
-import { Message } from '../app/components-old';
+import { injectIntl, intlShape } from 'react-intl';
+import { Block, Image, Title, Loading, Box, Fixed, Text } from '../../app/components';
+import { Message } from '../../app/components-old';
 
 // $FlowFixMe
-const logo = require('../../../assets/images/logoBlack.svg');
+const logo = require('../../../../assets/images/logoBlack.svg');
 
-const ResetPasswordSent = (props, { router }: Object) => {
-  const backToLogin = () => {
-    router.transitionTo('/new');
-  };
-
-  return (
-    <Box>
-      <Title message={authMessages.resetPasswordSent} />
-      <Text
-        align="center"
-        display="block"
-        size={2}
-      >
-        {props.intl.formatMessage(authMessages.resetPassword)}
-      </Text>
-      <Text
-        align="center"
-        display="block"
-      >
-        {props.intl.formatMessage(authMessages.resetPasswordSentDesc)}
-      </Text>
-      <Button marginVertical="1em" width="100%" align="center" onClick={backToLogin}>
-        <FormattedMessage {...buttonsMessages.returnToLogIn} />
-      </Button>
-    </Box>
-  );
-};
-
-ResetPasswordSent.contextTypes = {
-  router: PropTypes.object.isRequired,
-};
 
 const ResetPasswordField = (props) => (
   <Box>
@@ -97,9 +66,7 @@ const ResetPasswordPage = ({ disabled, intl, authed, resetPasswordSent }) => (
               />
             </Box>
             { resetPasswordSent ?
-              <ResetPasswordSent
-                intl={intl}
-              />
+              <ResetPasswordSent />
               :
               <ResetPasswordField
                 disabled={disabled}
@@ -116,7 +83,6 @@ ResetPasswordPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
   location: React.PropTypes.object.isRequired,
-  resetPasswordSent: React.PropTypes.bool.isRequired,
 };
 
 export default R.compose(
