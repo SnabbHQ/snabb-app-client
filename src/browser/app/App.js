@@ -1,82 +1,75 @@
 /* @flow */
 import type { State } from '../../common/types';
-import './App.css';
 import * as themes from './themes';
-import Footer from './Footer';
-import Header from './Header';
+import Page from './Page';
 import Helmet from 'react-helmet';
 import R from 'ramda';
 import React from 'react';
 import favicon from '../../common/app/favicon';
 import start from '../../common/app/start';
-import { Box, Container, Flex } from '../app/components';
-import { Match, ThemeProvider } from '../../common/app/components';
 import { Miss } from 'react-router';
+import { Container, ThemeProvider, Box } from './components';
 import { connect } from 'react-redux';
 
 // Pages
-import HomePage from '../home/HomePage';
+import ActivePage from '../job/active/ActiveJobsPage';
+import HistoryPage from '../job/history/HistoryPage';
+import NewJobPage from '../job/new/NewDeliveryPage';
+import ProfilePage from '../user/ProfilePage';
+import LogInPage from '../auth/LogInPage';
+import RegisterPage from '../auth/RegisterPage';
+import ResetPassword from '../auth/ResetPasswordPage';
 import NotFoundPage from '../notfound/NotFoundPage';
 
-const styles = {
-  container: {
-    minHeight: '100vh',
-  },
-  page: {
-    flex: 1
-  },
+const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
+
+type AppProps = {
+  currentLocale: string,
+  currentTheme: ?string,
 };
 
-// v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
-const bootstrap4Metas: any = [
-  { charset: 'utf-8' },
-  {
-    name: 'viewport',
-    content: 'width=device-width, initial-scale=1, shrink-to-fit=no',
-  },
-  {
-    'http-equiv': 'x-ua-compatible',
-    content: 'ie=edge',
-  },
-];
-
-const App = ({ currentLocale, currentTheme }) => (
+const App = ({ currentLocale, currentTheme }: AppProps) => (
   <ThemeProvider
-    key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
-    theme={themes[currentTheme] || themes.initial}
+    // TODO: Do we need it?
+    // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
+    theme={theme(currentTheme)}
   >
     <Container>
       <Helmet
         htmlAttributes={{ lang: currentLocale }}
         meta={[
-          ...bootstrap4Metas,
-          {
-            name: 'description',
-            content: `Starter kit for universal full–fledged React apps. One stack
-              for browser, mobile, server.`,
-          },
+          // v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
+          { charset: 'utf-8' },
+          { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+          { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
           ...favicon.meta,
         ]}
         link={[
           ...favicon.link,
+          // Test vertical rhythm.
+          //{
+          //  href: `http://basehold.it/${theme(currentTheme).text.lineHeight}`,
+          //  rel: 'stylesheet',
+          //},
         ]}
       />
-      <Flex flexColumn style={styles.container}>
-        <Header />
-        <Box style={styles.page}>
-          <Match exactly pattern="/" component={HomePage} />
-          <Miss component={NotFoundPage} />
-        </Box>
-        <Footer />
-      </Flex>
+      <Box
+        backgroundColor={theme(currentTheme).colors.bodyBackground}
+        flex={1} // make footer sticky
+      >
+        <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
+        <Page authorized pattern="/active" component={ActivePage} includeHeader />
+        <Page authorized pattern="/new" component={NewJobPage} includeHeader />
+        <Page authorized pattern="/history" component={HistoryPage} includeHeader />
+        <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
+        <Page pattern="/login" component={LogInPage} />
+        <Page pattern="/register" component={RegisterPage} />
+        <Page pattern="/resetPassword" component={ResetPassword} />
+        <Miss component={NotFoundPage} />
+      </Box>
     </Container>
   </ThemeProvider>
 );
-
-App.propTypes = {
-  currentLocale: React.PropTypes.string.isRequired,
-  currentTheme: React.PropTypes.string,
-};
 
 export default R.compose(
   connect(

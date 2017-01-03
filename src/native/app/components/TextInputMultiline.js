@@ -1,4 +1,4 @@
-'use strict'
+
 
 class UselessTextInputMultiline extends Component {
   constructor(props) {
@@ -12,15 +12,16 @@ class UselessTextInputMultiline extends Component {
   // color.
   render() {
     return (
-      <View style={{
-        backgroundColor: this.state.text,
-        borderBottomColor: '#000000',
-        borderBottomWidth: 1 }}
+      <View
+        style={{
+          backgroundColor: this.state.text,
+          borderBottomColor: '#000000',
+          borderBottomWidth: 1 }}
       >
         <UselessTextInput
-          multiline = {true}
-          numberOfLines = {4}
-          onChangeText={(text) => this.setState({text})}
+          multiline
+          numberOfLines={4}
+          onChangeText={(text) => this.setState({ text })}
           value={this.state.text}
         />
       </View>

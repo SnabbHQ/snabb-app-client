@@ -6,7 +6,6 @@
 // Core
 
 export type Deps = {
-  FBSDK: any,
   firebase: any,
   firebaseAuth: Function,
   firebaseDatabase: any,
@@ -18,18 +17,26 @@ export type Deps = {
 
 // Models
 
-export type Todo = {
-  completed: boolean,
-  createdAt: number,
+export type Delivery = {
   id: string,
-  title: string,
+};
+
+export type Phone = {
+  number: string
+}
+
+export type Profile = {
+  id: string,
+  name: ?string,
+  lastName: ?string,
+  phone: Phone,
+  email: string,
+  thumbnail: ?string,
+  emailVerified: boolean,
 };
 
 export type User = {
-  displayName: string,
-  email: ?string,
-  id: string,
-  photoURL: ?string,
+  profile: Profile,
 };
 
 // Reducers
@@ -71,13 +78,13 @@ export type ThemeState = {
   currentTheme: ?string,
 };
 
-export type TodosState = {
-  all: {[id: string]: Todo},
-};
+export type DeliveriesState = {
+  all: {[id: string]: Delivery}
+}
 
-export type UsersState = {
-  online: ?Array<User>,
-  viewer: ?User,
+export type UserState = {
+  user: ?Profile,
+  profile: ?Profile,
 };
 
 // State
@@ -90,7 +97,7 @@ export type State = {
   fields: any,
   intl: IntlState,
   themes: ThemeState,
-  todos: TodosState,
+  deliveries: DeliveriesState,
   users: UsersState,
 };
 
@@ -98,29 +105,32 @@ export type State = {
 
 export type Action =
     { type: 'APP_ERROR', payload: { error: Error } }
-  | { type: 'ADD_HUNDRED_TODOS', payload: { todos: Array<Todo> } }
-  | { type: 'ADD_TODO', payload: { todo: Todo } }
   | { type: 'APP_ONLINE', payload: { online: boolean } }
   | { type: 'APP_SHOW_MENU', payload: { menuShown: boolean } }
   | { type: 'APP_START' }
   | { type: 'APP_STARTED' }
   | { type: 'APP_STOP' }
   | { type: 'APP_STORAGE_LOADED' }
-  | { type: 'CLEAR_ALL_COMPLETED_TODOS' }
-  | { type: 'CLEAR_ALL_TODOS' }
-  | { type: 'DELETE_TODO', payload: { id: string } }
-  | { type: 'ON_AUTH', payload: { firebaseUser: ?Object } }
-  | { type: 'ON_USERS_PRESENCE', payload: { presence: Object } }
+  | { type: 'GET_PROFILE' }
+  | { type: 'GET_PROFILE_SUCCESS', payload: { profile: ?Profile } }
+  | { type: 'GET_PROFILE_FAIL', payload: { error: Error } }
+  | { type: 'LOG_IN', payload: { options?: Object } }
+  | { type: 'LOG_IN_SUCCESS', payload: { user: ?User } }
+  | { type: 'LOG_IN_FAIL', payload: { error: Error } }
+  | { type: 'LOG_OUT' }
+  | { type: 'LOG_OUT_SUCCESS' }
+  | { type: 'PROFILE_UPDATE' }
+  | { type: 'UPDATE_USER_SUCCESS' }
   | { type: 'RESET_PASSWORD', payload: { email: string } }
-  | { type: 'SAVE_USER_DONE' }
+  | { type: 'RESET_PASSWORD_SUCCESS', payload: { email: string } }
+  | { type: 'SESSION_TOKEN', payload: { email: string } }
+  | { type: 'SESSION_TOKEN_SUCCESS', payload: { token: string } }
+  | { type: 'SESSION_TOKEN_FAIL', payload: { error: Error} }
   | { type: 'SET_CURRENT_LOCALE', payload: { locale: string } }
   | { type: 'SET_THEME', payload: { theme: string } }
-  | { type: 'SIGN_IN', payload: { providerName: string, options?: Object } }
-  | { type: 'SIGN_IN_DONE', payload: { user: ?User } }
-  | { type: 'SIGN_IN_FAIL', payload: { error: Error } }
-  | { type: 'SIGN_OUT' }
-  | { type: 'SIGN_UP', payload: { providerName: string, options?: Object } }
-  | { type: 'SIGN_UP_DONE', payload: { user: ?User } }
-  | { type: 'SIGN_UP_FAIL', payload: { error: Error } }
-  | { type: 'TOGGLE_TODO_COMPLETED', payload: { todo: Todo } }
+  | { type: 'SILENT_LOG_IN' }
+  | { type: 'SILENT_LOG_IN_SUCCESS', payload: { user: ?User } }
+  | { type: 'REGISTER', payload: { providerName: string, options?: Object } }
+  | { type: 'REGISTER_SUCCESS', payload: { user: ?User } }
+  | { type: 'REGISTER_FAIL', payload: { error: Error } }
   ;

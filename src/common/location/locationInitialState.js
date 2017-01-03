@@ -8,28 +8,28 @@
  * By using Immutable, it's enforced.  Just saying....
  *
  */
-'use strict';
 
-import {Record} from 'immutable'
-import * as Defaults from './locationConstants'
+
+import { Record } from 'immutable';
+import * as Defaults from './locationConstants';
 
 /**
  * ## InitialState
  *
  * The fields we're concerned with
  */
-var InitialState = Record({
+const InitialState = Record({
   from: '',
   pickupLocation: {
     latitude: Defaults.LATITUDE,
     longitude: Defaults.LONGITUDE,
-    address: ''
+    address: '',
   },
   deliveryLocation: {
     latitude: 0,
     longitude: 0,
-    address: ''
-  }
+    address: '',
+  },
 });
 
-export default InitialState
+export default InitialState;

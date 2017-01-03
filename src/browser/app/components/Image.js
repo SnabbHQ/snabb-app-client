@@ -1,11 +1,37 @@
 /* @flow */
+/* eslint-disable jsx-a11y/img-has-alt */
 import React from 'react';
-import { Base } from 'rebass';
+import styled from './styled';
 
-// TODO: Enforce height and width with invariant check.
+type ImageProps = {|
+  alt?: string,
+  height: number,
+  src: string | number, // number, because src={require('./foo.png')}
+  width?: number,
+  onClick: func,
+|};
 
-const Image = (props: Object) => (
-  <Base {...props} tagName="img" />
+const altOrRolePresentation = alt => alt
+  ? { alt }
+  : { role: 'presentation' };
+
+const ImageWrapper = styled((theme, props) => ({
+  display: 'block',
+  height: props.height,
+}), 'div', ['onClick']);
+
+const Image = (props: ImageProps) => (
+  <ImageWrapper
+    height={props.height}
+    onClick={props.onClick}
+  >
+    <img
+      {...altOrRolePresentation(props.alt)}
+      height="100%"
+      src={props.src}
+      width={props.width ? props.width : '100%'}
+    />
+  </ImageWrapper>
 );
 
 export default Image;

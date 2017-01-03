@@ -25,11 +25,11 @@ export default [
     "defaultMessage": "Uložit",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Přihlášení",
   },
   {
-    "id": "app.buttons.signIn",
+    "id": "app.buttons.login",
     "defaultMessage": "Přihlášení",
   },
   {
@@ -93,7 +93,7 @@ export default [
     "defaultMessage": "Nastavení",
   },
   {
-    "id": "app.links.signIn",
+    "id": "app.links.login",
     "defaultMessage": "Přihlášení",
   },
   {

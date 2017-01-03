@@ -7,4 +7,4 @@
 //
 // polyfillLocales(global, locales)
 
-require('./main')
+require('./main');

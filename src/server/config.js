@@ -16,13 +16,6 @@ nconf.defaults({
   // Use appVersion defined in gulp env task or Heroku dyno metadata.
   appVersion: process.env.appVersion || process.env.HEROKU_SLUG_COMMIT,
   defaultLocale: 'en',
-  firebase: {
-    // To get the config, just click Add web app from the overview page.
-    apiKey: 'AIzaSyDZRAOrDErAaC-TCKbr4cMzaohsPR4sWgU',
-    authDomain: 'este.firebaseapp.com',
-    databaseURL: 'https://este.firebaseio.com',
-    storageBucket: 'project-808488257248094054.appspot.com',
-  },
   googleAnalyticsId: 'UA-XXXXXXX-X',
   isProduction: process.env.NODE_ENV === 'production',
   locales: ['cs', 'de', 'en', 'es', 'fr', 'pt', 'ro'],
@@ -33,6 +26,9 @@ nconf.defaults({
   // stackoverflow.com/questions/3132105
   remoteHotReload: false,
   sentryUrl: 'https://f297cec9c9654088b8ccf1ea9136c458@app.getsentry.com/77415',
+  apiConfig: {
+    baseUrl: 'https://snabb-api-mock.herokuapp.com/api/v1',
+  },
 });
 
 export default nconf.get();

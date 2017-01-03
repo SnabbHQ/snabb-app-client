@@ -1,14 +1,14 @@
-'use strict'
 
-import {bindActionCreators} from "redux"
-import {connect} from "react-redux"
-import {Actions} from "react-native-router-flux";
-import * as profileActions from "../../common/user/profile/actions/profileActions"
-import React, {Component} from "react"
-import {StyleSheet, View, Text} from "react-native"
-import TimerMixin from "react-timer-mixin"
-import ReactMixin from "react-mixin"
-import I18n from "../../common/lib/I18n"
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+import * as profileActions from '../../common/user/profile/actions/profileActions';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import TimerMixin from 'react-timer-mixin';
+import ReactMixin from 'react-mixin';
+import I18n from '../../common/lib/I18n';
 
 /**
  *  Save that state
@@ -19,10 +19,10 @@ function mapStateToProps(state) {
     profile: {
       form: {
         isFetching: state.profile.form.isFetching,
-        user: state.profile.form.fields
-      }
-    }
-  }
+        user: state.profile.form.fields,
+      },
+    },
+  };
 }
 
 /**
@@ -30,8 +30,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...profileActions}, dispatch)
-  }
+    actions: bindActionCreators({ ...profileActions }, dispatch),
+  };
 }
 
 class App extends Component {
@@ -39,23 +39,23 @@ class App extends Component {
   /**
    * See if there's a sessionToken from a previous login
    */
-  componentDidMount () {
+  componentDidMount() {
     // Use a timer so App screen is displayed
     this.setTimeout(
       () => {
-        this.props.actions.getUserProfile()
+        this.props.actions.getUserProfile();
       },
-      500
-    )
+      500,
+    );
   }
 
   componentWillReceiveProps(newProps) {
     const { form } = newProps.profile;
     if (!form.isFetching) {
       if (form.user && form.user.email) {
-        Actions.HomeScreen()
+        Actions.HomeScreen();
       } else {
-        Actions.LoginRegisterScreen()
+        Actions.LoginRegisterScreen();
       }
     }
   }
@@ -65,7 +65,7 @@ class App extends Component {
       <View style={styles.container}>
         <Text style={styles.summary}>{I18n.t('General.loading')}</Text>
       </View>
-    )
+    );
   }
 }
 
@@ -75,13 +75,13 @@ let styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 80,
-    padding: 10
+    padding: 10,
   },
   summary: {
     fontFamily: 'BodoniSvtyTwoITCTT-Book',
     fontSize: 20,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 // Since we're using ES6 classes, have to define the TimerMixin
@@ -90,4 +90,4 @@ ReactMixin(App.prototype, TimerMixin);
 /**
  * Connect the properties
  */
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

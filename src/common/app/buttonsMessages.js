@@ -22,25 +22,25 @@ const buttonsMessages = defineMessages({
     defaultMessage: 'Edit',
     id: 'app.buttons.edit',
   },
-  facebookSignIn: {
-    defaultMessage: 'Login with Facebook',
-    id: 'auth.social.facebookSignIn',
-  },
   save: {
     defaultMessage: 'Save',
     id: 'app.buttons.save',
   },
-  signIn: {
-    defaultMessage: 'Sign In',
-    id: 'app.buttons.signIn',
+  logIn: {
+    defaultMessage: 'Log In',
+    id: 'app.buttons.logIn',
   },
-  signOut: {
-    defaultMessage: 'Sign Out',
-    id: 'app.buttons.signOut',
+  logOut: {
+    defaultMessage: 'Log Out',
+    id: 'app.buttons.logOut',
   },
-  signUp: {
-    defaultMessage: 'Sign Up',
-    id: 'app.buttons.signUp',
+  resetPassword: {
+    defaultMessage: 'Send password reset email',
+    id: 'app.buttons.resetPassword',
+  },
+  register: {
+    defaultMessage: 'Create an account',
+    id: 'app.buttons.register',
   },
   submit: {
     defaultMessage: 'Submit',

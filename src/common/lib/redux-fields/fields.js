@@ -72,7 +72,7 @@ const fields = (options: Options) => (WrappedComponent) => {
       } : {
         name: field,
         onChange: (event) => {
-          // Some custom components like react-select pass the target directly.
+          // Some custom components-old like react-select pass the target directly.
           const target = event.target || event;
           const { type, checked, value } = target;
           const isCheckbox = type && type.toLowerCase() === 'checkbox';
@@ -121,7 +121,7 @@ const fields = (options: Options) => (WrappedComponent) => {
       options.fields.forEach((field) => {
         this.fields[field].value = this.values[field];
       });
-      this.fields = { ...this.fields }; // Ensure rerender for pure components.
+      this.fields = { ...this.fields }; // Ensure rerender for pure components-old.
       this.setState({ model });
     }
 

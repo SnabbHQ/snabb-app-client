@@ -1,37 +1,34 @@
-'use strict'
+// @flow
+import type { Deps } from '../../../types';
 
-import BackendFactory from "../../../lib/BackendFactory"
-import AppAuthToken from "../../../lib/__mocks__/AppAuthToken"
+import { getProfileSuccess, getProfileFail } from '../actions';
 
-import {getProfileSuccess, getProfileFailure} from "../actions/profileActions"
-import * as ActionTypes from "../actions/ProfileActionTypes"
+import { Observable } from 'rxjs/Observable';
 
-import {Observable} from 'rxjs/Observable';
-
-import "rxjs/add/observable/of"
+import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
-import "rxjs/add/operator/switchMap"
-import "rxjs/add/operator/map"
-import "rxjs/add/operator/catch"
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 /**
- * Epic fetching the user profile when the action {@link ActionTypes.GET_PROFILE_REQUEST} gets fired. The epic will
+ * Epic fetching the user profile when the action GET_PROFILE gets fired.
  *
- * In order to do so, this epic will fetch the auth sessionToken previously in order to communicate with the server.
+ * In order to do so, this epic will fetch the auth sessionToken previously in order to communicate
+ * with the server.
  *
- * @param action$
  * @return {Observable<R|I>}
  */
-export default function getProfile(action$) {
-  return action$.ofType(ActionTypes.GET_PROFILE_REQUEST)
-    .switchMap(() =>
-      Observable.fromPromise(new AppAuthToken().getSessionToken())
-        .switchMap((sessionToken) => {
-          return Observable.fromPromise(BackendFactory(sessionToken).getProfile())
-        })
+const getProfile = (action$: any, { backendFactory, appAuthToken }: Deps) =>
+  action$.ofType('GET_PROFILE')
+    .mergeMap(() =>
+      Observable.fromPromise(appAuthToken.getSessionToken())
+        .switchMap(Observable.fromPromise(backendFactory.getProfile()))
         .map(getProfileSuccess)
-        .catch(error => Observable.of(
-          getProfileFailure(error)
-        ))
-    )
-}
+        .catch(error => {
+          console.log(error);
+          return Observable.of(getProfileFail(error));
+        }),
+    );
+
+export default getProfile;

@@ -6,22 +6,22 @@
  * It too is a container so there is boilerplate from Redux similar to
  * ```App``` and ```Login```
  */
-'use strict';
 
-import {bindActionCreators} from "redux"
-import {connect} from "react-redux"
-import {Actions} from "react-native-router-flux"
-import _ from "underscore"
-import {TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem} from "native-base"
-import * as profileActions from "../../../common/user/profile/actions/profileActions"
-import * as globalActions from "../../../common/global/globalActions"
-import * as authActions from "../../../common/user/auth/authActions"
-import ErrorAlert from "../../app/components/ErrorAlert"
-import React, {Component} from "react"
-import {StyleSheet, View, Platform} from "react-native"
-import NavBar, {NavTitle, NavButton} from "react-native-nav"
-import UserProfileImage from "../components/UserProfileImage"
-import ImagePicker from "react-native-image-picker"
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+import _ from 'underscore';
+import { TextInput, Input, Icon, Text, Grid, Col, Row, List, ListItem } from 'native-base';
+import * as profileActions from '../../../common/user/profile/actions/profileActions';
+import * as globalActions from '../../../common/global/globalActions';
+import * as authActions from '../../../common/auth/actions';
+import ErrorAlert from '../../app/components/ErrorAlert';
+import React, { Component } from 'react';
+import { StyleSheet, View, Platform } from 'react-native';
+import NavBar, { NavTitle, NavButton } from 'react-native-nav';
+import UserProfileImage from '../components/UserProfileImage';
+import ImagePicker from 'react-native-image-picker';
 
 /**
  * ## Redux boilerplate
@@ -32,15 +32,15 @@ function mapStateToProps(state) {
     global: {
       currentUser: state.global.currentUser,
       currentState: state.global.currentState,
-      showState: state.global.showState
-    }
-  }
+      showState: state.global.showState,
+    },
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...profileActions, ...authActions, ...globalActions}, dispatch)
-  }
+    actions: bindActionCreators({ ...profileActions, ...authActions, ...globalActions }, dispatch),
+  };
 }
 
 class ModifyProfileScreen extends Component {
@@ -52,7 +52,7 @@ class ModifyProfileScreen extends Component {
   constructor(props) {
     super(props);
 
-    this.errorAlert = new ErrorAlert()
+    this.errorAlert = new ErrorAlert();
     this.state = {
       formValues: {
         name: '',
@@ -60,8 +60,8 @@ class ModifyProfileScreen extends Component {
         email: '',
         phoneNumber: '',
       },
-      thumbnail: ''
-    }
+      thumbnail: '',
+    };
   }
 
   /**
@@ -73,16 +73,16 @@ class ModifyProfileScreen extends Component {
    */
   onChange(value) {
     if (!_.isUndefined(value.name)) {
-      this.props.actions.onProfileFormFieldChange('name', value.name)
+      this.props.actions.onProfileFormFieldChange('name', value.name);
     } else if (!_.isUndefined(value.email)) {
-      this.props.actions.onProfileFormFieldChange('email', value.email)
+      this.props.actions.onProfileFormFieldChange('email', value.email);
     } else if (!_.isUndefined(value.lastName)) {
-      this.props.actions.onProfileFormFieldChange('lastName', value.lastName)
+      this.props.actions.onProfileFormFieldChange('lastName', value.lastName);
     } else if (!_.isUndefined(value.phoneNumber)) {
-      this.props.actions.onProfileFormFieldChange('phoneNumber', value.phoneNumber)
+      this.props.actions.onProfileFormFieldChange('phoneNumber', value.phoneNumber);
     }
 
-    this.setState({value})
+    this.setState({ value });
   }
 
   /**
@@ -99,8 +99,8 @@ class ModifyProfileScreen extends Component {
         phoneNumber: newProps.profile.form.fields.phoneNumber,
         email: newProps.profile.form.fields.email,
       },
-      thumbnail: newProps.profile.form.fields.thumbnail
-    })
+      thumbnail: newProps.profile.form.fields.thumbnail,
+    });
 
     // TODO - Make sure to display a loader
     if (newProps.profile.form.isFetching) {
@@ -108,7 +108,7 @@ class ModifyProfileScreen extends Component {
     }
 
     if (newProps.profile.form.updated) {
-      Actions.pop()
+      Actions.pop();
     }
   }
 
@@ -121,17 +121,17 @@ class ModifyProfileScreen extends Component {
    */
   componentDidMount() {
     if (this.props.profile.form.fields.email === '') {
-      this.props.actions.getUserProfile(this.props.global.currentUser)
+      this.props.actions.getUserProfile(this.props.global.currentUser);
     } else {
       this.setState({
         formValues: {
           name: this.props.profile.form.fields.name,
           lastName: this.props.profile.form.fields.lastName,
           phoneNumber: this.props.profile.form.fields.phoneNumber,
-          email: this.props.profile.form.fields.email
+          email: this.props.profile.form.fields.email,
         },
-        thumbnail: this.props.profile.form.fields.thumbnail
-      })
+        thumbnail: this.props.profile.form.fields.thumbnail,
+      });
     }
   }
 
@@ -140,7 +140,6 @@ class ModifyProfileScreen extends Component {
   }
 
   onUpdateProfilePress() {
-
     // TODO - Make sure to do proper validation
     /**
      * When the button is pressed, send the users info including the
@@ -148,7 +147,7 @@ class ModifyProfileScreen extends Component {
      * user objectId
      */
     this.props.actions.updateUserProfile(
-      this.props.profile.form.originalProfile.objectId,
+      this.props.profile.form.profile.objectId,
       {
         name: this.props.profile.form.fields.name,
         lastName: this.props.profile.form.fields.lastName,
@@ -156,17 +155,16 @@ class ModifyProfileScreen extends Component {
         email: this.props.profile.form.fields.email,
         thumbnail: this.props.profile.form.fields.thumbnail,
       },
-      this.props.global.currentUser)
+      this.props.global.currentUser);
   }
 
   onChangeProfilePhotoPress() {
-
-    var options = {
+    const options = {
       title: 'Select Profile Image',
       storageOptions: {
         skipBackup: true,
-        path: 'images'
-      }
+        path: 'images',
+      },
     };
 
     ImagePicker.showImagePicker(options, (response) => {
@@ -174,24 +172,22 @@ class ModifyProfileScreen extends Component {
 
       if (response.didCancel) {
         console.log('User cancelled image picker');
-      }
-      else if (response.error) {
+      } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
-      }
-      else {
+      } else {
         // You can display the image using either data...
-        const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
+        const source = { uri: `data:image/jpeg;base64,${response.data}`, isStatic: true };
 
         // or a reference to the platform specific asset location
         if (Platform.OS === 'ios') {
-          const source = {uri: response.uri.replace('file://', ''), isStatic: true};
+          const source = { uri: response.uri.replace('file://', ''), isStatic: true };
         } else {
-          const source = {uri: response.uri, isStatic: true};
+          const source = { uri: response.uri, isStatic: true };
         }
 
         this.setState({
-          thumbnail: source
-        })
+          thumbnail: source,
+        });
       }
     });
   }
@@ -211,67 +207,79 @@ class ModifyProfileScreen extends Component {
           </NavButton>
           <NavTitle>Edit Profile</NavTitle>
           <NavButton onPress={this.onUpdateProfilePress.bind(this)}>
-            <Text style={{color: '#00D5D5', fontWeight: 'bold'}}>Save</Text>
+            <Text style={{ color: '#00D5D5', fontWeight: 'bold' }}>Save</Text>
           </NavButton>
         </NavBar>
         <Grid>
           <Row size={1}>
-            <Col size={1.5} style={{padding: 10, alignItems: 'center', justifyContent: 'center'}}>
-              <UserProfileImage size={80} style={{alignSelf: 'center'}}
-                                onPress={this.onChangeProfilePhotoPress.bind(this)}/>
-              <Text style={{
-                fontSize: 12,
-                paddingLeft: 4,
-                paddingRight: 4,
-                fontWeight: 'bold',
-                color: 'white',
-                backgroundColor: '#00D5D5'
-              }}>Change</Text>
+            <Col size={1.5} style={{ padding: 10, alignItems: 'center', justifyContent: 'center' }}>
+              <UserProfileImage
+                size={80} style={{ alignSelf: 'center' }}
+                onPress={this.onChangeProfilePhotoPress.bind(this)}
+              />
+              <Text
+                style={{
+                  fontSize: 12,
+                  paddingLeft: 4,
+                  paddingRight: 4,
+                  fontWeight: 'bold',
+                  color: 'white',
+                  backgroundColor: '#00D5D5',
+                }}
+              >Change</Text>
             </Col>
-            <Col size={3} style={{padding: 5}}>
+            <Col size={3} style={{ padding: 5 }}>
               <Row>
-                <Input placeholder='First Name' style={{flex: 1, alignSelf: 'stretch'}}
-                       value={this.state.formValues.name}
-                       onChangeText={(text) => this.onChange({name: text})}/>
+                <Input
+                  placeholder="First Name" style={{ flex: 1, alignSelf: 'stretch' }}
+                  value={this.state.formValues.name}
+                  onChangeText={(text) => this.onChange({ name: text })}
+                />
               </Row>
-              <View style={{backgroundColor: '#E7E7E7', height: 1}}/>
+              <View style={{ backgroundColor: '#E7E7E7', height: 1 }} />
               <Row>
-                <Input placeholder='Last Name' style={{flex: 1, alignSelf: 'stretch'}}
-                       value={this.state.formValues.lastName}
-                       onChangeText={(text) => this.onChange({lastName: text})}/>
+                <Input
+                  placeholder="Last Name" style={{ flex: 1, alignSelf: 'stretch' }}
+                  value={this.state.formValues.lastName}
+                  onChangeText={(text) => this.onChange({ lastName: text })}
+                />
               </Row>
             </Col>
           </Row>
-          <Row size={3} style={{backgroundColor: '#E7E7E7', flexDirection: 'column', paddingTop: 30}}>
-            <Text style={{fontSize: 17, marginLeft: 20, marginBottom: 10}}>Personal Information</Text>
-            <List style={{backgroundColor: 'white'}}>
+          <Row size={3} style={{ backgroundColor: '#E7E7E7', flexDirection: 'column', paddingTop: 30 }}>
+            <Text style={{ fontSize: 17, marginLeft: 20, marginBottom: 10 }}>Personal Information</Text>
+            <List style={{ backgroundColor: 'white' }}>
               <ListItem iconLeft>
-                <Icon name='ios-call-outline'/>
-                <Input placeholder='Mobile Telephone' value={this.state.formValues.phoneNumber}
-                       onChangeText={(text) => this.onChange({phoneNumber: text})}/>
+                <Icon name="ios-call-outline" />
+                <Input
+                  placeholder="Mobile Telephone" value={this.state.formValues.phoneNumber}
+                  onChangeText={(text) => this.onChange({ phoneNumber: text })}
+                />
               </ListItem>
               <ListItem iconLeft>
-                <Icon name='ios-mail-outline'/>
-                <Input placeholder='Email' value={this.state.formValues.email}
-                       onChangeText={(text) => this.onChange({email: text})}/>
+                <Icon name="ios-mail-outline" />
+                <Input
+                  placeholder="Email" value={this.state.formValues.email}
+                  onChangeText={(text) => this.onChange({ email: text })}
+                />
               </ListItem>
             </List>
           </Row>
         </Grid>
       </View>
-    )
+    );
   }
 }
 
 /**
  * ## Styles
  */
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     flex: 1,
-    backgroundColor: 'transparent'
-  }
+    backgroundColor: 'transparent',
+  },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModifyProfileScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(ModifyProfileScreen);

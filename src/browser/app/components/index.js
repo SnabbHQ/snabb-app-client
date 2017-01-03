@@ -1,89 +1,34 @@
 /* @flow */
-
-// jxnblk.com/writing/posts/patterns-for-style-composition-in-react
-
-// App components
+export { ThemeProvider } from 'react-fela';
+export { default as Box } from './Box';
+export { default as Block } from './Block';
 export { default as Button } from './Button';
-export { default as PrimaryButton } from './PrimaryButton';
-export { default as FieldError } from './FieldError';
+export { default as Card } from './Card';
+export { default as Container } from './Container';
+export { default as Divider } from './Divider';
+export { default as FieldHeader } from './FieldHeader';
+export { default as Fixed } from './Fixed';
+export { default as focus } from './focus';
 export { default as Form } from './Form';
+export { default as Heading } from './Heading';
 export { default as Image } from './Image';
 export { default as Link } from './Link';
 export { default as Loading } from './Loading';
-export { default as SwitchTheme } from './SwitchTheme';
+export { default as PageHeader } from './PageHeader';
+export { default as Paragraph } from './Paragraph';
+export { default as Text } from './Text';
 export { default as Title } from './Title';
-export { default as View } from './View';
-export { default as focus } from './focus';
-export { default as fxbml } from './fxbml';
+export { default as Space } from './Space';
+export { default as styled } from './styled';
+export { default as Input } from './Input';
 
-// Rebass components
-// github.com/jxnblk/rebass
-export {
-  Base,
-  Arrow,
-  Avatar,
-  Badge,
-  Banner,
-  Block,
-  Blockquote,
-  Breadcrumbs,
-  // Button,
-  ButtonCircle,
-  ButtonOutline,
-  Card,
-  CardImage,
-  Checkbox,
-  Close,
-  Container,
-  Divider,
-  Donut,
-  DotIndicator,
-  Drawer,
-  Dropdown,
-  DropdownMenu,
-  Embed,
-  Fixed,
-  Footer,
-  Heading,
-  HeadingLink,
-  Input,
-  InlineForm,
-  Label,
-  LinkBlock,
-  Media,
-  Menu,
-  Message,
-  NavItem,
-  Overlay,
-  PageHeader,
-  Panel,
-  PanelFooter,
-  PanelHeader,
-  Pre,
-  Progress,
-  Radio,
-  Rating,
-  Section,
-  SectionHeader,
-  Select,
-  SequenceMap,
-  SequenceMapStep,
-  Slider,
-  Space,
-  Stat,
-  Switch,
-  Table,
-  Text,
-  Textarea,
-  Toolbar,
-  Tooltip,
-} from 'rebass';
+// For another components inspiration, check:
+// developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets
+// jxnblk.com/rebass
+// vuetifyjs.com
 
-// Reflexbox components
+// Reflexbox
 // github.com/jxnblk/reflexbox
 export {
-  Reflex,
-  Flex,
-  Box,
   Grid,
 } from 'reflexbox';

@@ -1,0 +1,66 @@
+/* @flow */
+import React, {PropTypes} from 'react'
+import {View, Heading, Flex, Text} from './'
+import {Image, } from '../components'
+import {FormattedMessage} from "react-intl"
+
+type Props = {
+  icon?: string,
+  actions?: any,
+  subtitle: Object,
+  title: Object,
+}
+
+const styles = {
+  container: {
+    minHeight: '90vh'
+  },
+  title: {
+    textAlign: 'center'
+  },
+  subtitle: {
+    textAlign: 'center'
+  }
+}
+
+const Blankslate = ({icon, actions, title, subtitle}: Props) => {
+
+  function renderIcon() {
+    if (icon) {
+      return <Image alt="Blankslate Icon" mt={2} src={icon}/>
+    }
+  }
+
+  function renderActions() {
+    if (actions) {
+      return <div>{actions}</div>
+    }
+  }
+
+  return (
+    <Flex flexColumn align="center" justify="center" style={styles.container}>
+      {renderIcon()}
+      <Heading level={1} size={3} mt={2} mb={1} style={styles.title}><FormattedMessage {...title}/></Heading>
+      <Text mb={3} style={styles.subtitle}><FormattedMessage {...subtitle}/></Text>
+      {renderActions()}
+    </Flex>
+  )
+}
+
+Blankslate.propTypes = {
+  title: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.string,
+  ]).isRequired,
+  subtitle: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.string,
+  ]).isRequired,
+  icon: PropTypes.string,
+  actions: PropTypes.object,
+}
+Blankslate.contextTypes = {
+  rebass: React.PropTypes.object,
+}
+
+export default Blankslate

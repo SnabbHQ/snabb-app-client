@@ -1,7 +1,7 @@
 /* @flow */
 import React from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
-import { Title, View } from './';
+import { Title, Box } from './';
 
 const messages = defineMessages({
   loadingText: {
@@ -48,12 +48,12 @@ class Loading extends React.Component {
     const { children } = this.props;
 
     return (
-      <View>
+      <Box>
         <Title message={currentText} />
         <FormattedMessage {...currentText}>
           {children}
         </FormattedMessage>
-      </View>
+      </Box>
     );
   }
 

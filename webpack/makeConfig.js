@@ -30,7 +30,7 @@ const makeConfig = (options) => {
   } = options;
 
   const stylesLoaders = Object.keys(loaders).map((ext) => {
-    const prefix = 'css-loader!postcss-loader';
+    const prefix = 'css-loader!postcss-loader!';
     const extLoaders = prefix + loaders[ext];
     const loader = isDevelopment
       ? `style-loader!${extLoaders}`
@@ -58,6 +58,9 @@ const makeConfig = (options) => {
       noParse: [
         // https://github.com/localForage/localForage/issues/617
         new RegExp('localforage.js'),
+
+        // https://github.com/braintree/braintree-web/issues/52
+        /braintree-web/
       ],
       loaders: [
         {
@@ -70,7 +73,7 @@ const makeConfig = (options) => {
           loader: 'url-loader?limit=100000',
           test: /\.(ttf|eot|woff|woff2)(\?.*)?$/,
         }, {
-          test: /\.js$/,
+          test: /\.jsx?$/, // Match both .js and .jsx files
           exclude: constants.NODE_MODULES_DIR,
           loader: 'babel',
           query: {
@@ -92,7 +95,7 @@ const makeConfig = (options) => {
             },
           },
         },
-        ...stylesLoaders,
+        ...stylesLoaders
       ],
     },
     output: isDevelopment ? {
@@ -154,7 +157,7 @@ const makeConfig = (options) => {
     })(),
     postcss: () => [autoprefixer({ browsers: 'last 2 version' })],
     resolve: {
-      extensions: ['', '.js'], // .json is ommited to ignore ./firebase.json
+      extensions: ['', '.js', '.jsx'], // .json is ommited to ignore ./firebase.json
       modulesDirectories: ['src', 'node_modules'],
       root: constants.ABSOLUTE_BASE,
       alias: {

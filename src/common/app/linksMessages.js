@@ -14,6 +14,18 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Users',
     id: 'app.links.users',
   },
+  active: {
+    defaultMessage: 'Active',
+    id: 'app.links.active',
+  },
+  scheduled: {
+    defaultMessage: 'Scheduled',
+    id: 'app.links.scheduled',
+  },
+  history: {
+    defaultMessage: 'History',
+    id: 'app.links.history',
+  },
   home: {
     defaultMessage: 'Home',
     id: 'app.links.home',
@@ -34,17 +46,37 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Profile',
     id: 'app.links.profile',
   },
+  accountDetails: {
+    defaultMessage: 'Account Details',
+    id: 'app.links.accountDetails',
+  },
+  billing: {
+    defaultMessage: 'Billing',
+    id: 'app.links.billing',
+  },
   settings: {
     defaultMessage: 'Settings',
     id: 'app.links.settings',
   },
-  signIn: {
-    defaultMessage: 'Sign in',
-    id: 'app.links.signIn',
+  logIn: {
+    defaultMessage: 'Log in',
+    id: 'app.links.logIn',
   },
-  todos: {
-    defaultMessage: 'Todos',
-    id: 'app.links.todos',
+  resetPassword: {
+    defaultMessage: 'Reset Password',
+    id: 'app.links.resetPassword',
+  },
+  register: {
+    defaultMessage: 'Join Snabb',
+    id: 'app.links.register',
+  },
+  terms: {
+    defaultMessage: 'Terms & Conditions',
+    id: 'app.links.terms',
+  },
+  privacyPolicy: {
+    defaultMessage: 'Privacy Policy',
+    id: 'app.links.privacyPolicy',
   },
 });
 

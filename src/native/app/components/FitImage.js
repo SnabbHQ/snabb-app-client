@@ -13,7 +13,7 @@ export default class FitImage extends React.Component {
 
     const width = ratio * props.originalWidth;
     const height = ratio * props.originalHeight;
-    return {width, height};
+    return { width, height };
   }
 
   resize() {
@@ -21,10 +21,10 @@ export default class FitImage extends React.Component {
   }
 
   render() {
-    const {width, height} = this.state;
+    const { width, height } = this.state;
     return (
       <Image
-        style={{flex: 1, width, height}}
+        style={{ flex: 1, width, height }}
         source={this.props.source}
         onLayout={(event) => this.resize(event)}
       />

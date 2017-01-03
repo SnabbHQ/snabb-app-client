@@ -2,11 +2,13 @@
 import 'rxjs';
 import { combineEpics } from 'redux-observable';
 import { epics as appEpics } from './app/actions';
-import { epics as profileEpics } from './user/profile/epics'
+import { epics as authEpics } from './auth/epics';
+import { epics as profileEpics } from './user/profile/epics';
 
 const epics = [
   ...appEpics,
-  ...profileEpics
+  ...authEpics,
+  ...profileEpics,
 ];
 
 const configureEpics = (deps: Object) => (action$, { getState }) =>

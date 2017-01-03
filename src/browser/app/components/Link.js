@@ -1,49 +1,52 @@
 /* @flow */
+import type { Styled } from '../themes/types';
+import type { TextProps } from './Text';
 import React from 'react';
-import pseudo from './pseudo';
-import { Base } from 'rebass';
-import { Link as RouterLink } from 'react-router';
+import Text from './Text';
+import styled from './styled';
+import { Link as ReactRouterLink } from 'react-router';
 
-const Link = ({ bold, exactly, inverted, pseudo, to, ...props }, { rebass }) => {
-  const baseStyle = {
-    color: inverted ? rebass.inverted : rebass.link.color,
-    ...(bold && rebass.link.bold),
-    ...(rebass.link.link),
-    ...(pseudo.hover && rebass.link.hover),
-  };
-  const linkProps = {
-    ...props,
-    baseStyle,
-    className: 'Link',
-  };
-  const isExternalLink = to.includes('://');
-  return isExternalLink ? (
-    <Base
-      {...linkProps}
-      href={to}
-      is="a"
+type LinkProps = TextProps & {
+  download?: boolean,
+  exactly?: boolean,
+  target?: string,
+  to: string,
+};
+
+const createLink = (tag, passProps) => styled((theme, props: LinkProps) => ({
+  $extends: Text,
+  color: props.color ? theme.colors[props.color] : theme.colors.primary,
+  textDecoration: 'none',
+  ':hover': {
+    textDecoration: 'none',
+    color: 'grey',
+  },
+}), tag, passProps);
+
+const AnchorLink = createLink('a', [
+  'download', 'href', 'target',
+]);
+
+const RouterLink = createLink(ReactRouterLink, [
+  'activeOnlyWhenExact', 'activeStyle', 'to',
+]);
+
+const isExternalLink = to => to.includes('://');
+const routerLinkActiveStyle = { color: 'grey', textDecoration: 'none' };
+
+const Link: Styled<LinkProps> = (props: LinkProps) => (
+  isExternalLink(props.to) ?
+    <AnchorLink
+      {...props}
+      href={props.to}
+      target="_blank"
     />
-  ) : (
-    <Base
-      {...linkProps}
-      activeOnlyWhenExact={exactly}
-      activeStyle={rebass.link.active}
-      is={RouterLink}
-      to={to}
+    :
+    <RouterLink
+      {...props}
+      activeOnlyWhenExact={props.exactly}
+      activeStyle={routerLinkActiveStyle}
     />
-  );
-};
+);
 
-Link.propTypes = {
-  bold: React.PropTypes.bool,
-  exactly: React.PropTypes.bool,
-  inverted: React.PropTypes.bool,
-  pseudo: React.PropTypes.object.isRequired,
-  to: React.PropTypes.string.isRequired,
-};
-
-Link.contextTypes = {
-  rebass: React.PropTypes.object,
-};
-
-export default pseudo(Link);
+export default Link;

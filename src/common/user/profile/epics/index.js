@@ -1,5 +1,5 @@
-import getProfile from './getProfile'
-import updateProfile from './updateProfile'
+import getProfile from './getProfile';
+import updateProfile from './updateProfile';
 
 export const epics = [
   getProfile,

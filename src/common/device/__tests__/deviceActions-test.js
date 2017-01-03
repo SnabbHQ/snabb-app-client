@@ -5,7 +5,6 @@
  *
  */
 
-'use strict'
 
 /**
  * ## Mocks
@@ -14,14 +13,14 @@
  * the server
  *
  */
-jest.mock('../../../lib/AppAuthToken')
-jest.mock('../../../lib/BackendFactory')
+jest.mock('../../../lib/AppAuthToken');
+jest.mock('../../../lib/BackendFactory');
 
 /**
  * ## Class under test
  *
  */
-var actions = require('../deviceActions')
+const actions = require('../deviceActions');
 
 /**
  * ## Imports
@@ -30,8 +29,8 @@ var actions = require('../deviceActions')
  */
 const {
   SET_PLATFORM,
-  SET_VERSION
-} = require('../.././constants').default
+  SET_VERSION,
+} = require('../.././constants').default;
 
 /**
  * ## Tests
@@ -40,19 +39,19 @@ const {
  */
 describe('deviceActions', () => {
   it('should setPlatform', () => {
-    let platform = 'ios'
+    const platform = 'ios';
     expect(actions.setPlatform(platform)).toEqual({
       type: SET_PLATFORM,
-      payload: platform
-    })
-  })
+      payload: platform,
+    });
+  });
 
   it('should setVersion', () => {
-    let version = '0.0.8'
+    const version = '0.0.8';
     expect(actions.setVersion(version)).toEqual({
       type: SET_VERSION,
-      payload: version
-    })
-  })
-})
+      payload: version,
+    });
+  });
+});
 

@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from "react";
-import {StyleSheet, Image, Text, View, Dimensions, TouchableOpacity} from "react-native";
+import React, { Component, PropTypes } from 'react';
+import { StyleSheet, Image, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 
 
 const propTypes = {
@@ -16,7 +16,7 @@ const propTypes = {
    * Callback that is called as soon as we have geocode the position
    */
   onAddressChange: PropTypes.func,
-}
+};
 
 const defaultProps = {
   margin: 0,
@@ -26,63 +26,63 @@ const defaultProps = {
   defaultText: 'Choose Your Location',
   labelColor: 'black',
   textColor: 'black',
-  iconColor: 'pink'
-}
+  iconColor: 'pink',
+};
 
 class LocationBox extends Component {
 
   render() {
-    let style = {
+    const style = {
       flex: 1,
-      margin: this.props.margin
+      margin: this.props.margin,
     };
 
-    let searchboxStyle = {
+    const searchboxStyle = {
       backgroundColor: 'white',
       borderWidth: 1,
-      borderColor: "rgba(225,225,225,1)",
+      borderColor: 'rgba(225,225,225,1)',
       borderRadius: 4,
-      height: 50
+      height: 50,
     };
 
-    let searchboxInnerStyle = {
+    const searchboxInnerStyle = {
       flex: 1,
       flexDirection: 'row',
       alignItems: 'center',
-      padding: 10
+      padding: 10,
     };
 
-    let searchboxTextContainerStyle = {
+    const searchboxTextContainerStyle = {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     };
 
-    let iconSize = 16;
-    let iconStyle = {
+    const iconSize = 16;
+    const iconStyle = {
       width: iconSize,
       height: iconSize,
       backgroundColor: this.props.iconColor,
     };
 
-    let labelStyle = {
+    const labelStyle = {
       fontSize: 9,
       color: this.props.labelColor,
       marginTop: 2,
       marginBottom: 3,
-      fontWeight: "600"
+      fontWeight: '600',
     };
 
-    let textStyle = {
+    const textStyle = {
       fontSize: 14,
-      color: this.props.textColor
+      color: this.props.textColor,
     };
 
     return (
       <TouchableOpacity style={[style, this.props.style]} onPress={this.props.onPress}>
         <View style={searchboxStyle}>
           <View style={searchboxInnerStyle}>
-            <View style={iconStyle}/>
+            <View style={iconStyle} />
             <View style={searchboxTextContainerStyle}>
               {this.props.showLabel && <Text style={labelStyle}>{this.props.labelText}</Text>}
               <Text style={textStyle}>{this.props.address || this.props.defaultText}</Text>
@@ -90,11 +90,11 @@ class LocationBox extends Component {
           </View>
         </View>
       </TouchableOpacity>
-    )
+    );
   }
 }
 
 LocationBox.propTypes = propTypes;
 LocationBox.defaultProps = defaultProps;
 
-export default LocationBox
+export default LocationBox;

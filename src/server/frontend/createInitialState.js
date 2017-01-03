@@ -12,8 +12,8 @@ const createInitialState = () => ({
     ...configReducer(),
     appName: config.appName,
     appVersion: config.appVersion,
-    firebase: config.firebase,
     sentryUrl: config.sentryUrl,
+    apiConfig: config.apiConfig,
   },
   device: deviceReducer(),
   intl: {
@@ -21,10 +21,9 @@ const createInitialState = () => ({
     currentLocale: config.defaultLocale,
     defaultLocale: config.defaultLocale,
     locales: config.locales,
-    messages
+    messages,
   },
 });
-
 
 
 export default createInitialState;

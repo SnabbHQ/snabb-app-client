@@ -22,7 +22,7 @@ const errorToMessage = (error: Object) => {
   }
 
   // Note all app validation errors are mapped to UI messages here.
-  // With such design, the app can have a lot of various different components,
+  // With such design, the app can have a lot of various different components-old,
   // and it's not a component responsibility to project an error to UI.
   if (error instanceof ValidationError) {
     return validationErrorToMessage(error);
