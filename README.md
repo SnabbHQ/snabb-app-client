@@ -83,11 +83,11 @@ React Native: [Getting Started](https://facebook.github.io/react-native/docs/get
 
 ## Links
 
-- [wiki](https://github.com/este/este/wiki)
+- [wiki](https://github.com/SnabbHQ/snabb-app-client/wiki)
 
 ## Tips
 
-- Recommended editor is [Atom](https://atom.io). Check [settings](https://github.com/este/este/wiki/Recommended-Atom.io-Settings).
+- Recommended editor is [Atom](https://atom.io). Check [settings](https://github.com/SnabbHQ/snabb-app-client/wiki/Recommended-Atom.io-Settings).
 - Install [nuclide.io](https://nuclide.io/), enable "Use the Flow binary included in each project".
 
 ## Credit
