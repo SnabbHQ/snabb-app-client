@@ -54,7 +54,7 @@ class ResetPasswordFields extends React.Component {
             placeholder={intl.formatMessage(authMessages.emailPlaceholder)}
           />
           <Box marginTop="1em">
-            <Button width="100%" disabled={disabled} align="center">
+            <Button onClick={this.resetPassword} primary width="100%" disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.resetPassword} />
             </Button>
           </Box>

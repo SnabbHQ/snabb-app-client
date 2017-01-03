@@ -31,9 +31,11 @@ const ResetPasswordSent = ({ intl, resetAuthState }, { router }: Object) => {
       >
         {intl.formatMessage(authMessages.resetPasswordSentDesc)}
       </Text>
-      <Button marginVertical="1em" width="100%" align="center" onClick={backToLogin}>
-        <FormattedMessage {...buttonsMessages.returnToLogIn} />
-      </Button>
+      <Box marginVertical="1em">
+        <Button primary width="100%" align="center" onClick={backToLogin}>
+          <FormattedMessage {...buttonsMessages.returnToLogIn} />
+        </Button>
+      </Box>
     </Box>
   );
 };
