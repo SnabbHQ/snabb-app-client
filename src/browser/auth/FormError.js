@@ -13,7 +13,7 @@ const styles = {
   },
 };
 
-const SignInError = ({ error }) => {
+const FormError = ({ error }) => {
   if (!error) return null;
 
   const message = errorMessages[error.name];
@@ -29,7 +29,7 @@ const SignInError = ({ error }) => {
   );
 };
 
-SignInError.propTypes = {
+FormError.propTypes = {
   error: React.PropTypes.instanceOf(Error),
 };
 
@@ -37,4 +37,4 @@ export default connect(
   (state: State) => ({
     error: state.auth.error,
   }),
-)(SignInError);
+)(FormError);

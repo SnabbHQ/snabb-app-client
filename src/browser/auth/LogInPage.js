@@ -3,7 +3,7 @@ import type { State } from '../../common/types';
 import LoginFields from './LoginFields';
 import R from 'ramda';
 import React from 'react';
-import SignInError from './SignInError';
+import FormError from './FormError';
 import linksMessages from '../../common/app/linksMessages';
 import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
@@ -38,7 +38,7 @@ const LogInPage = ({ disabled, location, authed }) => (
                 src={logo}
               />
             </Box>
-            <SignInError />
+            <FormError />
             { disabled &&
             <Loading>
               {message => <Message>{message}</Message>}

@@ -3,7 +3,7 @@ import type { State } from '../../common/types';
 import ResetPasswordFields from './ResetPasswordFields';
 import R from 'ramda';
 import React from 'react';
-import SignInError from './SignInError';
+import FormError from './FormError';
 import linksMessages from '../../common/app/linksMessages';
 import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
@@ -38,6 +38,12 @@ const ResetPasswordPage = ({ disabled, intl, authed }) => (
               src={logo}
             />
           </Box>
+          <FormError />
+          { disabled &&
+          <Loading>
+            {message => <Message>{message}</Message>}
+          </Loading>
+          }
           <Text
             align="center"
             display="block"
@@ -53,12 +59,6 @@ const ResetPasswordPage = ({ disabled, intl, authed }) => (
           </Text>
           <ResetPasswordFields />
         </Block>
-        <SignInError />
-        { disabled &&
-        <Loading>
-          {message => <Message>{message}</Message>}
-        </Loading>
-        }
       </Box>
     </Box>
   </Fixed>

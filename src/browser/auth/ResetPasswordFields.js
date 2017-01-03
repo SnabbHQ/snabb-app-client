@@ -1,4 +1,5 @@
 /* @flow */
+import R from 'ramda';
 import type { State } from '../../common/types';
 import React from 'react';
 import buttonsMessages from '../../common/app/buttonsMessages';
@@ -7,20 +8,22 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
 import { resetPassword } from '../../common/auth/actions';
-import { Form, Button, Input, Link, Box } from '../app/components';
+import { Form, Button, Input, Box } from '../app/components';
 import { focus } from '../app/components-old';
-
-type LocalState = {
-  recoveryEmailSent: boolean,
-  disabled: boolean,
-};
 
 class ResetPasswordFields extends React.Component {
 
-  state: LocalState = {
-    recoveryEmailSent: false,
-    disabled: true,
-  };
+  constructor(props: P, context: any) {
+    super(props, context);
+
+    this.state = {
+      recoveryEmailSent: false,
+      disabled: true,
+    };
+
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.resetPassword = this.resetPassword.bind(this);
+  }
 
   onFormSubmit = () => {
     this.resetPassword();
@@ -28,8 +31,7 @@ class ResetPasswordFields extends React.Component {
 
   resetPassword() {
     const { fields, resetPassword } = this.props;
-    const { email } = fields.$values();
-    resetPassword(email);
+    resetPassword(fields.$values());
     this.setState({
       disabled: false,
       recoveryEmailSent: true,
@@ -62,14 +64,6 @@ class ResetPasswordFields extends React.Component {
   }
 }
 
-ResetPasswordFields = focus(ResetPasswordFields, 'error');
-
-ResetPasswordFields = injectIntl(ResetPasswordFields);
-
-ResetPasswordFields = fields({
-  path: ['auth', 'email'],
-  fields: ['email'],
-})(ResetPasswordFields);
 
 ResetPasswordFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
@@ -78,9 +72,19 @@ ResetPasswordFields.propTypes = {
   resetPassword: React.PropTypes.func.isRequired,
 };
 
-export default connect(
-  (state: State) => ({
-    error: state.auth.error,
+ResetPasswordFields = focus(ResetPasswordFields, 'error');
+
+export default R.compose(
+  connect(
+    (state: State) => ({
+      disabled: state.auth.formDisabled,
+      error: state.auth.error,
+    }),
+    { resetPassword },
+  ),
+  injectIntl,
+  fields({
+    path: 'resetPassword',
+    fields: ['email'],
   }),
-  resetPassword,
 )(ResetPasswordFields);

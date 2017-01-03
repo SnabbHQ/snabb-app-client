@@ -41,9 +41,9 @@ export const registerFail = (error: Error): Action => ({
   payload: { error },
 });
 
-export const resetPassword = (email: string): Action => ({
+export const resetPassword = (options?: string): Action => ({
   type: 'RESET_PASSWORD',
-  payload: { email },
+  payload: { options },
 });
 
 export const resetPasswordSuccess = (): Action => ({

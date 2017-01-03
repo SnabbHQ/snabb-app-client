@@ -7,5 +7,5 @@ export const epics = [
   login,
   logout,
   //register,
-  //resetPassword,
+  resetPassword,
 ];

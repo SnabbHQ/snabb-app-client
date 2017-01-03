@@ -3,7 +3,7 @@ import type { State } from '../../common/types';
 import RegisterFields from './RegisterFields';
 import R from 'ramda';
 import React from 'react';
-import SignInError from './SignInError';
+import FormError from './FormError';
 import linksMessages from '../../common/app/linksMessages';
 import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
@@ -72,7 +72,7 @@ const RegisterPage = ({ disabled, intl, location, authed }) => (
             </Link>
           </Box>
         </Block>
-        <SignInError />
+        <FormError />
         { disabled &&
         <Loading>
           {message => <Message>{message}</Message>}
