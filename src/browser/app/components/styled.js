@@ -7,8 +7,6 @@ import React from 'react';
 const getPlatformType = (type) => {
   if (type === 'button') {
 
-    // TODO - Reverted to button so we can have a form working properly. Worry about rendering
-    // later when required.
     // Render button as div because button is not consistently rendered across
     // browsers and it's hard and tricky to enforce the same look.
     // developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
@@ -17,7 +15,7 @@ const getPlatformType = (type) => {
       disabled?: boolean,
       onClick?: Function,
     }) => (
-      <button // eslint-disable-line jsx-a11y/no-static-element-interactions
+      <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         {...props}
         role="button"
         onKeyPress={e => {

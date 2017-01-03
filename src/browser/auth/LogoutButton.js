@@ -15,7 +15,7 @@ const LogOutButton = ({ logOut }, { router }) => {
   };
   return (
     <Box>
-      <Button onClick={onClick}>
+      <Button danger onClick={onClick}>
         <FormattedMessage {...buttonsMessages.logOut} />
       </Button>
     </Box>

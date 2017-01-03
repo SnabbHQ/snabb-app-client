@@ -12,4 +12,8 @@ export default class UserRestApi {
   auth(username: string, password: string) {
     return Observable.fromPromise(this.snabbApi.auth({ username, password }));
   }
+
+  logout() {
+    return Observable.fromPromise(this.snabbApi.logout());
+  }
 }

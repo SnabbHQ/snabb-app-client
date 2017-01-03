@@ -7,12 +7,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
-const logout = (action$: any, { backendFactory }: Deps) =>
+const logout = (action$: any, { authRepository }: Deps) =>
   action$.ofType('LOG_OUT')
-    .switchMap(() => Observable.fromPromise(backendFactory.logout())
+    .switchMap(() => Observable.fromPromise(authRepository.logout())
       .map(logOutSuccess));
 
 export default logout;

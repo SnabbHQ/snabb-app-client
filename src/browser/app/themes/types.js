@@ -1,46 +1,43 @@
-/* @flow */
+// @flow
 import type { OpenColor } from './openColor';
-
-// TODO: Import from /common/types
-// Exact is temp workaround until native exact will fix spread and intersection.
-// flowtype.org/docs/objects.html#exact-object-types
-// github.com/facebook/flow/issues/2405#issuecomment-256339492
-// github.com/facebook/flow/issues/2626
-export type Exact<T> = T & $Shape<T>;
 
 // Theme.
 
-type Colors = {
-  primary: string,
-  success: string,
-  warning: string,
-  danger: string,
-  black: string,
-  white: string,
-  gray: string,
+// Because { [color: Color]?: boolean } doesn't work, we have to define props.
+export type ColorProps = {
+  primary?: boolean,
+  success?: boolean,
+  warning?: boolean,
+  danger?: boolean,
+  black?: boolean,
+  white?: boolean,
+  gray?: boolean,
 };
 
-export type Color = $Keys<Colors>;
-export type RhythmOrString = number | string | false;
-export type Styled<Props> = (props: Exact<Props>) => React$Element<any>;
-export type TopBottomLeftRight = 'top' | 'bottom' | 'left' | 'right';
+export type Color = $Keys<ColorProps>;
 
 export type Theme = {|
   typography: {|
     fontSize: (number) => number,
     lineHeight: number,
     rhythm: (number) => number,
-  |},
-  colors: Colors & { open: OpenColor },
+    |},
+  colors: {
+    [color: Color]: string,
+    open: OpenColor,
+  },
   border: {|
     radius: number,
     width: number,
-  |},
+    |},
   states: {
+    active: {|
+      darken: number,
+      |},
     disabled: {|
       cursor: string,
       opacity: number,
-    |},
+      |},
   },
   container: {|
     maxWidths: {|
@@ -48,155 +45,165 @@ export type Theme = {|
       medium: number,
       big: number,
       bigger: number,
+      |},
     |},
-  |},
   text: {|
     bold: number,
     fontFamily: string,
-  |},
+    |},
+  block: {|
+    marginBottom: number,
+    maxWidth: number,
+    |},
   heading: {|
-    bold: number,
     fontFamily: string,
     marginBottom: number,
-  |},
+    |},
   paragraph: {|
     marginBottom: number,
-    maxWidth: number | string,
-  |},
-|};
+    |},
+  input: {|
+    borderColor: string,
+    |},
+  divider: {|
+    borderColor: string,
+    |}
+  |};
+
+// Spread on flow exact types doesn't work, but we can use Strict type.
+// It breaks autocomplete, so we are using it only here. It's the must, because
+// it prevents typos like 'marginBotom'.
+// https://github.com/facebook/flow/issues/2405#issuecomment-256339492
+export type Strict<T> = T & $Shape<T>;
+export type Styled<Props> = (props: Strict<Props>) => React$Element<any>;
+export type TopBottomLeftRight = 'top' | 'bottom' | 'left' | 'right';
 
 // Browser types. Taken from cssreference.io.
 
 export type AlignContent =
-    'center'
-  | 'flex-end'
-  | 'flex-start'
-  | 'space-around'
-  | 'space-between'
-  | 'stretch'
+  'center'
+    | 'flex-end'
+    | 'flex-start'
+    | 'space-around'
+    | 'space-between'
+    | 'stretch'
   ;
 
 export type AlignItems =
-    'baseline'
-  | 'center'
-  | 'flex-end'
-  | 'flex-start'
-  | 'stretch'
+  'baseline'
+    | 'center'
+    | 'flex-end'
+    | 'flex-start'
+    | 'stretch'
   ;
 
 export type AlignSelf =
-    'auto'
-  | 'baseline'
-  | 'center'
-  | 'flex-end'
-  | 'flex-start'
-  | 'stretch'
+  'auto'
+    | 'baseline'
+    | 'center'
+    | 'flex-end'
+    | 'flex-start'
+    | 'stretch'
+  ;
+
+export type BorderStyle =
+  'none'
+    | 'dotted'
+    | 'dashed'
+    | 'solid'
+    | 'double'
+    | 'groove'
   ;
 
 export type Display =
-    'block'
-  | 'flex'
-  | 'inline'
-  | 'inline-block'
-  | 'inline-flex'
-  | 'list-item'
-  | 'none'
-  | 'table'
-  | 'table-cell'
-  | 'table-row'
+  'block'
+    | 'flex'
+    | 'inline'
+    | 'inline-block'
+    | 'inline-flex'
+    | 'list-item'
+    | 'none'
+    | 'table'
+    | 'table-cell'
+    | 'table-row'
   ;
 
 export type FlexDirection =
-    'column'
-  | 'column-reverse'
-  | 'row'
-  | 'row-reverse'
+  'column'
+    | 'column-reverse'
+    | 'row'
+    | 'row-reverse'
   ;
 
 export type FlexWrap =
-    'nowrap'
-  | 'wrap'
-  | 'wrap-reverse'
+  'nowrap'
+    | 'wrap'
+    | 'wrap-reverse'
   ;
 
 export type FlexFlow =
-    FlexDirection
-  | FlexWrap
+  FlexDirection
+    | FlexWrap
   ;
 
 export type Float =
-    'left'
-  | 'none'
-  | 'right'
+  'left'
+    | 'none'
+    | 'right'
   ;
 
 export type FontWeight =
-    'bold'
-  | 'bolder'
-  | 'lighter'
-  | 'normal'
-  | number
-  ;
-
-export type InputTypes =
-    'button'
-  | 'checkbox'
-  | 'color'
-  | 'date'
-  | 'datetime'
-  | 'datetime-local'
-  | 'email'
-  | 'file'
-  | 'hidden'
-  | 'image'
-  | 'month'
-  | number
-  | 'password'
-  | 'radio'
-  | 'range'
-  | 'reset'
-  | 'search'
-  | 'submit'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week'
+  'bold'
+    | 'bolder'
+    | 'lighter'
+    | 'normal'
+    | number
   ;
 
 export type JustifyContent =
-    'center'
-  | 'flex-end'
-  | 'flex-start'
-  | 'space-around'
-  | 'space-between'
+  'center'
+    | 'flex-end'
+    | 'flex-start'
+    | 'space-around'
+    | 'space-between'
   ;
 
 export type TextAlign =
-    'center'
-  | 'justify'
-  | 'left'
-  | 'right'
+  'center'
+    | 'justify'
+    | 'left'
+    | 'right'
   ;
 
 export type TextDecoration =
-    'line-through'
-  | 'none'
-  | 'overline'
-  | 'underline'
+  'line-through'
+    | 'none'
+    | 'overline'
+    | 'underline'
   ;
 
 export type TextTransform =
-    'capitalize'
-  | 'lowercase'
-  | 'none'
-  | 'uppercase'
+  'capitalize'
+    | 'lowercase'
+    | 'none'
+    | 'uppercase'
+  ;
+
+export type VerticalAlign =
+  'baseline'
+    | 'bottom'
+    | 'middle'
+    | 'sub'
+    | 'super'
+    | 'text-bottom'
+    | 'text-top'
+    | 'top'
   ;
 
 export type BrowserStyle = {|
-  // Custom API for Fela and Este.
-  // TODO: Leverage flow-style asap.
-  $extends?: Styled<any> | Array<Styled<any>>,
+  // Custom API for Fela and Snabb.
+  $extends?: Styled<any> | [Styled<any>, any],
+  $map?: (BrowserStyle) => BrowserStyle,
   ':active'?: BrowserStyle,
   ':first-child'?: BrowserStyle,
   ':focus'?: BrowserStyle,
@@ -261,7 +268,7 @@ export type BrowserStyle = {|
   borderBottomColor?: string,
   borderBottomLeftRadius?: string,
   borderBottomRightRadius?: string,
-  borderBottomStyle?: string,
+  borderBottomStyle?: BorderStyle,
   borderBottomWidth?: string,
   borderCollapse?: string,
   borderColor?: string,
@@ -281,20 +288,20 @@ export type BrowserStyle = {|
   borderInlineStartWidth?: string,
   borderLeft?: string,
   borderLeftColor?: string,
-  borderLeftStyle?: string,
+  borderLeftStyle?: BorderStyle,
   borderLeftWidth?: string,
   borderRadius?: number | string,
   borderRight?: string,
   borderRightColor?: string,
-  borderRightStyle?: string,
+  borderRightStyle?: BorderStyle,
   borderRightWidth?: string,
   borderSpacing?: string,
-  borderStyle?: string,
+  borderStyle?: BorderStyle,
   borderTop?: string,
   borderTopColor?: string,
   borderTopLeftRadius?: string,
   borderTopRightRadius?: string,
-  borderTopStyle?: string,
+  borderTopStyle?: BorderStyle,
   borderTopWidth?: string,
   borderWidth?: number | string,
   bottom?: string,
@@ -328,7 +335,7 @@ export type BrowserStyle = {|
   display?: Display,
   emptyCells?: string,
   filter?: string,
-  flex?: number,
+  flex?: number, // facebook.github.io/react-native/docs/layout-props.html#flex
   flexBasis?: number | string,
   flexDirection?: FlexDirection,
   flexFlow?: FlexFlow,
@@ -417,7 +424,7 @@ export type BrowserStyle = {|
   offsetBlockStart?: string,
   offsetInlineEnd?: string,
   offsetInlineStart?: string,
-  opacity?: string,
+  opacity?: number,
   order?: number,
   orphans?: string,
   outline?: string,
@@ -490,7 +497,8 @@ export type BrowserStyle = {|
   turn?: string,
   unicodeBidi?: string,
   unicodeRange?: string,
-  verticalAlign?: string,
+  userSelect?: 'none' | 'auto' | 'text' | 'contain' | 'all',
+  verticalAlign?: VerticalAlign,
   visibility?: string,
   whiteSpace?: string,
   widows?: string,
@@ -501,4 +509,4 @@ export type BrowserStyle = {|
   wordWrap?: string,
   writingMode?: string,
   zIndex?: number,
-|};
+  |};

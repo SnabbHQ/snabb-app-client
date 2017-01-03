@@ -75,7 +75,7 @@ const NewJobPage = () => {
           height="100%"
           paddingRight={1}
         >
-          <Button backgroundColor="info">
+          <Button primary>
             <FormattedMessage
               id="newJobPage.requestButtonDisabled"
               defaultMessage="Request"

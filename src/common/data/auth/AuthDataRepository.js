@@ -11,6 +11,10 @@ class AuthDataRepository {
   auth(username: string, password: string) {
     return this.authDataStoreFactory.createCloudDataStore().auth(username, password);
   }
+
+  logout() {
+    return this.authDataStoreFactory.createCloudDataStore().logout();
+  }
 }
 
 export default AuthDataRepository;

@@ -45,7 +45,7 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
   return (
     <Fixed top left right zIndex={5}>
       <Box
-        backgroundColor="primary"
+        backgroundColor="black"
         display="flex"
         flexWrap="wrap"
         paddingVertical={0.3}

@@ -54,7 +54,7 @@ class LoginFields extends React.Component {
             type="password"
           />
           <Box marginTop="1em">
-            <Button type="submit" width="100%" disabled={disabled} align="center">
+            <Button primary onClick={this.loginViaPassword} width="100%" disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.logIn} />
             </Button>
           </Box>

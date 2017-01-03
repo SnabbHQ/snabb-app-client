@@ -14,6 +14,10 @@ class AuthCloudDataStore extends AuthDataStore {
   auth(username: string, password: string) {
     return this.authRestApi.auth(username, password);
   }
+
+  logout() {
+    return this.authRestApi.logout();
+  }
 }
 
 export default AuthCloudDataStore;

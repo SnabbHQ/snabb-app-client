@@ -1,38 +1,65 @@
-/* @flow */
-import type { Exact, Styled } from '../themes/types';
+// @flow
+import type { Strict, Styled } from '../themes/types';
 import type { TextProps } from './Text';
 import Text from './Text';
+import color from 'color';
 import styled from './styled';
 
 type ButtonProps = TextProps & {
+  active?: boolean,
   disabled?: boolean,
-  onClick?: (e: SyntheticMouseEvent) => void,
+  inline?: boolean,
+  onClick?: (e: SyntheticMouseEvent) => any,
 };
 
-const Button: Styled<ButtonProps> = styled((theme, props) => ({
-  $extends: Text,
-  backgroundColor: props.backgroundColor
-    ? theme.colors[props.backgroundColor]
-    : theme.colors.primary,
-  borderRadius: props.borderRadius || theme.border.radius,
+const maybeVerticalSpace = size => size >= 0 ? {
+    // Button needs vertical space. Sure it can be defined in the theme.
+  marginVertical: 0.25,
+  paddingVertical: 0.25,
+} : {
+    // But the smaller button can't have any padding nor border because it would
+    // break a rhythm. It's impossible to compute it since text can be multiline.
   borderWidth: 0,
-  color: props.color ? props.color : theme.colors.white,
-  cursor: 'pointer',
-  display: props.display || 'inline-block',
-  fontSize: theme.typography.fontSize(
-    props.size === undefined ? -1 : props.size,
-  ),
-  fontWeight: props.bold === undefined
-    ? 'bold'
-    : props.bold ? theme.text.bold : 'normal',
-  paddingTop: '0.5em',
-  paddingBottom: '0.5em',
-  paddingLeft: '1.5em',
-  paddingRight: props.padding'1.5em',
-}), 'button', ['onClick', 'type']);
+};
 
-Button.defaultProps = ({
-  antialiasing: true,
-}: Exact<TextProps>);
+const activeStyle = (style, { darken }) => [
+  'backgroundColor',
+  'borderColor',
+].reduce((activeStyle, prop) => {
+  const value = activeStyle[prop];
+  if (!value) return activeStyle;
+  return {
+    ...activeStyle,
+    [prop]: color(value).darken(darken).hsl().string(),
+  };
+}, style);
+
+const Button: Styled<ButtonProps> = styled((theme, {
+  active,
+  bold = true,
+  disabled,
+  display = 'inline-block',
+  inline,
+  paddingHorizontal = 0.8,
+  size = 0,
+  transform = 'capitalize',
+}) => ({
+  $extends: [Text, ({
+    bold,
+    display,
+    paddingHorizontal,
+    transform,
+    ...(inline ? {} : maybeVerticalSpace(size)),
+  }: Strict<TextProps>)],
+  $map: style => {
+    if (!active) return style;
+    return activeStyle(style, theme.states.active);
+  },
+  userSelect: 'none', // Because button is rendered as a div in the browser.
+  ...(disabled ? theme.states.disabled : null),
+}), 'button', [
+  'disabled',
+  'onClick',
+]);
 
 export default Button;

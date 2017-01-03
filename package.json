@@ -55,6 +55,7 @@
     "bluebird": "^3.0.5",
     "braintree-web": "^3.6.1",
     "classnames": "latest",
+    "color": "^1.0.3",
     "compression": "^1.4.0",
     "copy-webpack-plugin": "^4.0.0",
     "credit-card-type": "^5.0.0",

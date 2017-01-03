@@ -4,11 +4,12 @@ import { FormattedMessage } from 'react-intl';
 import jobMessages from '../../../common/job/jobMessages';
 import styled from '../../app/components/styled';
 
-const CustomButton = styled((theme, props) => ({
+const CustomButton = styled((theme) => ({
   $extends: Button,
-  backgroundColor: theme.colors.info,
+  color: theme.colors.white,
+  backgroundColor: theme.colors.primary,
   ':hover': {
-    backgroundColor: theme.colors.infoHover,
+    backgroundColor: theme.colors.primaryHover,
   },
 }), 'button', ['onClick']);
 

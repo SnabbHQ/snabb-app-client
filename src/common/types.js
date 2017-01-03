@@ -6,9 +6,8 @@
 // Core
 
 export type Deps = {
-  firebase: any,
-  firebaseAuth: Function,
-  firebaseDatabase: any,
+  authRepository: any,
+  userRepository: any,
   getState: () => Object,
   getUid: () => string,
   now: () => number,

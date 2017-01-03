@@ -27,6 +27,7 @@ class PlaceFields extends React.Component {
     if (this.props.collapsible) {
       return (
         <Button
+          primary
           marginLeft="2em"
           onClick={() => this.setState({ collapsed: !this.state.collapsed })}
         >

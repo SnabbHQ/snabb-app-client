@@ -3,6 +3,19 @@ import type { Theme } from './types';
 import openColor from './openColor';
 import typography from './typography';
 
+// www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
+// Taken from from Bootstrap 4.
+export const nativeFontFamily = [
+  '-apple-system',
+  'system-ui',
+  'BlinkMacSystemFont',
+  '"Segoe UI"',
+  'Roboto',
+  '"Helvetica Neue"',
+  'Arial',
+  'sans-serif',
+].join(', ');
+
 const theme: Theme = {
   typography: typography({
     // For text 14px and small text 12px use 14px with 1,16666 fontSizeScale
@@ -11,12 +24,10 @@ const theme: Theme = {
     lineHeight: 24,
   }),
   colors: {
-    // TODO: Leverage openColor.
-    primary: openColor.gray7,
+    primary: openColor.blue7,
+    primaryHover: openColor.blue5,
     secondary: openColor.gray4,
     accent: openColor.blue5,
-    info: openColor.blue7,
-    infoHover: openColor.blue5,
     success: '#1c7',
     warning: '#f70',
     danger: '#f52',
@@ -31,6 +42,9 @@ const theme: Theme = {
     width: 1,
   },
   states: {
+    active: {
+      darken: 0.2,
+    },
     disabled: {
       cursor: 'default',
       opacity: 0.5,
@@ -48,14 +62,14 @@ const theme: Theme = {
   text: {
     bold: 600,
     // www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide
-    fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+    fontFamily: nativeFontFamily,
   },
   block: {
     maxWidth: '42em',
   },
   heading: {
     bold: 700,
-    fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+    fontFamily: nativeFontFamily,
     marginBottom: 1,
   },
   paragraph: {

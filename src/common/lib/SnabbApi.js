@@ -112,7 +112,7 @@ class SnabbApi {
   async logout() {
     return await this.fetchMock({
       method: 'POST',
-      url: '/account/logout',
+      url: '/oauth/token/revoke',
       body: {},
     })
       .then((res) => {
