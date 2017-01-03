@@ -1,13 +1,10 @@
 // @flow
-import UserRepository from '../../domain/UserRepository';
 import UserDataStoreFactory from './dataSource/UserDataStoreFactory';
 
-class UserDataRepository extends UserRepository {
+class UserDataRepository {
   userDataStoreFactory: UserDataStoreFactory;
 
   constructor(userDataStoreFactory: UserDataStoreFactory) {
-    super();
-
     this.userDataStoreFactory = userDataStoreFactory;
   }
 

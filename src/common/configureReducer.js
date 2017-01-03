@@ -7,7 +7,6 @@ import auth from './auth/reducer';
 import user from './user/reducer';
 import location from './location/locationReducer';
 import delivery from './delivery/deliveryReducer';
-import global from './global/globalReducer';
 import intl from './intl/reducer';
 import themes from './themes/reducer';
 import { combineReducers } from 'redux';
@@ -26,7 +25,6 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
   // Purge sensitive data, preserve only app and safe initial state.
   return reducer({
     app: state.app,
-    global: initialState.global,
     location: initialState.location,
     config: initialState.config,
     device: initialState.device,
@@ -37,7 +35,6 @@ const resetStateOnSignOutReducer = (reducer, initialState) => (
 const configureReducer = (initialState: Object) => {
   let reducer = combineReducers({
     app,
-    global,
     auth,
     user,
     location,

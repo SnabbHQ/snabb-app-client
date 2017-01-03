@@ -19,15 +19,14 @@ const validateEmailAndPassword = (validate, fields) => validate(fields)
   .simplePassword()
   .promise;
 
-const login = (action$: any, { backendFactory, appAuthToken, validate }: Deps) =>
+const login = (action$: any, { authRepository, userRepository, validate }: Deps) =>
   action$.ofType('LOG_IN')
     .map(action => action.payload.options)
     .mergeMap((options) => {
       const { email, password } = options;
       return Observable.fromPromise(validateEmailAndPassword(validate, { email, password }))
-        .switchMap(() => Observable.fromPromise(backendFactory.auth({ email, password })))
-        .map(json => appAuthToken.storeSessionToken(appAuthToken, json))
-        .switchMap(() => Observable.fromPromise(backendFactory.getProfile()))
+        .switchMap(() => authRepository.auth(email, password))
+        .switchMap(() => userRepository.getProfile())
         .map(loginSuccess)
         .catch(error => Observable.of(loginFail(error)));
     });
