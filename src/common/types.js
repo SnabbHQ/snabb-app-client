@@ -122,7 +122,8 @@ export type Action =
   | { type: 'PROFILE_UPDATE' }
   | { type: 'UPDATE_USER_SUCCESS' }
   | { type: 'RESET_PASSWORD', payload: { email: string } }
-  | { type: 'RESET_PASSWORD_SUCCESS', payload: { email: string } }
+  | { type: 'RESET_PASSWORD_SUCCESS' }
+  | { type: 'RESET_PASSWORD_FAIL', payload: { error: Error } }
   | { type: 'SESSION_TOKEN', payload: { email: string } }
   | { type: 'SESSION_TOKEN_SUCCESS', payload: { token: string } }
   | { type: 'SESSION_TOKEN_FAIL', payload: { error: Error} }

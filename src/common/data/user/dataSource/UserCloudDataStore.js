@@ -14,6 +14,10 @@ class UserCloudDataStore extends UserDataStore {
   getProfile() {
     return this.userRestApi.getProfile();
   }
+
+  resetPassword(email: string) {
+    return this.userRestApi.resetPassword(email);
+  }
 }
 
 export default UserCloudDataStore;

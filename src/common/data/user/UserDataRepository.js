@@ -11,6 +11,10 @@ class UserDataRepository {
   getProfile() {
     return this.userDataStoreFactory.create().getProfile();
   }
+
+  resetPassword(email: string) {
+    return this.userDataStoreFactory.createCloudDataStore().resetPassword(email);
+  }
 }
 
 export default UserDataRepository;

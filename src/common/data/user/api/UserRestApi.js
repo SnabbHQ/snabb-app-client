@@ -17,4 +17,8 @@ export default class UserRestApi {
   getProfile() {
     return Observable.fromPromise(this.snabbApi.getProfile());
   }
+
+  resetPassword(email: string) {
+    return Observable.fromPromise(this.snabbApi.getProfile());
+  }
 }
