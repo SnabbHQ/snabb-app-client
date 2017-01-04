@@ -117,6 +117,11 @@ const devPreset = [
   }),
 ];
 
+const files = [
+  './assets/fonts/ClearSans.ttf',
+  './assets/fonts/ClearSans.woff',
+];
+
 const configureFela = () => {
   const renderer = createRenderer({
     plugins: [
@@ -125,6 +130,7 @@ const configureFela = () => {
     ],
   });
   renderer.renderStatic(browserStaticStyles);
+  renderer.renderFont('ClearSans', files);
   return renderer;
 };
 

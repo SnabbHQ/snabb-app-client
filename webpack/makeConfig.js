@@ -60,7 +60,7 @@ const makeConfig = (options) => {
         new RegExp('localforage.js'),
 
         // https://github.com/braintree/braintree-web/issues/52
-        /braintree-web/
+        /braintree-web/,
       ],
       loaders: [
         {
@@ -95,7 +95,7 @@ const makeConfig = (options) => {
             },
           },
         },
-        ...stylesLoaders
+        ...stylesLoaders,
       ],
     },
     output: isDevelopment ? {
@@ -151,6 +151,10 @@ const makeConfig = (options) => {
           }], {
             ignore: ['original/**'],
           }),
+          new CopyWebpackPlugin([{
+            from: './src/common/app/fonts/',
+            to: 'fonts',
+          }]),
         );
       }
       return plugins;
