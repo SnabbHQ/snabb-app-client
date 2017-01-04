@@ -48,11 +48,11 @@ const makeConfig = (options) => {
     devtool: isDevelopment ? devtools : '',
     entry: {
       app: isDevelopment ? [
-        `webpack-hot-middleware/client?path=http://${serverIp}:${constants.HOT_RELOAD_PORT}/__webpack_hmr`,
-        path.join(constants.SRC_DIR, 'browser/index.js'),
-      ] : [
-        path.join(constants.SRC_DIR, 'browser/index.js'),
-      ],
+          `webpack-hot-middleware/client?path=http://${serverIp}:${constants.HOT_RELOAD_PORT}/__webpack_hmr`,
+          path.join(constants.SRC_DIR, 'browser/index.js'),
+        ] : [
+          path.join(constants.SRC_DIR, 'browser/index.js'),
+        ],
     },
     module: {
       noParse: [
@@ -99,16 +99,16 @@ const makeConfig = (options) => {
       ],
     },
     output: isDevelopment ? {
-      path: constants.BUILD_DIR,
-      filename: '[name].js',
-      chunkFilename: '[name]-[chunkhash].js',
-      publicPath: `http://${serverIp}:${constants.HOT_RELOAD_PORT}/build/`,
-    } : {
-      path: constants.BUILD_DIR,
-      filename: '[name]-[hash].js',
-      chunkFilename: '[name]-[chunkhash].js',
-      publicPath: '/assets/',
-    },
+        path: constants.BUILD_DIR,
+        filename: '[name].js',
+        chunkFilename: '[name]-[chunkhash].js',
+        publicPath: `http://${serverIp}:${constants.HOT_RELOAD_PORT}/build/`,
+      } : {
+        path: constants.BUILD_DIR,
+        filename: '[name]-[hash].js',
+        chunkFilename: '[name]-[chunkhash].js',
+        publicPath: '/assets/',
+      },
     plugins: (() => {
       const plugins = [
         new webpack.DefinePlugin({
@@ -148,13 +148,15 @@ const makeConfig = (options) => {
           new CopyWebpackPlugin([{
             from: './src/common/app/favicons/',
             to: 'favicons',
+          }, {
+            from: './src/common/app/fonts/',
+            to: 'fonts',
+          }, {
+            from: './src/common/app/images/',
+            to: 'images',
           }], {
             ignore: ['original/**'],
           }),
-          new CopyWebpackPlugin([{
-            from: './src/common/app/fonts/',
-            to: 'fonts',
-          }]),
         );
       }
       return plugins;
