@@ -25,13 +25,14 @@
     "parser": "babel-eslint"
   },
   "scripts": {
-    "format": "standard --fix",
-    "test": "jest",
-    "start": "react-native start",
-    "test:watch": "npm run test -- --watch",
-    "test-chrome": "node-debug --preload false --nodejs --harmony jest --runInBand",
-    "docs": "docker -w -i src/ -o ../snabb-pages ",
-    "flow": "flow"
+    "build": "gulp build",
+    "flow": "flow",
+    "install": "gulp native-fix",
+    "jest": "jest",
+    "jest:watch": "jest --watch",
+    "postinstall": "gulp native && gulp build --production",
+    "start": "gulp",
+    "test": "gulp test"
   },
   "dependencies": {
     "autoprefixer": "^6.1.0",
