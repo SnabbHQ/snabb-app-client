@@ -29,11 +29,9 @@ export const register = (providerName: string, options?: Object): Action => ({
   payload: { providerName, options },
 });
 
-export const registerSuccess = (): Action => ({
+export const registerSuccess = (user: User): Action => ({
   type: 'REGISTER_SUCCESS',
-  payload: {
-    user: createUserFirebase(firebaseUser),
-  },
+  payload: { user },
 });
 
 export const registerFail = (error: Error): Action => ({

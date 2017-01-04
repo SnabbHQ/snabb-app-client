@@ -28,7 +28,6 @@ const login = (action$: any, { authRepository, userRepository, validate }: Deps)
   action$.ofType('REGISTER')
     .map(action => action.payload.options)
     .mergeMap((options) => {
-      console.log('hola1')
       const { name, email, phone, password } = options;
       return Observable.fromPromise(validateFields(validate, { name, phone, email, password }))
         .switchMap(() => authRepository.auth(email, password))
