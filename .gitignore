@@ -2,7 +2,7 @@
 #
 .DS_Store
 .tern-port
-        
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -89,3 +89,10 @@ ios/DerivedData2
 ios/Pods
 ios/Frameworks/
 *.js.save
+
+
+# Snabb
+bundle-stats.json
+src/common/config.json
+src/native/initialState.js
+webpack-assets.json
