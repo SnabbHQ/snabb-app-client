@@ -31,7 +31,7 @@ const theme: Theme = {
     accent: openColor.blue5,
     success: '#1c7',
     warning: '#f70',
-    danger: '#f52',
+    danger: '#d40619',
     black: openColor.gray8,
     white: '#fff',
     gray: openColor.gray4,

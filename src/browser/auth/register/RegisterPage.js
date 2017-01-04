@@ -3,19 +3,17 @@ import type { State } from '../../../common/types';
 import RegisterFields from './RegisterFields';
 import R from 'ramda';
 import React from 'react';
-import FormError from '../FormError';
 import linksMessages from '../../../common/app/linksMessages';
 import authMessages from '../../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
-import { Block, Divider, Link, Image, Text, Title, Loading, Box } from '../../app/components';
-import { Message } from '../../app/components-old';
+import { Block, Divider, Link, Image, Text, Title, Box } from '../../app/components';
 
 // $FlowFixMe
 const logo = require('../../../../assets/images/logoBlack.svg');
 
-const RegisterPage = ({ disabled, intl, location, authed }) => (
+const RegisterPage = ({ intl, location, authed }) => (
   authed ?
     <Redirect
       to={(
@@ -45,12 +43,6 @@ const RegisterPage = ({ disabled, intl, location, authed }) => (
           >
             {intl.formatMessage(authMessages.createAccountHeader)}
           </Text>
-          <FormError />
-          { disabled &&
-          <Loading>
-            {message => <Message>{message}</Message>}
-          </Loading>
-          }
           <RegisterFields />
           <Divider marginVertical="0.3em" />
           <Box display="block">
@@ -84,7 +76,6 @@ const RegisterPage = ({ disabled, intl, location, authed }) => (
 
 
 RegisterPage.propTypes = {
-  disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
   location: React.PropTypes.object.isRequired,
   authed: React.PropTypes.object,
@@ -93,7 +84,6 @@ RegisterPage.propTypes = {
 export default R.compose(
   connect(
     (state: State) => ({
-      disabled: state.auth.formDisabled,
       authed: state.user.profile,
     }),
   ),

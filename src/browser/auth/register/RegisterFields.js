@@ -8,7 +8,9 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../../common/lib/redux-fields';
 import { register } from '../../../common/auth/actions';
-import { Form, focus , Button, Input, Box } from '../../app/components';
+import { Form, focus , Button, Input, Loading, Box } from '../../app/components';
+import FormError from '../FormError';
+import { Message } from '../../app/components-old';
 
 class RegisterFields extends React.Component {
 
@@ -62,6 +64,12 @@ class RegisterFields extends React.Component {
             placeholder={intl.formatMessage(authMessages.passwordPlaceholder)}
             type="password"
           />
+          <FormError />
+          { disabled &&
+          <Loading>
+            {message => <Text danger>{message}</Text>}
+          </Loading>
+          }
           <Box marginTop="1em">
             <Button primary onClick={this.register} width="100%" disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.register} />
