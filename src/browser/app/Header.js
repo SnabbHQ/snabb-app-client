@@ -8,10 +8,10 @@ import { Fixed, Link, Text, Box, Image, Space } from '../app/components';
 import { connect } from 'react-redux';
 
 // $FlowFixMe
-const logo = require('../../../assets/images/logo.svg');
+const logo = require('../../common/app/images/logo.svg');
 
 // $FlowFixMe
-const clientPhoto = require('../../../assets/images/clientPhotoDefaultSmall.svg');
+const clientPhoto = require('../../common/app/images/clientPhotoDefaultSmall.svg');
 
 
 type HeaderProps = {

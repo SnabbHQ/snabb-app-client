@@ -11,7 +11,7 @@ import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { Block, Divider, Link, Image, Text, Title, Box } from '../../app/components';
 
 // $FlowFixMe
-const logo = require('../../../../assets/images/logoBlack.svg');
+const logo = require('../../../common/app/images/logoBlack.svg');
 
 const RegisterPage = ({ intl, location, authed }) => (
   authed ?

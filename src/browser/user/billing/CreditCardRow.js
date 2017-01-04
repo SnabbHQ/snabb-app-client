@@ -5,8 +5,8 @@ import { Text, Image, Space } from '../../app/components';
 import { Radio, Flex } from '../../app/components-old';
 
 const ICONS = {
-  visa: require('../../../../assets/images/cardIconVI.svg'),
-  mastercard: require('../../../../assets/images/cardIconMC.svg'),
+  visa: require('../../../common/app/images/cardIconVI.svg'),
+  mastercard: require('../../../common/app/images/cardIconMC.svg'),
 };
 
 const CreditCardRow = ({ type, cards }) => {

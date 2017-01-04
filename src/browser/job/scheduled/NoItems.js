@@ -1,8 +1,8 @@
-import React from "react"
-import {Blankslate} from "../../app/components-old"
-import jobMessages from '../../../common/job/jobMessages'
-import activeBlankslateIcon from "../../../../assets/images/activeBlankslateIcon.svg"
-import {NewDeliveryButton} from '../components'
+import React from 'react';
+import { Blankslate } from '../../app/components-old';
+import jobMessages from '../../../common/job/jobMessages';
+import activeBlankslateIcon from '../../../common/app/images/activeBlankslateIcon.svg';
+import { NewDeliveryButton } from '../components';
 
 function NoItems() {
   return (
@@ -11,10 +11,10 @@ function NoItems() {
       title={jobMessages.noScheduledJobsTitle}
       subtitle={jobMessages.noScheduledJobsSubTitle}
       actions={
-        <NewDeliveryButton/>
+        <NewDeliveryButton />
       }
     />
-  )
+  );
 }
 
-export default NoItems
+export default NoItems;

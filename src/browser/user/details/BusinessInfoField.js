@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { FieldHeader, Button, Space, Input, Image, Box } from '../../app/components';
 
 // $FlowFixMe
-const logo = require('../../../../assets/images/clientPhotoDefaultMedium.svg');
+const logo = require('../../../common/app/images/clientPhotoDefaultMedium.svg');
 
 const BusinessInfoField = () => (
   <Box>

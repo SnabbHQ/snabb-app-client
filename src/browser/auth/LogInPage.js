@@ -14,7 +14,7 @@ import { resetAuthState } from '../../common/auth/actions';
 import { Message } from '../app/components-old';
 
 // $FlowFixMe
-const logo = require('../../../assets/images/logoBlack.svg');
+const logo = require('../../common/app/images/logoBlack.svg');
 
 const LogInPage = ({ disabled, location, authed, resetAuthState }, { router }: Object) => {
   const forgotPassword = () => {

@@ -14,7 +14,7 @@ import { Block, Image, Title, Loading, Box, Fixed, Text } from '../../app/compon
 import { Message } from '../../app/components-old';
 
 // $FlowFixMe
-const logo = require('../../../../assets/images/logoBlack.svg');
+const logo = require('../../../common/app/images/logoBlack.svg');
 
 
 const ResetPasswordField = (props) => (

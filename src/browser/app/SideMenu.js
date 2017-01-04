@@ -1,13 +1,11 @@
 /* @flow */
-import type { User } from '../../common/types';
-import React from 'react';
-import linksMessages from '../../common/app/linksMessages';
-import { FormattedMessage } from 'react-intl';
-import { Fixed, Box, Link, Image } from '../app/components';
-import { Space } from '../app/components-old';
-import { connect } from 'react-redux';
+import React from "react";
+import linksMessages from "../../common/app/linksMessages";
+import { FormattedMessage } from "react-intl";
+import { Fixed, Box, Link, Image } from "../app/components";
+import { connect } from "react-redux";
 
-const logo = require('../../../assets/images/logo.svg');
+const logo = require('../../common/app/images/logo.svg');
 
 type HeaderLinkProps = {
   exactly?: boolean,

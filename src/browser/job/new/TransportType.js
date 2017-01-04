@@ -5,13 +5,13 @@ import { Radio, Space, Flex } from '../../app/components-old';
 import { Text, Image } from '../../app/components';
 
 const ICONS = {
-  bike: require('../../../../assets/images/bike.svg'),
-  car: require('../../../../assets/images/car.svg'),
-  cargobike: require('../../../../assets/images/cargobike.svg'),
-  motorbike: require('../../../../assets/images/motorbike.svg'),
-  van: require('../../../../assets/images/van.svg'),
-  walk: require('../../../../assets/images/walk.svg'),
-  cargobikexl: require('../../../../assets/images/cargobikeXL.svg'),
+  bike: require('../../../common/app/images/bike.svg'),
+  car: require('../../../common/app/images/car.svg'),
+  cargobike: require('../../../common/app/images/cargobike.svg'),
+  motorbike: require('../../../common/app/images/motorbike.svg'),
+  van: require('../../../common/app/images/van.svg'),
+  walk: require('../../../common/app/images/walk.svg'),
+  cargobikexl: require('../../../common/app/images/cargobikeXL.svg'),
 };
 
 const TransportType = ({ type, quotes }) => {

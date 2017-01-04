@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { View } from '../../app/components-old';
 import { FieldHeader } from '../../app/components';
 import jobMessages from '../../../common/job/jobMessages';
-import vehicleIcon from '../../../../assets/images/vehicleBadgeBlank.svg';
+import vehicleIcon from '../../../common/app/images/vehicleBadgeBlank.svg';
 import TransportType from './TransportType';
 
 const VehicleField = () => {
