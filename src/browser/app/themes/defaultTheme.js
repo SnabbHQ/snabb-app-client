@@ -5,7 +5,7 @@ import typography from './typography';
 
 // www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
 // Taken from from Bootstrap 4.
-export const fontFamily = [
+export const defaultFontFamily = [
   'ClearSans',
   '-apple-system',
   'system-ui',
@@ -63,14 +63,14 @@ const theme: Theme = {
   text: {
     bold: 600,
     // www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide
-    fontFamily: fontFamily,
+    fontFamily: defaultFontFamily,
   },
   block: {
     maxWidth: '42em',
   },
   heading: {
     bold: 700,
-    fontFamily: fontFamily,
+    fontFamily: defaultFontFamily,
     marginBottom: 1,
   },
   paragraph: {

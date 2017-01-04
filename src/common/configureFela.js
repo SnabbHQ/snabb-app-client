@@ -118,8 +118,8 @@ const devPreset = [
 ];
 
 const files = [
-  './assets/fonts/ClearSans.ttf',
   './assets/fonts/ClearSans.woff',
+  './assets/fonts/ClearSans.ttf',
 ];
 
 const configureFela = () => {
