@@ -63,6 +63,7 @@
     "credit-card-type": "^5.0.0",
     "del": "^2.1.0",
     "express": "^4.13.3",
+    "express-ipfilter": "^0.2.1",
     "fela": "^4.1.0",
     "fela-plugin-logger": "^4.1.0",
     "fela-plugin-validator": "^4.1.0",
@@ -171,5 +172,7 @@
     "webpack-hot-middleware": "^2.8.1",
     "webpack-isomorphic-tools": "^2.2.24",
     "yargs": "^6.0.0"
+  },
+  "devDependencies": {
   }
 }
