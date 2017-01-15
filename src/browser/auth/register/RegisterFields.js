@@ -23,7 +23,7 @@ class RegisterFields extends React.Component {
   }
 
   render() {
-    const { disabled, error, fields, intl } = this.props;
+    const { disabled, fields, intl } = this.props;
 
     return (
       <Form onSubmit={this.onFormSubmit}>

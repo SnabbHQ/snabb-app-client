@@ -1,9 +1,28 @@
 /* @flow */
-import type { Styled, InputTypes } from '../themes/types';
+import type { Styled } from '../themes/types';
+import type { TextProps } from './Text';
+import Box from './Box';
 import React from 'react';
 import styled from './styled';
-import Text, { TextProps } from './Text';
-import Box from './Box';
+import Text from './Text';
+
+// Only HTML5 text inputs. Checkbox and radio must be SVG to size scale.
+type InputTypes =
+  'color'
+    | 'date'
+    | 'datetime'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'month'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week'
+  ;
 
 export type InputProps = TextProps & {
   inline?: boolean,

@@ -6,12 +6,15 @@ import type { OpenColor } from './openColor';
 // Because { [color: Color]?: boolean } doesn't work, we have to define props.
 export type ColorProps = {
   primary?: boolean,
+  primaryHover: boolean,
+  accent?: boolean,
   success?: boolean,
   warning?: boolean,
   danger?: boolean,
   black?: boolean,
   white?: boolean,
   gray?: boolean,
+
 };
 
 export type Color = $Keys<ColorProps>;
