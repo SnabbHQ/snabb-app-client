@@ -5,8 +5,8 @@ const errorMessages = defineMessages({
   required: {
     defaultMessage: `Please fill out the {prop, select,
       name {name}
-      email {email}
       phone {phone}
+      email {email}
       password {password}
     }.`,
     id: 'auth.error.required',
@@ -17,11 +17,11 @@ const errorMessages = defineMessages({
   },
   phone: {
     defaultMessage: 'Phone number is not valid.',
-    id: 'auth.error.email',
+    id: 'auth.error.phone',
   },
-  countryNotSupported: {
-    defaultMessage: 'Sorry but the phone number used does not belong to a country we support yet.',
-    id: 'auth.error.email',
+  phoneNotCorrect: {
+    defaultMessage: 'The phone number must be in international format.',
+    id: 'auth.error.phoneNotCorrect',
   },
   simplePassword: {
     defaultMessage: 'Password must contain at least {minLength} characters.',

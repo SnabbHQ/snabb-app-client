@@ -8,7 +8,7 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../../common/lib/redux-fields';
 import { register } from '../../../common/auth/actions';
-import { Form, focus , Button, Input, Loading, Box } from '../../app/components';
+import { Form, focus, Button, Input, Loading, Box } from '../../app/components';
 import FormError from '../FormError';
 
 class RegisterFields extends React.Component {
@@ -23,7 +23,7 @@ class RegisterFields extends React.Component {
   }
 
   render() {
-    const { disabled, fields, intl } = this.props;
+    const { disabled, error, fields, intl } = this.props;
 
     return (
       <Form onSubmit={this.onFormSubmit}>
