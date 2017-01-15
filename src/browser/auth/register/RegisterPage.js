@@ -49,7 +49,7 @@ const RegisterPage = ({ intl, location, authed }) => (
               <Text display="block" size={-1} marginVertical="1em">
                 <FormattedHTMLMessage {...authMessages.termsAndPrivacy} />
               </Text>
-              <Box marginVertical="1em">
+              <Box display="flex" justifyContent="center" marginVertical="1em">
                 <Link
                   size={1}
                   to={'/login'}
