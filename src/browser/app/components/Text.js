@@ -87,7 +87,7 @@ const Text: Styled<TextProps> = styled((theme, {
     color: theme.colors[colorProps.color || color],
     display,
     fontFamily,
-    fontWeight: props.fontWeight ? props.fontweight : bold ? theme.text.bold : 'normal',
+    fontWeight: bold ? theme.text.bold : 'normal',
     textAlign: align,
     textDecoration: decoration,
     textTransform: transform,

@@ -15,7 +15,7 @@ type LinkProps = TextProps & {
 
 const createLink = (tag, passProps) => styled((theme, props: LinkProps) => ({
   $extends: Text,
-  color: props.color ? theme.colors[props.color] : theme.colors.primary,
+  color: props.color ? theme.colors[props.color] : theme.colors.accent,
   textDecoration: 'none',
   ':hover': {
     textDecoration: 'none',

@@ -82,7 +82,6 @@ export type DeliveriesState = {
 }
 
 export type UserState = {
-  user: ?Profile,
   profile: ?Profile,
 };
 
@@ -97,7 +96,7 @@ export type State = {
   intl: IntlState,
   themes: ThemeState,
   deliveries: DeliveriesState,
-  users: UsersState,
+  user: UserState,
 };
 
 // Actions

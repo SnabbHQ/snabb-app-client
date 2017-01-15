@@ -2,6 +2,22 @@
 import { defineMessages } from 'react-intl';
 
 const authMessages = defineMessages({
+  alreadyAccount: {
+    defaultMessage: 'I already have an account',
+    id: 'auth.register.alreadyAccount'
+  },
+  createAccount: {
+    defaultMessage: 'Create an Account',
+    id: 'auth.register.createAccount',
+  },
+  createAccountHeader: {
+    defaultMessage: 'Welcome to',
+    id: 'auth.register.createAccountHeader',
+  },
+  businessName: {
+    defaultMessage: 'Business Name',
+    id: 'auth.register.businessName',
+  },
   email: {
     defaultMessage: 'Email',
     id: 'auth.email',
@@ -13,22 +29,6 @@ const authMessages = defineMessages({
   passwordForgotten: {
     defaultMessage: 'Forgot Your Password?',
     id: 'auth.email.passwordForgotten',
-  },
-  createAccount: {
-    defaultMessage: 'Create an Account',
-    id: 'auth.register.createAccount',
-  },
-  createAccountHeader: {
-    defaultMessage: 'Welcome to',
-    id: 'auth.register.createAccountHeader',
-  },
-  termsAndPrivacy: {
-    defaultMessage: 'By joining, you agree to the Snabb\'s {termsLink} and {privacyLink}',
-    id: 'auth.register.termsLabelPart1',
-  },
-  businessName: {
-    defaultMessage: 'Business Name',
-    id: 'auth.register.businessName',
   },
   phone: {
     defaultMessage: 'Phone Number (e.g. +34 661 518 132)',
@@ -54,6 +54,10 @@ const authMessages = defineMessages({
     defaultMessage: 'Check your email for a link to reset your password. If it doesn\'t appear ' +
     'within a few minutes, check your spam folder.',
     id: 'auth.reset.resetPasswordsSentDesc',
+  },
+  termsAndPrivacy: {
+    defaultMessage: 'By joining, you agree to Snabb\'s <a href="https://snabb.io/terms/">Terms & Conditions</a> and <a href="https://snabb.io/privacy">Privacy Policy</a>',
+    id: 'auth.register.termsLabelPart1',
   },
 });
 
