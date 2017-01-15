@@ -49,7 +49,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         ]}
       />
       <Box
-        backgroundColor={theme(currentTheme).colors.bodyBackground}
+        backgroundColor={theme(currentTheme).body.backgroundColor}
         flex={1} // make footer sticky
       >
         <Page authorized exactly pattern="/" component={ActivePage} includeHeader />

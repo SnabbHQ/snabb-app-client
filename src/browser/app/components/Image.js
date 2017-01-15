@@ -8,7 +8,7 @@ type ImageProps = {|
   height: number,
   src: string | number, // number, because src={require('./foo.png')}
   width?: number,
-  onClick: func,
+  onClick?: (e: SyntheticMouseEvent) => any,
 |};
 
 const altOrRolePresentation = alt => alt

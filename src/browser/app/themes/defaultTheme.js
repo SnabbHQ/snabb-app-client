@@ -36,10 +36,12 @@ const theme: Theme = {
     white: '#fff',
     gray: openColor.gray4,
     open: openColor,
-    bodyBackground: 'white',
+  },
+  body: {
+    backgroundColor: 'white',
   },
   border: {
-    radius: '8px',
+    radius: 8,
     width: 1,
   },
   states: {
@@ -66,7 +68,8 @@ const theme: Theme = {
     fontFamily: defaultFontFamily,
   },
   block: {
-    maxWidth: '42em',
+    marginBottom: 1,
+    maxWidth: 42,
   },
   heading: {
     bold: 700,
@@ -75,7 +78,7 @@ const theme: Theme = {
   },
   paragraph: {
     marginBottom: 1,
-    maxWidth: '42em',
+    maxWidth: 42,
   },
   divider: {
     borderColor: openColor.gray4,

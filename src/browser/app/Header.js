@@ -26,7 +26,6 @@ type HeaderLinkProps = {
 
 const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
   <Link
-    antialiasing
     bold
     color="white"
     exactly={exactly}

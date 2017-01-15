@@ -6,7 +6,8 @@ import type { OpenColor } from './openColor';
 // Because { [color: Color]?: boolean } doesn't work, we have to define props.
 export type ColorProps = {
   primary?: boolean,
-  primaryHover: boolean,
+  primaryHover?: boolean,
+  secondary?: boolean,
   accent?: boolean,
   success?: boolean,
   warning?: boolean,
@@ -29,6 +30,9 @@ export type Theme = {|
     [color: Color]: string,
     open: OpenColor,
   },
+  body: {
+    backgroundColor: Color,
+  },
   border: {|
     radius: number,
     width: number,
@@ -48,6 +52,7 @@ export type Theme = {|
       medium: number,
       big: number,
       bigger: number,
+      full: '100%',
       |},
     |},
   text: {|
@@ -59,14 +64,13 @@ export type Theme = {|
     maxWidth: number,
     |},
   heading: {|
+    bold: number,
     fontFamily: string,
     marginBottom: number,
     |},
   paragraph: {|
     marginBottom: number,
-    |},
-  input: {|
-    borderColor: string,
+    maxWidth: number,
     |},
   divider: {|
     borderColor: string,

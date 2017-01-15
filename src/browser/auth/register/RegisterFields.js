@@ -67,10 +67,8 @@ class RegisterFields extends React.Component {
             type="password"
           />
           <FormError />
-          { disabled &&
-          <Loading>
-            {message => <Text danger>{message}</Text>}
-          </Loading>
+          {disabled &&
+            <Loading marginVertical={1} />
           }
           <Box marginTop="1em">
             <Button size={1} accent onClick={this.register} width="100%" disabled={disabled} align="center">
