@@ -25,15 +25,16 @@ type InputTypes =
   ;
 
 export type InputProps = TextProps & {
+  disabled?: boolean,
   error?: string,
+  field?: Object,
   inline?: boolean,
   invalid?: boolean,
-  label?: string,
-  labelSize?: string,
   maxLength?: number,
   onChange?: (SyntheticEvent) => void,
   name?: string,
   placeholder?: string,
+  rows?: number,
   type?: InputTypes,
   value?: string,
 }
@@ -41,10 +42,10 @@ export type InputProps = TextProps & {
 // This is gold. Input looks like exactly as Text in all modern browsers.
 // That's great for in place editing UI with vertical rhythm everywhere.
 const enforceTextLook = {
-  map: style => ({
+  map: rows => style => ({
     ...style,
-    // This fixes a lot of issues and it's ok. Input can't be multiline.
-    height: style.lineHeight,
+    height: rows * Number(style.lineHeight),
+    padding: 10,
   }),
   // All these values are required. Otherwise, Edge or Firefox would break.
   style: {
@@ -52,33 +53,62 @@ const enforceTextLook = {
     display: 'block',
     margin: 0,
     outline: 'none', // Input doesn't need the outline, focus state is obvious.
-    padding: 20,
+    padding: 0,
     width: '100%',
   },
 };
 
-const StyledInput: Styled<InputProps> = styled((theme, props: InputProps) => ({
+const create = (tag, passProps = []) => styled((theme, {
+  disabled,
+  rows,
+  error,
+  padding,
+}) => ({
   $extends: Text,
-  $map: enforceTextLook.map,
+  $map: enforceTextLook.map(rows),
   ...enforceTextLook.style,
-  border: props.error ? `solid 1px ${theme.colors.danger}` : 'solid 1px #f6f6f6',
+  ...(disabled ? theme.states.disabled : null),
+  border: error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.input.backgroundColor}`,
   ':focus': {
-    border: props.error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.colors.accent}`,
+    border: error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.colors.accent}`,
   },
+  padding,
   borderRadius: theme.border.radius,
-  backgroundColor: '#f6f6f6',
-  color: props.color ? theme.colors[props.color] : theme.colors.black,
+  backgroundColor: theme.input.backgroundColor,
   transition: 'border 0.1s',
-  width: '100%',
-}), 'input', [
+}), tag, [
+  'disabled',
   'name',
   'onChange',
   'placeholder',
   'type',
   'value',
-  'onKeyDown',
   'maxLength',
+  ...passProps,
 ]);
+
+const StyledInput = create('input');
+
+// TODO: Auto size by default and maxRows.
+// github.com/callemall/material-ui/blob/master/src/TextField/EnhancedTextarea.js
+const StyledTextarea = create('textarea', ['rows']);
+
+const StyledInputOrTextArea: Styled<InputProps> = ({
+  field,
+  rows = 1,
+  type = 'text',
+  ...props
+}) => {
+  const InputOrTextArea = rows === 1 ? StyledInput : StyledTextarea;
+  return (
+    <InputOrTextArea
+      {...props}
+      {...field}
+      rows={rows}
+      type={type}
+    />
+  );
+};
 
 const checkIfOwnError = (error, name) => error && error.params && error.params.prop === name;
 
@@ -87,13 +117,16 @@ const Input: Styled<InputProps> = ({
   name,
   placeholder,
   size = 0,
+  padding = 0.5,
+  marginBottom = 0.5,
   ...props
 }) => (
-  <Box marginBottom={'0.5em'}>
-    <StyledInput
+  <Box {...props} marginBottom={marginBottom}>
+    <StyledInputOrTextArea
       error={checkIfOwnError(error, name) && error}
       placeholder={placeholder}
       size={size}
+      padding={padding}
       {...props}
     />
   </Box>

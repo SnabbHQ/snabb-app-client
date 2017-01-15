@@ -23,8 +23,14 @@ const RegisterPage = ({ intl, location, authed }) => (
       ) || '/'}
     />
     :
-    <Box display="flex" height="100%" marginTop="3em" alignItems="center" justifyContent="center">
-      <Box width="500px">
+    <Box
+      flexDirection="column"
+      display="flex"
+      marginTop={3}
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Box width={20}>
         <Title message={linksMessages.register} />
         <Block>
           <Text
@@ -38,25 +44,23 @@ const RegisterPage = ({ intl, location, authed }) => (
             align="center"
             display="block"
             size={2}
-            marginBottom="1em"
+            marginBottom={1}
             bold
           >
             Snabb
           </Text>
           <RegisterFields />
-          <Box display="flex" justifyContent="center">
-            <Box display="block" width="60%">
-              <Text display="block" size={-1} marginVertical="1em">
-                <FormattedHTMLMessage {...authMessages.termsAndPrivacy} />
-              </Text>
-              <Box display="flex" justifyContent="center" marginVertical="1em">
-                <Link
-                  size={1}
-                  to={'/login'}
-                >
-                  <FormattedMessage {...authMessages.alreadyAccount} />
-                </Link>
-              </Box>
+          <Box display="flex">
+            <Text display="block" size={-1} marginVertical={1}>
+              <FormattedHTMLMessage {...authMessages.termsAndPrivacy} />
+            </Text>
+            <Box display="flex" justifyContent="center" marginVertical={1}>
+              <Link
+                size={1}
+                to={'/login'}
+              >
+                <FormattedMessage {...authMessages.alreadyAccount} />
+              </Link>
             </Box>
           </Box>
         </Block>

@@ -72,6 +72,9 @@ export type Theme = {|
     marginBottom: number,
     maxWidth: number,
     |},
+  input: {|
+    backgroundColor: string,
+    |},
   divider: {|
     borderColor: string,
     |}

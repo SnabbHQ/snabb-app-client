@@ -80,6 +80,9 @@ const theme: Theme = {
     marginBottom: 1,
     maxWidth: 42,
   },
+  input: {
+    backgroundColor: '#f6f6f6',
+  },
   divider: {
     borderColor: openColor.gray4,
   },

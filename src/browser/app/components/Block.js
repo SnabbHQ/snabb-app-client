@@ -1,7 +1,7 @@
 /* @flow */
 import type { Styled } from '../themes/types';
+import type { BoxProps } from './Box';
 import styled from './styled';
-import { BoxProps } from './Box';
 
 const Block: Styled<BoxProps> = styled(() => ({
   display: 'block',

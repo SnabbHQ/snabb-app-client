@@ -8,7 +8,7 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../../common/lib/redux-fields';
 import { register } from '../../../common/auth/actions';
-import { Form, focus, Button, Input, Loading, Box } from '../../app/components';
+import { CenteredBox, Form, focus, Button, Input, Loading, Box } from '../../app/components';
 import FormError from '../FormError';
 
 class RegisterFields extends React.Component {
@@ -29,52 +29,46 @@ class RegisterFields extends React.Component {
       <Form onSubmit={this.onFormSubmit}>
         <Box>
           <Input
-            {...fields.name}
+            field={fields.name}
             disabled={disabled}
             error={error}
             placeholder={intl.formatMessage(authMessages.businessName)}
-            labelSize={-1}
             maxLength={1000}
-            padding="0.5em"
           />
           <Input
-            {...fields.phone}
+            field={fields.phone}
             disabled={disabled}
             error={error}
             placeholder={intl.formatMessage(authMessages.phone)}
-            labelSize={-1}
             maxLength={1000}
-            padding="0.5em"
           />
           <Input
-            {...fields.email}
+            field={fields.email}
             disabled={disabled}
             error={error}
             placeholder={intl.formatMessage(authMessages.email)}
-            labelSize={-1}
             maxLength={100}
-            padding="0.5em"
             type="email"
           />
           <Input
-            {...fields.password}
+            field={fields.password}
             disabled={disabled}
             error={error}
-            labelSize={-1}
             maxLength={1000}
-            padding="0.5em"
             placeholder={intl.formatMessage(authMessages.password)}
             type="password"
           />
-          <FormError />
-          {disabled &&
+          <CenteredBox>
+            <FormError />
+            {disabled &&
             <Loading marginVertical={1} />
-          }
-          <Box marginTop="1em">
-            <Button size={1} accent onClick={this.register} width="100%" disabled={disabled} align="center">
+            }
+          </CenteredBox>
+          <CenteredBox marginTop={1}>
+            <Button size={1} accent onClick={this.register} disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.register} />
             </Button>
-          </Box>
+          </CenteredBox>
         </Box>
       </Form>
     );
