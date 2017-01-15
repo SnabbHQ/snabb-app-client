@@ -23,7 +23,7 @@ class RegisterFields extends React.Component {
   }
 
   render() {
-    const { disabled, fields, intl } = this.props;
+    const { disabled, error, fields, intl } = this.props;
 
     return (
       <Form onSubmit={this.onFormSubmit}>
@@ -31,6 +31,7 @@ class RegisterFields extends React.Component {
           <Input
             {...fields.name}
             disabled={disabled}
+            error={error}
             placeholder={intl.formatMessage(authMessages.businessName)}
             labelSize={-1}
             maxLength={1000}
@@ -39,6 +40,7 @@ class RegisterFields extends React.Component {
           <Input
             {...fields.phone}
             disabled={disabled}
+            error={error}
             placeholder={intl.formatMessage(authMessages.phone)}
             labelSize={-1}
             maxLength={1000}
@@ -47,6 +49,7 @@ class RegisterFields extends React.Component {
           <Input
             {...fields.email}
             disabled={disabled}
+            error={error}
             placeholder={intl.formatMessage(authMessages.email)}
             labelSize={-1}
             maxLength={100}
@@ -56,6 +59,7 @@ class RegisterFields extends React.Component {
           <Input
             {...fields.password}
             disabled={disabled}
+            error={error}
             labelSize={-1}
             maxLength={1000}
             padding="0.5em"

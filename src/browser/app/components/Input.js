@@ -25,6 +25,7 @@ type InputTypes =
   ;
 
 export type InputProps = TextProps & {
+  error?: string,
   inline?: boolean,
   invalid?: boolean,
   label?: string,
@@ -60,9 +61,9 @@ const StyledInput: Styled<InputProps> = styled((theme, props: InputProps) => ({
   $extends: Text,
   $map: enforceTextLook.map,
   ...enforceTextLook.style,
-  border: 'solid 1px #f6f6f6',
+  border: props.error ? `solid 1px ${theme.colors.danger}` : 'solid 1px #f6f6f6',
   ':focus': {
-    border: `solid 1px ${theme.colors.accent}`,
+    border: props.error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.colors.accent}`,
   },
   borderRadius: theme.border.radius,
   backgroundColor: '#f6f6f6',
@@ -79,9 +80,22 @@ const StyledInput: Styled<InputProps> = styled((theme, props: InputProps) => ({
   'maxLength',
 ]);
 
-const Input: Styled<InputProps> = (props: InputProps) => (
+const checkIfOwnError = (error, name) => error && error.params && error.params.prop === name;
+
+const Input: Styled<InputProps> = ({
+  error,
+  name,
+  placeholder,
+  size = 0,
+  ...props
+}) => (
   <Box marginBottom={'0.5em'}>
-    <StyledInput {...props} />
+    <StyledInput
+      error={checkIfOwnError(error, name) && error}
+      placeholder={placeholder}
+      size={size}
+      {...props}
+    />
   </Box>
 );
 
