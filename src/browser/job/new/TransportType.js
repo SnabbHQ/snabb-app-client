@@ -1,8 +1,6 @@
 /* @flow */
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { Radio, Space, Flex } from '../../app/components-old';
-import { Text, Image } from '../../app/components';
+import { Space, Box, Text, Image } from '../../app/components';
 
 const ICONS = {
   bike: require('../../../common/app/images/bike.svg'),
@@ -14,12 +12,8 @@ const ICONS = {
   cargoBikeXL: require('../../../common/app/images/cargoBikeXL.svg'),
 };
 
-const TransportType = ({ type, quotes }) => {
-  const quote = quotes[type];
-  const isDisabled = !quote || quote.errors;
-
-  return (
-    <Flex align="center">
+const TransportType = () => (
+    <Box display="flex" align="center">
       <Image
         alt={'alt'}
         src={ICONS.bike}
@@ -27,27 +21,11 @@ const TransportType = ({ type, quotes }) => {
       <Space x={2} />
       <Text>Bike</Text>
       <Space auto />
-      <Radio
-        circle
-        label=""
-        name="radio_1"
-      />
-    </Flex>
+    </Box>
   );
-};
-
-TransportType.PropTypes = {
-  type: PropTypes.object.isRequired,
-  quotes: PropTypes.object.isRequired,
-};
 
 TransportType.DefaultProps = {
   disabled: false,
 };
 
-export default connect(
-  () => ({
-    quotes: {}, // state.quotes.all,
-  }),
-  {},
-)(TransportType);
+export default TransportType;

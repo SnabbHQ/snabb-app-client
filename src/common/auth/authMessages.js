@@ -2,21 +2,13 @@
 import { defineMessages } from 'react-intl';
 
 const authMessages = defineMessages({
-  emailLabel: {
+  email: {
     defaultMessage: 'Email',
-    id: 'auth.email.emailLabel',
+    id: 'auth.email',
   },
-  emailPlaceholder: {
-    defaultMessage: 'your@email.com',
-    id: 'auth.email.emailPlaceholder',
-  },
-  passwordLabel: {
+  password: {
     defaultMessage: 'Password',
-    id: 'auth.email.passwordLabel',
-  },
-  passwordPlaceholder: {
-    defaultMessage: 'password',
-    id: 'auth.email.passwordPlaceholder',
+    id: 'auth.password',
   },
   passwordForgotten: {
     defaultMessage: 'Forgot Your Password?',
@@ -27,28 +19,20 @@ const authMessages = defineMessages({
     id: 'auth.register.createAccount',
   },
   createAccountHeader: {
-    defaultMessage: 'Tell us a about your business',
+    defaultMessage: 'Welcome to',
     id: 'auth.register.createAccountHeader',
   },
-  termsLabelPart1: {
-    defaultMessage: 'By clicking on "Create an account", you are agreeing to the ',
+  termsAndPrivacy: {
+    defaultMessage: 'By joining, you agree to the Snabb\'s {termsLink} and {privacyLink}',
     id: 'auth.register.termsLabelPart1',
-  },
-  termsLabelPart2: {
-    defaultMessage: ' and the ',
-    id: 'auth.register.termsLabelPart2',
   },
   businessName: {
     defaultMessage: 'Business Name',
     id: 'auth.register.businessName',
   },
-  businessEmail: {
-    defaultMessage: 'Business Email',
-    id: 'auth.register.businessEmail',
-  },
   phone: {
-    defaultMessage: 'Business Phone',
-    id: 'auth.register.businessPhone',
+    defaultMessage: 'Phone Number (e.g. +34 661 518 132)',
+    id: 'auth.register.phone',
   },
   recoveryEmailSent: {
     defaultMessage: 'Recovery email has been sent.',

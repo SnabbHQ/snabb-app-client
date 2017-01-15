@@ -2,8 +2,7 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { View } from '../../app/components-old';
-import { FieldHeader } from '../../app/components';
+import { FieldHeader, Box } from '../../app/components';
 import jobMessages from '../../../common/job/jobMessages';
 import vehicleIcon from '../../../common/app/images/vehicleBadgeBlank.svg';
 import TransportType from './TransportType';
@@ -13,19 +12,19 @@ const VehicleField = () => {
     // if (R.isEmpty(quotes)) { return }
 
      (
-      <View>
+      <Box>
         <FormattedMessage {...jobMessages.excludeVAT} />
-      </View>
+      </Box>
     );
 
   // ...jobMessages.selectVehicleTitle
   return (
-    <View>
+    <Box>
       <FieldHeader icon={vehicleIcon} title={jobMessages.selectVehicle} />
       {renderExclVat}
       <TransportType />
       <TransportType />
-    </View>
+    </Box>
   );
 };
 

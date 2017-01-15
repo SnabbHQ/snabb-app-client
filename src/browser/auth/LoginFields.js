@@ -30,20 +30,18 @@ class LoginFields extends React.Component {
           <Input
             {...fields.email}
             disabled={disabled}
-            label={intl.formatMessage(authMessages.emailLabel)}
             labelSize={-1}
             maxLength={100}
             padding="0.5em"
-            placeholder={intl.formatMessage(authMessages.emailPlaceholder)}
+            placeholder={intl.formatMessage(authMessages.email)}
           />
           <Input
             {...fields.password}
             disabled={disabled}
-            label={intl.formatMessage(authMessages.passwordLabel)}
             labelSize={-1}
             maxLength={1000}
             padding="0.5em"
-            placeholder={intl.formatMessage(authMessages.passwordPlaceholder)}
+            placeholder={intl.formatMessage(authMessages.password)}
             type="password"
           />
           <Box marginTop="1em">

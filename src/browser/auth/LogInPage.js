@@ -9,9 +9,8 @@ import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Block, Divider, Image, Button, Title, Loading, Box, Fixed } from '../app/components';
+import { Message, Block, Divider, Image, Button, Title, Loading, Box, Fixed } from '../app/components';
 import { resetAuthState } from '../../common/auth/actions';
-import { Message } from '../app/components-old';
 
 // $FlowFixMe
 const logo = require('../../common/app/images/logoBlack.svg');

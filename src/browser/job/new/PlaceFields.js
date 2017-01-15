@@ -1,7 +1,6 @@
 /* @flow */
 import React, { PropTypes } from 'react';
-import { Input, Text, Button, Box, Grid, FieldHeader} from '../../app/components';
-import { Space } from '../../app/components-old';
+import { Space, Input, Text, Button, Box, Grid, FieldHeader} from '../../app/components';
 
 class PlaceFields extends React.Component {
 

@@ -7,8 +7,8 @@ import linksMessages from '../../../common/app/linksMessages';
 import authMessages from '../../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
-import { Block, Divider, Link, Image, Text, Title, Box } from '../../app/components';
+import { injectIntl, intlShape, FormattedHTMLMessage } from 'react-intl';
+import { Block, Text, Title, Box } from '../../app/components';
 
 // $FlowFixMe
 const logo = require('../../../common/app/images/logoBlack.svg');
@@ -27,47 +27,29 @@ const RegisterPage = ({ intl, location, authed }) => (
       <Box width="500px">
         <Title message={linksMessages.register} />
         <Block>
-          <Box marginBottom={1}>
-            <Image
-              alt="Snabb logo"
-              height={100}
-              width="100%"
-              src={logo}
-            />
-          </Box>
           <Text
             align="center"
             display="block"
             size={2}
-            marginVertical="1em"
           >
             {intl.formatMessage(authMessages.createAccountHeader)}
           </Text>
+          <Text
+            align="center"
+            display="block"
+            size={2}
+            marginBottom="1em"
+            fontWeight="bold"
+          >
+            Snabb
+          </Text>
           <RegisterFields />
-          <Divider marginVertical="0.3em" />
-          <Box display="block">
-            <Text size={-1}>{intl.formatMessage(authMessages.termsLabelPart1)}</Text>
-            <Link
-              bold
-              antialiasing
-              color="accent"
-              to="/todo"
-              size={-1}
-              align="center"
-            >
-              <FormattedMessage {...linksMessages.terms} />
-            </Link>
-            <Text size={-1}>{intl.formatMessage(authMessages.termsLabelPart2)}</Text>
-            <Link
-              bold
-              antialiasing
-              color="accent"
-              to="/todo"
-              align="center"
-              size={-1}
-            >
-              <FormattedMessage {...linksMessages.privacyPolicy} />
-            </Link>
+          <Box display="flex" justifyContent="center">
+            <Box display="block" width="40%">
+              <Text>
+                {intl.formatMessage(authMessages.termsAndPrivacy)}
+              </Text>
+            </Box>
           </Box>
         </Block>
       </Box>

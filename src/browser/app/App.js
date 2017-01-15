@@ -46,11 +46,6 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         ]}
         link={[
           ...favicon.link,
-          // Test vertical rhythm.
-          //{
-          //  href: `http://basehold.it/${theme(currentTheme).text.lineHeight}`,
-          //  rel: 'stylesheet',
-          //},
         ]}
       />
       <Box

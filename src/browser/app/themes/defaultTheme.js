@@ -20,7 +20,7 @@ export const defaultFontFamily = [
 const theme: Theme = {
   typography: typography({
     // For text 14px and small text 12px use 14px with 1,16666 fontSizeScale
-    fontSize: 16,
+    fontSize: 14,
     fontSizeScale: 'step5', // perfect fourth, modularscale.com
     lineHeight: 24,
   }),
@@ -28,7 +28,7 @@ const theme: Theme = {
     primary: openColor.blue7,
     primaryHover: openColor.blue5,
     secondary: openColor.gray4,
-    accent: openColor.blue5,
+    accent: '#00aaff',
     success: '#1c7',
     warning: '#f70',
     danger: '#d40619',
@@ -39,7 +39,7 @@ const theme: Theme = {
     bodyBackground: 'white',
   },
   border: {
-    radius: 2,
+    radius: '8px',
     width: 1,
   },
   states: {
@@ -76,9 +76,6 @@ const theme: Theme = {
   paragraph: {
     marginBottom: 1,
     maxWidth: '42em',
-  },
-  input: {
-    borderColor: `solid 1px ${openColor.gray4}`,
   },
   divider: {
     borderColor: openColor.gray4,

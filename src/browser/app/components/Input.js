@@ -32,7 +32,7 @@ const enforceTextLook = {
     display: 'block',
     margin: 0,
     outline: 'none', // Input doesn't need the outline, focus state is obvious.
-    padding: 15,
+    padding: 20,
     width: '100%',
   },
 };
@@ -41,10 +41,14 @@ const StyledInput: Styled<InputProps> = styled((theme, props: InputProps) => ({
   $extends: Text,
   $map: enforceTextLook.map,
   ...enforceTextLook.style,
-  border: theme.input.borderColor,
-  borderColor: props.invalid ? theme.colors.error : theme.input.borderColor,
+  border: 'solid 1px #f6f6f6',
+  ':focus': {
+    border: `solid 1px ${theme.colors.accent}`,
+  },
+  borderRadius: theme.border.radius,
+  backgroundColor: '#f6f6f6',
   color: props.color ? theme.colors[props.color] : theme.colors.black,
-  transition: 'border 0.3s',
+  transition: 'border 0.1s',
   width: '100%',
 }), 'input', [
   'name',
@@ -58,7 +62,6 @@ const StyledInput: Styled<InputProps> = styled((theme, props: InputProps) => ({
 
 const Input: Styled<InputProps> = (props: InputProps) => (
   <Box marginBottom={'0.5em'}>
-    {props.label ? <Text size={props.labelSize ? props.labelSize : 0}>{props.label}</Text> : null}
     <StyledInput {...props} />
   </Box>
 );

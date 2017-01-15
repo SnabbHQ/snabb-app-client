@@ -1,10 +1,9 @@
 // @flow
 import React from 'react';
-import { Space } from '../../app/components-old';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import billingMessages from '../../../common/user/billing/billingMessages';
 import { FormattedMessage } from 'react-intl';
-import { Button, Input, FieldHeader, Box } from '../../app/components';
+import { Button, Input, FieldHeader, Box, Space } from '../../app/components';
 
 const BillingDetails = () => (
   <Box>

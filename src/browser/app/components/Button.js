@@ -15,7 +15,7 @@ type ButtonProps = TextProps & {
 const maybeVerticalSpace = size => size >= 0 ? {
     // Button needs vertical space. Sure it can be defined in the theme.
   marginVertical: 0.25,
-  paddingVertical: 0.25,
+  paddingVertical: 0.50,
 } : {
     // But the smaller button can't have any padding nor border because it would
     // break a rhythm. It's impossible to compute it since text can be multiline.
@@ -36,10 +36,11 @@ const activeStyle = (style, { darken }) => [
 
 const Button: Styled<ButtonProps> = styled((theme, {
   active,
-  bold = true,
+  bold = false,
   disabled,
   display = 'inline-block',
   inline,
+  borderRadius = theme.border.radius,
   paddingHorizontal = 0.8,
   size = 0,
   transform = 'capitalize',
@@ -48,6 +49,7 @@ const Button: Styled<ButtonProps> = styled((theme, {
     bold,
     display,
     paddingHorizontal,
+    borderRadius,
     transform,
     ...(inline ? {} : maybeVerticalSpace(size)),
   }: Strict<TextProps>)],

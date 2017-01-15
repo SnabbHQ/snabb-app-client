@@ -10,7 +10,6 @@ import { fields } from '../../../common/lib/redux-fields';
 import { register } from '../../../common/auth/actions';
 import { Form, focus , Button, Input, Loading, Box } from '../../app/components';
 import FormError from '../FormError';
-import { Message } from '../../app/components-old';
 
 class RegisterFields extends React.Component {
 
@@ -32,7 +31,15 @@ class RegisterFields extends React.Component {
           <Input
             {...fields.name}
             disabled={disabled}
-            label={`${intl.formatMessage(authMessages.businessName)} *`}
+            placeholder={intl.formatMessage(authMessages.businessName)}
+            labelSize={-1}
+            maxLength={1000}
+            padding="0.5em"
+          />
+          <Input
+            {...fields.phone}
+            disabled={disabled}
+            placeholder={intl.formatMessage(authMessages.phone)}
             labelSize={-1}
             maxLength={1000}
             padding="0.5em"
@@ -40,28 +47,19 @@ class RegisterFields extends React.Component {
           <Input
             {...fields.email}
             disabled={disabled}
-            label={`${intl.formatMessage(authMessages.businessEmail)} *`}
+            placeholder={intl.formatMessage(authMessages.email)}
             labelSize={-1}
             maxLength={100}
             padding="0.5em"
             type="email"
           />
           <Input
-            {...fields.phone}
-            disabled={disabled}
-            label={`${intl.formatMessage(authMessages.phone)} *`}
-            labelSize={-1}
-            maxLength={1000}
-            padding="0.5em"
-          />
-          <Input
             {...fields.password}
             disabled={disabled}
-            label={`${intl.formatMessage(authMessages.passwordLabel)} *`}
             labelSize={-1}
             maxLength={1000}
             padding="0.5em"
-            placeholder={intl.formatMessage(authMessages.passwordPlaceholder)}
+            placeholder={intl.formatMessage(authMessages.password)}
             type="password"
           />
           <FormError />
@@ -71,7 +69,7 @@ class RegisterFields extends React.Component {
           </Loading>
           }
           <Box marginTop="1em">
-            <Button primary onClick={this.register} width="100%" disabled={disabled} align="center">
+            <Button size={1} accent onClick={this.register} width="100%" disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.register} />
             </Button>
           </Box>

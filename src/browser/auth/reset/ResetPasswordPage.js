@@ -10,8 +10,7 @@ import authMessages from '../../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
-import { Block, Image, Title, Loading, Box, Fixed, Text } from '../../app/components';
-import { Message } from '../../app/components-old';
+import { Message, Block, Image, Title, Loading, Box, Fixed, Text } from '../../app/components';
 
 // $FlowFixMe
 const logo = require('../../../common/app/images/logoBlack.svg');

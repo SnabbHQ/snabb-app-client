@@ -1,8 +1,7 @@
 /* @flow */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Text, Image, Space } from '../../app/components';
-import { Radio, Flex } from '../../app/components-old';
+import { Box, Text, Image, Space } from '../../app/components';
 
 const ICONS = {
   visa: require('../../../common/app/images/cardIconVI.svg'),
@@ -13,12 +12,7 @@ const CreditCardRow = ({ type, cards }) => {
   const card = cards[type];
 
   return (
-    <Flex align="center">
-      <Radio
-        circle
-        label=""
-        name="radio_1"
-      />
+    <Box display="flex" align="center">
       <Space x={2} />
       <Image
         alt={'alt'}
@@ -32,7 +26,7 @@ const CreditCardRow = ({ type, cards }) => {
       <Text>Default Card</Text>
       <Space auto />
       <Text>Delete</Text>
-    </Flex>
+    </Box>
   );
 };
 

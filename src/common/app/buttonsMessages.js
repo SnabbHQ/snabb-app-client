@@ -39,7 +39,7 @@ const buttonsMessages = defineMessages({
     id: 'app.buttons.resetPassword',
   },
   register: {
-    defaultMessage: 'Create an account',
+    defaultMessage: 'Create Account',
     id: 'app.buttons.register',
   },
   returnToLogIn: {
