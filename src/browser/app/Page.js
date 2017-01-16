@@ -1,16 +1,26 @@
 // @flow
-import React, { Component } from 'react';
+import type { State } from '../../common/types';
+import React from 'react';
 import Header from './Header';
 import AppMessage from './AppMessage';
+import { connect } from 'react-redux';
 import { Match } from '../../common/app/components';
 import { Box, Container, Fixed } from './components';
 
 type PageProps = {
-  component: Component,
+  component: any,
+  emailVerified?: boolean,
   includeHeader?: boolean,
+  messageShown?: boolean,
 }
 
-const Page = ({ component: Component, includeHeader, ...props }: PageProps) => (
+const Page = ({
+  component: Component,
+  includeHeader,
+  messageShown,
+  emailVerified,
+  ...props
+}: PageProps) => (
   <Match
     {...props}
     render={renderProps => (
@@ -18,13 +28,13 @@ const Page = ({ component: Component, includeHeader, ...props }: PageProps) => (
       { includeHeader &&
         <Fixed top left right zIndex={5}>
         <Box>
-            <AppMessage />
+            { !emailVerified && messageShown && <AppMessage /> }
             <Header />
           </Box>
         </Fixed>
       }
       <Box
-        paddingTop={includeHeader && 3}
+        paddingTop={includeHeader ? 3 : 0}
       >
         <Component {...renderProps} />
       </Box>
@@ -33,4 +43,9 @@ const Page = ({ component: Component, includeHeader, ...props }: PageProps) => (
   />
 );
 
-export default Page;
+export default connect(
+  (state: State) => ({
+    messageShown: state.app.messageShown,
+    emailVerified: state.user.profile && state.user.profile.emailVerified,
+  }),
+)(Page);
