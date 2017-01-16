@@ -1,4 +1,6 @@
 // @flow
+// https://github.com/github/fetch/issues/275#issuecomment-181784694
+import 'whatwg-fetch';
 
 /**
  * # SnabbApi.js

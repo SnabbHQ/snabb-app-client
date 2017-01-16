@@ -51,8 +51,10 @@ const makeConfig = (options) => {
       app: isDevelopment ? [
         `webpack-hot-middleware/client?path=http://${serverIp}:${constants.HOT_RELOAD_PORT}/__webpack_hmr`,
         path.join(constants.SRC_DIR, 'browser/index.js'),
+        'whatwg-fetch', // fetch polyfill
       ] : [
         path.join(constants.SRC_DIR, 'browser/index.js'),
+        'whatwg-fetch', // fetch polyfill
       ],
     },
     module: {
