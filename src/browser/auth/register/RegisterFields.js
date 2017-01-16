@@ -19,7 +19,6 @@ class RegisterFields extends React.Component {
 
   register = () => {
     const { fields, register } = this.props;
-    console.log(fields.$values());
     register('password', fields.$values());
   }
 
