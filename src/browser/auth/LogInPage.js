@@ -44,7 +44,7 @@ const LogInPage = ({ location, authed, resetAuthState }) => {
       <Full>
         <Box width={20}>
           <Title message={linksMessages.logIn} />
-          <Box>
+          <Box display="flex" flexDirection="column" padding={1}>
             <Text
               align="center"
               display="block"
