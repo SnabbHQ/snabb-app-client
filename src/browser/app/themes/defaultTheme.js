@@ -40,9 +40,6 @@ const theme: Theme = {
   body: {
     backgroundColor: 'white',
   },
-  header: {
-    backgroundColor: '#37beff',
-  },
   border: {
     radius: 8,
     width: 1,

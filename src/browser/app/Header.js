@@ -43,7 +43,7 @@ const HeaderMessage = () => (
     display="flex"
     backgroundColor="secondary"
     paddingHorizontal={1}
-    paddingVertical={0.5}
+    paddingVertical={0.3}
   >
     <Text color="white">
       <FormattedMessage {...authMessages.emailVerificationSent} />
