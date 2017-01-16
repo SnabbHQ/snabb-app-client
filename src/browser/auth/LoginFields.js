@@ -23,20 +23,22 @@ class LoginFields extends React.Component {
   }
 
   render() {
-    const { disabled, fields, intl } = this.props;
+    const { disabled, error, fields, intl } = this.props;
 
     return (
       <Form onSubmit={this.onFormSubmit}>
         <Box>
           <Input
-            {...fields.email}
+            field={fields.email}
             disabled={disabled}
+            error={error}
             maxLength={100}
             placeholder={intl.formatMessage(authMessages.email)}
           />
           <Input
-            {...fields.password}
+            field={fields.password}
             disabled={disabled}
+            error={error}
             maxLength={100}
             placeholder={intl.formatMessage(authMessages.password)}
             type="password"
