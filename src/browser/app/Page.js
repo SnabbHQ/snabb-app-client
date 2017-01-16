@@ -1,8 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import Header from './Header';
+import AppMessage from './AppMessage';
 import { Match } from '../../common/app/components';
-import { Box, Container } from './components';
+import { Box, Container, Fixed } from './components';
 
 type PageProps = {
   component: Component,
@@ -15,9 +16,12 @@ const Page = ({ component: Component, includeHeader, ...props }: PageProps) => (
     render={renderProps => (
     <Container>
       { includeHeader &&
+        <Fixed top left right zIndex={5}>
         <Box>
-          <Header />
-        </Box>
+            <AppMessage />
+            <Header />
+          </Box>
+        </Fixed>
       }
       <Box
         paddingTop={includeHeader && 3}

@@ -1,12 +1,10 @@
 /* @flow */
 import type { State, User } from '../../common/types';
 import React, { PropTypes } from 'react';
-import authMessages from '../../common/auth/authMessages';
 import linksMessages from '../../common/app/linksMessages';
-import buttonsMessages from '../../common/app/buttonsMessages';
 import { NewDeliveryButton } from '../job/components';
 import { FormattedMessage } from 'react-intl';
-import { Fixed, Link, Text, Box, Image, Button, Space } from '../app/components';
+import { Fixed, Link, Text, Box, Image, Space } from '../app/components';
 import { connect } from 'react-redux';
 
 // $FlowFixMe
@@ -38,79 +36,53 @@ const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
   </Link>
 );
 
-const HeaderMessage = () => (
-  <Box
-    display="flex"
-    backgroundColor="secondary"
-    paddingHorizontal={1}
-    paddingVertical={0.3}
-  >
-    <Text color="white">
-      <FormattedMessage {...authMessages.emailVerificationSent} />
-    </Text>
-    <Space auto />
-    <Button
-      white
-      size={-1}
-      bold
-      color="primary"
-      paddingHorizontal={2}
-    >
-      <FormattedMessage {...buttonsMessages.ok} />
-    </Button>
-  </Box>
-);
-
 const Header = ({ user }: HeaderProps, { router }: Object) => {
   const onProfileImageClick = () => {
     router.transitionTo('/profile/details');
   };
 
   return (
-    <Fixed top left right zIndex={5}>
-      <HeaderMessage />
+    <Box
+      backgroundColor="black"
+      display="flex"
+      flexWrap="wrap"
+      paddingVertical={0.3}
+      boxShadow="0 1px 2px rgba(0,0,0,0.15)"
+    >
+      <Space x={1}/>
       <Box
-        backgroundColor="black"
         display="flex"
-        flexWrap="wrap"
-        paddingVertical={0.3}
-        boxShadow="0 1px 2px rgba(0,0,0,0.15)"
+        alignItems="center"
       >
-        <Space x={1} />
-        <Box
-          display="flex"
-          alignItems="center"
-        >
-          <Image
-            alt="Snabb logo"
-            height={50}
-            width={50}
-            src={logo}
-          />
-          <Space x={1} />
-          <Text color="white" size={1}>Snabb</Text>
-        </Box>
-        <Space auto />
-        <HeaderLink to="/active" message={linksMessages.active} />
-        <HeaderLink to="/history" message={linksMessages.history} />
-        <Space auto />
-        <Box
-          display="flex"
-          alignItems="center"
-        >
-          <NewDeliveryButton />
-          <Space x={1} />
-          <Image
-            height={40}
-            width={40}
-            alt="Snabb"
-            src={clientPhoto}
-            onClick={onProfileImageClick}
-          />
-        </Box>
-        <Space x={1} />
+        <Image
+          alt="Snabb logo"
+          height={50}
+          width={50}
+          src={logo}
+        />
+        <Space x={1}/>
+        <Text color="white" size={1}>Snabb</Text>
       </Box>
-    </Fixed>
+      <Space auto/>
+      <HeaderLink to="/active" message={linksMessages.active}/>
+      <HeaderLink to="/history" message={linksMessages.history}/>
+      <Space auto/>
+      <Box
+        display="flex"
+        alignItems="center"
+      >
+        <NewDeliveryButton />
+        <Space x={1}/>
+        <Image
+          height={40}
+          width={40}
+          alt="Snabb"
+          src={clientPhoto}
+          onClick={onProfileImageClick}
+        />
+      </Box>
+      <Space x={1}/>
+    </Box>
   );
 };
 
