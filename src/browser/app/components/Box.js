@@ -32,6 +32,7 @@ export type BoxProps = {
   borderRadius?: number,
   borderStyle?: BorderStyle,
   borderWidth?: number,
+  boxShadow?: string,
   display?: Display,
   flex?: number,
   flexBasis?: number | string,
@@ -82,6 +83,7 @@ const propToStyle = (prop, value: any, theme) => {
     case 'alignContent':
     case 'alignItems':
     case 'alignSelf':
+    case 'boxShadow':
     case 'display':
     case 'flex':
     case 'flexBasis':

@@ -45,6 +45,7 @@ export type AppState = {
   currentTheme: string,
   error: ?Error,
   menuShown: boolean,
+  messageShown: boolean,
   online: boolean,
   started: boolean,
 };
@@ -104,7 +105,8 @@ export type State = {
 // Actions
 
 export type Action =
-    { type: 'APP_ERROR', payload: { error: Error } }
+    { type: 'APP_SHOW_MESSAGE', payload: { messageShown: boolean } }
+  | { type: 'APP_ERROR', payload: { error: Error } }
   | { type: 'APP_ONLINE', payload: { online: boolean } }
   | { type: 'APP_SHOW_MENU', payload: { menuShown: boolean } }
   | { type: 'APP_START' }

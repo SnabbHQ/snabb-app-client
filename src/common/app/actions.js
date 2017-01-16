@@ -3,6 +3,11 @@ import type { Action, Deps } from '../types';
 import { Observable } from 'rxjs/Observable';
 import { REHYDRATE } from 'redux-persist/constants';
 
+export const appShowMessage = (messageShown: boolean): Action => ({
+  type: 'APP_SHOW_MESSAGE',
+  payload: { messageShown },
+});
+
 export const appError = (error: Object): Action => ({
   type: 'APP_ERROR',
   payload: { error },
