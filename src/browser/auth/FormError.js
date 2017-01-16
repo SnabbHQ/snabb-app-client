@@ -12,14 +12,14 @@ const FormError = ({ error }) => {
   const message = errorMessages[error.name];
 
   return (
-    <Text color="danger" display="inline-block" align="center" width="100%">
+    <Text color="danger" display="inline-block" align="center">
       {message ?
         <FormattedMessage {...message} values={error.params} />
       :
         error.toString()
       }
     </Text>
-  );
+  );e
 };
 
 FormError.propTypes = {

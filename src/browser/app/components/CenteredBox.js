@@ -2,14 +2,18 @@
 import type { Styled } from '../themes/types';
 import type { BoxProps } from './Box';
 import Box from './Box';
-import styled from './styled';
+import React from 'react';
 
-type CenteredBoxProps = BoxProps
-
-const CenteredBox: Styled<CenteredBoxProps> = styled(() => ({
-  $extends: Box,
-  display: 'flex',
-  justifyContent: 'center',
-}));
+const CenteredBox: Styled<BoxProps> = ({
+  display = 'flex',
+  justifyContent = 'center',
+  ...props
+}) => (
+  <Box
+    display={display}
+    justifyContent={justifyContent}
+    {...props}
+  />
+);
 
 export default CenteredBox;

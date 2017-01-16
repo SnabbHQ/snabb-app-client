@@ -119,6 +119,7 @@ const Input: Styled<InputProps> = ({
   size = 0,
   padding = 0.5,
   marginBottom = 0.5,
+  width = '100%',
   ...props
 }) => (
   <Box {...props} marginBottom={marginBottom}>
@@ -127,6 +128,7 @@ const Input: Styled<InputProps> = ({
       placeholder={placeholder}
       size={size}
       padding={padding}
+      width={width}
       {...props}
     />
   </Box>

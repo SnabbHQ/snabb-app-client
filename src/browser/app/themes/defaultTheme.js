@@ -69,7 +69,7 @@ const theme: Theme = {
   },
   block: {
     marginBottom: 1,
-    maxWidth: 42,
+    maxWidth: 21,
   },
   heading: {
     bold: 700,

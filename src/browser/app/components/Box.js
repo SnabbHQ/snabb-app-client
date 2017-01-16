@@ -103,8 +103,8 @@ const propToStyle = (prop, value: any, theme) => {
     case 'paddingLeft':
     case 'paddingRight':
     case 'paddingTop':
-    case 'width':
     case 'height':
+    case 'width':
     case 'maxWidth':
     case 'maxHeight':
     case 'minWidth':
