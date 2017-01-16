@@ -49,7 +49,7 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
       paddingVertical={0.3}
       boxShadow="0 1px 2px rgba(0,0,0,0.15)"
     >
-      <Space x={1}/>
+      <Space x={1} />
       <Box
         display="flex"
         alignItems="center"
@@ -60,19 +60,19 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
           width={50}
           src={logo}
         />
-        <Space x={1}/>
+        <Space x={1} />
         <Text color="white" size={1}>Snabb</Text>
       </Box>
-      <Space auto/>
-      <HeaderLink to="/active" message={linksMessages.active}/>
-      <HeaderLink to="/history" message={linksMessages.history}/>
-      <Space auto/>
+      <Space auto />
+      <HeaderLink to="/active" message={linksMessages.active} />
+      <HeaderLink to="/history" message={linksMessages.history} />
+      <Space auto />
       <Box
         display="flex"
         alignItems="center"
       >
         <NewDeliveryButton />
-        <Space x={1}/>
+        <Space x={1} />
         <Image
           height={40}
           width={40}
@@ -81,7 +81,7 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
           onClick={onProfileImageClick}
         />
       </Box>
-      <Space x={1}/>
+      <Space x={1} />
     </Box>
   );
 };
