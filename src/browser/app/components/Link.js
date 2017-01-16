@@ -11,6 +11,7 @@ type LinkProps = TextProps & {
   exactly?: boolean,
   target?: string,
   to: string,
+  onClick?: (e: SyntheticMouseEvent) => any,
 };
 
 const createLink = (tag, passProps) => styled((theme, props: LinkProps) => ({
@@ -24,11 +25,11 @@ const createLink = (tag, passProps) => styled((theme, props: LinkProps) => ({
 }), tag, passProps);
 
 const AnchorLink = createLink('a', [
-  'download', 'href', 'target',
+  'download', 'href', 'target', 'onClick',
 ]);
 
 const RouterLink = createLink(ReactRouterLink, [
-  'activeOnlyWhenExact', 'activeStyle', 'to',
+  'activeOnlyWhenExact', 'activeStyle', 'to', 'onClick',
 ]);
 
 const isExternalLink = to => to.includes('://');

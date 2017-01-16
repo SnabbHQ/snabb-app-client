@@ -3,7 +3,6 @@ import React from 'react';
 import type { State } from '../../common/types';
 import LoginFields from './LoginFields';
 import R from 'ramda';
-import FormError from './FormError';
 import linksMessages from '../../common/app/linksMessages';
 import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
@@ -12,11 +11,8 @@ import { FormattedMessage } from 'react-intl';
 import {
   Box,
   Block,
-  Button,
-  Divider,
+  CenteredBox,
   Link,
-  Loading,
-  Message,
   Text,
   Title,
 } from '../app/components';
@@ -25,7 +21,7 @@ import { resetAuthState } from '../../common/auth/actions';
 // $FlowFixMe
 const logo = require('../../common/app/images/logoBlack.svg');
 
-const LogInPage = ({ disabled, location, authed, resetAuthState }, { router }: Object) => {
+const LogInPage = ({ location, authed, resetAuthState }, { router }: Object) => {
   const forgotPassword = () => {
     resetAuthState();
     router.transitionTo('/resetPassword');
@@ -66,29 +62,30 @@ const LogInPage = ({ disabled, location, authed, resetAuthState }, { router }: O
               Snabb
             </Text>
             <LoginFields />
-            <Box display="flex" justifyContent="flex-end">
-              <Button
+            <CenteredBox>
+              <Link
                 onClick={forgotPassword}
-                marginTop={1}
                 backgroundColor="white"
-                color="primary"
-                align="right"
-                size={-1}
+                color="accent"
+                size={1}
+                to="/resetPassword"
               >
                 <FormattedMessage {...authMessages.passwordForgotten} />
-              </Button>
-            </Box>
-            <Divider marginVertical={1} />
-            <Button
-              onClick={register}
-              marginTop={1}
-              display="block"
-              backgroundColor="white"
-              color="primary"
-              align="center"
-            >
-              <FormattedMessage {...authMessages.createAccount} />
-            </Button>
+              </Link>
+            </CenteredBox>
+            <CenteredBox>
+              <Link
+                onClick={register}
+                display="block"
+                backgroundColor="white"
+                color="accent"
+                size={1}
+                marginTop={1}
+                to="/register"
+              >
+                <FormattedMessage {...authMessages.createAccount} />
+              </Link>
+            </CenteredBox>
           </Block>
         </Box>
       </Box>

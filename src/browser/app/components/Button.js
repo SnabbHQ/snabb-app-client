@@ -43,10 +43,12 @@ const Button: Styled<ButtonProps> = styled((theme, {
   borderRadius = theme.border.radius,
   paddingHorizontal = 0.8,
   size = 0,
+  color = 'white',
   transform = 'capitalize',
 }) => ({
   $extends: [Text, ({
     bold,
+    color,
     display,
     paddingHorizontal,
     borderRadius,

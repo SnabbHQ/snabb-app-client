@@ -55,14 +55,14 @@ const RegisterPage = ({ intl, location, authed }) => (
               <Text display="block" size={-1}>
                 <FormattedHTMLMessage {...authMessages.termsAndPrivacy} />
               </Text>
-              <Box display="flex" justifyContent="center" marginVertical={1}>
+              <CenteredBox marginVertical={1}>
                 <Link
                   size={1}
                   to={'/login'}
                 >
                   <FormattedMessage {...authMessages.alreadyAccount} />
                 </Link>
-              </Box>
+              </CenteredBox>
             </Box>
           </CenteredBox>
         </Box>

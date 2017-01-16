@@ -11,7 +11,7 @@ const authMessages = defineMessages({
     id: 'auth.register.businessName',
   },
   createAccount: {
-    defaultMessage: 'Create an Account',
+    defaultMessage: 'I don\'t have an account',
     id: 'auth.register.createAccount',
   },
   createAccountHeader: {
@@ -31,7 +31,7 @@ const authMessages = defineMessages({
     id: 'auth.password',
   },
   passwordForgotten: {
-    defaultMessage: 'Forgot Your Password?',
+    defaultMessage: 'Forgot your password?',
     id: 'auth.email.passwordForgotten',
   },
   phone: {

@@ -48,7 +48,7 @@ class LoginFields extends React.Component {
             }
           </CenteredBox>
           <CenteredBox>
-            <Button accent onClick={this.loginViaPassword} disabled={disabled} align="center">
+            <Button size={1} accent onClick={this.loginViaPassword} disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.logIn} />
             </Button>
           </CenteredBox>

@@ -71,7 +71,7 @@ const fontSizeAndLineHeight = (typography, size) => {
 const Text: Styled<TextProps> = styled((theme, {
   align = 'left',
   bold = false,
-  color = 'white',
+  color = 'black',
   decoration = 'none',
   display = 'inline',
   doNotFixFontSmoothing,
