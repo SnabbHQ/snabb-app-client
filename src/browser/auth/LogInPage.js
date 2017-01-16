@@ -21,15 +21,13 @@ import { resetAuthState } from '../../common/auth/actions';
 // $FlowFixMe
 const logo = require('../../common/app/images/logoBlack.svg');
 
-const LogInPage = ({ location, authed, resetAuthState }, { router }: Object) => {
+const LogInPage = ({ location, authed, resetAuthState }) => {
   const forgotPassword = () => {
     resetAuthState();
-    router.transitionTo('/resetPassword');
   };
 
   const register = () => {
     resetAuthState();
-    router.transitionTo('/register');
   };
 
   return (
@@ -55,8 +53,8 @@ const LogInPage = ({ location, authed, resetAuthState }, { router }: Object) => 
             <Text
               align="center"
               display="block"
-              size={2}
-              marginBottom={0.5}
+              size={4}
+              marginBottom={1}
               bold
             >
               Snabb
@@ -67,7 +65,7 @@ const LogInPage = ({ location, authed, resetAuthState }, { router }: Object) => 
                 onClick={forgotPassword}
                 backgroundColor="white"
                 color="accent"
-                size={1}
+                size={0}
                 to="/resetPassword"
               >
                 <FormattedMessage {...authMessages.passwordForgotten} />
