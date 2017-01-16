@@ -19,7 +19,7 @@ const FormError = ({ error }) => {
         error.toString()
       }
     </Text>
-  );e
+  );
 };
 
 FormError.propTypes = {

@@ -9,7 +9,17 @@ import authMessages from '../../common/auth/authMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Message, Block, Divider, Image, Button, Title, Loading, Box, Fixed } from '../app/components';
+import {
+  Box,
+  Block,
+  Button,
+  Divider,
+  Link,
+  Loading,
+  Message,
+  Text,
+  Title,
+} from '../app/components';
 import { resetAuthState } from '../../common/auth/actions';
 
 // $FlowFixMe
@@ -36,58 +46,52 @@ const LogInPage = ({ disabled, location, authed, resetAuthState }, { router }: O
       ) || '/'}
       />
       :
-      <Fixed top bottom left right>
-        <Box display="flex" height="100%" alignItems="center" justifyContent="center">
-          <Box width="350px">
-            <Title message={linksMessages.logIn} />
-            <Block>
-              <Box marginBottom={1} alignItems="center" justifyContent="center">
-                <Image
-                  alt="Snabb logo"
-                  height={100}
-                  width="100%"
-                  src={logo}
-                />
-              </Box>
-              <FormError />
-              { disabled &&
-              <Loading>
-                {message => <Message>{message}</Message>}
-              </Loading>
-              }
-              <LoginFields />
-              <Box display="flex" justifyContent="flex-end">
-                <Button
-                  onClick={forgotPassword}
-                  marginTop="1em"
-                  display="block"
-                  antialiasing
-                  backgroundColor="white"
-                  color="primary"
-                  to="/resetPassword"
-                  align="end"
-                  size={-1}
-                >
-                  <FormattedMessage {...authMessages.passwordForgotten} />
-                </Button>
-              </Box>
-              <Divider marginVertical="0.3em" />
+      <Box
+        padding={1}
+        display="flex"
+        flexDirection="row"
+        marginTop={3}
+        justifyContent="center"
+      >
+        <Box width={20}>
+          <Title message={linksMessages.logIn} />
+          <Block>
+            <Text
+              align="center"
+              display="block"
+              size={2}
+              marginBottom={0.5}
+              bold
+            >
+              Snabb
+            </Text>
+            <LoginFields />
+            <Box display="flex" justifyContent="flex-end">
               <Button
-                onClick={register}
-                marginTop="1em"
-                display="block"
-                antialiasing
+                onClick={forgotPassword}
+                marginTop={1}
                 backgroundColor="white"
                 color="primary"
-                to="/resetPassword"
-                align="center"
+                align="right"
+                size={-1}
               >
-                <FormattedMessage {...authMessages.createAccount} />
+                <FormattedMessage {...authMessages.passwordForgotten} />
               </Button>
-            </Block>
-          </Box>
+            </Box>
+            <Divider marginVertical={1} />
+            <Button
+              onClick={register}
+              marginTop={1}
+              display="block"
+              backgroundColor="white"
+              color="primary"
+              align="center"
+            >
+              <FormattedMessage {...authMessages.createAccount} />
+            </Button>
+          </Block>
         </Box>
-      </Fixed>
+      </Box>
   );
 };
 

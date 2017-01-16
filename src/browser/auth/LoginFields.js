@@ -8,7 +8,8 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
 import { login } from '../../common/auth/actions';
-import { Button, Input, Form, focus, Box } from '../app/components';
+import { Button, CenteredBox, Input, Form, focus, Box, Loading } from '../app/components';
+import FormError from './FormError';
 
 class LoginFields extends React.Component {
 
@@ -25,30 +26,32 @@ class LoginFields extends React.Component {
     const { disabled, fields, intl } = this.props;
 
     return (
-      <Form onSubmit={this.onFormSubmit} small>
+      <Form onSubmit={this.onFormSubmit}>
         <Box>
           <Input
             {...fields.email}
             disabled={disabled}
-            labelSize={-1}
             maxLength={100}
-            padding="0.5em"
             placeholder={intl.formatMessage(authMessages.email)}
           />
           <Input
             {...fields.password}
             disabled={disabled}
-            labelSize={-1}
-            maxLength={1000}
-            padding="0.5em"
+            maxLength={100}
             placeholder={intl.formatMessage(authMessages.password)}
             type="password"
           />
-          <Box marginTop="1em">
-            <Button primary onClick={this.loginViaPassword} width="100%" disabled={disabled} align="center">
+          <CenteredBox>
+            <FormError />
+            {disabled &&
+              <Loading marginVertical={1} />
+            }
+          </CenteredBox>
+          <CenteredBox>
+            <Button accent onClick={this.loginViaPassword} disabled={disabled} align="center">
               <FormattedMessage {...buttonsMessages.logIn} />
             </Button>
-          </Box>
+          </CenteredBox>
         </Box>
       </Form>
     );
