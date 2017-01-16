@@ -27,7 +27,7 @@ class PlaceFields extends React.Component {
       return (
         <Button
           primary
-          marginLeft="2em"
+          marginLeft={2}
           onClick={() => this.setState({ collapsed: !this.state.collapsed })}
         >
           {collapsed ? 'Edit' : 'Save'}

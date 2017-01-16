@@ -34,6 +34,10 @@ const buttonsMessages = defineMessages({
     defaultMessage: 'Log Out',
     id: 'app.buttons.logOut',
   },
+  ok: {
+    defaultMessage: 'OK',
+    id: 'app.buttons.ok',
+  },
   resetPassword: {
     defaultMessage: 'Send password reset email',
     id: 'app.buttons.resetPassword',

@@ -27,7 +27,7 @@ const theme: Theme = {
   colors: {
     primary: openColor.blue7,
     primaryHover: openColor.blue5,
-    secondary: openColor.gray4,
+    secondary: '#37beff',
     accent: '#00aaff',
     success: '#1c7',
     warning: '#f70',
@@ -39,6 +39,9 @@ const theme: Theme = {
   },
   body: {
     backgroundColor: 'white',
+  },
+  header: {
+    backgroundColor: '#37beff',
   },
   border: {
     radius: 8,

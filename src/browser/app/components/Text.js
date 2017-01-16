@@ -37,7 +37,7 @@ const maybeColorProps = (theme, props) => {
       border: true,
       borderColor: color,
     },
-    color: 'white',
+    //color: props.color ? props.color : 'white',
   };
 };
 

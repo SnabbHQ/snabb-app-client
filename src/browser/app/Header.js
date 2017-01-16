@@ -1,10 +1,12 @@
 /* @flow */
 import type { State, User } from '../../common/types';
 import React, { PropTypes } from 'react';
+import authMessages from '../../common/auth/authMessages';
 import linksMessages from '../../common/app/linksMessages';
+import buttonsMessages from '../../common/app/buttonsMessages';
 import { NewDeliveryButton } from '../job/components';
 import { FormattedMessage } from 'react-intl';
-import { Fixed, Link, Text, Box, Image, Space } from '../app/components';
+import { Fixed, Link, Text, Box, Image, Button, Space } from '../app/components';
 import { connect } from 'react-redux';
 
 // $FlowFixMe
@@ -29,11 +31,34 @@ const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
     bold
     color="white"
     exactly={exactly}
-    marginHorizontal="1.5em"
+    marginHorizontal={1}
     to={to}
   >
     <FormattedMessage {...message} />
   </Link>
+);
+
+const HeaderMessage = () => (
+  <Box
+    display="flex"
+    backgroundColor="secondary"
+    paddingHorizontal={1}
+    paddingVertical={0.5}
+  >
+    <Text color="white">
+      <FormattedMessage {...authMessages.emailVerificationSent} />
+    </Text>
+    <Space auto />
+    <Button
+      white
+      size={-1}
+      bold
+      color="primary"
+      paddingHorizontal={2}
+    >
+      <FormattedMessage {...buttonsMessages.ok} />
+    </Button>
+  </Box>
 );
 
 const Header = ({ user }: HeaderProps, { router }: Object) => {
@@ -43,6 +68,7 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
 
   return (
     <Fixed top left right zIndex={5}>
+      <HeaderMessage />
       <Box
         backgroundColor="black"
         display="flex"
