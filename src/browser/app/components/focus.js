@@ -16,8 +16,6 @@ const focus = errorProp => WrappedComponent =>
       const fieldEl = el.querySelector(`[name=${error.params.prop}]`);
       if (!fieldEl) return;
       fieldEl.focus();
-      // Find a way to color border of input when error.
-      // fieldEl.setAttribute('style', 'border: 1px solid red');
     }
 
     render() {

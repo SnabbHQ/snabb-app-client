@@ -19,6 +19,7 @@ class RegisterFields extends React.Component {
 
   register = () => {
     const { fields, register } = this.props;
+    console.log(fields.$values());
     register('password', fields.$values());
   }
 
@@ -92,8 +93,8 @@ export default R.compose(
   ),
   injectIntl,
   fields({
-    path: ['register'],
-    fields: ['name', 'email', 'phone', 'password'],
+    path: ['register', 'auth'],
+    fields: ['name', 'phone', 'email', 'password'],
   }),
   focus('error'),
 )(RegisterFields);

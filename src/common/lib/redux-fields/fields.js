@@ -1,7 +1,7 @@
-/* @flow weak */
-import R from 'ramda';
+// @flow weak
 import React from 'react';
 import invariant from 'invariant';
+import { path as ramdaPath } from 'ramda';
 import { resetFields, setField } from './actions';
 
 type Path = string | Array<string> | (props: Object) => Array<string>;
@@ -29,7 +29,7 @@ const fields = (options: Options) => (WrappedComponent) => {
     (typeof path === 'string') ||
     (typeof path === 'function') ||
     Array.isArray(path)
-  , 'Path must be a string, function, or an array.');
+    , 'Path must be a string, function, or an array.');
 
   return class Fields extends React.Component {
 
@@ -66,19 +66,19 @@ const fields = (options: Options) => (WrappedComponent) => {
 
     static createFieldObject(field, onChange) {
       return isReactNative ? {
-        onChangeText: (text) => {
-          onChange(field, text);
-        },
-      } : {
-        name: field,
-        onChange: (event) => {
-          // Some custom components-old like react-select pass the target directly.
-          const target = event.target || event;
-          const { type, checked, value } = target;
-          const isCheckbox = type && type.toLowerCase() === 'checkbox';
-          onChange(field, isCheckbox ? checked : value);
-        },
-      };
+          onChangeText: (text) => {
+            onChange(field, text);
+          },
+        } : {
+          name: field,
+          onChange: (event) => {
+            // Some custom components like react-select pass the target directly.
+            const target = event.target || event;
+            const { type, checked, value } = target;
+            const isCheckbox = type && type.toLowerCase() === 'checkbox';
+            onChange(field, isCheckbox ? checked : value);
+          },
+        };
     }
 
     state = {
@@ -113,7 +113,7 @@ const fields = (options: Options) => (WrappedComponent) => {
 
     getModelFromState() {
       const normalizedPath = Fields.getNormalizePath(this.props);
-      return R.path(normalizedPath, this.context.store.getState().fields);
+      return ramdaPath(normalizedPath, this.context.store.getState().fields);
     }
 
     setModel(model) {
@@ -121,7 +121,7 @@ const fields = (options: Options) => (WrappedComponent) => {
       options.fields.forEach((field) => {
         this.fields[field].value = this.values[field];
       });
-      this.fields = { ...this.fields }; // Ensure rerender for pure components-old.
+      this.fields = { ...this.fields }; // Ensure rerender for pure components.
       this.setState({ model });
     }
 

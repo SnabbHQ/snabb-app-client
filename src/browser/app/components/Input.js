@@ -125,6 +125,7 @@ const Input: Styled<InputProps> = ({
       error={checkIfOwnError(error, field) && error}
       placeholder={placeholder}
       size={size}
+      field={field}
       {...props}
     />
   </Box>
