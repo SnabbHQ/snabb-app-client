@@ -110,11 +110,11 @@ const StyledInputOrTextArea: Styled<InputProps> = ({
   );
 };
 
-const checkIfOwnError = (error, name) => error && error.params && error.params.prop === name;
+const checkIfOwnError = (error, field) => error && error.params && error.params.prop === field.name;
 
 const Input: Styled<InputProps> = ({
   error,
-  name,
+  field,
   placeholder,
   size = 0,
   marginBottom = 0.5,
@@ -122,7 +122,7 @@ const Input: Styled<InputProps> = ({
 }) => (
   <Box {...props} marginBottom={marginBottom}>
     <StyledInputOrTextArea
-      error={checkIfOwnError(error, name) && error}
+      error={checkIfOwnError(error, field) && error}
       placeholder={placeholder}
       size={size}
       {...props}
