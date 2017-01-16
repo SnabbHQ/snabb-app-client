@@ -117,7 +117,6 @@ const Input: Styled<InputProps> = ({
   name,
   placeholder,
   size = 0,
-  padding = 0.5,
   marginBottom = 0.5,
   ...props
 }) => (
@@ -126,7 +125,6 @@ const Input: Styled<InputProps> = ({
       error={checkIfOwnError(error, name) && error}
       placeholder={placeholder}
       size={size}
-      padding={padding}
       {...props}
     />
   </Box>
