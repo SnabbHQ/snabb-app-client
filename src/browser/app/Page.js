@@ -16,7 +16,7 @@ type PageProps = {
 
 const Page = ({
   component: Component,
-  includeHeader,
+  includeHeader = false,
   messageShown,
   emailVerified,
   ...props

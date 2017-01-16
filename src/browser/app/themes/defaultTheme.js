@@ -32,7 +32,7 @@ const theme: Theme = {
     success: '#1c7',
     warning: '#f70',
     danger: '#d40619',
-    black: openColor.gray8,
+    black: '#000',
     white: '#fff',
     gray: openColor.gray4,
     open: openColor,

@@ -12,6 +12,7 @@ import {
   Box,
   Block,
   CenteredBox,
+  Full,
   Link,
   Text,
   Title,
@@ -40,16 +41,10 @@ const LogInPage = ({ location, authed, resetAuthState }) => {
       ) || '/'}
       />
       :
-      <Box
-        padding={1}
-        display="flex"
-        flexDirection="row"
-        marginTop={3}
-        justifyContent="center"
-      >
+      <Full>
         <Box width={20}>
           <Title message={linksMessages.logIn} />
-          <Block>
+          <Box>
             <Text
               align="center"
               display="block"
@@ -84,9 +79,9 @@ const LogInPage = ({ location, authed, resetAuthState }) => {
                 <FormattedMessage {...authMessages.createAccount} />
               </Link>
             </CenteredBox>
-          </Block>
+          </Box>
         </Box>
-      </Box>
+      </Full>
   );
 };
 
