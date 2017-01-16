@@ -2,6 +2,8 @@
 import type { Action, AppState } from '../types';
 
 const initialState = {
+  baselineShown: false,
+  currentTheme: 'defaultTheme',
   error: null,
   menuShown: false,
   online: false,

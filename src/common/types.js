@@ -41,6 +41,8 @@ export type User = {
 // Reducers
 
 export type AppState = {
+  baselineShown: boolean,
+  currentTheme: string,
   error: ?Error,
   menuShown: boolean,
   online: boolean,
