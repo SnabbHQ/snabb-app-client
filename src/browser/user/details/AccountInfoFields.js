@@ -33,12 +33,13 @@ const AccountInfoFields = ({ profile, intl }) => (
       placeholder={intl.formatMessage(inputMessages.phonePlaceholder)}
       type="text"
     />
-    <Box display="flex">
+    <Box display="flex" marginVertical={1}>
       <Space auto />
-      <Button>
+      <Button gray paddingHorizontal={2}>
         <FormattedMessage {...buttonMessages.cancel} />
       </Button>
-      <Button>
+      <Space x={1} />
+      <Button accent paddingHorizontal={2}>
         <FormattedMessage {...buttonMessages.save} />
       </Button>
     </Box>

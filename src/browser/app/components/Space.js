@@ -1,5 +1,5 @@
 /* @flow */
-import type { Exact, Styled } from '../themes/types';
+import type { Styled } from '../themes/types';
 import styled from './styled';
 
 type SpaceProps = {
@@ -7,14 +7,13 @@ type SpaceProps = {
   auto?: boolean,
 };
 
-const Space: Styled<ButtonProps> = styled((theme, props) => ({
+const Space: Styled<SpaceProps> = styled((theme, {
+  x = 1,
+  auto,
+}) => ({
   display: 'inline-block',
-  flex: props.auto ? '1 1 auto' : '',
-  width: theme.typography.rhythm(props.x),
-}));
-
-Space.defaultProps = ({
-  x: 1,
-}: Exact<SpaceProps>);
+  flex: auto ? '1 1 auto' : '',
+  width: theme.typography.rhythm(x),
+}), 'div');
 
 export default Space;

@@ -346,7 +346,7 @@ export type BrowserStyle = {|
   display?: Display,
   emptyCells?: string,
   filter?: string,
-  flex?: number, // facebook.github.io/react-native/docs/layout-props.html#flex
+  flex?: number | string, // facebook.github.io/react-native/docs/layout-props.html#flex
   flexBasis?: number | string,
   flexDirection?: FlexDirection,
   flexFlow?: FlexFlow,
