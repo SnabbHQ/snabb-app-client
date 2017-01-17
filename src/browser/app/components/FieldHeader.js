@@ -19,7 +19,6 @@ const StyledHeader: Styled<TextProps> = styled((theme, props) => ({
   display: props.display || 'block',
   fontFamily: theme.heading.fontFamily,
   fontWeight: props.bold === undefined ? 'bold' : props.bold ? theme.text.bold : 'normal',
-  marginBottom: '7px',
 }));
 
 const FieldHeader = ({

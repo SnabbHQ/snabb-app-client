@@ -34,7 +34,7 @@ const theme: Theme = {
     danger: '#d40619',
     black: '#000',
     white: '#fff',
-    gray: openColor.gray4,
+    gray: '#aeb4bf',
     open: openColor,
   },
   body: {

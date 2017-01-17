@@ -11,6 +11,7 @@ type LinkProps = TextProps & {
   exactly?: boolean,
   target?: string,
   to: string,
+  activeColor?: string,
   onClick?: (e: SyntheticMouseEvent) => any,
 };
 
@@ -19,7 +20,6 @@ const createLink = (tag, passProps) => styled((theme, props: LinkProps) => ({
   color: props.color ? theme.colors[props.color] : theme.colors.accent,
   textDecoration: 'none',
   ':hover': {
-    textDecoration: 'none',
     color: 'grey',
   },
 }), tag, passProps);
@@ -33,7 +33,15 @@ const RouterLink = createLink(ReactRouterLink, [
 ]);
 
 const isExternalLink = to => to.includes('://');
-const routerLinkActiveStyle = { color: 'grey', textDecoration: 'none' };
+const routerLinkActiveStyle = (props) => {
+  // TODO - Don't ever hardcode color values here but for now wil do.
+  const color = props.activeColor ? props.activeColor : '#00aaff';
+
+  return {
+    color,
+    textDecoration: 'none',
+  };
+};
 
 const Link: Styled<LinkProps> = (props: LinkProps) => (
   isExternalLink(props.to) ?
@@ -46,7 +54,7 @@ const Link: Styled<LinkProps> = (props: LinkProps) => (
     <RouterLink
       {...props}
       activeOnlyWhenExact={props.exactly}
-      activeStyle={routerLinkActiveStyle}
+      activeStyle={routerLinkActiveStyle(props)}
     />
 );
 
