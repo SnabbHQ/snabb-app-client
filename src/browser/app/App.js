@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import ActivePage from '../job/active/ActiveJobsPage';
 import HistoryPage from '../job/history/HistoryPage';
 import NewJobPage from '../job/new/NewDeliveryPage';
-import ProfilePage from '../user/ProfilePage';
+import SettingsPage from '../user/SettingsPage';
 import LogInPage from '../auth/LogInPage';
 import RegisterPage from '../auth/register/RegisterPage';
 import ResetPassword from '../auth/reset/ResetPasswordPage';
@@ -56,7 +56,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         <Page authorized pattern="/active" component={ActivePage} includeHeader />
         <Page authorized pattern="/new" component={NewJobPage} includeHeader />
         <Page authorized pattern="/history" component={HistoryPage} includeHeader />
-        <Page authorized pattern="/settings" component={ProfilePage} includeHeader />
+        <Page authorized pattern="/settings" component={SettingsPage} includeHeader />
         <Page pattern="/login" component={LogInPage} />
         <Page pattern="/register" component={RegisterPage} />
         <Page pattern="/resetPassword" component={ResetPassword} />

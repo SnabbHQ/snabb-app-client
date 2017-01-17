@@ -45,6 +45,7 @@ const Button: Styled<ButtonProps> = styled((theme, {
   size = 0,
   color = 'white',
   transform = 'capitalize',
+  ...props
 }) => ({
   $extends: [Text, ({
     bold,
@@ -54,6 +55,7 @@ const Button: Styled<ButtonProps> = styled((theme, {
     borderRadius,
     transform,
     ...(inline ? {} : maybeVerticalSpace(size)),
+    ...props
   }: Strict<TextProps>)],
   $map: style => {
     if (!active) return style;

@@ -2,16 +2,6 @@ import React, { PropTypes } from 'react';
 import { Button } from '../../app/components';
 import { FormattedMessage } from 'react-intl';
 import jobMessages from '../../../common/job/jobMessages';
-import styled from '../../app/components/styled';
-
-const CustomButton = styled((theme) => ({
-  $extends: Button,
-  color: theme.colors.white,
-  backgroundColor: theme.colors.primary,
-  ':hover': {
-    backgroundColor: theme.colors.primaryHover,
-  },
-}), 'button', ['onClick']);
 
 export default function NewDeliveryButton({}, { router }: Object) {
   const onButtonClick = () => {
@@ -25,9 +15,14 @@ export default function NewDeliveryButton({}, { router }: Object) {
   };
 
   return (
-    <CustomButton onClick={onButtonClick}>
+    <Button
+      white
+      color="black"
+      border="1px solid black"
+      onClick={onButtonClick}
+    >
       <FormattedMessage {...jobMessages.newDelivery} />
-    </CustomButton>
+    </Button>
   );
 }
 
