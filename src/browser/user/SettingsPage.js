@@ -29,6 +29,7 @@ const ProfileLink = ({
   marginVertical = 0.5,
 }) => (
   <Link
+    activeColor="black"
     display="block"
     bold
     color="gray"
