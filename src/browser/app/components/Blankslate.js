@@ -14,7 +14,7 @@ const Blankslate = ({ icon, actions, title, subtitle }: Props) => {
   const renderIcon = () => (
     icon &&
     <Box display="flex" justifyContent="center">
-      <Image alt="Blankslate Icon" src={icon} width={60} />
+      <Image alt="Blankslate Icon" src={icon} width={60} height={60} />
     </Box>
   );
 
@@ -23,8 +23,8 @@ const Blankslate = ({ icon, actions, title, subtitle }: Props) => {
   );
 
   return (
-    <Full backgroundColor="black">
-      <Box justifyContent="center" minHeight="90vh">
+    <Full>
+      <Box>
         {renderIcon()}
         <Text
           size={2}
