@@ -1,4 +1,5 @@
 // @flow
+import type { Profile } from '../../types';
 import UserDataStoreFactory from './dataSource/UserDataStoreFactory';
 
 class UserDataRepository {
@@ -10,6 +11,10 @@ class UserDataRepository {
 
   getProfile() {
     return this.userDataStoreFactory.create().getProfile();
+  }
+
+  updateProfile(data: Profile) {
+    return this.userDataStoreFactory.create().updateProfile(data);
   }
 
   resetPassword(email: string) {
