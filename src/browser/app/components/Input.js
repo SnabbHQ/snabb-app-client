@@ -75,7 +75,7 @@ const create = (tag, passProps = []) => styled((theme, {
   padding,
   borderRadius: theme.border.radius,
   backgroundColor: theme.input.backgroundColor,
-  transition: 'border 0.1s',
+  transition: 'border 0.3s',
 }), tag, [
   'disabled',
   'name',
