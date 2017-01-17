@@ -6,25 +6,17 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Account',
     id: 'app.links.account',
   },
-  intl: {
-    defaultMessage: 'Intl',
-    id: 'app.links.intl',
-  },
-  fields: {
-    defaultMessage: 'Fields',
-    id: 'app.links.fields',
-  },
-  users: {
-    defaultMessage: 'Users',
-    id: 'app.links.users',
-  },
   active: {
     defaultMessage: 'Active',
     id: 'app.links.active',
   },
-  scheduled: {
-    defaultMessage: 'Scheduled',
-    id: 'app.links.scheduled',
+  billing: {
+    defaultMessage: 'Billing',
+    id: 'app.links.billing',
+  },
+  fields: {
+    defaultMessage: 'Fields',
+    id: 'app.links.fields',
   },
   history: {
     defaultMessage: 'History',
@@ -33,6 +25,22 @@ const LinkMessages = defineMessages({
   home: {
     defaultMessage: 'Home',
     id: 'app.links.home',
+  },
+  intl: {
+    defaultMessage: 'Intl',
+    id: 'app.links.intl',
+  },
+  users: {
+    defaultMessage: 'Users',
+    id: 'app.links.users',
+  },
+  scheduled: {
+    defaultMessage: 'Scheduled',
+    id: 'app.links.scheduled',
+  },
+  logIn: {
+    defaultMessage: 'Log in',
+    id: 'app.links.logIn',
   },
   me: {
     defaultMessage: 'Me',
@@ -46,37 +54,33 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Offline',
     id: 'app.links.offline',
   },
+  password: {
+    defaultMessage: 'Password',
+    id: 'app.links.password'
+  },
+  privacyPolicy: {
+    defaultMessage: 'Privacy Policy',
+    id: 'app.links.privacyPolicy',
+  },
   profile: {
     defaultMessage: 'Profile',
     id: 'app.links.profile',
-  },
-  billing: {
-    defaultMessage: 'Billing',
-    id: 'app.links.billing',
-  },
-  settings: {
-    defaultMessage: 'Settings',
-    id: 'app.links.settings',
-  },
-  logIn: {
-    defaultMessage: 'Log in',
-    id: 'app.links.logIn',
-  },
-  resetPassword: {
-    defaultMessage: 'Reset Password',
-    id: 'app.links.resetPassword',
   },
   register: {
     defaultMessage: 'Join Snabb',
     id: 'app.links.register',
   },
+  resetPassword: {
+    defaultMessage: 'Reset Password',
+    id: 'app.links.resetPassword',
+  },
+  settings: {
+    defaultMessage: 'Settings',
+    id: 'app.links.settings',
+  },
   terms: {
     defaultMessage: 'Terms & Conditions',
     id: 'app.links.terms',
-  },
-  privacyPolicy: {
-    defaultMessage: 'Privacy Policy',
-    id: 'app.links.privacyPolicy',
   },
 });
 

@@ -9,7 +9,7 @@ import Billing from './billing/Billing';
 import ProfileDetails from './details/ProfileDetails';
 
 
-const LeftPanel = styled(() => ({
+const LeftPanel = styled({
   $extends: Box,
   height: '100mvh',
   width: '60%',
@@ -19,7 +19,7 @@ const LeftPanel = styled(() => ({
   '@media (max-width: 768px)': {
     width: '100%',
   },
-}));
+});
 
 
 const RightPanel = styled(() => ({
@@ -40,7 +40,7 @@ const ProfileLink = ({ exactly, to, message }) => (
     bold
     color="black"
     exactly={exactly}
-    marginHorizontal={2}
+    marginVertical={1}
     size={1}
     to={to}
   >
@@ -58,6 +58,7 @@ const SettingsPage = ({ pathname }: SettingsPageProps) => (
       <LeftPanel>
         <ProfileLink to={`${pathname}/details`} message={linksMessages.account} />
         <ProfileLink to={`${pathname}/billing`} message={linksMessages.billing} />
+        <ProfileLink to={`${pathname}/billing`} message={linksMessages.password} />
       </LeftPanel>
       <RightPanel>
         <Box marginLeft={5}>
