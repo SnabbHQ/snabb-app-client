@@ -32,6 +32,7 @@ const AppMessage = ({ appShowMessage }: AppMessageProps) => {
         white
         size={-1}
         bold
+        maxHeight={1}
         color="primary"
         onClick={close}
         paddingHorizontal={2}
