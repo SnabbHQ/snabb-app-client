@@ -16,6 +16,7 @@ export default function NewDeliveryButton({}, { router }: Object) {
 
   return (
     <Button
+      bold
       size={0}
       accent
       onClick={onButtonClick}

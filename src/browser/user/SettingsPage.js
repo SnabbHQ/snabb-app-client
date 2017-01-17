@@ -40,22 +40,27 @@ const ProfileLink = ({ exactly, to, message }) => (
     bold
     color="black"
     exactly={exactly}
-    marginHorizontal={1}
+    marginHorizontal={2}
+    size={1}
     to={to}
   >
     <FormattedMessage {...message} />
   </Link>
 );
 
-const ProfilePage = ({ pathname }) => (
+type SettingsPageProps = {
+  pathname: string,
+}
+
+const SettingsPage = ({ pathname }: SettingsPageProps) => (
   <Container maxWidth="1140px">
-    <Box display="flex">
+    <Box display="flex" paddingTop={3}>
       <LeftPanel>
-        <ProfileLink to={`${pathname}/details`} message={linksMessages.accountDetails} />
+        <ProfileLink to={`${pathname}/details`} message={linksMessages.account} />
         <ProfileLink to={`${pathname}/billing`} message={linksMessages.billing} />
       </LeftPanel>
       <RightPanel>
-        <Box marginLeft="5em">
+        <Box marginLeft={5}>
           <Match pattern={`${pathname}/details`} component={ProfileDetails} />
           <Match pattern={`${pathname}/billing`} component={Billing} />
         </Box>
@@ -64,7 +69,4 @@ const ProfilePage = ({ pathname }) => (
   </Container>
 );
 
-
-//  <Match exactly pattern="/profile/password" component={NewJobPage} />
-
-export default ProfilePage;
+export default SettingsPage;

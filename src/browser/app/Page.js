@@ -14,6 +14,10 @@ type PageProps = {
   messageShown?: boolean,
 }
 
+const calculateHeaderPadding = (includeHeader, messageShown) => (
+  includeHeader ? messageShown ? 3.5 : 2 : 0
+);
+
 const Page = ({
   component: Component,
   includeHeader = false,
@@ -34,7 +38,7 @@ const Page = ({
         </Fixed>
       }
       <Box
-        paddingTop={includeHeader ? 3 : 0}
+        paddingTop={calculateHeaderPadding(includeHeader, messageShown)}
       >
         <Component {...renderProps} />
       </Box>

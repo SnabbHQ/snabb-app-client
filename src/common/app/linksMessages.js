@@ -2,6 +2,10 @@
 import { defineMessages } from 'react-intl';
 
 const LinkMessages = defineMessages({
+  account: {
+    defaultMessage: 'Account',
+    id: 'app.links.account',
+  },
   intl: {
     defaultMessage: 'Intl',
     id: 'app.links.intl',
@@ -45,10 +49,6 @@ const LinkMessages = defineMessages({
   profile: {
     defaultMessage: 'Profile',
     id: 'app.links.profile',
-  },
-  accountDetails: {
-    defaultMessage: 'Account Details',
-    id: 'app.links.accountDetails',
   },
   billing: {
     defaultMessage: 'Billing',
