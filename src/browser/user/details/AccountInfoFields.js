@@ -9,7 +9,7 @@ import { FieldHeader, Button, Space, Input, Box } from '../../app/components';
 
 const AccountInfoFields = ({ intl }) => (
   <Box>
-    <FieldHeader title={linksMessages.account} />
+    <FieldHeader titleSize={2} title={linksMessages.account} />
     <Input
       name="Business Name"
       label={intl.formatMessage(inputMessages.name)}
