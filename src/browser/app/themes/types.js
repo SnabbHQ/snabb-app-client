@@ -73,6 +73,7 @@ export type Theme = {|
     maxWidth: number,
     |},
   input: {|
+    radius: number,
     backgroundColor: string,
     |},
   divider: {|

@@ -75,7 +75,7 @@ const create = (tag, passProps = []) => styled((theme, {
     border: error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.colors.accent}`,
   },
   padding,
-  borderRadius: theme.border.radius,
+  borderRadius: theme.input.radius,
   backgroundColor: theme.input.backgroundColor,
   transition: 'border 0.3s',
 }), tag, [

@@ -27,7 +27,7 @@ type HeaderLinkProps = {
 const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
   <Link
     bold
-    color="white"
+    color="black"
     exactly={exactly}
     marginHorizontal={1}
     to={to}
@@ -43,10 +43,9 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
 
   return (
     <Box
-      backgroundColor="black"
+      backgroundColor="white"
       display="flex"
       flexWrap="wrap"
-      paddingVertical={0.3}
       boxShadow="0 1px 2px rgba(0,0,0,0.15)"
     >
       <Space x={1} />
@@ -61,25 +60,18 @@ const Header = ({ user }: HeaderProps, { router }: Object) => {
           src={logo}
         />
         <Space x={1} />
-        <Text color="white" size={1}>Snabb</Text>
+        <Text size={1}>Snabb</Text>
       </Box>
       <Space auto />
       <HeaderLink to="/active" message={linksMessages.active} />
       <HeaderLink to="/history" message={linksMessages.history} />
+      <HeaderLink to="/settings" message={linksMessages.settings} />
       <Space auto />
       <Box
         display="flex"
         alignItems="center"
       >
         <NewDeliveryButton />
-        <Space x={1} />
-        <Image
-          height={40}
-          width={40}
-          alt="Snabb"
-          src={clientPhoto}
-          onClick={onProfileImageClick}
-        />
       </Box>
       <Space x={1} />
     </Box>

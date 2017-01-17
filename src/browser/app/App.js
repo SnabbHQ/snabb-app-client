@@ -56,7 +56,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         <Page authorized pattern="/active" component={ActivePage} includeHeader />
         <Page authorized pattern="/new" component={NewJobPage} includeHeader />
         <Page authorized pattern="/history" component={HistoryPage} includeHeader />
-        <Page authorized pattern="/profile" component={ProfilePage} includeHeader />
+        <Page authorized pattern="/settings" component={ProfilePage} includeHeader />
         <Page pattern="/login" component={LogInPage} />
         <Page pattern="/register" component={RegisterPage} />
         <Page pattern="/resetPassword" component={ResetPassword} />

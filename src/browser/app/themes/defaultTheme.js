@@ -81,6 +81,7 @@ const theme: Theme = {
     maxWidth: 42,
   },
   input: {
+    radius: 5,
     backgroundColor: '#f6f6f6',
   },
   divider: {
