@@ -12,35 +12,28 @@ import ProfileDetails from './details/ProfileDetails';
 const LeftPanel = styled({
   $extends: Box,
   height: '100mvh',
-  width: '60%',
-  '@media (min-width: 1200px)': {
-    width: '20%',
-  },
-  '@media (max-width: 768px)': {
-    width: '100%',
-  },
+  width: '25%',
 });
 
 
 const RightPanel = styled(() => ({
   $extends: Box,
   height: '100mvh',
-  width: '60%',
-  '@media (min-width: 1200px)': {
-    width: '60%',
-  },
-  '@media (max-width: 768px)': {
-    width: '100%',
-  },
+  width: '75%',
 }));
 
-const ProfileLink = ({ exactly, to, message }) => (
+const ProfileLink = ({
+  exactly,
+  to,
+  message,
+  marginVertical = 0.5,
+}) => (
   <Link
     display="block"
     bold
     color="black"
     exactly={exactly}
-    marginVertical={1}
+    marginVertical={marginVertical}
     size={1}
     to={to}
   >
@@ -53,15 +46,17 @@ type SettingsPageProps = {
 }
 
 const SettingsPage = ({ pathname }: SettingsPageProps) => (
-  <Container maxWidth="1140px">
+  <Container maxWidth="800px">
     <Box display="flex" paddingTop={3}>
       <LeftPanel>
-        <ProfileLink to={`${pathname}/details`} message={linksMessages.account} />
-        <ProfileLink to={`${pathname}/billing`} message={linksMessages.billing} />
-        <ProfileLink to={`${pathname}/billing`} message={linksMessages.password} />
+        <Box paddingHorizontal={1}>
+          <ProfileLink to={`${pathname}/details`} message={linksMessages.account} />
+          <ProfileLink marginVertical={1} to={`${pathname}/billing`} message={linksMessages.billing} />
+          <ProfileLink marginVertical={1} to={`${pathname}/billing`} message={linksMessages.password} />
+        </Box>
       </LeftPanel>
       <RightPanel>
-        <Box marginLeft={5}>
+        <Box paddingHorizontal={1}>
           <Match pattern={`${pathname}/details`} component={ProfileDetails} />
           <Match pattern={`${pathname}/billing`} component={Billing} />
         </Box>
