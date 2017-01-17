@@ -45,7 +45,9 @@ const enforceTextLook = {
   map: rows => style => ({
     ...style,
     height: rows * Number(style.lineHeight),
-    padding: 10,
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
   }),
   // All these values are required. Otherwise, Edge or Firefox would break.
   style: {
