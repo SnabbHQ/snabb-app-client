@@ -34,14 +34,13 @@ const RightPanel = styled(() => ({
   },
 }));
 
-const ProfileLink = ({ exactly, to, message }: HeaderLinkProps) => (
+const ProfileLink = ({ exactly, to, message }) => (
   <Link
     display="block"
-    antialiasing
     bold
     color="black"
     exactly={exactly}
-    marginHorizontal="1.5em"
+    marginHorizontal={1}
     to={to}
   >
     <FormattedMessage {...message} />

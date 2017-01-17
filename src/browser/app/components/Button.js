@@ -15,7 +15,7 @@ type ButtonProps = TextProps & {
 const maybeVerticalSpace = size => size >= 0 ? {
     // Button needs vertical space. Sure it can be defined in the theme.
   marginVertical: 0.25,
-  paddingVertical: 0.50,
+  paddingVertical: 0.25,
 } : {
     // But the smaller button can't have any padding nor border because it would
     // break a rhythm. It's impossible to compute it since text can be multiline.

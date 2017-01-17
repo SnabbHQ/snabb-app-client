@@ -16,9 +16,8 @@ export default function NewDeliveryButton({}, { router }: Object) {
 
   return (
     <Button
-      white
-      color="black"
-      border="1px solid black"
+      size={0}
+      accent
       onClick={onButtonClick}
     >
       <FormattedMessage {...jobMessages.newDelivery} />
