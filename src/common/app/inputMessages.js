@@ -2,13 +2,13 @@
 import { defineMessages } from 'react-intl';
 
 const inputMessages = defineMessages({
-  name: {
-    defaultMessage: 'Name / Business Name',
-    id: 'input.name',
+  password: {
+    defaultMessage: 'Password',
+    id: 'input.password',
   },
-  namePlaceholder: {
-    defaultMessage: 'Business Name',
-    id: 'input.name.placeholder',
+  currentPassword: {
+    defaultMessage: 'Current Password',
+    id: 'input.password.current',
   },
   email: {
     defaultMessage: 'Email',
@@ -18,9 +18,17 @@ const inputMessages = defineMessages({
     defaultMessage: 'Email',
     id: 'input.email',
   },
-  password: {
-    defaultMessage: 'Password',
-    id: 'input.password',
+  name: {
+    defaultMessage: 'Name / Business Name',
+    id: 'input.name',
+  },
+  namePlaceholder: {
+    defaultMessage: 'Business Name',
+    id: 'input.name.placeholder',
+  },
+  newPassword: {
+    defaultMessage: 'New Password',
+    id: 'input.password.new',
   },
   passwordPlaceholder: {
     defaultMessage: 'Password',

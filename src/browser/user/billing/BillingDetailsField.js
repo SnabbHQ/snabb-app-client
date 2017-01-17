@@ -12,7 +12,6 @@ const BillingDetails = () => (
       <Input
         name="Company Name"
         label="Company Name"
-        labelSize={-1}
         maxLength={100}
         placeholder={''}
         type="text"
@@ -20,7 +19,6 @@ const BillingDetails = () => (
       <Input
         name="Company Address"
         label="Company Address"
-        labelSize={-1}
         maxLength={100}
         placeholder={''}
         type="text"
@@ -30,7 +28,6 @@ const BillingDetails = () => (
       <Input
         name="City"
         label="City"
-        labelSize={-1}
         maxLength={100}
         placeholder={''}
         type="text"
@@ -38,7 +35,6 @@ const BillingDetails = () => (
       <Input
         name="Postal Code"
         label="Postal Code"
-        labelSize={-1}
         maxLength={100}
         placeholder={''}
         type="text"
@@ -46,7 +42,6 @@ const BillingDetails = () => (
       <Input
         name="Country"
         label="Country"
-        labelSize={-1}
         maxLength={100}
         placeholder={''}
         type="text"
@@ -54,7 +49,6 @@ const BillingDetails = () => (
       <Input
         name="VAT number"
         label="VAT number"
-        labelSize={-1}
         maxLength={100}
         placeholder={''}
         type="text"

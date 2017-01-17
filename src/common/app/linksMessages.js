@@ -14,6 +14,10 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Billing',
     id: 'app.links.billing',
   },
+  changePassword: {
+    defaultMessage: 'Change Password',
+    id: 'app.links.changePassword',
+  },
   fields: {
     defaultMessage: 'Fields',
     id: 'app.links.fields',

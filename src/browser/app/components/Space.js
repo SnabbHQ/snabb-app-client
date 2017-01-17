@@ -3,7 +3,7 @@ import type { Styled } from '../themes/types';
 import styled from './styled';
 
 type SpaceProps = {
-  x: number,
+  x?: number,
   auto?: boolean,
 };
 

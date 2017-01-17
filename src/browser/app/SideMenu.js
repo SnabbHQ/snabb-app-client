@@ -1,9 +1,9 @@
 /* @flow */
-import React from "react";
-import linksMessages from "../../common/app/linksMessages";
-import { FormattedMessage } from "react-intl";
-import { Fixed, Box, Link, Image } from "../app/components";
-import { connect } from "react-redux";
+import React from 'react';
+import linksMessages from '../../common/app/linksMessages';
+import { FormattedMessage } from 'react-intl';
+import { Fixed, Box, Link, Image } from '../app/components';
+import { connect } from 'react-redux';
 
 const logo = require('../../common/app/images/logo.svg');
 
@@ -15,8 +15,8 @@ type HeaderLinkProps = {
 
 const SideMenuLink = ({ exactly, to, message }: HeaderLinkProps) => (
   <Link
-    marginVertical="3em"
-    marginHorizontal="0.7em"
+    marginVertical={3}
+    marginHorizontal={1}
     display="block"
     bold
     antialiasing
@@ -47,10 +47,10 @@ const SideMenu = () => (
     paddingTop="4em"
     boxShadow="0 1px 2px rgba(0,0,0,0.15)"
   >
-    <SideMenuLink exactly to="/" message={linksMessages.active}/>
-    <SideMenuLink to="/active" message={linksMessages.active}/>
-    <SideMenuLink to="/scheduled" message={linksMessages.scheduled}/>
-    <SideMenuLink to="/past" message={linksMessages.past}/>
+    <SideMenuLink exactly to="/" message={linksMessages.active} />
+    <SideMenuLink to="/active" message={linksMessages.active} />
+    <SideMenuLink to="/scheduled" message={linksMessages.scheduled} />
+    <SideMenuLink to="/past" message={linksMessages.past} />
   </Fixed>
 );
 
