@@ -25,7 +25,7 @@ export type Phone = {
 }
 
 export type Profile = {
-  id: string,
+  profileId: string,
   name: ?string,
   lastName: ?string,
   phone: Phone,

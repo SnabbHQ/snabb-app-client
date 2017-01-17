@@ -1,13 +1,15 @@
 /* @flow */
+import type { State } from '../../../common/types';
 import R from 'ramda';
 import React from 'react';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import inputMessages from '../../../common/app/inputMessages';
 import linksMessages from '../../../common/app/linksMessages';
+import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { FieldHeader, Button, Space, Input, Box } from '../../app/components';
 
-const AccountInfoFields = ({ intl }) => (
+const AccountInfoFields = ({ profile, intl }) => (
   <Box>
     <FieldHeader titleSize={2} title={linksMessages.account} />
     <Input
@@ -44,6 +46,12 @@ const AccountInfoFields = ({ intl }) => (
 );
 
 export default R.compose(
+  connect(
+    (state: State) => ({
+      profile: state.user.profile,
+    }),
+    null,
+  ),
   injectIntl,
 )(AccountInfoFields);
 
