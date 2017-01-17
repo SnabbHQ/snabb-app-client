@@ -3,7 +3,7 @@ import R from 'ramda';
 import type { State } from '../../../common/types';
 import React from 'react';
 import buttonsMessages from '../../../common/app/buttonsMessages';
-import authMessages from '../../../common/auth/authMessages';
+import inputMessages from '../../../common/app/inputMessages';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../../common/lib/redux-fields';
@@ -32,21 +32,21 @@ class RegisterFields extends React.Component {
             field={fields.name}
             disabled={disabled}
             error={error}
-            placeholder={intl.formatMessage(authMessages.businessName)}
+            placeholder={intl.formatMessage(inputMessages.namePlaceholder)}
             maxLength={1000}
           />
           <Input
             field={fields.phone}
             disabled={disabled}
             error={error}
-            placeholder={intl.formatMessage(authMessages.phone)}
+            placeholder={intl.formatMessage(inputMessages.phonePlaceholder)}
             maxLength={1000}
           />
           <Input
             field={fields.email}
             disabled={disabled}
             error={error}
-            placeholder={intl.formatMessage(authMessages.email)}
+            placeholder={intl.formatMessage(inputMessages.emailPlaceholder)}
             maxLength={100}
             type="email"
           />
@@ -55,7 +55,7 @@ class RegisterFields extends React.Component {
             disabled={disabled}
             error={error}
             maxLength={1000}
-            placeholder={intl.formatMessage(authMessages.password)}
+            placeholder={intl.formatMessage(inputMessages.passwordPlaceholder)}
             type="password"
           />
           <CenteredBox>

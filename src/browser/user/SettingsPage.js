@@ -27,7 +27,7 @@ const RightPanel = styled(() => ({
   height: '100mvh',
   width: '60%',
   '@media (min-width: 1200px)': {
-    width: '80%',
+    width: '60%',
   },
   '@media (max-width: 768px)': {
     width: '100%',

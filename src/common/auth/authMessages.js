@@ -6,10 +6,6 @@ const authMessages = defineMessages({
     defaultMessage: 'I already have an account',
     id: 'auth.register.alreadyAccount'
   },
-  businessName: {
-    defaultMessage: 'Business Name',
-    id: 'auth.register.businessName',
-  },
   createAccount: {
     defaultMessage: 'I don\'t have an account',
     id: 'auth.register.createAccount',
@@ -18,25 +14,13 @@ const authMessages = defineMessages({
     defaultMessage: 'Welcome to',
     id: 'auth.register.createAccountHeader',
   },
-  email: {
-    defaultMessage: 'Email',
-    id: 'auth.email',
-  },
   emailVerificationSent: {
     defaultMessage: 'We sent you an email to confirm your account. Please check it before you request your first delivery',
     id: 'auth.email.verificationSent',
   },
-  password: {
-    defaultMessage: 'Password',
-    id: 'auth.password',
-  },
   passwordForgotten: {
     defaultMessage: 'Forgot your password?',
     id: 'auth.email.passwordForgotten',
-  },
-  phone: {
-    defaultMessage: 'Phone Number (e.g. +34 661 518 132)',
-    id: 'auth.register.phone',
   },
   recoveryEmailSent: {
     defaultMessage: 'Recovery email has been sent.',

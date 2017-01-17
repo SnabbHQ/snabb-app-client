@@ -3,7 +3,7 @@ import R from 'ramda';
 import type { State } from '../../common/types';
 import React from 'react';
 import buttonsMessages from '../../common/app/buttonsMessages';
-import authMessages from '../../common/auth/authMessages';
+import inputMessages from '../../common/app/inputMessages';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
@@ -33,14 +33,14 @@ class LoginFields extends React.Component {
             disabled={disabled}
             error={error}
             maxLength={100}
-            placeholder={intl.formatMessage(authMessages.email)}
+            placeholder={intl.formatMessage(inputMessages.emailPlaceholder)}
           />
           <Input
             field={fields.password}
             disabled={disabled}
             error={error}
             maxLength={100}
-            placeholder={intl.formatMessage(authMessages.password)}
+            placeholder={intl.formatMessage(inputMessages.passwordPlaceholder)}
             type="password"
           />
           <CenteredBox>

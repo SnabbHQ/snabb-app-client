@@ -9,7 +9,7 @@ import { Box, Image } from '../../app/components';
 
 type FieldHeaderProps = {
   icon?: string,
-  title: Object,
+  title: string | Object,
 }
 
 const StyledHeader: Styled<TextProps> = styled((theme, props) => ({
@@ -24,7 +24,7 @@ const FieldHeader = ({ icon, title }: FieldHeaderProps) => (
   <Box display="flex" alignItems="center" marginBottom="1em">
     {
       icon &&
-      <Box marginRight="1em">
+      <Box marginRight={1}>
         <Image alt={title} src={icon} />
       </Box>
     }

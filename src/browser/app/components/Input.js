@@ -28,8 +28,7 @@ export type InputProps = TextProps & {
   disabled?: boolean,
   error?: string,
   field?: Object,
-  inline?: boolean,
-  invalid?: boolean,
+  label?: string,
   maxLength?: number,
   onChange?: (SyntheticEvent) => void,
   name?: string,
@@ -117,12 +116,18 @@ const checkIfOwnError = (error, field) => error && error.params && error.params.
 const Input: Styled<InputProps> = ({
   error,
   field,
+  label,
   placeholder,
   size = 0,
   marginBottom = 0.5,
   ...props
 }) => (
   <Box {...props} marginBottom={marginBottom}>
+    {label &&
+    <Text bold display="block" size={size}>
+      {label}
+    </Text>
+    }
     <StyledInputOrTextArea
       error={checkIfOwnError(error, field) && error}
       placeholder={placeholder}
