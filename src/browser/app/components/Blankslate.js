@@ -1,6 +1,6 @@
 /* @flow */
 import React, { PropTypes } from 'react';
-import { Image, Box, Text } from './';
+import { Image, Box, Text, Full } from './';
 import { FormattedMessage } from 'react-intl';
 
 type Props = {
@@ -23,7 +23,7 @@ const Blankslate = ({ icon, actions, title, subtitle }: Props) => {
   );
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center">
+    <Full backgroundColor="black">
       <Box justifyContent="center" minHeight="90vh">
         {renderIcon()}
         <Text
@@ -36,7 +36,7 @@ const Blankslate = ({ icon, actions, title, subtitle }: Props) => {
         <Text align="center"><FormattedMessage {...subtitle} /></Text>
         {renderActions()}
       </Box>
-    </Box>
+    </Full>
   );
 };
 
