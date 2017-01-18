@@ -16,7 +16,8 @@ export default class UserRestApi {
   }
 
   getProfile() {
-    return Observable.fromPromise(this.snabbApi.getProfile());
+    return Observable.fromPromise(this.snabbApi.getProfile())
+                      map((s) => );
   }
 
   updateProfile(data: Profile) {
@@ -25,5 +26,9 @@ export default class UserRestApi {
 
   resetPassword(email: string) {
     return Observable.fromPromise(this.snabbApi.getProfile());
+  }
+
+  snakeToCamel(s){
+    return s.replace(/(\-\w)/g, function(m){return m[1].toUpperCase();});
   }
 }

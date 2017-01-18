@@ -15,12 +15,12 @@ class LoginFields extends React.Component {
 
   onFormSubmit = () => {
     this.loginViaPassword();
-  }
+  };
 
   loginViaPassword = () => {
     const { fields, login } = this.props;
     login(fields.$values());
-  }
+  };
 
   render() {
     const { disabled, error, fields, intl } = this.props;

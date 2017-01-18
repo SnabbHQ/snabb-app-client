@@ -8,24 +8,10 @@ import 'whatwg-fetch';
  * This class interfaces with Snabb's API using the rest api.
  *
  */
-
-let fakeProfile = {
-  objectId: 'Z4yvP19OeL',
-  sessionToken: 'r:uFeYONgIsZMPyxOWVJ6VqJGqv',
-  updatedAt: '2015-12-30T15:29:36.611Z',
-  name: 'Michael',
-  lastName: 'Knight',
-  userName: 'michaelKnight',
-  email: 'michael.knight@snabb.io',
-  phoneNumber: '+46712345678',
-  thumbnail: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlovN715rKGVOscWvovnblMwpvwMlknTosSXthVP9xLlW7KCfw',
-};
-
 class SnabbApi {
-
-  API_BASE_URL: string
-  sessionToken: string
-  response: Object
+  API_BASE_URL: string;
+  sessionToken: string;
+  response: Object;
 
   /**
    * ## SnabbApi.js client
@@ -160,17 +146,16 @@ class SnabbApi {
    * @returns
    */
   async getProfile() {
-    return await this.fetchMock({
-      method: 'GET',
-      url: '/account/profile/me',
+    return await fetch(`${this.API_BASE_URL}/user/profile`, {
+      method: 'GET'
     })
-      .then((res) => {
-        if ((res.status === 200 || res.status === 201)) {
-          return fakeProfile;
-        } else {
-          throw (res.json);
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
         }
-      })
+
+        throw (json);
+      }))
       .catch((error) => {
         throw (error);
       });
