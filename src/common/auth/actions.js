@@ -1,14 +1,14 @@
 /* @flow */
-import type { Action, User } from '../types';
+import type { Action, Profile } from '../types';
 
 export const login = (options?: Object): Action => ({
   type: 'LOG_IN',
   payload: { options },
 });
 
-export const loginSuccess = (user: User): Action => ({
+export const loginSuccess = (profile: Profile): Action => ({
   type: 'LOG_IN_SUCCESS',
-  payload: { user },
+  payload: { profile },
 });
 
 export const loginFail = (error: Error): Action => ({

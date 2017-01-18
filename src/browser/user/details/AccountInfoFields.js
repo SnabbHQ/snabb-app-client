@@ -30,6 +30,7 @@ const AccountInfoFields = ({ disabled, error, fields, intl, profile, updateProfi
       <FieldHeader titleSize={2} title={linksMessages.account} />
       <Form onSubmit={onFormSubmit}>
         <Input
+          error={error}
           field={fields.companyName}
           label={intl.formatMessage(inputMessages.name)}
           maxLength={100}
@@ -38,6 +39,7 @@ const AccountInfoFields = ({ disabled, error, fields, intl, profile, updateProfi
           type="text"
         />
         <Input
+          error={error}
           field={fields.email}
           label={intl.formatMessage(inputMessages.email)}
           maxLength={100}
@@ -46,6 +48,7 @@ const AccountInfoFields = ({ disabled, error, fields, intl, profile, updateProfi
           type="text"
         />
         <Input
+          error={error}
           field={fields.phone}
           label={intl.formatMessage(inputMessages.phone)}
           maxLength={100}
@@ -70,7 +73,7 @@ export default R.compose(
     (state: State) => ({
       disabled: state.user.formDisabled,
       profile: state.user.profile,
-      error: state.auth.error,
+      error: state.user.error,
     }),
     { updateProfile },
   ),
