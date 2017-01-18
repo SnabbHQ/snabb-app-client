@@ -65,7 +65,14 @@ class RegisterFields extends React.Component {
             }
           </CenteredBox>
           <CenteredBox>
-            <Button width={20} size={1} accent onClick={this.register} disabled={disabled} align="center">
+            <Button
+              accent
+              width={20}
+              size={1}
+              onClick={this.register}
+              disabled={disabled}
+              align="center"
+              transform="none">
               <FormattedMessage {...buttonsMessages.register} />
             </Button>
           </CenteredBox>

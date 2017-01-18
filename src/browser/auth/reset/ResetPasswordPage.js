@@ -24,13 +24,13 @@ const ResetPasswordField = ({ disabled, intl }) => (
     >
       {intl.formatMessage(authMessages.resetPassword)}
     </Text>
+    <ResetPasswordFields />
     <Text
       align="center"
       display="block"
     >
       {intl.formatMessage(authMessages.resetPasswordDescription)}
     </Text>
-    <ResetPasswordFields />
   </Box>
 );
 

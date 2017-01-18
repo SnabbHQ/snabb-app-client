@@ -39,7 +39,7 @@ const buttonsMessages = defineMessages({
     id: 'app.buttons.ok',
   },
   resetPassword: {
-    defaultMessage: 'Send password reset email',
+    defaultMessage: 'Send email with instructions',
     id: 'app.buttons.resetPassword',
   },
   register: {

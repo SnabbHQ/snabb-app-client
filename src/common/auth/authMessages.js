@@ -27,11 +27,11 @@ const authMessages = defineMessages({
     id: 'auth.reset.recoveryEmailSent',
   },
   resetPassword: {
-    defaultMessage: 'Reset Password',
+    defaultMessage: 'Forgot password',
     id: 'auth.reset.resetPassword',
   },
   resetPasswordDescription: {
-    defaultMessage: 'Enter your email address and we will send you a link to reset your password.',
+    defaultMessage: 'You’ll receive an email with detailed instructions on how to set a new password.',
     id: 'auth.reset.resetPasswordDescription',
   },
   resetPasswordSent: {
