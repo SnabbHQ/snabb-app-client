@@ -1,7 +1,7 @@
 // @flow
 import type { Deps } from '../../../types';
 
-import { profileUpdateSuccess, profileUpdateFailure } from '../actions';
+import { updateProfileSuccess, updateProfileFail } from '../actions';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -29,13 +29,13 @@ const validateFields = (validate, fields) => validate(fields)
  */
 const updateProfile = (action$: any, { userRepository, validate }: Deps) =>
   action$.ofType('PROFILE_UPDATE')
-    .map(action => action.payload.options)
-    .mergeMap((options) => {
+    .map(action => action.payload)
+    .mergeMap((profileId, options) => {
       const { email, name, phone } = options;
       return Observable.fromPromise(validateFields(validate, { name, email, phone }))
-        .switchMap(() => userRepository.updateProfile(options))
-        .map(profileUpdateSuccess)
-        .catch(error => Observable.of(profileUpdateFailure(error)));
+        .switchMap((profile) => userRepository.updateProfile(profileId, { name, email, phone } ))
+        .map(updateProfileSuccess)
+        .catch(error => Observable.of(updateProfileFail(error)));
     });
 
 export default updateProfile;

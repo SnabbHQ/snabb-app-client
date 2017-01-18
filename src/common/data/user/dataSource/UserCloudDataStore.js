@@ -16,7 +16,7 @@ class UserCloudDataStore extends UserDataStore {
     return this.userRestApi.getProfile();
   }
 
-  updateProfile(data: Profile) {
+  updateProfile(profileId: string, data: Profile) {
     return this.userRestApi.updateProfile(data);
   }
 

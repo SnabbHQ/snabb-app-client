@@ -18,35 +18,19 @@ export const getProfileFail = (error: Error): Action => ({
   payload: { error },
 });
 
-export function updateUserProfile(userId, newUserData) {
-  return {
-    type: 'PROFILE_UPDATE',
-    payload: {
-      data: {
-        userId,
-        newUserData,
-      },
-    },
-  };
-}
+export const updateProfile = (profileId: string, options: Object): Action => ({
+  type: 'PROFILE_UPDATE',
+  payload: { profileId, options }
+});
 
-export function profileUpdateSuccess() {
-  return {
-    type: 'PROFILE_UPDATE_SUCCESS',
-  };
-}
+export const updateProfileSuccess = (profile: Profile): Action => ({
+  type: 'PROFILE_UPDATE_SUCCESS',
+  payload: {
+    profile: { profile },
+  },
+});
 
-export function profileUpdateFailure(json) {
-  return {
-    type: 'PROFILE_UPDATE_FAIL',
-    payload: json,
-  };
-}
-
-
-export function onProfileFormFieldChange(field, value) {
-  return {
-    type: 'ON_PROFILE_FORM_FIELD_CHANGE',
-    payload: { field, value },
-  };
-}
+export const updateProfileFail = (error: Error): Action => ({
+  type: 'PROFILE_UPDATE_FAIL',
+  payload: { error },
+});

@@ -13,8 +13,8 @@ class UserDataRepository {
     return this.userDataStoreFactory.create().getProfile();
   }
 
-  updateProfile(data: Profile) {
-    return this.userDataStoreFactory.create().updateProfile(data);
+  updateProfile(profileId: string, data: Profile) {
+    return this.userDataStoreFactory.create().updateProfile(profileId, data);
   }
 
   resetPassword(email: string) {

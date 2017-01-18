@@ -38,8 +38,6 @@ class SnabbApi {
    *  {email: "barton@foo.com", password: "Passw0rd!"}
    */
   async auth(data: Object) {
-    let formBody = [];
-
     const authDetails = {
       client_id: '123',
       username: data.username,
@@ -47,18 +45,10 @@ class SnabbApi {
       grant_type: 'password',
     };
 
-    for (const property in authDetails) {
-      const encodedKey = encodeURIComponent(property);
-      const encodedValue = encodeURIComponent(authDetails[property]);
-      formBody.push(`${encodedKey}=${encodedValue}`);
-    }
-
-    formBody = formBody.join('&');
-
     return await fetch(`${this.API_BASE_URL}/oauth/token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: formBody,
+      body: this.encodeBody(authDetails),
     })
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
@@ -166,26 +156,23 @@ class SnabbApi {
    * for this user, update their record
    * the data is already in JSON format
    *
-   * @param userId  _id
+   * @param profileId
    * @param data object:
    * {email: "barton@foo.com"}
    */
-  async updateProfile(userId: string, data: Object) {
-    return await this.fetchMock({
-      method: 'POST',
-      url: `/account/profile/${userId}`,
-      body: data,
+  async updateProfile(profileId: string, data: Object) {
+    return await fetch(`${this.API_BASE_URL}/user/profile/${profileId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: this.encodeBody(data),
     })
-      .then((res) => {
-        if ((res.status === 200 || res.status === 201)) {
-          // TODO - Obviously this should never be here
-          fakeProfile = data;
-
-          return {};
-        } else {
-          throw (res.json);
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
         }
-      })
+
+        throw (json);
+      }))
       .catch((error) => {
         throw (error);
       });
@@ -243,6 +230,18 @@ class SnabbApi {
    */
   async fetchMock(opts) {
     return await this.response;
+  }
+
+  encodeBody(data) {
+    let formBody = [];
+
+    for (const property in data) {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(data[property]);
+      formBody.push(`${encodedKey}=${encodedValue}`);
+    }
+
+    return formBody.join('&');
   }
 }
 

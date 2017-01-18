@@ -22,9 +22,9 @@ export default class UserRestApi {
       .map(camelCaseKeys);
   }
 
-  updateProfile(data: Profile) {
+  updateProfile(profileId: string, data: Profile) {
     return Observable.fromPromise(snakeCaseKeys(data))
-      .switchMap(this.snabbApi.updateProfile(data))
+      .switchMap(this.snabbApi.updateProfile(profileId, data))
       .map(camelCaseKeys);
   }
 
