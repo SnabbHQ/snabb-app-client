@@ -84,7 +84,6 @@ const create = (tag, passProps = []) => styled((theme, {
   'placeholder',
   'type',
   'value',
-  'defaultValue',
   'maxLength',
   ...passProps,
 ]);

@@ -8,9 +8,7 @@ export const getProfile = (): Action => ({
 
 export const getProfileSuccess = (profile: Profile): Action => ({
   type: 'GET_PROFILE_SUCCESS',
-  payload: {
-    profile: { profile },
-  },
+  payload: { profile },
 });
 
 export const getProfileFail = (error: Error): Action => ({
@@ -25,9 +23,7 @@ export const updateProfile = (profileId: string, options: Object): Action => ({
 
 export const updateProfileSuccess = (profile: Profile): Action => ({
   type: 'PROFILE_UPDATE_SUCCESS',
-  payload: {
-    profile: { profile },
-  },
+  payload: { profile },
 });
 
 export const updateProfileFail = (error: Error): Action => ({

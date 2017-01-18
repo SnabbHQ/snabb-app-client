@@ -10,7 +10,6 @@ const initialState = {
   profile: undefined,
   formDisabled: false,
   error: null,
-  isValid: false,
   isFetching: false,
 };
 

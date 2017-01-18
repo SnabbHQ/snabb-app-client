@@ -33,7 +33,7 @@ const updateProfile = (action$: any, { userRepository, validate }: Deps) =>
     .mergeMap(({ profileId, options }) => {
       const { companyName, email, phone } = options;
       return Observable.fromPromise(validateFields(validate, { companyName, email, phone }))
-        .switchMap((profile) => userRepository.updateProfile(profileId, { companyName, email, phone } ))
+        .switchMap(() => userRepository.updateProfile(profileId, { companyName, email, phone } ))
         .map(updateProfileSuccess)
         .catch(error => Observable.of(updateProfileFail(error)));
     });
