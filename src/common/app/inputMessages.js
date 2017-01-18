@@ -6,6 +6,10 @@ const inputMessages = defineMessages({
     defaultMessage: 'Password',
     id: 'input.password',
   },
+  confirmNewPassword: {
+    defaultMessage: 'Confirm New Password',
+    id: 'input.password.confirm',
+  },
   currentPassword: {
     defaultMessage: 'Current Password',
     id: 'input.password.current',

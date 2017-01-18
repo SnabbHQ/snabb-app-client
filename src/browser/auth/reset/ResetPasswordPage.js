@@ -42,15 +42,6 @@ const ResetPasswordField = (props) => (
 );
 
 const ResetPasswordPage = ({ disabled, intl, authed, resetPasswordSent }) => (
-  authed ?
-    <Redirect
-      to={(
-        location.state &&
-        location.state.from &&
-        location.state.from.pathname
-      ) || '/'}
-    />
-    :
     <Fixed top bottom left right>
       <Box display="flex" height="80%" alignItems="center" justifyContent="center">
         <Box width="350px">

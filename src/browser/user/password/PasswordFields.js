@@ -5,9 +5,10 @@ import React from 'react';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import inputMessages from '../../../common/app/inputMessages';
 import linksMessages from '../../../common/app/linksMessages';
+import authMessages from '../../../common/auth/authMessages';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { FieldHeader, Button, Space, Input, Box } from '../../app/components';
+import { FieldHeader, Button, Space, Input, Link, Box } from '../../app/components';
 
 const PasswordFields = ({ profile, intl }) => (
   <Box>
@@ -24,12 +25,21 @@ const PasswordFields = ({ profile, intl }) => (
       maxLength={100}
       type="password"
     />
+    <Input
+      name="Confirm New Password"
+      label={intl.formatMessage(inputMessages.confirmNewPassword)}
+      maxLength={100}
+      type="password"
+    />
     <Box display="flex" marginVertical={1}>
+      <Link
+        color="accent"
+        size={0}
+        to="/resetPassword"
+      >
+        <FormattedMessage {...authMessages.passwordForgotten} />
+      </Link>
       <Space auto />
-      <Button gray paddingHorizontal={2}>
-        <FormattedMessage {...buttonMessages.cancel} />
-      </Button>
-      <Space x={1} />
       <Button accent paddingHorizontal={2}>
         <FormattedMessage {...buttonMessages.save} />
       </Button>
