@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
 import { login } from '../../common/auth/actions';
 import { Button, CenteredBox, Input, Form, focus, Box, Loading } from '../app/components';
-import FormError from './FormError';
 
 class LoginFields extends React.Component {
 

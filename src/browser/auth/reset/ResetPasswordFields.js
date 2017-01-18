@@ -1,14 +1,15 @@
 /* @flow */
 import R from 'ramda';
-import type { State } from '../../../common/types';
+import type {State} from '../../../common/types';
 import React from 'react';
 import buttonsMessages from '../../../common/app/buttonsMessages';
-import authMessages from '../../../common/auth/authMessages';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
-import { connect } from 'react-redux';
-import { fields } from '../../../common/lib/redux-fields';
-import { resetPassword } from '../../../common/auth/actions';
-import { Form, focus, Button, Input, Box } from '../../app/components';
+import inputMessages from '../../../common/app/inputMessages';
+import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
+import {connect} from 'react-redux';
+import {fields} from '../../../common/lib/redux-fields';
+import {resetPassword} from '../../../common/auth/actions';
+import {Form, CenteredBox, focus, Button, Input, Box} from '../../app/components';
+import FormError from '../FormError';
 
 class ResetPasswordFields extends React.Component {
 
@@ -26,7 +27,7 @@ class ResetPasswordFields extends React.Component {
 
   onFormSubmit = () => {
     this.resetPassword();
-  }
+  };
 
   resetPassword() {
     const { fields, resetPassword } = this.props;
@@ -38,25 +39,29 @@ class ResetPasswordFields extends React.Component {
   }
 
   render() {
-    const { disabled, fields, intl } = this.props;
+    const {disabled, fields, intl, error } = this.props;
 
     return (
-      <Form onSubmit={this.onFormSubmit} small>
+      <Form onSubmit={this.onFormSubmit} small >
         <Box>
           <Input
-            {...fields.email}
+            field={fields.email}
             disabled={disabled}
-            label={intl.formatMessage(authMessages.emailLabel)}
-            labelSize={-1}
+            error={error}
             maxLength={100}
-            padding="0.5em"
-            placeholder={intl.formatMessage(authMessages.emailPlaceholder)}
+            placeholder={intl.formatMessage(inputMessages.emailPlaceholder)}
           />
-          <Box marginTop="1em">
-            <Button onClick={this.resetPassword} primary width="100%" disabled={disabled} align="center">
+          <CenteredBox>
+            <FormError />
+            {disabled &&
+            <Loading marginVertical={1} />
+            }
+          </CenteredBox>
+          <CenteredBox>
+            <Button width={20} size={1} accent onClick={this.resetPassword} disabled={disabled} align="center" >
               <FormattedMessage {...buttonsMessages.resetPassword} />
             </Button>
-          </Box>
+          </CenteredBox>
         </Box>
       </Form>
     );
@@ -77,7 +82,7 @@ export default R.compose(
       disabled: state.auth.formDisabled,
       error: state.auth.error,
     }),
-    { resetPassword },
+    {resetPassword},
   ),
   injectIntl,
   fields({

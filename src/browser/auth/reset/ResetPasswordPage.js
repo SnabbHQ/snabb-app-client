@@ -1,72 +1,64 @@
 /* @flow */
-import React from 'react';
 import type { State } from '../../../common/types';
+import authMessages from '../../../common/auth/authMessages';
+import React from 'react';
 import ResetPasswordFields from './ResetPasswordFields';
 import ResetPasswordSent from './ResetPasswordSent';
 import R from 'ramda';
 import FormError from '../FormError';
 import linksMessages from '../../../common/app/linksMessages';
-import authMessages from '../../../common/auth/authMessages';
-import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
-import { Message, Block, Image, Title, Loading, Box, Fixed, Text } from '../../app/components';
+import { Full, Title, Loading, Box, Text } from '../../app/components';
 
 // $FlowFixMe
 const logo = require('../../../common/app/images/logoBlack.svg');
 
 
-const ResetPasswordField = (props) => (
+const ResetPasswordField = ({ disabled, intl }) => (
   <Box>
-    <FormError />
-    { props.disabled &&
-    <Loading>
-      {message => <Message>{message}</Message>}
-    </Loading>
-    }
     <Text
       align="center"
       display="block"
       size={2}
     >
-      {props.intl.formatMessage(authMessages.resetPassword)}
+      {intl.formatMessage(authMessages.resetPassword)}
     </Text>
     <Text
       align="center"
       display="block"
     >
-      {props.intl.formatMessage(authMessages.resetPasswordDescription)}
+      {intl.formatMessage(authMessages.resetPasswordDescription)}
     </Text>
     <ResetPasswordFields />
   </Box>
 );
 
 const ResetPasswordPage = ({ disabled, intl, authed, resetPasswordSent }) => (
-    <Fixed top bottom left right>
-      <Box display="flex" height="80%" alignItems="center" justifyContent="center">
-        <Box width="350px">
-          <Title message={linksMessages.resetPassword} />
-          <Block>
-            <Box marginBottom={1}>
-              <Image
-                alt="Snabb logo"
-                height={100}
-                width="100%"
-                src={logo}
-              />
-            </Box>
-            { resetPasswordSent ?
-              <ResetPasswordSent />
-              :
-              <ResetPasswordField
-                disabled={disabled}
-                intl={intl}
-              />
-            }
-          </Block>
-        </Box>
+  <Full>
+    <Box width={20}>
+      <Title message={linksMessages.resetPassword} />
+      <Box display="flex" flexDirection="column" padding={1}>
+        <Text
+          align="center"
+          display="block"
+          size={4}
+          marginBottom={1}
+          bold
+        >
+          Snabb
+        </Text>
+        { resetPasswordSent ?
+          <ResetPasswordSent />
+          :
+          <ResetPasswordField
+            disabled={disabled}
+            intl={intl}
+          />
+        }
       </Box>
-    </Fixed>
+    </Box>
+  </Full>
 );
 
 ResetPasswordPage.propTypes = {
