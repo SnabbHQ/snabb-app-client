@@ -10,32 +10,33 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+const validateFields = (validate, fields) => validate(fields)
+  .prop('name')
+  .required()
+  .prop('phone')
+  .required()
+  .phone()
+  .prop('email')
+  .required()
+  .email()
+  .promise;
+
 /**
- * The sessionToken is provided when Hot Loading.
- *
- * With the sessionToken, the server is called with the data to update
- * If successful, get the profile so that the screen is updated with
- * the data as now persisted on the server
- *
+ * Update the user's profile information.
+ * @param action$
+ * @param userRepository
+ * @param validate
  */
-const updateProfile = (action$: any, { backendFactory, appAuthToken, validate }: Deps) =>
+const updateProfile = (action$: any, { userRepository, validate }: Deps) =>
   action$.ofType('PROFILE_UPDATE')
-    .map(action => action.payload.data)
-    .switchMap((data) =>
-      Observable.fromPromise(appAuthToken.getSessionToken(data.sessionToken))
-        .switchMap(Observable.fromPromise(backendFactory.updateProfile(data.userId, {
-            name: data.newUserData.name,
-            lastName: data.newUserData.lastName,
-            phoneNumber: data.newUserData.phoneNumber,
-            email: data.newUserData.email,
-            thumbnail: data.newUserData.thumbnail,
-          }),
-        ))
+    .map(action => action.payload.options)
+    .mergeMap((options) => {
+      const { email, name, phone } = options;
+      return Observable.fromPromise(validateFields(validate, { name, email, phone }))
+        .switchMap(() => userRepository.updateProfile(options))
         .map(profileUpdateSuccess)
-        .catch(error => Observable.of(
-          profileUpdateFailure(error),
-        )),
-    );
+        .catch(error => Observable.of(profileUpdateFailure(error)));
+    });
 
 export default updateProfile;
 

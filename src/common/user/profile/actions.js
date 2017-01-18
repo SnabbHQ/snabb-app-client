@@ -18,14 +18,13 @@ export const getProfileFail = (error: Error): Action => ({
   payload: { error },
 });
 
-export function updateUserProfile(userId, newUserData, sessionToken) {
+export function updateUserProfile(userId, newUserData) {
   return {
     type: 'PROFILE_UPDATE',
     payload: {
       data: {
         userId,
         newUserData,
-        sessionToken,
       },
     },
   };

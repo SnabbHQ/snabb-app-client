@@ -14,21 +14,13 @@ import 'rxjs/add/operator/catch';
 /**
  * Epic fetching the user profile when the action GET_PROFILE gets fired.
  *
- * In order to do so, this epic will fetch the auth sessionToken previously in order to communicate
- * with the server.
- *
  * @return {Observable<R|I>}
  */
-const getProfile = (action$: any, { backendFactory, appAuthToken }: Deps) =>
+const getProfile = (action$: any, { userRepository }: Deps) =>
   action$.ofType('GET_PROFILE')
     .mergeMap(() =>
-      Observable.fromPromise(appAuthToken.getSessionToken())
-        .switchMap(Observable.fromPromise(backendFactory.getProfile()))
+      userRepository.getProfile()
         .map(getProfileSuccess)
-        .catch(error => {
-          console.log(error);
-          return Observable.of(getProfileFail(error));
-        }),
-    );
+        .catch(error => Observable.of(getProfileFail(error))));
 
 export default getProfile;
