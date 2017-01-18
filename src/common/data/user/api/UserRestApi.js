@@ -1,7 +1,9 @@
 // @flow
-import type { Profile } from '../../../types';
+import type {Profile} from '../../../types';
 import SnabbApi from '../../../lib/SnabbApi';
-import { Observable } from 'rxjs/Observable';
+import camelCaseKeys from 'camelcase-keys';
+import snakeCaseKeys from  'snakecase-keys';
+import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
@@ -17,18 +19,16 @@ export default class UserRestApi {
 
   getProfile() {
     return Observable.fromPromise(this.snabbApi.getProfile())
-                      map((s) => );
+      .map(camelCaseKeys);
   }
 
   updateProfile(data: Profile) {
-    return Observable.fromPromise(this.snabbApi.updateProfile(data));
+    return Observable.fromPromise(snakeCaseKeys(data))
+      .switchMap(this.snabbApi.updateProfile(data))
+      .map(camelCaseKeys);
   }
 
   resetPassword(email: string) {
     return Observable.fromPromise(this.snabbApi.getProfile());
-  }
-
-  snakeToCamel(s){
-    return s.replace(/(\-\w)/g, function(m){return m[1].toUpperCase();});
   }
 }
