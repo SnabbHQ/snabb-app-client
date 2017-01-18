@@ -17,15 +17,21 @@ const reducer = (
   switch (action.type) {
 
     case 'PROFILE_UPDATE': {
-      return { ...state };
+      return { ...state, formDisabled: true, isFetching: true, error: null };
     }
 
     case 'PROFILE_UPDATE_SUCCESS': {
-      return { ...state };
+      return { ...state, formDisabled: false, isFetching: false, error: null };
     }
 
     case 'PROFILE_UPDATE_FAIL': {
-      return { ...state };
+      return {
+        ...state, formDisabled: false, isFetching: false, error: action.payload.error,
+      };
+    }
+
+    case 'FIELDS_SET_FIELD': {
+      return { ...state, formDisabled: false, isFetching: false, error: null };
     }
 
     default:

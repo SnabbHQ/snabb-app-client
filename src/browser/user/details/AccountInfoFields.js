@@ -15,7 +15,7 @@ type AccountInfoFieldsProps = {
   profile: Profile
 }
 
-const AccountInfoFields = ({ fields, intl, profile, updateProfile }: AccountInfoFieldsProps) => {
+const AccountInfoFields = ({ disabled, error, fields, intl, profile, updateProfile }: AccountInfoFieldsProps) => {
 
   const onFormSubmit = () => {
     updateUserProfile();
@@ -30,37 +30,34 @@ const AccountInfoFields = ({ fields, intl, profile, updateProfile }: AccountInfo
       <FieldHeader titleSize={2} title={linksMessages.account} />
       <Form onSubmit={onFormSubmit}>
         <Input
-          name="Business Name"
+          field={fields.companyName}
           label={intl.formatMessage(inputMessages.name)}
           maxLength={100}
           placeholder={intl.formatMessage(inputMessages.name)}
-          value={profile.companyName}
+          defaultValue={profile.companyName}
           type="text"
         />
         <Input
-          name="Email"
+          field={fields.email}
           label={intl.formatMessage(inputMessages.email)}
           maxLength={100}
           placeholder={intl.formatMessage(inputMessages.emailPlaceholder)}
-          value={profile.email}
+          defaultValue={profile.email}
           type="text"
         />
         <Input
-          name="Phone"
+          field={fields.phone}
           label={intl.formatMessage(inputMessages.phone)}
           maxLength={100}
           placeholder={intl.formatMessage(inputMessages.phonePlaceholder)}
-          value={profile.phone}
+          defaultValue={profile.phone}
           type="text"
         />
       </Form>
       <Box display="flex" marginVertical={1} >
         <Space auto />
-        <Button gray paddingHorizontal={2} >
-          <FormattedMessage {...buttonMessages.cancel} />
-        </Button>
         <Space x={1} />
-        <Button accent paddingHorizontal={2} >
+        <Button accent paddingHorizontal={2} onClick={updateUserProfile} disabled={disabled}>
           <FormattedMessage {...buttonMessages.save} />
         </Button>
       </Box>
@@ -71,14 +68,16 @@ const AccountInfoFields = ({ fields, intl, profile, updateProfile }: AccountInfo
 export default R.compose(
   connect(
     (state: State) => ({
+      disabled: state.user.formDisabled,
       profile: state.user.profile,
+      error: state.auth.error,
     }),
     { updateProfile },
   ),
   injectIntl,
   fields({
     path: 'login',
-    fields: ['email', 'password'],
+    fields: ['companyName', 'email', 'phone'],
   }),
   focus('error'),
 )(AccountInfoFields);
