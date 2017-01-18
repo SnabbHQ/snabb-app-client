@@ -7,14 +7,9 @@ import inputMessages from '../../../common/app/inputMessages';
 import linksMessages from '../../../common/app/linksMessages';
 import {updateProfile} from '../../../common/user/profile/actions';
 import {connect} from 'react-redux';
-import {FormattedMessage, injectIntl} from 'react-intl';
+import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {fields} from '../../../common/lib/redux-fields';
 import {FieldHeader, Form, Button, Space, Input, focus, Box} from '../../app/components';
-
-type AccountInfoFieldsProps = {
-  profile: Profile
-}
-
 
 class AccountInfoFields extends React.Component {
 
@@ -26,8 +21,6 @@ class AccountInfoFields extends React.Component {
   }
 
   componentWillMount() {
-    console.log('hola')
-
     const { profile, fields } = this.props;
     fields['companyName'].value = profile.companyName;
     fields['email'].value = profile.email;
@@ -89,6 +82,15 @@ class AccountInfoFields extends React.Component {
     )
   }
 }
+
+AccountInfoFields.propTypes = {
+  disabled: React.PropTypes.bool.isRequired,
+  error: React.PropTypes.object.isRequired,
+  fields: React.PropTypes.object.isRequired,
+  intl: intlShape.isRequired,
+  profile: React.PropTypes.object.isRequired,
+  updateProfile: React.PropTypes.func.isRequired
+};
 
 export default R.compose(
   connect(
