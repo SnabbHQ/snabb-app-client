@@ -20,18 +20,25 @@ export type Delivery = {
   id: string,
 };
 
-export type Phone = {
-  number: string
-}
+export type UserLang =
+  'en'
+    | 'es'
+    | 'sv'
+  ;
 
 export type Profile = {
-  profileId: string,
-  name: ?string,
-  lastName: ?string,
-  phone: Phone,
+  companyName: string,
+  createdAt: number,
   email: string,
-  thumbnail: ?string,
-  emailVerified: boolean,
+  firstName?: string
+  lastName?: string,
+  phone: string,
+  profileId: string,
+  sendEmailNotifications: boolean,
+  sendSmsNotifications: boolean,
+  updatedAt: number,
+  userLang: UserLang,
+  verified: boolean,
 };
 
 export type User = {

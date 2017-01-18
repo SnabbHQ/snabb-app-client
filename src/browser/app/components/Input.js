@@ -124,7 +124,7 @@ const Input: Styled<InputProps> = ({
 }) => (
   <Box {...props} marginBottom={marginBottom}>
     {label &&
-    <Text bold display="block" size={size}>
+    <Text display="block" size={size}>
       {label.toUpperCase()}
     </Text>
     }

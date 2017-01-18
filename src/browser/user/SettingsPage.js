@@ -32,7 +32,6 @@ const ProfileLink = ({
   <Link
     activeColor="black"
     display="block"
-    bold
     color="gray"
     exactly={exactly}
     marginVertical={marginVertical}

@@ -1,5 +1,5 @@
 /* @flow */
-import type { State } from '../../../common/types';
+import type { State, Profile } from '../../../common/types';
 import R from 'ramda';
 import React from 'react';
 import buttonMessages from '../../../common/app/buttonsMessages';
@@ -9,7 +9,11 @@ import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { FieldHeader, Button, Space, Input, Box } from '../../app/components';
 
-const AccountInfoFields = ({ profile, intl }) => (
+type AccountInfoFieldsProps = {
+  profile: Profile
+}
+
+const AccountInfoFields = ({ profile, intl }: AccountInfoFieldsProps) => (
   <Box>
     <FieldHeader titleSize={2} title={linksMessages.account} />
     <Input
@@ -17,6 +21,7 @@ const AccountInfoFields = ({ profile, intl }) => (
       label={intl.formatMessage(inputMessages.name)}
       maxLength={100}
       placeholder={intl.formatMessage(inputMessages.name)}
+      value={profile.companyName}
       type="text"
     />
     <Input
@@ -24,6 +29,7 @@ const AccountInfoFields = ({ profile, intl }) => (
       label={intl.formatMessage(inputMessages.email)}
       maxLength={100}
       placeholder={intl.formatMessage(inputMessages.emailPlaceholder)}
+      value={profile.email}
       type="text"
     />
     <Input
@@ -31,6 +37,7 @@ const AccountInfoFields = ({ profile, intl }) => (
       label={intl.formatMessage(inputMessages.phone)}
       maxLength={100}
       placeholder={intl.formatMessage(inputMessages.phonePlaceholder)}
+      value={profile.phone}
       type="text"
     />
     <Box display="flex" marginVertical={1}>
