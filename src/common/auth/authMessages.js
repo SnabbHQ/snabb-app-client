@@ -39,8 +39,7 @@ const authMessages = defineMessages({
     id: 'auth.reset.resetPasswordSent',
   },
   resetPasswordSentDesc: {
-    defaultMessage: 'Check your email for a link to reset your password. If it doesn\'t appear ' +
-    'within a few minutes, check your spam folder.',
+    defaultMessage: 'Your instructions have been sent. Please check your email.',
     id: 'auth.reset.resetPasswordsSentDesc',
   },
   termsAndPrivacy: {
