@@ -20,6 +20,11 @@ class AccountInfoFields extends React.Component {
     this.updateUserProfile = this.updateUserProfile.bind(this);
   }
 
+  componentWillUnmount() {
+    const { fields } = this.props;
+    fields.$reset();
+  }
+
   onFormSubmit() {
     this.updateUserProfile();
   };
