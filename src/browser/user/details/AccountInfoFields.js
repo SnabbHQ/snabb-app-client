@@ -46,7 +46,7 @@ class AccountInfoFields extends React.Component {
   };
 
   render() {
-    const {disabled, error, fields, intl} = this.props;
+    const {disabled, error, fields, intl, isFetching} = this.props;
 
     return (
       <Box>
@@ -81,7 +81,7 @@ class AccountInfoFields extends React.Component {
           <FormError
             error={error}
           />
-          {disabled &&
+          {isFetching &&
           <Loading marginVertical={1} />
           }
         </CenteredBox>
@@ -101,6 +101,7 @@ AccountInfoFields.propTypes = {
   error: React.PropTypes.object,
   fields: React.PropTypes.object.isRequired,
   intl: intlShape.isRequired,
+  isFetching: intlShape.object,
   profile: React.PropTypes.object.isRequired,
   updateProfile: React.PropTypes.func.isRequired
 };
@@ -109,6 +110,7 @@ export default R.compose(
   connect(
     (state: State) => ({
       disabled: state.user.formDisabled,
+      isFetching: state.user.isFetching,
       profile: state.user.profile,
       error: state.user.error,
     }),
