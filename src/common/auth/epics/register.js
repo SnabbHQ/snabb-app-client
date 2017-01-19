@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 const validateFields = (validate, fields) => validate(fields)
-  .prop('name')
+  .prop('companyName')
   .required()
   .prop('phone')
   .required()
@@ -28,10 +28,10 @@ const login = (action$: any, { authRepository, userRepository, validate }: Deps)
   action$.ofType('REGISTER')
     .map(action => action.payload.options)
     .mergeMap((options) => {
-      const { name, email, phone, password } = options;
-      return Observable.fromPromise(validateFields(validate, { name, phone, email, password }))
+      const { companyName, email, phone, password } = options;
+      return Observable.fromPromise(validateFields(validate, { companyName, phone, email, password }))
+        .switchMap(() => userRepository.register({companyName, email, phone,  password }))
         .switchMap(() => authRepository.auth(email, password))
-        .switchMap(() => userRepository.getProfile())
         .map(registerSuccess)
         .catch(error => Observable.of(registerFail(error)));
     });

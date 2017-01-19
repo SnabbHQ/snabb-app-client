@@ -41,6 +41,13 @@ export type Profile = {
   verified: boolean,
 };
 
+export type Register = {
+  companyName: string,
+  email: string,
+  phone: string,
+  password: string,
+};
+
 export type User = {
   profile: Profile,
 };

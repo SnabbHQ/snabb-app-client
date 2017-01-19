@@ -1,7 +1,8 @@
-import type { Profile } from '../../../types';
+import type { Profile, Register } from '../../../types';
 
 export default class UserDataStore {
   getProfile() {}
-  updateProfile(profileId: string, data: Profile) {}
+  register(data: Register) {}
   resetPassword(email: string) {}
+  updateProfile(profileId: string, data: Profile) {}
 }

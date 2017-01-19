@@ -19,7 +19,7 @@ class RegisterFields extends React.Component {
   register = () => {
     const { fields, register } = this.props;
     register('password', fields.$values());
-  }
+  };
 
   render() {
     const { disabled, error, fields, intl } = this.props;
@@ -28,7 +28,7 @@ class RegisterFields extends React.Component {
       <Form onSubmit={this.onFormSubmit}>
         <Box>
           <Input
-            field={fields.name}
+            field={fields.companyName}
             disabled={disabled}
             error={error}
             placeholder={intl.formatMessage(inputMessages.namePlaceholder)}
@@ -100,8 +100,8 @@ export default R.compose(
   ),
   injectIntl,
   fields({
-    path: ['register', 'auth'],
-    fields: ['name', 'phone', 'email', 'password'],
+    path: ['register'],
+    fields: ['companyName', 'phone', 'email', 'password'],
   }),
   focus('error'),
 )(RegisterFields);

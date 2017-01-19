@@ -4,7 +4,7 @@ import { defineMessages } from 'react-intl';
 const errorMessages = defineMessages({
   required: {
     defaultMessage: `Please fill out the {prop, select,
-      name {name}
+      companyName {company name}
       phone {phone}
       email {email}
       password {password}

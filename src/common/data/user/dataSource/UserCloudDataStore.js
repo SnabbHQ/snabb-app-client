@@ -1,5 +1,5 @@
 // @flow
-import type { Profile } from '../../../types';
+import type { Profile, Register } from '../../../types';
 import UserDataStore from './UserDataStore';
 import UserRestApi from '../api/UserRestApi';
 
@@ -16,12 +16,16 @@ class UserCloudDataStore extends UserDataStore {
     return this.userRestApi.getProfile();
   }
 
-  updateProfile(profileId: string, data: Profile) {
-    return this.userRestApi.updateProfile(profileId, data);
+  register(data: Register) {
+    return this.userRestApi.register(data);
   }
 
   resetPassword(email: string) {
     return this.userRestApi.resetPassword(email);
+  }
+
+  updateProfile(profileId: string, data: Profile) {
+    return this.userRestApi.updateProfile(profileId, data);
   }
 }
 

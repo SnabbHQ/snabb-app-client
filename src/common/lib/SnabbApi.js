@@ -1,5 +1,6 @@
 // @flow
 // https://github.com/github/fetch/issues/275#issuecomment-181784694
+import type {Profile, Register} from '../types';
 import 'whatwg-fetch';
 
 /**
@@ -65,19 +66,19 @@ class SnabbApi {
   /**
    * ### register
    */
-  async register(data: Object) {
-    return await this.fetchMock({
+  async register(data: Register) {
+    return await fetch(`${this.API_BASE_URL}/user/register`, {
       method: 'POST',
-      url: '/account/register',
-      body: data,
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: this.encodeBody(data),
     })
-      .then((res) => {
+      .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
-          return res.json;
-        } else {
-          throw res.json;
+          return json;
         }
-      })
+
+        throw (json);
+      }))
       .catch((error) => {
         throw (error);
       });
