@@ -20,13 +20,6 @@ class AccountInfoFields extends React.Component {
     this.updateUserProfile = this.updateUserProfile.bind(this);
   }
 
-  componentWillMount() {
-    const { profile, fields } = this.props;
-    fields['companyName'].value = profile.companyName;
-    fields['email'].value = profile.email;
-    fields['phone'].value = profile.phone;
-  }
-
   onFormSubmit() {
     this.updateUserProfile();
   };
@@ -99,8 +92,14 @@ export default R.compose(
   ),
   injectIntl,
   fields({
-    path: 'account',
+    path: 'account/info',
     fields: ['companyName', 'email', 'phone'],
+    getInitialState: (props) => ({
+      // We can use props of course.
+      companyName: props.profile.companyName,
+      email: props.profile.email,
+      phone: props.profile.phone
+    }),
   }),
   focus('error'),
 )(AccountInfoFields);
