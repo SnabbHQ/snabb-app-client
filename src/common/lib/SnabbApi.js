@@ -241,8 +241,6 @@ class SnabbApi {
       formBody.push(`${encodedKey}=${encodedValue}`);
     }
 
-    console.log(data);
-
     return formBody.join('&');
   }
 }

@@ -62,6 +62,7 @@ class LoginFields extends React.Component {
 
 LoginFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
+  error: React.PropTypes.object,
   fields: React.PropTypes.object.isRequired,
   intl: intlShape.isRequired,
   login: React.PropTypes.func.isRequired,

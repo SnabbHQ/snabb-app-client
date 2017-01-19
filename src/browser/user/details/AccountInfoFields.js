@@ -85,7 +85,7 @@ class AccountInfoFields extends React.Component {
 
 AccountInfoFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
-  error: React.PropTypes.object.isRequired,
+  error: React.PropTypes.object,
   fields: React.PropTypes.object.isRequired,
   intl: intlShape.isRequired,
   profile: React.PropTypes.object.isRequired,

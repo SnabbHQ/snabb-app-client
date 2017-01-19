@@ -1477,13 +1477,6 @@ camelcase-keys@^2.0.0:
     camelcase "^2.0.0"
     map-obj "^1.0.0"
 
-camelcase-keys@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/camelcase-keys/-/camelcase-keys-4.0.0.tgz#4f8bbe2762bde2489c1561366d216931ac4a491b"
-  dependencies:
-    camelcase "^3.0.0"
-    map-obj "^2.0.0"
-
 camelcase@^1.0.2:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-1.2.1.tgz#9bb5304d2e0b56698b2c758b08a3eaa9daa58a39"
@@ -1929,6 +1922,16 @@ content-type-parser@^1.0.1:
 content-type@~1.0.1, content-type@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.2.tgz#b7d113aee7a8dd27bd21133c4dc2529df1721eed"
+
+convert-keys@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/convert-keys/-/convert-keys-1.2.0.tgz#72789b645d510c8ea4ca0ac4a241258394b0f031"
+  dependencies:
+    lodash.camelcase "^4.3.0"
+    lodash.forown "^4.4.0"
+    lodash.isarray "^4.0.0"
+    lodash.isplainobject "^4.0.6"
+    lodash.snakecase "^4.1.1"
 
 convert-source-map@^1.1.0, convert-source-map@^1.1.1:
   version "1.3.0"
@@ -5279,6 +5282,10 @@ lodash.foreach@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.foreach/-/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
 
+lodash.forown@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.forown/-/lodash.forown-4.4.0.tgz#85115cf04f73ef966eced52511d3893cc46683af"
+
 lodash.get@^4.3.0, lodash.get@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
@@ -5295,6 +5302,10 @@ lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
 
+lodash.isarray@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-4.0.0.tgz#2aca496b28c4ca6d726715313590c02e6ea34403"
+
 lodash.isempty@^4.2.1:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.isempty/-/lodash.isempty-4.4.0.tgz#6f86cbedd8be4ec987be9aaf33c9684db1b31e7e"
@@ -5303,7 +5314,7 @@ lodash.isequal@^4.0.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.4.0.tgz#6295768e98e14dc15ce8d362ef6340db82852031"
 
-lodash.isplainobject@^4.0.4:
+lodash.isplainobject@^4.0.4, lodash.isplainobject@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
 
@@ -5366,6 +5377,10 @@ lodash.reject@^4.4.0:
 lodash.restparam@^3.0.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
+
+lodash.snakecase@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.snakecase/-/lodash.snakecase-4.1.1.tgz#39d714a35357147837aefd64b5dcbb16becd8f8d"
 
 lodash.some@^4.4.0:
   version "4.6.0"
@@ -5467,10 +5482,6 @@ map-cache@^0.2.0:
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
-
-map-obj@^2.0.0, map-obj@~2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-2.0.0.tgz#a65cd29087a92598b8791257a523e021222ac1f9"
 
 map-stream@~0.1.0:
   version "0.1.0"
@@ -7640,13 +7651,6 @@ slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
 
-snakecase-keys@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/snakecase-keys/-/snakecase-keys-1.1.0.tgz#1adb17ddf7531c210cc293336f93d0ef1f8e73b8"
-  dependencies:
-    map-obj "~2.0.0"
-    to-snake-case "~0.1.2"
-
 sntp@1.x.x:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
@@ -8128,22 +8132,6 @@ to-arraybuffer@^1.0.0:
 to-fast-properties@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
-
-to-no-case@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/to-no-case/-/to-no-case-0.1.1.tgz#cf33c70e0f28168d95e4159abf150e8c542ef9fe"
-
-to-snake-case@~0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/to-snake-case/-/to-snake-case-0.1.2.tgz#d047b6dbf048dae1bdc260b3c296f54ca34eed7c"
-  dependencies:
-    to-space-case "0.1.2"
-
-to-space-case@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/to-space-case/-/to-space-case-0.1.2.tgz#9a66be3ebe53f2779f687f0262effd1fc5b6d15e"
-  dependencies:
-    to-no-case "0.1.1"
 
 topo@1.x.x:
   version "1.1.0"
