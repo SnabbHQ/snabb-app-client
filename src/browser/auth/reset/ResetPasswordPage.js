@@ -5,7 +5,7 @@ import React from 'react';
 import ResetPasswordFields from './ResetPasswordFields';
 import ResetPasswordSent from './ResetPasswordSent';
 import R from 'ramda';
-import FormError from '../FormError';
+import FormError from '../../app/components/FormError';
 import linksMessages from '../../../common/app/linksMessages';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';

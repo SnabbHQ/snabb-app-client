@@ -8,8 +8,7 @@ import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {connect} from 'react-redux';
 import {fields} from '../../../common/lib/redux-fields';
 import {resetPassword} from '../../../common/auth/actions';
-import {Form, CenteredBox, focus, Button, Input, Box} from '../../app/components';
-import FormError from '../FormError';
+import {Form, CenteredBox, focus, Button, FormError, Input, Box} from '../../app/components';
 
 class ResetPasswordFields extends React.Component {
 
@@ -52,7 +51,9 @@ class ResetPasswordFields extends React.Component {
             placeholder={intl.formatMessage(inputMessages.emailPlaceholder)}
           />
           <CenteredBox>
-            <FormError />
+            <FormError
+              error={error}
+            />
             {disabled &&
             <Loading marginVertical={1} />
             }

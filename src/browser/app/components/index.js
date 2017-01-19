@@ -14,6 +14,7 @@ export { default as Fixed } from './Fixed';
 export { default as Full } from './Full';
 export { default as focus } from './focus';
 export { default as Form } from './Form';
+export { default as FormError } from './FormError';
 export { default as Heading } from './Heading';
 export { default as Image } from './Image';
 export { default as Input } from './Input';

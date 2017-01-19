@@ -8,8 +8,7 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { fields } from '../../../common/lib/redux-fields';
 import { register } from '../../../common/auth/actions';
-import { CenteredBox, Form, focus, Button, Input, Loading, Box } from '../../app/components';
-import FormError from '../FormError';
+import { CenteredBox, Form, focus, Button, Input, FormError, Loading, Box } from '../../app/components';
 
 class RegisterFields extends React.Component {
 
@@ -59,7 +58,9 @@ class RegisterFields extends React.Component {
             type="password"
           />
           <CenteredBox>
-            <FormError />
+            <FormError
+              error={error}
+            />
             {disabled &&
             <Loading marginVertical={1} />
             }

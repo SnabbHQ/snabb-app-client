@@ -9,7 +9,18 @@ import {updateProfile} from '../../../common/user/profile/actions';
 import {connect} from 'react-redux';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {fields} from '../../../common/lib/redux-fields';
-import {FieldHeader, Form, Button, Space, Input, focus, Box} from '../../app/components';
+import {
+  CenteredBox,
+  FieldHeader,
+  Loading,
+  Form,
+  FormError,
+  Button,
+  Space,
+  Input,
+  focus,
+  Box
+} from '../../app/components';
 
 class AccountInfoFields extends React.Component {
 
@@ -21,7 +32,7 @@ class AccountInfoFields extends React.Component {
   }
 
   componentWillUnmount() {
-    const { fields } = this.props;
+    const {fields} = this.props;
     fields.$reset();
   }
 
@@ -30,7 +41,7 @@ class AccountInfoFields extends React.Component {
   };
 
   updateUserProfile() {
-    const { fields, profile, updateProfile } = this.props;
+    const {fields, profile, updateProfile} = this.props;
     updateProfile(profile.profileId, fields.$values());
   };
 
@@ -66,6 +77,12 @@ class AccountInfoFields extends React.Component {
             type="text"
           />
         </Form>
+        <CenteredBox>
+          <FormError />
+          {disabled &&
+          <Loading marginVertical={1} />
+          }
+        </CenteredBox>
         <Box display="flex" marginVertical={1} >
           <Space auto />
           <Button accent paddingHorizontal={2} onClick={this.updateUserProfile} disabled={disabled} >
