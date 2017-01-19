@@ -7,7 +7,7 @@ import inputMessages from '../../../common/app/inputMessages';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {connect} from 'react-redux';
 import {fields} from '../../../common/lib/redux-fields';
-import {resetPassword} from '../../../common/auth/actions';
+import {resetPassword} from '../../../common/user/actions';
 import {Form, CenteredBox, focus, Button, FormError, Input, Box} from '../../app/components';
 
 class ResetPasswordFields extends React.Component {

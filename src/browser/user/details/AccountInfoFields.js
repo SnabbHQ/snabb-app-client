@@ -5,7 +5,7 @@ import React from 'react';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import inputMessages from '../../../common/app/inputMessages';
 import linksMessages from '../../../common/app/linksMessages';
-import {updateProfile} from '../../../common/user/profile/actions';
+import {updateProfile} from '../../../common/user/actions';
 import {connect} from 'react-redux';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {fields} from '../../../common/lib/redux-fields';

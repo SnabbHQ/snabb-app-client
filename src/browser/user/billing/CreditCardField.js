@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Box, FieldHeader, Button } from '../../app/components';
 import { FormattedMessage } from 'react-intl';
-import billingMessages from '../../../common/user/billing/billingMessages';
+import billingMessages from '../../../common/user/billingMessages';
 import CreditCardRow from './CreditCardRow';
 import NewCreditCard from './NewCreditCard';
 

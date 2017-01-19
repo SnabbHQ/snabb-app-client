@@ -1,5 +1,5 @@
 // @flow
-import type { Deps } from '../../../types';
+import type { Deps } from '../../types';
 
 import { getProfileSuccess, getProfileFail } from '../actions';
 

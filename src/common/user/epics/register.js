@@ -31,8 +31,9 @@ const login = (action$: any, { authRepository, userRepository, validate }: Deps)
       const { companyName, email, phone, password } = options;
       return Observable.fromPromise(validateFields(validate, { companyName, phone, email, password }))
         .switchMap(() => userRepository.register({companyName, email, phone,  password }))
-        .switchMap(() => authRepository.auth(email, password))
-        .map(registerSuccess)
+        .switchMap((profile) =>
+          authRepository.auth(email, password)
+          .map(() => registerSuccess(profile)))
         .catch(error => Observable.of(registerFail(error)));
     });
 

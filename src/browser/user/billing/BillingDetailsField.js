@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import buttonMessages from '../../../common/app/buttonsMessages';
-import billingMessages from '../../../common/user/billing/billingMessages';
+import billingMessages from '../../../common/user/billingMessages';
 import { FormattedMessage } from 'react-intl';
 import { Button, Input, FieldHeader, Box, Space } from '../../app/components';
 
