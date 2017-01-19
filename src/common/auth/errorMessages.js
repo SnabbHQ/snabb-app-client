@@ -23,6 +23,11 @@ const errorMessages = defineMessages({
     defaultMessage: 'The phone number must be in international format.',
     id: 'auth.error.phoneNotCorrect',
   },
+  countryNotSupported: {
+    defaultMessage: 'Sorry but we not yet available in that country. We are working hard towards that!',
+    id: 'auth.error.phoneNotCorrect',
+  },
+
   simplePassword: {
     defaultMessage: 'Password must contain at least {minLength} characters.',
     id: 'auth.error.simplePassword',
