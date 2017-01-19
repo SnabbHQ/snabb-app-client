@@ -2,10 +2,9 @@
 import type { State } from '../../../common/types';
 import authMessages from '../../../common/auth/authMessages';
 import React from 'react';
-import ResetPasswordFields from './ResetPasswordFields';
-import ResetPasswordSent from './ResetPasswordSent';
+import ForgotPasswordFields from './ForgotPasswordFields';
+import ForgotPasswordSent from './ForgotPasswordSent';
 import R from 'ramda';
-import FormError from '../../app/components/FormError';
 import linksMessages from '../../../common/app/linksMessages';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
@@ -15,29 +14,29 @@ import { Full, Title, Loading, Box, Text } from '../../app/components';
 const logo = require('../../../common/app/images/logoBlack.svg');
 
 
-const ResetPasswordField = ({ disabled, intl }) => (
+const ForgotPasswordField = ({ disabled, intl }) => (
   <Box>
     <Text
       align="center"
       display="block"
       size={2}
     >
-      {intl.formatMessage(authMessages.resetPassword)}
+      {intl.formatMessage(authMessages.forgotPassword)}
     </Text>
-    <ResetPasswordFields />
+    <ForgotPasswordFields />
     <Text
       align="center"
       display="block"
     >
-      {intl.formatMessage(authMessages.resetPasswordDescription)}
+      {intl.formatMessage(authMessages.forgotPasswordDescription)}
     </Text>
   </Box>
 );
 
-const ResetPasswordPage = ({ disabled, intl, authed, resetPasswordSent }) => (
+const ForgotPasswordPage = ({ disabled, intl, authed, forgotPasswordSent }) => (
   <Full>
     <Box width={20}>
-      <Title message={linksMessages.resetPassword} />
+      <Title message={linksMessages.forgotPassword} />
       <Box display="flex" flexDirection="column" padding={1}>
         <Text
           align="center"
@@ -48,10 +47,10 @@ const ResetPasswordPage = ({ disabled, intl, authed, resetPasswordSent }) => (
         >
           Snabb
         </Text>
-        { resetPasswordSent ?
-          <ResetPasswordSent />
+        { forgotPasswordSent ?
+          <ForgotPasswordSent />
           :
-          <ResetPasswordField
+          <ForgotPasswordField
             disabled={disabled}
             intl={intl}
           />
@@ -61,7 +60,7 @@ const ResetPasswordPage = ({ disabled, intl, authed, resetPasswordSent }) => (
   </Full>
 );
 
-ResetPasswordPage.propTypes = {
+ForgotPasswordPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
   location: React.PropTypes.object.isRequired,
@@ -72,8 +71,8 @@ export default R.compose(
     (state: State) => ({
       disabled: state.auth.formDisabled,
       authed: state.user.profile,
-      resetPasswordSent: state.auth.resetPasswordSent,
+      forgotPasswordSent: state.auth.forgotPasswordSent,
     }),
   ),
   injectIntl,
-)(ResetPasswordPage);
+)(ForgotPasswordPage);

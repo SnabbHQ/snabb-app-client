@@ -17,8 +17,8 @@ class UserDataRepository {
     return this.userDataStoreFactory.create().register(data);
   }
 
-  resetPassword(email: string) {
-    return this.userDataStoreFactory.createCloudDataStore().resetPassword(email);
+  forgotPassword(email: string) {
+    return this.userDataStoreFactory.createCloudDataStore().forgotPassword(email);
   }
 
   updateProfile(profileId: string, data: Profile) {

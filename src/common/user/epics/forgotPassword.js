@@ -1,7 +1,7 @@
 // @flow
 import type { Deps } from '../../types';
 
-import { resetPasswordSuccess, resetPasswordFail } from '../actions';
+import { forgotPasswordSuccess, forgotPasswordFail } from '../actions';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -16,15 +16,15 @@ const validateEmail = (validate, fields) => validate(fields)
   .email()
   .promise;
 
-const resetPassword = (action$: any, { userRepository, validate }: Deps) =>
-  action$.ofType('RESET_PASSWORD')
+const forgotPassword = (action$: any, { userRepository, validate }: Deps) =>
+  action$.ofType('FORGOT_PASSWORD')
     .map(action => action.payload.options)
     .mergeMap((options) => {
       const { email } = options;
       return Observable.fromPromise(validateEmail(validate, { email }))
-        .switchMap(() => userRepository.resetPassword(email))
-        .map(resetPasswordSuccess)
-        .catch(error => Observable.of(resetPasswordFail(error)));
+        .switchMap(() => userRepository.forgotPassword(email))
+        .map(forgotPasswordSuccess)
+        .catch(error => Observable.of(forgotPasswordFail(error)));
     });
 
-export default resetPassword;
+export default forgotPassword;

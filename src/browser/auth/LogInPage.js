@@ -61,7 +61,7 @@ const LogInPage = ({ location, authed, resetAuthState }) => {
                 backgroundColor="white"
                 color="accent"
                 size={0}
-                to="/resetPassword"
+                to="/forgotPassword"
               >
                 <FormattedMessage {...authMessages.passwordForgotten} />
               </Link>

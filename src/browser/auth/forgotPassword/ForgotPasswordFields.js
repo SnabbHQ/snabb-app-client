@@ -7,10 +7,10 @@ import inputMessages from '../../../common/app/inputMessages';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {connect} from 'react-redux';
 import {fields} from '../../../common/lib/redux-fields';
-import {resetPassword} from '../../../common/user/actions';
-import {Form, CenteredBox, focus, Button, FormError, Input, Box} from '../../app/components';
+import {forgotPassword} from '../../../common/user/actions';
+import {Form, Loading, CenteredBox, focus, Button, FormError, Input, Box} from '../../app/components';
 
-class ResetPasswordFields extends React.Component {
+class ForgotPasswordFields extends React.Component {
 
   constructor(props: P, context: any) {
     super(props, context);
@@ -21,16 +21,16 @@ class ResetPasswordFields extends React.Component {
     };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.resetPassword = this.resetPassword.bind(this);
+    this.forgotPassword = this.forgotPassword.bind(this);
   }
 
   onFormSubmit = () => {
-    this.resetPassword();
+    this.forgotPassword();
   };
 
-  resetPassword() {
-    const { fields, resetPassword } = this.props;
-    resetPassword(fields.$values());
+  forgotPassword() {
+    const { fields, forgotPassword } = this.props;
+    forgotPassword(fields.$values());
     this.setState({
       disabled: false,
       recoveryEmailSent: true,
@@ -59,8 +59,8 @@ class ResetPasswordFields extends React.Component {
             }
           </CenteredBox>
           <CenteredBox>
-            <Button width={20} size={1} accent onClick={this.resetPassword} disabled={disabled} align="center" >
-              <FormattedMessage {...buttonsMessages.resetPassword} />
+            <Button width={20} size={1} accent onClick={this.forgotPassword} disabled={disabled} align="center" >
+              <FormattedMessage {...buttonsMessages.forgotPassword} />
             </Button>
           </CenteredBox>
         </Box>
@@ -70,11 +70,11 @@ class ResetPasswordFields extends React.Component {
 }
 
 
-ResetPasswordFields.propTypes = {
+ForgotPasswordFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   fields: React.PropTypes.object.isRequired,
   intl: intlShape.isRequired,
-  resetPassword: React.PropTypes.func.isRequired,
+  forgotPassword: React.PropTypes.func.isRequired,
 };
 
 export default R.compose(
@@ -83,12 +83,12 @@ export default R.compose(
       disabled: state.auth.formDisabled,
       error: state.auth.error,
     }),
-    {resetPassword},
+    {forgotPassword},
   ),
   injectIntl,
   fields({
-    path: 'resetPassword',
+    path: 'forgotPassword',
     fields: ['email'],
   }),
   focus('error'),
-)(ResetPasswordFields);
+)(ForgotPasswordFields);

@@ -53,7 +53,7 @@
       "show_password": "Show Password"
     },
     "ForgotPassword": {
-      "reset_password": "Reset password"
+      "FORGOT_PASSWORD": "Reset password"
     },
     "Login": {
       "login": "Log in"
@@ -107,7 +107,7 @@
       "show_password": "Mostrar Contraseña"
     },
     "ForgotPassword": {
-      "reset_password": "Restablecer la contraseña"
+      "FORGOT_PASSWORD": "Restablecer la contraseña"
     },
     "Login": {
       "login": "Iniciar sesión"

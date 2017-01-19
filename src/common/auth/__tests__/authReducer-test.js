@@ -166,7 +166,7 @@ describe('authReducer', () => {
     });
   });
   /**
-   * ### The user wants to reset their password
+   * ### The user wants to forgotPassword their password
    *
    */
   describe('FORGOT_PASSWORD', () => {

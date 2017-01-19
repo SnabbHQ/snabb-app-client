@@ -68,9 +68,9 @@ const {
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
 
-  RESET_PASSWORD_REQUEST,
-  RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILURE,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAILURE,
 } = require('../../.././constants').default;
 
 /**
@@ -158,18 +158,18 @@ describe('authActions', () => {
       payload: error });
   });
 
-  it('should set resetPasswordRequest', () => {
-    expect(actions.resetPasswordRequest()).toEqual({ type: RESET_PASSWORD_REQUEST });
+  it('should set forgotPasswordRequest', () => {
+    expect(actions.forgotPasswordRequest()).toEqual({ type: FORGOT_PASSWORD_REQUEST });
   });
 
-  it('should set resetPasswordSuccess', () => {
-    expect(actions.resetPasswordSuccess()).toEqual({ type: RESET_PASSWORD_SUCCESS });
+  it('should set forgotPasswordSuccess', () => {
+    expect(actions.forgotPasswordSuccess()).toEqual({ type: FORGOT_PASSWORD_SUCCESS });
   });
 
-  it('should set resetPasswordFailure', () => {
+  it('should set forgotPasswordFailure', () => {
     const error = { error: 'thisistheerror' };
-    expect(actions.resetPasswordFailure(error)).toEqual({ type:
-                                                         RESET_PASSWORD_FAILURE,
+    expect(actions.forgotPasswordFailure(error)).toEqual({ type:
+                                                         FORGOT_PASSWORD_FAILURE,
       payload: error });
   });
 
@@ -263,16 +263,16 @@ describe('authActions', () => {
       });
   });
 
-  it('should resetPassword', () => {
+  it('should forgotPassword', () => {
     const expectedActions = [
-      { type: RESET_PASSWORD_REQUEST },
+      { type: FORGOT_PASSWORD_REQUEST },
       { type: LOGIN },
-      { type: RESET_PASSWORD_SUCCESS },
+      { type: FORGOT_PASSWORD_SUCCESS },
     ];
 
     const store = mockStore({});
 
-    return store.dispatch(actions.resetPassword('email'))
+    return store.dispatch(actions.forgotPassword('email'))
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });

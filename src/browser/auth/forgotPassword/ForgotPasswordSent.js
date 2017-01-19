@@ -9,7 +9,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link, CenteredBox, Title, Box, Text } from '../../app/components';
 import { resetAuthState } from '../../../common/auth/actions';
 
-const ResetPasswordSent = ({ intl, resetAuthState }) => {
+const ForgotPasswordSent = ({ intl, resetAuthState }) => {
 
   const backToLogin = () => {
     resetAuthState();
@@ -17,20 +17,20 @@ const ResetPasswordSent = ({ intl, resetAuthState }) => {
 
   return (
     <Box>
-      <Title message={authMessages.resetPasswordSent} />
+      <Title message={authMessages.forgotPasswordSent} />
       <Text
         bold
         align="center"
         display="block"
         size={2}
       >
-        {intl.formatMessage(authMessages.resetPassword)}
+        {intl.formatMessage(authMessages.forgotPassword)}
       </Text>
       <Text
         align="center"
         display="block"
       >
-        {intl.formatMessage(authMessages.resetPasswordSentDesc)}
+        {intl.formatMessage(authMessages.forgotPasswordSentDesc)}
       </Text>
       <CenteredBox>
         <Link
@@ -57,4 +57,4 @@ export default R.compose(
     { resetAuthState },
   ),
   injectIntl,
-)(ResetPasswordSent);
+)(ForgotPasswordSent);

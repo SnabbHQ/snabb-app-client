@@ -26,21 +26,21 @@ const authMessages = defineMessages({
     defaultMessage: 'Recovery email has been sent.',
     id: 'auth.reset.recoveryEmailSent',
   },
-  resetPassword: {
+  forgotPassword: {
     defaultMessage: 'Forgot password',
-    id: 'auth.reset.resetPassword',
+    id: 'auth.reset.forgotPassword',
   },
-  resetPasswordDescription: {
+  forgotPasswordDescription: {
     defaultMessage: 'You’ll receive an email with detailed instructions on how to set a new password.',
-    id: 'auth.reset.resetPasswordDescription',
+    id: 'auth.reset.forgotPasswordDescription',
   },
-  resetPasswordSent: {
+  forgotPasswordSent: {
     defaultMessage: 'Password Sent!',
-    id: 'auth.reset.resetPasswordSent',
+    id: 'auth.reset.forgotPasswordSent',
   },
-  resetPasswordSentDesc: {
+  forgotPasswordSentDesc: {
     defaultMessage: 'Your instructions have been sent. Please check your email.',
-    id: 'auth.reset.resetPasswordsSentDesc',
+    id: 'auth.reset.forgotPasswordsSentDesc',
   },
   termsAndPrivacy: {
     defaultMessage: 'By joining, you agree to Snabb\'s <a href="https://snabb.io/terms/">Terms & Conditions</a> and <a href="https://snabb.io/privacy">Privacy Policy</a>',

@@ -50,10 +50,10 @@ export default class Backend {
     return await this.response;
   }
   /**
-   * ### resetPassword
+   * ### forgotPassword
    * @returns {Object} response
    */
-  async resetPassword() {
+  async forgotPassword() {
     return await this.response;
   }
   /**

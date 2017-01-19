@@ -5,7 +5,7 @@ const initialState = {
   error: null,
   isValid: false,
   isFetching: false,
-  resetPasswordSent: false,
+  forgotPasswordSent: false,
 };
 
 
@@ -17,7 +17,7 @@ const reducer = (
     case 'LOG_IN':
     case 'REGISTER':
     case 'LOG_OUT':
-    case 'RESET_PASSWORD': {
+    case 'FORGOT_PASSWORD': {
       return { ...state, formDisabled: true, isFetching: true, error: null };
     }
 
@@ -27,10 +27,10 @@ const reducer = (
       return { ...state, formDisabled: false, isFetching: false, error: null };
     }
 
-    case 'RESET_PASSWORD_SUCCESS': {
+    case 'FORGOT_PASSWORD_SUCCESS': {
       return {
         ...state,
-        resetPasswordSent: true,
+        forgotPasswordSent: true,
         formDisabled: false,
         isFetching: false,
         error: null,
@@ -40,10 +40,10 @@ const reducer = (
     case 'LOG_IN_FAIL':
     case 'REGISTER_FAIL':
     case 'LOG_OUT_FAIL':
-    case 'RESET_PASSWORD_FAIL': {
+    case 'FORGOT_PASSWORD_FAIL': {
       return {
         ...state,
-        resetPasswordSent: false,
+        forgotPasswordSent: false,
         formDisabled: false,
         isFetching: false,
         error: action.payload.error,

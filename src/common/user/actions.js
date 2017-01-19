@@ -1,6 +1,20 @@
 /* @flow */
 import type { Action, Profile } from '../types';
 
+export const forgotPassword = (options?: string): Action => ({
+  type: 'FORGOT_PASSWORD',
+  payload: { options },
+});
+
+export const forgotPasswordSuccess = (): Action => ({
+  type: 'FORGOT_PASSWORD_SUCCESS',
+});
+
+export const forgotPasswordFail = (error: Error): Action => ({
+  type: 'FORGOT_PASSWORD_FAIL',
+  payload: { error },
+});
+
 export const getProfile = (): Action => ({
   type: 'GET_PROFILE',
 });
@@ -27,20 +41,6 @@ export const registerSuccess = (profile: Profile): Action => ({
 
 export const registerFail = (error: Error): Action => ({
   type: 'REGISTER_FAIL',
-  payload: { error },
-});
-
-export const resetPassword = (options?: string): Action => ({
-  type: 'RESET_PASSWORD',
-  payload: { options },
-});
-
-export const resetPasswordSuccess = (): Action => ({
-  type: 'RESET_PASSWORD_SUCCESS',
-});
-
-export const resetPasswordFail = (error: Error): Action => ({
-  type: 'RESET_PASSWORD_FAIL',
   payload: { error },
 });
 

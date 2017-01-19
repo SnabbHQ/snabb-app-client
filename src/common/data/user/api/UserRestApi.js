@@ -21,7 +21,7 @@ export default class UserRestApi {
       .map(convertKeys.toCamel);
   }
 
-  resetPassword(email: string) {
+  forgotPassword(email: string) {
     return Observable.fromPromise(this.snabbApi.getProfile());
   }
 

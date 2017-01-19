@@ -107,23 +107,19 @@ class SnabbApi {
       });
   }
 
-  /**
-   * ### resetPassword
-   * the data is already in a JSON format, so call _fetch
-   */
-  async resetPassword(data: Object) {
-    return await this.fetchMock({
+  async forgotPassword(email: string) {
+    return await fetch(`${this.API_BASE_URL}/user/forgotPassword`, {
       method: 'POST',
-      url: '/account/resetPasswordRequest',
-      body: data,
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: this.encodeBody(email),
     })
-      .then((response) => {
-        if ((response.status === 200 || response.status === 201)) {
-          return {};
-        } else {
-          throw (JSON.parse(response.bodyInit));
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
         }
-      })
+
+        throw (json);
+      }))
       .catch((error) => {
         throw (error);
       });

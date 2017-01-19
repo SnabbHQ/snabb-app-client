@@ -20,8 +20,8 @@ class UserCloudDataStore extends UserDataStore {
     return this.userRestApi.register(data);
   }
 
-  resetPassword(email: string) {
-    return this.userRestApi.resetPassword(email);
+  forgotPassword(email: string) {
+    return this.userRestApi.forgotPassword(email);
   }
 
   updateProfile(profileId: string, data: Profile) {

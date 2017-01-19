@@ -35,7 +35,7 @@ const PasswordFields = ({ profile, intl }) => (
       <Link
         color="accent"
         size={0}
-        to="/resetPassword"
+        to="/forgotPassword"
       >
         <FormattedMessage {...authMessages.passwordForgotten} />
       </Link>
