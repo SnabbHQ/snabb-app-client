@@ -37,12 +37,9 @@ class AccountInfoFields extends React.Component {
   };
 
   render() {
-
     const {disabled, error, fields, intl} = this.props;
 
     return (
-
-
       <Box>
         <FieldHeader titleSize={2} title={linksMessages.account} />
         <Form onSubmit={this.onFormSubmit} >
@@ -73,7 +70,6 @@ class AccountInfoFields extends React.Component {
         </Form>
         <Box display="flex" marginVertical={1} >
           <Space auto />
-          <Space x={1} />
           <Button accent paddingHorizontal={2} onClick={this.updateUserProfile} disabled={disabled} >
             <FormattedMessage {...buttonMessages.save} />
           </Button>
