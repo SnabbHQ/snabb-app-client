@@ -78,7 +78,9 @@ class AccountInfoFields extends React.Component {
           />
         </Form>
         <CenteredBox>
-          <FormError />
+          <FormError
+            error={error}
+          />
           {disabled &&
           <Loading marginVertical={1} />
           }
