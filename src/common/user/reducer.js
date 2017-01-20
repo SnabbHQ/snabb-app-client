@@ -37,11 +37,11 @@ const reducer = (
       return { ...state, profile: action.payload.profile, formDisabled: false, isFetching: false, error: null };
     }
 
-    case 'UPDATE_PASSWORD_SUCCESS': {
+    case 'PASSWORD_UPDATE_SUCCESS': {
       return { ...state, formDisabled: false, isFetching: false, error: null };
     }
 
-    case 'UPDATE_PASSWORD_FAIL':
+    case 'PASSWORD_UPDATE_FAIL':
     case 'PROFILE_UPDATE_FAIL': {
       return {
         ...state, formDisabled: false, isFetching: false, error: action.payload.error,

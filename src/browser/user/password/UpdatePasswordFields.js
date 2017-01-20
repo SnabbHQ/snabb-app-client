@@ -8,11 +8,11 @@ import linksMessages from '../../../common/app/linksMessages';
 import authMessages from '../../../common/auth/authMessages';
 import {connect} from 'react-redux';
 import { fields } from '../../../common/lib/redux-fields';
-import {FormattedMessage, injectIntl} from 'react-intl';
+import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {FieldHeader, Button, focus, Form, Space, Input, Link, Box} from '../../app/components';
 import {updatePassword} from '../../../common/user/actions';
 
-const PasswordFields = ({error, fields, intl, profile, updatePassword}) => {
+const UpdatePasswordFields = ({error, fields, intl, profile, updatePassword}) => {
 
   const onFormSubmit = () => {
     sendUpdatePassword();
@@ -65,11 +65,20 @@ const PasswordFields = ({error, fields, intl, profile, updatePassword}) => {
   );
 };
 
+UpdatePasswordFields.propTypes = {
+  disabled: React.PropTypes.bool.isRequired,
+  error: React.PropTypes.object,
+  fields: React.PropTypes.object.isRequired,
+  intl: intlShape.isRequired,
+  updatePassword: React.PropTypes.func.isRequired,
+};
+
 export default R.compose(
   connect(
     (state: State) => ({
+      disabled: state.user.formDisabled,
       profile: state.user.profile,
-      error: state.auth.error,
+      error: state.user.error,
     }),
     {updatePassword},
   ),
@@ -79,5 +88,5 @@ export default R.compose(
     fields: ['oldPassword', 'newPassword', 'newPasswordConfirmation'],
   }),
   focus('error'),
-)(PasswordFields);
+)(UpdatePasswordFields);
 

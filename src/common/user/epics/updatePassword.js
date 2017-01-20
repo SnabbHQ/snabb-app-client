@@ -13,6 +13,7 @@ import 'rxjs/add/operator/catch';
 const validateFields = (validate, fields) => validate(fields)
   .prop('oldPassword')
   .required()
+  .simplePassword()
   .prop('newPassword')
   .required()
   .simplePassword()
