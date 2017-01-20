@@ -1,7 +1,6 @@
 // @flow
 import type { State, Profile } from '../../common/types';
 import React, { PropTypes } from 'react';
-import { appShowMessage } from '../../common/app/actions';
 import { connect } from 'react-redux';
 import { FormattedMessage, FormattedHTMLMessage, defineMessages } from 'react-intl';
 import { sendVerifyEmail } from '../../common/user/actions'
@@ -17,7 +16,7 @@ const appMessages = (email) => defineMessages({
     }
   },
   sendConfirmationEmail: {
-    defaultMessage: 'Resend email',
+    defaultMessage: 'Resend',
     id: 'app.email.sendConfirmationEmail',
   },
   updateEmail: {
