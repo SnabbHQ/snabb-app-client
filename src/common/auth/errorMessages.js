@@ -8,6 +8,9 @@ const errorMessages = defineMessages({
       phone {phone}
       email {email}
       password {password}
+      oldPassword {old password}
+      newPassword {new password}
+      newPasswordConfirmation {new password confirmation}
     }.`,
     id: 'auth.error.required',
   },
