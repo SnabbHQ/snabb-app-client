@@ -1,5 +1,5 @@
 // @flow
-import type {Profile, Register} from '../../../types';
+import type {Profile, Register, UpdatePassword} from '../../../types';
 import SnabbApi from '../../../lib/SnabbApi';
 import convertKeys from 'convert-keys';
 import {Observable} from 'rxjs/Observable';
@@ -27,6 +27,11 @@ export default class UserRestApi {
 
   register(data: Register) {
     return Observable.fromPromise(this.snabbApi.register(convertKeys.toSnake(data)))
+      .map(convertKeys.toCamel);
+  }
+
+  updatePassword(profileId: string, data: UpdatePassword) {
+    return Observable.fromPromise(this.snabbApi.updatePassword(profileId, convertKeys.toSnake(data)))
       .map(convertKeys.toCamel);
   }
 

@@ -48,6 +48,11 @@ export type Register = {
   password: string,
 };
 
+export type UpdatePassword = {
+  currentPassword: string,
+  newPassword: string,
+};
+
 export type User = {
   profile: Profile,
 };

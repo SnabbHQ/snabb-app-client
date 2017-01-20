@@ -1,5 +1,5 @@
 // @flow
-import type { Profile, Register } from '../../../types';
+import type { Profile, Register, UpdatePassword } from '../../../types';
 import UserDataStore from './UserDataStore';
 import UserRestApi from '../api/UserRestApi';
 
@@ -22,6 +22,10 @@ class UserCloudDataStore extends UserDataStore {
 
   forgotPassword(email: string) {
     return this.userRestApi.forgotPassword(email);
+  }
+
+  updatePassword(profileId: string, data: UpdatePassword) {
+    return this.userRestApi.updatePassword(profileId, data)
   }
 
   updateProfile(profileId: string, data: Profile) {

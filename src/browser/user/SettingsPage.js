@@ -6,7 +6,7 @@ import { Container, Link, Box } from '../app/components';
 import { Match } from '../../common/app/components';
 import styled from '../app/components/styled';
 import Billing from './billing/Billing';
-import PasswordDetails from './password/PasswordDetails';
+import ChangePasswordDetails from './password/ChangePasswordDetails';
 import ProfileDetails from './details/ProfileDetails';
 
 
@@ -60,7 +60,7 @@ const SettingsPage = ({ pathname }: SettingsPageProps) => (
         <Box paddingHorizontal={1}>
           <Match pattern={`${pathname}/details`} component={ProfileDetails} />
           <Match pattern={`${pathname}/billing`} component={Billing} />
-          <Match pattern={`${pathname}/password`} component={PasswordDetails} />
+          <Match pattern={`${pathname}/password`} component={ChangePasswordDetails} />
         </Box>
       </RightPanel>
     </Box>

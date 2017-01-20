@@ -1,6 +1,6 @@
 // @flow
 // https://github.com/github/fetch/issues/275#issuecomment-181784694
-import type {Profile, Register} from '../types';
+import type {Profile, Register, UpdatePassword} from '../types';
 import 'whatwg-fetch';
 
 /**
@@ -14,9 +14,6 @@ class SnabbApi {
   sessionToken: string;
   response: Object;
 
-  /**
-   * ## SnabbApi.js client
-   */
   constructor(apiConfig) {
     this.API_BASE_URL = apiConfig.baseUrl;
 
@@ -30,14 +27,6 @@ class SnabbApi {
     };
   }
 
-  /**
-   * ### logIn
-   * encode the data and and call fetch
-   *
-   * @param data
-   *
-   *  {email: "barton@foo.com", password: "Passw0rd!"}
-   */
   async auth(data: Object) {
     const authDetails = {
       client_id: '123',
@@ -63,9 +52,6 @@ class SnabbApi {
       });
   }
 
-  /**
-   * ### register
-   */
   async register(data: Register) {
     return await fetch(`${this.API_BASE_URL}/user/register`, {
       method: 'POST',
@@ -84,10 +70,6 @@ class SnabbApi {
       });
   }
 
-  /**
-   * ### logout
-   * prepare the request and call _fetch
-   */
   async logout() {
     return await this.fetchMock({
       method: 'POST',
@@ -125,13 +107,6 @@ class SnabbApi {
       });
   }
 
-  /**
-   * ### getProfile
-   * Using the sessionToken, we'll get everything about
-   * the current user.
-   *
-   * @returns
-   */
   async getProfile() {
     return await fetch(`${this.API_BASE_URL}/user/profile`, {
       method: 'GET'
@@ -148,15 +123,24 @@ class SnabbApi {
       });
   }
 
-  /**
-   * ### updateProfile
-   * for this user, update their record
-   * the data is already in JSON format
-   *
-   * @param profileId
-   * @param data object:
-   * {email: "barton@foo.com"}
-   */
+  async updatePassword(profileId: string, data: UpdatePassword) {
+    return await fetch(`${this.API_BASE_URL}/user/updatePassword/${profileId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: this.encodeBody(data),
+    })
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
+        }
+
+        throw (json);
+      }))
+      .catch((error) => {
+        throw (error);
+      });
+  }
+
   async updateProfile(profileId: string, data: Object) {
     return await fetch(`${this.API_BASE_URL}/user/profile/${profileId}`, {
       method: 'PUT',

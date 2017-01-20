@@ -1,5 +1,5 @@
 // @flow
-import type { Profile, Register } from '../../types';
+import type { Profile, Register, UpdatePassword } from '../../types';
 import UserDataStoreFactory from './dataSource/UserDataStoreFactory';
 
 class UserDataRepository {
@@ -14,15 +14,19 @@ class UserDataRepository {
   }
 
   register(data: Register) {
-    return this.userDataStoreFactory.create().register(data);
+    return this.userDataStoreFactory.createCloudDataStore().register(data);
   }
 
   forgotPassword(email: string) {
     return this.userDataStoreFactory.createCloudDataStore().forgotPassword(email);
   }
 
+  updatePassword(profileId: string, data: UpdatePassword) {
+    return this.userDataStoreFactory.createCloudDataStore().updateProfile(profileId, data);
+  }
+
   updateProfile(profileId: string, data: Profile) {
-    return this.userDataStoreFactory.create().updateProfile(profileId, data);
+    return this.userDataStoreFactory.createCloudDataStore().updateProfile(profileId, data);
   }
 }
 

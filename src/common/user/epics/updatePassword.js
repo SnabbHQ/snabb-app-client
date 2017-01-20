@@ -11,14 +11,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 const validateFields = (validate, fields) => validate(fields)
-  .prop('companyName')
+  .prop('oldPassword')
   .required()
-  .prop('email')
+  .prop('newPassword')
   .required()
-  .email()
-  .prop('phone')
+  .simplePassword()
+  .prop('newPasswordConfirmation')
   .required()
-  .phone()
   .promise;
 
 /**
@@ -31,9 +30,9 @@ const updateProfile = (action$: any, { userRepository, validate }: Deps) =>
   action$.ofType('PROFILE_UPDATE')
     .map(action => action.payload)
     .mergeMap(({ profileId, options }) => {
-      const { companyName, email, phone } = options;
-      return Observable.fromPromise(validateFields(validate, { companyName, email, phone }))
-        .switchMap(() => userRepository.updateProfile(profileId, { companyName, email, phone } ))
+      const fields = { oldPassword, newPassword, newPasswordConfirmation } = options;
+      return Observable.fromPromise(validateFields(validate, fields))
+        .switchMap(() => userRepository.updatePassword(profileId, fields))
         .map(updateProfileSuccess)
         .catch(error => Observable.of(updateProfileFail(error)));
     });
