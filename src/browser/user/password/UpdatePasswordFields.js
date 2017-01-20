@@ -7,12 +7,24 @@ import inputMessages from '../../../common/app/inputMessages';
 import linksMessages from '../../../common/app/linksMessages';
 import authMessages from '../../../common/auth/authMessages';
 import {connect} from 'react-redux';
-import { fields } from '../../../common/lib/redux-fields';
+import {fields} from '../../../common/lib/redux-fields';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
-import {FieldHeader, Button, focus, Form, Space, Input, Link, Box} from '../../app/components';
+import {
+  CenteredBox,
+  FieldHeader,
+  FormError,
+  Button,
+  focus,
+  Form,
+  Link,
+  Loading,
+  Space,
+  Input,
+  Box
+} from '../../app/components';
 import {updatePassword} from '../../../common/user/actions';
 
-const UpdatePasswordFields = ({error, fields, intl, profile, updatePassword}) => {
+const UpdatePasswordFields = ({disabled, error, fields, intl, profile, updatePassword}) => {
 
   const onFormSubmit = () => {
     sendUpdatePassword();
@@ -47,6 +59,14 @@ const UpdatePasswordFields = ({error, fields, intl, profile, updatePassword}) =>
           maxLength={100}
           type="password"
         />
+        <CenteredBox>
+          <FormError
+            error={error}
+          />
+          {disabled &&
+          <Loading marginVertical={1} />
+          }
+        </CenteredBox>
         <Box display="flex" marginVertical={1} >
           <Link
             color="accent"
@@ -56,7 +76,7 @@ const UpdatePasswordFields = ({error, fields, intl, profile, updatePassword}) =>
             <FormattedMessage {...authMessages.passwordForgotten} />
           </Link>
           <Space auto />
-          <Button accent paddingHorizontal={2} onClick={sendUpdatePassword}>
+          <Button accent paddingHorizontal={2} onClick={sendUpdatePassword} >
             <FormattedMessage {...buttonMessages.save} />
           </Button>
         </Box>
