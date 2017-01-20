@@ -41,7 +41,7 @@ const theme: Theme = {
     backgroundColor: 'white',
   },
   border: {
-    radius: 8,
+    radius: 5,
     width: 1,
   },
   states: {

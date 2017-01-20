@@ -14,10 +14,6 @@ const authMessages = defineMessages({
     defaultMessage: 'Welcome to',
     id: 'auth.register.createAccountHeader',
   },
-  emailVerificationSent: {
-    defaultMessage: 'We sent you an email to confirm your account. Please check it before you request your first delivery',
-    id: 'auth.email.verificationSent',
-  },
   passwordForgotten: {
     defaultMessage: 'Forgot your password?',
     id: 'auth.email.passwordForgotten',
