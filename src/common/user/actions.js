@@ -44,6 +44,20 @@ export const registerFail = (error: Error): Action => ({
   payload: { error },
 });
 
+export const sendVerifyEmail = (email: string): Action => ({
+  type: 'SEND_VERIFY_EMAIL',
+  payload: { email }
+});
+
+export const sendVerifyEmailSuccess = (profile: Profile): Action => ({
+  type: 'SEND_VERIFY_EMAIL_SUCCESS',
+});
+
+export const sendVerifyEmailFail = (error: Error): Action => ({
+  type: 'SEND_VERIFY_EMAIL_FAIL',
+  payload: { error },
+});
+
 export const updatePassword = (profileId: string, options: Object): Action => ({
   type: 'PASSWORD_UPDATE',
   payload: { profileId, options }

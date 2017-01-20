@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import { appShowMessage } from '../../common/app/actions';
 import { connect } from 'react-redux';
 import { FormattedMessage, FormattedHTMLMessage, defineMessages } from 'react-intl';
-import { } from '../../common/user/actions'
+import { sendVerifyEmail } from '../../common/user/actions'
 import { Text, Box, Button, Space } from '../app/components';
 
 const appMessages = (email) => defineMessages({
@@ -31,10 +31,10 @@ type AppMessageProps = {
 }
 
 
-const AppMessage = ({ profile, resendPassword }: AppMessageProps, { router }: Object) => {
+const AppMessage = ({ profile, sendVerifyEmail }: AppMessageProps, { router }: Object) => {
 
   const resendPasswordClick = () => {
-
+    sendVerifyEmail(profile.email);
   };
 
   const goToSettings = () => {
@@ -43,7 +43,6 @@ const AppMessage = ({ profile, resendPassword }: AppMessageProps, { router }: Ob
 
   return (
     <Box
-      display="flex"
       backgroundColor="secondary"
       paddingHorizontal={1}
       paddingVertical={0.3}
@@ -68,7 +67,6 @@ const AppMessage = ({ profile, resendPassword }: AppMessageProps, { router }: Ob
         transform="none"
         white
         size={-1}
-        maxHeight={1}
         color="accent"
         onClick={goToSettings}
         paddingHorizontal={1}
@@ -87,5 +85,5 @@ export default connect(
   (state: State) => ({
     profile: state.user.profile,
   }),
-  { appShowMessage },
+  { sendVerifyEmail },
 )(AppMessage);

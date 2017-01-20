@@ -22,12 +22,16 @@ export default class UserRestApi {
   }
 
   forgotPassword(email: string) {
-    return Observable.fromPromise(this.snabbApi.getProfile());
+    return Observable.fromPromise(this.snabbApi.forgotPassword(email));
   }
 
   register(data: Register) {
     return Observable.fromPromise(this.snabbApi.register(convertKeys.toSnake(data)))
       .map(convertKeys.toCamel);
+  }
+
+  sendVerifyEmail(email: string) {
+    return Observable.fromPromise(this.snabbApi.sendVerifyEmail(email));
   }
 
   updatePassword(profileId: string, data: UpdatePassword) {

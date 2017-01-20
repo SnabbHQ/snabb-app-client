@@ -123,6 +123,22 @@ class SnabbApi {
       });
   }
 
+  async sendVerifyEmail(email: string) {
+    return await fetch(`${this.API_BASE_URL}/user/sendVerifyEmail`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: this.encodeBody({ email: email }),
+    })
+      .then((res) => {
+        if ((res.status === 200 || res.status === 201) ||
+          (res.status === 400 && res.code === 209)) {
+          return {};
+        } else {
+          throw new Error({ code: res.statusCode, error: res.message });
+        }
+      })
+  }
+
   async updatePassword(profileId: string, data: UpdatePassword) {
     return await fetch(`${this.API_BASE_URL}/user/updatePassword/${profileId}`, {
       method: 'PUT',
@@ -144,7 +160,7 @@ class SnabbApi {
   async updateProfile(profileId: string, data: Object) {
     return await fetch(`${this.API_BASE_URL}/user/profile/${profileId}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
     })
       .then((res) => res.json().then(json => {
