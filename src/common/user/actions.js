@@ -44,6 +44,21 @@ export const registerFail = (error: Error): Action => ({
   payload: { error },
 });
 
+export const updatePassword = (profileId: string, options: Object): Action => ({
+  type: 'PASSWORD_UPDATE',
+  payload: { profileId, options }
+});
+
+export const updatePasswordSuccess = (profile: Profile): Action => ({
+  type: 'PASSWORD_UPDATE_SUCCESS',
+  payload: { profile },
+});
+
+export const updatePasswordFail = (error: Error): Action => ({
+  type: 'PASSWORD_UPDATE_FAIL',
+  payload: { error },
+});
+
 export const updateProfile = (profileId: string, options: Object): Action => ({
   type: 'PROFILE_UPDATE',
   payload: { profileId, options }

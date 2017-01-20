@@ -46,6 +46,19 @@ class Validation {
     });
   }
 
+  equalPasswords() {
+    return this.validate((pass1, pass2, prop) => {
+      console.log(pass1);
+      console.log(pass2);
+      console.log(prop);
+      if (!this.validator.equals(pass1, pass2)) {
+        throw new ValidationError('passwordsNotEqual', { prop });
+      }
+
+      return true;
+    });
+  }
+
   simplePassword() {
     return this.validate((value, prop) => {
       // Password must be at least 6 characters.

@@ -1,7 +1,7 @@
 // @flow
 import type { Deps } from '../../types';
 
-import { updateProfileSuccess, updateProfileFail } from '../actions';
+import { updatePasswordSuccess, updatePasswordFail} from '../actions';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -18,6 +18,7 @@ const validateFields = (validate, fields) => validate(fields)
   .simplePassword()
   .prop('newPasswordConfirmation')
   .required()
+  //.equalPasswords()
   .promise;
 
 /**
@@ -26,16 +27,16 @@ const validateFields = (validate, fields) => validate(fields)
  * @param userRepository
  * @param validate
  */
-const updateProfile = (action$: any, { userRepository, validate }: Deps) =>
-  action$.ofType('PROFILE_UPDATE')
+const updatePassword = (action$: any, { userRepository, validate }: Deps) =>
+  action$.ofType('PASSWORD_UPDATE')
     .map(action => action.payload)
     .mergeMap(({ profileId, options }) => {
       const fields = { oldPassword, newPassword, newPasswordConfirmation } = options;
       return Observable.fromPromise(validateFields(validate, fields))
         .switchMap(() => userRepository.updatePassword(profileId, fields))
-        .map(updateProfileSuccess)
-        .catch(error => Observable.of(updateProfileFail(error)));
+        .map(updatePasswordSuccess)
+        .catch(error => Observable.of(updatePasswordFail(error)));
     });
 
-export default updateProfile;
+export default updatePassword;
 
