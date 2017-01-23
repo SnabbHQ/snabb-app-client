@@ -28,11 +28,13 @@ const reducer = (
       return { ...state, profile: null };
     }
 
+    case 'GET_PROFILE':
     case 'UPDATE_PASSWORD':
     case 'PROFILE_UPDATE': {
       return { ...state, formDisabled: true, isFetching: true, error: null };
     }
 
+    case 'GET_PROFILE_SUCCESS':
     case 'PROFILE_UPDATE_SUCCESS': {
       return { ...state, profile: action.payload.profile, formDisabled: false, isFetching: false, error: null };
     }
@@ -41,6 +43,7 @@ const reducer = (
       return { ...state, formDisabled: false, isFetching: false, error: null };
     }
 
+    case 'GET_PROFILE_FAIL':
     case 'PASSWORD_UPDATE_FAIL':
     case 'PROFILE_UPDATE_FAIL': {
       return {
