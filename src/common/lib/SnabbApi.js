@@ -93,15 +93,16 @@ class SnabbApi {
     return await fetch(`${this.API_BASE_URL}/user/forgotPassword`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: this.encodeBody(email),
+      body: this.encodeBody({ email: email }),
     })
-      .then((res) => res.json().then(json => {
-        if (res.status === 200 || res.status === 201) {
-          return json;
+      .then((res) => {
+        if ((res.status === 200 || res.status === 201) ||
+          (res.status === 400 && res.code === 209)) {
+          return {};
+        } else {
+          throw new Error({ code: res.statusCode, error: res.message });
         }
-
-        throw (json);
-      }))
+      })
       .catch((error) => {
         throw (error);
       });
