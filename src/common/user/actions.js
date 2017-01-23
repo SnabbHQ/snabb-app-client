@@ -49,7 +49,7 @@ export const sendVerifyEmail = (email: string): Action => ({
   payload: { email }
 });
 
-export const sendVerifyEmailSuccess = (profile: Profile): Action => ({
+export const sendVerifyEmailSuccess = (): Action => ({
   type: 'SEND_VERIFY_EMAIL_SUCCESS',
 });
 
