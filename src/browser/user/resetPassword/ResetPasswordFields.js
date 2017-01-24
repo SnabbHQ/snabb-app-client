@@ -24,13 +24,14 @@ import {
 } from '../../app/components';
 import {updatePassword} from '../../../common/user/actions';
 
-const UpdatePasswordFields = ({disabled, error, fields, intl, updatePassword}) => {
+const ResetPasswordFields = ({disabled, error, fields, hash, intl, updatePassword}) => {
 
   const onFormSubmit = () => {
     sendUpdatePassword();
   };
 
   const sendUpdatePassword = () => {
+    console.log(hash);
     //updatePassword(profile.profileId, fields.$values());
   };
 
@@ -77,10 +78,11 @@ const UpdatePasswordFields = ({disabled, error, fields, intl, updatePassword}) =
   );
 };
 
-UpdatePasswordFields.propTypes = {
+ResetPasswordFields.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   error: React.PropTypes.object,
   fields: React.PropTypes.object.isRequired,
+  hash: React.PropTypes.string,
   intl: intlShape.isRequired,
   updatePassword: React.PropTypes.func.isRequired,
 };
@@ -99,5 +101,5 @@ export default R.compose(
     fields: ['newPassword', 'newPasswordConfirmation'],
   }),
   focus('error'),
-)(UpdatePasswordFields);
+)(ResetPasswordFields);
 

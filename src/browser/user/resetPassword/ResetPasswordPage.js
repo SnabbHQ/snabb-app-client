@@ -4,7 +4,7 @@ import linksMessages from '../../../common/app/linksMessages';
 import { Title, Box } from '../../app/components';
 import ResetPasswordFields from './ResetPasswordFields';
 
-const PasswordDetails = () => (
+const PasswordDetails = (props) => (
   <Box
     padding={1}
     display="flex"
@@ -14,7 +14,9 @@ const PasswordDetails = () => (
   >
     <Title message={linksMessages.resetPassword} />
     <Box width={20}>
-      <ResetPasswordFields />
+      <ResetPasswordFields
+        hash={props.params.hash}
+      />
     </Box>
   </Box>
 );
