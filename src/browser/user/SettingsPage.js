@@ -42,6 +42,25 @@ const ProfileLink = ({
   </Link>
 );
 
+// TODO - Let's discuss why this would even be a good idea.
+// const SignOutAction = ({
+//   message,
+//   marginVertical = 0.5,
+// }) => (
+//   <Button
+//     activeColor="black"
+//     display="block"
+//     color="gray"
+//     marginVertical={marginVertical}
+//     size={1}
+//     inline
+//     paddingHorizontal={0}
+//   >
+//     <FormattedMessage {...message} />
+//   </Button>
+// );
+// <SignOutAction marginVertical={2} message={buttonMessages.s} />
+
 type SettingsPageProps = {
   pathname: string,
 }
