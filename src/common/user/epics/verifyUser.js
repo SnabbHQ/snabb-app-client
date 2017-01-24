@@ -13,7 +13,7 @@ const verifyUser = (action$: any, { userRepository }: Deps) =>
     .map(action => action.payload.hash)
     .mergeMap((hash) => {
       return userRepository.verifyUser(hash)
-        .delay(5000)
+        .delay(3000)
         .map(verifyUserSucceess)
         .catch(error => Observable.of(verifyUserFail(error)));
     });

@@ -50,6 +50,10 @@ const buttonsMessages = defineMessages({
     defaultMessage: 'Return to login',
     id: 'app.buttons.returnToLogIn',
   },
+  returnToDashboard: {
+    defaultMessage: 'Return to dashboard',
+    id: 'app.buttons.returnToDashboard',
+  },
   submit: {
     defaultMessage: 'Submit',
     id: 'app.buttons.submit',

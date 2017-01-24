@@ -2,6 +2,7 @@
 import type { State } from '../../../common/types';
 import authMessages from '../../../common/auth/authMessages';
 import buttonsMessages from '../../../common/app/buttonsMessages';
+import userMessages from '../../../common/user/userMessages';
 import React from 'react';
 import R from 'ramda';
 import linksMessages from '../../../common/app/linksMessages';
@@ -15,20 +16,20 @@ const logo = require('../../../common/app/images/logoBlack.svg');
 
 const VerifyUserPageSuccess = ({ intl }) => (
   <Box>
-    <Title message={authMessages.forgotPasswordSent} />
+    <Title message={userMessages.userVerifying} />
     <Text
       bold
       align="center"
       display="block"
       size={2}
     >
-      {intl.formatMessage(authMessages.forgotPassword)}
+      {intl.formatMessage(userMessages.userVerifiedHeader)}
     </Text>
     <Text
       align="center"
       display="block"
     >
-      {intl.formatMessage(authMessages.forgotPasswordSentDesc)}
+      {intl.formatMessage(userMessages.userVerifiedMessage)}
     </Text>
     <CenteredBox>
       <Link
@@ -38,9 +39,9 @@ const VerifyUserPageSuccess = ({ intl }) => (
         color="accent"
         size={1}
         marginTop={1}
-        to="/login"
+        to="/"
       >
-        <FormattedMessage {...buttonsMessages.returnToLogIn} />
+        <FormattedMessage {...buttonsMessages.returnToDashboard} />
       </Link>
     </CenteredBox>
   </Box>
@@ -94,7 +95,8 @@ export default R.compose(
   connect(
     (state: State) => ({
       isFetching: state.user.isFetching,
-      verified: state.user && state.user.verified,
+      verified: state.user.verified,
+      error: state.user.error
     }),
     { verifyUser },
   ),
