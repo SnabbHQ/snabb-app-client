@@ -6,12 +6,14 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/delay';
 
 const verifyUser = (action$: any, { userRepository }: Deps) =>
   action$.ofType('VERIFY_USER')
     .map(action => action.payload.hash)
     .mergeMap((hash) => {
       return userRepository.verifyUser(hash)
+        .delay(5000)
         .map(verifyUserSucceess)
         .catch(error => Observable.of(verifyUserFail(error)));
     });

@@ -55,7 +55,7 @@ class VerifyUserPage extends React.Component {
   }
 
   render() {
-    const { disabled, intl, verified } = this.props;
+    const { isFetching, intl, verified } = this.props;
 
     return (
       <Full>
@@ -71,17 +71,10 @@ class VerifyUserPage extends React.Component {
             >
               Snabb
             </Text>
-            { verified ?
-              <VerifyUserPageSuccess
-                disabled={disabled}
-                intl={intl}
-              />
-              :
-              <VerifyUserPageSuccess
-                disabled={disabled}
-                intl={intl}
-              />
-            }
+            <CenteredBox>
+              {isFetching && <Loading marginVertical={1} /> }
+            </CenteredBox>
+            { verified && <VerifyUserPageSuccess intl={intl} /> }
           </Box>
         </Box>
       </Full>
@@ -91,15 +84,16 @@ class VerifyUserPage extends React.Component {
 }
 
 VerifyUserPage.propTypes = {
-  disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
+  isFetching: React.PropTypes.bool.isRequired,
+  verified: React.PropTypes.bool.isRequired,
   verifyUser: React.PropTypes.func.isRequired,
 };
 
 export default R.compose(
   connect(
     (state: State) => ({
-      disabled: state.user.formDisabled,
+      isFetching: state.user.isFetching,
       verified: state.user && state.user.verified,
     }),
     { verifyUser },
