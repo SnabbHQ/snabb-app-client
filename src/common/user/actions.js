@@ -87,3 +87,17 @@ export const updateProfileFail = (error: Error): Action => ({
   type: 'PROFILE_UPDATE_FAIL',
   payload: { error },
 });
+
+export const verifyUser = (hash: string): Action => ({
+  type: 'VERIFY_USER',
+  payload: { hash }
+});
+
+export const verifyUserSucceess = (): Action => ({
+  type: 'VERIFY_USER_SUCCESS',
+});
+
+export const verifyUserFail = (error: Error): Action => ({
+  type: 'VERIFY_USER_FAIL',
+  payload: { error },
+});

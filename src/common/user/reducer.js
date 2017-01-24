@@ -30,7 +30,8 @@ const reducer = (
 
     case 'GET_PROFILE':
     case 'UPDATE_PASSWORD':
-    case 'PROFILE_UPDATE': {
+    case 'PROFILE_UPDATE':
+    case 'VERIFY_USER': {
       return { ...state, formDisabled: true, isFetching: true, error: null };
     }
 
@@ -39,13 +40,15 @@ const reducer = (
       return { ...state, profile: action.payload.profile, formDisabled: false, isFetching: false, error: null };
     }
 
-    case 'PASSWORD_UPDATE_SUCCESS': {
+    case 'PASSWORD_UPDATE_SUCCESS':
+    case 'VERIFY_USER_SUCCESS': {
       return { ...state, formDisabled: false, isFetching: false, error: null };
     }
 
     case 'GET_PROFILE_FAIL':
     case 'PASSWORD_UPDATE_FAIL':
-    case 'PROFILE_UPDATE_FAIL': {
+    case 'PROFILE_UPDATE_FAIL':
+    case 'VERIFY_USER_FAIL': {
       return {
         ...state, formDisabled: false, isFetching: false, error: action.payload.error,
       };

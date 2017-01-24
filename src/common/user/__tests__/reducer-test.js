@@ -124,4 +124,41 @@ describe('User Reducer', () => {
       expect(next.error).toBe(null);
     });
   });
+
+
+  /**
+   * ### Profile form field changes
+   */
+  describe('VERIFY_USER', () => {
+    it('Starts verifying on request', () => {
+      const action = {
+        type: 'VERIFY_USER',
+      };
+      const next = reducer(undefined, action);
+
+      expect(next.isFetching).toBe(true);
+      expect(next.error).toBe(null);
+    });
+
+    it('Finishes fetching on success', () => {
+      const action = {
+        type: 'VERIFY_USER_SUCCESS'
+      };
+      const next = reducer(undefined, action);
+
+      expect(next.isFetching).toBe(false);
+      expect(next.error).toBe(null);
+    });
+
+    it('Finishes fetching on failure and saves error', () => {
+      const action = {
+        type: 'VERIFY_USER_FAIL',
+        payload: { error: Error },
+      };
+      const next = reducer(undefined, action);
+      expect(next.isFetching).toBe(false);
+      expect(next.error).toBe(action.payload.error);
+    });
+  });
+
 });
