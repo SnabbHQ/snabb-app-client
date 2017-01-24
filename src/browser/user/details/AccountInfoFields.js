@@ -101,7 +101,7 @@ AccountInfoFields.propTypes = {
   error: React.PropTypes.object,
   fields: React.PropTypes.object.isRequired,
   intl: intlShape.isRequired,
-  isFetching: intlShape.object,
+  isFetching: React.PropTypes.bool.isRequired,
   profile: React.PropTypes.object.isRequired,
   updateProfile: React.PropTypes.func.isRequired
 };
