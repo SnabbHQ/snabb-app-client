@@ -17,8 +17,9 @@ import HistoryPage from '../job/history/HistoryPage';
 import NewJobPage from '../job/new/NewDeliveryPage';
 import SettingsPage from '../user/SettingsPage';
 import LogInPage from '../auth/LogInPage';
-import RegisterPage from '../auth/register/RegisterPage';
-import ForgotPassword from '../auth/forgotPassword/ForgotPasswordPage';
+import RegisterPage from '../user/register/RegisterPage';
+import ResetPasswordPage from '../user/resetPassword/ResetPasswordPage';
+import ForgotPassword from '../user/forgotPassword/ForgotPasswordPage';
 import NotFoundPage from '../notfound/NotFoundPage';
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
@@ -60,6 +61,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         <Page pattern="/login" component={LogInPage} />
         <Page pattern="/register" component={RegisterPage} />
         <Page pattern="/forgotPassword" component={ForgotPassword} />
+        <Page pattern="/resetPassword/:hash" component={ResetPasswordPage} />
         <Miss component={NotFoundPage} />
       </Box>
     </Container>

@@ -54,7 +54,7 @@ export default [
   },
   {
     "id": "app.FieldError.required",
-    "defaultMessage": "{prop, select,\n      description {Prosím zadejte popis.}\n      email {Prosím zadejte email.}\n      name {Prosím zadejte jméno.}\n      password {Prosím zadejte heslo.}\n      other {Prosím vyplnit.}\n    }",
+    "defaultMessage": "{prop, select,\n      description {Prosím zadejte popis.}\n      email {Prosím zadejte email.}\n      name {Prosím zadejte jméno.}\n      updatePassword {Prosím zadejte heslo.}\n      other {Prosím vyplnit.}\n    }",
   },
   {
     "id": "app.links.fields",
@@ -134,7 +134,7 @@ export default [
   },
   {
     "id": "auth.signInError.required",
-    "defaultMessage": "Prosím vyplňte {prop, select, email {email} password {heslo}}.",
+    "defaultMessage": "Prosím vyplňte {prop, select, email {email} updatePassword {heslo}}.",
   },
   {
     "id": "auth.signInError.simplePassword",

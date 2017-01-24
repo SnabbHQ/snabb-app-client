@@ -50,7 +50,7 @@ export default [
   },
   {
     "id": "app.FieldError.required",
-    "defaultMessage": "{prop, select, description {Please enter a description.} email {Please enter an email address.} name {Please enter a name.} password {Please enter a password.} other {You can't leave this empty.}}",
+    "defaultMessage": "{prop, select, description {Please enter a description.} email {Please enter an email address.} name {Please enter a name.} updatePassword {Please enter a updatePassword.} other {You can't leave this empty.}}",
   },
   {
     "id": "app.links.fields",
@@ -130,7 +130,7 @@ export default [
   },
   {
     "id": "auth.signInError.required",
-    "defaultMessage": "Please fill out {prop, select, email {email} password {password}}.",
+    "defaultMessage": "Please fill out {prop, select, email {email} updatePassword {updatePassword}}.",
   },
   {
     "id": "auth.signInError.simplePassword",
@@ -162,7 +162,7 @@ export default [
   },
   {
     "id": "firebase.error.INVALID_PASSWORD",
-    "defaultMessage": "The specified user account password is incorrect.",
+    "defaultMessage": "The specified user account updatePassword is incorrect.",
   },
   {
     "id": "firebase.error.INVALID_USER",

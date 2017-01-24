@@ -74,6 +74,10 @@ const LinkMessages = defineMessages({
     defaultMessage: 'Join Snabb',
     id: 'app.links.register',
   },
+  resetPassword: {
+    defaultMessage: 'Reset your password',
+    id: 'app.links.reset',
+  },
   forgotPassword: {
     defaultMessage: 'Reset Password',
     id: 'app.links.forgotPassword',

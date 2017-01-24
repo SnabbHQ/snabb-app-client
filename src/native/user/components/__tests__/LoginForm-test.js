@@ -142,10 +142,10 @@ describe('LoginForm', () => {
       snapshotForm(props);
     });
     /**
-     * ### the password fields are not secured if shown
+     * ### the updatePassword fields are not secured if shown
      * change the props and call ```snapshotForm``` to validate
      */
-    it('password fields are not secured if shown', () => {
+    it('updatePassword fields are not secured if shown', () => {
       const form = {
         isFetching: false,
         fields: {
@@ -255,10 +255,10 @@ describe('LoginForm', () => {
       snapshotForm(props);
     });
     /**
-     * ### password fields are not secured if shown
+     * ### updatePassword fields are not secured if shown
      * change the props and call ```snapshotForm``` to validate
      */
-    it('password fields are not secured if shown', () => {
+    it('updatePassword fields are not secured if shown', () => {
       const form = {
         isFetching: false,
         fields: {
@@ -282,7 +282,7 @@ describe('LoginForm', () => {
     });
   });
   /**
-   * ## Test reset password
+   * ## Test reset updatePassword
    */
   describe('FORGOT_PASSWORD', () => {
     /**
@@ -312,7 +312,7 @@ describe('LoginForm', () => {
       snapshotForm(props);
     });
     /**
-     * ### register password fields are not secured if shown
+     * ### register updatePassword fields are not secured if shown
      * change the props and call ```snapshotForm``` to validate
      */
     it('should display  errors and  values', () => {
@@ -365,10 +365,10 @@ describe('LoginForm', () => {
     });
 
     /**
-     * ### password fields are not secured if shown
+     * ### updatePassword fields are not secured if shown
      * change the props and call ```snapshotForm``` to validate
      */
-    it('password fields are not secured if shown', () => {
+    it('updatePassword fields are not secured if shown', () => {
       const form = {
         isFetching: false,
         fields: {

@@ -163,7 +163,7 @@ class LoginRender extends Component {
 
     const self = this;
 
-    // display the login / register / change password screens
+    // display the login / register / change updatePassword screens
     this.errorAlert.checkError(this.props.auth.form.error);
 
     /**

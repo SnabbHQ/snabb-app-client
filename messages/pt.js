@@ -134,7 +134,7 @@ export default [
   },
   {
     "id": "auth.signInError.required",
-    "defaultMessage": "Favor preencher {prop, select, email {endereço de email} password {senha}}.",
+    "defaultMessage": "Favor preencher {prop, select, email {endereço de email} updatePassword {senha}}.",
   },
   {
     "id": "auth.signInError.simplePassword",

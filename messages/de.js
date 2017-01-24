@@ -134,7 +134,7 @@ export default [
   },
   {
     "id": "auth.signInError.required",
-    "defaultMessage": "Bitte füllen Sie das Feld {prop, select, email {Email} password {Passwort}} aus.",
+    "defaultMessage": "Bitte füllen Sie das Feld {prop, select, email {Email} updatePassword {Passwort}} aus.",
   },
   {
     "id": "auth.signInError.simplePassword",

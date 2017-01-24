@@ -131,8 +131,8 @@ const LoginForm = React.createClass({
         break;
 
       /**
-       * ### Reset password
-       * The password reset form has only 1 field
+       * ### Reset updatePassword
+       * The updatePassword reset form has only 1 field
        */
       case (FORGOT_PASSWORD):
         loginForm = t.struct({

@@ -15,7 +15,7 @@ type InputTypes =
     | 'email'
     | 'file'
     | 'month'
-    | 'password'
+    | 'updatePassword'
     | 'search'
     | 'tel'
     | 'text'

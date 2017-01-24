@@ -15,7 +15,7 @@ const authMessages = defineMessages({
     id: 'auth.register.createAccountHeader',
   },
   passwordForgotten: {
-    defaultMessage: 'Forgot your password?',
+    defaultMessage: 'Forgot your updatePassword?',
     id: 'auth.email.passwordForgotten',
   },
   recoveryEmailSent: {
@@ -23,11 +23,11 @@ const authMessages = defineMessages({
     id: 'auth.reset.recoveryEmailSent',
   },
   forgotPassword: {
-    defaultMessage: 'Forgot password',
+    defaultMessage: 'Forgot updatePassword',
     id: 'auth.reset.forgotPassword',
   },
   forgotPasswordDescription: {
-    defaultMessage: 'You’ll receive an email with detailed instructions on how to set a new password.',
+    defaultMessage: 'You’ll receive an email with detailed instructions on how to set a new updatePassword.',
     id: 'auth.reset.forgotPasswordDescription',
   },
   forgotPasswordSent: {

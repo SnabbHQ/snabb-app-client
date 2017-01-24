@@ -6,7 +6,7 @@ import { Container, Link, Box } from '../app/components';
 import { Match } from '../../common/app/components';
 import styled from '../app/components/styled';
 import Billing from './billing/Billing';
-import ChangePasswordDetails from './password/UpdatePasswordDetails';
+import ChangePasswordDetails from './updatePassword/UpdatePasswordDetails';
 import ProfileDetails from './details/ProfileDetails';
 
 

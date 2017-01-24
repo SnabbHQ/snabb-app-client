@@ -134,7 +134,7 @@ export default [
   },
   {
     "id": "auth.signInError.required",
-    "defaultMessage": "Completați câmpurile {prop, select, email {email} password {parolă}}.",
+    "defaultMessage": "Completați câmpurile {prop, select, email {email} updatePassword {parolă}}.",
   },
   {
     "id": "auth.signInError.simplePassword",
