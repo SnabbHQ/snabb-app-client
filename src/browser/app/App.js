@@ -20,6 +20,8 @@ import LogInPage from '../auth/LogInPage';
 import RegisterPage from '../user/register/RegisterPage';
 import ResetPasswordPage from '../user/resetPassword/ResetPasswordPage';
 import ForgotPassword from '../user/forgotPassword/ForgotPasswordPage';
+import VerifyUserPage from '../user/verifyUser/VerifyUserPage';
+
 import NotFoundPage from '../notfound/NotFoundPage';
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
@@ -62,6 +64,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         <Page pattern="/register" component={RegisterPage} />
         <Page pattern="/forgotPassword" component={ForgotPassword} />
         <Page pattern="/resetPassword/:hash" component={ResetPasswordPage} />
+        <Page pattern="/verifyUser/:hash" component={VerifyUserPage} />
         <Miss component={NotFoundPage} />
       </Box>
     </Container>
