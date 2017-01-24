@@ -3,7 +3,7 @@ import AuthDataRepository from './data/auth/AuthDataRepository';
 import AuthDataStoreFactory from './data/auth/dataSource/AuthDataStoreFactory';
 import AuthRestApi from './data/auth/api/AuthRestApi';
 import validate from './validate';
-import SnabbApi from './lib/SnabbApi';
+import SnabbApi from './lib/api/SnabbApi';
 import UserDataRepository from './user/data/UserDataRepository';
 import UserDataStoreFactory from './user/data/dataSource/UserDataStoreFactory';
 import UserRestApi from './user/data/api/UserRestApi';

@@ -1,6 +1,6 @@
 // @flow
 import type {Profile, Register, UpdatePassword} from '../../../types';
-import SnabbApi from '../../../lib/SnabbApi';
+import SnabbApi from '../../../lib/api/SnabbApi';
 import convertKeys from 'convert-keys';
 import {Observable} from 'rxjs/Observable';
 

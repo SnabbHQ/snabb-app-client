@@ -1,6 +1,7 @@
 // @flow
 // https://github.com/github/fetch/issues/275#issuecomment-181784694
-import type {Profile, Register, UpdatePassword} from '../types';
+import type { Register, UpdatePassword } from '../../types';
+import ApiError  from './ApiError';
 import 'whatwg-fetch';
 
 /**
@@ -185,9 +186,9 @@ class SnabbApi {
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
           (res.status === 400 && res.code === 209)) {
-          return {};
+          throw new ApiError('userAlreadyVerified', { code: res.statusCode, error: res.message });
         } else {
-          throw new Error({ code: res.statusCode, error: res.message });
+          throw new ApiError({ code: res.statusCode, error: res.message });
         }
       })
   }
