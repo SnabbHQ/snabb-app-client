@@ -32,6 +32,10 @@ class UserDataRepository {
   updateProfile(profileId: string, data: Profile) {
     return this.userDataStoreFactory.createCloudDataStore().updateProfile(profileId, data);
   }
+
+  verifyUser(hash: string) {
+    return this.userDataStoreFactory.createCloudDataStore().verifyUser(hash);
+  }
 }
 
 export default UserDataRepository;

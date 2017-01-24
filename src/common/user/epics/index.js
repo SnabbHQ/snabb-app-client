@@ -4,6 +4,7 @@ import forgotPassword from './forgotPassword';
 import sendVerifyEmail from './sendVerifyEmail';
 import updatePassword from './updatePassword';
 import updateProfile from './updateProfile';
+import verifyUser from './verifyUser';
 
 export const epics = [
   getProfile,
@@ -12,4 +13,5 @@ export const epics = [
   sendVerifyEmail,
   updatePassword,
   updateProfile,
+  verifyUser,
 ];

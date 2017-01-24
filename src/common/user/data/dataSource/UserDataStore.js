@@ -7,4 +7,5 @@ export default class UserDataStore {
   sendVerifyEmail(email: string) {}
   updatePassword(profileId: string, data: UpdatePassword) {}
   updateProfile(profileId: string, data: Profile) {}
+  verifyUser(hash: string) {}
 }

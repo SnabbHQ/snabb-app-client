@@ -8,10 +8,10 @@ import linksMessages from '../../../common/app/linksMessages';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { CenteredBox, Link, Full, Title, Loading, Box, Text } from '../../app/components';
+import { verifyUser } from '../../../common/user/actions';
 
 // $FlowFixMe
 const logo = require('../../../common/app/images/logoBlack.svg');
-
 
 const VerifyUserPageSuccess = ({ intl }) => (
   <Box>
@@ -46,48 +46,63 @@ const VerifyUserPageSuccess = ({ intl }) => (
   </Box>
 );
 
-const VerifyUserPage = ({ disabled, intl, authed, verified }) => (
-  <Full>
-    <Box width={20}>
-      <Title message={linksMessages.forgotPassword} />
-      <Box display="flex" flexDirection="column" padding={1}>
-        <Text
-          align="center"
-          display="block"
-          size={4}
-          marginBottom={1}
-          bold
-        >
-          Snabb
-        </Text>
-        { verified ?
-          <VerifyUserPageSuccess
-            disabled={disabled}
-            intl={intl}
-          />
-          :
-          <VerifyUserPageSuccess
-            disabled={disabled}
-            intl={intl}
-          />
-        }
-      </Box>
-    </Box>
-  </Full>
-);
+
+class VerifyUserPage extends React.Component {
+
+  componentDidMount() {
+    const { verifyUser, params } = this.props;
+    verifyUser(params.hash);
+  }
+
+  render() {
+    const { disabled, intl, verified } = this.props;
+
+    return (
+      <Full>
+        <Box width={20}>
+          <Title message={linksMessages.forgotPassword} />
+          <Box display="flex" flexDirection="column" padding={1}>
+            <Text
+              align="center"
+              display="block"
+              size={4}
+              marginBottom={1}
+              bold
+            >
+              Snabb
+            </Text>
+            { verified ?
+              <VerifyUserPageSuccess
+                disabled={disabled}
+                intl={intl}
+              />
+              :
+              <VerifyUserPageSuccess
+                disabled={disabled}
+                intl={intl}
+              />
+            }
+          </Box>
+        </Box>
+      </Full>
+
+    );
+  }
+}
 
 VerifyUserPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   intl: intlShape,
-  location: React.PropTypes.object.isRequired,
+  verifyUser: React.PropTypes.func.isRequired,
 };
 
 export default R.compose(
   connect(
     (state: State) => ({
-      disabled: state.auth.formDisabled,
+      disabled: state.user.formDisabled,
       verified: state.user && state.user.verified,
     }),
+    { verifyUser },
   ),
   injectIntl,
 )(VerifyUserPage);

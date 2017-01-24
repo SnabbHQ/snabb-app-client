@@ -43,4 +43,8 @@ export default class UserRestApi {
     return Observable.fromPromise(this.snabbApi.updateProfile(profileId, convertKeys.toSnake(data)))
       .map(convertKeys.toCamel);
   }
+
+  verifyUser(hash: string) {
+    return Observable.fromPromise(this.snabbApi.verifyUser(hash));
+  }
 }

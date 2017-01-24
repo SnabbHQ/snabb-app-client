@@ -176,6 +176,22 @@ class SnabbApi {
       });
   }
 
+  async verifyUser(hash: string) {
+    return await fetch(`${this.API_BASE_URL}/user/verifyUser`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: this.encodeBody({ hash: hash }),
+    })
+      .then((res) => {
+        if ((res.status === 200 || res.status === 201) ||
+          (res.status === 400 && res.code === 209)) {
+          return {};
+        } else {
+          throw new Error({ code: res.statusCode, error: res.message });
+        }
+      })
+  }
+
   /**
    * ### fetch
    * A generic function that prepares the request

@@ -35,6 +35,10 @@ class UserCloudDataStore extends UserDataStore {
   updateProfile(profileId: string, data: Profile) {
     return this.userRestApi.updateProfile(profileId, data);
   }
+
+  verifyUser(hash: string) {
+    return this.userRestApi.verifyUser(hash);
+  }
 }
 
 export default UserCloudDataStore;
