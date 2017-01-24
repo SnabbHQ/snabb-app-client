@@ -4,9 +4,9 @@ import AuthDataStoreFactory from './data/auth/dataSource/AuthDataStoreFactory';
 import AuthRestApi from './data/auth/api/AuthRestApi';
 import validate from './validate';
 import SnabbApi from './lib/SnabbApi';
-import UserDataRepository from './data/user/UserDataRepository';
-import UserDataStoreFactory from './data/user/dataSource/UserDataStoreFactory';
-import UserRestApi from './data/user/api/UserRestApi';
+import UserDataRepository from './user/data/UserDataRepository';
+import UserDataStoreFactory from './user/data/dataSource/UserDataStoreFactory';
+import UserRestApi from './user/data/api/UserRestApi';
 
 // Ensure only one Data Instance instance.
 let dataDeps = null;

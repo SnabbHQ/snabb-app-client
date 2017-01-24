@@ -109,6 +109,7 @@
     "redux": "^3.0.4",
     "redux-connect": "^5.0.0",
     "redux-logger": "^2.7.4",
+    "redux-mock-store": "^1.2.1",
     "redux-observable": "^0.12.1",
     "redux-persist": "^4.0.1",
     "reflexbox": "^2.2.3",
