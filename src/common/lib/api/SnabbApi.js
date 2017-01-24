@@ -186,8 +186,10 @@ class SnabbApi {
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
           (res.status === 400 && res.code === 209)) {
-          throw new ApiError('userAlreadyVerified', { code: res.statusCode, error: res.message });
+          return {};
         } else {
+          // TODO - throw the right error when we know error codes
+          //throw new ApiError('userAlreadyVerified', { code: res.statusCode, error: res.message });
           throw new ApiError({ code: res.statusCode, error: res.message });
         }
       })
