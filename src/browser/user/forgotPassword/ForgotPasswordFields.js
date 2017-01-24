@@ -8,7 +8,7 @@ import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {connect} from 'react-redux';
 import {fields} from '../../../common/lib/redux-fields';
 import {forgotPassword} from '../../../common/user/actions';
-import {Form, Loading, CenteredBox, focus, Button, FormError, Input, Box} from '../../app/components';
+import {Form, Loading, CenteredBox, focus, Button, Error, Input, Box} from '../../app/components';
 
 class ForgotPasswordFields extends React.Component {
 
@@ -51,7 +51,7 @@ class ForgotPasswordFields extends React.Component {
             placeholder={intl.formatMessage(inputMessages.emailPlaceholder)}
           />
           <CenteredBox>
-            <FormError
+            <Error
               error={error}
             />
             {disabled &&

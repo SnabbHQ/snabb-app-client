@@ -5,7 +5,7 @@ import {FormattedMessage} from "react-intl"
 import Text from "./Text"
 import Box from "./Box"
 
-const FormError = ({ error }) => {
+const Error = ({ error }) => {
   if (!error) return <Box/>;
 
   const message = errorMessages[error.name];
@@ -21,8 +21,8 @@ const FormError = ({ error }) => {
   );
 };
 
-FormError.propTypes = {
+Error.propTypes = {
   error: React.PropTypes.instanceOf(Error),
 };
 
-export default FormError;
+export default Error;

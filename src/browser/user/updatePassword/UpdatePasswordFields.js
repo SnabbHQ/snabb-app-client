@@ -12,7 +12,7 @@ import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {
   CenteredBox,
   FieldHeader,
-  FormError,
+  Error,
   Button,
   focus,
   Form,
@@ -60,7 +60,7 @@ const UpdatePasswordFields = ({disabled, error, fields, intl, profile, updatePas
           type="password"
         />
         <CenteredBox>
-          <FormError
+          <Error
             error={error}
           />
           {disabled &&

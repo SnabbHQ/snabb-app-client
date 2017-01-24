@@ -11,7 +11,7 @@ import {fields} from '../../../common/lib/redux-fields';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {
   CenteredBox,
-  FormError,
+  Error,
   Button,
   focus,
   Form,
@@ -60,7 +60,7 @@ const ResetPasswordFields = ({disabled, error, fields, hash, intl, updatePasswor
           type="password"
         />
         <CenteredBox>
-          <FormError
+          <Error
             error={error}
           />
           {disabled &&

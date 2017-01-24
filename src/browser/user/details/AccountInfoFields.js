@@ -14,7 +14,7 @@ import {
   FieldHeader,
   Loading,
   Form,
-  FormError,
+  Error,
   Button,
   Space,
   Input,
@@ -78,7 +78,7 @@ class AccountInfoFields extends React.Component {
           />
         </Form>
         <CenteredBox>
-          <FormError
+          <Error
             error={error}
           />
           {isFetching &&

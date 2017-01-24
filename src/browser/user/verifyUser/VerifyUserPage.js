@@ -8,7 +8,7 @@ import R from 'ramda';
 import linksMessages from '../../../common/app/linksMessages';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
-import { CenteredBox, Link, Full, Title, Loading, Box, Text } from '../../app/components';
+import { CenteredBox, Link, Error, Full, Title, Loading, Box, Text } from '../../app/components';
 import { verifyUser } from '../../../common/user/actions';
 
 // $FlowFixMe
@@ -56,7 +56,7 @@ class VerifyUserPage extends React.Component {
   }
 
   render() {
-    const { isFetching, intl, verified } = this.props;
+    const { error, isFetching, intl, verified } = this.props;
 
     return (
       <Full>
@@ -73,6 +73,9 @@ class VerifyUserPage extends React.Component {
               Snabb
             </Text>
             <CenteredBox>
+              <Error
+                error={error}
+              />
               {isFetching && <Loading marginVertical={1} /> }
             </CenteredBox>
             { verified && <VerifyUserPageSuccess intl={intl} /> }
