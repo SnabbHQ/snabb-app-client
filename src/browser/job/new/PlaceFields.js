@@ -53,8 +53,7 @@ class PlaceFields extends React.Component {
           <Grid col={6} pt={2}>
             <Input
               name={`${this.props.placeType}FirstName`}
-              label="First Name"
-              labelSize={-1}
+              placeholder="First Name"
               maxLength={100}
               onKeyDown={this.onInputKeyDown}
               type="text"
@@ -63,11 +62,9 @@ class PlaceFields extends React.Component {
           <Grid col={6} pt={2} pl={2}>
             <Input
               name={`${this.props.placeType}LastName`}
-              label="Last Name"
-              labelSize={-1}
               maxLength={100}
               onKeyDown={this.onInputKeyDown}
-              placeholder={''}
+              placeholder={'Last Name'}
               type="text"
             />
           </Grid>
@@ -75,21 +72,17 @@ class PlaceFields extends React.Component {
 
         <Input
           name={`${this.props.placeType}BusinessName`}
-          label="Business Name"
-          labelSize={-1}
           maxLength={100}
           onKeyDown={this.onInputKeyDown}
-          placeholder={''}
+          placeholder={'Business Name'}
           type="text"
         />
 
         <Input
           name={`${this.props.placeType}Address`}
-          label="Address*"
-          labelSize={-1}
           maxLength={100}
           onKeyDown={this.onInputKeyDown}
-          placeholder={'e.g. San Vicente, 91, 46001, Valencia'}
+          placeholder={'Address (e.g. San Vicente, 91, 46001, Valencia)'}
           type="text"
         />
 
@@ -97,22 +90,19 @@ class PlaceFields extends React.Component {
           <Grid col={6}>
             <Input
               name={`${this.props.placeType}Email`}
-              label="Email"
-              labelSize={-1}
               maxLength={100}
               onKeyDown={this.onInputKeyDown}
-              placeholder={''}
+              placeholder={'Email'}
               type="email"
             />
           </Grid>
           <Grid col={6} pl={2}>
             <Input
               name={`${this.props.placeType}PhoneNumber`}
-              label="Phone Number"
               labelSize={-1}
               maxLength={100}
               onKeyDown={this.onInputKeyDown}
-              placeholder={''}
+              placeholder={'Phone Number'}
               type="text"
             />
           </Grid>
@@ -120,11 +110,10 @@ class PlaceFields extends React.Component {
 
         <Input
           name={`${this.props.placeType}Comments`}
-          label="Comments for the courier"
-          labelSize={-1}
           maxLength={100}
           onKeyDown={this.onInputKeyDown}
-          placeholder={'e.g. leave with the doorman'}
+          rows={2}
+          placeholder={'Comments for the courier (e.g. leave with the doorman)'}
           type="text"
         />
       </Box>
