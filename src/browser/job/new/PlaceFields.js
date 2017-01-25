@@ -136,7 +136,11 @@ class PlaceFields extends React.Component {
     return (
       <Box>
         <Box display="flex" alignItems="center">
-          <FieldHeader icon={this.props.icon} title={this.props.title} />
+          <FieldHeader
+            icon={this.props.icon}
+            marginBottom={0}
+            title={this.props.title}
+          />
           <Space auto />
           {this.renderEditButton(this.state.collapsed)}
         </Box>

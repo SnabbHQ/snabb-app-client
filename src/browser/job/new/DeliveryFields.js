@@ -11,11 +11,7 @@ const JobFields = () => (
     <Box>
       <PlaceFields icon={pickupIcon} title={jobMessages.pickUp} collapsible placeType="pickUp" />
       <Space x={1} />
-      <Divider />
-      <Space x={1} />
       <PlaceFields icon={dropIcon} title={jobMessages.dropOff} placeType="dropOff" />
-      <Space x={1} />
-      <Divider />
       <Space x={1} />
       <VehicleField />
       <Space x={1} />

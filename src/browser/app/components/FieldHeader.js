@@ -26,11 +26,13 @@ const FieldHeader = ({
   iconHeight = 40,
   title,
   titleSize = 1,
+  marginRight = 1,
+  marginBottom = 1
 }: FieldHeaderProps) => (
-  <Box display="flex" alignItems="center" marginBottom={1}>
+  <Box display="flex" alignItems="center" marginBottom={marginBottom}>
     {
       icon &&
-      <Box marginRight={1}>
+      <Box marginRight={marginRight}>
         <Image alt={title} src={icon} height={iconHeight} />
       </Box>
     }

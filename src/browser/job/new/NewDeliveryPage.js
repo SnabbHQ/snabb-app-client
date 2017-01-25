@@ -20,7 +20,7 @@ const RightPanel = styled((theme) => ({
   },
   paddingRight: '3em',
   paddingLeft: '3em',
-  paddingTop: '3em',
+  paddingTop: '2em',
   paddingBottom: '5em',
   boxShadow: '-1px 2px 5px 0 rgba(0,0,0,.25)',
   backgroundColor: theme.colors.white,
