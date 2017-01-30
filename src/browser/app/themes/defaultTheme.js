@@ -20,7 +20,7 @@ export const defaultFontFamily = [
 const theme: Theme = {
   typography: typography({
     // For text 14px and small text 12px use 14px with 1,16666 fontSizeScale
-    fontSize: 14,
+    fontSize: 16,
     fontSizeScale: 'step5', // perfect fourth, modularscale.com
     lineHeight: 24,
   }),

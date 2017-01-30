@@ -2,6 +2,8 @@
 // import logger from 'fela-plugin-logger';
 import webPreset from 'fela-preset-web';
 import validator from 'fela-plugin-validator';
+import placeholderPrefixer from 'fela-plugin-placeholder-prefixer';
+
 import { createRenderer } from 'fela';
 
 const browserStaticStyles = `
@@ -127,6 +129,7 @@ const configureFela = () => {
     plugins: [
       ...webPreset,
       ...(process.env.NODE_ENV !== 'production' ? devPreset : []),
+      placeholderPrefixer(),
     ],
   });
   renderer.renderStatic(browserStaticStyles);

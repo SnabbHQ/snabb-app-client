@@ -37,15 +37,15 @@ const activeStyle = (style, { darken }) => [
 const Button: Styled<ButtonProps> = styled((theme, {
   active,
   bold = false,
+  borderRadius = theme.border.radius,
   disabled,
   display = 'inline-block',
   inline,
-  borderRadius = theme.border.radius,
+  noOutline = false,
   paddingHorizontal = 0.8,
   size = 0,
   color = 'white',
   transform = 'capitalize',
-  ...props
 }) => ({
   $extends: [Text, ({
     bold,
@@ -55,14 +55,15 @@ const Button: Styled<ButtonProps> = styled((theme, {
     borderRadius,
     transform,
     ...(inline ? {} : maybeVerticalSpace(size)),
-    ...props
   }: Strict<TextProps>)],
   $map: style => {
     if (!active) return style;
     return activeStyle(style, theme.states.active);
   },
   userSelect: 'none', // Because button is rendered as a div in the browser.
+  pointerEvents: disabled ? 'none' : 'auto', // Ignore events when disabled.
   ...(disabled ? theme.states.disabled : null),
+  ...(noOutline ? { outline: 'none' } : null),
 }), 'button', [
   'disabled',
   'onClick',

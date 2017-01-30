@@ -16,7 +16,6 @@ type HeaderLinkProps = {
 
 const HeaderLink = ({ exactly, to, message }: HeaderLinkProps) => (
   <Link
-    bold
     color="black"
     exactly={exactly}
     marginHorizontal={1}

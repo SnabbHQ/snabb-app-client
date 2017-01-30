@@ -59,7 +59,7 @@ class PlaceFields extends React.Component {
               type="text"
             />
           </Grid>
-          <Grid col={6} pt={2} pl={2}>
+          <Grid col={6} pt={2} pl={1}>
             <Input
               name={`${this.props.placeType}LastName`}
               maxLength={100}
@@ -96,7 +96,7 @@ class PlaceFields extends React.Component {
               type="email"
             />
           </Grid>
-          <Grid col={6} pl={2}>
+          <Grid col={6} pl={1}>
             <Input
               name={`${this.props.placeType}PhoneNumber`}
               labelSize={-1}

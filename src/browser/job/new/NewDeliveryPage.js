@@ -13,7 +13,7 @@ const RightPanel = styled((theme) => ({
   float: 'right',
   width: '60%',
   '@media (min-width: 1200px)': {
-    width: '40%',
+    width: '50%',
   },
   '@media (max-width: 768px)': {
     width: '100%',
@@ -35,7 +35,7 @@ const LeftPanel = styled((theme) => ({
   backgroundColor: 'black',
   width: '40%',
   '@media (min-width: 1200px)': {
-    width: '60%',
+    width: '50%',
   },
   '@media (max-width: 768px)': {
     width: '0%',

@@ -44,9 +44,9 @@ const enforceTextLook = {
   map: rows => style => ({
     ...style,
     height: rows * Number(style.lineHeight),
-    padding: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
+    padding: 8,
+    paddingLeft: 12,
+    paddingRight: 12,
   }),
   // All these values are required. Otherwise, Edge or Firefox would break.
   style: {
@@ -72,6 +72,9 @@ const create = (tag, passProps = []) => styled((theme, {
   border: error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.input.backgroundColor}`,
   ':focus': {
     border: error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.colors.accent}`,
+  },
+  '::placeholder': {
+    fontWeight: 'normal',
   },
   padding,
   borderRadius: theme.input.radius,
@@ -119,7 +122,7 @@ const Input: Styled<InputProps> = ({
   label,
   placeholder,
   size = 0,
-  marginBottom = 0.4,
+  marginBottom = 0.33,
   ...props
 }) => (
   <Box {...props} marginBottom={marginBottom}>
