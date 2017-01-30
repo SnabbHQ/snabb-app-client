@@ -1,4 +1,5 @@
 /* @flow */
+import appErrorMessages from '../app/errorMessages';
 import authErrorMessages from '../auth/errorMessages';
 import userErrorMessages from '../user/errorMessages';
 import { ValidationError } from '../lib/validation';
@@ -17,7 +18,8 @@ const formatValidationError = error => ({
 const formatApiError = error => ({
   message:
     authErrorMessages[error.name] ||
-    userErrorMessages[error.name],
+    userErrorMessages[error.name] ||
+    appErrorMessages['unknown'],
   values: error.params,
 });
 

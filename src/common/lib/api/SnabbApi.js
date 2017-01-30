@@ -1,6 +1,6 @@
 // @flow
 // https://github.com/github/fetch/issues/275#issuecomment-181784694
-import type { Register, UpdatePassword } from '../../types';
+import type {Register, UpdatePassword} from '../../types';
 import ApiError  from './ApiError';
 import 'whatwg-fetch';
 
@@ -12,11 +12,13 @@ import 'whatwg-fetch';
  */
 class SnabbApi {
   API_BASE_URL: string;
+  client_id: string;
   sessionToken: string;
   response: Object;
 
   constructor(apiConfig) {
     this.API_BASE_URL = apiConfig.baseUrl;
+    this.client_id = apiConfig.clientId;
 
     const bodyInit = JSON.stringify({
       code: 200,
@@ -28,19 +30,27 @@ class SnabbApi {
     };
   }
 
+  handleErrors(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response;
+  }
+
   async auth(data: Object) {
     const authDetails = {
-      client_id: '123',
+      client_id: this.client_id,
       username: data.username,
       password: data.password,
       grant_type: 'password',
     };
 
-    return await fetch(`${this.API_BASE_URL}/oauth/token`, {
+    return await fetch(`${this.API_BASE_URL}/o/token/`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(authDetails),
     })
+      .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
           return json;
@@ -49,14 +59,14 @@ class SnabbApi {
         throw (json);
       }))
       .catch((error) => {
-        throw (error);
+        throw new ApiError({code: error.statusCode, error: error.message});
       });
   }
 
   async register(data: Register) {
     return await fetch(`${this.API_BASE_URL}/user/register`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
     })
       .then((res) => res.json().then(json => {
@@ -82,7 +92,7 @@ class SnabbApi {
           (res.status === 400 && res.code === 209)) {
           return {};
         } else {
-          throw new Error({ code: res.statusCode, error: res.message });
+          throw new Error({code: res.statusCode, error: res.message});
         }
       })
       .catch((error) => {
@@ -93,15 +103,15 @@ class SnabbApi {
   async forgotPassword(email: string) {
     return await fetch(`${this.API_BASE_URL}/user/forgotPassword`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: this.encodeBody({ email: email }),
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: this.encodeBody({email: email}),
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
           (res.status === 400 && res.code === 209)) {
           return {};
         } else {
-          throw new Error({ code: res.statusCode, error: res.message });
+          throw new Error({code: res.statusCode, error: res.message});
         }
       })
       .catch((error) => {
@@ -128,15 +138,15 @@ class SnabbApi {
   async sendVerifyEmail(email: string) {
     return await fetch(`${this.API_BASE_URL}/user/sendVerifyEmail`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: this.encodeBody({ email: email }),
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: this.encodeBody({email: email}),
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
           (res.status === 400 && res.code === 209)) {
           return {};
         } else {
-          throw new Error({ code: res.statusCode, error: res.message });
+          throw new Error({code: res.statusCode, error: res.message});
         }
       })
   }
@@ -144,7 +154,7 @@ class SnabbApi {
   async updatePassword(profileId: string, data: UpdatePassword) {
     return await fetch(`${this.API_BASE_URL}/user/updatePassword/${profileId}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
     })
       .then((res) => res.json().then(json => {
@@ -180,8 +190,8 @@ class SnabbApi {
   async verifyUser(hash: string) {
     return await fetch(`${this.API_BASE_URL}/user/verifyUser`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: this.encodeBody({ hash: hash }),
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: this.encodeBody({hash: hash}),
     })
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
@@ -190,7 +200,7 @@ class SnabbApi {
         } else {
           // TODO - throw the right error when we know error codes
           //throw new ApiError('userAlreadyVerified', { code: res.statusCode, error: res.message });
-          throw new ApiError({ code: res.statusCode, error: res.message });
+          throw new ApiError({code: res.statusCode, error: res.message});
         }
       })
   }
