@@ -9,7 +9,6 @@ import type {
   TextTransform,
 } from '../themes/types';
 import Box from './Box';
-import color from 'color';
 import styled from './styled';
 
 export type TextProps = BoxProps & ColorProps & {
@@ -41,18 +40,7 @@ const maybeColorProps = (theme, props) => {
   };
 };
 
-// usabilitypost.com/2012/11/05/stop-fixing-font-smoothing
-// tldr; Fix font smoothing only on the light text on the dark background.
-const maybeFixFontSmoothing = doNotFixFontSmoothing => style => {
-  if (doNotFixFontSmoothing) return style;
-  const hasColorAndBackgroundColor =
-    style.color &&
-    style.backgroundColor &&
-    style.backgroundColor !== 'transparent';
-  if (!hasColorAndBackgroundColor) return style;
-  const colorIsLighterThanBackgroundColor =
-    color(style.color).luminosity() > color(style.backgroundColor).luminosity();
-  if (!colorIsLighterThanBackgroundColor) return style;
+const fixFontSmoothing = () => style => {
   return {
     ...style,
     MozOsxFontSmoothing: 'grayscale',
@@ -74,7 +62,6 @@ const Text: Styled<TextProps> = styled((theme, {
   color = 'black',
   decoration = 'none',
   display = 'inline',
-  doNotFixFontSmoothing,
   fontFamily = theme.text.fontFamily,
   size = 0,
   transform = 'none',
@@ -83,7 +70,7 @@ const Text: Styled<TextProps> = styled((theme, {
   const colorProps = maybeColorProps(theme, props);
   return {
     $extends: [Box, colorProps.box],
-    $map: maybeFixFontSmoothing(doNotFixFontSmoothing),
+    $map: fixFontSmoothing(),
     color: theme.colors[colorProps.color || color],
     display,
     fontFamily,
