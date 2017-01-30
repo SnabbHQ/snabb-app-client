@@ -69,6 +69,7 @@ class SnabbApi {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
     })
+      .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
           return json;
@@ -87,6 +88,7 @@ class SnabbApi {
       url: '/oauth/token/revoke',
       body: {},
     })
+      .then(this.handleErrors)
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
           (res.status === 400 && res.code === 209)) {
@@ -106,6 +108,7 @@ class SnabbApi {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody({email: email}),
     })
+      .then(this.handleErrors)
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
           (res.status === 400 && res.code === 209)) {
@@ -123,6 +126,7 @@ class SnabbApi {
     return await fetch(`${this.API_BASE_URL}/user/profile`, {
       method: 'GET'
     })
+      .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
           return json;
@@ -141,6 +145,7 @@ class SnabbApi {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody({email: email}),
     })
+      .then(this.handleErrors)
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
           (res.status === 400 && res.code === 209)) {
@@ -157,6 +162,7 @@ class SnabbApi {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
     })
+      .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
           return json;
@@ -175,6 +181,7 @@ class SnabbApi {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
     })
+      .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
           return json;
@@ -193,6 +200,7 @@ class SnabbApi {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody({hash: hash}),
     })
+      .then(this.handleErrors)
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
           (res.status === 400 && res.code === 209)) {
