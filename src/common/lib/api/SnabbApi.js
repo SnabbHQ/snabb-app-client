@@ -32,7 +32,7 @@ class SnabbApi {
 
   handleErrors(response) {
     if (!response.ok) {
-      throw Error(response.statusText);
+      throw ApiError(response.statusText);
     }
     return response;
   }
@@ -92,7 +92,7 @@ class SnabbApi {
           (res.status === 400 && res.code === 209)) {
           return {};
         } else {
-          throw new Error({code: res.statusCode, error: res.message});
+          throw new ApiError({code: res.statusCode, error: res.message});
         }
       })
       .catch((error) => {
@@ -111,7 +111,7 @@ class SnabbApi {
           (res.status === 400 && res.code === 209)) {
           return {};
         } else {
-          throw new Error({code: res.statusCode, error: res.message});
+          throw new ApiError({code: res.statusCode, error: res.message});
         }
       })
       .catch((error) => {
@@ -146,7 +146,7 @@ class SnabbApi {
           (res.status === 400 && res.code === 209)) {
           return {};
         } else {
-          throw new Error({code: res.statusCode, error: res.message});
+          throw new ApiError({code: res.statusCode, error: res.message});
         }
       })
   }
