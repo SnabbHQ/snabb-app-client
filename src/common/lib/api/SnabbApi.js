@@ -30,6 +30,18 @@ class SnabbApi {
     };
   }
 
+  encodeBody(data) {
+    let formBody = [];
+
+    for (const property in data) {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(data[property]);
+      formBody.push(`${encodedKey}=${encodedValue}`);
+    }
+
+    return formBody.join('&');
+  }
+
   handleErrors(response) {
     if (!response.ok) {
       throw ApiError(response.statusText);
@@ -83,7 +95,7 @@ class SnabbApi {
   }
 
   async logout() {
-    return await this.fetchMock({
+    return await this.fetch({
       method: 'POST',
       url: '/oauth/token/revoke',
       body: {},
@@ -252,31 +264,6 @@ class SnabbApi {
     }
 
     return await fetch(this.API_BASE_URL + opts.url, reqOpts);
-  }
-
-  /**
-   * ### fetch
-   * A generic function that prepares the request
-   *
-   * @returns object:
-   *  {code: response.code,
-   *   status: response.status,
-   *   json: response.json()
-   */
-  async fetchMock(opts) {
-    return await this.response;
-  }
-
-  encodeBody(data) {
-    let formBody = [];
-
-    for (const property in data) {
-      const encodedKey = encodeURIComponent(property);
-      const encodedValue = encodeURIComponent(data[property]);
-      formBody.push(`${encodedKey}=${encodedValue}`);
-    }
-
-    return formBody.join('&');
   }
 }
 
