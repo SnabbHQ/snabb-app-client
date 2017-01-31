@@ -121,6 +121,7 @@ const Input: Styled<InputProps> = ({
   field,
   label,
   placeholder,
+  placeholderSize = 0,
   size = -1,
   marginBottom = 0.33,
   ...props
@@ -134,7 +135,7 @@ const Input: Styled<InputProps> = ({
     <StyledInputOrTextArea
       error={checkIfOwnError(error, field) && error}
       placeholder={placeholder}
-      size={size}
+      size={placeholderSize}
       field={field}
       {...props}
     />
