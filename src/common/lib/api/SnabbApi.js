@@ -13,7 +13,7 @@ import 'whatwg-fetch';
 class SnabbApi {
   API_BASE_URL: string;
   client_id: string;
-  sessionToken: string;
+  sessionToken: Object;
   response: Object;
 
   constructor(apiConfig) {
@@ -57,6 +57,8 @@ class SnabbApi {
       grant_type: 'password',
     };
 
+    let self = this;
+
     return await fetch(`${this.API_BASE_URL}/o/token/`, {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -65,6 +67,10 @@ class SnabbApi {
       .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
+
+          // Store the session token for now here in memory
+          self.sessionToken = json;
+
           return json;
         }
 
@@ -135,8 +141,11 @@ class SnabbApi {
   }
 
   async getProfile() {
-    return await fetch(`${this.API_BASE_URL}/user/profile`, {
-      method: 'GET'
+    let self = this;
+
+    return await fetch(`${this.API_BASE_URL}/user/profile/`, {
+      method: 'GET',
+      headers: {'Authorization': 'Bearer ' + self.sessionToken.access_token},
     })
       .then(this.handleErrors)
       .then((res) => res.json().then(json => {
