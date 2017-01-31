@@ -50,6 +50,6 @@ const Page = ({
 export default connect(
   (state: State) => ({
     messageShown: state.app.messageShown,
-    emailVerified: state.user.profile && state.user.profile.emailVerified,
+    emailVerified: state.user.profile && state.user.profile.verified,
   }),
 )(Page);

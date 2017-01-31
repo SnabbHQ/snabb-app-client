@@ -50,7 +50,7 @@ class SnabbApi {
   }
 
   getSessionToken() {
-    return this.sessionToken && this.sessionToken.access_token ? this.sessionToken.access_token : '';
+    return this.sessionToken && this.sessionToken.access_token ? 'Bearer ' + this.sessionToken.access_token : '';
   }
 
   async auth(data: Object) {
@@ -90,10 +90,7 @@ class SnabbApi {
   async register(data: Register) {
     return await fetch(`${this.API_BASE_URL}/user/register`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer ' + self.getSessionToken(),
-      },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: this.encodeBody(data),
     })
       .then(this.handleErrors)
@@ -110,23 +107,27 @@ class SnabbApi {
   }
 
   async logout() {
-    return await fetch({
-      method: 'POST',
-      url: '/o/token/revoke',
-      body: {},
-    })
-      .then(this.handleErrors)
-      .then((res) => {
-        if ((res.status === 200 || res.status === 201) ||
-          (res.status === 400 && res.code === 209)) {
-          return {};
-        } else {
-          throw new ApiError({code: res.statusCode, error: res.message});
-        }
-      })
-      .catch((error) => {
-        throw (error);
-      });
+
+    // Clear teh session
+    this.sessionToken = null;
+
+    // return await fetch({
+    //   method: 'POST',
+    //   url: '/o/token/revoke',
+    //   body: {},
+    // })
+    //   .then(this.handleErrors)
+    //   .then((res) => {
+    //     if ((res.status === 200 || res.status === 201) ||
+    //       (res.status === 400 && res.code === 209)) {
+    //       return {};
+    //     } else {
+    //       throw new ApiError({code: res.statusCode, error: res.message});
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     throw (error);
+    //   });
   }
 
   async forgotPassword(email: string) {
@@ -152,12 +153,10 @@ class SnabbApi {
   }
 
   async getProfile() {
-    let self = this;
-
-    return await fetch(`${this.API_BASE_URL}/user/profile/`, {
+    return await fetch(`${this.API_BASE_URL}/user/profile/`, ({
       method: 'GET',
-      headers: {'Authorization': 'Bearer ' + self.getSessionToken() },
-    })
+      headers: {'Authorization': this.getSessionToken() },
+    }))
       .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
@@ -172,14 +171,15 @@ class SnabbApi {
   }
 
   async sendVerifyEmail(email: string) {
-    return await fetch(`${this.API_BASE_URL}/user/sendVerifyEmail`, {
+    console.log(email);
+    return await fetch(`${this.API_BASE_URL}/user/sendVerifyEmail`, ({
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer ' + self.sessionToken.access_token,
+        'Authorization': this.getSessionToken(),
       },
-      body: this.encodeBody({email: email}),
-    })
+      body: this.encodeBody({ email: email }),
+    }))
       .then(this.handleErrors)
       .then((res) => {
         if ((res.status === 200 || res.status === 201) ||
