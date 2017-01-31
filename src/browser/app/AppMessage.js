@@ -46,7 +46,7 @@ const AppMessage = ({ profile, sendVerifyEmail }: AppMessageProps, { router }: O
       paddingHorizontal={1}
       paddingVertical={0.3}
     >
-      <Text color="white">
+      <Text bold color="white" size={-1}>
         <FormattedHTMLMessage {...appMessages(profile.email).emailVerificationSentPart1} />
       </Text>
       <Space x={1}/>
