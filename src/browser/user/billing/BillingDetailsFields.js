@@ -5,52 +5,59 @@ import billingMessages from '../../../common/user/billingMessages';
 import { FormattedMessage } from 'react-intl';
 import { Button, Input, FieldHeader, Box, Space } from '../../app/components';
 
-const BillingDetails = () => (
+const BillingDetailsFields = () => (
   <Box>
     <FieldHeader title={billingMessages.billingDetailsTitle} />
-    <Box display="flex">
+    <Box display="flex"  justifyContent="space-between">
       <Input
+        flex={1}
         name="Company Name"
         label="Company Name"
         maxLength={100}
-        placeholder={''}
+        placeholder={'Your company'}
         type="text"
       />
+      <Space x={0.33} />
       <Input
+        flex={1}
         name="VAT number"
         label="VAT number"
         maxLength={100}
-        placeholder={''}
+        placeholder={'VAT Number'}
         type="text"
       />
     </Box>
-    <Box display="flex">
+    <Box display="block">
       <Input
         name="Company Address"
-        label="Company Address"
+        label="Address"
         maxLength={100}
-        placeholder={''}
+        placeholder={'Street name'}
         type="text"
       />
+    </Box>
+    <Box display="flex" justifyContent="space-between">
       <Input
+        flex={1}
         name="City"
-        label="City"
         maxLength={100}
-        placeholder={''}
+        placeholder={'City'}
         type="text"
       />
+      <Space x={0.33} />
       <Input
+        flex={1}
         name="Postal Code"
-        label="Postal Code"
         maxLength={100}
-        placeholder={''}
+        placeholder={'Postal Code'}
         type="text"
       />
+      <Space x={0.33} />
       <Input
+        flex={1}
         name="Country"
-        label="Country"
         maxLength={100}
-        placeholder={''}
+        placeholder={'Country'}
         type="text"
       />
     </Box>
@@ -66,4 +73,4 @@ const BillingDetails = () => (
   </Box>
 );
 
-export default BillingDetails;
+export default BillingDetailsFields;

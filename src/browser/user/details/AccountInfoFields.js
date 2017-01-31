@@ -50,7 +50,7 @@ class AccountInfoFields extends React.Component {
 
     return (
       <Box>
-        <FieldHeader titleSize={2} title={linksMessages.account} />
+        <FieldHeader title={linksMessages.account} />
         <Form onSubmit={this.onFormSubmit} >
           <Input
             error={error}
