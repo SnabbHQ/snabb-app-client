@@ -121,7 +121,7 @@ const Input: Styled<InputProps> = ({
   field,
   label,
   placeholder,
-  size = 0,
+  size = -1,
   marginBottom = 0.33,
   ...props
 }) => (
