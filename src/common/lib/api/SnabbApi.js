@@ -49,6 +49,10 @@ class SnabbApi {
     return response;
   }
 
+  getSessionToken() {
+    return this.sessionToken && this.sessionToken.access_token ? this.sessionToken.access_token : '';
+  }
+
   async auth(data: Object) {
     const authDetails = {
       client_id: this.client_id,
@@ -61,7 +65,9 @@ class SnabbApi {
 
     return await fetch(`${this.API_BASE_URL}/o/token/`, {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
       body: this.encodeBody(authDetails),
     })
       .then(this.handleErrors)
@@ -74,7 +80,7 @@ class SnabbApi {
           return json;
         }
 
-        throw (json);
+        throw new ApiError({code: 500, error: 'error'});
       }))
       .catch((error) => {
         throw new ApiError({code: error.statusCode, error: error.message});
@@ -84,7 +90,10 @@ class SnabbApi {
   async register(data: Register) {
     return await fetch(`${this.API_BASE_URL}/user/register`, {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + self.getSessionToken(),
+      },
       body: this.encodeBody(data),
     })
       .then(this.handleErrors)
@@ -123,7 +132,9 @@ class SnabbApi {
   async forgotPassword(email: string) {
     return await fetch(`${this.API_BASE_URL}/user/forgotPassword`, {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
       body: this.encodeBody({email: email}),
     })
       .then(this.handleErrors)
@@ -145,7 +156,7 @@ class SnabbApi {
 
     return await fetch(`${this.API_BASE_URL}/user/profile/`, {
       method: 'GET',
-      headers: {'Authorization': 'Bearer ' + self.sessionToken.access_token},
+      headers: {'Authorization': 'Bearer ' + self.getSessionToken() },
     })
       .then(this.handleErrors)
       .then((res) => res.json().then(json => {
@@ -163,7 +174,10 @@ class SnabbApi {
   async sendVerifyEmail(email: string) {
     return await fetch(`${this.API_BASE_URL}/user/sendVerifyEmail`, {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + self.sessionToken.access_token,
+      },
       body: this.encodeBody({email: email}),
     })
       .then(this.handleErrors)
