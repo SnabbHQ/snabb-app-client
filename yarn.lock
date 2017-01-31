@@ -3258,6 +3258,10 @@ fela@^4.1.0:
   dependencies:
     hyphenate-style-name "1.0.1"
 
+fetch-intercept@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/fetch-intercept/-/fetch-intercept-2.2.1.tgz#0f64b3f2e9dbc31db09153dd38fa9677d8f1ba63"
+
 fetch-mock@^5.9.3:
   version "5.9.3"
   resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-5.9.3.tgz#ae7bf9d2887d911ab15e79a1aca865359a1e7e2b"

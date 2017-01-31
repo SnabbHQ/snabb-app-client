@@ -2,6 +2,8 @@
 // https://github.com/github/fetch/issues/275#issuecomment-181784694
 import type {Register, UpdatePassword} from '../../types';
 import ApiError  from './ApiError';
+import fetchIntercept from 'fetch-intercept';
+
 import 'whatwg-fetch';
 
 /**
@@ -20,14 +22,22 @@ class SnabbApi {
     this.API_BASE_URL = apiConfig.baseUrl;
     this.client_id = apiConfig.clientId;
 
-    const bodyInit = JSON.stringify({
-      code: 200,
-    });
+    fetchIntercept.register({
 
-    this.response = {
-      status: 201,
-      bodyInit,
-    };
+      request: (url, config) => {
+        if (this.sessionToken) {
+
+          // Not really pretty but works
+          if (config.headers) {
+            config.headers['Authorization'] = this.getSessionToken();
+          } else {
+            config.headers = { 'Authorization': this.getSessionToken() };
+          }
+        }
+
+        return [url, config];
+      }
+    });
   }
 
   encodeBody(data) {
@@ -50,7 +60,7 @@ class SnabbApi {
   }
 
   getSessionToken() {
-    return this.sessionToken && this.sessionToken.access_token ? 'Bearer ' + this.sessionToken.access_token : '';
+    return this.sessionToken && this.sessionToken.access_token ? 'Bearer ' + this.sessionToken.access_token : undefined;
   }
 
   async auth(data: Object) {
@@ -155,7 +165,6 @@ class SnabbApi {
   async getProfile() {
     return await fetch(`${this.API_BASE_URL}/user/profile/`, ({
       method: 'GET',
-      headers: {'Authorization': this.getSessionToken() },
     }))
       .then(this.handleErrors)
       .then((res) => res.json().then(json => {
@@ -171,12 +180,10 @@ class SnabbApi {
   }
 
   async sendVerifyEmail(email: string) {
-    console.log(email);
     return await fetch(`${this.API_BASE_URL}/user/sendVerifyEmail`, ({
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': this.getSessionToken(),
       },
       body: this.encodeBody({ email: email }),
     }))
