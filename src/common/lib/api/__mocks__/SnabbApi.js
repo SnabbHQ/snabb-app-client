@@ -3,7 +3,7 @@
  */
 require('regenerator/runtime');
 
-import type {Profile, Register, UpdatePassword} from '../../types';
+import type { Register, UpdatePassword } from '../../../types';
 
 /**
  * # SnabbApi.js

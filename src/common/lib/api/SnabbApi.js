@@ -95,9 +95,9 @@ class SnabbApi {
   }
 
   async logout() {
-    return await this.fetch({
+    return await fetch({
       method: 'POST',
-      url: '/oauth/token/revoke',
+      url: '/o/token/revoke',
       body: {},
     })
       .then(this.handleErrors)

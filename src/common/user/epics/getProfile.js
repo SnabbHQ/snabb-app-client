@@ -18,8 +18,7 @@ import 'rxjs/add/operator/catch';
  */
 const getProfile = (action$: any, { userRepository }: Deps) =>
   action$.ofType('GET_PROFILE')
-    .mergeMap(() =>
-      userRepository.getProfile()
+    .mergeMap(() => userRepository.getProfile()
         .map(getProfileSuccess)
         .catch(error => Observable.of(getProfileFail(error))));
 

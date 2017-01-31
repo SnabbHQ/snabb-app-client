@@ -3,24 +3,42 @@
  */
 
 
-jest.mock('../../lib/SnabbApi');
+//jest.mock('../../lib/api/SnabbApi');
 
+import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
-import { combineEpics, createEpicMiddleware } from 'redux-observable';
-import UserDataRepository from '../../data/user/UserDataRepository';
+import { createEpicMiddleware, combineEpics } from 'redux-observable';
+import SnabbApi from '../../lib/api/SnabbApi';
+import UserDataRepository from '../../user/data/UserDataRepository';
+import UserDataStoreFactory from '../../user/data/dataSource/UserDataStoreFactory';
+import UserRestApi from '../../user/data/api/UserRestApi';
 import { epics as userEpics } from '../epics';
+import getProfile from '../epics/getProfile';
 import * as actions from '../actions';
 
-let rootEpic = combineEpics(userEpics);
+const userRestApi = new UserRestApi(new SnabbApi({ apiConfig: '',  clientId: ''}));
+const userDataStoreFactory = new UserDataStoreFactory(userRestApi);
+const dataRepo = new UserDataRepository(userDataStoreFactory);
 
-const deps = {
-  userDataRepository: new UserDataRepository(),
+import { Observable } from 'rxjs';
+
+
+
+const data = {
+  getProfile() {
+    return Observable.fromPromise(new Promise(function(resolve, reject) {
+        resolve({ userId: '' })
+    }));
+  }
 };
 
-let getProfile = userEpics[0]()(deps);
+const configureEpics = (deps: Object) => (action$, { getState }) =>
+  combineEpics(getProfile)(action$, { ...deps, getState });
 
-const epicMiddleware = createEpicMiddleware(getProfile);
+const rootEpic = configureEpics({ userRepository: data});
+const epicMiddleware = createEpicMiddleware(rootEpic);
 const mockStore = configureMockStore([epicMiddleware]);
+
 
 /**
  * ## Tests
@@ -35,10 +53,13 @@ describe('All User epics', () => {
   });
 
   afterEach(() => {
+    fetchMock.restore();
     epicMiddleware.replaceEpic(getProfile);
   });
 
   it('should getProfile', () => {
+    fetchMock.get('*', {});
+
     store.dispatch(actions.getProfile());
 
     expect(store.getActions()).toEqual([
