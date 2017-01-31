@@ -9,15 +9,9 @@ import CreditCardField from './CreditCardField';
 const Billing = () => (
   <Box>
     <Title message={linksMessages.billing} />
-    <Card>
-      <PromoCodeField />
-    </Card>
-    <Card>
-      <CreditCardField />
-    </Card>
-    <Card>
-      <BillingDetails />
-    </Card>
+    <BillingDetails />
+    <CreditCardField />
+    <PromoCodeField />
   </Box>
 );
 

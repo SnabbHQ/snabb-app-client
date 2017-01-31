@@ -17,14 +17,21 @@ const BillingDetails = () => (
         type="text"
       />
       <Input
-        name="Company Address"
-        label="Company Address"
+        name="VAT number"
+        label="VAT number"
         maxLength={100}
         placeholder={''}
         type="text"
       />
     </Box>
     <Box display="flex">
+      <Input
+        name="Company Address"
+        label="Company Address"
+        maxLength={100}
+        placeholder={''}
+        type="text"
+      />
       <Input
         name="City"
         label="City"
@@ -42,13 +49,6 @@ const BillingDetails = () => (
       <Input
         name="Country"
         label="Country"
-        maxLength={100}
-        placeholder={''}
-        type="text"
-      />
-      <Input
-        name="VAT number"
-        label="VAT number"
         maxLength={100}
         placeholder={''}
         type="text"

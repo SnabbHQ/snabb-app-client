@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { Container, Link, Box } from '../app/components';
 import { Match } from '../../common/app/components';
 import styled from '../app/components/styled';
-import Billing from './billing/Billing';
+import BillingDetails from './billing/BillingDetails';
 import ChangePasswordDetails from './updatePassword/UpdatePasswordDetails';
 import ProfileDetails from './details/ProfileDetails';
 
@@ -78,7 +78,7 @@ const SettingsPage = ({ pathname }: SettingsPageProps) => (
       <RightPanel>
         <Box paddingHorizontal={1}>
           <Match pattern={`${pathname}/details`} component={ProfileDetails} />
-          <Match pattern={`${pathname}/billing`} component={Billing} />
+          <Match pattern={`${pathname}/billing`} component={BillingDetails} />
           <Match pattern={`${pathname}/password`} component={ChangePasswordDetails} />
         </Box>
       </RightPanel>
