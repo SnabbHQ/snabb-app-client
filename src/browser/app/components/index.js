@@ -9,6 +9,7 @@ export { default as CenteredBox } from './CenteredBox';
 export { default as Checkbox } from './Checkbox';
 export { default as Container } from './Container';
 export { default as Divider } from './Divider';
+export { default as Dropdown } from './Dropdown';
 export { default as Error } from './Error';
 export { default as FieldHeader } from './FieldHeader';
 export { default as Fixed } from './Fixed';

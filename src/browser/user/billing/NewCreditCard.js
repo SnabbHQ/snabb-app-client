@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import {FormattedMessage} from 'react-intl';
-import {Box, Input, Button, Space, Text} from '../../app/components';
+import {Box, Input, Button, Space, Dropdown, Text} from '../../app/components';
 
 type NewCreditCardProps = {
   type: Object,
@@ -11,59 +11,16 @@ type NewCreditCardProps = {
   onCancelClick?: func,
 }
 
-const Pepito = () => (
-  <div style={{padding: "100px", backgroundColor: "black"}}>
-    <input
-      type="text"
-      ref={(input) => { console.log('San dios!!' + input); }} />
-    <input
-      type="button"
-      value="Focus the text input"
-    />
-  </div>
-);
-
-import { createComponent } from 'react-fela';
-
-const StyledComponent = createComponent(props => ({
-  backgroundColor: 'red',
-}), ({ innerRef,...otherProps }) => (
-  <span {...otherProps} ref={innerRef} />
-), ['innerRef']);
-
-class Agnostic extends React.Component {
-  handleClick = event => {
-    console.log('Here is the ref:', this.rootNode);
-  };
-
-  render() {
-    const self = this;
-    return (
-      <StyledComponent
-        {...this.props}
-        onClick={this.handleClick}
-        innerRef={(node) => console.log("this is so much fun!" + node) }
-      />
-    );
-  }
-}
-
 const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
   const card = cards[type];
 
-  // textInput must be declared here so the ref callback can refer to it
-  let textInput = null;
-  let previousLength = 0;
+  const optionsMonths = [
+    '01', '02', '03'
+  ];
 
-  const onCVVChange = (event) => {
-    const target = event.target || event;
-    const {value} = target;
-
-    if (value.length === 2) {
-      previousLength = value.length;
-      textInput.value = value + " / ";
-    }
-  };
+  const optionsYears = [
+    '17', '18', '19'
+  ];
 
   return (
     <Box>
@@ -73,17 +30,27 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
         maxLength={100}
         placeholder={'Card Number'}
         type="text"
+        width={14}
       />
-      <Box display="flex" >
-        <Input
-          label="Expiration Date"
-          name="expirationDate"
-          maxLength={7}
-          onChange={onCVVChange}
-          placeholder={'MM / YY'}
-          innerRef={(input) => { console.log(input); textInput = input; }}
-          type="text"
-        />
+      <Box display="flex">
+        <Box>
+          <Text size={-1}>
+            EXPIRATION DATE
+          </Text>
+          <Box display="flex">
+            <Dropdown
+              name="expirationMonth"
+              options={optionsMonths}
+            />
+            <Space x={0.33} />
+            <Text>/</Text>
+            <Space x={0.33} />
+            <Dropdown
+              name="expirationYear"
+              options={optionsYears}
+            />
+          </Box>
+        </Box>
         <Space x={0.33} />
         <Input
           label="Security Code"
@@ -95,10 +62,11 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
       </Box>
       <Box display="flex" >
         <Space auto />
-        <Button onClick={onCancelClick} >
+        <Button gray onClick={onCancelClick} >
           <FormattedMessage {...buttonMessages.cancel} />
         </Button>
-        <Button>
+        <Space x={0.33} />
+        <Button accent>
           <FormattedMessage {...buttonMessages.save} />
         </Button>
       </Box>

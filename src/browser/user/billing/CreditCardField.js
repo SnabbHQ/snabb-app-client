@@ -13,7 +13,7 @@ class CreditCardField extends React.Component {
     super(props, context);
 
     this.state = {
-      addCardShown: false,
+      addCardShown: true,
     };
 
     this.addCreditCardPress = this.addCreditCardPress.bind(this);
