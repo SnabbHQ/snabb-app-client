@@ -44,6 +44,7 @@
     "compression": "^1.4.0",
     "convert-keys": "^1.2.0",
     "copy-webpack-plugin": "^4.0.0",
+    "credit-card-type": "^5.0.0",
     "css-loader": "^0.26.0",
     "del": "^2.1.0",
     "empty": "^0.10.1",

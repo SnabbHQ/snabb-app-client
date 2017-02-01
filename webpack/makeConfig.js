@@ -13,8 +13,8 @@ import webpackIsomorphicAssets from './assets';
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(webpackIsomorphicAssets);
 
 // github.com/facebookincubator/create-react-app/issues/343#issuecomment-237241875
-// You may want 'cheap-module-source-map' instead if you prefer source maps.
-const devtools = 'eval';
+// You may want 'cheap-module-source-map' instead if you prefer source maps ('eval' for the fastest)
+const devtools = 'cheap-module-source-map';
 
 const loaders = {
   css: '',

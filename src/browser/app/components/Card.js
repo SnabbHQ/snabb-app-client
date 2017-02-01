@@ -6,7 +6,9 @@ import Box, { BoxProps } from './Box';
 type CardProps = BoxProps & {|
   |};
 
-const Card: Styled<CardProps> = styled((theme, props) => ({
+const Card: Styled<CardProps> = styled((theme, {
+  backgroundColor = 'white',
+}) => ({
   $extends: Box,
   display: 'block',
   border: true,
@@ -15,7 +17,7 @@ const Card: Styled<CardProps> = styled((theme, props) => ({
   borderRadius: theme.border.radius,
   borderColor: theme.divider.borderColor,
   padding: '1em',
-  backgroundColor: 'white',
+  backgroundColor: backgroundColor,
 }));
 
 export default Card;

@@ -15,12 +15,19 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
   const card = cards[type];
 
   const optionsMonths = [
-    '01', '02', '03'
+    '01', '02', '03', '04', '05', '06','07', '08', '09','10', '11', '12',
   ];
 
-  const optionsYears = [
-    '17', '18', '19'
-  ];
+  const getYearOptions = () => {
+    let years = [];
+    let twoDigitsCurrentYear = parseInt(new Date().getFullYear().toString().substr(2,2));
+
+    for (let i = 0; i < 20; i++) {
+      years.push(twoDigitsCurrentYear + i);
+    }
+
+    return years;
+  };
 
   return (
     <Card>
@@ -47,7 +54,7 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
             <Space x={0.33} />
             <Dropdown
               name="expirationYear"
-              options={optionsYears}
+              options={getYearOptions()}
             />
           </Box>
         </Box>

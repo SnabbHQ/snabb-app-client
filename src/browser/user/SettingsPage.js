@@ -66,8 +66,8 @@ type SettingsPageProps = {
 }
 
 const SettingsPage = ({ pathname }: SettingsPageProps) => (
-  <Container maxWidth="900px">
-    <Box display="flex" paddingTop={3}>
+  <Container maxWidth="800px">
+    <Box display="flex" paddingTop={2}>
       <LeftPanel>
         <Box paddingHorizontal={1}>
           <ProfileLink to={`${pathname}/details`} message={linksMessages.account} />

@@ -1,32 +1,35 @@
 /* @flow */
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { Box, Text, Image, Space } from '../../app/components';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {Box, Card, Text, Image, Space} from '../../app/components';
 
 const ICONS = {
   visa: require('../../../common/app/images/cardIconVI.svg'),
   mastercard: require('../../../common/app/images/cardIconMC.svg'),
 };
 
-const CreditCardRow = ({ type, cards }) => {
+const CreditCardRow = ({type, cards}) => {
   const card = cards[type];
 
   return (
-    <Box display="flex" align="center">
+    <Card backgroundColor="#f6f6f6">
+      <Box>
+        <Text display="block" size={-1} >Card Number</Text>
+        <Box display="flex" >
+          <Image
+            alt={'alt'}
+            src={ICONS.mastercard}
+            height={25}
+            width={25}
+          />
+          <Space x={0.5} />
+          <Text>MasterCard **** 1864</Text>
+        </Box>
+      </Box>
       <Space x={2} />
-      <Image
-        alt={'alt'}
-        src={ICONS.visa}
-      />
-      <Space x={2} />
-      <Text>main</Text>
-      <Space auto />
-      <Text>Expires 11/2018</Text>
-      <Space auto />
-      <Text>Default Card</Text>
-      <Space auto />
-      <Text>Delete</Text>
-    </Box>
+      <Text display="block" size={-1}>EXPIRATION DATE</Text>
+      <Text>07 / 20</Text>
+    </Card>
   );
 };
 

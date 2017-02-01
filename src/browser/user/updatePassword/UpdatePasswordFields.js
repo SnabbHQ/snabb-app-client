@@ -37,7 +37,7 @@ const UpdatePasswordFields = ({disabled, error, fields, intl, profile, updatePas
   return (
     <Form onSubmit={onFormSubmit} >
       <Box>
-        <FieldHeader titleSize={2} title={linksMessages.changePassword} />
+        <FieldHeader titleSize={1} title={linksMessages.changePassword} />
         <Input
           error={error}
           field={fields.oldPassword}

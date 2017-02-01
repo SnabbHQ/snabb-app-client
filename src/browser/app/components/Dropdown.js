@@ -1,6 +1,6 @@
 /* @flow */
-import type { Styled } from '../themes/types';
-import type { TextProps } from './Text';
+import type {Styled} from '../themes/types';
+import type {TextProps} from './Text';
 import Box from './Box';
 import React from 'react';
 import styled from './styled';
@@ -15,11 +15,12 @@ export type DropdownProps = TextProps & {
   options?: Array,
 }
 
-const create = (tag, passProps = []) => styled((theme, {
+const create = (tag) => styled((theme, {
   disabled,
   rows,
   error,
   padding = 1,
+  ...props,
 }) => ({
   $extends: Text,
   ...(disabled ? theme.states.disabled : null),
@@ -34,19 +35,15 @@ const create = (tag, passProps = []) => styled((theme, {
   'disabled',
   'name',
   'innerRef',
-  ...passProps,
+  'options',
 ]);
 
-const StyledInput = create(
-  ({ innerRef, ...passProps }) => (
-    <select {...passProps} ref={innerRef}>
-      {}
-      <option value="volvo">Volvo</option>
-      <option value="volvo">Volvo</option>
-      <option value="volvo">Volvo</option>
-      <option value="volvo">Volvo</option>
+const StyledDropdown = create(
+  ({ options = [] }) => (
+    <select>
+      { options.map(option => <option value={option} >{option}</option>) }
     </select>
-  )
+  ),
 );
 
 const Dropdown: Styled<DropdownProps> = ({
@@ -55,14 +52,13 @@ const Dropdown: Styled<DropdownProps> = ({
   marginBottom = 0.33,
   ...props
 }) => (
-  <Box {...props} marginBottom={marginBottom}>
+  <Box {...props} marginBottom={marginBottom} >
     {label &&
-    <Text display="block" size={size}>
+    <Text display="block" size={size} >
       {label.toUpperCase()}
     </Text>
     }
-    <StyledInput
-      size={size}
+    <StyledDropdown
       {...props}
     />
   </Box>

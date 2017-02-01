@@ -1,7 +1,7 @@
 /* @flow */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Box, FieldHeader, Button } from '../../app/components';
+import { Box, FieldHeader, Button, Space } from '../../app/components';
 import { FormattedMessage } from 'react-intl';
 import billingMessages from '../../../common/user/billingMessages';
 import CreditCardRow from './CreditCardRow';
@@ -13,7 +13,7 @@ class CreditCardField extends React.Component {
     super(props, context);
 
     this.state = {
-      addCardShown: true,
+      addCardShown: false,
     };
 
     this.addCreditCardPress = this.addCreditCardPress.bind(this);
@@ -32,7 +32,12 @@ class CreditCardField extends React.Component {
       );
     }
 
-    return <NewCreditCard onCancelClick={() => this.setState({ addCardShown: false })} />;
+    return (
+      <Box>
+        <Space/>
+        <NewCreditCard onCancelClick={() => this.setState({ addCardShown: false })} />
+      </Box>
+    )
   }
 
   render() {
