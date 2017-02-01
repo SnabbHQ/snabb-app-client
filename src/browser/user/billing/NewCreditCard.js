@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import {FormattedMessage} from 'react-intl';
-import {Box, Input, Button, Space, Dropdown, Text} from '../../app/components';
+import {Box, Card, Input, Button, Space, Dropdown, Text} from '../../app/components';
 
 type NewCreditCardProps = {
   type: Object,
@@ -23,7 +23,7 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
   ];
 
   return (
-    <Box>
+    <Card>
       <Input
         label="Card number"
         name="cardNumber"
@@ -51,17 +51,17 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
             />
           </Box>
         </Box>
-        <Space x={0.33} />
+        <Space x={1} />
         <Input
           label="Security Code"
           name="CVV"
           maxLength={3}
           placeholder={'CVV'}
           type="text"
+          width={4}
         />
       </Box>
       <Box display="flex" >
-        <Space auto />
         <Button gray onClick={onCancelClick} >
           <FormattedMessage {...buttonMessages.cancel} />
         </Button>
@@ -70,7 +70,7 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
           <FormattedMessage {...buttonMessages.save} />
         </Button>
       </Box>
-    </Box>
+    </Card>
   );
 };
 

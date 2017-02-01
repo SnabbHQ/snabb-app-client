@@ -40,6 +40,7 @@ const create = (tag, passProps = []) => styled((theme, {
 const StyledInput = create(
   ({ innerRef, ...passProps }) => (
     <select {...passProps} ref={innerRef}>
+      {}
       <option value="volvo">Volvo</option>
       <option value="volvo">Volvo</option>
       <option value="volvo">Volvo</option>

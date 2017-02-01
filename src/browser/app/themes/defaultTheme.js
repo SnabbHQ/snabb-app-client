@@ -85,7 +85,7 @@ const theme: Theme = {
     backgroundColor: '#f6f6f6',
   },
   divider: {
-    borderColor: openColor.gray4,
+    borderColor: '#dde0e6',
   },
 };
 

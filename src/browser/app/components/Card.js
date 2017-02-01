@@ -12,8 +12,9 @@ const Card: Styled<CardProps> = styled((theme, props) => ({
   border: true,
   borderWidth: '1px',
   borderStyle: 'solid',
+  borderRadius: theme.border.radius,
   borderColor: theme.divider.borderColor,
-  padding: '2em',
+  padding: '1em',
   backgroundColor: 'white',
 }));
 
