@@ -31,6 +31,7 @@ export type InputProps = TextProps & {
   label?: string,
   maxLength?: number,
   onChange?: (SyntheticEvent) => void,
+  ref?: any,
   name?: string,
   placeholder?: string,
   rows?: number,
@@ -88,10 +89,15 @@ const create = (tag, passProps = []) => styled((theme, {
   'type',
   'value',
   'maxLength',
+  'innerRef',
   ...passProps,
 ]);
 
-const StyledInput = create('input');
+const StyledInput = create(
+  ({ innerRef,...passProps }) => (
+    <input {...passProps} ref={innerRef} />
+  )
+);
 
 // TODO: Auto size by default and maxRows.
 // github.com/callemall/material-ui/blob/master/src/TextField/EnhancedTextarea.js
@@ -106,6 +112,7 @@ const StyledInputOrTextArea: Styled<InputProps> = ({
   const InputOrTextArea = rows === 1 ? StyledInput : StyledTextarea;
   return (
     <InputOrTextArea
+      ref={(input) => { console.log(input); }}
       {...props}
       {...field}
       rows={rows}
