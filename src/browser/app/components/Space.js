@@ -8,7 +8,7 @@ type SpaceProps = {
 };
 
 const Space: Styled<SpaceProps> = styled((theme, {
-  x = 1,
+  x = 0.33,
   auto,
 }) => ({
   display: 'inline-block',

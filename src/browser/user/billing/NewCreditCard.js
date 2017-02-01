@@ -51,9 +51,9 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
               name="expirationMonth"
               options={optionsMonths}
             />
-            <Space x={0.33} />
+            <Space />
             <Text>/</Text>
-            <Space x={0.33} />
+            <Space />
             <Dropdown
               name="expirationYear"
               options={getYearOptions()}
@@ -73,7 +73,7 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
         <Button gray onClick={onCancelClick} >
           <FormattedMessage {...buttonMessages.cancel} />
         </Button>
-        <Space x={0.33} />
+        <Space />
         <Button accent>
           <FormattedMessage {...buttonMessages.save} />
         </Button>

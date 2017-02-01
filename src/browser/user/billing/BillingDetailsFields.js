@@ -17,7 +17,7 @@ const BillingDetailsFields = () => (
         placeholder={'Your company'}
         type="text"
       />
-      <Space x={0.33} />
+      <Space />
       <Input
         flex={1}
         name="VAT number"
@@ -44,7 +44,7 @@ const BillingDetailsFields = () => (
         placeholder={'City'}
         type="text"
       />
-      <Space x={0.33} />
+      <Space />
       <Input
         flex={1}
         name="Postal Code"
@@ -52,7 +52,7 @@ const BillingDetailsFields = () => (
         placeholder={'Postal Code'}
         type="text"
       />
-      <Space x={0.33} />
+      <Space />
       <Input
         flex={1}
         name="Country"
@@ -66,7 +66,7 @@ const BillingDetailsFields = () => (
       <Button gray>
         <FormattedMessage {...buttonMessages.cancel} />
       </Button>
-      <Space x={0.33} />
+      <Space />
       <Button accent>
         <FormattedMessage {...buttonMessages.save} />
       </Button>
