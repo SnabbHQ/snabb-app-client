@@ -26,7 +26,7 @@ class CreditCardField extends React.Component {
   renderNewCreditCard(addCardShown: boolean) {
     if (!addCardShown) {
       return (
-        <Button onClick={this.addCreditCardPress}>
+        <Button primary onClick={this.addCreditCardPress}>
           <FormattedMessage {...billingMessages.addCard} />
         </Button>
       );

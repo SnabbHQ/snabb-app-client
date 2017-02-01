@@ -66,7 +66,7 @@ type SettingsPageProps = {
 }
 
 const SettingsPage = ({ pathname }: SettingsPageProps) => (
-  <Container maxWidth="800px">
+  <Container maxWidth="900px">
     <Box display="flex" paddingTop={3}>
       <LeftPanel>
         <Box paddingHorizontal={1}>

@@ -63,10 +63,11 @@ const BillingDetailsFields = () => (
     </Box>
     <Box display="flex">
       <Space auto />
-      <Button>
+      <Button gray>
         <FormattedMessage {...buttonMessages.cancel} />
       </Button>
-      <Button>
+      <Space x={0.33} />
+      <Button accent>
         <FormattedMessage {...buttonMessages.save} />
       </Button>
     </Box>

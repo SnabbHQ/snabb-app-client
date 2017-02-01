@@ -16,33 +16,36 @@ const NewCreditCard = ({ type, cards, onCancelClick }: NewCreditCardProps) => {
 
   return (
     <Box>
-      <Box display="flex">
+      <Input
+        label="Card number"
+        name="Card number"
+        maxLength={100}
+        placeholder={'Card Number'}
+        type="text"
+      />
+      <Box display="flex" justifyContent="space-between">
         <Input
-          name="Card number"
-          labelSize={-1}
-          maxLength={100}
-          placeholder={'Card Number'}
-          type="text"
-        />
-        <Input
-          name="MM/YY"
-          labelSize={-1}
-          maxLength={100}
-          placeholder={'MM/YY'}
-          type="text"
-        />
-        <Input
+          label="Expiration Date"
           name="CVV"
-          labelSize={-1}
           maxLength={100}
           placeholder={'CVV'}
           type="text"
         />
+        <Space x={0.33} />
         <Input
-          name="Card Holder Name"
-          labelSize={-1}
+          label=""
+          name="MM/YY"
           maxLength={100}
-          placeholder={'Card Holder Name'}
+          placeholder={'MM/YY'}
+          marginTop={1}
+          type="text"
+        />
+        <Space x={0.33} />
+        <Input
+          label="Security Code"
+          name="CVV"
+          maxLength={100}
+          placeholder={'CVV'}
           type="text"
         />
       </Box>
