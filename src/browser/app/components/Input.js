@@ -112,7 +112,6 @@ const StyledInputOrTextArea: Styled<InputProps> = ({
   const InputOrTextArea = rows === 1 ? StyledInput : StyledTextarea;
   return (
     <InputOrTextArea
-      ref={(input) => { console.log(input); }}
       {...props}
       {...field}
       rows={rows}

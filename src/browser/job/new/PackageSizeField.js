@@ -7,10 +7,9 @@ import jobMessages from '../../../common/job/jobMessages';
 import vehicleIcon from '../../../common/app/images/vehicleBadgeBlank.svg';
 import TransportType from './TransportType';
 
-const VehicleField = () => {
+const PackageSizeField = () => {
   const renderExclVat = () =>
     // if (R.isEmpty(quotes)) { return }
-
      (
       <Box>
         <FormattedMessage {...jobMessages.excludeVAT} />
@@ -20,7 +19,7 @@ const VehicleField = () => {
   // ...jobMessages.selectVehicleTitle
   return (
     <Box>
-      <FieldHeader icon={vehicleIcon} title={jobMessages.selectVehicle} />
+      <FieldHeader icon={vehicleIcon} title={jobMessages.size} />
       {renderExclVat}
       <TransportType />
       <TransportType />
@@ -29,7 +28,7 @@ const VehicleField = () => {
 };
 
 
-VehicleField.propTypes = {
+PackageSizeField.propTypes = {
   quotes: PropTypes.object.isRequired,
 };
 
@@ -38,4 +37,4 @@ export default connect(
     quotes: {}, // state.quotes.all,
   }),
   {},
-)(VehicleField);
+)(PackageSizeField);

@@ -77,5 +77,9 @@ export default defineMessages({
   commentPlaceholder: {
     id: 'jobForm.commentPlaceholder',
     defaultMessage: 'Add a comment',
-  }
+  },
+  size: {
+    id: 'job.new.size',
+    defaultMessage: 'Size',
+  },
 });
