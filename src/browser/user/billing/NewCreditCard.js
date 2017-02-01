@@ -31,14 +31,16 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
 
   return (
     <Card>
-      <Input
-        label="Card number"
-        name="cardNumber"
-        maxLength={100}
-        placeholder={'Card Number'}
-        type="text"
-        width={14}
-      />
+      <Box display='flex'>
+        <Input
+          label="Card number"
+          name="cardNumber"
+          maxLength={100}
+          placeholder={'Card Number'}
+          type="text"
+          width={14}
+        />
+      </Box>
       <Box display="flex">
         <Box>
           <Text size={-1}>
@@ -65,7 +67,6 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
           maxLength={3}
           placeholder={'CVV'}
           type="text"
-          width={4}
         />
       </Box>
       <Box display="flex" >
