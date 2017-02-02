@@ -64,7 +64,7 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         <Page pattern="/register" component={RegisterPage} />
         <Page pattern="/forgotPassword" component={ForgotPassword} />
         <Page pattern="/resetPassword/:hash" component={ResetPasswordPage} />
-        <Page pattern="/verifyUser/:hash" component={VerifyUserPage} />
+        <Page pattern="/activate/:hash" component={VerifyUserPage} />
         <Miss component={NotFoundPage} />
       </Box>
     </Container>

@@ -109,10 +109,10 @@ class SnabbApi {
           return json;
         }
 
-        throw (json);
+        throw new ApiError({code: 500, error: 'error'});
       }))
       .catch((error) => {
-        throw (error);
+        throw new ApiError({code: error.statusCode, error: error.message});
       });
   }
 
@@ -218,7 +218,7 @@ class SnabbApi {
   }
 
   async updateProfile(profileId: string, data: Object) {
-    return await fetch(`${this.API_BASE_URL}/user/profile/${profileId}`, {
+    return await fetch(`${this.API_BASE_URL}/user/profile/${profileId}/`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
