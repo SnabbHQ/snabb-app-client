@@ -14,7 +14,7 @@ const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(webpackIso
 
 // github.com/facebookincubator/create-react-app/issues/343#issuecomment-237241875
 // You may want 'cheap-module-source-map' instead if you prefer source maps ('eval' for the fastest)
-const devtools = 'cheap-module-source-map';
+const devtools = 'eval';
 
 const loaders = {
   css: '',

@@ -3,6 +3,7 @@
 import type {Register, UpdatePassword} from '../../types';
 import ApiError  from './ApiError';
 import fetchIntercept from 'fetch-intercept';
+import localForage from 'localforage';
 
 import 'whatwg-fetch';
 
@@ -59,6 +60,15 @@ class SnabbApi {
     return response;
   }
 
+  async updateSessionToken() {
+    console.log('hola');
+
+    if (!this.sessionToken) {
+      this.sessionToken = await localForage.getItem('Snabb:sessionData');
+      console.log(this.sessionToken);
+    }
+  }
+
   getSessionToken() {
     return this.sessionToken && this.sessionToken.access_token ? 'Bearer ' + this.sessionToken.access_token : undefined;
   }
@@ -85,7 +95,7 @@ class SnabbApi {
         if (res.status === 200 || res.status === 201) {
 
           // Store the session token for now here in memory
-          self.sessionToken = json;
+          //self.sessionToken = json;
 
           return json;
         }
@@ -163,6 +173,8 @@ class SnabbApi {
   }
 
   async getProfile() {
+    await this.updateSessionToken();
+
     return await fetch(`${this.API_BASE_URL}/user/profile/`, ({
       method: 'GET',
     }))

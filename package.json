@@ -1,7 +1,6 @@
 {
   "name": "Snabb",
   "private": true,
-  "//": "Check all github.com/este/este#dev-tasks",
   "scripts": {
     "build": "gulp build",
     "flow": "flow",

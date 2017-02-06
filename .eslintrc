@@ -16,7 +16,7 @@
     // Soft some rules.
     "arrow-parens": 0, // Does not work with Flow generic types.
     "global-require": 0, // Used by webpack-isomorphic-tools and React Native.
-    "import/first": 0, // Este sorts by atom/sort-lines natural order.
+    "import/first": 0, // Snabb sorts by atom/sort-lines natural order.
     "import/no-duplicates": 2,
     "import/prefer-default-export": 0, // No. Actions can have just one action.
     "jsx-a11y/html-has-lang": 0, // Can't recognize the Helmet.
@@ -26,10 +26,10 @@
     "no-nested-ternary": 0, // It's nice for JSX.
     "no-param-reassign": 0, // We love param reassignment. Naming is hard.
     "no-shadow": 0, // Shadowing is a nice language feature. Naming is hard.
-    "react/forbid-prop-types": 0, // Este is going to use Flow types.
+    "react/forbid-prop-types": 0, // Snabb is going to use Flow types.
     "react/jsx-filename-extension": 0, // No, JSX belongs to .js files
     "react/jsx-indent": 0, // Damn. We need Yarn asap.
-    "react/no-unused-prop-types": 0, // Este is going to use Flow types.
+    "react/no-unused-prop-types": 0, // Snabb is going to use Flow types.
     "react/prop-types": 0, // Can't detect flowtype correctly.
     // React Native.
     "react-native/no-color-literals": 2,
