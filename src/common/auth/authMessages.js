@@ -15,7 +15,7 @@ const authMessages = defineMessages({
     id: 'auth.register.createAccountHeader',
   },
   passwordForgotten: {
-    defaultMessage: 'Forgot your updatePassword?',
+    defaultMessage: 'Forgot your password?',
     id: 'auth.email.passwordForgotten',
   },
   recoveryEmailSent: {
