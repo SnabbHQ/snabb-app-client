@@ -22,6 +22,8 @@ import ResetPasswordPage from '../user/resetPassword/ResetPasswordPage';
 import ForgotPassword from '../user/forgotPassword/ForgotPasswordPage';
 import VerifyUserPage from '../user/verifyUser/VerifyUserPage';
 
+import SplashScreen from './SplashScreen';
+
 import NotFoundPage from '../notfound/NotFoundPage';
 
 const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes.defaultTheme;
@@ -31,26 +33,34 @@ type AppProps = {
   currentTheme: ?string,
 };
 
-const App = ({ currentLocale, currentTheme }: AppProps) => (
-  <ThemeProvider
-    // TODO: Do we need it?
-    // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
-    theme={theme(currentTheme)}
-  >
-    <Container>
-      <Helmet
-        htmlAttributes={{ lang: currentLocale }}
-        meta={[
-          // v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
-          { charset: 'utf-8' },
-          { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
-          { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
-          ...favicon.meta,
-        ]}
-        link={[
-          ...favicon.link,
-        ]}
-      />
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      renderApp: false
+    }
+  }
+
+  componentDidMount() {
+
+    // Crappy solution for now for the problem that the application gets rendered straight away from the server but
+    // takes a while to init in the client due to init things like localforage to restore app state.
+    setTimeout(() => this.setState({ renderApp: true }), 1000);
+  }
+
+  renderSplashScreen(currentTheme) {
+    return <Box
+      backgroundColor={theme(currentTheme).body.backgroundColor}
+      flex={1} // make footer sticky
+    >
+      <SplashScreen/>
+    </Box>
+  }
+
+  renderApp(currentTheme) {
+    return (
       <Box
         backgroundColor={theme(currentTheme).body.backgroundColor}
         flex={1} // make footer sticky
@@ -67,9 +77,40 @@ const App = ({ currentLocale, currentTheme }: AppProps) => (
         <Page pattern="/activate/:hash" component={VerifyUserPage} />
         <Miss component={NotFoundPage} />
       </Box>
-    </Container>
-  </ThemeProvider>
-);
+    );
+  }
+
+  render() {
+    const { currentLocale, currentTheme }: AppProps = this.props;
+
+    return (
+      <ThemeProvider
+        // TODO: Do we need it?
+        // key={currentTheme} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
+        theme={theme(currentTheme)}
+      >
+        <Container>
+          <Helmet
+            htmlAttributes={{ lang: currentLocale }}
+            meta={[
+          // v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
+          { charset: 'utf-8' },
+          { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+          { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
+          ...favicon.meta,
+        ]}
+            link={[
+          ...favicon.link,
+        ]}
+          />
+
+          { this.state.renderApp ? this.renderApp(currentTheme) : this.renderSplashScreen(currentTheme) }
+
+        </Container>
+      </ThemeProvider>
+    );
+  }
+}
 
 export default R.compose(
   connect(
