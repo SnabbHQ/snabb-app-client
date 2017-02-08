@@ -1,17 +1,14 @@
 /* @flow */
-import type { Action, Deps } from '../types';
+import type { Action, Deps, Profile } from '../types';
 import { Observable } from 'rxjs/Observable';
 import { REHYDRATE } from 'redux-persist/constants';
+import { silentLoginSuccess } from '../auth/actions';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
-export const appShowMessage = (messageShown: boolean): Action => ({
-  type: 'APP_SHOW_MESSAGE',
-  payload: { messageShown },
-});
+import 'rxjs/add/operator/do';
 
 export const appError = (error: Object): Action => ({
   type: 'APP_ERROR',
@@ -33,8 +30,9 @@ export const appStart = (): Action => ({
   type: 'APP_START',
 });
 
-export const appStarted = (): Action => ({
+export const appStarted = (profile: Profile): Action => ({
   type: 'APP_STARTED',
+  payload: { profile }
 });
 
 export const appStop = (): Action => ({
@@ -46,19 +44,14 @@ export const appStorageLoaded = (state: Object): Action => ({
   payload: { state },
 });
 
-export const silentLogin = (): Action => ({
-  type: 'SILEN_LOGIN',
-});
-
-// TODO: Observable type.
 const appStartEpic = (action$: any, { authRepository, userRepository, snabbApi }: Deps) => {
   return action$.ofType(REHYDRATE)
     .switchMap(() => authRepository.getToken())
-    .map(sessionToken => { console.log(sessionToken); snabbApi.setSessionToken(sessionToken) } )
-    //.switchMap(() => userRepository.getProfile())
-    .map(appStarted);
+    .map(sessionToken => { snabbApi.setSessionToken(sessionToken) } )
+    .switchMap(() => userRepository.getProfile())
+    .map(appStarted)
+    .onErrorResumeNext(appStarted);
 };
-
 
 const appStartedEpic = (action$: any, deps: Deps) => {
   const { getState } = deps;

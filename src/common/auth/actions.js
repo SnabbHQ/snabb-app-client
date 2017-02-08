@@ -16,6 +16,18 @@ export const loginFail = (error: Error): Action => ({
   payload: { error },
 });
 
+export const silentLoginSuccess = (profile: Profile): Action => ({
+  type: 'SILENT_LOG_IN_SUCCESS',
+  payload: { profile },
+});
+
+export const silentLoginFail = (error: Error): Action => ({
+  type: 'SILENT_LOG_IN_FAIL',
+  payload: { error },
+});
+
+
+
 export const logOut = (): Action => ({
   type: 'LOG_OUT',
 });

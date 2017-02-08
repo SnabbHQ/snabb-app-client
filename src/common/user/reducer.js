@@ -11,7 +11,6 @@ const initialState = {
   formDisabled: false,
   error: null,
   isFetching: false,
-  verified: false,
 };
 
 const reducer = (
@@ -21,6 +20,7 @@ const reducer = (
   switch (action.type) {
 
     case 'LOG_IN_SUCCESS':
+    case 'APP_STARTED':
     case 'REGISTER_SUCCESS': {
       return { ...state, profile: action.payload.profile };
     }

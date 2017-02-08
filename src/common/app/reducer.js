@@ -6,7 +6,6 @@ const initialState = {
   currentTheme: 'defaultTheme',
   error: null,
   menuShown: false,
-  messageShown: true,
   online: false,
   started: false,
 };
@@ -25,8 +24,6 @@ const reducer = (
   }
 
   switch (action.type) {
-    case 'APP_SHOW_MESSAGE':
-      return { ...state, messageShown: action.payload.messageShown };
     case 'APP_ERROR':
       return { ...state, error: action.payload.error };
 

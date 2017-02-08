@@ -14,15 +14,14 @@ type PageProps = {
   messageShown?: boolean,
 }
 
-const calculateHeaderPadding = (includeHeader, messageShown) => (
-  includeHeader ? messageShown ? 3.5 : 2 : 0
+const calculateHeaderPadding = (includeHeader, emailVerified) => (
+  includeHeader ? !emailVerified ? 3.5 : 2 : 0
 );
 
 const Page = ({
   component: Component,
   includeHeader = false,
-  messageShown,
-  emailVerified,
+  emailVerified = false,
   ...props
 }: PageProps) => (
   <Match
@@ -32,13 +31,13 @@ const Page = ({
       { includeHeader &&
         <Fixed top left right zIndex={5}>
         <Box>
-            { !emailVerified && messageShown && <AppMessage /> }
+            { !emailVerified && <AppMessage /> }
             <Header />
           </Box>
         </Fixed>
       }
       <Box
-        paddingTop={calculateHeaderPadding(includeHeader, messageShown)}
+        paddingTop={calculateHeaderPadding(includeHeader, emailVerified)}
       >
         <Component {...renderProps} />
       </Box>
@@ -49,7 +48,6 @@ const Page = ({
 
 export default connect(
   (state: State) => ({
-    messageShown: state.app.messageShown,
     emailVerified: state.user.profile && state.user.profile.verified,
   }),
 )(Page);
