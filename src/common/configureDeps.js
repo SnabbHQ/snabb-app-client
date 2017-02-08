@@ -16,7 +16,7 @@ const createDataDeps = (apiConfig, platformDeps) => {
     const snabbApi = new SnabbApi(apiConfig);
 
     const authRestApi = new AuthRestApi(snabbApi, platformDeps.storageEngine);
-    const authDataStoreFactory = new AuthDataStoreFactory(authRestApi);
+    const authDataStoreFactory = new AuthDataStoreFactory(authRestApi, platformDeps.storageEngine);
 
     const userRestApi = new UserRestApi(snabbApi);
     const userDataStoreFactory = new UserDataStoreFactory(userRestApi);

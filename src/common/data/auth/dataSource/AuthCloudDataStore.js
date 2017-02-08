@@ -15,6 +15,10 @@ class AuthCloudDataStore extends AuthDataStore {
     return this.authRestApi.auth(username, password);
   }
 
+  getToken() {
+    throw ('Operation not supported!')
+  }
+
   logout() {
     return this.authRestApi.logout();
   }

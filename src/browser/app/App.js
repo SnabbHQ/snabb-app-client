@@ -31,7 +31,7 @@ const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes
 type AppProps = {
   currentLocale: string,
   currentTheme: ?string,
-  started: boolean,
+  started: ?string,
 };
 
 class App extends React.Component {

@@ -12,6 +12,10 @@ class AuthDataRepository {
     return this.authDataStoreFactory.createCloudDataStore().auth(username, password);
   }
 
+  getToken() {
+    return this.authDataStoreFactory.createLocalStorageDataStore().getToken();
+  }
+
   logout() {
     return this.authDataStoreFactory.createCloudDataStore().logout();
   }
