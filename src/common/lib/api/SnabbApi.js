@@ -220,9 +220,9 @@ class SnabbApi {
       })
   }
 
-  async updatePassword(profileId: string, data: UpdatePassword) {
-    return await fetch(`${this.API_BASE_URL}/user/updatePassword/${profileId}`, {
-      method: 'PUT',
+  async updatePassword(data: UpdatePassword) {
+    return await fetch(`${this.API_BASE_URL}/user/updatePassword`, {
+      method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
     })
@@ -232,10 +232,10 @@ class SnabbApi {
           return json;
         }
 
-        throw (json);
+        throw new ApiError({code: 500, error: 'error'});
       }))
       .catch((error) => {
-        throw (error);
+        throw new ApiError({code: error.statusCode, error: error.message});
       });
   }
 

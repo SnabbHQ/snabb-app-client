@@ -18,6 +18,7 @@ class LoginFields extends React.Component {
 
   loginViaPassword = () => {
     const { fields, login } = this.props;
+    console.log(fields.$values());
     login(fields.$values());
   };
 

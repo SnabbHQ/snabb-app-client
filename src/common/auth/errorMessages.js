@@ -8,7 +8,7 @@ const errorMessages = defineMessages({
       phone {phone}
       email {email}
       password {password}
-      oldPassword {old password}
+      currentPassword {current password}
       newPassword {new password}
       newPasswordConfirmation {new password confirmation}
     }.`,

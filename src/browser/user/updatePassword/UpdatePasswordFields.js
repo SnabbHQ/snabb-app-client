@@ -24,14 +24,14 @@ import {
 } from '../../app/components';
 import {updatePassword} from '../../../common/user/actions';
 
-const UpdatePasswordFields = ({disabled, error, fields, intl, profile, updatePassword}) => {
+const UpdatePasswordFields = ({disabled, error, fields, intl, updatePassword}) => {
 
   const onFormSubmit = () => {
     sendUpdatePassword();
   };
 
   const sendUpdatePassword = () => {
-    updatePassword(profile.profileId, fields.$values());
+    updatePassword(fields.$values());
   };
 
   return (
@@ -40,7 +40,7 @@ const UpdatePasswordFields = ({disabled, error, fields, intl, profile, updatePas
         <FieldHeader titleSize={1} title={linksMessages.changePassword} />
         <Input
           error={error}
-          field={fields.oldPassword}
+          field={fields.currentPassword}
           label={intl.formatMessage(inputMessages.currentPassword)}
           maxLength={100}
           type="password"
@@ -97,7 +97,6 @@ export default R.compose(
   connect(
     (state: State) => ({
       disabled: state.user.formDisabled,
-      profile: state.user.profile,
       error: state.user.error,
     }),
     {updatePassword},
@@ -105,7 +104,7 @@ export default R.compose(
   injectIntl,
   fields({
     path: 'updatePassword',
-    fields: ['oldPassword', 'newPassword', 'newPasswordConfirmation'],
+    fields: ['currentPassword', 'newPassword', 'newPasswordConfirmation'],
   }),
   focus('error'),
 )(UpdatePasswordFields);

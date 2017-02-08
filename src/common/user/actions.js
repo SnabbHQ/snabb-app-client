@@ -73,9 +73,9 @@ export const sendVerifyEmailFail = (error: Error): Action => ({
   payload: { error },
 });
 
-export const updatePassword = (profileId: string, options: Object): Action => ({
+export const updatePassword = (options: Object): Action => ({
   type: 'PASSWORD_UPDATE',
-  payload: { profileId, options }
+  payload: { options }
 });
 
 export const updatePasswordSuccess = (profile: Profile): Action => ({

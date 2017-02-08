@@ -99,7 +99,7 @@ describe('All User actions', () => {
   describe('Update password', () => {
     it('should updatePassword', () => {
       const profileId = 1234;
-      const options = { oldPassword: 'a' };
+      const options = { currentPassword: 'a' };
       expect(actions.updatePassword(profileId, options)).toEqual({
         type: 'PASSWORD_UPDATE',
         payload: { profileId, options }

@@ -32,8 +32,8 @@ class UserCloudDataStore extends UserDataStore {
     return this.userRestApi.sendVerifyEmail(email);
   }
 
-  updatePassword(profileId: string, data: UpdatePassword) {
-    return this.userRestApi.updatePassword(profileId, data)
+  updatePassword(data: UpdatePassword) {
+    return this.userRestApi.updatePassword(data)
   }
 
   updateProfile(profileId: string, data: Profile) {

@@ -38,8 +38,8 @@ export default class UserRestApi {
     return Observable.fromPromise(this.snabbApi.sendVerifyEmail(email));
   }
 
-  updatePassword(profileId: string, data: UpdatePassword) {
-    return Observable.fromPromise(this.snabbApi.updatePassword(profileId, convertKeys.toSnake(data)))
+  updatePassword(data: UpdatePassword) {
+    return Observable.fromPromise(this.snabbApi.updatePassword(convertKeys.toSnake(data)))
       .map(convertKeys.toCamel);
   }
 

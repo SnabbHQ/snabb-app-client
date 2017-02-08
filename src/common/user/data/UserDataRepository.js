@@ -29,8 +29,8 @@ class UserDataRepository {
     return this.userDataStoreFactory.createCloudDataStore().sendVerifyEmail(email);
   }
 
-  updatePassword(profileId: string, data: UpdatePassword) {
-    return this.userDataStoreFactory.createCloudDataStore().updateProfile(profileId, data);
+  updatePassword(data: UpdatePassword) {
+    return this.userDataStoreFactory.createCloudDataStore().updatePassword(data);
   }
 
   updateProfile(profileId: string, data: Profile) {
