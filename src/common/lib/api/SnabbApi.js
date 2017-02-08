@@ -276,47 +276,6 @@ class SnabbApi {
         }
       })
   }
-
-  /**
-   * ### fetch
-   * A generic function that prepares the request
-   *
-   * @returns object:
-   *  {code: response.code,
-   *   status: response.status,
-   *   json: response.json()
-   */
-  async _fetch(opts) {
-    opts = _.extend({
-      method: 'GET',
-      url: null,
-      body: null,
-      callback: null,
-    }, opts);
-
-    const reqOpts = {
-      method: opts.method,
-      headers: {
-        // 'X-Parse-Application-Id': this._applicationId,
-        // 'X-Parse-REST-API-Key': this._restAPIKey,
-      },
-    };
-
-    // if (this._sessionToken) {
-    //   //reqOpts.headers['X-Parse-Session-Token'] = this._sessionToken;
-    // }
-
-    if (opts.method === 'POST' || opts.method === 'PUT') {
-      reqOpts.headers.Accept = 'application/json';
-      reqOpts.headers['Content-Type'] = 'application/json';
-    }
-
-    if (opts.body) {
-      reqOpts.body = JSON.stringify(opts.body);
-    }
-
-    return await fetch(this.API_BASE_URL + opts.url, reqOpts);
-  }
 }
 
 export default SnabbApi;
