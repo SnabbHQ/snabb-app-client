@@ -22,6 +22,6 @@ export default class AuthRestApi {
 
   logout() {
     return Observable.fromPromise(this.snabbApi.logout())
-      .do(() => this.storageEngine.removeItem('sessionData'));
+      .do(() => this.storageEngine.removeItem('Snabb:sessionData'));
   }
 }

@@ -90,8 +90,6 @@ class SnabbApi {
           // Store the session token for now here in memory
           self.sessionToken = json;
 
-          console.log(json);
-
           return json;
         }
 

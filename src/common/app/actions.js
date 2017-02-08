@@ -50,7 +50,7 @@ const appStartEpic = (action$: any, { authRepository, userRepository, snabbApi }
     .map(sessionToken => { snabbApi.setSessionToken(sessionToken) } )
     .switchMap(() => userRepository.getProfile())
     .map(appStarted)
-    .onErrorResumeNext(appStarted);
+    .catch(() => Observable.of(appStarted(null))); //Logout the user in case there is an issue with the session.
 };
 
 const appStartedEpic = (action$: any, deps: Deps) => {
