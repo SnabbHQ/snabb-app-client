@@ -108,9 +108,10 @@ export type DeliveriesState = {
 export type UserState = {
   profile: ?Profile,
   formDisabled: boolean,
-  error: null,
-  isFetching: false,
-  verified: false,
+  error: ?Object,
+  isFetching: boolean,
+  resetPasswordSuccess: boolean,
+  verified: boolean,
 };
 
 // State

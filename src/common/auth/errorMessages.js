@@ -19,7 +19,7 @@ const errorMessages = defineMessages({
     id: 'auth.error.email',
   },
   passwordsNotEqual: {
-    defaultMessage: 'Password doesn\'t match the confirmation',
+    defaultMessage: 'The passwords provided are not equal',
     id: 'user.error.passwordNotEqual'
   },
   phone: {

@@ -28,10 +28,11 @@ const validateFields = (validate, fields) => validate(fields)
 const resetPassword = (action$: any, { userRepository, validate }: Deps) =>
   action$.ofType('PASSWORD_RESET')
     .map(action => action.payload)
-    .mergeMap(({ profileId, options }) => {
+    .mergeMap(({ hash, options }) => {
       const fields = { newPassword, newPasswordConfirmation } = options;
+
       return Observable.fromPromise(validateFields(validate, fields))
-        .switchMap(() => userRepository.updatePassword(profileId, fields))
+        .switchMap(() => userRepository.resetPassword(hash, { password: fields.newPassword }))
         .map(resetPasswordSuccess)
         .catch(error => Observable.of(resetPasswordFail(error)));
     });

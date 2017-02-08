@@ -38,6 +38,14 @@ const authMessages = defineMessages({
     defaultMessage: 'Your instructions have been sent. Please check your email.',
     id: 'auth.reset.forgotPasswordsSentDesc',
   },
+  resetPasswordSuccessful: {
+    defaultMessage: 'Password successfully updated!',
+    id: 'auth.reset.resetPasswordSuccessful',
+  },
+  resetPasswordSuccessfulDesc: {
+    defaultMessage: 'Your password has ben successfully been updated. Login with your new credentials.',
+    id: 'auth.reset.resetPasswordSuccessfulDesc',
+  },
   termsAndPrivacy: {
     defaultMessage: 'By joining, you agree to Snabb\'s <a href="https://snabb.io/terms/">Terms & Conditions</a> and <a href="https://snabb.io/privacy">Privacy Policy</a>',
     id: 'auth.register.termsLabelPart1',

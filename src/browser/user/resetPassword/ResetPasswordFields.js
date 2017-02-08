@@ -5,7 +5,6 @@ import React from 'react';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import inputMessages from '../../../common/app/inputMessages';
 import linksMessages from '../../../common/app/linksMessages';
-import authMessages from '../../../common/auth/authMessages';
 import {connect} from 'react-redux';
 import {fields} from '../../../common/lib/redux-fields';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
@@ -15,7 +14,6 @@ import {
   Button,
   focus,
   Form,
-  Link,
   Loading,
   Space,
   Text,
@@ -91,6 +89,7 @@ export default R.compose(
     (state: State) => ({
       disabled: state.user.formDisabled,
       error: state.user.error,
+      resetPasswordSuccess: state.user.resetPasswordSuccess
     }),
     {resetPassword},
   ),

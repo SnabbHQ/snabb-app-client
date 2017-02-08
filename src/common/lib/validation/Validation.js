@@ -48,9 +48,6 @@ class Validation {
 
   equalPasswords() {
     return this.validate((value, prop, props) => {
-      console.log(value);
-      console.log(prop);
-      console.log(props);
       if (!this.validator.equals(props.newPassword, props.newPasswordConfirmation)) {
         throw new ValidationError('passwordsNotEqual', { prop });
       }

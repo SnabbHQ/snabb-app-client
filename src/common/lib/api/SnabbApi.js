@@ -184,7 +184,7 @@ class SnabbApi {
 
   async resetPassword(hash: string, data: UpdatePassword) {
     return await fetch(`${this.API_BASE_URL}/user/resetPassword`, {
-      method: 'PUT',
+      method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody({hash: hash, ...data}),
     })
@@ -194,10 +194,10 @@ class SnabbApi {
           return json;
         }
 
-        throw (json);
+        throw new ApiError({code: 500, error: 'error'});
       }))
       .catch((error) => {
-        throw (error);
+        throw new ApiError({code: error.statusCode, error: error.message});
       });
   }
 

@@ -19,7 +19,7 @@ const validateFields = (validate, fields) => validate(fields)
   .simplePassword()
   .prop('newPasswordConfirmation')
   .required()
-  //.equalPasswords()
+  .equalPasswords()
   .promise;
 
 /**
