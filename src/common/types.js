@@ -8,6 +8,8 @@
 export type Deps = {
   authRepository: any,
   userRepository: any,
+  storageEngine: any,
+  snabbApi: any,
   getState: () => Object,
   getUid: () => string,
   now: () => number,

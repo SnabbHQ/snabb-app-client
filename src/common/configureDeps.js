@@ -7,16 +7,15 @@ import SnabbApi from './lib/api/SnabbApi';
 import UserDataRepository from './user/data/UserDataRepository';
 import UserDataStoreFactory from './user/data/dataSource/UserDataStoreFactory';
 import UserRestApi from './user/data/api/UserRestApi';
-import localforage from 'localforage';
 
 // Ensure only one Data Instance instance.
 let dataDeps = null;
 
-const createDataDeps = (apiConfig) => {
+const createDataDeps = (apiConfig, platformDeps) => {
   if (!dataDeps) {
     const snabbApi = new SnabbApi(apiConfig);
 
-    const authRestApi = new AuthRestApi(snabbApi, localforage);
+    const authRestApi = new AuthRestApi(snabbApi, platformDeps.storageEngine);
     const authDataStoreFactory = new AuthDataStoreFactory(authRestApi);
 
     const userRestApi = new UserRestApi(snabbApi);
@@ -25,6 +24,7 @@ const createDataDeps = (apiConfig) => {
     dataDeps = {
       authRepository: new AuthDataRepository(authDataStoreFactory),
       userRepository: new UserDataRepository(userDataStoreFactory),
+      snabbApi: snabbApi
     };
   }
 
@@ -33,7 +33,7 @@ const createDataDeps = (apiConfig) => {
 
 const configureDeps = (initialState, platformDeps) => ({
   ...platformDeps,
-  ...createDataDeps(initialState.config.apiConfig),
+  ...createDataDeps(initialState.config.apiConfig, platformDeps),
   getUid: () => platformDeps.uuid.v4(),
   now: () => Date.now(),
   validate,

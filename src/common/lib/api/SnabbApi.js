@@ -3,7 +3,6 @@
 import type {Register, UpdatePassword} from '../../types';
 import ApiError  from './ApiError';
 import fetchIntercept from 'fetch-intercept';
-import localForage from 'localforage';
 
 import 'whatwg-fetch';
 
@@ -60,13 +59,8 @@ class SnabbApi {
     return response;
   }
 
-  async updateSessionToken() {
-    console.log('hola');
-
-    if (!this.sessionToken) {
-      this.sessionToken = await localForage.getItem('Snabb:sessionData');
-      console.log(this.sessionToken);
-    }
+  setSessionToken(sessionToken) {
+    this.sessionToken = sessionToken;
   }
 
   getSessionToken() {
@@ -82,7 +76,6 @@ class SnabbApi {
     };
 
     let self = this;
-
     return await fetch(`${this.API_BASE_URL}/o/token/`, {
       method: 'POST',
       headers: {
@@ -95,7 +88,9 @@ class SnabbApi {
         if (res.status === 200 || res.status === 201) {
 
           // Store the session token for now here in memory
-          //self.sessionToken = json;
+          self.sessionToken = json;
+
+          console.log(json);
 
           return json;
         }
@@ -173,9 +168,7 @@ class SnabbApi {
   }
 
   async getProfile() {
-    await this.updateSessionToken();
-
-    return await fetch(`${this.API_BASE_URL}/user/profile/`, ({
+    return await fetch(`${this.API_BASE_URL}/user/profile`, ({
       method: 'GET',
     }))
       .then(this.handleErrors)
@@ -230,7 +223,7 @@ class SnabbApi {
   }
 
   async updateProfile(profileId: string, data: Object) {
-    return await fetch(`${this.API_BASE_URL}/user/profile/${profileId}/`, {
+    return await fetch(`${this.API_BASE_URL}/user/profile/${profileId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),

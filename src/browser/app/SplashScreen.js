@@ -1,13 +1,14 @@
 /* @flow */
 import React from 'react';
-import { Box, Text } from './components';
+import { Full, CenteredBox, Loading } from './components';
 
 const SplashScreen = () => (
-  <Box>
-    <Text>
-      Loading
-    </Text>
-  </Box>
+  <Full>
+    <CenteredBox>
+      <Loading />
+    </CenteredBox>
+
+  </Full>
 );
 
 export default SplashScreen;

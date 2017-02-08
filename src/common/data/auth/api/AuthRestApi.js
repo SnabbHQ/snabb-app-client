@@ -13,7 +13,11 @@ export default class AuthRestApi {
 
   auth(username: string, password: string) {
     return Observable.fromPromise(this.snabbApi.auth({ username, password }))
-      .do((sessionData) => this.storageEngine.setItem('Snabb:sessionData', sessionData));
+      .do((sessionData) => {
+          if (this.storageEngine)  {
+            this.storageEngine.setItem('Snabb:sessionData', sessionData)
+          }
+        });
   }
 
   logout() {

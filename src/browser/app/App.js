@@ -31,24 +31,10 @@ const theme = (currentTheme) => themes[currentTheme || 'defaultTheme'] || themes
 type AppProps = {
   currentLocale: string,
   currentTheme: ?string,
+  started: boolean,
 };
 
 class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      renderApp: false
-    }
-  }
-
-  componentDidMount() {
-
-    // Crappy solution for now for the problem that the application gets rendered straight away from the server but
-    // takes a while to init in the client due to init things like localforage to restore app state.
-    setTimeout(() => this.setState({ renderApp: true }), 1000);
-  }
 
   renderSplashScreen(currentTheme) {
     return <Box
@@ -81,7 +67,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { currentLocale, currentTheme }: AppProps = this.props;
+    const { currentLocale, currentTheme, started }: AppProps = this.props;
 
     return (
       <ThemeProvider
@@ -104,7 +90,7 @@ class App extends React.Component {
         ]}
           />
 
-          { this.state.renderApp ? this.renderApp(currentTheme) : this.renderSplashScreen(currentTheme) }
+          { started ? this.renderApp(currentTheme) : this.renderSplashScreen(currentTheme) }
 
         </Container>
       </ThemeProvider>
@@ -117,6 +103,7 @@ export default R.compose(
     (state: State) => ({
       currentLocale: state.intl.currentLocale,
       currentTheme: state.themes.currentTheme,
+      started: state.app.started,
     }),
   ),
   start,

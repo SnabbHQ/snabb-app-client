@@ -3,6 +3,12 @@ import type { Action, Deps } from '../types';
 import { Observable } from 'rxjs/Observable';
 import { REHYDRATE } from 'redux-persist/constants';
 
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
 export const appShowMessage = (messageShown: boolean): Action => ({
   type: 'APP_SHOW_MESSAGE',
   payload: { messageShown },
@@ -42,12 +48,13 @@ export const appStorageLoaded = (state: Object): Action => ({
 });
 
 // TODO: Observable type.
-const appStartEpic = (action$: any) =>
-  action$.ofType(REHYDRATE)
+const appStartEpic = (action$: any) => {
+  return action$.ofType(REHYDRATE)
     .map(appStarted);
+};
 
 const appStartedEpic = (action$: any, deps: Deps) => {
-  const { getState } = deps;
+  const { getState, storageEngine, snabbApi } = deps;
 
   const appOnline$ = Observable.create((observer) => {
     const onValue = (snap) => {
@@ -66,6 +73,8 @@ const appStartedEpic = (action$: any, deps: Deps) => {
     .filter((action: Action) => action.type === 'APP_STARTED')
     .mergeMap(() => Observable
       .merge(...streams)
+      .switchMap(Observable.fromPromise(storageEngine.getItem('Snabb:sessionData'))
+        .map((sessionData) => snabbApi.setSessionToken(sessionData)))
       // takeUntil unsubscribes all merged streams on APP_STOP.
       .takeUntil(
         action$.filter((action: Action) => action.type === 'APP_STOP'),
