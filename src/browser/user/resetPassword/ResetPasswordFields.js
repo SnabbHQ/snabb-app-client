@@ -22,17 +22,16 @@ import {
   Input,
   Box
 } from '../../app/components';
-import {updatePassword} from '../../../common/user/actions';
+import {resetPassword} from '../../../common/user/actions';
 
-const ResetPasswordFields = ({disabled, error, fields, hash, intl, updatePassword}) => {
+const ResetPasswordFields = ({disabled, error, fields, hash, intl, resetPassword}) => {
 
   const onFormSubmit = () => {
-    sendUpdatePassword();
+    sendResetPassword();
   };
 
-  const sendUpdatePassword = () => {
-    console.log(hash);
-    //updatePassword(profile.profileId, fields.$values());
+  const sendResetPassword = () => {
+    resetPassword(hash, fields.$values());
   };
 
   return (
@@ -69,7 +68,7 @@ const ResetPasswordFields = ({disabled, error, fields, hash, intl, updatePasswor
         </CenteredBox>
         <Box display="flex" marginVertical={1} >
           <Space auto />
-          <Button accent paddingHorizontal={2} onClick={sendUpdatePassword} >
+          <Button accent paddingHorizontal={2} onClick={sendResetPassword} >
             <FormattedMessage {...buttonMessages.save} />
           </Button>
         </Box>
@@ -84,7 +83,7 @@ ResetPasswordFields.propTypes = {
   fields: React.PropTypes.object.isRequired,
   hash: React.PropTypes.string,
   intl: intlShape.isRequired,
-  updatePassword: React.PropTypes.func.isRequired,
+  resetPassword: React.PropTypes.func.isRequired,
 };
 
 export default R.compose(
@@ -93,7 +92,7 @@ export default R.compose(
       disabled: state.user.formDisabled,
       error: state.user.error,
     }),
-    {updatePassword},
+    {resetPassword},
   ),
   injectIntl,
   fields({

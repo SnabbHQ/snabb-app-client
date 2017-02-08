@@ -21,6 +21,10 @@ class UserDataRepository {
     return this.userDataStoreFactory.createCloudDataStore().forgotPassword(email);
   }
 
+  resetPassword(hash:string, data: UpdatePassword) {
+    return this.userDataStoreFactory.createCloudDataStore().resetPassword(hash, data);
+  }
+
   sendVerifyEmail(email: string) {
     return this.userDataStoreFactory.createCloudDataStore().sendVerifyEmail(email);
   }

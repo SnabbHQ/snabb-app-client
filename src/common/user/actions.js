@@ -44,6 +44,21 @@ export const registerFail = (error: Error): Action => ({
   payload: { error },
 });
 
+export const resetPassword = (hash: string, options: Object): Action => ({
+  type: 'PASSWORD_RESET',
+  payload: { hash, options }
+});
+
+export const resetPasswordSuccess = (profile: Profile): Action => ({
+  type: 'PASSWORD_RESET_SUCCESS',
+  payload: { profile },
+});
+
+export const resetPasswordFail = (error: Error): Action => ({
+  type: 'PASSWORD_RESET_FAIL',
+  payload: { error },
+});
+
 export const sendVerifyEmail = (email: string): Action => ({
   type: 'SEND_VERIFY_EMAIL',
   payload: { email }

@@ -30,6 +30,10 @@ export default class UserRestApi {
       .map(convertKeys.toCamel);
   }
 
+  resetPassword(hash:string, data: UpdatePassword) {
+    return Observable.fromPromise(this.snabbApi.resetPassword(hash, data));
+  }
+
   sendVerifyEmail(email: string) {
     return Observable.fromPromise(this.snabbApi.sendVerifyEmail(email));
   }

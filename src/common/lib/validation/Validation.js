@@ -47,11 +47,11 @@ class Validation {
   }
 
   equalPasswords() {
-    return this.validate((pass1, pass2, prop) => {
-      console.log(pass1);
-      console.log(pass2);
+    return this.validate((value, prop, props) => {
+      console.log(value);
       console.log(prop);
-      if (!this.validator.equals(pass1, pass2)) {
+      console.log(props);
+      if (!this.validator.equals(props.newPassword, props.newPasswordConfirmation)) {
         throw new ValidationError('passwordsNotEqual', { prop });
       }
 

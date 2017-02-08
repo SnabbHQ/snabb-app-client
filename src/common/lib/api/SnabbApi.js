@@ -182,6 +182,25 @@ class SnabbApi {
       });
   }
 
+  async resetPassword(hash: string, data: UpdatePassword) {
+    return await fetch(`${this.API_BASE_URL}/user/resetPassword`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: this.encodeBody({hash: hash, ...data}),
+    })
+      .then(this.handleErrors)
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
+        }
+
+        throw (json);
+      }))
+      .catch((error) => {
+        throw (error);
+      });
+  }
+
   async sendVerifyEmail(email: string) {
     return await fetch(`${this.API_BASE_URL}/user/sendVerifyEmail`, ({
       method: 'POST',
