@@ -3,7 +3,7 @@ import { defineMessages } from 'react-intl';
 
 const errorMessages = defineMessages({
   unknown: {
-    defaultMessage: 'Unknown error',
+    defaultMessage: 'Sorry, there was an unexpected issue. Try again later.',
     id: 'app.error.unknown',
   },
 });
