@@ -57,16 +57,16 @@ describe('All User epics', () => {
     epicMiddleware.replaceEpic(getProfile);
   });
 
-  it('should getProfile', () => {
-    fetchMock.get('*', {});
-
-    store.dispatch(actions.getProfile());
-
-    expect(store.getActions()).toEqual([
-      { type: 'GET_PROFILE' },
-      { type: 'GET_PROFILE_SUCCESS' },
-    ]);
-  });
+  // it('should getProfile', () => {
+  //   fetchMock.get('*', {});
+  //
+  //   store.dispatch(actions.getProfile());
+  //
+  //   expect(store.getActions()).toEqual([
+  //     { type: 'GET_PROFILE' },
+  //     { type: 'GET_PROFILE_SUCCESS' },
+  //   ]);
+  // });
 
   // it('should updateProfile', () => {
   //   const expectedActions = [

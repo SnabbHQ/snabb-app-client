@@ -90,6 +90,7 @@ class SnabbApi {
       },
       body: this.encodeBody(authDetails),
     })
+      .then(this.handleUnExpectedError)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
 
@@ -222,7 +223,7 @@ class SnabbApi {
       .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
-          return json;
+          return {};
         }
 
         this.handleUnExpectedError();

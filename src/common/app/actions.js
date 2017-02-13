@@ -2,7 +2,6 @@
 import type { Action, Deps, Profile } from '../types';
 import { Observable } from 'rxjs/Observable';
 import { REHYDRATE } from 'redux-persist/constants';
-import { silentLoginSuccess } from '../auth/actions';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/switchMap';
