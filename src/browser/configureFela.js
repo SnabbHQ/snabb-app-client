@@ -1,9 +1,8 @@
 // @flow
-// import logger from 'fela-plugin-logger';
+//import placeholderPrefixer from 'fela-plugin-placeholder-prefixer';
+import placeholderPrefixer from './felaPluginPlaceholderPrefixer';
 import webPreset from 'fela-preset-web';
 import validator from 'fela-plugin-validator';
-import placeholderPrefixer from 'fela-plugin-placeholder-prefixer';
-
 import { createRenderer } from 'fela';
 
 const browserStaticStyles = `
@@ -109,10 +108,6 @@ const browserStaticStyles = `
 `;
 
 const devPreset = [
-  // // It's pretty verbose, but sometimes also pretty useful.
-  // logger({
-  //   logMetaData: false,
-  // }),
   validator({
     logInvalid: true,
     deleteInvalid: true,
@@ -127,9 +122,9 @@ const files = [
 const configureFela = () => {
   const renderer = createRenderer({
     plugins: [
+      placeholderPrefixer(),
       ...webPreset,
       ...(process.env.NODE_ENV !== 'production' ? devPreset : []),
-      placeholderPrefixer(),
     ],
   });
   renderer.renderStatic(browserStaticStyles);
