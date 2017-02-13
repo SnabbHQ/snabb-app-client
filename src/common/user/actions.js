@@ -78,9 +78,8 @@ export const updatePassword = (options: Object): Action => ({
   payload: { options }
 });
 
-export const updatePasswordSuccess = (profile: Profile): Action => ({
+export const updatePasswordSuccess = (): Action => ({
   type: 'PASSWORD_UPDATE_SUCCESS',
-  payload: { profile },
 });
 
 export const updatePasswordFail = (error: Error): Action => ({

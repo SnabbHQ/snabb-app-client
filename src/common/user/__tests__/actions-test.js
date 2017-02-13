@@ -98,23 +98,20 @@ describe('All User actions', () => {
 
   describe('Update password', () => {
     it('should updatePassword', () => {
-      const profileId = 1234;
       const options = { currentPassword: 'a' };
-      expect(actions.updatePassword(profileId, options)).toEqual({
+      expect(actions.updatePassword(options)).toEqual({
         type: 'PASSWORD_UPDATE',
-        payload: { profileId, options }
+        payload: { options }
       });
     });
 
     it('should updatePasswordSuccess', () => {
-      const profile = { profileId: 1234 };
-      expect(actions.updatePasswordSuccess(profile)).toEqual({
+      expect(actions.updatePasswordSuccess()).toEqual({
         type: 'PASSWORD_UPDATE_SUCCESS',
-        payload: { profile }
       });
     });
 
-    it('should updatePasswordFai', () => {
+    it('should updatePasswordFail', () => {
       const error = Error;
       expect(actions.updatePasswordFail(error)).toEqual({
         type: 'PASSWORD_UPDATE_FAIL',
