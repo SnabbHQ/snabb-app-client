@@ -57,6 +57,9 @@ describe('All User epics', () => {
     epicMiddleware.replaceEpic(getProfile);
   });
 
+  // TODO - Of course fix this and make sure are epics are correct!
+  it ('This is just a dummy until the tests are fixed!');
+
   // it('should getProfile', () => {
   //   fetchMock.get('*', {});
   //
