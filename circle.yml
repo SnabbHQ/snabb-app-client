@@ -1,0 +1,18 @@
+machine:
+  node:
+    version: 6.1.0
+
+dependencies:
+  override:
+    - yarn install
+test:
+  override:
+    - npm run jest
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: snabb-app-client
+
+
+
