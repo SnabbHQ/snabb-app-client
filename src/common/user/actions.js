@@ -59,6 +59,10 @@ export const resetPasswordFail = (error: Error): Action => ({
   payload: { error },
 });
 
+export const resetUserState = (): Action => ({
+  type: 'RESET_USER_STATE',
+});
+
 export const sendVerifyEmail = (email: string): Action => ({
   type: 'SEND_VERIFY_EMAIL',
   payload: { email }

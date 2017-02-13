@@ -23,7 +23,3 @@ export const logOut = (): Action => ({
 export const logOutSuccess = (): Action => ({
   type: 'LOG_OUT_SUCCESS',
 });
-
-export const resetAuthState = (): Action => ({
-  type: 'RESET_AUTH_STATE',
-});

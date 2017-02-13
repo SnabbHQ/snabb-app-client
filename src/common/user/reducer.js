@@ -86,6 +86,9 @@ const reducer = (
       return { ...state, formDisabled: false, isFetching: false, error: null };
     }
 
+    case 'RESET_USER_STATE':
+      return initialState;
+
     default:
       return state;
 

@@ -81,7 +81,7 @@ export default R.compose(
   connect(
     (state: State) => ({
       disabled: state.auth.formDisabled,
-      error: state.auth.error,
+      error: state.user.error,
     }),
     {forgotPassword},
   ),

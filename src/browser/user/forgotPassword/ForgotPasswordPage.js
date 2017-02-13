@@ -8,7 +8,7 @@ import R from 'ramda';
 import linksMessages from '../../../common/app/linksMessages';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
-import { Full, Title, Loading, Box, Text } from '../../app/components';
+import { Full, Title, Box, Text } from '../../app/components';
 
 // $FlowFixMe
 const logo = require('../../../common/app/images/logoBlack.svg');

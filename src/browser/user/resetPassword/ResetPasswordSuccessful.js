@@ -7,12 +7,12 @@ import userMessages from '../../../common/user/userMessages';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link, CenteredBox, Title, Box, Text } from '../../app/components';
-import { resetAuthState } from '../../../common/auth/actions';
+import { resetUserState } from '../../../common/user/actions';
 
-const ResetPasswordSuccessful = ({ intl, resetAuthState }) => {
+const ResetPasswordSuccessful = ({ intl, resetUserState }) => {
 
   const backToLogin = () => {
-    resetAuthState();
+    resetUserState();
   };
 
   return (
@@ -52,9 +52,9 @@ const ResetPasswordSuccessful = ({ intl, resetAuthState }) => {
 export default R.compose(
   connect(
     (state: State) => ({
-      error: state.auth.error,
+      error: state.user.error,
     }),
-    { resetAuthState },
+    { resetUserState },
   ),
   injectIntl,
 )(ResetPasswordSuccessful);

@@ -17,18 +17,18 @@ import {
   Text,
   Title,
 } from '../app/components';
-import { resetAuthState } from '../../common/auth/actions';
+import { resetUserState } from '../../common/user/actions';
 
 // $FlowFixMe
 const logo = require('../../common/app/images/logoBlack.svg');
 
-const LogInPage = ({ location, authed, resetAuthState }) => {
+const LogInPage = ({ location, authed, resetUserState }) => {
   const forgotPassword = () => {
-    resetAuthState();
+    resetUserState();
   };
 
   const register = () => {
-    resetAuthState();
+    resetUserState();
   };
 
   return (
@@ -89,7 +89,7 @@ LogInPage.propTypes = {
   disabled: React.PropTypes.bool.isRequired,
   location: React.PropTypes.object.isRequired,
   authed: React.PropTypes.object,
-  resetAuthState: React.PropTypes.func.isRequired,
+  resetUserState: React.PropTypes.func.isRequired,
 };
 
 LogInPage.contextTypes = {
@@ -102,6 +102,6 @@ export default R.compose(
       disabled: state.auth.formDisabled,
       authed: state.user.profile,
     }),
-    { resetAuthState },
+    { resetUserState },
   ),
 )(LogInPage);

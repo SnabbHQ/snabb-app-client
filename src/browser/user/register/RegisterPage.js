@@ -9,15 +9,15 @@ import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { CenteredBox, Text, Title, Box, Link } from '../../app/components';
-import { resetAuthState } from '../../../common/auth/actions';
+import { resetUserState } from '../../../common/user/actions';
 
 // $FlowFixMe
 //const logo = require('../../../common/app/images/logoBlack.svg');
 
-const RegisterPage = ({ intl, location, authed, resetAuthState }) => {
+const RegisterPage = ({ intl, location, authed, resetUserState }) => {
 
   const backToLogin = () => {
-    resetAuthState();
+    resetUserState();
   };
 
   return (
@@ -91,7 +91,7 @@ export default R.compose(
     (state: State) => ({
       authed: state.user.profile,
     }),
-    { resetAuthState },
+    { resetUserState },
   ),
   injectIntl,
 )(RegisterPage);
