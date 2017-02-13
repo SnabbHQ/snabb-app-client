@@ -34,10 +34,13 @@ const errorMessages = defineMessages({
     defaultMessage: 'Sorry but we not yet available in that country. We are working hard towards that!',
     id: 'auth.error.phoneNotCorrect',
   },
-
   simplePassword: {
     defaultMessage: 'Password must contain at least {minLength} characters.',
     id: 'auth.error.simplePassword',
+  },
+  INVALID_GRANT: {
+    defaultMessage: 'Incorrect username or password.',
+    id: 'auth.error.invalidCredentials',
   },
 });
 

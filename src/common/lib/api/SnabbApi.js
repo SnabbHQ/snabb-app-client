@@ -90,7 +90,6 @@ class SnabbApi {
       },
       body: this.encodeBody(authDetails),
     })
-      .then(this.handleErrors)
       .then((res) => res.json().then(json => {
         if (res.status === 200 || res.status === 201) {
 
@@ -98,6 +97,10 @@ class SnabbApi {
           self.sessionToken = json;
 
           return json;
+        } else if (res.status === 401) {
+          // Due to the fact that the oauth framework used does not support custom error messages we need to do a little
+          // fix in the client app to identify a wrong credentials issue.
+          throw new ApiError('INVALID_GRANT', { code: 401, error: 'Invalid credentials given.' });
         }
 
         this.handleUnExpectedError();
