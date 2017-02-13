@@ -92,7 +92,7 @@ const NewJobPage = () => {
       <LeftPanel>
         <GoogleMap
           bootstrapURLKeys={{
-            key: 'AIzaSyAap17mxLF2XLZdnisFJeJd9bniprOKXCs',
+            key: 'AIzaSyCHel-4O415Brc6BGGKhMvg-HYxuEShEWw',
             language: 'en',
           }}
           defaultCenter={defaultProps.center}

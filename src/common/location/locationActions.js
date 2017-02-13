@@ -3,7 +3,7 @@
 import * as Defaults from './locationConstants';
 import Geocoder from 'react-native-geocoder';
 
-Geocoder.fallbackToGoogle('AIzaSyBodeCxWCFMML6JvWL8MW6ztpHJZBN8KTw');
+Geocoder.fallbackToGoogle('AIzaSyCHel-4O415Brc6BGGKhMvg-HYxuEShEWw');
 
 /**
  * The actions supported
