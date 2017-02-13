@@ -1,6 +1,5 @@
 /* @flow */
 import type { State } from '../../../common/types';
-import authMessages from '../../../common/auth/authMessages';
 import buttonsMessages from '../../../common/app/buttonsMessages';
 import userMessages from '../../../common/user/userMessages';
 import React from 'react';

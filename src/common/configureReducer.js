@@ -2,7 +2,7 @@
 import type { Action, State } from './types';
 import app from './app/reducer';
 import config from './config/reducer';
-import device from './device/deviceReducer';
+import device from './device/reducer';
 import auth from './auth/reducer';
 import user from './user/reducer';
 import location from './location/locationReducer';

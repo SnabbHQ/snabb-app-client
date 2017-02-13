@@ -1,6 +1,6 @@
 /* @flow */
 import type { State } from '../../../common/types';
-import authMessages from '../../../common/auth/authMessages';
+import userMessages from '../../../common/user/userMessages';
 import React from 'react';
 import ForgotPasswordFields from './ForgotPasswordFields';
 import ForgotPasswordSent from './ForgotPasswordSent';
@@ -21,14 +21,14 @@ const ForgotPasswordField = ({ disabled, intl }) => (
       display="block"
       size={2}
     >
-      {intl.formatMessage(authMessages.forgotPassword)}
+      {intl.formatMessage(userMessages.forgotPassword)}
     </Text>
     <ForgotPasswordFields />
     <Text
       align="center"
       display="block"
     >
-      {intl.formatMessage(authMessages.forgotPasswordDescription)}
+      {intl.formatMessage(userMessages.forgotPasswordDescription)}
     </Text>
   </Box>
 );
@@ -71,7 +71,7 @@ export default R.compose(
     (state: State) => ({
       disabled: state.auth.formDisabled,
       authed: state.user.profile,
-      forgotPasswordSent: state.auth.forgotPasswordSent,
+      forgotPasswordSent: state.user.forgotPasswordSent,
     }),
   ),
   injectIntl,

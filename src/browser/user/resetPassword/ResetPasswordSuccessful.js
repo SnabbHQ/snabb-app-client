@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import type { State } from '../../../common/types';
 import R from 'ramda';
 import buttonsMessages from '../../../common/app/buttonsMessages';
-import authMessages from '../../../common/auth/authMessages';
+import userMessages from '../../../common/user/userMessages';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link, CenteredBox, Title, Box, Text } from '../../app/components';
@@ -17,20 +17,20 @@ const ResetPasswordSuccessful = ({ intl, resetAuthState }) => {
 
   return (
     <Box>
-      <Title message={authMessages.resetPasswordSuccessful} />
+      <Title message={userMessages.resetPasswordSuccessful} />
       <Text
         bold
         align="center"
         display="block"
         size={2}
       >
-        {intl.formatMessage(authMessages.resetPasswordSuccessful)}
+        {intl.formatMessage(userMessages.resetPasswordSuccessful)}
       </Text>
       <Text
         align="center"
         display="block"
       >
-        {intl.formatMessage(authMessages.resetPasswordSuccessfulDesc)}
+        {intl.formatMessage(userMessages.resetPasswordSuccessfulDesc)}
       </Text>
       <CenteredBox>
         <Link

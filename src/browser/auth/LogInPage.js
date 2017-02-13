@@ -4,7 +4,7 @@ import type { State } from '../../common/types';
 import LoginFields from './LoginFields';
 import R from 'ramda';
 import linksMessages from '../../common/app/linksMessages';
-import authMessages from '../../common/auth/authMessages';
+import userMessages from '../../common/user/userMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
@@ -63,7 +63,7 @@ const LogInPage = ({ location, authed, resetAuthState }) => {
                 size={0}
                 to="/forgotPassword"
               >
-                <FormattedMessage {...authMessages.passwordForgotten} />
+                <FormattedMessage {...userMessages.passwordForgotten} />
               </Link>
             </CenteredBox>
             <CenteredBox>
@@ -76,7 +76,7 @@ const LogInPage = ({ location, authed, resetAuthState }) => {
                 marginTop={1}
                 to="/register"
               >
-                <FormattedMessage {...authMessages.createAccount} />
+                <FormattedMessage {...userMessages.createAccount} />
               </Link>
             </CenteredBox>
           </Box>

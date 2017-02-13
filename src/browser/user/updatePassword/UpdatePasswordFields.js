@@ -5,7 +5,7 @@ import React from 'react';
 import buttonMessages from '../../../common/app/buttonsMessages';
 import inputMessages from '../../../common/app/inputMessages';
 import linksMessages from '../../../common/app/linksMessages';
-import authMessages from '../../../common/auth/authMessages';
+import userMessages from '../../../common/user/userMessages';
 import {connect} from 'react-redux';
 import {fields} from '../../../common/lib/redux-fields';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
@@ -73,7 +73,7 @@ const UpdatePasswordFields = ({disabled, error, fields, intl, updatePassword}) =
             size={0}
             to="/forgotPassword"
           >
-            <FormattedMessage {...authMessages.passwordForgotten} />
+            <FormattedMessage {...userMessages.passwordForgotten} />
           </Link>
           <Space auto />
           <Button accent paddingHorizontal={2} onClick={sendUpdatePassword} >

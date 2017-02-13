@@ -4,7 +4,7 @@ import RegisterFields from './RegisterFields';
 import R from 'ramda';
 import React from 'react';
 import linksMessages from '../../../common/app/linksMessages';
-import authMessages from '../../../common/auth/authMessages';
+import userMessages from '../../../common/user/userMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
@@ -45,7 +45,7 @@ const RegisterPage = ({ intl, location, authed, resetAuthState }) => {
               display="block"
               size={2}
             >
-              {intl.formatMessage(authMessages.createAccountHeader)}
+              {intl.formatMessage(userMessages.createAccountHeader)}
             </Text>
             <Text
               align="center"
@@ -60,7 +60,7 @@ const RegisterPage = ({ intl, location, authed, resetAuthState }) => {
             <CenteredBox>
               <Box display="block">
                 <Text display="block" size={-1}>
-                  <FormattedHTMLMessage {...authMessages.termsAndPrivacy} />
+                  <FormattedHTMLMessage {...userMessages.termsAndPrivacy} />
                 </Text>
                 <CenteredBox marginVertical={1}>
                   <Link
@@ -68,7 +68,7 @@ const RegisterPage = ({ intl, location, authed, resetAuthState }) => {
                     size={1}
                     to={'/login'}
                   >
-                    <FormattedMessage {...authMessages.alreadyAccount} />
+                    <FormattedMessage {...userMessages.alreadyAccount} />
                   </Link>
                 </CenteredBox>
               </Box>
