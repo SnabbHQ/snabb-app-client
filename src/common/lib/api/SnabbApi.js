@@ -54,9 +54,16 @@ class SnabbApi {
 
   handleErrors(response) {
     if (!response.ok) {
-      throw ApiError(response.statusText);
+      return response.json().then(json => {
+        throw new ApiError(json.key, { code: json.code, error: json.message });
+      });
     }
+
     return response;
+  }
+
+  handleUnExpectedError() {
+    throw new ApiError('UNEXPECTED', { code: 500, error: 'Un-expected error message' });
   }
 
   setSessionToken(sessionToken) {
@@ -93,11 +100,8 @@ class SnabbApi {
           return json;
         }
 
-        throw new ApiError({code: 500, error: 'error'});
-      }))
-      .catch((error) => {
-        throw new ApiError({code: error.statusCode, error: error.message});
-      });
+        this.handleUnExpectedError();
+      }));
   }
 
   async register(data: Register) {
@@ -112,11 +116,8 @@ class SnabbApi {
           return json;
         }
 
-        throw new ApiError({code: 500, error: 'error'});
-      }))
-      .catch((error) => {
-        throw new ApiError({code: error.statusCode, error: error.message});
-      });
+        this.handleUnExpectedError();
+      }));
   }
 
   async logout() {
@@ -153,15 +154,11 @@ class SnabbApi {
     })
       .then(this.handleErrors)
       .then((res) => {
-        if ((res.status === 200 || res.status === 201) ||
-          (res.status === 400 && res.code === 209)) {
+        if ((res.status === 200 || res.status === 201)) {
           return {};
-        } else {
-          throw new ApiError({code: res.statusCode, error: res.message});
         }
-      })
-      .catch((error) => {
-        throw (error);
+
+        this.handleUnExpectedError();
       });
   }
 
@@ -175,11 +172,8 @@ class SnabbApi {
           return json;
         }
 
-        throw (json);
-      }))
-      .catch((error) => {
-        throw (error);
-      });
+        this.handleUnExpectedError();
+      }));
   }
 
   async resetPassword(hash: string, data: UpdatePassword) {
@@ -194,11 +188,8 @@ class SnabbApi {
           return json;
         }
 
-        throw new ApiError({code: 500, error: 'error'});
-      }))
-      .catch((error) => {
-        throw new ApiError({code: error.statusCode, error: error.message});
-      });
+        this.handleUnExpectedError();
+      }));
   }
 
   async sendVerifyEmail(email: string) {
@@ -211,12 +202,11 @@ class SnabbApi {
     }))
       .then(this.handleErrors)
       .then((res) => {
-        if ((res.status === 200 || res.status === 201) ||
-          (res.status === 400 && res.code === 209)) {
+        if ((res.status === 200 || res.status === 201)) {
           return {};
-        } else {
-          throw new ApiError({code: res.statusCode, error: res.message});
         }
+
+        this.handleUnExpectedError();
       })
   }
 
@@ -232,11 +222,8 @@ class SnabbApi {
           return json;
         }
 
-        throw new ApiError({code: 500, error: 'error'});
-      }))
-      .catch((error) => {
-        throw new ApiError({code: error.statusCode, error: error.message});
-      });
+        this.handleUnExpectedError();
+      }));
   }
 
   async updateProfile(profileId: string, data: Object) {
@@ -251,11 +238,8 @@ class SnabbApi {
           return json;
         }
 
-        throw (json);
-      }))
-      .catch((error) => {
-        throw (error);
-      });
+        this.handleUnExpectedError();
+      }));
   }
 
   async verifyUser(hash: string) {
@@ -266,14 +250,11 @@ class SnabbApi {
     })
       .then(this.handleErrors)
       .then((res) => {
-        if ((res.status === 200 || res.status === 201) ||
-          (res.status === 400 && res.code === 209)) {
+        if ((res.status === 200 || res.status === 201)) {
           return {};
-        } else {
-          // TODO - throw the right error when we know error codes
-          //throw new ApiError('userAlreadyVerified', { code: res.statusCode, error: res.message });
-          throw new ApiError({code: res.statusCode, error: res.message});
         }
+
+        this.handleUnExpectedError();
       })
   }
 }
