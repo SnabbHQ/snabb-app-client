@@ -8,11 +8,11 @@ import userMessages from '../../../common/user/userMessages';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { injectIntl, intlShape, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
-import { CenteredBox, Text, Title, Box, Link } from '../../app/components';
+import { CenteredBox, Text, Title, Box, Image, Link } from '../../app/components';
 import { resetUserState } from '../../../common/user/actions';
 
 // $FlowFixMe
-//const logo = require('../../../common/app/images/logoBlack.svg');
+const logo = require('../../../common/app/images/logo.svg');
 
 const RegisterPage = ({ intl, location, authed, resetUserState }) => {
 
@@ -47,15 +47,15 @@ const RegisterPage = ({ intl, location, authed, resetUserState }) => {
             >
               {intl.formatMessage(userMessages.createAccountHeader)}
             </Text>
-            <Text
-              align="center"
-              display="block"
-              size={2}
-              marginBottom={0.5}
-              bold
-            >
-              Snabb
-            </Text>
+            <Box display="flex" alignItems="center" flexDirection="column" marginBottom={2}>
+              <Image
+                alt="Snabb logo"
+                height={45}
+                width={110}
+                src={logo}
+              />
+            </Box>
+
             <RegisterFields />
             <CenteredBox>
               <Box display="block">
@@ -64,6 +64,7 @@ const RegisterPage = ({ intl, location, authed, resetUserState }) => {
                 </Text>
                 <CenteredBox marginVertical={1}>
                   <Link
+                    color="black"
                     onClick={backToLogin}
                     size={1}
                     to={'/login'}

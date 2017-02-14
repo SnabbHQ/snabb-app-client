@@ -25,10 +25,10 @@ const theme: Theme = {
     lineHeight: 24,
   }),
   colors: {
-    primary: openColor.blue7,
+    primary: '#FF2C40',
     primaryHover: openColor.blue5,
-    secondary: '#37beff',
-    accent: '#00aaff',
+    secondary: '#00aaff',
+    accent: '#FF2C40',
     success: '#1c7',
     warning: '#f70',
     danger: '#d40619',

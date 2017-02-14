@@ -72,7 +72,7 @@ const create = (tag, passProps = []) => styled((theme, {
   ...(disabled ? theme.states.disabled : null),
   border: error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.input.backgroundColor}`,
   ':focus': {
-    border: error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.colors.accent}`,
+    border: error ? `solid 1px ${theme.colors.danger}` : `solid 1px ${theme.colors.secondary}`,
   },
   '::placeholder': {
     fontWeight: 'normal',

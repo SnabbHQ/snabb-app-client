@@ -53,7 +53,7 @@ class App extends React.Component {
       >
         <Page authorized exactly pattern="/" component={ActivePage} includeHeader />
         <Page authorized pattern="/active" component={ActivePage} includeHeader />
-        <Page authorized pattern="/new" component={NewJobPage} includeHeader />
+        <Page authorized pattern="/new" component={NewJobPage} />
         <Page authorized pattern="/history" component={HistoryPage} includeHeader />
         <Page authorized pattern="/settings" component={SettingsPage} includeHeader />
         <Page pattern="/login" component={LogInPage} />

@@ -39,12 +39,10 @@ const Header = () => (
       >
         <Image
           alt="Snabb logo"
-          height={40}
-          width={40}
+          height={50}
+          width={80}
           src={logo}
         />
-        <Space x={1} />
-        <Text size={1}>Snabb</Text>
       </Box>
       <Space auto />
       <Box

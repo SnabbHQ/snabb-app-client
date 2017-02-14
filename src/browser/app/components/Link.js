@@ -35,7 +35,7 @@ const RouterLink = createLink(ReactRouterLink, [
 const isExternalLink = to => to.includes('://');
 const routerLinkActiveStyle = (props) => {
   // TODO - Don't ever hardcode color values here but for now wil do.
-  const color = props.activeColor ? props.activeColor : '#00aaff';
+  const color = props.activeColor ? props.activeColor : '#FF2C40';
 
   return {
     color,
