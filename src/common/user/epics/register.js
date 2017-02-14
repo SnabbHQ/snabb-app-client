@@ -24,7 +24,7 @@ const validateFields = (validate, fields) => validate(fields)
   .simplePassword()
   .promise;
 
-const login = (action$: any, { authRepository, userRepository, validate }: Deps) =>
+const register = (action$: any, { authRepository, userRepository, validate }: Deps) =>
   action$.ofType('REGISTER')
     .map(action => action.payload.options)
     .mergeMap((options) => {
@@ -37,4 +37,4 @@ const login = (action$: any, { authRepository, userRepository, validate }: Deps)
         .catch(error => Observable.of(registerFail(error)));
     });
 
-export default login;
+export default register;

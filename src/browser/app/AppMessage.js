@@ -55,7 +55,7 @@ const AppMessage = ({ profile, sendVerifyEmail }: AppMessageProps, { router }: O
         white
         size={-1}
         maxHeight={1}
-        color="accent"
+        color="black"
         onClick={resendPasswordClick}
         paddingHorizontal={1}
       >
@@ -66,7 +66,7 @@ const AppMessage = ({ profile, sendVerifyEmail }: AppMessageProps, { router }: O
         transform="none"
         white
         size={-1}
-        color="accent"
+        color="black"
         onClick={goToSettings}
         paddingHorizontal={1}
       >
