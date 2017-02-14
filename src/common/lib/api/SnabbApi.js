@@ -231,7 +231,7 @@ class SnabbApi {
 
   async updateProfile(profileId: string, data: Object) {
     return await fetch(`${this.API_BASE_URL}/user/profile/${profileId}`, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody(data),
     })
