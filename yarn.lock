@@ -6878,6 +6878,10 @@ react-side-effect@1.0.2:
   dependencies:
     fbjs "0.1.0-alpha.10"
 
+react-skylight@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/react-skylight/-/react-skylight-0.4.1.tgz#07d1af6dea0a50a5d8122a786a8ce8bc6bdf2241"
+
 react-timer-mixin@^0.13.2:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/react-timer-mixin/-/react-timer-mixin-0.13.3.tgz#0da8b9f807ec07dc3e854d082c737c65605b3d22"

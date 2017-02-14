@@ -82,4 +82,12 @@ export default defineMessages({
     id: 'job.new.size',
     defaultMessage: 'Size',
   },
+  viewSizeDetails: {
+    id: 'job.new.viewSizeDetails',
+    defaultMessage: 'View details',
+  },
+  sizeDetails: {
+    id: 'job.new.sizeDetails',
+    defaultMessage: 'Size Details',
+  }
 });

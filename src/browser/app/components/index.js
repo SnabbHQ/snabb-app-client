@@ -30,6 +30,9 @@ export { default as styled } from './styled';
 export { default as Text } from './Text';
 export { default as Title } from './Title';
 
+// Used for dialogs
+export { SkyLightStateless as Dialog } from 'react-skylight';
+
 // For another components inspiration, check:
 // developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets
 // vuetifyjs.com

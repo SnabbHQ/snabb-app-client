@@ -128,6 +128,7 @@ const NewJobPageHeader = () => (
 );
 
 const NewJobPage = () => {
+
   function renderRequestButton() {
     return (
       <RequestPanel>
@@ -171,7 +172,7 @@ const NewJobPage = () => {
           />
         </LeftPanel>
         <RightPanel>
-          <DeliveryFields />
+          <DeliveryFields/>
           {renderRequestButton()}
         </RightPanel>
       </Box>
