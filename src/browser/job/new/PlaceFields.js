@@ -26,7 +26,6 @@ class PlaceFields extends React.Component {
     if (this.props.collapsible) {
       return (
         <Button
-          primary
           marginLeft={2}
           onClick={() => this.setState({ collapsed: !this.state.collapsed })}
         >
@@ -140,9 +139,10 @@ class PlaceFields extends React.Component {
             icon={this.props.icon}
             marginBottom={0}
             title={this.props.title}
+            titleSize={0}
           />
           <Space auto />
-          {this.renderEditButton(this.state.collapsed)}
+          {/*{this.renderEditButton(this.state.collapsed)}*/}
         </Box>
         {this.renderFields(this.state.collapsed)}
       </Box>

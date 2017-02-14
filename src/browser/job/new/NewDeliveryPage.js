@@ -1,12 +1,15 @@
 /* @flow */
 import React, { PropTypes } from 'react';
-import {Fixed, Text, Title, Button, Space, Container, Box} from '../../app/components';
+import {Fixed, Text, Title, Button, Space, Container, Image, Box} from '../../app/components';
 import {FormattedMessage} from 'react-intl';
 import buttonsMessages from '../../../common/app/buttonsMessages';
 import jobMessages from '../../../common/job/jobMessages';
 import DeliveryFields from './DeliveryFields';
 import GoogleMap from 'google-map-react';
 import styled from '../../app/components/styled';
+
+// $FlowFixMe
+const logo = require('../../../common/app/images/logo.svg');
 
 const RightPanel = styled((theme) => ({
   $extends: Box,
@@ -94,17 +97,31 @@ const NewJobPageHeader = () => (
       flexWrap="wrap"
       boxShadow="0 1px 2px rgba(0,0,0,0.15)"
     >
+      <Space x={1} />
       <Box
-        flex={1}
         display="flex"
         alignItems="center"
-        justifyContent="center"
       >
-        <Text size={1} bold>
+        <Image
+          alt="Snabb logo"
+          height={56}
+          width={80}
+          src={logo}
+        />
+      </Box>
+      <Space auto />
+      <Box
+        display="flex"
+        alignItems="center"
+      >
+        <Text size={1}>
           <FormattedMessage {...jobMessages.newDelivery} />
         </Text>
       </Box>
-      <CancelDeliveryHeaderButton />
+      <Space auto />
+      <Box display="flex" alignItems="center">
+        <CancelDeliveryHeaderButton />
+      </Box>
       <Space x={1} />
     </Box>
   </Fixed>

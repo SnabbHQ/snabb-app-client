@@ -19,7 +19,7 @@ const Blankslate = ({ icon, actions, title, subtitle }: Props) => {
   );
 
   const renderActions = () => (
-    actions && <Box display="flex" justifyContent="center">{actions}</Box>
+    actions && <Box display="flex" justifyContent="center" marginTop={1}>{actions}</Box>
   );
 
   return (

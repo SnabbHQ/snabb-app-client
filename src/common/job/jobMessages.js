@@ -52,11 +52,11 @@ export default defineMessages({
   },
   pickUp: {
     id: 'jobForm.pickUp',
-    defaultMessage: 'Pick Up',
+    defaultMessage: 'PICKUP',
   },
   dropOff: {
     id: 'jobForm.dropOff',
-    defaultMessage: 'Drop Off',
+    defaultMessage: 'DROPOFF',
   },
   pickUpAddressPlaceholder: {
     id: 'jobForm.pickUpAddressPlaceholder',

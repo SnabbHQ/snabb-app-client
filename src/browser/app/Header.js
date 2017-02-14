@@ -39,7 +39,7 @@ const Header = () => (
       >
         <Image
           alt="Snabb logo"
-          height={50}
+          height={56}
           width={80}
           src={logo}
         />
@@ -54,7 +54,9 @@ const Header = () => (
         <HeaderLink to="/settings/details" message={linksMessages.settings} />
       </Box>
       <Space auto />
-      <NewDeliveryButton />
+      <Box display="flex" alignItems="center">
+        <NewDeliveryButton />
+      </Box>
       <Space x={1} />
     </Box>
   );
