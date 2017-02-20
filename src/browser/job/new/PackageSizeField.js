@@ -5,7 +5,7 @@ import {FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { FieldHeader, Box, Dialog, Space, Button, Text } from '../../app/components';
 import jobMessages from '../../../common/job/jobMessages';
-import vehicleIcon from '../../../common/app/images/vehicleBadgeBlank.svg';
+import sizesIcon from '../../../common/app/images/sizesBadgeIcon.svg';
 import PackageSize from './PackageSize';
 
 class PackageSizeField extends React.Component {
@@ -45,7 +45,7 @@ class PackageSizeField extends React.Component {
         </Dialog>
 
         <Box display="flex" alignItems="center" marginBottom={1}>
-          <FieldHeader icon={vehicleIcon} title={jobMessages.size} marginBottom={0} />
+          <FieldHeader icon={sizesIcon} title={jobMessages.size} marginBottom={0} />
           <Space auto />
           <Button color="primary" onClick={this.showDialog} onPress={this.showDialog}>
             <FormattedMessage {...jobMessages.viewSizeDetails}/>

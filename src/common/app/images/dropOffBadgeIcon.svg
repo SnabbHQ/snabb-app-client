@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>066E6B56-848F-43D9-946C-5C7121A3B727</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Design-System---WIP" transform="translate(-84.000000, -2267.000000)" fill="#80E900">
+            <g id="Icons" transform="translate(64.000000, 2104.000000)">
+                <path d="M32,173 L32,163 L28,163 L28,173 L24,173 L30,179 L36,173 L32,173 Z M20,163.991803 C20,163.444045 20.4553056,163 20.9918031,163 L39.0081969,163 C39.5559546,163 40,163.455306 40,163.991803 L40,182.008197 C40,182.555955 39.5446944,183 39.0081969,183 L20.9918031,183 C20.4440454,183 20,182.544694 20,182.008197 L20,163.991803 Z" id="Dropoff-Icon"></path>
+            </g>
+        </g>
+    </g>
+</svg>

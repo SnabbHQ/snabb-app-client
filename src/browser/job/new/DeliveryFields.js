@@ -4,8 +4,9 @@ import { Space, Box, Divider } from '../../app/components';
 import jobMessages from '../../../common/job/jobMessages';
 import PlaceFields from './PlaceFields';
 import PackageSizeField from './PackageSizeField';
-import pickupIcon from '../../../common/app/images/pickupBadgeBlank.svg';
-import dropIcon from '../../../common/app/images/dropOffBadgeBlank.svg';
+
+import pickupIcon from '../../../common/app/images/pickUpBadgeIcon.svg';
+import dropIcon from '../../../common/app/images/dropOffBadgeIcon.svg';
 
 const JobFields = () => (
     <Box>
