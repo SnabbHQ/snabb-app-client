@@ -10,10 +10,6 @@ import { connect } from 'react-redux';
 import { injectIntl, intlShape } from 'react-intl';
 import { Full, Title, Box, Text } from '../../app/components';
 
-// $FlowFixMe
-const logo = require('../../../common/app/images/logoBlack.svg');
-
-
 const ForgotPasswordField = ({ disabled, intl }) => (
   <Box>
     <Text

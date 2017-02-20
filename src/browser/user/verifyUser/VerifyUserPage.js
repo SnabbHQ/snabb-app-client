@@ -10,9 +10,6 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { CenteredBox, Link, Error, Full, Title, Loading, Box, Text } from '../../app/components';
 import { verifyUser } from '../../../common/user/actions';
 
-// $FlowFixMe
-const logo = require('../../../common/app/images/logoBlack.svg');
-
 const VerifyUserPageSuccess = ({ intl }) => (
   <Box>
     <Title message={userMessages.userVerifying} />

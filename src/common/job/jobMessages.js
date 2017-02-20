@@ -82,6 +82,18 @@ export default defineMessages({
     id: 'job.new.size',
     defaultMessage: 'Size',
   },
+  sizeBig: {
+    id: 'job.new.size.big',
+    defaultMessage: 'Big',
+  },
+  sizeMedium: {
+    id: 'job.new.size.medium',
+    defaultMessage: 'Medium',
+  },
+  sizeSmall: {
+    id: 'job.new.size.small',
+    defaultMessage: 'Small',
+  },
   viewSizeDetails: {
     id: 'job.new.viewSizeDetails',
     defaultMessage: 'View details',

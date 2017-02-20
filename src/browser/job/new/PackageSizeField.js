@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { FieldHeader, Box, Dialog, Space, Button, Text } from '../../app/components';
 import jobMessages from '../../../common/job/jobMessages';
 import vehicleIcon from '../../../common/app/images/vehicleBadgeBlank.svg';
-import TransportType from './TransportType';
+import PackageSize from './PackageSize';
 
 class PackageSizeField extends React.Component {
 
@@ -51,8 +51,21 @@ class PackageSizeField extends React.Component {
             <FormattedMessage {...jobMessages.viewSizeDetails}/>
           </Button>
         </Box>
-        <TransportType />
-        <TransportType />
+        <Box display="flex"  justifyContent="space-between">
+          <PackageSize
+            title={intl.formatMessage(jobMessages.sizeSmall)}
+            icon="small"
+          />
+          <PackageSize
+            title={intl.formatMessage(jobMessages.sizeMedium)}
+            icon="medium"
+          />
+          <PackageSize
+            title={intl.formatMessage(jobMessages.sizeBig)}
+            icon="big"
+          />
+        </Box>
+
       </Box>
     )
   }
