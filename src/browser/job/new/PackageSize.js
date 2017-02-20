@@ -5,7 +5,7 @@ import { Space, Box, Text, Image } from '../../app/components';
 const ICONS = {
   small: require('../../../common/app/images/small.svg'),
   medium: require('../../../common/app/images/medium.svg'),
-  big: require('../../../common/app/images/big.svg'),
+  large: require('../../../common/app/images/large.svg'),
 };
 
 type PackageSizeProps = {

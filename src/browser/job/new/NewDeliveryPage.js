@@ -140,10 +140,21 @@ const NewJobPage = () => {
           paddingRight={1}
         >
           <Button primary >
-            <FormattedMessage
-              id="newJobPage.requestButtonDisabled"
-              defaultMessage="Request"
-            />
+            <Box display="flex" alignItems="center">
+              <Box>
+                <Text bold color="white" display="block">Request</Text>
+                <Box display="flex">
+                  <Text size={-1} color="white">Time to pickup:</Text>
+                  <Space />
+                  <Text size={-1} bold color="white">32</Text>
+                  <Space />
+                  <Text size={-1} color="white">min</Text>
+                </Box>
+              </Box>
+
+              <Space x={1} />
+              <Text fontWeight={500} color="white" size={1}>5.90€</Text>
+            </Box>
           </Button>
         </Box>
       </RequestPanel>

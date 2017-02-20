@@ -61,8 +61,8 @@ class PackageSizeField extends React.Component {
             icon="medium"
           />
           <PackageSize
-            title={intl.formatMessage(jobMessages.sizeBig)}
-            icon="big"
+            title={intl.formatMessage(jobMessages.sizeLarge)}
+            icon="large"
           />
         </Box>
 
