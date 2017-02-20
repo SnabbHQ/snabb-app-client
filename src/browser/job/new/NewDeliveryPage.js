@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import {Fixed, Text, Title, Button, Space, Container, Image, Box} from '../../app/components';
 import {FormattedMessage} from 'react-intl';
 import buttonsMessages from '../../../common/app/buttonsMessages';
-import jobMessages from '../../../common/job/jobMessages';
+import jobMessages from '../../../common/delivery/jobMessages';
 import DeliveryFields from './DeliveryFields';
 import GoogleMap from 'google-map-react';
 import styled from '../../app/components/styled';

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Button } from '../../app/components';
 import { FormattedMessage } from 'react-intl';
-import jobMessages from '../../../common/job/jobMessages';
+import jobMessages from '../../../common/delivery/jobMessages';
 
 export default function NewDeliveryButton({}, { router }: Object) {
   const onButtonClick = () => {

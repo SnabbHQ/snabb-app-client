@@ -245,6 +245,21 @@ class SnabbApi {
       }));
   }
 
+  async validateAddress(address: string) {
+    return await fetch(`${this.API_BASE_URL}/address/validateAddress`, ({
+      method: 'POST',
+      body: this.encodeBody({address: address}),
+    }))
+      .then(this.handleErrors)
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
+        }
+
+        this.handleUnExpectedError();
+      }));
+  }
+
   async verifyUser(hash: string) {
     return await fetch(`${this.API_BASE_URL}/user/verifyUser`, {
       method: 'POST',

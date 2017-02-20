@@ -1,6 +1,6 @@
 import React from 'react';
 import { Blankslate } from '../../app/components';
-import jobMessages from '../../../common/job/jobMessages';
+import jobMessages from '../../../common/delivery/jobMessages';
 import { NewDeliveryButton } from '../components';
 
 function NoHistoryPlaceholder() {

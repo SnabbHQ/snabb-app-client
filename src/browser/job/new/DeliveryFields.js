@@ -1,7 +1,7 @@
 /* @flow */
 import React from 'react';
-import { Space, Box, Divider } from '../../app/components';
-import jobMessages from '../../../common/job/jobMessages';
+import { Space, Box } from '../../app/components';
+import jobMessages from '../../../common/delivery/jobMessages';
 import PlaceFields from './PlaceFields';
 import PackageSizeField from './PackageSizeField';
 

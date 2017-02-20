@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import {FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import { FieldHeader, Box, Dialog, Space, Button, Text } from '../../app/components';
-import jobMessages from '../../../common/job/jobMessages';
+import jobMessages from '../../../common/delivery/jobMessages';
 import sizesIcon from '../../../common/app/images/sizesBadgeIcon.svg';
 import PackageSize from './PackageSize';
 
