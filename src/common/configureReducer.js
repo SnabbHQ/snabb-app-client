@@ -6,7 +6,7 @@ import device from './device/reducer';
 import auth from './auth/reducer';
 import user from './user/reducer';
 import location from './location/locationReducer';
-import delivery from './delivery/deliveryReducer';
+import delivery from './delivery/reducer';
 import intl from './intl/reducer';
 import themes from './themes/reducer';
 import { combineReducers } from 'redux';

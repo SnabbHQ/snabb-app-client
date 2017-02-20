@@ -14,8 +14,6 @@ import 'rxjs/add/operator/catch';
 /**
  * Epic validating if a given address is valid or not in order to request either a quote or perform a delivery.
  *
- * In this case, the address must
- *
  * @return {Observable<R|I>}
  */
 const validateAddress = (action$: any, { deliveryRepository }: Deps) =>
