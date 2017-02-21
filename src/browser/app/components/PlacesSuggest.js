@@ -1,4 +1,18 @@
-import React, {Component, PropTypes} from "react"
+import React, {Component, PropTypes} from "react";
+import Box from './Box';
+import Divider from './Divider';
+import styled from './styled';
+import Text from './Text';
+
+const StyledSuggestion = styled((theme) => ({
+  $extends: Box,
+  backgroundColor: theme.colors.gray,
+  ':Hover': {
+    backgroundColor: theme.colors.darkGray,
+  },
+  padding: "0.6em",
+  cursor: 'pointer'
+}));
 
 class PlacesSuggest extends Component {
   constructor() {
@@ -100,70 +114,53 @@ class PlacesSuggest extends Component {
   }
 
   renderNoResults() {
-    const {textNoResults} = this.props
+    const {textNoResults} = this.props;
 
     if(textNoResults === null) {
       return;
     }
 
     return (
-      <li className="placesSuggest_suggest">
+      <Box
+        backgroundColor="gray"
+        padding={0.33}
+      >
         {textNoResults}
-      </li>
-    )
-  }
-
-  renderDefaultSuggest(suggest) {
-    const {description, structured_formatting} = suggest;
-    const firstMatchedString = structured_formatting.main_text_matched_substrings.shift();
-    let labelParts = null
-
-    if (firstMatchedString) {
-      labelParts = {
-        before: description.substr(0, firstMatchedString.offset),
-        matched: description.substr(firstMatchedString.offset, firstMatchedString.length),
-        after: description.substr(firstMatchedString.offset + firstMatchedString.length),
-      }
-    }
-
-    return (
-      <div>
-        <span className="placesSuggest_suggestLabel">
-          {labelParts
-            ? <span>
-                {labelParts.before.length > 0 ? <span>{labelParts.before}</span> : null}
-              <span className="placesSuggest_suggestMatch">{labelParts.matched}</span>
-              {labelParts.after.length > 0 ? <span>{labelParts.after}</span> : null}
-              </span>
-            : description
-          }
-        </span>
-      </div>
+      </Box>
     )
   }
 
   renderSuggest(suggest) {
-    const {renderSuggest} = this.props;
-    return renderSuggest ? renderSuggest(suggest) : this.renderDefaultSuggest(suggest)
+    return (
+      <StyledSuggestion>
+        <Text>{suggest.description}</Text>
+      </StyledSuggestion>
+    )
   }
 
   renderSuggests() {
     const {focusedSuggestIndex, suggests} = this.state;
     return (
-      <ul className="placesSuggest_suggests">
+      <Box
+        position="absolute"
+        width="100%"
+        minWidth={4}
+        boxShadow="0 1px 2px rgba(0,0,0,0.15)"
+      >
         {suggests.length > 0
           ? suggests.map((suggest, key) => (
-            <li
+            <Box
+              minWidth={20}
               key={key}
-              className={`placesSuggest_suggest ${focusedSuggestIndex === key && "placesSuggest_suggest-active"}`}
               onClick={() => this.handleSelectSuggest(suggest)}
             >
               {this.renderSuggest(suggest)}
-            </li>
+              <Divider marginTop="0" marginBottom="0"/>
+            </Box>
           ))
           : this.renderNoResults()
         }
-      </ul>
+      </Box>
     )
   }
 

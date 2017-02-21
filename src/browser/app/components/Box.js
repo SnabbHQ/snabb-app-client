@@ -22,6 +22,7 @@ export type BoxProps = {
   className?: string,
   id?: string,
   style?: any,
+
   // CSS
   alignContent?: AlignContent,
   alignItems?: AlignItems,
@@ -60,6 +61,14 @@ export type BoxProps = {
   paddingTop?: number,
   verticalAlign?: VerticalAlign,
   width?: number,
+
+  // Just value props.
+  opacity?: number,
+  overflow?: 'visible' | 'hidden' | 'scroll',
+  position?: 'absolute' | 'relative',
+  zIndex?: number,
+  cursor?: 'pointer' | 'hand',
+
   // Custom
   marginHorizontal?: number,
   marginVertical?: number,
@@ -84,6 +93,7 @@ const propToStyle = (prop, value: any, theme) => {
     case 'alignItems':
     case 'alignSelf':
     case 'boxShadow':
+    case 'cursor':
     case 'display':
     case 'flex':
     case 'flexBasis':
@@ -93,9 +103,14 @@ const propToStyle = (prop, value: any, theme) => {
     case 'flexShrink':
     case 'flexWrap':
     case 'justifyContent':
+    case 'opacity':
     case 'order':
+    case 'overflow':
+    case 'position':
     case 'verticalAlign':
+    case 'zIndex':
       return { [prop]: value };
+
     // Simple rhythm props.
     case 'marginBottom':
     case 'marginLeft':

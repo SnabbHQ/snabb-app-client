@@ -81,13 +81,6 @@ class PlaceFields extends React.Component {
         <PlacesSuggest
           search={search}
           suggestComponentRestrictions={{country: "ESP"}}
-          renderSuggest={(suggest) => {
-            return(
-             <Box backgroundColor="gray" padding={0.33}>
-              <Text>{suggest.description}</Text>
-             </Box>
-            )
-          }}
         >
           <Input
             name={`${this.props.placeType}Address`}
