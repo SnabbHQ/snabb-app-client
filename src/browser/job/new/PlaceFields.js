@@ -1,6 +1,6 @@
 /* @flow */
 import React, { PropTypes } from 'react';
-import { Space, Input, Text, Button, Box, Grid, FieldHeader} from '../../app/components';
+import { PlacesSuggest, Space, Input, Text, Button, Box, Grid, FieldHeader} from '../../app/components';
 
 class PlaceFields extends React.Component {
 
@@ -9,17 +9,18 @@ class PlaceFields extends React.Component {
 
     this.state = {
       collapsed: false,
+      search: "",
     };
 
     this.renderEditButton = this.renderEditButton.bind(this);
     this.renderFields = this.renderFields.bind(this);
     this.renderExpandedFields = this.renderExpandedFields.bind(this);
     this.renderCollapsedFields = this.renderCollapsedFields.bind(this);
-    this.onInputKeyDown = this.onInputKeyDown.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
   }
 
-  onInputKeyDown() {
-    // TODO
+  handleAddressChange(e) {
+    this.setState({search: e.target.value})
   }
 
   renderEditButton(collapsed) {
@@ -46,6 +47,9 @@ class PlaceFields extends React.Component {
   }
 
   renderExpandedFields() {
+
+    const { search } = this.state;
+
     return (
       <Box>
         <Box>
@@ -54,7 +58,6 @@ class PlaceFields extends React.Component {
               name={`${this.props.placeType}FirstName`}
               placeholder="First Name"
               maxLength={100}
-              onKeyDown={this.onInputKeyDown}
               type="text"
             />
           </Grid>
@@ -62,7 +65,6 @@ class PlaceFields extends React.Component {
             <Input
               name={`${this.props.placeType}LastName`}
               maxLength={100}
-              onKeyDown={this.onInputKeyDown}
               placeholder={'Last Name'}
               type="text"
             />
@@ -72,25 +74,35 @@ class PlaceFields extends React.Component {
         <Input
           name={`${this.props.placeType}BusinessName`}
           maxLength={100}
-          onKeyDown={this.onInputKeyDown}
           placeholder={'Business Name'}
           type="text"
         />
 
-        <Input
-          name={`${this.props.placeType}Address`}
-          maxLength={100}
-          onKeyDown={this.onInputKeyDown}
-          placeholder={'Address (e.g. San Vicente, 91, 46001, Valencia)'}
-          type="text"
-        />
+        <PlacesSuggest
+          search={search}
+          suggestComponentRestrictions={{country: "ESP"}}
+          renderSuggest={(suggest) => {
+            return(
+             <Box backgroundColor="gray" padding={0.33}>
+              <Text>{suggest.description}</Text>
+             </Box>
+            )
+          }}
+        >
+          <Input
+            name={`${this.props.placeType}Address`}
+            maxLength={100}
+            onChange={this.handleAddressChange}
+            placeholder={'Address (e.g. San Vicente, 91, 46001, Valencia)'}
+            type="text"
+          />
+        </PlacesSuggest>
 
         <Box>
           <Grid col={6}>
             <Input
               name={`${this.props.placeType}Email`}
               maxLength={100}
-              onKeyDown={this.onInputKeyDown}
               placeholder={'Email'}
               type="email"
             />
@@ -100,7 +112,6 @@ class PlaceFields extends React.Component {
               name={`${this.props.placeType}PhoneNumber`}
               labelSize={-1}
               maxLength={100}
-              onKeyDown={this.onInputKeyDown}
               placeholder={'Phone Number'}
               type="text"
             />
@@ -110,7 +121,6 @@ class PlaceFields extends React.Component {
         <Input
           name={`${this.props.placeType}Comments`}
           maxLength={100}
-          onKeyDown={this.onInputKeyDown}
           rows={2}
           placeholder={'Comments for the courier (e.g. leave with the doorman)'}
           type="text"
@@ -160,5 +170,6 @@ PlaceFields.propTypes = {
 PlaceFields.defaultProps = {
   collapsible: false,
 };
+
 
 export default PlaceFields;

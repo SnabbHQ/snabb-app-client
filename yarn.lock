@@ -5065,6 +5065,10 @@ liftoff@^2.1.0:
     rechoir "^0.6.2"
     resolve "^1.1.7"
 
+little-loader@~0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/little-loader/-/little-loader-0.1.1.tgz#516207701524e795feafa8e64cfc6881af39503f"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -6722,6 +6726,12 @@ react-dom@15.4.1:
 react-fela@^4.0.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-4.1.1.tgz#24aec0fd620bb862ca68057c966a8d31358e9fb0"
+
+react-google-maps-loader@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-google-maps-loader/-/react-google-maps-loader-2.0.2.tgz#1195b418899826676a2e09a9a7692605fb06ea8a"
+  dependencies:
+    little-loader "~0.1.0"
 
 react-helmet@^3.0.0:
   version "3.3.0"

@@ -14,6 +14,10 @@ const GoogleAnalytics = ({ id }) => (
   />
 );
 
+const GoogePlacesAPI = ({}) =>(
+  <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&sensor=false"/>
+);
+
 GoogleAnalytics.propTypes = {
   id: React.PropTypes.string.isRequired,
 };
@@ -48,6 +52,7 @@ const Html = ({
     {isProduction && googleAnalyticsId !== 'UA-XXXXXXX-X' &&
     <GoogleAnalytics id={googleAnalyticsId} />
     }
+    <GoogePlacesAPI />
     <style dangerouslySetInnerHTML={{ __html: bodyCss }} id="stylesheet" />
   </head>
   <body dangerouslySetInnerHTML={{ __html: bodyHtml }} />

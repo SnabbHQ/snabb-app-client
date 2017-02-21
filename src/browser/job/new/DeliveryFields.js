@@ -8,7 +8,7 @@ import PackageSizeField from './PackageSizeField';
 import pickupIcon from '../../../common/app/images/pickUpBadgeIcon.svg';
 import dropIcon from '../../../common/app/images/dropOffBadgeIcon.svg';
 
-const JobFields = () => (
+const DeliveryFields = () => (
     <Box>
       <PlaceFields icon={pickupIcon} title={jobMessages.pickUp} collapsible placeType="pickUp" />
       <Space x={1} />
@@ -19,4 +19,4 @@ const JobFields = () => (
     </Box>
   );
 
-export default JobFields;
+export default DeliveryFields;

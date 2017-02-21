@@ -89,14 +89,14 @@ const create = (tag, passProps = []) => styled((theme, {
   'type',
   'value',
   'maxLength',
-  'innerRef',
   ...passProps,
 ]);
 
 const StyledInput = create(
   ({ innerRef,...passProps }) => (
     <input {...passProps} ref={innerRef} />
-  )
+  ),
+  ['innerRef']
 );
 
 // TODO: Auto size by default and maxRows.

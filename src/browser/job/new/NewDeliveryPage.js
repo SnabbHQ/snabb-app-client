@@ -1,11 +1,10 @@
 /* @flow */
 import React, { PropTypes } from 'react';
-import {Fixed, Text, Title, Button, Space, Container, Image, Box} from '../../app/components';
+import {Fixed, Text, Title, Button, Space, Container, Image, Box, Map} from '../../app/components';
 import {FormattedMessage} from 'react-intl';
 import buttonsMessages from '../../../common/app/buttonsMessages';
 import jobMessages from '../../../common/delivery/jobMessages';
 import DeliveryFields from './DeliveryFields';
-import GoogleMap from 'google-map-react';
 import styled from '../../app/components/styled';
 
 // $FlowFixMe
@@ -127,7 +126,7 @@ const NewJobPageHeader = () => (
   </Fixed>
 );
 
-const NewJobPage = () => {
+const NewDeliveryPage = () => {
 
   function renderRequestButton() {
     return (
@@ -160,26 +159,13 @@ const NewJobPage = () => {
     );
   }
 
-  const defaultProps = {
-    center: {lat: 39.470128, lng: -0.370621},
-    zoom: 16,
-    greatPlaceCoords: {lat: 59.724465, lng: 30.080121},
-  };
-
   return (
     <Container>
       <NewJobPageHeader />
       <Box paddingTop={2}>
         <Title message="Snabb - New Delivery" />
         <LeftPanel>
-          <GoogleMap
-            bootstrapURLKeys={{
-            key: 'AIzaSyCHel-4O415Brc6BGGKhMvg-HYxuEShEWw',
-            language: 'en',
-          }}
-            defaultCenter={defaultProps.center}
-            defaultZoom={defaultProps.zoom}
-          />
+          <Map />
         </LeftPanel>
         <RightPanel>
           <DeliveryFields/>
@@ -191,4 +177,4 @@ const NewJobPage = () => {
   );
 };
 
-export default NewJobPage;
+export default NewDeliveryPage;
