@@ -2,6 +2,7 @@
 import appErrorMessages from '../app/errorMessages';
 import authErrorMessages from '../auth/errorMessages';
 import userErrorMessages from '../user/errorMessages';
+import deliveryErrorMessages from '../delivery/errorMessages';
 import { ValidationError } from '../lib/validation';
 import ApiError from '../lib/api/ApiError';
 
@@ -19,6 +20,7 @@ const formatApiError = error => ({
   message:
     authErrorMessages[error.name] ||
     userErrorMessages[error.name] ||
+    deliveryErrorMessages[error.name] ||
     appErrorMessages['unknown'],
   values: error.params,
 });

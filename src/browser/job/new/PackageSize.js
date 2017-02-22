@@ -1,6 +1,6 @@
 /* @flow */
 import React, { PropTypes } from 'react';
-import { Space, Box, Text, Image } from '../../app/components';
+import { Space, Button, Text, Image } from '../../app/components';
 
 const ICONS = {
   small: require('../../../common/app/images/small.svg'),
@@ -17,12 +17,12 @@ const PackageSize = ({
   title,
   icon
 }: PackageSizeProps) => (
-    <Box
+    <Button
       display="flex"
       align="center"
       backgroundColor="gray"
       alignItems="center"
-      padding={1}
+      paddingVertical={2}
     >
       <Image
         alt={icon}
@@ -32,7 +32,7 @@ const PackageSize = ({
       />
       <Space x={1} />
       <Text>{title}</Text>
-    </Box>
+    </Button>
   );
 
 export default PackageSize;
