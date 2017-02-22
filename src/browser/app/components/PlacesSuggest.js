@@ -8,10 +8,10 @@ const StyledSuggestion = styled((theme) => ({
   $extends: Box,
   backgroundColor: theme.colors.gray,
   ':hover': {
-    backgroundColor: theme.colors.darkGray,
+    backgroundColor: theme.colors.gray2,
   },
   ':focus': {
-    backgroundColor: theme.colors.darkGray,
+    backgroundColor: theme.colors.gray2,
   },
   cursor: 'pointer',
 }), 'button', ['onClick']);

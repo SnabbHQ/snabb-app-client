@@ -35,7 +35,8 @@ const theme: Theme = {
     black: '#000',
     white: '#fff',
     gray: '#f6f6f6',
-    darkGray: '#dddddd',
+    gray2: '#dddddd',
+    gray3: '#aeb4bf',
     open: openColor,
   },
   body: {
