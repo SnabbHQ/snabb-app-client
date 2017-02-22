@@ -7,12 +7,14 @@ import Text from './Text';
 const StyledSuggestion = styled((theme) => ({
   $extends: Box,
   backgroundColor: theme.colors.gray,
-  ':Hover': {
+  ':hover': {
     backgroundColor: theme.colors.darkGray,
   },
-  padding: "0.6em",
-  cursor: 'pointer'
-}));
+  ':focus': {
+    backgroundColor: theme.colors.darkGray,
+  },
+  cursor: 'pointer',
+}), 'button', ['onClick']);
 
 class PlacesSuggest extends Component {
   constructor() {
@@ -132,31 +134,31 @@ class PlacesSuggest extends Component {
 
   renderSuggest(suggest) {
     return (
-      <StyledSuggestion>
+      <Box padding={0.5}>
         <Text>{suggest.description}</Text>
-      </StyledSuggestion>
+      </Box>
     )
   }
 
   renderSuggests() {
+
+    // TODO - Allow keyboard interactions
     const {focusedSuggestIndex, suggests} = this.state;
     return (
       <Box
         position="absolute"
-        width="100%"
-        minWidth={4}
+        minWidth={16}
         boxShadow="0 1px 2px rgba(0,0,0,0.15)"
       >
         {suggests.length > 0
           ? suggests.map((suggest, key) => (
-            <Box
-              minWidth={20}
+            <StyledSuggestion
               key={key}
               onClick={() => this.handleSelectSuggest(suggest)}
             >
               {this.renderSuggest(suggest)}
               <Divider marginTop="0" marginBottom="0"/>
-            </Box>
+            </StyledSuggestion>
           ))
           : this.renderNoResults()
         }
@@ -168,7 +170,7 @@ class PlacesSuggest extends Component {
     const {selectedLabel} = this.state;
     const {children, search} = this.props;
     return (
-      <div className="placesSuggest" onKeyDown={this.handleKeyDown}>
+      <div onKeyDown={this.handleKeyDown}>
         {children}
         {search && selectedLabel !== search && this.renderSuggests()}
       </div>

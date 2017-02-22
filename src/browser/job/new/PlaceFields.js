@@ -1,6 +1,9 @@
 /* @flow */
+import R from 'ramda';
 import React, { PropTypes } from 'react';
+import {injectIntl, intlShape} from 'react-intl';
 import { PlacesSuggest, Space, Input, Text, Button, Box, Grid, FieldHeader} from '../../app/components';
+import jobMessages from '../../../common/delivery/jobMessages';
 
 class PlaceFields extends React.Component {
 
@@ -49,6 +52,7 @@ class PlaceFields extends React.Component {
   renderExpandedFields() {
 
     const { search } = this.state;
+    const { intl } = this.props;
 
     return (
       <Box>
@@ -80,7 +84,8 @@ class PlaceFields extends React.Component {
 
         <PlacesSuggest
           search={search}
-          suggestComponentRestrictions={{country: "ESP"}}
+          textNoResults={intl.formatMessage(jobMessages.noResults)}
+          onSelectSuggest={(suggest, coordiante) => { console.log(suggest.description) }}
         >
           <Input
             name={`${this.props.placeType}Address`}
@@ -154,10 +159,11 @@ class PlaceFields extends React.Component {
 }
 
 PlaceFields.propTypes = {
-  title: PropTypes.object.isRequired,
+  collapsible: PropTypes.bool,
+  intl: intlShape.isRequired,
   icon: PropTypes.string.isRequired,
   placeType: PropTypes.oneOf(['pickUp', 'dropOff']).isRequired,
-  collapsible: PropTypes.bool,
+  title: PropTypes.object.isRequired,
 };
 
 PlaceFields.defaultProps = {
@@ -165,4 +171,6 @@ PlaceFields.defaultProps = {
 };
 
 
-export default PlaceFields;
+export default R.compose(
+  injectIntl,
+)(PlaceFields);

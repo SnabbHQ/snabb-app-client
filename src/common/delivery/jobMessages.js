@@ -14,6 +14,10 @@ export default defineMessages({
     defaultMessage: 'Jobs that are in progress will appear here.',
     id: 'jobs.new.noActiveJobsSubtitle',
   },
+  noResults: {
+    defaultMessage: 'No Results',
+    id: 'jobs.new.noResults'
+  },
   selectVehicle: {
     id: 'job.new.vehicle',
     defaultMessage: 'Select a Vehicle',
