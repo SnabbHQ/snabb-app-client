@@ -248,6 +248,7 @@ class SnabbApi {
   async validateAddress(address: string) {
     return await fetch(`${this.API_BASE_URL}/address/validateAddress`, ({
       method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: this.encodeBody({address: address}),
     }))
       .then(this.handleErrors)

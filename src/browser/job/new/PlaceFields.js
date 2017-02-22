@@ -2,8 +2,21 @@
 import R from 'ramda';
 import React, { PropTypes } from 'react';
 import {injectIntl, intlShape} from 'react-intl';
-import { PlacesSuggest, Space, Input, Text, Button, Box, Grid, FieldHeader} from '../../app/components';
+import { connect } from 'react-redux';
+import { validateAddress } from '../../../common/delivery/actions';
 import jobMessages from '../../../common/delivery/jobMessages';
+import {
+  CenteredBox,
+  Error,
+  PlacesSuggest,
+  Space,
+  Input,
+  Text,
+  Button,
+  Box,
+  Grid,
+  FieldHeader
+} from '../../app/components';
 
 class PlaceFields extends React.Component {
 
@@ -15,10 +28,6 @@ class PlaceFields extends React.Component {
       search: "",
     };
 
-    this.renderEditButton = this.renderEditButton.bind(this);
-    this.renderFields = this.renderFields.bind(this);
-    this.renderExpandedFields = this.renderExpandedFields.bind(this);
-    this.renderCollapsedFields = this.renderCollapsedFields.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleSelectSuggest = this.handleSelectSuggest.bind(this);
   }
@@ -29,7 +38,10 @@ class PlaceFields extends React.Component {
 
   handleSelectSuggest = (suggest, coordinate) => {
     this.setState({search: suggest.description, selectedCoordinate: coordinate});
-  }
+
+    const { validateAddress } = this.props;
+    validateAddress({ address: suggest.description })
+  };
 
   renderEditButton(collapsed) {
     if (this.props.collapsible) {
@@ -146,6 +158,9 @@ class PlaceFields extends React.Component {
   }
 
   render() {
+
+    const { error } = this.props;
+
     return (
       <Box>
         <Box display="flex" alignItems="center">
@@ -159,6 +174,11 @@ class PlaceFields extends React.Component {
           {/*{this.renderEditButton(this.state.collapsed)}*/}
         </Box>
         {this.renderFields(this.state.collapsed)}
+        <CenteredBox>
+          <Error
+            error={error}
+          />
+        </CenteredBox>
       </Box>
     );
   }
@@ -178,5 +198,11 @@ PlaceFields.defaultProps = {
 
 
 export default R.compose(
+  connect(
+    (state: State) => ({
+      error: state.delivery.error,
+    }),
+    { validateAddress },
+  ),
   injectIntl,
 )(PlaceFields);
