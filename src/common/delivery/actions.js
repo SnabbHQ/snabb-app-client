@@ -1,5 +1,20 @@
 /* @flow */
-import type { Action } from '../types';
+import type { Action, Quote } from '../types';
+
+export const createQuote = (options?: string): Action => ({
+  type: 'CREATE_QUOTE',
+  payload: { options },
+});
+
+export const createQuoteSuccess = (quote: Quote): Action => ({
+  type: 'CREATE_QUOTE_SUCCESS',
+  payload: { quote }
+});
+
+export const createQuoteFail = (error: Error): Action => ({
+  type: 'CREATE_QUOTE_FAIL',
+  payload: { error },
+});
 
 export const validateAddress = (options?: string): Action => ({
   type: 'VALIDATE_ADDRESS',

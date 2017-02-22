@@ -17,16 +17,56 @@ export type Deps = {
 };
 
 // Models
+export type Address = {
+  addressId: number,
+  address: string,
+  latitude: number,
+  longitude: number,
+  active: boolean,
+  createdAt: number,
+  updatedAt: number,
+  zipcode: string,
+  city: City,
+};
+
+export type City = {
+  name: string,
+  region: Region,
+};
+
+export type Contact = {
+  firstName: string,
+  lastName: string,
+  companyName: string,
+  phone: string,
+  email: string,
+};
+
+export type Country = {
+  name: string,
+  isoCode: string,
+  currency: Currency,
+};
+
+export type Currency = {
+  symbol: string,
+  isoCode: string,
+};
 
 export type Delivery = {
   id: string,
 };
 
-export type UserLang =
-  'en'
-    | 'es'
-    | 'sv'
-  ;
+export type Package = {
+  price: number,
+  eta: number
+};
+
+export type Place = {
+  placeId: number,
+  description: string,
+  address: string,
+};
 
 export type Profile = {
   companyName: string,
@@ -41,6 +81,28 @@ export type Profile = {
   updatedAt: number,
   userLang: UserLang,
   verified: boolean,
+};
+
+export type Quote = {
+  quoteId: number,
+  distance: number,
+  expireAt: number,
+  quoteUser: number,
+  tasks: ?Array<Task>,
+};
+
+export type Region = {
+  name: string,
+  country: Country,
+};
+
+export type Task = {
+  taskId: number,
+  place: Place,
+  contact: Contact,
+  order: number,
+  comments: string,
+  taskType: 'dropoff' | 'pickup'
 };
 
 export type Register = {
@@ -59,8 +121,13 @@ export type User = {
   profile: Profile,
 };
 
-// Reducers
+export type UserLang =
+  'en'
+    | 'es'
+    | 'sv'
+  ;
 
+// Reducers
 export type AppState = {
   baselineShown: boolean,
   currentTheme: string,
