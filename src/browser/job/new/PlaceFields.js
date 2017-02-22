@@ -20,10 +20,15 @@ class PlaceFields extends React.Component {
     this.renderExpandedFields = this.renderExpandedFields.bind(this);
     this.renderCollapsedFields = this.renderCollapsedFields.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleSelectSuggest = this.handleSelectSuggest.bind(this);
   }
 
   handleAddressChange(e) {
-    this.setState({search: e.target.value})
+    this.setState({search: e.target.value});
+  }
+
+  handleSelectSuggest = (suggest, coordinate) => {
+    this.setState({search: suggest.description, selectedCoordinate: coordinate});
   }
 
   renderEditButton(collapsed) {
@@ -85,12 +90,13 @@ class PlaceFields extends React.Component {
         <PlacesSuggest
           search={search}
           textNoResults={intl.formatMessage(jobMessages.noResults)}
-          onSelectSuggest={(suggest, coordiante) => { console.log(suggest.description) }}
+          onSelectSuggest={this.handleSelectSuggest}
         >
           <Input
             name={`${this.props.placeType}Address`}
             maxLength={100}
             onChange={this.handleAddressChange}
+            value={search}
             placeholder={'Address (e.g. San Vicente, 91, 46001, Valencia)'}
             type="text"
           />
