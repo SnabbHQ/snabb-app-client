@@ -21,9 +21,9 @@ export const validateAddress = (options?: Object): Action => ({
   payload: { options },
 });
 
-export const validateAddressSuccess = (placeType: string): Action => ({
+export const validateAddressSuccess = (place: Object): Action => ({
   type: 'VALIDATE_ADDRESS_SUCCESS',
-  payload: { placeType }
+  payload: { place }
 });
 
 export const validateAddressFail = (placeType: string, error: Error): Action => ({

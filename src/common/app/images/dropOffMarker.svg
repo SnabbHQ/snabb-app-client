@@ -1,1 +1,35 @@
-<svg width="44" height="49" viewBox="0 0 44 49" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient x1="50%" y1="-34.262%" x2="50%" y2="100%" id="c"><stop stop-color="#19E545" offset="0%"/><stop stop-color="#0BCE35" offset="100%"/></linearGradient><path d="M26.739 42h14.558A2.706 2.706 0 0 0 44 39.293V2.707A2.705 2.705 0 0 0 41.297 0H2.703A2.706 2.706 0 0 0 0 2.707v36.586A2.705 2.705 0 0 0 2.703 42H17.26l4.207 6.671c.294.467.775.46 1.064 0L26.74 42z" id="a"/><mask id="b" x="0" y="0" width="44" height="49.019" fill="#fff"><use xlink:href="#a"/></mask></defs><g fill="none" fill-rule="evenodd"><use stroke="#0ABF31" mask="url(#b)" stroke-width="2" fill="url(#c)" xlink:href="#a"/><path d="M13 30l4.503-16.602s2.126-1.14 4.345.44c2.633 1.876 5.292 4.93 9.571 2.86l-2.383 8.682s-2.843 1.786-6.398-.802c-1.469-1.069-2.282-2.38-3.994-2.251" stroke="#FFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="75px" viewBox="0 0 72 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>E0197725-5525-4FC5-A760-D66FBAA92D7D</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M33.1669982,59.8348235 C31.6161527,61.1444883 30.0424084,64 30.0424084,64 C30.0424084,64 28.6675312,61.2994377 27.1642319,59.8677262 C11.9256296,58.4389686 0,45.6121743 0,30 C0,13.4314575 13.4314575,0 30,0 C46.5685425,0 60,13.4314575 60,30 C60,45.4988777 48.2468296,58.2526554 33.1669982,59.8348235 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="60" height="64" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.800186821" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Design-System---WIP" transform="translate(-58.000000, -2155.000000)">
+            <g id="Icons" transform="translate(64.000000, 2104.000000)">
+                <g id="Dropoff-Pin" transform="translate(0.000000, 56.000000)">
+                    <g id="Round-Pin">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use stroke="#FFFFFF" mask="url(#mask-3)" stroke-width="4" fill="#80E900" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M33,30 L33,15 L27,15 L27,30 L21,30 L30,39 L39,30 L33,30 Z M15,16.991617 C15,15.8916773 15.8978404,15 16.991617,15 L43.008383,15 C44.1083227,15 45,15.8978404 45,16.991617 L45,43.008383 C45,44.1083227 44.1021596,45 43.008383,45 L16.991617,45 C15.8916773,45 15,44.1021596 15,43.008383 L15,16.991617 Z" id="Dropoff-Icon" fill="url(#linearGradient-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

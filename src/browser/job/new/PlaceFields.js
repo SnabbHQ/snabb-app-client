@@ -40,7 +40,13 @@ class PlaceFields extends React.Component {
     this.setState({search: suggest.description, selectedCoordinate: coordinate});
 
     const { validateAddress, placeType } = this.props;
-    validateAddress({ address: suggest.description, placeType: placeType })
+    validateAddress({
+      place: {
+        address: suggest.description,
+        coordinate: coordinate,
+        placeType: placeType
+      }
+    });
   };
 
   renderEditButton(collapsed) {

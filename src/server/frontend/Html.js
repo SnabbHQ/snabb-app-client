@@ -15,7 +15,7 @@ const GoogleAnalytics = ({ id }) => (
 );
 
 const GoogePlacesAPI = ({}) =>(
-  <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&sensor=false"/>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTTW91wWCBlAaY_Fo6nQcciurX2hRu2k&libraries=places"></script>
 );
 
 GoogleAnalytics.propTypes = {

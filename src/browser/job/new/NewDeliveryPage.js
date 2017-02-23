@@ -1,5 +1,7 @@
 /* @flow */
+import R from 'ramda';
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import {Fixed, Text, Title, Button, Space, Container, Box, Map} from '../../app/components';
 import DeliveryFields from './DeliveryFields';
 import NewDeliveryPageHeader from './NewDeliveryPageHeader';
@@ -57,7 +59,12 @@ const RequestPanel = styled(() => ({
   zIndex: 2,
 }));
 
-const NewDeliveryPage = () => {
+type NewDeliveryPageProps = {
+  pickUpPlace: ?Object,
+  dropOffPlace: ?Object,
+}
+
+const NewDeliveryPage = ({ pickUpPlace, dropOffPlace }: NewDeliveryPageProps) => {
 
   function renderRequestButton() {
     return (
@@ -96,7 +103,10 @@ const NewDeliveryPage = () => {
       <Box paddingTop={2}>
         <Title message="Snabb - New Delivery" />
         <LeftPanel>
-          <Map />
+          <Map
+            pickUpPlace={pickUpPlace}
+            dropOffPlace={dropOffPlace}
+          />
         </LeftPanel>
         <RightPanel>
           <DeliveryFields/>
@@ -108,4 +118,11 @@ const NewDeliveryPage = () => {
   );
 };
 
-export default NewDeliveryPage;
+export default R.compose(
+  connect(
+    (state: State) => ({
+      pickUpPlace: state.delivery.pickUpPlace,
+      dropOffPlace: state.delivery.dropOffPlace,
+    })
+  )
+)(NewDeliveryPage);

@@ -20,10 +20,10 @@ const validateAddress = (action$: any, { deliveryRepository }: Deps) =>
   action$.ofType('VALIDATE_ADDRESS')
     .map(action => action.payload.options)
     .mergeMap((options) => {
-      const { address, placeType } = options;
-      return deliveryRepository.validateAddress(address)
-        .map(() => validateAddressSuccess(placeType))
-        .catch(error => Observable.of(validateAddressFail(placeType, error)));
+      const { place } = options;
+      return deliveryRepository.validateAddress(place.address)
+        .map(() => validateAddressSuccess(place))
+        .catch(error => Observable.of(validateAddressFail(place.placeType, error)));
     });
 
 export default validateAddress;
