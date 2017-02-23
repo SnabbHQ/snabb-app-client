@@ -151,9 +151,12 @@ export type ConfigState = {
 };
 
 export type DeliveryState = {
-  pickUpError: ?Error,
-  dropOffError: ?Error,
   error: ?Error,
+  dropOffError: ?Error,
+  dropOffPlace: Object,
+  pickUpError: ?Error,
+  pickUpPlace: Object,
+  quote: Quote,
 }
 
 export type DeviceState = {

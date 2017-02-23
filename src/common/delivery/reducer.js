@@ -5,6 +5,7 @@ const initialState = {
   dropOffError: null,
   pickUpPlace: null,
   dropOffPlace: null,
+  quote: null,
   error: null,
 };
 
