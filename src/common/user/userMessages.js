@@ -22,12 +22,8 @@ const userMessages = defineMessages({
     defaultMessage: 'Welcome to',
     id: 'auth.register.createAccountHeader',
   },
-  passwordForgotten: {
-    defaultMessage: 'Forgot your password?',
-    id: 'auth.email.passwordForgotten',
-  },
   forgotPassword: {
-    defaultMessage: 'Forgot updatePassword',
+    defaultMessage: 'Forgot your password?',
     id: 'auth.reset.forgotPassword',
   },
   forgotPasswordDescription: {

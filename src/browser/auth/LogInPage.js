@@ -69,7 +69,7 @@ const LogInPage = ({ location, authed, resetUserState }) => {
                 size={0}
                 to="/forgotPassword"
               >
-                <FormattedMessage {...userMessages.passwordForgotten} />
+                <FormattedMessage {...userMessages.forgotPassword} />
               </Link>
             </CenteredBox>
             <CenteredBox>

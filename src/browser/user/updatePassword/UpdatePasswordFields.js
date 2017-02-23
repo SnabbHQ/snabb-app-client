@@ -73,7 +73,7 @@ const UpdatePasswordFields = ({disabled, error, fields, intl, updatePassword}) =
             size={0}
             to="/forgotPassword"
           >
-            <FormattedMessage {...userMessages.passwordForgotten} />
+            <FormattedMessage {...userMessages.forgotPassword} />
           </Link>
           <Space auto />
           <Button accent paddingHorizontal={2} onClick={sendUpdatePassword} >
