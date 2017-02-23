@@ -150,6 +150,12 @@ export type ConfigState = {
   sentryUrl: string,
 };
 
+export type DeliveryState = {
+  pickUpError: ?Error,
+  dropOffError: ?Error,
+  error: ?Error,
+}
+
 export type DeviceState = {
   host: string,
   isReactNative: boolean,
@@ -187,6 +193,7 @@ export type State = {
   app: AppState,
   auth: AuthState,
   config: ConfigState,
+  delivery: DeliveryState,
   device: DeviceState,
   fields: any,
   intl: IntlState,

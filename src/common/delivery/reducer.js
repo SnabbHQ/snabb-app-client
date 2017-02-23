@@ -1,24 +1,26 @@
-import type { Action, DeliveriesState } from '../types';
+import type { Action, DeliveryState } from '../types';
 
 const initialState = {
-  error: null
+  pickUpError: null,
+  dropOffError: null,
+  error: null,
 };
 
 const reducer = (
-  state: DeliveriesState = initialState,
+  state: DeliveryState = initialState,
   action: Action,
-): DeliveriesState => {
+): DeliveryState => {
   switch (action.type) {
 
     case 'CREATE_QUOTE':
     case 'VALIDATE_ADDRESS':
     case 'VALIDATE_ADDRESS_SUCCESS': {
-      return { ...state, error: null };
+      return { ...state, pickUpError: null, dropOffError: null, error: null };
     }
 
     case 'CREATE_QUOTE_SUCCESS': {
       return {
-        ...state, error: null, quote: action.payload.quote };
+        ...state, pickUpError: null, dropOffError: null, error: null, quote: action.payload.quote };
     }
 
     case 'CREATE_QUOTE_FAIL': {
@@ -27,8 +29,11 @@ const reducer = (
     }
 
     case 'VALIDATE_ADDRESS_FAIL': {
-      return {
-        ...state, error: action.payload.error };
+      if (action.payload.placeType === 'pickUp') {
+        return {...state, pickUpError: action.payload.error };
+      } else {
+        return {...state, dropOffError: action.payload.error };
+      }
     }
 
     default:

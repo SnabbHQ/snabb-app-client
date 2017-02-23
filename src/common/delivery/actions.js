@@ -16,17 +16,18 @@ export const createQuoteFail = (error: Error): Action => ({
   payload: { error },
 });
 
-export const validateAddress = (options?: string): Action => ({
+export const validateAddress = (options?: Object): Action => ({
   type: 'VALIDATE_ADDRESS',
   payload: { options },
 });
 
-export const validateAddressSuccess = (): Action => ({
+export const validateAddressSuccess = (placeType: string): Action => ({
   type: 'VALIDATE_ADDRESS_SUCCESS',
+  payload: { placeType }
 });
 
-export const validateAddressFail = (error: Error): Action => ({
+export const validateAddressFail = (placeType: string, error: Error): Action => ({
   type: 'VALIDATE_ADDRESS_FAIL',
-  payload: { error },
+  payload: { placeType, error },
 });
 

@@ -39,8 +39,8 @@ class PlaceFields extends React.Component {
   handleSelectSuggest = (suggest, coordinate) => {
     this.setState({search: suggest.description, selectedCoordinate: coordinate});
 
-    const { validateAddress } = this.props;
-    validateAddress({ address: suggest.description })
+    const { validateAddress, placeType } = this.props;
+    validateAddress({ address: suggest.description, placeType: placeType })
   };
 
   renderEditButton(collapsed) {
@@ -175,9 +175,7 @@ class PlaceFields extends React.Component {
         </Box>
         {this.renderFields(this.state.collapsed)}
         <CenteredBox>
-          <Error
-            error={error}
-          />
+          { error && <Error error={error} /> }
         </CenteredBox>
       </Box>
     );
@@ -196,12 +194,9 @@ PlaceFields.defaultProps = {
   collapsible: false,
 };
 
-
 export default R.compose(
   connect(
-    (state: State) => ({
-      error: state.delivery.error,
-    }),
+    null,
     { validateAddress },
   ),
   injectIntl,
