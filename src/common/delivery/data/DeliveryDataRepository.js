@@ -8,6 +8,10 @@ class DeliveryDataRepository {
     this.deliveryDataStoreFactory = deliveryDataStoreFactory;
   }
 
+  createQuote(tasks: Array<Object>) {
+    return this.deliveryDataStoreFactory.createCloudDataStore().createQuote(tasks);
+  }
+
   validateAddress(address: string) {
     return this.deliveryDataStoreFactory.create().validateAddress(address);
   }

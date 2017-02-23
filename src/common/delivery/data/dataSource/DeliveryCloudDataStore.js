@@ -11,6 +11,10 @@ class DeliverCloudDataStore extends DeliveryDataStore {
     this.deliveryRestApi = deliveryRestApi;
   }
 
+  createQuote(tasks: Array<Object>) {
+    return this.deliveryRestApi.createQuote(tasks);
+  }
+
   validateAddress(address: string) {
     return this.deliveryRestApi.validateAddress(address);
   }

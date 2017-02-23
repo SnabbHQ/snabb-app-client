@@ -107,6 +107,22 @@ class SnabbApi {
       }));
   }
 
+  async createQuote(tasks: Array<Object>) {
+    return await fetch(`${this.API_BASE_URL}/quote/quote`, ({
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ tasks: tasks }),
+    }))
+      .then(this.handleErrors)
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
+        }
+
+        this.handleUnExpectedError();
+      }));
+  }
+
   async register(data: Register) {
     return await fetch(`${this.API_BASE_URL}/user/register`, {
       method: 'POST',

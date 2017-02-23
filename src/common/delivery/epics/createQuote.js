@@ -1,7 +1,6 @@
 // @flow
 import type { Deps } from '../../types';
-
-import { validateAddressSuccess, validateAddressFail} from '../actions';
+import { createQuoteSuccess, createQuoteFail} from '../actions';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -10,6 +9,16 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+
+const createTask = (place) => {
+  return {
+    type: place.placeType,
+    place: {
+      description: "This is a place",
+      address: place.address
+    }
+  };
+};
 
 /**
  * Epic in charge of creating quotes given the following details given by the user:
@@ -24,10 +33,15 @@ const createQuote = (action$: any, { deliveryRepository }: Deps) =>
   action$.ofType('CREATE_QUOTE')
     .map(action => action.payload.options)
     .mergeMap((options) => {
-      const { pickupAddress, dropOffAddress, packageSize } = options;
-      return deliveryRepository.validateAddress(address)
-        .map(validateAddressSuccess)
-        .catch(error => Observable.of(validateAddressFail(error)));
+      const { pickUpPlace, dropOffPlace } = options;
+
+      let tasks = [];
+      tasks.push(createTask(pickUpPlace));
+      tasks.push(createTask(dropOffPlace));
+
+      return deliveryRepository.createQuote(tasks)
+        .map(createQuoteSuccess)
+        .catch(error => Observable.of(createQuoteFail(error)));
     });
 
 export default createQuote;

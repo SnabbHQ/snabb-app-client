@@ -6,6 +6,7 @@ import {Fixed, Text, Title, Button, Space, Container, Box, Map} from '../../app/
 import DeliveryFields from './DeliveryFields';
 import NewDeliveryPageHeader from './NewDeliveryPageHeader';
 import styled from '../../app/components/styled';
+import { createQuote } from '../../../common/delivery/actions';
 
 const RightPanel = styled((theme) => ({
   $extends: Box,
@@ -64,9 +65,16 @@ type NewDeliveryPageProps = {
   dropOffPlace: ?Object,
 }
 
-const NewDeliveryPage = ({ pickUpPlace, dropOffPlace }: NewDeliveryPageProps) => {
+class NewDeliveryPage extends React.Component {
 
-  function renderRequestButton() {
+  componentWillReceiveProps({pickUpPlace, dropOffPlace}) {
+    if (pickUpPlace && dropOffPlace) {
+      const { createQuote } = this.props;
+      createQuote({ pickUpPlace, dropOffPlace })
+    }
+  }
+
+  renderRequestButton() {
     return (
       <RequestPanel>
         <Box
@@ -97,32 +105,36 @@ const NewDeliveryPage = ({ pickUpPlace, dropOffPlace }: NewDeliveryPageProps) =>
     );
   }
 
-  return (
-    <Container>
-      <NewDeliveryPageHeader />
-      <Box paddingTop={2}>
-        <Title message="Snabb - New Delivery" />
-        <LeftPanel>
-          <Map
-            pickUpPlace={pickUpPlace}
-            dropOffPlace={dropOffPlace}
-          />
-        </LeftPanel>
-        <RightPanel>
-          <DeliveryFields/>
-          {renderRequestButton()}
-        </RightPanel>
-      </Box>
-    </Container>
+  render() {
 
-  );
-};
+    const { pickUpPlace, dropOffPlace } = this.props;
+    return (
+      <Container>
+        <NewDeliveryPageHeader />
+        <Box paddingTop={2}>
+          <Title message="Snabb - New Delivery" />
+          <LeftPanel>
+            <Map
+              pickUpPlace={pickUpPlace}
+              dropOffPlace={dropOffPlace}
+            />
+          </LeftPanel>
+          <RightPanel>
+            <DeliveryFields />
+            {this.renderRequestButton()}
+          </RightPanel>
+        </Box>
+      </Container>
+    )
+  }
+}
 
 export default R.compose(
   connect(
     (state: State) => ({
       pickUpPlace: state.delivery.pickUpPlace,
       dropOffPlace: state.delivery.dropOffPlace,
-    })
+    }),
+    { createQuote },
   )
 )(NewDeliveryPage);

@@ -9,10 +9,15 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-export default class UserRestApi {
+export default class DeliveryRestApi {
 
   constructor(snabbApi: SnabbApi) {
     this.snabbApi = snabbApi;
+  }
+
+  createQuote(tasks: Array<Object>) {
+    return Observable.fromPromise(this.snabbApi.createQuote(convertKeys.toSnake(tasks)))
+      .map(convertKeys.toCamel);
   }
 
   validateAddress(address: string) {
