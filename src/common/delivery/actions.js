@@ -1,6 +1,10 @@
 /* @flow */
 import type { Action, Quote } from '../types';
 
+export const clearState = (): Action => ({
+  type: 'CLEAR_DELIVERY_STATE',
+});
+
 export const createQuote = (options?: string): Action => ({
   type: 'CREATE_QUOTE',
   payload: { options },

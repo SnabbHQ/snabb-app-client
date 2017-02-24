@@ -6,7 +6,7 @@ import {Fixed, Text, Title, Button, Space, Container, Box, Map} from '../../app/
 import DeliveryFields from './DeliveryFields';
 import NewDeliveryPageHeader from './NewDeliveryPageHeader';
 import styled from '../../app/components/styled';
-import { createQuote } from '../../../common/delivery/actions';
+import { createQuote, clearState } from '../../../common/delivery/actions';
 
 const RightPanel = styled((theme) => ({
   $extends: Box,
@@ -117,14 +117,24 @@ const RequestButton = ({ quote, selectedPackageSize }) => {
 
 class NewDeliveryPage extends React.Component {
 
+  constructor(props) {
+    super(props);
 
-  componentWillReceiveProps({pickUpPlace, dropOffPlace}) {
+    this.onSelectedPackageSize = this.onSelectedPackageSize.bind(this);
+  }
+
+  componentWillReceiveProps({ pickUpPlace, dropOffPlace }) {
     if (pickUpPlace && dropOffPlace &&
       (this.props.pickUpPlace != pickUpPlace || this.props.dropOffPlace != dropOffPlace)
     ) {
       const { createQuote } = this.props;
       createQuote({ pickUpPlace, dropOffPlace })
     }
+  }
+
+  componentWillUnmount() {
+    const { clearState } = this.props;
+    clearState();
   }
 
   onSelectedPackageSize() {
@@ -166,6 +176,6 @@ export default R.compose(
       dropOffPlace: state.delivery.dropOffPlace,
       quote: state.delivery.quote,
     }),
-    { createQuote },
+    { createQuote, clearState },
   )
 )(NewDeliveryPage);

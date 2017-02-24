@@ -85,7 +85,7 @@ class PackageSizeField extends React.Component {
 }
 
 PackageSizeField.propTypes = {
-  quotes: PropTypes.object.isRequired,
+  quote: PropTypes.object,
   intl: intlShape.isRequired,
   onSelectedPackageSize: PropTypes.func,
 };

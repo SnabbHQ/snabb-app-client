@@ -1,4 +1,6 @@
 /* @flow */
+import R from 'ramda';
+import { connect } from 'react-redux';
 import React, { PropTypes } from 'react';
 import {Fixed, Text, Button, Space, Image, Box } from '../../app/components';
 import {FormattedMessage} from 'react-intl';
@@ -72,4 +74,12 @@ const NewDeliveryPageHeader = () => (
   </Fixed>
 );
 
-export default NewDeliveryPageHeader;
+export default R.compose(
+  connect(
+    (state: State) => ({
+      pickUpPlace: state.delivery.pickUpPlace,
+      dropOffPlace: state.delivery.dropOffPlace,
+      quote: state.delivery.quote,
+    })
+  )
+)(NewDeliveryPageHeader);

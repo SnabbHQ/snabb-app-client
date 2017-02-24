@@ -46,6 +46,10 @@ const reducer = (
       }
     }
 
+    case 'CLEAR_DELIVERY_STATE': {
+      return initialState;
+    }
+
     default:
       return state;
 
