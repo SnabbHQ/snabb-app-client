@@ -65,7 +65,7 @@ type NewDeliveryPageProps = {
   dropOffPlace: ?Object,
 }
 
-const RequestButton = ({ quote, selectedPackageSize }) => {
+const RequestButton = ({ quote, selectedPackageId }) => {
   return (
     <RequestPanel>
       <Box
@@ -83,13 +83,13 @@ const RequestButton = ({ quote, selectedPackageSize }) => {
                 <Box display="flex" >
                   <Text size={-1} color="white" >ETA for pickup:</Text>
                   <Space />
-                  <Text size={-1} bold color="white" >{quote.prices.big.eta}</Text>
+                  <Text size={-1} bold color="white" >{quote.prices[selectedPackageId].eta}</Text>
                   <Text size={-1} color="white" >min</Text>
                 </Box>
               </Box>
 
               <Space x={1} />
-              <Text color="white" size={1} >{quote.prices.big.price}</Text>
+              <Text color="white" size={1} >{quote.prices[selectedPackageId].price}</Text>
               <Text color="white" size={1} >{quote.currency.symbol}</Text>
             </Box>
           </Button>
@@ -120,6 +120,10 @@ class NewDeliveryPage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      selectedPackageId: "small",
+    };
+
     this.onSelectedPackageSize = this.onSelectedPackageSize.bind(this);
   }
 
@@ -140,12 +144,17 @@ class NewDeliveryPage extends React.Component {
     clearDeliveryState();
   }
 
-  onSelectedPackageSize() {
-
+  onSelectedPackageSize(id: string) {
+    this.setState({ selectedPackageId: id})
   }
 
   render() {
     const { quote, pickUpPlace, dropOffPlace } = this.props;
+
+    if (quote) {
+      console.log(quote.prices[this.state.selectedPackageId]);
+    }
+
 
     return (
       <Container>
@@ -164,6 +173,7 @@ class NewDeliveryPage extends React.Component {
             />
             <RequestButton
               quote={quote}
+              selectedPackageId={this.state.selectedPackageId}
             />
           </RightPanel>
         </Box>

@@ -34,7 +34,7 @@ const DeliveryFields = ({onSelectedPackageSize, pickUpError, dropOffError}: Deli
       />
       <Space x={1} />
       <PackageSizeField
-        //onSelectedPackageSize={this.props.onSelectedPackageSize}
+        onSelectedPackageSize={onSelectedPackageSize}
       />
       <Space x={1} />
     </Box>

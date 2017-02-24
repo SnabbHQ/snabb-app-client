@@ -29,33 +29,36 @@ class PackageSizeField extends React.Component {
     this.setState({ showDialog: false })
   }
 
-  renderPackageSizes(intl, quote) {
+  renderPackageSizes(intl, onSelectedPackageSize, quote) {
 
     return (
       <Box display="flex"  justifyContent="space-between">
         <PackageSize
           disabled={!(quote && quote.prices.small)}
           title={intl.formatMessage(jobMessages.sizeSmall)}
-          icon="small"
+          id="small"
+          onPress={onSelectedPackageSize}
         />
 
         <PackageSize
           disabled={!(quote && quote.prices.medium)}
           title={intl.formatMessage(jobMessages.sizeMedium)}
-          icon="medium"
+          id="medium"
+          onPress={onSelectedPackageSize}
         />
 
         <PackageSize
           disabled={!(quote && quote.prices.big)}
-          title={intl.formatMessage(jobMessages.sizeLarge)}
-          icon="large"
+          title={intl.formatMessage(jobMessages.sizeBig)}
+          id="big"
+          onPress={onSelectedPackageSize}
         />
       </Box>
     )
   }
 
   render() {
-    const { intl, quote } = this.props;
+    const { intl, onSelectedPackageSize, quote } = this.props;
 
     return(
       <Box>
@@ -77,7 +80,7 @@ class PackageSizeField extends React.Component {
           </Button>
         </Box>
 
-        {this.renderPackageSizes(intl, quote)}
+        {this.renderPackageSizes(intl, onSelectedPackageSize, quote)}
 
       </Box>
     )
