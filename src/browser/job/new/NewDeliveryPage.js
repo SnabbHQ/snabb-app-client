@@ -65,7 +65,7 @@ type NewDeliveryPageProps = {
   dropOffPlace: ?Object,
 }
 
-const RequestButton = ({ quote }) => {
+const RequestButton = ({ quote, selectedPackageSize }) => {
   return (
     <RequestPanel>
       <Box
@@ -75,8 +75,8 @@ const RequestButton = ({ quote }) => {
         height="100%"
         paddingRight={1}
       >
-        {quote &&
-          <Button primary >
+        {quote ?
+          <Button primary>
             <Box display="flex" alignItems="center" >
               <Box>
                 <Text bold color="white" display="block" >Request</Text>
@@ -91,6 +91,22 @@ const RequestButton = ({ quote }) => {
               <Space x={1} />
               <Text color="white" size={1} >{quote.prices.big.price}</Text>
               <Text color="white" size={1} >{quote.currency.symbol}</Text>
+            </Box>
+          </Button>
+          :
+          <Button primary disabled={true}>
+            <Box display="flex" alignItems="center" >
+              <Box>
+                <Text bold color="white" display="block" >Request</Text>
+                <Box display="flex" >
+                  <Text size={-1} color="white" >ETA for pickup:</Text>
+                  <Space />
+                  <Text size={-1} bold color="white" >- min</Text>
+                </Box>
+              </Box>
+
+              <Space x={1} />
+              <Text color="white" size={1} >-</Text>
             </Box>
           </Button>
         }
@@ -111,9 +127,13 @@ class NewDeliveryPage extends React.Component {
     }
   }
 
-  render() {
+  onSelectedPackageSize() {
 
+  }
+
+  render() {
     const { quote, pickUpPlace, dropOffPlace } = this.props;
+
     return (
       <Container>
         <NewDeliveryPageHeader />
@@ -126,7 +146,9 @@ class NewDeliveryPage extends React.Component {
             />
           </LeftPanel>
           <RightPanel>
-            <DeliveryFields />
+            <DeliveryFields
+              onSelectedPackageSize={this.onSelectedPackageSize}
+            />
             <RequestButton
               quote={quote}
             />

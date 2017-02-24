@@ -29,8 +29,33 @@ class PackageSizeField extends React.Component {
     this.setState({ showDialog: false })
   }
 
+  renderPackageSizes(intl, quote) {
+
+    return (
+      <Box display="flex"  justifyContent="space-between">
+        <PackageSize
+          disabled={!(quote && quote.prices.small)}
+          title={intl.formatMessage(jobMessages.sizeSmall)}
+          icon="small"
+        />
+
+        <PackageSize
+          disabled={!(quote && quote.prices.medium)}
+          title={intl.formatMessage(jobMessages.sizeMedium)}
+          icon="medium"
+        />
+
+        <PackageSize
+          disabled={!(quote && quote.prices.big)}
+          title={intl.formatMessage(jobMessages.sizeLarge)}
+          icon="large"
+        />
+      </Box>
+    )
+  }
+
   render() {
-    const { intl } = this.props;
+    const { intl, quote } = this.props;
 
     return(
       <Box>
@@ -40,7 +65,7 @@ class PackageSizeField extends React.Component {
           onCloseClicked={this.hideDialog}
         >
           <Text bold color="red">
-            Hola
+            Info to include here
           </Text>
         </Dialog>
 
@@ -51,20 +76,8 @@ class PackageSizeField extends React.Component {
             <FormattedMessage {...jobMessages.viewSizeDetails}/>
           </Button>
         </Box>
-        <Box display="flex"  justifyContent="space-between">
-          <PackageSize
-            title={intl.formatMessage(jobMessages.sizeSmall)}
-            icon="small"
-          />
-          <PackageSize
-            title={intl.formatMessage(jobMessages.sizeMedium)}
-            icon="medium"
-          />
-          <PackageSize
-            title={intl.formatMessage(jobMessages.sizeLarge)}
-            icon="large"
-          />
-        </Box>
+
+        {this.renderPackageSizes(intl, quote)}
 
       </Box>
     )
@@ -74,13 +87,14 @@ class PackageSizeField extends React.Component {
 PackageSizeField.propTypes = {
   quotes: PropTypes.object.isRequired,
   intl: intlShape.isRequired,
+  onSelectedPackageSize: PropTypes.func,
 };
 
 export default R.compose(
   connect(
     (state: State) => ({
-      quotes: {}, // state.quotes.all,
-      error: state.user.error,
+      quote: state.delivery.quote,
+      error: state.delivery.error,
     }),
   ),
   injectIntl,

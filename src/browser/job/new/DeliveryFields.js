@@ -13,9 +13,10 @@ import dropIcon from '../../../common/app/images/dropOffBadgeIcon.svg';
 type DeliveryFieldsProps = {
   pickupError: ?Error,
   dropOffError: ?Error,
+  //TODO - onSelectedPackageSize:
 }
 
-const DeliveryFields = ({pickUpError, dropOffError}: DeliveryFieldsProps) => (
+const DeliveryFields = ({onSelectedPackageSize, pickUpError, dropOffError}: DeliveryFieldsProps) => (
     <Box>
       <PlaceFields
         icon={pickupIcon}
@@ -32,7 +33,9 @@ const DeliveryFields = ({pickUpError, dropOffError}: DeliveryFieldsProps) => (
         error={dropOffError}
       />
       <Space x={1} />
-      <PackageSizeField />
+      <PackageSizeField
+        //onSelectedPackageSize={this.props.onSelectedPackageSize}
+      />
       <Space x={1} />
     </Box>
   );

@@ -14,10 +14,12 @@ type PackageSizeProps = {
 }
 
 const PackageSize = ({
+  disabled = false,
   title,
-  icon
+  icon,
 }: PackageSizeProps) => (
     <Button
+      disabled={disabled}
       display="flex"
       align="center"
       backgroundColor="gray"
