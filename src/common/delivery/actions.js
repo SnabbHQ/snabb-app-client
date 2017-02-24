@@ -5,7 +5,7 @@ export const clearDeliveryState = (): Action => ({
   type: 'CLEAR_DELIVERY_STATE',
 });
 
-export const createQuote = (options?: string): Action => ({
+export const createQuote = (options?: Object): Action => ({
   type: 'CREATE_QUOTE',
   payload: { options },
 });
