@@ -1,7 +1,7 @@
 /* @flow */
 import type { Action, Quote } from '../types';
 
-export const clearState = (): Action => ({
+export const clearDeliveryState = (): Action => ({
   type: 'CLEAR_DELIVERY_STATE',
 });
 

@@ -6,7 +6,7 @@ import {Fixed, Text, Title, Button, Space, Container, Box, Map} from '../../app/
 import DeliveryFields from './DeliveryFields';
 import NewDeliveryPageHeader from './NewDeliveryPageHeader';
 import styled from '../../app/components/styled';
-import { createQuote, clearState } from '../../../common/delivery/actions';
+import { createQuote, clearDeliveryState } from '../../../common/delivery/actions';
 
 const RightPanel = styled((theme) => ({
   $extends: Box,
@@ -133,8 +133,11 @@ class NewDeliveryPage extends React.Component {
   }
 
   componentWillUnmount() {
-    const { clearState } = this.props;
-    clearState();
+    const { clearDeliveryState } = this.props;
+
+    // Make sure when we leave this state, we clear the delivery state so we don't mess up with quotes and info from
+    // different user interactions.
+    clearDeliveryState();
   }
 
   onSelectedPackageSize() {
@@ -176,6 +179,6 @@ export default R.compose(
       dropOffPlace: state.delivery.dropOffPlace,
       quote: state.delivery.quote,
     }),
-    { createQuote, clearState },
+    { createQuote, clearDeliveryState },
   )
 )(NewDeliveryPage);
