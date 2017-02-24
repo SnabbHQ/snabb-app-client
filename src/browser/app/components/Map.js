@@ -12,7 +12,7 @@ class Map extends React.Component {
 
   state = {
     center: [59.3293, 18.0686],
-    zoom: 15
+    zoom: 14
   };
 
   constructor(props) {

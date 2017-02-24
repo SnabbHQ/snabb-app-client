@@ -70,7 +70,11 @@ const NewCreditCard = ({type, cards, onCancelClick}: NewCreditCardProps) => {
         />
       </Box>
       <Box display="flex" >
-        <Button gray onClick={onCancelClick} >
+        <Button
+          color="#8f959e"
+          gray2
+          onClick={onCancelClick}
+        >
           <FormattedMessage {...buttonMessages.cancel} />
         </Button>
         <Space />
