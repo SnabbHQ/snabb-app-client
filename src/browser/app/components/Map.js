@@ -1,17 +1,12 @@
 /* @flow */
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import GoogleMap from 'google-map-react';
+import Box from './Box';
 import Image from './Image';
 
 // $FlowFixMe
 const pickUpMarker = require('../../../common/app/images/pickUpMarker.svg');
 const dropOffMarker = require('../../../common/app/images/dropOffMarker.svg');
-
-const K_MARGIN_TOP = 30;
-const K_MARGIN_RIGHT = 30;
-const K_MARGIN_BOTTOM = 30;
-const K_MARGIN_LEFT = 30;
-
 
 class Map extends React.Component {
 
@@ -48,7 +43,7 @@ class Map extends React.Component {
 
   render() {
 
-    const { pickUpPlace, dropOffPlace } = this.props;
+    const {pickUpPlace, dropOffPlace} = this.props;
 
     return (
       <GoogleMap
@@ -60,29 +55,40 @@ class Map extends React.Component {
         zoom={this.state.zoom}
         resetBoundsOnResize
         onChange={this.onChange}
-        margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
       >
 
         { pickUpPlace && pickUpPlace.coordinate &&
-        <Image
-          alt="Pick Up Place"
-          height={60}
-          width={60}
+        <Box
+          position="relative"
+          top={-40}
+          left={-30}
           lat={pickUpPlace.coordinate.latitude}
           lng={pickUpPlace.coordinate.longitude}
-          src={pickUpMarker}
-        />
+        >
+          <Image
+            alt="Pick Up Place"
+            height={60}
+            width={60}
+            src={pickUpMarker}
+          />
+        </Box>
         }
 
         { dropOffPlace && dropOffPlace.coordinate &&
-        <Image
-          alt="Drop Off place"
-          height={60}
-          width={60}
+        <Box
+          position="relative"
+          top={-40}
+          left={-30}
           lat={dropOffPlace.coordinate.latitude}
           lng={dropOffPlace.coordinate.longitude}
-          src={dropOffMarker}
-        />
+        >
+          <Image
+            alt="Drop Off place"
+            height={60}
+            width={60}
+            src={dropOffMarker}
+          />
+        </Box>
         }
 
       </GoogleMap>

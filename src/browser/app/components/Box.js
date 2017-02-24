@@ -59,6 +59,10 @@ export type BoxProps = {
   paddingLeft?: number,
   paddingRight?: number,
   paddingTop?: number,
+  top?: number,
+  right?: number,
+  bottom?: number,
+  left?: number,
   verticalAlign?: VerticalAlign,
   width?: number,
 
@@ -107,6 +111,10 @@ const propToStyle = (prop, value: any, theme) => {
     case 'order':
     case 'overflow':
     case 'position':
+    case 'top':
+    case 'right':
+    case 'bottom':
+    case 'left':
     case 'verticalAlign':
     case 'zIndex':
       return { [prop]: value };
