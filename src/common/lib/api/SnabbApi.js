@@ -108,7 +108,7 @@ class SnabbApi {
   }
 
   async createQuote(tasks: Array<Object>) {
-    return await fetch(`${this.API_BASE_URL}/quote/quote`, ({
+    return await fetch(`${this.API_BASE_URL}/delivery/quote`, ({
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ tasks: tasks }),
