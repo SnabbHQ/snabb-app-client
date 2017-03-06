@@ -28,8 +28,8 @@ export const PAYMENT_METHODS = {
 };
 
 export const PLACE_TYPES = {
-  pickUp: 2,
-  dropOff: 3,
+  pickup: 2,
+  dropoff: 3,
 };
 
 export const DEFAULT_CITY = 'valencia';

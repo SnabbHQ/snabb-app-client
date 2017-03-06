@@ -61,8 +61,8 @@ const RequestPanel = styled(() => ({
 }));
 
 type NewDeliveryPageProps = {
-  pickUpPlace: ?Object,
-  dropOffPlace: ?Object,
+  pickupPlace: ?Object,
+  dropoffPlace: ?Object,
 }
 
 const RequestButton = ({ quote, selectedPackageId }, { router }: Object) => {
@@ -140,12 +140,12 @@ class NewDeliveryPage extends React.Component {
     this.onSelectedPackageSize = this.onSelectedPackageSize.bind(this);
   }
 
-  componentWillReceiveProps({ pickUpPlace, dropOffPlace }) {
-    if (pickUpPlace && dropOffPlace &&
-      (this.props.pickUpPlace != pickUpPlace || this.props.dropOffPlace != dropOffPlace)
+  componentWillReceiveProps({ pickupPlace, dropoffPlace }) {
+    if (pickupPlace && dropoffPlace &&
+      (this.props.pickupPlace != pickupPlace || this.props.dropoffPlace != dropoffPlace)
     ) {
       const { createQuote } = this.props;
-      createQuote({ pickUpPlace, dropOffPlace })
+      createQuote({ pickupPlace, dropoffPlace })
     }
   }
 
@@ -162,7 +162,7 @@ class NewDeliveryPage extends React.Component {
   }
 
   render() {
-    const { quote, pickUpPlace, dropOffPlace } = this.props;
+    const { quote, pickupPlace, dropoffPlace } = this.props;
     const { selectedPackageId } = this.state;
 
     if (quote) {
@@ -176,8 +176,8 @@ class NewDeliveryPage extends React.Component {
           <Title message="Snabb - New Delivery" />
           <LeftPanel>
             <Map
-              pickUpPlace={pickUpPlace}
-              dropOffPlace={dropOffPlace}
+              pickupPlace={pickupPlace}
+              dropoffPlace={dropoffPlace}
             />
           </LeftPanel>
           <RightPanel>
@@ -199,8 +199,8 @@ class NewDeliveryPage extends React.Component {
 export default R.compose(
   connect(
     (state: State) => ({
-      pickUpPlace: state.delivery.pickUpPlace,
-      dropOffPlace: state.delivery.dropOffPlace,
+      pickupPlace: state.delivery.pickupPlace,
+      dropoffPlace: state.delivery.dropoffPlace,
       quote: state.delivery.quote,
     }),
     { createQuote, clearDeliveryState },

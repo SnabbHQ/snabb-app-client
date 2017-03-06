@@ -197,7 +197,7 @@ PlaceFields.propTypes = {
   collapsible: PropTypes.bool,
   intl: intlShape.isRequired,
   icon: PropTypes.string.isRequired,
-  placeType: PropTypes.oneOf(['pickUp', 'dropOff']).isRequired,
+  placeType: PropTypes.oneOf(['pickup', 'dropoff']).isRequired,
   title: PropTypes.object.isRequired,
 };
 

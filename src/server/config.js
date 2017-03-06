@@ -27,8 +27,8 @@ nconf.defaults({
   remoteHotReload: false,
   sentryUrl: 'https://f297cec9c9654088b8ccf1ea9136c458@app.getsentry.com/77415',
   apiConfig: {
-    //baseUrl: 'https://snabb-api-mock.herokuapp.com/api/v1',
-    baseUrl: 'http://api-dev.snabb.io/api/v1',
+    baseUrl: 'http://snabb-api-mock.herokuapp.com/api/v1',
+    //baseUrl: 'http://api-dev.snabb.io/api/v1',
     clientId: '98niOFu1RRW0xw5O9uqhhrd9eYVvyyzgM4pozeQN',
   },
 });

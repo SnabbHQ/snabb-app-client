@@ -7,31 +7,31 @@ import jobMessages from '../../../common/delivery/jobMessages';
 import PlaceFields from './PlaceFields';
 import PackageSizeField from './PackageSizeField';
 
-import pickupIcon from '../../../common/app/images/pickUpBadgeIcon.svg';
-import dropIcon from '../../../common/app/images/dropOffBadgeIcon.svg';
+import pickupIcon from '../../../common/app/images/pickupBadgeIcon.svg';
+import dropIcon from '../../../common/app/images/dropoffBadgeIcon.svg';
 
 type DeliveryFieldsProps = {
   pickupError: ?Error,
-  dropOffError: ?Error,
+  dropoffError: ?Error,
   //TODO - onSelectedPackageSize:
   selectedId: ?string,
 }
 
-const DeliveryFields = ({onSelectedPackageSize, pickUpError, dropOffError, selectedPackageId }: DeliveryFieldsProps) => (
+const DeliveryFields = ({onSelectedPackageSize, pickupError, dropoffError, selectedPackageId }: DeliveryFieldsProps) => (
     <Box>
       <PlaceFields
         icon={pickupIcon}
-        title={jobMessages.pickUp}
+        title={jobMessages.pickup}
         collapsible
-        placeType="pickUp"
-        error={pickUpError}
+        placeType="pickup"
+        error={pickupError}
       />
       <Space x={1} />
       <PlaceFields
         icon={dropIcon}
-        title={jobMessages.dropOff}
-        placeType="dropOff"
-        error={dropOffError}
+        title={jobMessages.dropoff}
+        placeType="dropoff"
+        error={dropoffError}
       />
       <Space x={1} />
       <PackageSizeField
@@ -45,8 +45,8 @@ const DeliveryFields = ({onSelectedPackageSize, pickUpError, dropOffError, selec
 export default R.compose(
   connect(
     (state: State) => ({
-      pickUpError: state.delivery.pickUpError,
-      dropOffError: state.delivery.dropOffError,
+      pickupError: state.delivery.pickupError,
+      dropoffError: state.delivery.dropoffError,
     })
   )
 )(DeliveryFields);

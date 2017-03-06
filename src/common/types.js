@@ -152,10 +152,10 @@ export type ConfigState = {
 
 export type DeliveryState = {
   error: ?Error,
-  dropOffError: ?Error,
-  dropOffPlace: Object,
-  pickUpError: ?Error,
-  pickUpPlace: Object,
+  dropoffError: ?Error,
+  dropoffPlace: Object,
+  pickupError: ?Error,
+  pickupPlace: Object,
   quote: Quote,
 }
 

@@ -54,20 +54,20 @@ export default defineMessages({
     id: 'jobForm.lastname',
     defaultMessage: 'Last name',
   },
-  pickUp: {
-    id: 'jobForm.pickUp',
+  pickup: {
+    id: 'jobForm.pickup',
     defaultMessage: 'PICKUP',
   },
-  dropOff: {
-    id: 'jobForm.dropOff',
+  dropoff: {
+    id: 'jobForm.dropoff',
     defaultMessage: 'DROPOFF',
   },
-  pickUpAddressPlaceholder: {
-    id: 'jobForm.pickUpAddressPlaceholder',
+  pickupAddressPlaceholder: {
+    id: 'jobForm.pickupAddressPlaceholder',
     defaultMessage: 'Select a pick up address...',
   },
-  dropOffAddressPlaceholder: {
-    id: 'jobForm.dropOffAddressPlaceholder',
+  dropoffAddressPlaceholder: {
+    id: 'jobForm.dropoffAddressPlaceholder',
     defaultMessage: 'Select a drop off address...',
   },
   contactPhonePlaceholder: {

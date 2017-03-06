@@ -18,7 +18,7 @@ describe('All Delivery actions', () => {
           latitude: 0,
           longitude: 0
         },
-        placeType: "pickUp"
+        placeType: "pickup"
       };
       expect(actions.validateAddressSuccess(place)).toEqual({
         type: 'VALIDATE_ADDRESS_SUCCESS',
@@ -28,7 +28,7 @@ describe('All Delivery actions', () => {
 
     it('should validateAddressFail', () => {
       const error = Error;
-      const placeType = "pickUp";
+      const placeType = "pickup";
       expect(actions.validateAddressFail(placeType, error)).toEqual({
         type: 'VALIDATE_ADDRESS_FAIL',
         payload: { placeType, error }
@@ -37,28 +37,28 @@ describe('All Delivery actions', () => {
   });
 
   describe('Create Quotes', () => {
-    const pickUpPlace = {
+    const pickupPlace = {
       address: "This is an address",
       coordinate: {
         latitude: 0,
         longitude: 0
       },
-      placeType: "pickUp"
+      placeType: "pickup"
     };
 
-    const dropOffPlace = {
+    const dropoffPlace = {
       address: "This is an address",
       coordinate: {
         latitude: 0,
         longitude: 0
       },
-      placeType: "pickUp"
+      placeType: "pickup"
     };
 
     it('should createQuote', () => {
-      expect(actions.createQuote({ pickUpPlace, dropOffPlace })).toEqual({
+      expect(actions.createQuote({ pickupPlace, dropoffPlace })).toEqual({
         type: 'CREATE_QUOTE',
-        payload: { options: { pickUpPlace, dropOffPlace } }
+        payload: { options: { pickupPlace, dropoffPlace } }
       });
     });
 

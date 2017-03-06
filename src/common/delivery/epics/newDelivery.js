@@ -21,23 +21,16 @@ const createTask = (place) => {
 };
 
 /**
- * Epic in charge of creating quotes given the following details given by the user:
- *
- * - Pickup Address
- * - DropOff Address
- * - Packages Size
+ * Epic in charge of ordering a new delivery given the quote already created by the user and the selected package
+ * size id:
  *
  * @return {Observable<R|I>}
  */
-const createQuote = (action$: any, { deliveryRepository }: Deps) =>
-  action$.ofType('CREATE_QUOTE')
+const newDelivery = (action$: any, { deliveryRepository }: Deps) =>
+  action$.ofType('NEW_DELIVERY')
     .map(action => action.payload.options)
     .mergeMap((options) => {
-      const { pickupPlace, dropoffPlace } = options;
-
-      let tasks = [];
-      tasks.push(createTask(pickupPlace));
-      tasks.push(createTask(dropoffPlace));
+      const { quoteId, selectedPackageId } = options;
 
       return deliveryRepository.createQuote(tasks)
         .map(createQuoteSuccess)

@@ -77,8 +77,8 @@ const NewDeliveryPageHeader = () => (
 export default R.compose(
   connect(
     (state: State) => ({
-      pickUpPlace: state.delivery.pickUpPlace,
-      dropOffPlace: state.delivery.dropOffPlace,
+      pickupPlace: state.delivery.pickupPlace,
+      dropoffPlace: state.delivery.dropoffPlace,
       quote: state.delivery.quote,
     })
   )

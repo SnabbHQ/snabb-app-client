@@ -108,7 +108,7 @@ class SnabbApi {
   }
 
   async createQuote(tasks: Array<Object>) {
-    return await fetch(`${this.API_BASE_URL}/delivery/quote`, ({
+    return await fetch(`${this.API_BASE_URL}/deliveries/quote`, ({
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ tasks: tasks }),
@@ -184,6 +184,24 @@ class SnabbApi {
   async getProfile() {
     return await fetch(`${this.API_BASE_URL}/user/profile`, ({
       method: 'GET',
+    }))
+      .then(this.handleErrors)
+      .then((res) => res.json().then(json => {
+        if (res.status === 200 || res.status === 201) {
+          return json;
+        }
+
+        this.handleUnExpectedError();
+      }));
+  }
+
+  async newDelivery(quoteId: string, selectedPackageId: string) {
+    return await fetch(`${this.API_BASE_URL}/deliveries`, ({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: this.encodeBody({quote_id: quoteId, selected_package_size: selectedPackageId}),
     }))
       .then(this.handleErrors)
       .then((res) => res.json().then(json => {

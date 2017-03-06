@@ -1,10 +1,10 @@
 import type { Action, DeliveryState } from '../types';
 
 const initialState = {
-  pickUpError: null,
-  dropOffError: null,
-  pickUpPlace: null,
-  dropOffPlace: null,
+  pickupError: null,
+  dropoffError: null,
+  pickupPlace: null,
+  dropoffPlace: null,
   quote: null,
   error: null,
 };
@@ -17,20 +17,20 @@ const reducer = (
 
     case 'CREATE_QUOTE':
     case 'VALIDATE_ADDRESS': {
-      return { ...state, pickUpError: null, dropOffError: null, error: null };
+      return { ...state, pickupError: null, dropoffError: null, error: null };
     }
 
     case 'VALIDATE_ADDRESS_SUCCESS': {
-      if (action.payload.place.placeType === 'pickUp') {
-        return { ...state, pickUpPlace: action.payload.place, pickUpError: null, dropOffError: null, error: null };
+      if (action.payload.place.placeType === 'pickup') {
+        return { ...state, pickupPlace: action.payload.place, pickupError: null, dropoffError: null, error: null };
       } else {
-        return { ...state, dropOffPlace: action.payload.place, pickUpError: null, dropOffError: null, error: null };
+        return { ...state, dropoffPlace: action.payload.place, pickupError: null, dropoffError: null, error: null };
       }
     }
 
     case 'CREATE_QUOTE_SUCCESS': {
       return {
-        ...state, pickUpError: null, dropOffError: null, error: null, quote: action.payload.quote };
+        ...state, pickupError: null, dropoffError: null, error: null, quote: action.payload.quote };
     }
 
     case 'CREATE_QUOTE_FAIL': {
@@ -39,10 +39,10 @@ const reducer = (
     }
 
     case 'VALIDATE_ADDRESS_FAIL': {
-      if (action.payload.placeType === 'pickUp') {
-        return {...state, pickUpError: action.payload.error };
+      if (action.payload.placeType === 'pickup') {
+        return {...state, pickupError: action.payload.error };
       } else {
-        return {...state, dropOffError: action.payload.error };
+        return {...state, dropoffError: action.payload.error };
       }
     }
 

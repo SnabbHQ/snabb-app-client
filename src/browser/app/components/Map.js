@@ -6,8 +6,8 @@ import Box from './Box';
 import Image from './Image';
 
 // $FlowFixMe
-const pickUpMarker = require('../../../common/app/images/pickUpMarker.svg');
-const dropOffMarker = require('../../../common/app/images/dropOffMarker.svg');
+const pickupMarker = require('../../../common/app/images/pickupMarker.svg');
+const dropoffMarker = require('../../../common/app/images/dropoffMarker.svg');
 
 class Map extends React.Component {
 
@@ -22,16 +22,16 @@ class Map extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillReceiveProps({pickUpPlace, dropOffPlace}) {
-    if (pickUpPlace || dropOffPlace) {
+  componentWillReceiveProps({pickupPlace, dropoffPlace}) {
+    if (pickupPlace || dropoffPlace) {
       // const bounds = {
       //   nw: {
-      //     lat: pickUpPlace.coordinate.latitude,
-      //     lng: pickUpPlace.coordinate.longitude
+      //     lat: pickupPlace.coordinate.latitude,
+      //     lng: pickupPlace.coordinate.longitude
       //   },
       //   se: {
-      //     lat: pickUpPlace.coordinate.latitude,
-      //     lng: pickUpPlace.coordinate.longitude
+      //     lat: pickupPlace.coordinate.latitude,
+      //     lng: pickupPlace.coordinate.longitude
       //   }
       // };
       //
@@ -66,11 +66,11 @@ class Map extends React.Component {
   };
 
   render() {
-    const {pickUpPlace, dropOffPlace} = this.props;
+    const {pickupPlace, dropoffPlace} = this.props;
 
     const bounds = {
-      pickUpPlace,
-      dropOffPlace
+      pickupPlace,
+      dropoffPlace
     };
 
     return (
@@ -85,36 +85,36 @@ class Map extends React.Component {
         onChange={this.onChange}
       >
 
-        { pickUpPlace && pickUpPlace.coordinate &&
+        { pickupPlace && pickupPlace.coordinate &&
         <Box
           position="relative"
           top={-40}
           left={-30}
-          lat={pickUpPlace.coordinate.latitude}
-          lng={pickUpPlace.coordinate.longitude}
+          lat={pickupPlace.coordinate.latitude}
+          lng={pickupPlace.coordinate.longitude}
         >
           <Image
             alt="Pick Up Place"
             height={60}
             width={60}
-            src={pickUpMarker}
+            src={pickupMarker}
           />
         </Box>
         }
 
-        { dropOffPlace && dropOffPlace.coordinate &&
+        { dropoffPlace && dropoffPlace.coordinate &&
         <Box
           position="relative"
           top={-40}
           left={-30}
-          lat={dropOffPlace.coordinate.latitude}
-          lng={dropOffPlace.coordinate.longitude}
+          lat={dropoffPlace.coordinate.latitude}
+          lng={dropoffPlace.coordinate.longitude}
         >
           <Image
             alt="Drop Off place"
             height={60}
             width={60}
-            src={dropOffMarker}
+            src={dropoffMarker}
           />
         </Box>
         }
@@ -125,8 +125,8 @@ class Map extends React.Component {
 }
 
 // MapProps. = {
-//   pickUpPlace: ?Object,
-//   dropOffPlace: ?Object,
+//   pickupPlace: ?Object,
+//   dropoffPlace: ?Object,
 // }
 
 export default Map;

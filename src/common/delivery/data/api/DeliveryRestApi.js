@@ -20,6 +20,11 @@ export default class DeliveryRestApi {
       .map(convertKeys.toCamel);
   }
 
+  newDelivery(quoteId: string, selectedPackageId: string) {
+    return Observable.fromPromise(this.snabbApi.newDelivery(quoteId, selectedPackageId))
+      .map(convertKeys.toCamel);
+  }
+
   validateAddress(address: string) {
     return Observable.fromPromise(this.snabbApi.validateAddress(address))
       .map(convertKeys.toCamel);
