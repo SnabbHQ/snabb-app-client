@@ -65,7 +65,12 @@ type NewDeliveryPageProps = {
   dropOffPlace: ?Object,
 }
 
-const RequestButton = ({ quote, selectedPackageId }) => {
+const RequestButton = ({ quote, selectedPackageId }, { router }: Object) => {
+
+  const requestDelivery = () => {
+    router.transitionTo('/active');
+  };
+
   return (
     <RequestPanel>
       <Box
@@ -76,7 +81,11 @@ const RequestButton = ({ quote, selectedPackageId }) => {
         paddingRight={1}
       >
         {quote ?
-          <Button primary>
+          <Button
+            primary
+            onClick={requestDelivery}
+            onPress={requestDelivery}
+          >
             <Box display="flex" alignItems="center" >
               <Box>
                 <Text bold color="white" display="block" >Request</Text>
@@ -115,6 +124,10 @@ const RequestButton = ({ quote, selectedPackageId }) => {
   )
 };
 
+RequestButton.contextTypes = {
+  router: PropTypes.object.isRequired,
+};
+
 class NewDeliveryPage extends React.Component {
 
   constructor(props) {
@@ -150,11 +163,11 @@ class NewDeliveryPage extends React.Component {
 
   render() {
     const { quote, pickUpPlace, dropOffPlace } = this.props;
+    const { selectedPackageId } = this.state;
 
     if (quote) {
       console.log(quote.prices[this.state.selectedPackageId]);
     }
-
 
     return (
       <Container>
@@ -169,11 +182,12 @@ class NewDeliveryPage extends React.Component {
           </LeftPanel>
           <RightPanel>
             <DeliveryFields
+              selectedPackageId={selectedPackageId}
               onSelectedPackageSize={this.onSelectedPackageSize}
             />
             <RequestButton
               quote={quote}
-              selectedPackageId={this.state.selectedPackageId}
+              selectedPackageId={selectedPackageId}
             />
           </RightPanel>
         </Box>

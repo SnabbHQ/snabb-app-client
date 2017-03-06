@@ -1,6 +1,7 @@
 /* @flow */
 import React, {PropTypes} from 'react';
 import GoogleMap from 'google-map-react';
+import { fitBounds } from 'google-map-react/utils';
 import Box from './Box';
 import Image from './Image';
 
@@ -19,6 +20,29 @@ class Map extends React.Component {
     super(props);
 
     this.onChange = this.onChange.bind(this);
+  }
+
+  componentWillReceiveProps({pickUpPlace, dropOffPlace}) {
+    if (pickUpPlace || dropOffPlace) {
+      // const bounds = {
+      //   nw: {
+      //     lat: pickUpPlace.coordinate.latitude,
+      //     lng: pickUpPlace.coordinate.longitude
+      //   },
+      //   se: {
+      //     lat: pickUpPlace.coordinate.latitude,
+      //     lng: pickUpPlace.coordinate.longitude
+      //   }
+      // };
+      //
+      // const size = {
+      //   width: 640, // Map width in pixels
+      //   height: 380, // Map height in pixels
+      // };
+      //
+      // const { center } = fitBounds(bounds, size);
+      // this.setState({center: center});
+    }
   }
 
   componentDidMount() {
@@ -42,8 +66,12 @@ class Map extends React.Component {
   };
 
   render() {
-
     const {pickUpPlace, dropOffPlace} = this.props;
+
+    const bounds = {
+      pickUpPlace,
+      dropOffPlace
+    };
 
     return (
       <GoogleMap

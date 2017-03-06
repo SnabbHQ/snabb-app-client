@@ -30,7 +30,10 @@ const activeStyle = (style, { darken }) => [
   if (!value) return activeStyle;
   return {
     ...activeStyle,
-    [prop]: color(value).darken(darken).hsl().string(),
+    //[prop]: color(value).darken(darken).hsl().string(),
+    ['borderColor']: '#FF2C40',
+    ['borderWidth']: '1px',
+    ['borderStyle']: 'solid'
   };
 }, style);
 

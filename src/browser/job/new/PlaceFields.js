@@ -32,6 +32,11 @@ class PlaceFields extends React.Component {
     this.handleSelectSuggest = this.handleSelectSuggest.bind(this);
   }
 
+  // TODO - Temp fix for not having to type addresses all the time
+  // componentDidMount() {
+  //   this.setState({search: 'Calle de San Vicente, 91, Valencia, Spain'});
+  // }
+
   handleAddressChange(e) {
     this.setState({search: e.target.value});
   }

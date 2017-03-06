@@ -19,6 +19,7 @@ const PackageSize = ({
   disabled = false,
   id,
   onPress,
+  selected = false,
   title,
 }: PackageSizeProps) => {
 
@@ -28,14 +29,17 @@ const PackageSize = ({
 
   return (
     <Button
+      active={selected}
       disabled={disabled}
       display="flex"
       align="center"
       backgroundColor="gray"
       alignItems="center"
+      noOutline={true}
       paddingVertical={2}
       onClick={onButtonPress}
       onPress={onButtonPress}
+      activeStyle={{borderStyle: "solid", borderColor: "black", borderWidth: "1px", backgroundColor: "black" }}
     >
       <Image
         alt={id}

@@ -14,9 +14,10 @@ type DeliveryFieldsProps = {
   pickupError: ?Error,
   dropOffError: ?Error,
   //TODO - onSelectedPackageSize:
+  selectedId: ?string,
 }
 
-const DeliveryFields = ({onSelectedPackageSize, pickUpError, dropOffError}: DeliveryFieldsProps) => (
+const DeliveryFields = ({onSelectedPackageSize, pickUpError, dropOffError, selectedPackageId }: DeliveryFieldsProps) => (
     <Box>
       <PlaceFields
         icon={pickupIcon}
@@ -34,6 +35,7 @@ const DeliveryFields = ({onSelectedPackageSize, pickUpError, dropOffError}: Deli
       />
       <Space x={1} />
       <PackageSizeField
+        selectedPackageId={selectedPackageId}
         onSelectedPackageSize={onSelectedPackageSize}
       />
       <Space x={1} />
