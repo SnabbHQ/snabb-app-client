@@ -6,7 +6,7 @@ import {Fixed, Text, Title, Button, Space, Container, Box, Map} from '../../app/
 import DeliveryFields from './DeliveryFields';
 import NewDeliveryPageHeader from './NewDeliveryPageHeader';
 import styled from '../../app/components/styled';
-import { createQuote, clearDeliveryState } from '../../../common/delivery/actions';
+import { createQuote, clearDeliveryState, newDelivery } from '../../../common/delivery/actions';
 
 const RightPanel = styled((theme) => ({
   $extends: Box,
@@ -65,10 +65,11 @@ type NewDeliveryPageProps = {
   dropoffPlace: ?Object,
 }
 
-const RequestButton = ({ quote, selectedPackageId }, { router }: Object) => {
+const RequestButton = ({ quote, newDelivery, selectedPackageId }, { router }: Object) => {
 
   const requestDelivery = () => {
-    router.transitionTo('/active');
+    //router.transitionTo('/active');
+    newDelivery({quoteId: quote.quoteId, selectedPackageId: selectedPackageId});
   };
 
   return (
@@ -162,12 +163,8 @@ class NewDeliveryPage extends React.Component {
   }
 
   render() {
-    const { quote, pickupPlace, dropoffPlace } = this.props;
+    const { quote, pickupPlace, dropoffPlace, newDelivery } = this.props;
     const { selectedPackageId } = this.state;
-
-    if (quote) {
-      console.log(quote.prices[this.state.selectedPackageId]);
-    }
 
     return (
       <Container>
@@ -188,6 +185,7 @@ class NewDeliveryPage extends React.Component {
             <RequestButton
               quote={quote}
               selectedPackageId={selectedPackageId}
+              newDelivery={newDelivery}
             />
           </RightPanel>
         </Box>
@@ -203,6 +201,6 @@ export default R.compose(
       dropoffPlace: state.delivery.dropoffPlace,
       quote: state.delivery.quote,
     }),
-    { createQuote, clearDeliveryState },
+    { createQuote, clearDeliveryState, newDelivery },
   )
 )(NewDeliveryPage);

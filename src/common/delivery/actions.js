@@ -1,5 +1,5 @@
 /* @flow */
-import type { Action, Quote } from '../types';
+import type { Action, Delivery, Quote } from '../types';
 
 export const clearDeliveryState = (): Action => ({
   type: 'CLEAR_DELIVERY_STATE',
@@ -17,6 +17,21 @@ export const createQuoteSuccess = (quote: Quote): Action => ({
 
 export const createQuoteFail = (error: Error): Action => ({
   type: 'CREATE_QUOTE_FAIL',
+  payload: { error },
+});
+
+export const newDelivery = (options?: Object): Action => ({
+  type: 'NEW_DELIVERY',
+  payload: { options },
+});
+
+export const newDeliverySuccess = (delivery: Delivery): Action => ({
+  type: 'NEW_DELIVERY_SUCCESS',
+  payload: { delivery }
+});
+
+export const newDeliveryFail = (error: Error): Action => ({
+  type: 'NEW_DELIVERY_FAIL',
   payload: { error },
 });
 

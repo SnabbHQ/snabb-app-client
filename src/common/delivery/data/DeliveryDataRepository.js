@@ -12,8 +12,8 @@ class DeliveryDataRepository {
     return this.deliveryDataStoreFactory.createCloudDataStore().createQuote(tasks);
   }
 
-  newDelivery(tasks: Array<Object>) {
-    return this.deliveryDataStoreFactory.createCloudDataStore().createQuote(tasks);
+  newDelivery(quoteId: string, selectedPackageId: string) {
+    return this.deliveryDataStoreFactory.createCloudDataStore().newDelivery(quoteId, selectedPackageId);
   }
 
   validateAddress(address: string) {
