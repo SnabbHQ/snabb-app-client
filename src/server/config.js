@@ -18,7 +18,9 @@ nconf.defaults({
   defaultLocale: 'en',
   googleAnalyticsId: 'UA-XXXXXXX-X',
   isProduction: process.env.NODE_ENV === 'production',
-  locales: ['en', 'es'],
+  locales: [
+    'en', 'es'
+  ],
   port: process.env.PORT || 3000,
   // Enable hot reload on remote device. Note it prevents offline testing,
   // because it depends on ip.address(), which doesn't work with disabled wifi.
@@ -27,10 +29,18 @@ nconf.defaults({
   remoteHotReload: false,
   sentryUrl: 'https://f297cec9c9654088b8ccf1ea9136c458@app.getsentry.com/77415',
   apiConfig: {
-    baseUrl: 'http://snabb-api-mock.herokuapp.com/api/v1',
-    //baseUrl: 'http://api-dev.snabb.io/api/v1',
-    clientId: '98niOFu1RRW0xw5O9uqhhrd9eYVvyyzgM4pozeQN',
-  },
+    // Mock Env
+    //baseUrl: 'http://snabb-api-mock.herokuapp.com/api/v1',
+    //clientId: '123456'
+
+    // Local Dev - TODO - This should go with env variables
+    //baseUrl: 'http://localhost:8000/api/v1',
+    //clientId: 'cRRvcMMUoFtUc0SqUUulKeBF7yxbrdNgwc8x3XzH'
+
+    // Develop
+    baseUrl: 'https://api-dev.snabb.io/api/v1',
+    clientId: 'wGbZg2PTuoZnmk6V2kNs45xC0zo3HHS08FJ4c8Tr'
+  }
 });
 
 export default nconf.get();
